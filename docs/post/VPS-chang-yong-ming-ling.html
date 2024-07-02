@@ -33,7 +33,6 @@ volta install node@16.0.0
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
 ```
 
-[项目地址](https://github.com/MHSanaei/3x-ui)
 
 ###  一键wrap
 
@@ -71,6 +70,7 @@ lsb_release -a
 ```
 
 ###  VPS开启root登录并且修改密码：
+```
 bash <(curl -L -s check.unlock.media)
 ```
 
@@ -101,23 +101,23 @@ kill PID数字
 
 ###  放行端口：
 
-```sudo ufw allow 端口号```
+`sudo ufw allow 端口号`
 
-```sudo ufw allow 起始端口:结束端口```
+`sudo ufw allow 起始端口:结束端口`
 
-```sudo ufw enable```   #  重启ufw防火墙
+`sudo ufw enable`   #  重启ufw防火墙
 
 ###  关闭端口：
-```sudo ufw deny 端口号```
+`sudo ufw deny 端口号`
 
 ###  只允许指定IP连接22端口：
-```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
 
 ###  文件类型转换：
 
-```mv config.txt config.json```
+`mv config.txt config.json`
 
-```mv shell.txt shell.sh```
+`mv shell.txt shell.sh`
 
 
 ###  开启虚拟内存：
@@ -129,13 +129,13 @@ sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapf
 
 ###  防火墙
 
-```firewall-cmd --state```                             # 查看防火墙状态    
+`firewall-cmd --state`                          # 查看防火墙状态    
 
 
-```systemctl stop firewalld.service```                 # 停止防火墙    
+`systemctl stop firewalld.service`                # 停止防火墙    
 
 
-```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+`systemctl disable firewalld.service`             # 禁止防火墙开机自启
 
 ###  一键开启bbr加速
 
@@ -157,7 +157,7 @@ wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/
 ```
 
 
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
+使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。">
 <meta property="og:title" content="VPS常用命令">
 <meta property="og:description" content="### 安装node环境
 ```
@@ -183,7 +183,6 @@ volta install node@16.0.0
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
 ```
 
-[项目地址](https://github.com/MHSanaei/3x-ui)
 
 ###  一键wrap
 
@@ -221,6 +220,7 @@ lsb_release -a
 ```
 
 ###  VPS开启root登录并且修改密码：
+```
 bash <(curl -L -s check.unlock.media)
 ```
 
@@ -251,23 +251,23 @@ kill PID数字
 
 ###  放行端口：
 
-```sudo ufw allow 端口号```
+`sudo ufw allow 端口号`
 
-```sudo ufw allow 起始端口:结束端口```
+`sudo ufw allow 起始端口:结束端口`
 
-```sudo ufw enable```   #  重启ufw防火墙
+`sudo ufw enable`   #  重启ufw防火墙
 
 ###  关闭端口：
-```sudo ufw deny 端口号```
+`sudo ufw deny 端口号`
 
 ###  只允许指定IP连接22端口：
-```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
 
 ###  文件类型转换：
 
-```mv config.txt config.json```
+`mv config.txt config.json`
 
-```mv shell.txt shell.sh```
+`mv shell.txt shell.sh`
 
 
 ###  开启虚拟内存：
@@ -279,13 +279,13 @@ sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapf
 
 ###  防火墙
 
-```firewall-cmd --state```                             # 查看防火墙状态    
+`firewall-cmd --state`                          # 查看防火墙状态    
 
 
-```systemctl stop firewalld.service```                 # 停止防火墙    
+`systemctl stop firewalld.service`                # 停止防火墙    
 
 
-```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+`systemctl disable firewalld.service`             # 禁止防火墙开机自启
 
 ###  一键开启bbr加速
 
@@ -307,7 +307,7 @@ wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/
 ```
 
 
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
+使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://sky22333.github.io/post/VPS-chang-yong-ming-ling.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -380,7 +380,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 <h3>3xui</h3>
 <pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
 </code></pre>
-<p><a href="https://github.com/MHSanaei/3x-ui">项目地址</a></p>
 <h3>一键wrap</h3>
 <pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
 </code></pre>
@@ -400,112 +399,64 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 <pre class="notranslate"><code class="notranslate">lsb_release -a
 </code></pre>
 <h3>VPS开启root登录并且修改密码：</h3>
-<p>bash &lt;(curl -L -s check.unlock.media)</p>
-<pre class="notranslate"><code class="notranslate">
- 
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media)
 </code></pre>
-<p>bash &lt;(curl -L -s check.unlock.media) -M 4</p>
-<pre class="notranslate"><code class="notranslate">
- 
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 4
 </code></pre>
-<p>bash &lt;(curl -L -s check.unlock.media) -M 6</p>
-<pre class="notranslate"><code class="notranslate">
-###  查看端口占用：
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 6
 </code></pre>
-<p>sudo lsof -i -P -n</p>
-<pre class="notranslate"><code class="notranslate"></code></pre>
-<p>ss -tuln</p>
-<pre class="notranslate"><code class="notranslate"></code></pre>
-<p>lsof -i:端口号</p>
-<pre class="notranslate"><code class="notranslate">#### 释放端口
+<h3>查看端口占用：</h3>
+<pre class="notranslate"><code class="notranslate">sudo lsof -i -P -n
 </code></pre>
-<p>kill PID数字</p>
-<pre class="notranslate"><code class="notranslate">
-###  放行端口：
-
-```sudo ufw allow 端口号```
-
-```sudo ufw allow 起始端口:结束端口```
-
-```sudo ufw enable```   #  重启ufw防火墙
-
-###  关闭端口：
-```sudo ufw deny 端口号```
-
-###  只允许指定IP连接22端口：
-```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
-
-###  文件类型转换：
-
-```mv config.txt config.json```
-
-```mv shell.txt shell.sh```
-
-
-###  开启虚拟内存：
-
+<pre class="notranslate"><code class="notranslate">ss -tuln
 </code></pre>
-<p>sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab</p>
-<pre class="notranslate"><code class="notranslate">
-
-###  防火墙
-
-```firewall-cmd --state```                             # 查看防火墙状态    
-
-
-```systemctl stop firewalld.service```                 # 停止防火墙    
-
-
-```systemctl disable firewalld.service```              # 禁止防火墙开机自启
-
-###  一键开启bbr加速
-
+<pre class="notranslate"><code class="notranslate">lsof -i:端口号
 </code></pre>
-<p>wget --no-check-certificate <a href="https://github.com/teddysun/across/raw/master/bbr.sh">https://github.com/teddysun/across/raw/master/bbr.sh</a> &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh</p>
-<pre class="notranslate"><code class="notranslate">
+<h4>释放端口</h4>
+<pre class="notranslate"><code class="notranslate">kill PID数字
 </code></pre>
-<p>sysctl net.ipv4.tcp_congestion_control</p>
-<pre class="notranslate"><code class="notranslate">
-
-
-###  人型自走bot乌班图脚本
-
-
+<h3>放行端口：</h3>
+<p><code class="notranslate">sudo ufw allow 端口号</code></p>
+<p><code class="notranslate">sudo ufw allow 起始端口:结束端口</code></p>
+<p><code class="notranslate">sudo ufw enable</code>   #  重启ufw防火墙</p>
+<h3>关闭端口：</h3>
+<p><code class="notranslate">sudo ufw deny 端口号</code></p>
+<h3>只允许指定IP连接22端口：</h3>
+<p><code class="notranslate">sudo ufw allow from 192.168.1.100 to any port 22</code>      #  多IP用英文的逗号分开</p>
+<h3>文件类型转换：</h3>
+<p><code class="notranslate">mv config.txt config.json</code></p>
+<p><code class="notranslate">mv shell.txt shell.sh</code></p>
+<h3>开启虚拟内存：</h3>
+<pre class="notranslate"><code class="notranslate">sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 </code></pre>
-<p>wget <a href="https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh" rel="nofollow">https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh</a> -O install.sh &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh</p>
-<pre class="notranslate"><code class="notranslate">
-
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。
-
-
-
-### 久激活 Windows 系统和 Office 软件
-
-在 Windows 8.1/10/11 上，右键单击 Windows 开始菜单并 选择 PowerShell 或终端（非 CMD）
-
+<h3>防火墙</h3>
+<p><code class="notranslate">firewall-cmd --state</code>                          # 查看防火墙状态</p>
+<p><code class="notranslate">systemctl stop firewalld.service</code>                # 停止防火墙</p>
+<p><code class="notranslate">systemctl disable firewalld.service</code>             # 禁止防火墙开机自启</p>
+<h3>一键开启bbr加速</h3>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh
 </code></pre>
-<p>irm <a href="https://massgrave.dev/get" rel="nofollow">https://massgrave.dev/get</a> | iex</p>
-<pre class="notranslate"><code class="notranslate">
-稍微等待一下，他会自动适配，并激活您的系统，当出现 Successful 的时候说明系统已经激活成功了
-
-
-###  查看电脑wifi密码CMD命令
-
-查看已连接过的wifi：
-
+<pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
 </code></pre>
-<p>netsh wlan show profile</p>
-<pre class="notranslate"><code class="notranslate">
-查看密码：
-
+<h3>人型自走bot乌班图脚本</h3>
+<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh
 </code></pre>
-<p>netsh wlan show profile name="WiFi名称" key=clear</p>
-<pre class="notranslate"><code class="notranslate">
-打印到C盘：
-
+<p>使用该脚本会将 <code class="notranslate">Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid</code> 目录下。</p>
+<h3>久激活 Windows 系统和 Office 软件</h3>
+<p>在 Windows 8.1/10/11 上，右键单击 Windows 开始菜单并 选择 PowerShell 或终端（非 CMD）</p>
+<pre class="notranslate"><code class="notranslate">irm https://massgrave.dev/get | iex
 </code></pre>
-<p>netsh wlan export profile folder=C:\ key=clear</p>
-<pre class="notranslate"><code class="notranslate"></code></pre></div>
+<p>稍微等待一下，他会自动适配，并激活您的系统，当出现 Successful 的时候说明系统已经激活成功了</p>
+<h3>查看电脑wifi密码CMD命令</h3>
+<p>查看已连接过的wifi：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan show profile
+</code></pre>
+<p>查看密码：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan show profile name="WiFi名称" key=clear
+</code></pre>
+<p>打印到C盘：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan export profile folder=C:\ key=clear
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

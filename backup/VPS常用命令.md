@@ -22,7 +22,6 @@ volta install node@16.0.0
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
 ```
 
-[项目地址](https://github.com/MHSanaei/3x-ui)
 
 ###  一键wrap
 
@@ -60,6 +59,7 @@ lsb_release -a
 ```
 
 ###  VPS开启root登录并且修改密码：
+```
 bash <(curl -L -s check.unlock.media)
 ```
 
@@ -90,23 +90,23 @@ kill PID数字
 
 ###  放行端口：
 
-```sudo ufw allow 端口号```
+`sudo ufw allow 端口号`
 
-```sudo ufw allow 起始端口:结束端口```
+`sudo ufw allow 起始端口:结束端口`
 
-```sudo ufw enable```   #  重启ufw防火墙
+`sudo ufw enable`   #  重启ufw防火墙
 
 ###  关闭端口：
-```sudo ufw deny 端口号```
+`sudo ufw deny 端口号`
 
 ###  只允许指定IP连接22端口：
-```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
 
 ###  文件类型转换：
 
-```mv config.txt config.json```
+`mv config.txt config.json`
 
-```mv shell.txt shell.sh```
+`mv shell.txt shell.sh`
 
 
 ###  开启虚拟内存：
@@ -118,13 +118,13 @@ sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapf
 
 ###  防火墙
 
-```firewall-cmd --state```                             # 查看防火墙状态    
+`firewall-cmd --state`                          # 查看防火墙状态    
 
 
-```systemctl stop firewalld.service```                 # 停止防火墙    
+`systemctl stop firewalld.service`                # 停止防火墙    
 
 
-```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+`systemctl disable firewalld.service`             # 禁止防火墙开机自启
 
 ###  一键开启bbr加速
 
@@ -146,7 +146,7 @@ wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/
 ```
 
 
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。
+使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。
 
 
 
