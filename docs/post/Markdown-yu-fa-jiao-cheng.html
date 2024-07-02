@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/115192496?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。">
+<meta property="og:title" content="Markdown语法教程">
+<meta property="og:description" content="
+Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sky22333.github.io/post/Markdown-yu-fa-jiao-cheng.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
+<title>Markdown语法教程</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style><style>.markdown-alert.markdown-alert-important {border-left-color:var(--borderColor-done-emphasis, var(--color-done-emphasis));background-color:var(--color-done-subtle);}.markdown-alert.markdown-alert-important .markdown-alert-title {color: var(--fgColor-done,var(--color-done-fg));}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style><style>.markdown-alert.markdown-alert-caution {border-left-color:var(--borderColor-danger-emphasis, var(--color-danger-emphasis));background-color:var(--color-danger-subtle);}.markdown-alert.markdown-alert-caution .markdown-alert-title {color: var(--fgColor-danger,var(--color-danger-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Markdown语法教程</h1>
+<div class="title-right">
+    <a href="https://sky22333.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。下面就简单描述一下使用方式，以及效果如何。</p>
+<p>使用方式</p>
+<pre class="notranslate"><code class="notranslate">&gt; [!NOTE]
+&gt; Github的语法里面有5中警报强调信息
+
+&gt; [!TIP]
+&gt; Github的语法里面有5中警报强调信息
+
+&gt; [!IMPORTANT]
+&gt; Github的语法里面有5中警报强调信息
+
+&gt; [!WARNING]
+&gt; Github的语法里面有5中警报强调信息
+
+&gt; [!CAUTION]
+&gt; Github的语法里面有5中警报强调信息
+</code></pre>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Github的语法里面有5中警报强调信息</p>
+</div>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>Github的语法里面有5中警报强调信息</p>
+</div>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>Github的语法里面有5中警报强调信息</p>
+</div>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>Github的语法里面有5中警报强调信息</p>
+</div>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>Github的语法里面有5中警报强调信息</p>
+</div>
+<h3>空格</h3>
+<p>连续空格类似于单行换行符，大多数Markdown引擎都会忽略它们。</p>
+<p>默认情况下，Typora将**在编辑视图中保留连续的空格，并在打印或导出时将其忽略。**您可以在首选项面板中更改此选项。</p>
+<p>如果您确实想插入其他Markdpwn引擎支持的连续空格，则可以</p>
+<ul>
+<li>转义空格，<code class="notranslate">\</code>在每个空格之前输入</li>
+<li>使用HTML实体<code class="notranslate"> &amp;nbsp;</code></li>
+</ul>
+<h3>折叠框</h3>
+<p>示例：</p>
+<pre class="notranslate"><code class="notranslate">&lt;details&gt;
+  &lt;summary&gt;折叠框标题&lt;/summary&gt;
+  折叠框内容
+&lt;/details&gt;
+</code></pre>
+<p><strong>换行</strong></p>
+<p>Markdown提供了插入单个强行换行符的方法：</p>
+<ul>
+<li>插入两个空格和一个换行符。</li>
+<li><code class="notranslate">&lt;br/&gt;</code>直接插入HTML标签。</li>
+</ul>
+<p>几乎所有Markdown引擎都会将其解析为输出中的强行换行。</p>
+<p><strong>段落</strong></p>
+<p>在Markdown中，<strong>两个换行符</strong>表示创建一个新段落，在Typora中，当您<code class="notranslate">Enter</code>按键时，将创建一个新段落，并且如果切换到源代码模式，则会插入两个换行符。</p>
+<h1>标题</h1>
+<p>标题支持使用两种标记：<strong>底线（-/=）和左侧#</strong></p>
+<p>底线（-/=）方式（<strong>不推荐</strong>）：<br>
+语法说明如下。<br>
+1）底线是=表示一级标题。<br>
+2）底线是-表示二级标题。<br>
+3）底线符号的数量至少2个。<br>
+4）这种语法只支持这两级标题。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">一级标题
+<span class="pl-mh">=========</span>
+
+二级标题
+<span class="pl-ms">---------</span></pre></div>
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<p>#方式（<strong>推荐</strong>）<br>
+语法说明如下。<br>
+1）在行首插入#可标记出标题。<br>
+2）#的个数表示了标题的等级。<br>
+3）建议在#后加一个空格。<br>
+4）Markdown中最多只支持前六级标题。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-mh"># <span class="pl-en">一级标题</span></span>
+<span class="pl-mh">## <span class="pl-en">二级标题</span></span>
+<span class="pl-mh">### <span class="pl-en">三级标题</span></span>
+<span class="pl-mh">#### <span class="pl-en">四级标题</span></span>
+<span class="pl-mh">##### <span class="pl-en">五级标题</span></span>
+<span class="pl-mh">###### <span class="pl-en">六级标题</span></span>
+####### 七级标题（不支持）</pre></div>
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+<h4>四级标题</h4>
+<h5>五级标题</h5>
+<h6>六级标题</h6>
+<p>####### 七级标题（不支持）</p>
+<h1>段落</h1>
+<p>1）<strong>段落内换行</strong>，在结尾使用两个及以上空格加回车。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">我就是一段普通的文字。
+
+这段文字需要段内换行，这后面是两个空格  
+这一句话是跟上面属于同一段落。
+
+这段文字需要段内换行，这后面是html的换行标签&lt;<span class="pl-ent">br</span>/&gt;这一句话是跟上面属于同一段落。
+</pre></div>
+<p>我就是一段普通的文字。</p>
+<p>这段文字需要段内换行，这后面是两个空格<br>
+这一句话是跟上面属于同一段落。</p>
+<p>这段文字需要段内换行，这后面是html的换行标签<br>这一句话是跟上面属于同一段落。</p>
+<p>2）<strong>重新开始一个段落</strong>是段落后面使用一个空行来表示。</p>
+<p><strong>注意：Typora默认是回车就会新起一个段落。</strong></p>
+<div class="highlight highlight-text-md"><pre class="notranslate">我就是一段普通的文字。
+
+我也是一段普通的文字。
+</pre></div>
+<p>我就是一段普通的文字。</p>
+<p>我也是一段普通的文字。</p>
+<h1>粗体斜体删除线</h1>
+<div class="highlight highlight-text-md"><pre class="notranslate">粗体由两个<span class="pl-s">*</span>或两个_包裹，斜体由1个<span class="pl-s">*</span>或1个_包裹。
+建议粗体使用2个<span class="pl-s">*</span>包裹，斜体使用1个<span class="pl-s">*</span>包裹，因为<span class="pl-s">*</span>比较常见，而且比_可读性更强。
+删除线由两个<span class="pl-s">~</span>包裹。</pre></div>
+<table role="table">
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">**粗体**</code></td>
+<td><strong>粗体</strong></td>
+</tr>
+<tr>
+<td><code class="notranslate">*斜体*</code></td>
+<td><em>斜体</em></td>
+</tr>
+<tr>
+<td><code class="notranslate">~~删除线~~</code></td>
+<td><del>删除线</del></td>
+</tr>
+<tr>
+<td><code class="notranslate">***斜粗体***</code></td>
+<td><em><strong>斜粗体</strong></em></td>
+</tr>
+<tr>
+<td><code class="notranslate">**~~粗体删除线~~**</code></td>
+<td><strong><del>粗体删除线</del></strong></td>
+</tr>
+<tr>
+<td><code class="notranslate">*~~斜体删除线~~*</code></td>
+<td><em><del>斜体删除线</del></em></td>
+</tr>
+<tr>
+<td><code class="notranslate">***~~粗体斜体删除线~~***</code></td>
+<td><em><strong><del>粗体斜体删除线</del></strong></em></td>
+</tr>
+</tbody>
+</table>
+<h1>下划线</h1>
+<div class="highlight highlight-text-md"><pre class="notranslate">&lt;<span class="pl-ent">u</span>&gt;下划线&lt;/<span class="pl-ent">u</span>&gt;</pre></div>
+<p>下划线</p>
+<h1>注释</h1>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-c"><span class="pl-c">&lt;!--</span>注释<span class="pl-c">--&gt;</span></span></pre></div>
+
+<h1>分割线</h1>
+<p>分隔线由3个以上的*/-/_来标记。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">线上面文字
+
+<span class="pl-ms">***</span>
+
+线上面文字
+
+<span class="pl-ms">---</span>
+
+线上面文字
+
+<span class="pl-ms">___</span>
+</pre></div>
+<p>语法说明如下。<br>
+1）分隔线须使用至少3个以上的*/-/_来标记。<br>
+2）行内不能有其他的字符。<br>
+3）可以在标记符中间加上空格。<br>
+4）上下最好都留一个空行。</p>
+<p>线上面文字</p>
+<hr>
+<p>线上面文字</p>
+<hr>
+<p>线上面文字</p>
+<hr>
+<h1>脚注</h1>
+<p>在需要添加注脚的文字后加上脚注名字<code class="notranslate">[^脚注名字]</code>,称为加注。 然后在文本的任意位置(一般在最后)添加脚注，脚注前必须有对应的脚注名字。</p>
+<p>脚注与脚注之间尽量空一行。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">使用 Markdown<span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">1</span><span class="pl-s">]</span>可以效率的书写文档, 直接转换成 HTML<span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">2</span><span class="pl-s">]</span>, 你可以使用 Leanote<span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">Le</span><span class="pl-s">]</span> 编辑器进行书写。
+
+<span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">1</span><span class="pl-s">]</span>: Markdown是一种纯文本标记语言
+
+<span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">2</span><span class="pl-s">]</span>: HyperText Markup Language 超文本标记语言
+
+<span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">Le</span><span class="pl-s">]</span>: 开源笔记平台，支持Markdown和笔记直接发为博文</pre></div>
+<p>使用 Markdown<sup><a href="#user-content-fn-1-15a2a049d0c0d75ec4c5d78c18de4e69" id="user-content-fnref-1-15a2a049d0c0d75ec4c5d78c18de4e69" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-15a2a049d0c0d75ec4c5d78c18de4e69" id="user-content-fnref-2-15a2a049d0c0d75ec4c5d78c18de4e69" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-15a2a049d0c0d75ec4c5d78c18de4e69" id="user-content-fnref-le-15a2a049d0c0d75ec4c5d78c18de4e69" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
+<h1>列表</h1>
+<p>支持使用有序列表和无序列表，有序列表用数字序号+英文句号+空格+列表内容来标记，无序列表由*/+/-+空格+列表内容来标记。</p>
+<h2>有序列表</h2>
+<p>有序列表的语法如下。</p>
+<p>数字 + . + 空格 + 列表内容</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">1</span><span class="pl-v">.</span> 列表内容
+<span class="pl-s">2</span><span class="pl-v">.</span> 列表内容
+<span class="pl-s">3</span><span class="pl-v">.</span> 列表内容</pre></div>
+<ol>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ol>
+<h2>无序列表</h2>
+<p>无序列表的语法如下。</p>
+<p>*/+/- + 空格 + 列表内容， 使用 */+/-来标记无序列表的效果是相同的。</p>
+<p>推荐使用-。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-v">*</span> 使用【<span class="pl-s">*</span>】无序列表
+<span class="pl-v">*</span> 使用【<span class="pl-s">*</span>】无序列表
+<span class="pl-v">*</span> 使用【<span class="pl-s">*</span>】无序列表
+
+<span class="pl-v">+</span> 使用【+】无序列表
+<span class="pl-v">+</span> 使用【+】无序列表
+<span class="pl-v">+</span> 使用【+】无序列表
+
+<span class="pl-v">-</span> 使用【-】无序列表
+<span class="pl-v">-</span> 使用【-】无序列表
+<span class="pl-v">-</span> 使用【-】无序列表</pre></div>
+<ul>
+<li>
+<p>使用【*】无序列表</p>
+</li>
+<li>
+<p>使用【*】无序列表</p>
+</li>
+<li>
+<p>使用【*】无序列表</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>使用【+】无序列表</p>
+</li>
+<li>
+<p>使用【+】无序列表</p>
+</li>
+<li>
+<p>使用【+】无序列表</p>
+</li>
+</ul>
+<ul>
+<li>使用【-】无序列表</li>
+<li>使用【-】无序列表</li>
+<li>使用【-】无序列表</li>
+</ul>
+<h2>任务列表</h2>
+<p>任务列表的语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-v">-</span> <span class="pl-k">[ ]</span> 未勾选
+<span class="pl-v">-</span> <span class="pl-k">[x]</span> 已勾选</pre></div>
+<p>任务列表的语法如下。<br>
+1）任务列表以-+空格开头，由 [空格/x] 组成。<br>
+2）x可以小写，也可以大写，有些编辑器可能不支持大写，所以为避免解析错误，推荐使用小写x。<br>
+3）当方括号中的字符为空格时，复选框是未选中状态，为x时是选中状态。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">今日工作：
+<span class="pl-v">-</span> <span class="pl-k">[x]</span> 吃
+<span class="pl-v">-</span> <span class="pl-k">[x]</span> 喝
+<span class="pl-v">-</span> <span class="pl-k">[ ]</span> 玩
+
+明日计划：
+<span class="pl-v">-</span> <span class="pl-k">[ ]</span> 吃
+	<span class="pl-c1">- [x] 吃鱼</span>
+	<span class="pl-c1">- [ ] 吃瓜</span>
+<span class="pl-v">-</span> <span class="pl-k">[ ]</span> 玩
+<span class="pl-v">-</span> <span class="pl-k">[x]</span> 睡</pre></div>
+<p>今日工作：</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 吃</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 喝</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 玩</li>
+</ul>
+<p>明日计划：</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 吃
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 吃鱼</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 吃瓜</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 玩</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 睡</li>
+</ul>
+<h1>引用</h1>
+<p>引用由&gt; 引用内容来标记</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-ent"><span class="pl-ent">&gt; </span>引用内容分</span></pre></div>
+<p>语法说明如下。<br>
+1）多行引用也可以在每一行的开头都插入&gt;。<br>
+2）在引用中可以嵌套引用。<br>
+3）在引用中可以使用其他的Markdown语法。<br>
+4）段落与换行的格式在引用中也是适用的。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-ent"><span class="pl-ent">&gt; </span>我是引用的句子。</span>
+<span class="pl-ent"></span>
+<span class="pl-ent"><span class="pl-ent">&gt; </span>这是多行引用的第一行，我的最后有两个空格  </span>
+<span class="pl-ent"></span>我是第二行。
+
+<span class="pl-ent"><span class="pl-ent">&gt; </span>这是多行引用的第一行</span>
+<span class="pl-ent"></span>	<span class="pl-c1">第二行，第二行前面有1个TAB</span>
+
+<span class="pl-ent"><span class="pl-ent">&gt; </span>引用中可以嵌套引用</span>
+<span class="pl-ent"><span class="pl-ent">&gt;<span class="pl-ent">&gt; </span>我是引用中嵌套引用</span></span>
+<span class="pl-ent"><span class="pl-ent"></span></span>
+<span class="pl-ent"><span class="pl-ent">&gt; </span>引用中使用其他 Markdown 标记<span class="pl-s">[</span>百度<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://baidu.com</span><span class="pl-s">)</span></span>
+<span class="pl-ent"></span>    <span class="pl-c1">第二行，**加粗**和*斜体*也是支持的，第二行前面有4个空格</span></pre></div>
+<blockquote>
+<p>我是引用的句子。</p>
+</blockquote>
+<blockquote>
+<p>这是多行引用的第一行，我的最后有两个空格<br>
+我是第二行。</p>
+</blockquote>
+<blockquote>
+<p>这是多行引用的第一行<br>
+第二行，第二行前面有1个TAB</p>
+</blockquote>
+<blockquote>
+<p>引用中可以嵌套引用</p>
+<blockquote>
+<p>我是引用中嵌套引用</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>引用中使用其他 Markdown 标记<a href="https://baidu.com" rel="nofollow">百度</a><br>
+第二行，<strong>加粗</strong>和<em>斜体</em>也是支持的，第二行前面有4个空格</p>
+</blockquote>
+<h1>图片</h1>
+<p>插入图片的语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">![</span>alt<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">/url</span> <span class="pl-s">"</span><span class="pl-s">title</span><span class="pl-s">")</span></pre></div>
+<p>语法说明如下。<br>
+1）alt在图片无法显示时显示的文字,title是鼠标放上去提示文字，都可以为空。<br>
+2）图片地址可以是本地图片的路径也可以是网络图片的地址。<br>
+3）本地图片支持相对路径和绝对路径两种方式。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">![</span>百度<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png</span> <span class="pl-s">"</span><span class="pl-s">百度一下，你就知道</span><span class="pl-s">")</span></pre></div>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c6b25fe70249edab262c1cdcc7bf0a61873ac92890d1678d0bf598686c31fc18/68747470733a2f2f7777772e62616964752e636f6d2f696d672f504366625f35626630383264323935383863303766383432636364653366393732343365612e706e67"><img src="https://camo.githubusercontent.com/c6b25fe70249edab262c1cdcc7bf0a61873ac92890d1678d0bf598686c31fc18/68747470733a2f2f7777772e62616964752e636f6d2f696d672f504366625f35626630383264323935383863303766383432636364653366393732343365612e706e67" alt="百度" title="百度一下，你就知道" data-canonical-src="https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png" style="max-width: 100%;"></a></p>
+<h1>链接</h1>
+<h2>文字链接</h2>
+<p>文字链接就是把链接地址直接写在文本中。语法是用方括号包裹链接文字，后面紧跟着括号包裹的链接地址，如下所示。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>link<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">/uri</span> <span class="pl-s">"</span><span class="pl-s">title</span><span class="pl-s">")</span></pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>百度<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://baidu.com</span> <span class="pl-s">"</span><span class="pl-s">百度一下，你就知道</span><span class="pl-s">")</span></pre></div>
+<p><a href="https://baidu.com" title="百度一下，你就知道" rel="nofollow">百度</a></p>
+<h2>引用链接</h2>
+<p>引用链接是把链接地址作为<strong>变量</strong>先在Markdown文件的页尾定义好，然后在正文中进行引用。其语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>link<span class="pl-s">]</span><span class="pl-s">[</span><span class="pl-en">link reference</span><span class="pl-s">]</span>
+
+<span class="pl-s">[</span><span class="pl-en">link reference</span><span class="pl-s">]</span>: <span class="pl-corl">/uri</span> <span class="pl-s">"</span><span class="pl-s">title</span><span class="pl-s">"</span></pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>百度<span class="pl-s">]</span><span class="pl-s">[</span><span class="pl-en">baidu</span><span class="pl-s">]</span>
+<span class="pl-s">[</span><span class="pl-en">baidu</span><span class="pl-s">]</span>: <span class="pl-corl">https://baidu.com</span> <span class="pl-s">"</span><span class="pl-s">百度一下，你就知道</span><span class="pl-s">"</span></pre></div>
+<p><a href="https://baidu.com" title="百度一下，你就知道" rel="nofollow">百度</a></p>
+<h2>网址链接</h2>
+<p>将网络地址或邮箱地址使用&lt;&gt;包裹起来会被自动转换为超链接。其语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">&lt;URL或邮箱地址&gt;</pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">&lt;</span><span class="pl-corl">https://baidu.com</span><span class="pl-s">&gt;</span>
+
+<span class="pl-s">&lt;</span><span class="pl-corl">liudehua@162.com</span><span class="pl-s">&gt;</span></pre></div>
+<p><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></p>
+<p><a href="mailto:liudehua@162.com">liudehua@162.com</a></p>
+<h1>锚点</h1>
+<p>网页中，锚点其实就是页内超链接，也就是链接本文档内部的某些元素，实现当前页面中的跳转。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>锚点描述<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">#锚点名</span><span class="pl-s">)</span></pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>回到标题<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">#标题</span><span class="pl-s">)</span></pre></div>
+<p><a href="#%E6%A0%87%E9%A2%98">回到标题</a></p>
+<h1>代码</h1>
+<h2>行内代码</h2>
+<p>行内代码引用使用`包裹，语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">`</span><span class="pl-c1">代码</span><span class="pl-s">`</span></pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate">使用<span class="pl-s">`</span><span class="pl-c1">cd ..</span><span class="pl-s">`</span>命令切换到上一级目录</pre></div>
+<p>使用<code class="notranslate">cd ..</code>命令切换到上一级目录</p>
+<h2>代码块</h2>
+<p>代码块以Tab键或4个空格开头，语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">以TAB键开头：
+	def print():
+	pass
+	
+或者以4个空格开头：
+    def print():
+    pass</pre></div>
+<p>以TAB键开头：</p>
+<pre class="notranslate"><code class="notranslate">def print():
+pass
+</code></pre>
+<p>或者以4个空格开头：</p>
+<pre class="notranslate"><code class="notranslate">def print():
+pass
+</code></pre>
+<h2>围栏代码块</h2>
+<p>在基础语法中，代码块使用Tab键或4个空格开头；在扩展语法中，围栏代码块使用连续3个`或3个~包裹，还支持语法高亮，可读性和可维护性更强一些。</p>
+<p>围栏代码块语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-c1">\`</span>``无编程语言名称
+​```
+代码片段
+​```
+
+<span class="pl-c1">\`</span>``有编程语言名称
+​``` java
+代码片段
+​```
+
+<span class="pl-c1">\~</span>~~无编程语言名称
+<span class="pl-s">~~~</span><span class="pl-c1"></span>
+<span class="pl-c1">代码片段</span>
+<span class="pl-c1"></span><span class="pl-s">~~~</span>
+
+<span class="pl-c1">\~</span>~~有编程语言名称
+<span class="pl-s">~~~</span> <span class="pl-en">java</span>
+代码片段
+<span class="pl-s">~~~</span></pre></div>
+<p>语法说明如下。<br>
+围栏代码块使用连续3个`或3个~包裹，支持语法高亮并可以加上编程语言的名字。</p>
+<p>```无编程语言名称</p>
+<pre class="notranslate"><code class="notranslate">String name = "Tom";
+int age = 18;
+</code></pre>
+<p>```有编程语言名称</p>
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-smi">String</span> <span class="pl-s1">name</span> = <span class="pl-s">"Tom"</span>;
+<span class="pl-smi">int</span> <span class="pl-s1">age</span> = <span class="pl-c1">18</span>;</pre></div>
+<p>~~~无编程语言名称</p>
+<pre class="notranslate"><code class="notranslate">String name = "Tom";
+int age = 18;
+</code></pre>
+<p>~~~有编程语言名称</p>
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-smi">String</span> <span class="pl-s1">name</span> = <span class="pl-s">"Tom"</span>;
+<span class="pl-smi">int</span> <span class="pl-s1">age</span> = <span class="pl-c1">18</span>;</pre></div>
+<h1>表格</h1>
+<p>表格的语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-ml">|</span>表头1<span class="pl-ml">|</span> 表头2 <span class="pl-ml">|</span> 表头3<span class="pl-ml">|</span>
+<span class="pl-ml">|</span>---- <span class="pl-ml">|</span> ---- <span class="pl-ml">|</span> ----<span class="pl-ml">|</span>
+<span class="pl-ml">|</span>内容1 <span class="pl-ml">|</span> 内容2 <span class="pl-ml">|</span> 内容3<span class="pl-ml">|</span>
+<span class="pl-ml">|</span>内容1 <span class="pl-ml">|</span> 内容2 <span class="pl-ml">|</span> 内容3<span class="pl-ml">|</span></pre></div>
+<p>语法说明如下。<br>
+1）单元格使用|来分隔，为了阅读更清晰，建议最前和最后都使用|。<br>
+2）单元格和|之间的空格会被移除。<br>
+3）表头与其他行使用-来分隔。<br>
+4）表格对齐格式如下。<br>
+左对齐（默认）	 :-<br>
+右对齐	-:<br>
+居中对齐 	:-:<br>
+5）块级元素（代码区块、引用区块）不能插入表格中。</p>
+<p>关于创建表格的建议如下。<br>
+1）在表格的前、后各空1行。<br>
+2）在每一行最前和最后都使用|，每一行中的|要尽量都对齐。<br>
+3）不要使用庞大复杂的表格，那样会难以维护和阅读。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">普通表格
+<span class="pl-ml">|</span> 序号 <span class="pl-ml">|</span> 标题 <span class="pl-ml">|</span> 网址 <span class="pl-ml">|</span>
+<span class="pl-ml">|</span> --- <span class="pl-ml">|</span> ---- <span class="pl-ml">|</span> --- <span class="pl-ml">|</span>
+<span class="pl-ml">|</span> 01  <span class="pl-ml">|</span> 博客  <span class="pl-ml">|</span><span class="pl-corl">https://cnblogs.com</span><span class="pl-ml">|</span>
+<span class="pl-ml">|</span> 02  <span class="pl-ml">|</span> 百度  <span class="pl-ml">|</span><span class="pl-corl">https://baidu.com</span><span class="pl-ml">|</span>
+
+
+对齐表格
+<span class="pl-ml">|</span> 左对齐 <span class="pl-ml">|</span> 居中对齐 <span class="pl-ml">|</span> 右对齐 <span class="pl-ml">|</span>
+<span class="pl-ml">|</span> :--- <span class="pl-ml">|</span> :----: <span class="pl-ml">|</span> ---: <span class="pl-ml">|</span>
+<span class="pl-ml">|</span> 01  <span class="pl-ml">|</span> 博客  <span class="pl-ml">|</span><span class="pl-corl">https://cnblogs.com</span><span class="pl-ml">|</span>
+<span class="pl-ml">|</span> 02  <span class="pl-ml">|</span> 百度  <span class="pl-ml">|</span><span class="pl-corl">https://baidu.com</span><span class="pl-ml">|</span>
+
+表格使用其他标记
+<span class="pl-ml">|</span> 序号 <span class="pl-ml">|</span> 标题 <span class="pl-ml">|</span> 网址 <span class="pl-ml">|</span>
+<span class="pl-ml">|</span> --- <span class="pl-ml">|</span> ---- <span class="pl-ml">|</span> --- <span class="pl-ml">|</span>
+<span class="pl-ml">|</span> <span class="pl-s">**</span>01<span class="pl-s">**</span>  <span class="pl-ml">|</span> <span class="pl-s">[</span>博客<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://cnblogs.com</span><span class="pl-s">)</span>  <span class="pl-ml">|</span><span class="pl-corl">https://cnblogs.com</span><span class="pl-ml">|</span>
+<span class="pl-ml">|</span> <span class="pl-s">*</span>02<span class="pl-s">*</span>  <span class="pl-ml">|</span> <span class="pl-s">[</span>百度<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://baidu.com</span> <span class="pl-s">"</span><span class="pl-s">百度一下，你就知道</span><span class="pl-s">")</span>  <span class="pl-ml">|</span><span class="pl-corl">https://baidu.com</span><span class="pl-ml">|</span></pre></div>
+<p>普通表格</p>
+<table role="table">
+<thead>
+<tr>
+<th>序号</th>
+<th>标题</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>博客</td>
+<td><a href="https://cnblogs.com" rel="nofollow">https://cnblogs.com</a></td>
+</tr>
+<tr>
+<td>02</td>
+<td>百度</td>
+<td><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>对齐表格</p>
+<table role="table">
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="center">居中对齐</th>
+<th align="right">右对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">01</td>
+<td align="center">博客</td>
+<td align="right"><a href="https://cnblogs.com" rel="nofollow">https://cnblogs.com</a></td>
+</tr>
+<tr>
+<td align="left">02</td>
+<td align="center">百度</td>
+<td align="right"><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>表格使用其他标记</p>
+<table role="table">
+<thead>
+<tr>
+<th>序号</th>
+<th>标题</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01</strong></td>
+<td><a href="https://cnblogs.com" rel="nofollow">博客</a></td>
+<td><a href="https://cnblogs.com" rel="nofollow">https://cnblogs.com</a></td>
+</tr>
+<tr>
+<td><em>02</em></td>
+<td><a href="https://baidu.com" title="百度一下，你就知道" rel="nofollow">百度</a></td>
+<td><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></td>
+</tr>
+</tbody>
+</table>
+<h1>表情符号</h1>
+<table role="table">
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">:smile:</code></td>
+<td>😄</td>
+</tr>
+<tr>
+<td><code class="notranslate">:laughing:</code></td>
+<td>😆</td>
+</tr>
+<tr>
+<td><code class="notranslate">:+1:</code></td>
+<td>👍</td>
+</tr>
+<tr>
+<td><code class="notranslate">:-1:</code></td>
+<td>👎</td>
+</tr>
+<tr>
+<td><code class="notranslate">:clap:</code></td>
+<td>👏</td>
+</tr>
+</tbody>
+</table>
+<p>更多的表情符号请参考<a href="http://www.webpagefx.com/tools/emoji-cheat-sheet/%E3%80%82" rel="nofollow">http://www.webpagefx.com/tools/emoji-cheat-sheet/。</a></p>
+<h1>高亮上标下标</h1>
+<p><strong>github不支持</strong></p>
+<p><strong>Typora默认未开启，需要在文件&gt;偏好设置&gt;Markdown&gt;勾选Markdown扩展语法才能支持，请谨慎使用这几个语法。</strong></p>
+<p>==高亮== <code class="notranslate">==高亮==</code></p>
+<p>内容^上标^ <code class="notranslate">内容^上标^</code></p>
+<p>内容<del>下标</del> <code class="notranslate">内容~下标~</code></p>
+<h1>转义</h1>
+<p>当我们想在Markdown文件中插入一些标记符号，但又不想让这些符号被渲染时，可以使用\进行转义，语法如下。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">\特殊符号</pre></div>
+<p>可被转义的特殊符号如下。</p>
+<table role="table">
+<thead>
+<tr>
+<th>特殊符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+</tr>
+<tr>
+<td>`</td>
+<td>反引号</td>
+</tr>
+<tr>
+<td>*</td>
+<td>星号</td>
+</tr>
+<tr>
+<td>_</td>
+<td>底线</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>花括号</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>方括号</td>
+</tr>
+<tr>
+<td>()</td>
+<td>括弧</td>
+</tr>
+<tr>
+<td>#</td>
+<td>井字号</td>
+</tr>
+<tr>
+<td>+</td>
+<td>加号</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减号</td>
+</tr>
+<tr>
+<td>.</td>
+<td>英文句号</td>
+</tr>
+<tr>
+<td>!</td>
+<td>感叹号</td>
+</tr>
+</tbody>
+</table>
+<h1>目录</h1>
+<p><strong>github不支持</strong></p>
+<p>语法说明如下。<br>
+1）TOC是Table of Contents的缩写。<br>
+2）在想插入目录的位置输入[TOC]，按回车键后就可以自动生成文章的目录了。<br>
+直接输入[TOC]标记已经很简便了，可如果我们忘记了语法，也可以执行：菜单栏→【段落】→【内容目录】。<br>
+效果如下图所示。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">[</span>TOC<span class="pl-s">]</span></pre></div>
+<p>[TOC]</p>
+<h1>LaTeX公式（了解）</h1>
+<p><strong>GFM不支持</strong></p>
+<p><strong>Typora默认未开启，需要在文件&gt;偏好设置&gt;Markdown&gt;勾选Markdown扩展语法才能支持。</strong></p>
+<blockquote>
+<p>LaTeX 是一种基于 TeX 的排版系统，由于它易于快速生成复杂表格和数学公式，非常适用于生成高印刷质量的科技和数学类文档。如果你常阅读数学、计算机等领域的学术论文，你一定对 LaTeX 不陌生。</p>
+</blockquote>
+<h2>行内公式</h2>
+<p>语法是使用$把数学公式包裹起来，如下所示。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate">$数学公式$</pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate">分数： $ f(x,y) = \frac{x^2}{y^3} $
+
+开根号： $ f(x,y) = \sqrt<span class="pl-s">[</span>n<span class="pl-s">]</span>{{x^2}{^3}} $
+
+省略号： $ f(x_1, x_2, \ldots, x_n) = x_1 + x_2 + \cdots + x_n $</pre></div>
+<p>分数： $ f(x,y) = \frac{x^2}{y^3} $</p>
+<p>开根号： $ f(x,y) = \sqrt[n]{{x^2}{^3}} $</p>
+<p>省略号： $ f(x_1, x_2, \ldots, x_n) = x_1 + x_2 + \cdots + x_n $</p>
+<h2>块间公式</h2>
+<p>语法是使用两个$包裹数学公式，如下所示。</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">$$</span><span class="pl-c1"></span>
+<span class="pl-c1">数学公式</span>
+<span class="pl-c1"></span><span class="pl-s">$$</span></pre></div>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">$$</span><span class="pl-c1"></span>
+<span class="pl-c1">{matrix}</span>
+<span class="pl-c1">1&amp;0&amp;0\\</span>
+<span class="pl-c1">0&amp;1&amp;0\\</span>
+<span class="pl-c1">0&amp;0&amp;1\\</span>
+<span class="pl-c1">\end{matrix}</span>
+<span class="pl-c1"></span><span class="pl-s">$$</span></pre></div>
+<p>$$
+\begin{bmatrix}
+{a_{11}}&amp;{a_{12}}&amp;{\cdots}&amp;{a_{1n}}\\
+{a_{21}}&amp;{a_{22}}&amp;{\cdots}&amp;{a_{2n}}\\
+{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\
+{a_{m1}}&amp;{a_{m2}}&amp;{\cdots}&amp;{a_{mn}}\\
+\end{bmatrix}
+$$</p>
+<div class="highlight highlight-text-md"><pre class="notranslate"><span class="pl-s">$$</span><span class="pl-c1"></span>
+<span class="pl-c1">\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix} </span>
+<span class="pl-c1">\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\</span>
+<span class="pl-c1">\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\</span>
+<span class="pl-c1">\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \\</span>
+<span class="pl-c1">\end{vmatrix}</span>
+<span class="pl-c1">${$tep1}{\style{visibility:hidden}{(x+1)(x+1)}}</span>
+<span class="pl-c1"></span><span class="pl-s">$$</span></pre></div>
+<p>$$
+\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\
+\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \\
+\end{vmatrix}
+${$tep1}{\style{visibility:hidden}{(x+1)(x+1)}}
+$$</p>
+<p>更多的LaTeX数学公式请参考<a href="https://www.luogu.com.cn/blog/IowaBattleship/latex-gong-shi-tai-quan%E3%80%82" rel="nofollow">https://www.luogu.com.cn/blog/IowaBattleship/latex-gong-shi-tai-quan。</a></p>
+<h1>图表（了解）</h1>
+<h2>横向流程图</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```mermaid
+graph LR
+A<span class="pl-s">[</span>方形<span class="pl-s">]</span> --&gt;B(圆角)
+    B --&gt; C{条件a}
+    C --&gt;|a=1| D<span class="pl-s">[</span>结果1<span class="pl-s">]</span>
+    C --&gt;|a=2| E<span class="pl-s">[</span>结果2<span class="pl-s">]</span>
+    F<span class="pl-s">[</span>横向流程图<span class="pl-s">]</span>
+​```</pre></div>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate"><span class="pl-k">graph</span> <span class="pl-c1">LR</span>
+<span class="pl-ent">A</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>方形<span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span><span class="pl-ent">B</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">(</span></span>圆角<span class="pl-pds"><span class="pl-sg">)</span></span></span>
+    <span class="pl-ent">B</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">C</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">{</span></span>条件a<span class="pl-pds"><span class="pl-sg">}</span></span></span>
+    <span class="pl-ent">C</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">a=1</span><span class="pl-k">|</span> <span class="pl-ent">D</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>结果1<span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">C</span> <span class="pl-k">--&gt;</span><span class="pl-k">|</span><span class="pl-s">a=2</span><span class="pl-k">|</span> <span class="pl-ent">E</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>结果2<span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">F</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>横向流程图<span class="pl-pds"><span class="pl-sg">]</span></span></span></pre></div>
+<h2>竖向流程图</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```mermaid
+graph TD
+A<span class="pl-s">[</span>方形<span class="pl-s">]</span> --&gt; B(圆角)
+    B --&gt; C{条件a}
+    C --&gt; |a=1| D<span class="pl-s">[</span>结果1<span class="pl-s">]</span>
+    C --&gt; |a=2| E<span class="pl-s">[</span>结果2<span class="pl-s">]</span>
+    F<span class="pl-s">[</span>竖向流程图<span class="pl-s">]</span>
+​```</pre></div>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate"><span class="pl-k">graph</span> <span class="pl-c1">TD</span>
+<span class="pl-ent">A</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>方形<span class="pl-pds"><span class="pl-sg">]</span></span></span> <span class="pl-k">--&gt;</span> <span class="pl-ent">B</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">(</span></span>圆角<span class="pl-pds"><span class="pl-sg">)</span></span></span>
+    <span class="pl-ent">B</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">C</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">{</span></span>条件a<span class="pl-pds"><span class="pl-sg">}</span></span></span>
+    <span class="pl-ent">C</span> <span class="pl-k">--&gt;</span> <span class="pl-k">|</span><span class="pl-s">a=1</span><span class="pl-k">|</span> <span class="pl-ent">D</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>结果1<span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">C</span> <span class="pl-k">--&gt;</span> <span class="pl-k">|</span><span class="pl-s">a=2</span><span class="pl-k">|</span> <span class="pl-ent">E</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>结果2<span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">F</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span>竖向流程图<span class="pl-pds"><span class="pl-sg">]</span></span></span></pre></div>
+<h2>横向标准流程图</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```flow
+st=&gt;start: 开始框
+op=&gt;operation: 处理框
+cond=&gt;condition: 判断框(是或否?)
+sub1=&gt;subroutine: 子流程
+io=&gt;inputoutput: 输入输出框
+e=&gt;end: 结束框
+st-&gt;op-&gt;cond
+cond(yes)-&gt;io-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op
+​```</pre></div>
+<pre lang="flow" class="notranslate"><code class="notranslate">st=&gt;start: 开始框
+op=&gt;operation: 处理框
+cond=&gt;condition: 判断框(是或否?)
+sub1=&gt;subroutine: 子流程
+io=&gt;inputoutput: 输入输出框
+e=&gt;end: 结束框
+st-&gt;op-&gt;cond
+cond(yes)-&gt;io-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op
+</code></pre>
+<h2>竖向标准流程图</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```flow
+st=&gt;start: 开始框
+op=&gt;operation: 处理框
+cond=&gt;condition: 判断框(是或否?)
+sub1=&gt;subroutine: 子流程
+io=&gt;inputoutput: 输入输出框
+e=&gt;end: 结束框
+st(right)-&gt;op(right)-&gt;cond
+cond(yes)-&gt;io(bottom)-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op
+​```</pre></div>
+<pre lang="flow" class="notranslate"><code class="notranslate">st=&gt;start: 开始框
+op=&gt;operation: 处理框
+cond=&gt;condition: 判断框(是或否?)
+sub1=&gt;subroutine: 子流程
+io=&gt;inputoutput: 输入输出框
+e=&gt;end: 结束框
+st(right)-&gt;op(right)-&gt;cond
+cond(yes)-&gt;io(bottom)-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op
+</code></pre>
+<h2>UML时序图</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```sequence
+对象A-&gt;对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B--&gt;对象A: 我很好(响应)
+对象A-&gt;对象B: 你真的好吗？
+​```</pre></div>
+<pre lang="sequence" class="notranslate"><code class="notranslate">对象A-&gt;对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B--&gt;对象A: 我很好(响应)
+对象A-&gt;对象B: 你真的好吗？
+</code></pre>
+<h2>UML时序图源码(复杂)</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```sequence
+Title: 标题：复杂使用
+对象A-&gt;对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B--&gt;对象A: 我很好(响应)
+对象B-&gt;小三: 你好吗
+小三--&gt;&gt;对象A: 对象B找我了
+对象A-&gt;对象B: 你真的好吗？
+Note over 小三,对象B: 我们是朋友
+participant C
+Note right of C: 没人陪我玩
+​```</pre></div>
+<pre lang="sequence" class="notranslate"><code class="notranslate">Title: 标题：复杂使用
+对象A-&gt;对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B--&gt;对象A: 我很好(响应)
+对象B-&gt;小三: 你好吗
+小三--&gt;&gt;对象A: 对象B找我了
+对象A-&gt;对象B: 你真的好吗？
+Note over 小三,对象B: 我们是朋友
+participant C
+Note right of C: 没人陪我玩
+</code></pre>
+<h2>UML标准时序图</h2>
+<div class="highlight highlight-text-md"><pre class="notranslate">​```mermaid
+%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头
+  sequenceDiagram
+    participant 张三
+    participant 李四
+    张三-&gt;王五: 王五你好吗？
+    loop 健康检查
+        王五-&gt;王五: 与疾病战斗
+    end
+    Note right of 王五: 合理 食物 &lt;<span class="pl-ent">br</span>/&gt;看医生...
+    李四--&gt;&gt;张三: 很好!
+    王五-&gt;李四: 你怎么样?
+    李四--&gt;王五: 很好!
+​```</pre></div>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate"><span class="pl-c"><span class="pl-c">%%</span> 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span>
+  <span class="pl-k">sequenceDiagram</span>
+    <span class="pl-k">participant</span> <span class="pl-ent">张三</span>
+    <span class="pl-k">participant</span> <span class="pl-ent">李四</span>
+    <span class="pl-ent">张三</span><span class="pl-k">-&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">王五你好吗？</span>
+    <span class="pl-k">loop</span> <span class="pl-s">健康检查</span>
+        <span class="pl-ent">王五</span><span class="pl-k">-&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">与疾病战斗</span>
+    <span class="pl-k">end</span>
+    <span class="pl-k">Note right of </span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">合理 食物 &lt;br/&gt;看医生...</span>
+    <span class="pl-ent">李四</span><span class="pl-k">--&gt;&gt;</span><span class="pl-ent">张三</span><span class="pl-k">:</span> <span class="pl-s">很好!</span>
+    <span class="pl-ent">王五</span><span class="pl-k">-&gt;</span><span class="pl-ent">李四</span><span class="pl-k">:</span> <span class="pl-s">你怎么样?</span>
+    <span class="pl-ent">李四</span><span class="pl-k">--&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">很好!</span></pre></div>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1-15a2a049d0c0d75ec4c5d78c18de4e69">
+<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-15a2a049d0c0d75ec4c5d78c18de4e69" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2-15a2a049d0c0d75ec4c5d78c18de4e69">
+<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-15a2a049d0c0d75ec4c5d78c18de4e69" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-Le-15a2a049d0c0d75ec4c5d78c18de4e69">
+<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-15a2a049d0c0d75ec4c5d78c18de4e69" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer">博客 © <span id="year"></span><a href="https://sky22333.github.io"> 繁星点点 </a>
+<p>
+<span id="runday"></span>
+</p>
+
+<script>
+if("07/01/2024"!=""){
+    var now=new Date();
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+</script>
+<script>MathJax = {tex: {inlineMath: [["$", "$"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</html>
