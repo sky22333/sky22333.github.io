@@ -10,5 +10,9 @@
     "exlink":{"Telegram":"https://t.me/good2233Bot"},
     "dayTheme":"light",
     "nightTheme":"dark_colorblind",
+    "i18n":"CN",
+    "UTC":8,
+    "onePageListNum":15,
+    "startSite":"07/01/2024",
     "GMEEK_VERSION":"last"
 }
