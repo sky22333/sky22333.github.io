@@ -1,5 +1,5 @@
-# 繁星点点 :link: https://sky22333.github.io 
-### :page_facing_up: [10](https://sky22333.github.io/tag.html) 
+# 繁星点点 :link: http://blog.52013120.xyz 
+### :page_facing_up: [10](http://blog.52013120.xyz/tag.html) 
 ### :speech_balloon: 0 
 ### :hibiscus: 34580 
-### :alarm_clock: 2024-07-02 17:02:39 
+### :alarm_clock: 2024-07-02 17:14:52 

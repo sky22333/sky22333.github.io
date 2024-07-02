@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://sky22333.github.io</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://sky22333.github.io</link></image><lastBuildDate>Tue, 02 Jul 2024 09:02:39 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最好用的 sing-box 一键安装脚本</title><link>https://sky22333.github.io/post/zui-hao-yong-de-%20sing-box%20-yi-jian-an-zhuang-jiao-ben.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 02 Jul 2024 09:14:52 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最好用的 sing-box 一键安装脚本</title><link>http://blog.52013120.xyz/post/zui-hao-yong-de-%20sing-box%20-yi-jian-an-zhuang-jiao-ben.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议&#13;
 &#13;
 &#13;
 &gt; [!NOTE]&#13;
@@ -101,7 +101,7 @@ bash &lt;(wget -qO- -o- https://github.com/admin8800/sing-box/raw/main/install.s
 ```&#13;
 &#13;
 ---&#13;
-。</description><guid isPermaLink="true">https://sky22333.github.io/post/zui-hao-yong-de-%20sing-box%20-yi-jian-an-zhuang-jiao-ben.html</guid><pubDate>Tue, 02 Jul 2024 09:02:16 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://sky22333.github.io/post/ios-zui-xin-mei-qu-ID-zhu-ce-fang-fa.html</link><description>ios最新美区ID注册教程&#13;
+。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/zui-hao-yong-de-%20sing-box%20-yi-jian-an-zhuang-jiao-ben.html</guid><pubDate>Tue, 02 Jul 2024 09:02:16 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>http://blog.52013120.xyz/post/ios-zui-xin-mei-qu-ID-zhu-ce-fang-fa.html</link><description>ios最新美区ID注册教程&#13;
 &#13;
 1】首先浏览器里打开网页版iCloud：  www.icloud.com&#13;
 &#13;
@@ -117,14 +117,14 @@ bash &lt;(wget -qO- -o- https://github.com/admin8800/sing-box/raw/main/install.s
 &#13;
 6】这里需要特别注意：付款方式菜单千万不要点击信用卡和 PayPal，否则你就必须填写付款信息 (如果你确实需要绑卡当然可以点)&#13;
 &#13;
-。</description><guid isPermaLink="true">https://sky22333.github.io/post/ios-zui-xin-mei-qu-ID-zhu-ce-fang-fa.html</guid><pubDate>Tue, 02 Jul 2024 08:53:08 +0000</pubDate></item><item><title>V2board前后端分离</title><link>https://sky22333.github.io/post/V2board-qian-hou-duan-fen-li.html</link><description>### 默认架构下，V2board 同时扮演后端和前端的角色：&#13;
+。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/ios-zui-xin-mei-qu-ID-zhu-ce-fang-fa.html</guid><pubDate>Tue, 02 Jul 2024 08:53:08 +0000</pubDate></item><item><title>V2board前后端分离</title><link>http://blog.52013120.xyz/post/V2board-qian-hou-duan-fen-li.html</link><description>### 默认架构下，V2board 同时扮演后端和前端的角色：&#13;
 &#13;
 对于 `/ `路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件&#13;
 &#13;
 对于 `/api/*` 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色&#13;
 &#13;
-出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。</description><guid isPermaLink="true">https://sky22333.github.io/post/V2board-qian-hou-duan-fen-li.html</guid><pubDate>Tue, 02 Jul 2024 08:46:39 +0000</pubDate></item><item><title>Markdown语法教程</title><link>https://sky22333.github.io/post/Markdown-yu-fa-jiao-cheng.html</link><description>&#13;
-Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">https://sky22333.github.io/post/Markdown-yu-fa-jiao-cheng.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Github加速</title><link>https://sky22333.github.io/post/Github-jia-su.html</link><description>#  GitHub加速方法&#13;
+出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/V2board-qian-hou-duan-fen-li.html</guid><pubDate>Tue, 02 Jul 2024 08:46:39 +0000</pubDate></item><item><title>Markdown语法教程</title><link>http://blog.52013120.xyz/post/Markdown-yu-fa-jiao-cheng.html</link><description>&#13;
+Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Markdown-yu-fa-jiao-cheng.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Github加速</title><link>http://blog.52013120.xyz/post/Github-jia-su.html</link><description>#  GitHub加速方法&#13;
 &#13;
 #  方法一：&#13;
 &#13;
@@ -199,9 +199,9 @@ sudo snap install v2raya&#13;
 ```&#13;
 sudo vim /etc/systemd/system/snap.v2raya.v2raya.service&#13;
 ```&#13;
-`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。</description><guid isPermaLink="true">https://sky22333.github.io/post/Github-jia-su.html</guid><pubDate>Tue, 02 Jul 2024 07:44:08 +0000</pubDate></item><item><title>Docker Hub 镜像加速</title><link>https://sky22333.github.io/post/Docker%20Hub%20-jing-xiang-jia-su.html</link><description>## Docker Hub 镜像加速&#13;
+`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Github-jia-su.html</guid><pubDate>Tue, 02 Jul 2024 07:44:08 +0000</pubDate></item><item><title>Docker Hub 镜像加速</title><link>http://blog.52013120.xyz/post/Docker%20Hub%20-jing-xiang-jia-su.html</link><description>## Docker Hub 镜像加速&#13;
 &#13;
-国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</description><guid isPermaLink="true">https://sky22333.github.io/post/Docker%20Hub%20-jing-xiang-jia-su.html</guid><pubDate>Tue, 02 Jul 2024 07:42:16 +0000</pubDate></item><item><title>Liunx配置wrap</title><link>https://sky22333.github.io/post/Liunx-pei-zhi-wrap.html</link><description>[其他系统安装](https://pkg.cloudflareclient.com/)&#13;
+国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Docker%20Hub%20-jing-xiang-jia-su.html</guid><pubDate>Tue, 02 Jul 2024 07:42:16 +0000</pubDate></item><item><title>Liunx配置wrap</title><link>http://blog.52013120.xyz/post/Liunx-pei-zhi-wrap.html</link><description>[其他系统安装](https://pkg.cloudflareclient.com/)&#13;
 &#13;
 debian系统安装：&#13;
 &#13;
@@ -263,7 +263,7 @@ unset ALL_PROXY&#13;
 ```&#13;
 warp-cli disconnect&#13;
 ```&#13;
-。</description><guid isPermaLink="true">https://sky22333.github.io/post/Liunx-pei-zhi-wrap.html</guid><pubDate>Tue, 02 Jul 2024 07:39:07 +0000</pubDate></item><item><title>代理工具和SSH工具下载</title><link>https://sky22333.github.io/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</link><description>  &#13;
+。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Liunx-pei-zhi-wrap.html</guid><pubDate>Tue, 02 Jul 2024 07:39:07 +0000</pubDate></item><item><title>代理工具和SSH工具下载</title><link>http://blog.52013120.xyz/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</link><description>  &#13;
 | 类型 | 名称 | 下载地址 |&#13;
 | :--- | :----: | :---: |&#13;
 | 安卓代理  | v2rayNG  |https://github.com/2dust/v2rayNG/releases|&#13;
@@ -285,11 +285,11 @@ warp-cli disconnect&#13;
 | 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|&#13;
 | 电脑code  | Visual Studio Code  |https://code.visualstudio.com|&#13;
 | ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|&#13;
-| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">https://sky22333.github.io/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>无人直播推流脚本</title><link>https://sky22333.github.io/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</link><description>### 利用GPT写的无人直播FFmpeg推流脚本&#13;
+| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>无人直播推流脚本</title><link>http://blog.52013120.xyz/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</link><description>### 利用GPT写的无人直播FFmpeg推流脚本&#13;
 &#13;
 &#13;
 #### [点击这里查看](https://github.com/sky22333/zhibo?tab=readme-ov-file#%E5%BE%AA%E7%8E%AF%E6%8E%A8%E6%B5%81%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD)&#13;
-。</description><guid isPermaLink="true">https://sky22333.github.io/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</guid><pubDate>Tue, 02 Jul 2024 07:36:25 +0000</pubDate></item><item><title>VPS常用命令</title><link>https://sky22333.github.io/post/VPS-chang-yong-ming-ling.html</link><description>### 安装node环境&#13;
+。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</guid><pubDate>Tue, 02 Jul 2024 07:36:25 +0000</pubDate></item><item><title>VPS常用命令</title><link>http://blog.52013120.xyz/post/VPS-chang-yong-ming-ling.html</link><description>### 安装node环境&#13;
 ```&#13;
 curl https://get.volta.sh | bash&#13;
 ```&#13;
@@ -437,4 +437,4 @@ wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/
 ```&#13;
 &#13;
 &#13;
-使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。</description><guid isPermaLink="true">https://sky22333.github.io/post/VPS-chang-yong-ming-ling.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
+使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/VPS-chang-yong-ming-ling.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
