@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/115192496?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+ - <img src='https://media0.giphy.com/media/pylpD8AoQCf3CQ1oO2/giphy.gif' width=30 height=30>  常用代码记录<br>
+#
+                               
+####  点击三角图标可展开内容
+
+---
+
+<details>
+  <summary>VPS常用命令</summary>
+	
+
+
+### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
+
+
+
+### 3xui
+
+```
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+```
+
+[项目地址](https://github.com/MHSanaei/3x-ui)
+
+###  一键wrap
+
+```
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+```
+
+```
+warp [option] [lisence]
+```
+
+###  一键安装docker
+
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+###  查看系统内核
+```
+dpkg --print-architecture
+```
+
+
+
+```
+uname -a
+```
+
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
+
+###  VPS开启root登录并且修改密码：
+
+一键脚本
+
+```
+wget -N --no-check-certificate https://github.com/sky22333/rootvps/raw/main/rootvps && bash rootvps
+```
+
+### ubuntu系统添加root密码，实现root用户登录
+```
+sudo passwd root
+```
+
+###  安装依赖：
+ Debian/Ubuntu 命令：
+ 
+
+```
+apt update
+``` 
+
+```
+apt install curl wget git zip tar iptables lsof vim sudo -y
+```
+
+
+ CentOS 命令：
+
+```
+yum update -y
+``` 
+
+```
+yum install curl wget git zip tar iptables lsof vim sudo -y
+``` 
+
+###  一键测试路由回程：
+
+```
+wget -qO- git.io/besttrace | bash
+```
+### 一键测速回程线路
+```
+curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
+```
+
+
+###  一键测试流媒体解锁：
+
+```
+bash <(curl -L -s check.unlock.media)
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 4
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 6
+```
+
+###  查看端口占用：
+```
+sudo lsof -i -P -n
+```
+```
+ss -tuln
+```
+```
+lsof -i:端口号
+```
+#### 释放端口
+```
+kill PID数字
+```
+
+###  放行端口：
+
+```sudo ufw allow 端口号```
+
+```sudo ufw allow 起始端口:结束端口```
+
+```sudo ufw enable```   #  重启ufw防火墙
+
+###  关闭端口：
+```sudo ufw deny 端口号```
+
+###  只允许指定IP连接22端口：
+```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+
+###  文件类型转换：
+
+```mv config.txt config.json```
+
+```mv shell.txt shell.sh```
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+
+###  防火墙
+
+```firewall-cmd --state```                             # 查看防火墙状态    
+
+
+```systemctl stop firewalld.service```                 # 停止防火墙    
+
+
+```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+
+###  一键开启bbr加速
+
+```
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+```
+
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+
+
+###  人型自走bot乌班图脚本
+
+
+```
+wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
+```
+
+
+使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
+<meta property="og:title" content="VPS常用命令">
+<meta property="og:description" content="
+ - <img src='https://media0.giphy.com/media/pylpD8AoQCf3CQ1oO2/giphy.gif' width=30 height=30>  常用代码记录<br>
+#
+                               
+####  点击三角图标可展开内容
+
+---
+
+<details>
+  <summary>VPS常用命令</summary>
+	
+
+
+### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
+
+
+
+### 3xui
+
+```
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+```
+
+[项目地址](https://github.com/MHSanaei/3x-ui)
+
+###  一键wrap
+
+```
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+```
+
+```
+warp [option] [lisence]
+```
+
+###  一键安装docker
+
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+###  查看系统内核
+```
+dpkg --print-architecture
+```
+
+
+
+```
+uname -a
+```
+
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
+
+###  VPS开启root登录并且修改密码：
+
+一键脚本
+
+```
+wget -N --no-check-certificate https://github.com/sky22333/rootvps/raw/main/rootvps && bash rootvps
+```
+
+### ubuntu系统添加root密码，实现root用户登录
+```
+sudo passwd root
+```
+
+###  安装依赖：
+ Debian/Ubuntu 命令：
+ 
+
+```
+apt update
+``` 
+
+```
+apt install curl wget git zip tar iptables lsof vim sudo -y
+```
+
+
+ CentOS 命令：
+
+```
+yum update -y
+``` 
+
+```
+yum install curl wget git zip tar iptables lsof vim sudo -y
+``` 
+
+###  一键测试路由回程：
+
+```
+wget -qO- git.io/besttrace | bash
+```
+### 一键测速回程线路
+```
+curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
+```
+
+
+###  一键测试流媒体解锁：
+
+```
+bash <(curl -L -s check.unlock.media)
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 4
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 6
+```
+
+###  查看端口占用：
+```
+sudo lsof -i -P -n
+```
+```
+ss -tuln
+```
+```
+lsof -i:端口号
+```
+#### 释放端口
+```
+kill PID数字
+```
+
+###  放行端口：
+
+```sudo ufw allow 端口号```
+
+```sudo ufw allow 起始端口:结束端口```
+
+```sudo ufw enable```   #  重启ufw防火墙
+
+###  关闭端口：
+```sudo ufw deny 端口号```
+
+###  只允许指定IP连接22端口：
+```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+
+###  文件类型转换：
+
+```mv config.txt config.json```
+
+```mv shell.txt shell.sh```
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+
+###  防火墙
+
+```firewall-cmd --state```                             # 查看防火墙状态    
+
+
+```systemctl stop firewalld.service```                 # 停止防火墙    
+
+
+```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+
+###  一键开启bbr加速
+
+```
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+```
+
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+
+
+###  人型自走bot乌班图脚本
+
+
+```
+wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
+```
+
+
+使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sky22333.github.io/post/VPS-chang-yong-ming-ling.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
+<title>VPS常用命令</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">VPS常用命令</h1>
+<div class="title-right">
+    <a href="https://sky22333.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/sky22333/sky22333.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><ul>
+<li><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0b8b3738f0bf081f1c6c8f3417380e1683918e8bdced9cc2980f5edc40ba83d8/68747470733a2f2f6d65646961302e67697068792e636f6d2f6d656469612f70796c704438416f514366334351316f4f322f67697068792e676966"><img src="https://camo.githubusercontent.com/0b8b3738f0bf081f1c6c8f3417380e1683918e8bdced9cc2980f5edc40ba83d8/68747470733a2f2f6d65646961302e67697068792e636f6d2f6d656469612f70796c704438416f514366334351316f4f322f67697068792e676966" width="30" height="30" data-canonical-src="https://media0.giphy.com/media/pylpD8AoQCf3CQ1oO2/giphy.gif" style="max-width: 100%;"></a>  常用代码记录<br></li>
+</ul>
+<h1></h1>
+<h4>点击三角图标可展开内容</h4>
+<hr>
+<details>
+  <summary>VPS常用命令</summary>
+<h3>安装node环境</h3>
+<pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
+</code></pre>
+<pre class="notranslate"><code class="notranslate">export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+</code></pre>
+<pre class="notranslate"><code class="notranslate">source ~/.bashrc
+</code></pre>
+<pre class="notranslate"><code class="notranslate">volta install node@16.0.0
+</code></pre>
+<p>切换node版本只需再次安装需要的版本即可自动切换</p>
+<h3>3xui</h3>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+</code></pre>
+<p><a href="https://github.com/MHSanaei/3x-ui">项目地址</a></p>
+<h3>一键wrap</h3>
+<pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
+</code></pre>
+<pre class="notranslate"><code class="notranslate">warp [option] [lisence]
+</code></pre>
+<h3>一键安装docker</h3>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
+</code></pre>
+<h3>查看系统内核</h3>
+<pre class="notranslate"><code class="notranslate">dpkg --print-architecture
+</code></pre>
+<pre class="notranslate"><code class="notranslate">uname -a
+</code></pre>
+<h4>查看系统版本</h4>
+<pre class="notranslate"><code class="notranslate">cat /etc/os-release
+</code></pre>
+<pre class="notranslate"><code class="notranslate">lsb_release -a
+</code></pre>
+<h3>VPS开启root登录并且修改密码：</h3>
+<p>一键脚本</p>
+<pre class="notranslate"><code class="notranslate">wget -N --no-check-certificate https://github.com/sky22333/rootvps/raw/main/rootvps &amp;&amp; bash rootvps
+</code></pre>
+<h3>ubuntu系统添加root密码，实现root用户登录</h3>
+<pre class="notranslate"><code class="notranslate">sudo passwd root
+</code></pre>
+<h3>安装依赖：</h3>
+<p>Debian/Ubuntu 命令：</p>
+<pre class="notranslate"><code class="notranslate">apt update
+</code></pre>
+<pre class="notranslate"><code class="notranslate">apt install curl wget git zip tar iptables lsof vim sudo -y
+</code></pre>
+<p>CentOS 命令：</p>
+<pre class="notranslate"><code class="notranslate">yum update -y
+</code></pre>
+<pre class="notranslate"><code class="notranslate">yum install curl wget git zip tar iptables lsof vim sudo -y
+</code></pre>
+<h3>一键测试路由回程：</h3>
+<pre class="notranslate"><code class="notranslate">wget -qO- git.io/besttrace | bash
+</code></pre>
+<h3>一键测速回程线路</h3>
+<pre class="notranslate"><code class="notranslate">curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
+</code></pre>
+<h3>一键测试流媒体解锁：</h3>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media)
+</code></pre>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 4
+</code></pre>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 6
+</code></pre>
+<h3>查看端口占用：</h3>
+<pre class="notranslate"><code class="notranslate">sudo lsof -i -P -n
+</code></pre>
+<pre class="notranslate"><code class="notranslate">ss -tuln
+</code></pre>
+<pre class="notranslate"><code class="notranslate">lsof -i:端口号
+</code></pre>
+<h4>释放端口</h4>
+<pre class="notranslate"><code class="notranslate">kill PID数字
+</code></pre>
+<h3>放行端口：</h3>
+<p><code class="notranslate">sudo ufw allow 端口号</code></p>
+<p><code class="notranslate">sudo ufw allow 起始端口:结束端口</code></p>
+<p><code class="notranslate">sudo ufw enable</code>   #  重启ufw防火墙</p>
+<h3>关闭端口：</h3>
+<p><code class="notranslate">sudo ufw deny 端口号</code></p>
+<h3>只允许指定IP连接22端口：</h3>
+<p><code class="notranslate">sudo ufw allow from 192.168.1.100 to any port 22</code>      #  多IP用英文的逗号分开</p>
+<h3>文件类型转换：</h3>
+<p><code class="notranslate">mv config.txt config.json</code></p>
+<p><code class="notranslate">mv shell.txt shell.sh</code></p>
+<h3>开启虚拟内存：</h3>
+<pre class="notranslate"><code class="notranslate">sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+</code></pre>
+<h3>防火墙</h3>
+<p><code class="notranslate">firewall-cmd --state</code>                             # 查看防火墙状态</p>
+<p><code class="notranslate">systemctl stop firewalld.service</code>                 # 停止防火墙</p>
+<p><code class="notranslate">systemctl disable firewalld.service</code>              # 禁止防火墙开机自启</p>
+<h3>一键开启bbr加速</h3>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
+</code></pre>
+<h3>人型自走bot乌班图脚本</h3>
+<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh
+</code></pre>
+<p>使用该脚本会将 <code class="notranslate">Pagermaid-Pyro</code> 安装至 <code class="notranslate">/var/lib/pagermaid</code> 目录下。</p>
+<h3>久激活 Windows 系统和 Office 软件</h3>
+<p>在 Windows 8.1/10/11 上，右键单击 Windows 开始菜单并 选择 PowerShell 或终端（非 CMD）</p>
+<pre class="notranslate"><code class="notranslate">irm https://massgrave.dev/get | iex
+</code></pre>
+<p>稍微等待一下，他会自动适配，并激活您的系统，当出现 Successful 的时候说明系统已经激活成功了</p>
+<h3>查看电脑wifi密码CMD命令</h3>
+<p>查看已连接过的wifi：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan show profile
+</code></pre>
+<p>查看密码：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan show profile name="WiFi名称" key=clear
+</code></pre>
+<p>打印到C盘：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan export profile folder=C:\ key=clear
+</code></pre>
+</details>
+<hr>
+<details>
+  <summary>无人直播推流脚本</summary>
+<h3>利用GPT写的无人直播FFmpeg推流脚本</h3>
+<h4><a href="https://github.com/sky22333/zhibo?tab=readme-ov-file#%E5%BE%AA%E7%8E%AF%E6%8E%A8%E6%B5%81%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD">点击这里查看</a></h4>
+</details>
+<hr>
+<details>
+  <summary>代理工具SSH工具下载</summary>
+<table role="table">
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="center">名称</th>
+<th align="center">下载地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">安卓代理</td>
+<td align="center">v2rayNG</td>
+<td align="center"><a href="https://github.com/2dust/v2rayNG/releases">https://github.com/2dust/v2rayNG/releases</a></td>
+</tr>
+<tr>
+<td align="left">安卓代理</td>
+<td align="center">clash-meta</td>
+<td align="center"><a href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases">https://github.com/MetaCubeX/ClashMetaForAndroid/releases</a></td>
+</tr>
+<tr>
+<td align="left">Win代理</td>
+<td align="center">clash-verge-rev</td>
+<td align="center"><a href="https://github.com/clash-verge-rev/clash-verge-rev/releases">https://github.com/clash-verge-rev/clash-verge-rev/releases</a></td>
+</tr>
+<tr>
+<td align="left">Win代理</td>
+<td align="center">v2rayN</td>
+<td align="center"><a href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a></td>
+</tr>
+<tr>
+<td align="left">ios代理</td>
+<td align="center">小火箭</td>
+<td align="center"><a href="https://apps.apple.com/us/app/shadowrocket/id932747118" rel="nofollow">https://apps.apple.com/us/app/shadowrocket/id932747118</a></td>
+</tr>
+<tr>
+<td align="left">ios代理</td>
+<td align="center">V2Box</td>
+<td align="center"><a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" rel="nofollow">https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690</a></td>
+</tr>
+<tr>
+<td align="left">mac代理</td>
+<td align="center">v2rayU</td>
+<td align="center"><a href="https://github.com/yanue/V2rayU/releases">https://github.com/yanue/V2rayU/releases</a></td>
+</tr>
+<tr>
+<td align="left">mac代理</td>
+<td align="center">V2Box</td>
+<td align="center"><a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" rel="nofollow">https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690</a></td>
+</tr>
+<tr>
+<td align="left">mac代理</td>
+<td align="center">clash-verge-rev</td>
+<td align="center"><a href="https://github.com/clash-verge-rev/clash-verge-rev/releases">https://github.com/clash-verge-rev/clash-verge-rev/releases</a></td>
+</tr>
+<tr>
+<td align="left">Liunx代理</td>
+<td align="center">v2rayA</td>
+<td align="center"><a href="https://v2raya.org/docs/prologue/introduction" rel="nofollow">https://v2raya.org/docs/prologue/introduction</a></td>
+</tr>
+<tr>
+<td align="left">安卓SSH</td>
+<td align="center">Termius汉化</td>
+<td align="center"><a href="https://github.com/alongw/Termius-zh_CN/releases">https://github.com/alongw/Termius-zh_CN/releases</a></td>
+</tr>
+<tr>
+<td align="left">安卓SSH</td>
+<td align="center">termux</td>
+<td align="center"><a href="https://github.com/termux/termux-app/releases">https://github.com/termux/termux-app/releases</a></td>
+</tr>
+<tr>
+<td align="left">安卓SSH</td>
+<td align="center">serverbox</td>
+<td align="center"><a href="https://github.com/lollipopkit/flutter_server_box/releases">https://github.com/lollipopkit/flutter_server_box/releases</a></td>
+</tr>
+<tr>
+<td align="left">安卓code</td>
+<td align="center">Acode</td>
+<td align="center"><a href="https://acode.app" rel="nofollow">https://acode.app</a></td>
+</tr>
+<tr>
+<td align="left">电脑SSH</td>
+<td align="center">tabby</td>
+<td align="center"><a href="https://github.com/Eugeny/tabby/releases">https://github.com/Eugeny/tabby/releases</a></td>
+</tr>
+<tr>
+<td align="left">电脑SSH</td>
+<td align="center">WindTerm</td>
+<td align="center"><a href="https://github.com/kingToolbox/WindTerm/releases">https://github.com/kingToolbox/WindTerm/releases</a></td>
+</tr>
+<tr>
+<td align="left">电脑SSH</td>
+<td align="center">FinalShell</td>
+<td align="center"><a href="https://www.hostbuf.com/t/988.html" rel="nofollow">https://www.hostbuf.com/t/988.html</a></td>
+</tr>
+<tr>
+<td align="left">电脑code</td>
+<td align="center">Visual Studio Code</td>
+<td align="center"><a href="https://code.visualstudio.com" rel="nofollow">https://code.visualstudio.com</a></td>
+</tr>
+<tr>
+<td align="left">ios SSH</td>
+<td align="center">ServerBox</td>
+<td align="center"><a href="https://apps.apple.com/us/app/serverbox-status-tools/id1586449703" rel="nofollow">https://apps.apple.com/us/app/serverbox-status-tools/id1586449703</a></td>
+</tr>
+<tr>
+<td align="left">ios SSH</td>
+<td align="center">Termius</td>
+<td align="center"><a href="https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908" rel="nofollow">https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908</a></td>
+</tr>
+</tbody>
+</table>
+</details>
+<hr>
+<details>
+  <summary>网站收藏or服务器</summary>
+<table role="table">
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="center">名称</th>
+<th align="center">地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">服务器</td>
+<td align="center">vmiss</td>
+<td align="center"><a href="https://app.vmiss.com" rel="nofollow">https://app.vmiss.com</a></td>
+</tr>
+<tr>
+<td align="left">SK5代理</td>
+<td align="center">kookeey</td>
+<td align="center"><a href="https://kookeey.com" rel="nofollow">https://kookeey.com</a></td>
+</tr>
+<tr>
+<td align="left">SK5代理</td>
+<td align="center">ip2world</td>
+<td align="center"><a href="https://www.ip2world.com" rel="nofollow">https://www.ip2world.com</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">evoxt</td>
+<td align="center"><a href="https://evoxt.com/pricing" rel="nofollow">https://evoxt.com/pricing</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">vultr</td>
+<td align="center"><a href="https://www.vultr.com" rel="nofollow">https://www.vultr.com</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">美国无线流量</td>
+<td align="center"><a href="https://my.frantech.ca/cart.php" rel="nofollow">https://my.frantech.ca/cart.php</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">越南家宽</td>
+<td align="center"><a href="https://my.cloudfly.vn/cloud/server" rel="nofollow">https://my.cloudfly.vn/cloud/server</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">gigsgigs</td>
+<td align="center"><a href="https://clientarea.gigsgigscloud.com" rel="nofollow">https://clientarea.gigsgigscloud.com</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">朝暮云 地区多</td>
+<td align="center"><a href="https://zhaomu.com" rel="nofollow">https://zhaomu.com</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">CC一刀机</td>
+<td align="center"><a href="https://cloudcone.com" rel="nofollow">https://cloudcone.com</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">RN二刀机</td>
+<td align="center"><a href="https://my.racknerd.com" rel="nofollow">https://my.racknerd.com</a></td>
+</tr>
+<tr>
+<td align="left">服务器</td>
+<td align="center">hostvds一刀机</td>
+<td align="center"><a href="https://hostvds.com" rel="nofollow">https://hostvds.com</a></td>
+</tr>
+<tr>
+<td align="left">学习资料</td>
+<td align="center">网站合集</td>
+<td align="center"><a href="https://theporndude.com/zh" rel="nofollow">https://theporndude.com/zh</a></td>
+</tr>
+<tr>
+<td align="left">学习资料</td>
+<td align="center">AI画图</td>
+<td align="center"><a href="https://pornpen.ai" rel="nofollow">https://pornpen.ai</a></td>
+</tr>
+<tr>
+<td align="left">素材</td>
+<td align="center">图标素材</td>
+<td align="center"><a href="https://aigei.com" rel="nofollow">https://aigei.com</a></td>
+</tr>
+<tr>
+<td align="left">礼品卡</td>
+<td align="center">Pockyt Shop</td>
+<td align="center"><a href="https://shop.pockyt.io/pc/brands/all" rel="nofollow">https://shop.pockyt.io/pc/brands/all</a></td>
+</tr>
+<tr>
+<td align="left">网络测试</td>
+<td align="center">ipv6测试</td>
+<td align="center"><a href="https://test-ipv6.com" rel="nofollow">https://test-ipv6.com</a></td>
+</tr>
+<tr>
+<td align="left">扫描</td>
+<td align="center">dns和端口扫描</td>
+<td align="center"><a href="https://search.censys.io" rel="nofollow">https://search.censys.io</a></td>
+</tr>
+<tr>
+<td align="left">扫描</td>
+<td align="center">网络扫描</td>
+<td align="center"><a href="https://fofa.info" rel="nofollow">https://fofa.info</a></td>
+</tr>
+<tr>
+<td align="left">扫描</td>
+<td align="center">网络扫描</td>
+<td align="center"><a href="https://www.zoomeye.org" rel="nofollow">https://www.zoomeye.org</a></td>
+</tr>
+<tr>
+<td align="left">扫描</td>
+<td align="center">端口扫描</td>
+<td align="center"><a href="https://www.criminalip.io" rel="nofollow">https://www.criminalip.io</a></td>
+</tr>
+<tr>
+<td align="left">学习</td>
+<td align="center">编程菜鸟教程</td>
+<td align="center"><a href="https://www.runoob.com" rel="nofollow">https://www.runoob.com</a></td>
+</tr>
+<tr>
+<td align="left">api接口</td>
+<td align="center">图片和文字</td>
+<td align="center"><a href="https://api.aixiaowai.cn" rel="nofollow">https://api.aixiaowai.cn</a></td>
+</tr>
+<tr>
+<td align="left">api接口</td>
+<td align="center">图片和文字</td>
+<td align="center"><a href="https://developer.hitokoto.cn" rel="nofollow">https://developer.hitokoto.cn</a></td>
+</tr>
+<tr>
+<td align="left">api接口</td>
+<td align="center">诗词</td>
+<td align="center"><a href="https://www.jinrishici.com" rel="nofollow">https://www.jinrishici.com</a></td>
+</tr>
+<tr>
+<td align="left">图床</td>
+<td align="center">动漫和动画</td>
+<td align="center"><a href="https://mikupic.com" rel="nofollow">https://mikupic.com</a></td>
+</tr>
+<tr>
+<td align="left">图床</td>
+<td align="center">国内高速</td>
+<td align="center"><a href="https://www.freeimg.cn" rel="nofollow">https://www.freeimg.cn</a></td>
+</tr>
+<tr>
+<td align="left">网盘</td>
+<td align="center">网盘资源</td>
+<td align="center"><a href="https://wpzy.cc" rel="nofollow">https://wpzy.cc</a></td>
+</tr>
+<tr>
+<td align="left">资源采集</td>
+<td align="center">影视</td>
+<td align="center"><a href="https://hongniuziyuan.com" rel="nofollow">https://hongniuziyuan.com</a></td>
+</tr>
+<tr>
+<td align="left">资源采集</td>
+<td align="center">影视</td>
+<td align="center"><a href="http://lzizy.net" rel="nofollow">http://lzizy.net</a></td>
+</tr>
+<tr>
+<td align="left">资源采集</td>
+<td align="center">X</td>
+<td align="center"><a href="https://apilj.com" rel="nofollow">https://apilj.com</a></td>
+</tr>
+<tr>
+<td align="left">资源采集</td>
+<td align="center">X</td>
+<td align="center"><a href="https://dadizy11.com" rel="nofollow">https://dadizy11.com</a></td>
+</tr>
+<tr>
+<td align="left">安卓软件</td>
+<td align="center">APK</td>
+<td align="center"><a href="https://apkpure.net" rel="nofollow">https://apkpure.net</a></td>
+</tr>
+<tr>
+<td align="left">安卓软件</td>
+<td align="center">APK</td>
+<td align="center"><a href="https://www.apkmirror.com" rel="nofollow">https://www.apkmirror.com</a></td>
+</tr>
+</tbody>
+</table>
+</details>
+<hr>
+<details>
+  <summary>轻量级Liunx文件管理系统</summary>
+<p>支持实时管理liunx系统文件的项目</p>
+<p>安装：</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
+</code></pre>
+<p>启动：</p>
+<pre class="notranslate"><code class="notranslate">filebrowser -a 0.0.0.0 -r /
+</code></pre>
+<p>设置—用户管理—用户编辑—增加文件管理命令<code class="notranslate">unzip tar chmod</code></p>
+<p>示例<code class="notranslate">unzip you.zip</code>  /  <code class="notranslate">chmod -R 777 home</code></p>
+</details>
+<hr>
+<details>
+  <summary>Liunx配置wrap</summary>
+<p><a href="https://pkg.cloudflareclient.com/" rel="nofollow">其他系统安装</a></p>
+<p>debian系统安装：</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+</code></pre>
+<pre class="notranslate"><code class="notranslate">echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo apt-get update &amp;&amp; sudo apt-get install cloudflare-warp -y
+</code></pre>
+<p>注册客户端：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli registration new
+</code></pre>
+<p>开启代理模式：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli mode proxy
+</code></pre>
+<p>启动wrap：</p>
+<p>执行此命令前必须<code class="notranslate">开启代理模式</code>否则机器可能失联</p>
+<pre class="notranslate"><code class="notranslate">warp-cli connect
+</code></pre>
+<p>wrap将代理本地的<code class="notranslate">40000</code>端口</p>
+<p>更改代理端口：<code class="notranslate">warp-cli proxy port 40000</code></p>
+<p>配置文件：<code class="notranslate">cd /var/lib/cloudflare-warp</code></p>
+<p>查看代理IP：</p>
+<pre class="notranslate"><code class="notranslate">curl -x "socks5://127.0.0.1:40000" ipinfo.io
+</code></pre>
+<p>开启全局代理：</p>
+<pre class="notranslate"><code class="notranslate">export ALL_PROXY=socks5://127.0.0.1:40000
+</code></pre>
+<p>关闭全局代理：</p>
+<pre class="notranslate"><code class="notranslate">unset ALL_PROXY
+</code></pre>
+<p>关闭wrap：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli disconnect
+</code></pre>
+</details>
+<hr>
+<details>
+  <summary>Git推送到GitHub仓库教程</summary>
+<h4>先创建一个仓库，然后本地CD到项目目录</h4>
+<h3>设置推送地址</h3>
+<pre class="notranslate"><code class="notranslate">git config --global user.email "你的邮箱"
+git config --global user.name "你的用户名"
+</code></pre>
+<pre class="notranslate"><code class="notranslate">git remote set-url origin https://你的用户名:个人访问令牌@github.com/你的用户名/你的仓库名.git
+</code></pre>
+<h3>添加并提交新的更改</h3>
+<pre class="notranslate"><code class="notranslate">git add .
+git commit -m "描述你的更改"
+</code></pre>
+<h3>推送到仓库</h3>
+<pre class="notranslate"><code class="notranslate">git push origin main
+</code></pre>
+<p><code class="notranslate">main</code>为分支名</p>
+<h4>操作完成后清除Git存储凭据</h4>
+<pre class="notranslate"><code class="notranslate">git config --global --unset credential.helper
+</code></pre>
+</details>
+<hr></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">博客 © <span id="year"></span><a href="https://sky22333.github.io"> 繁星点点 </a>
+<p>
+<span id="runday"></span>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","sky22333/sky22333.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
