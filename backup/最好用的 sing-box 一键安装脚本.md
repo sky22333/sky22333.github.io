@@ -9,9 +9,11 @@ bash <(wget -qO- -o- https://github.com/admin8800/sing-box/raw/main/install.sh)
 ```
 
 > [!TIP]
-> 打开管理菜单
+> 脚本管理
 
 ## 输入`sing-box`可打开管理菜单
+
+首次运行会自动搭建一个`reality`协议
 
 
 
