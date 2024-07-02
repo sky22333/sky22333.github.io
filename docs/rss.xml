@@ -1,5 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://sky22333.github.io</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://sky22333.github.io</link></image><lastBuildDate>Tue, 02 Jul 2024 07:36:53 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>无人直播推流脚本</title><link>https://sky22333.github.io/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</link><description>### 利用GPT写的无人直播FFmpeg推流脚本&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://sky22333.github.io</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://sky22333.github.io</link></image><lastBuildDate>Tue, 02 Jul 2024 07:38:26 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>代理工具和SSH工具下载</title><link>https://sky22333.github.io/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</link><description>  &#13;
+| 类型 | 名称 | 下载地址 |&#13;
+| :--- | :----: | :---: |&#13;
+| 安卓代理  | v2rayNG  |https://github.com/2dust/v2rayNG/releases|&#13;
+| 安卓代理  | clash-meta  |https://github.com/MetaCubeX/ClashMetaForAndroid/releases|&#13;
+| Win代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|&#13;
+| Win代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|&#13;
+| ios代理  | 小火箭  |https://apps.apple.com/us/app/shadowrocket/id932747118|&#13;
+| ios代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|&#13;
+| mac代理  | v2rayU  |https://github.com/yanue/V2rayU/releases|&#13;
+| mac代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|&#13;
+| mac代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|&#13;
+| Liunx代理  | v2rayA  |https://v2raya.org/docs/prologue/introduction|&#13;
+| 安卓SSH  | Termius汉化  |https://github.com/alongw/Termius-zh_CN/releases|&#13;
+| 安卓SSH  | termux |https://github.com/termux/termux-app/releases|&#13;
+| 安卓SSH  | serverbox  |https://github.com/lollipopkit/flutter_server_box/releases|&#13;
+| 安卓code  | Acode |https://acode.app|&#13;
+| 电脑SSH  | tabby  |https://github.com/Eugeny/tabby/releases|&#13;
+| 电脑SSH  | WindTerm  |https://github.com/kingToolbox/WindTerm/releases|&#13;
+| 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|&#13;
+| 电脑code  | Visual Studio Code  |https://code.visualstudio.com|&#13;
+| ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|&#13;
+| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">https://sky22333.github.io/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>无人直播推流脚本</title><link>https://sky22333.github.io/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</link><description>### 利用GPT写的无人直播FFmpeg推流脚本&#13;
 &#13;
 &#13;
 #### [点击这里查看](https://github.com/sky22333/zhibo?tab=readme-ov-file#%E5%BE%AA%E7%8E%AF%E6%8E%A8%E6%B5%81%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD)&#13;
