@@ -9,25 +9,137 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 这是一篇示例文字
+<meta name="description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
 
-测试测试
-```
-jdfhjkdhfjdkshdfsjk
-sadasdasdas
-```。">
-<meta property="og:title" content="你好">
-<meta property="og:description" content="### 这是一篇示例文字
+debian系统安装：
 
-测试测试
 ```
-jdfhjkdhfjdkshdfsjk
-sadasdasdas
-```。">
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+```
+```
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+```
+```
+sudo apt-get update && sudo apt-get install cloudflare-warp -y
+```
+
+注册客户端：
+
+```
+warp-cli registration new
+```
+
+开启代理模式：
+
+```
+warp-cli mode proxy
+```
+
+启动wrap：
+
+执行此命令前必须`开启代理模式`否则机器可能失联
+```
+warp-cli connect
+```
+
+
+wrap将代理本地的`40000`端口
+
+更改代理端口：`warp-cli proxy port 40000`
+
+配置文件：`cd /var/lib/cloudflare-warp`
+
+查看代理IP：
+```
+curl -x 'socks5://127.0.0.1:40000' ipinfo.io
+```
+
+
+
+开启全局代理：
+```
+export ALL_PROXY=socks5://127.0.0.1:40000
+```
+关闭全局代理：
+```
+unset ALL_PROXY
+```
+
+
+
+关闭wrap：
+```
+warp-cli disconnect
+```
+。">
+<meta property="og:title" content="Liunx配置wrap">
+<meta property="og:description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
+
+debian系统安装：
+
+```
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+```
+```
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+```
+```
+sudo apt-get update && sudo apt-get install cloudflare-warp -y
+```
+
+注册客户端：
+
+```
+warp-cli registration new
+```
+
+开启代理模式：
+
+```
+warp-cli mode proxy
+```
+
+启动wrap：
+
+执行此命令前必须`开启代理模式`否则机器可能失联
+```
+warp-cli connect
+```
+
+
+wrap将代理本地的`40000`端口
+
+更改代理端口：`warp-cli proxy port 40000`
+
+配置文件：`cd /var/lib/cloudflare-warp`
+
+查看代理IP：
+```
+curl -x 'socks5://127.0.0.1:40000' ipinfo.io
+```
+
+
+
+开启全局代理：
+```
+export ALL_PROXY=socks5://127.0.0.1:40000
+```
+关闭全局代理：
+```
+unset ALL_PROXY
+```
+
+
+
+关闭wrap：
+```
+warp-cli disconnect
+```
+。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://sky22333.github.io/post/ni-hao.html">
+<meta property="og:url" content="https://sky22333.github.io/post/Liunx-pei-zhi-wrap.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>你好</title>
+<title>Liunx配置wrap</title>
 
 
 </head>
@@ -58,7 +170,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">你好</h1>
+<h1 class="postTitle">Liunx配置wrap</h1>
 <div class="title-right">
     <a href="https://sky22333.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -66,7 +178,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/sky22333/sky22333.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/sky22333/sky22333.github.io/issues/4" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -82,10 +194,38 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>这是一篇示例文字</h3>
-<p>测试测试</p>
-<pre class="notranslate"><code class="notranslate">jdfhjkdhfjdkshdfsjk
-sadasdasdas
+<div class="markdown-body" id="postBody"><p><a href="https://pkg.cloudflareclient.com/" rel="nofollow">其他系统安装</a></p>
+<p>debian系统安装：</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+</code></pre>
+<pre class="notranslate"><code class="notranslate">echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo apt-get update &amp;&amp; sudo apt-get install cloudflare-warp -y
+</code></pre>
+<p>注册客户端：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli registration new
+</code></pre>
+<p>开启代理模式：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli mode proxy
+</code></pre>
+<p>启动wrap：</p>
+<p>执行此命令前必须<code class="notranslate">开启代理模式</code>否则机器可能失联</p>
+<pre class="notranslate"><code class="notranslate">warp-cli connect
+</code></pre>
+<p>wrap将代理本地的<code class="notranslate">40000</code>端口</p>
+<p>更改代理端口：<code class="notranslate">warp-cli proxy port 40000</code></p>
+<p>配置文件：<code class="notranslate">cd /var/lib/cloudflare-warp</code></p>
+<p>查看代理IP：</p>
+<pre class="notranslate"><code class="notranslate">curl -x "socks5://127.0.0.1:40000" ipinfo.io
+</code></pre>
+<p>开启全局代理：</p>
+<pre class="notranslate"><code class="notranslate">export ALL_PROXY=socks5://127.0.0.1:40000
+</code></pre>
+<p>关闭全局代理：</p>
+<pre class="notranslate"><code class="notranslate">unset ALL_PROXY
+</code></pre>
+<p>关闭wrap：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli disconnect
 </code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
