@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 02 Jul 2024 09:14:52 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最好用的 sing-box 一键安装脚本</title><link>http://blog.52013120.xyz/post/zui-hao-yong-de-%20sing-box%20-yi-jian-an-zhuang-jiao-ben.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 02 Jul 2024 09:18:57 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最好用的 sing-box 一键安装脚本</title><link>http://blog.52013120.xyz/post/zui-hao-yong-de-%20sing-box%20-yi-jian-an-zhuang-jiao-ben.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议&#13;
 &#13;
 &#13;
 &gt; [!NOTE]&#13;
@@ -285,11 +285,7 @@ warp-cli disconnect&#13;
 | 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|&#13;
 | 电脑code  | Visual Studio Code  |https://code.visualstudio.com|&#13;
 | ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|&#13;
-| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>无人直播推流脚本</title><link>http://blog.52013120.xyz/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</link><description>### 利用GPT写的无人直播FFmpeg推流脚本&#13;
-&#13;
-&#13;
-#### [点击这里查看](https://github.com/sky22333/zhibo?tab=readme-ov-file#%E5%BE%AA%E7%8E%AF%E6%8E%A8%E6%B5%81%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD)&#13;
-。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/wu-ren-zhi-bo-tui-liu-jiao-ben.html</guid><pubDate>Tue, 02 Jul 2024 07:36:25 +0000</pubDate></item><item><title>VPS常用命令</title><link>http://blog.52013120.xyz/post/VPS-chang-yong-ming-ling.html</link><description>### 安装node环境&#13;
+| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/dai-li-gong-ju-he-SSH-gong-ju-xia-zai.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>VPS常用命令</title><link>http://blog.52013120.xyz/post/VPS-chang-yong-ming-ling.html</link><description>### 安装node环境&#13;
 ```&#13;
 curl https://get.volta.sh | bash&#13;
 ```&#13;
