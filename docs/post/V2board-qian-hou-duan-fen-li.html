@@ -9,7 +9,10 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 默认架构下，V2board 同时扮演后端和前端的角色：
+<meta name="description" content="## V2board前后端分离原理解释（Xboard同理）
+
+
+### 默认架构下，V2board 同时扮演后端和前端的角色：
 
 对于 `/ `路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件
 
@@ -17,7 +20,10 @@
 
 出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。">
 <meta property="og:title" content="V2board前后端分离">
-<meta property="og:description" content="### 默认架构下，V2board 同时扮演后端和前端的角色：
+<meta property="og:description" content="## V2board前后端分离原理解释（Xboard同理）
+
+
+### 默认架构下，V2board 同时扮演后端和前端的角色：
 
 对于 `/ `路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件
 
@@ -76,7 +82,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>默认架构下，V2board 同时扮演后端和前端的角色：</h3>
+<div class="markdown-body" id="postBody"><h2>V2board前后端分离原理解释（Xboard同理）</h2>
+<h3>默认架构下，V2board 同时扮演后端和前端的角色：</h3>
 <p>对于 <code class="notranslate">/ </code>路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件</p>
 <p>对于 <code class="notranslate">/api/*</code> 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色</p>
 <p>出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。V2board 只需承担后端的职责，前端主题 将会作为一个静态站点担任前端：</p>
