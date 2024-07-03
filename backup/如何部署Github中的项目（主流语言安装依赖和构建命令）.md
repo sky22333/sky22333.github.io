@@ -31,42 +31,37 @@ npm start
 ```
 
 > [!TIP]
-> ## Python (Django) 💻
+> ## Python 💻
 
 #### 基本代码结构
 ```
-my-django-project/
-├── manage.py
-├── myproject/
-│ ├── init.py
-│ ├── settings.py
-│ ├── urls.py
-│ └── wsgi.py
-├── app/
-│ ├── init.py
-│ ├── admin.py
-│ ├── apps.py
-│ ├── models.py
-│ ├── tests.py
-│ └── views.py
-├── static/
+my-python-project/
+├── .github/
+├── myapp.py
+├── config.py
+├── requirements.txt
+├── scripts/
+│   └── run.sh
+├── logs/
+├── models/
+├── services/
 ├── templates/
-└── requirements.txt
+├── tests/
+├── utils/
+├── .dockerignore
+├── .env.local
+├── .gitignore
+└── LICENSE
 ```
 
 #### 安装依赖
 ```
 pip install -r requirements.txt
 ```
-#### 构建
-```
-python manage.py collectstatic
-python manage.py migrate
-```
 
 #### 运行
 ```
-gunicorn --workers 3 project_name.wsgi:application
+python myapp.py
 ```
 
 > [!TIP]
