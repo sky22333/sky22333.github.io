@@ -9,27 +9,79 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## V2board前后端分离原理解释（Xboard同理）
+<meta name="description" content="> [!NOTE]
+> ## 前后端分离主题部署
 
+### `V2board`和`Xboard`步骤一样
 
-### 默认架构下，V2board 同时扮演后端和前端的角色：
+###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：
+````
+├── assets
+│   ├── ArrowPathIcon-BcKBEic3.js
+│   ├── CheckOutlined-kSoYgoEi.js
+│   ├── Detail-CZ1NhySb.js
+│   ├── Detail-CiCRNMEx.css
+│   └── Home-BIEpZQVD.css
+├── .DS_Store
+├── config.js
+├── favicon.ico
+└── index.html
+````
 
-对于 `/ `路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件
+### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息
 
-对于 `/api/*` 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色
+#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多
+```
+window.config={
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
+    title:'一元机场', // 网站标题
+    host:'https://xxxxxxx.com/', // 机场原来的域名地址
+    storeHome: {
+         
+        下面的代码省略.......
+       ............
+       ..........
 
-出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。">
+```
+
+### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。">
 <meta property="og:title" content="V2board前后端分离">
-<meta property="og:description" content="## V2board前后端分离原理解释（Xboard同理）
+<meta property="og:description" content="> [!NOTE]
+> ## 前后端分离主题部署
 
+### `V2board`和`Xboard`步骤一样
 
-### 默认架构下，V2board 同时扮演后端和前端的角色：
+###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：
+````
+├── assets
+│   ├── ArrowPathIcon-BcKBEic3.js
+│   ├── CheckOutlined-kSoYgoEi.js
+│   ├── Detail-CZ1NhySb.js
+│   ├── Detail-CiCRNMEx.css
+│   └── Home-BIEpZQVD.css
+├── .DS_Store
+├── config.js
+├── favicon.ico
+└── index.html
+````
 
-对于 `/ `路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件
+### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息
 
-对于 `/api/*` 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色
+#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多
+```
+window.config={
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
+    title:'一元机场', // 网站标题
+    host:'https://xxxxxxx.com/', // 机场原来的域名地址
+    storeHome: {
+         
+        下面的代码省略.......
+       ............
+       ..........
 
-出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。">
+```
+
+### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/V2board-qian-hou-duan-fen-li.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -58,7 +110,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     .postTitle{font-size:24px;}
 }
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-important {border-left-color:var(--borderColor-done-emphasis, var(--color-done-emphasis));background-color:var(--color-done-subtle);}.markdown-alert.markdown-alert-important .markdown-alert-title {color: var(--fgColor-done,var(--color-done-fg));}</style>
 
 
 
@@ -82,7 +134,55 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>V2board前后端分离原理解释（Xboard同理）</h2>
+<div class="markdown-body" id="postBody"><div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<h2>前后端分离主题部署</h2>
+</div>
+<h3><code class="notranslate">V2board</code>和<code class="notranslate">Xboard</code>步骤一样</h3>
+<h3>当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：</h3>
+<pre class="notranslate"><code class="notranslate">├── assets
+│   ├── ArrowPathIcon-BcKBEic3.js
+│   ├── CheckOutlined-kSoYgoEi.js
+│   ├── Detail-CZ1NhySb.js
+│   ├── Detail-CiCRNMEx.css
+│   └── Home-BIEpZQVD.css
+├── .DS_Store
+├── config.js
+├── favicon.ico
+└── index.html
+</code></pre>
+<h3>重点在于<code class="notranslate">config.js</code>这个文件，这个文件里需要填写你机场的配置信息</h3>
+<h4>文件内容以这个为例，自己举一反三，基本逻辑都差不多</h4>
+<pre class="notranslate"><code class="notranslate">window.config={
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
+    title:"一元机场", // 网站标题
+    host:"https://xxxxxxx.com/", // 机场原来的域名地址
+    storeHome: {
+         
+        下面的代码省略.......
+       ............
+       ..........
+
+</code></pre>
+<h3>配置好后就用就把整个项目文件用<code class="notranslate">nginx</code>或者<code class="notranslate">caddy</code>运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。域名要用一个新域名，不能和机场原来的域名一样。(为了方便小白理解)</h3>
+<h3>分离后的常见问题</h3>
+<blockquote>
+<p>支付完成后跳回原来的机场界面：一般是支付回调的问题，把你机场后台的官网域名换成你的新主题域名，或者改一下支付回调</p>
+</blockquote>
+<blockquote>
+<p>无法登录：一般是你新主题的服务器和面板服务器之间无法连通，也可能是机场被墙了（严谨点讲是机场后端）</p>
+</blockquote>
+<p>更多问题可以点击博客主页的右上角私聊我的TG有偿协助</p>
+<p>一般前后端分离主题也可以不需要服务器，直接部署在CF上，只用添加<code class="notranslate">/functions/api /[[path]].js</code>文件即可，文件中的配置自己研究，或者联系我有偿协助。</p>
+<hr>
+<hr>
+<h2>免费的万能解决方案，可解决机场的所有复杂问题，收集了多位专业运维大佬的解答，扫码查看。</h2>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4"><img src="https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4" alt="222" style="max-width: 100%;"></a></p>
+<hr>
+<hr>
+<hr>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<h2>前后端分离原理解释</h2>
+</div>
 <h3>默认架构下，V2board 同时扮演后端和前端的角色：</h3>
 <p>对于 <code class="notranslate">/ </code>路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件</p>
 <p>对于 <code class="notranslate">/api/*</code> 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色</p>
