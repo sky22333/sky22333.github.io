@@ -104,7 +104,7 @@ mvn clean package
 ```
 ./gradlew build
 ```
-#### 运行
+#### 运行构建出来的`jar`包
 ```
 java -jar target/your-project.jar
 ```
@@ -125,11 +125,11 @@ my-go-project/
 #### 构建
 
 ```
-go build -o app main.go
+go build -o app myapp
 ```
-#### 运行
+#### 运行构建出来的二进制文件
 ```
-./app
+./myapp
 ```
 
 > [!NOTE]
@@ -238,7 +238,7 @@ CMD ["python", "app.py"]
 docker build -t myimgname .
 ```
 
-### 运行
+### 运行镜像
 
 ```
 docker run -d -p 5000:5000 myimgname
