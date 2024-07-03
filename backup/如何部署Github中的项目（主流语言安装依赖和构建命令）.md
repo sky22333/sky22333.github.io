@@ -99,9 +99,9 @@ mvn clean package
 ```
 ./gradlew build
 ```
-#### 运行构建出来的`jar`包
+#### 运行构建出来的`jar`包（一般在项目的`target/you.jar`目录中）
 ```
-java -jar target/your-project.jar
+java -jar target/you.jar
 ```
 
 > [!TIP]
@@ -122,7 +122,7 @@ my-go-project/
 ```
 go build -o app myapp
 ```
-#### 运行构建出来的二进制文件
+#### 运行构建出来的二进制文件（一般在当前目录下）
 ```
 ./myapp
 ```
