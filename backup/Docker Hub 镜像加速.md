@@ -114,51 +114,6 @@ docker-compose --version
 
 </details>
 
-##  Docker常用命令:
-
-| 功能    | 命令 | 说明 |
-|-------------|-------------------|----------------|
-| 编译镜像  | `docker build -t 镜像名 .`      |   先`docker login`登录docker hub        |
-| 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker tag 53321f173e 用户名/镜像名`        |
-| 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
-| 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
-| 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
-| 进入容器内部  | `docker exec -it 容器名 /bin/sh`      |   结尾使用`/bash`也行        |
-| 创建容器网络  | `docker network create my-network`      |   `my-network`为网络名称        |
-| 容器加入网络  | `docker network connect my-network 容器名`      |   替换容器名或ID        |
-| 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
-| 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
-| 启动容器  | `docker start`      | `docker start 容器名或ID`           |
-| 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
-| 删除容器 | `docker rm`       |  `docker rm 容器名或ID`              |
-| 查看镜像 | `docker images`   | `docker images 镜像名或ID`            |
-| 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
-| 清除资源  | `docker system prune`   |  清除所有未使用资源`容器 网络 镜像 缓存`    |
-| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
-| 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
-| 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
-
-
-
----
-
-### vim编辑器
-
-安装：`apt update` `apt install curl wget git zip vim -y`或者`apk add vim`
-
-常用命令：
-
-| 功能    | 命令 | 说明 |
-|-------------|-------------------|----------------|
-| 退出并保存  | `:wq`      |   命令模式中执行         |
-| 只退出不保存  | `:q!`      |    命令模式中执行      |
-| 清空所有内容  | `:%d`      |   命令模式中执行        |
-| 粘贴时保持代码格式  | `:set paste`      |   执行后按`i`进入编辑模式             |
-| 进入编辑模式  | `i`      | 命令模式中执行          |
-| 退出编辑模式  | `esc`      |  编辑模式中执行         |
-| 更改编码适配中文 | `:set encoding=utf-8`       |  执行后按`i`进入编辑模式              |
-
-
 ---
 
 ## 配置加速地址
@@ -173,7 +128,10 @@ sudo mkdir -p /etc/docker
 ```
 sudo tee /etc/docker/daemon.json <<EOF
 {
-    "registry-mirrors": ["https://do.nark.eu.org"]
+    "registry-mirrors": [
+        "https://hub.rat.dev",
+        "https://docker.1panel.live"
+    ]
 }
 EOF
 ```
@@ -185,13 +143,6 @@ sudo systemctl restart docker
 ```
 
 
-#### 如果您当前有正在运行的容器不方便重启Docker服务，则不用设置环境也可以直接使用，用法示例：
-```
-docker pull do.nark.eu.org/library/mysql:5.7
-```
-说明：`library`是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把`library`替换为镜像的用户名。
-
-
 ### 检查加速是否生效
 
 查看docker系统信息 `docker info`，如果从结果中看到了如下内容，说明配置成功。
@@ -199,7 +150,7 @@ docker pull do.nark.eu.org/library/mysql:5.7
 ```console
 Registry Mirrors:
  [...]
- https://do.nark.eu.org
+ https://docker.1panel.live
 ```
 
 对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。
@@ -278,6 +229,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 镜像 | 镜像加速地址 | 说明 | 其它加速
 --- | --- | --- | ---
-[网友自建](https://do.nark.eu.org/) | `https://do.nark.eu.org` | | Docker Hub
-[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 未同步最新源镜像
+[网友提供](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
+[1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | | Docker Hub
+[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 镜像不是最新的
 
