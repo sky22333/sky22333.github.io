@@ -1,12 +1,8 @@
 name: build Gmeek
 
 on:
-  workflow_dispatch:
-  issues:
-    types: [opened, edited]
-  schedule:
-    - cron: "0 16 * * *"
-    
+  workflow_dispatch: # 仅手动触发
+
 jobs:
   build:
     name: Generate blog
