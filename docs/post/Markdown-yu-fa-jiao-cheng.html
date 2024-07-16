@@ -177,7 +177,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-text-md"><pre class="notranslate">粗体由两个<span class="pl-s">*</span>或两个_包裹，斜体由1个<span class="pl-s">*</span>或1个_包裹。
 建议粗体使用2个<span class="pl-s">*</span>包裹，斜体使用1个<span class="pl-s">*</span>包裹，因为<span class="pl-s">*</span>比较常见，而且比_可读性更强。
 删除线由两个<span class="pl-s">~</span>包裹。</pre></div>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>语法</th>
@@ -214,7 +214,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td><em><strong><del>粗体斜体删除线</del></strong></em></td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <h1>下划线</h1>
 <div class="highlight highlight-text-md"><pre class="notranslate">&lt;<span class="pl-ent">u</span>&gt;下划线&lt;/<span class="pl-ent">u</span>&gt;</pre></div>
 <p>下划线</p>
@@ -256,7 +256,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">2</span><span class="pl-s">]</span>: HyperText Markup Language 超文本标记语言
 
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">Le</span><span class="pl-s">]</span>: 开源笔记平台，支持Markdown和笔记直接发为博文</pre></div>
-<p>使用 Markdown<sup><a href="#user-content-fn-1-7ddf776ec138fddbccb37dbe5327750f" id="user-content-fnref-1-7ddf776ec138fddbccb37dbe5327750f" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-7ddf776ec138fddbccb37dbe5327750f" id="user-content-fnref-2-7ddf776ec138fddbccb37dbe5327750f" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-7ddf776ec138fddbccb37dbe5327750f" id="user-content-fnref-le-7ddf776ec138fddbccb37dbe5327750f" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
+<p>使用 Markdown<sup><a href="#user-content-fn-1-95a153b8c40bc9858c10dbab3c60344f" id="user-content-fnref-1-95a153b8c40bc9858c10dbab3c60344f" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-95a153b8c40bc9858c10dbab3c60344f" id="user-content-fnref-2-95a153b8c40bc9858c10dbab3c60344f" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-95a153b8c40bc9858c10dbab3c60344f" id="user-content-fnref-le-95a153b8c40bc9858c10dbab3c60344f" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
 <h1>列表</h1>
 <p>支持使用有序列表和无序列表，有序列表用数字序号+英文句号+空格+列表内容来标记，无序列表由*/+/-+空格+列表内容来标记。</p>
 <h2>有序列表</h2>
@@ -525,7 +525,7 @@ int age = 18;
 <span class="pl-ml">|</span> <span class="pl-s">**</span>01<span class="pl-s">**</span>  <span class="pl-ml">|</span> <span class="pl-s">[</span>博客<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://cnblogs.com</span><span class="pl-s">)</span>  <span class="pl-ml">|</span><span class="pl-corl">https://cnblogs.com</span><span class="pl-ml">|</span>
 <span class="pl-ml">|</span> <span class="pl-s">*</span>02<span class="pl-s">*</span>  <span class="pl-ml">|</span> <span class="pl-s">[</span>百度<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">https://baidu.com</span> <span class="pl-s">"</span><span class="pl-s">百度一下，你就知道</span><span class="pl-s">")</span>  <span class="pl-ml">|</span><span class="pl-corl">https://baidu.com</span><span class="pl-ml">|</span></pre></div>
 <p>普通表格</p>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>序号</th>
@@ -545,9 +545,9 @@ int age = 18;
 <td><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <p>对齐表格</p>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th align="left">左对齐</th>
@@ -567,9 +567,9 @@ int age = 18;
 <td align="right"><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <p>表格使用其他标记</p>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>序号</th>
@@ -589,9 +589,9 @@ int age = 18;
 <td><a href="https://baidu.com" rel="nofollow">https://baidu.com</a></td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <h1>表情符号</h1>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>语法</th>
@@ -620,7 +620,7 @@ int age = 18;
 <td>👏</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <p>更多的表情符号请参考<a href="http://www.webpagefx.com/tools/emoji-cheat-sheet/%E3%80%82" rel="nofollow">http://www.webpagefx.com/tools/emoji-cheat-sheet/。</a></p>
 <h1>高亮上标下标</h1>
 <p><strong>github不支持</strong></p>
@@ -632,7 +632,7 @@ int age = 18;
 <p>当我们想在Markdown文件中插入一些标记符号，但又不想让这些符号被渲染时，可以使用\进行转义，语法如下。</p>
 <div class="highlight highlight-text-md"><pre class="notranslate">\特殊符号</pre></div>
 <p>可被转义的特殊符号如下。</p>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>特殊符号</th>
@@ -689,7 +689,7 @@ int age = 18;
 <td>感叹号</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <h1>目录</h1>
 <p><strong>github不支持</strong></p>
 <p>语法说明如下。<br>
@@ -897,14 +897,14 @@ Note right of C: 没人陪我玩
     <span class="pl-ent">李四</span><span class="pl-k">--&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">很好!</span></pre></div>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-7ddf776ec138fddbccb37dbe5327750f">
-<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-7ddf776ec138fddbccb37dbe5327750f" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-95a153b8c40bc9858c10dbab3c60344f">
+<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-95a153b8c40bc9858c10dbab3c60344f" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-7ddf776ec138fddbccb37dbe5327750f">
-<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-7ddf776ec138fddbccb37dbe5327750f" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-95a153b8c40bc9858c10dbab3c60344f">
+<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-95a153b8c40bc9858c10dbab3c60344f" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-Le-7ddf776ec138fddbccb37dbe5327750f">
-<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-7ddf776ec138fddbccb37dbe5327750f" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-Le-95a153b8c40bc9858c10dbab3c60344f">
+<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-95a153b8c40bc9858c10dbab3c60344f" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section></div>

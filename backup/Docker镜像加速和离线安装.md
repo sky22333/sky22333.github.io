@@ -1,27 +1,33 @@
-## Docker Hub 镜像加速
+
+
+## Docker镜像加速和离线安装
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
 
 
 ### 安装Docker（如果安装困难可以选择手动安装）
-官方安装脚本：
+官方脚本安装：
 
 ```
 curl -fsSL https://get.docker.com | sh
 ```
 
-<details>
-  <summary>手动安装Docker</summary>
+### （可选）离线环境或者国内服务器可手动安装Docker
   
-####  下载 Docker:
 
-[文件下载地址—需要代理——下载后上传到服务器root目录](https://download.docker.com/linux/static/stable/x86_64/)
+#### 1：手动下载Docker软件包
+
+[Docker软件包下载地址](https://download.docker.com/linux/static/stable/x86_64/)
+
+上传到服务器的root目录后执行以下命令
 
 ```
-tar xzvf docker-26.1.3.tgz  // 替换版本号
+tar xzvf docker-27.0.3.tgz   // 替换对应的版本号
+```
+```
 sudo mv docker/* /usr/local/bin/
 ```
-#### 创建 Docker 服务文件
+#### 2：创建 Docker 服务文件
 ```
 sudo vim /etc/systemd/system/docker.service
 ```
@@ -69,13 +75,13 @@ KillMode=process
 WantedBy=multi-user.target
 ```
 
-#### 启动并启用 Docker 服务
+#### 3：启动并启用 Docker 服务
 ```
 sudo systemctl daemon-reload
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
-#### 查看版本
+#### 4：查看版本
 ```
 docker -v
 ```
@@ -83,15 +89,7 @@ docker -v
 
 
 
-</details>
-
-
-<details>
-  <summary>安装Docker Compose</summary>
-  
-  ###  下载 Docker Compose:
-
-
+### 安装Docker Compose
 
 运行以下命令来下载 Docker Compose：
 
@@ -102,17 +100,17 @@ curl -L "https://github.com/docker/compose/releases/latest/download/docker-compo
 ```
 chmod +x /usr/local/bin/docker-compose
 ```
-验证安装:
+查看版本:
 ```
 docker-compose --version
 ```
 
 ---
-（可选）国内环境可[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose`，然后增加执行权限。
+#### （可选）离线环境或者国内服务器可[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose`，然后增加执行权限。
+一般下载`linux-x86_64`的包即可，其他型号则下载对应的
 
 ---
 
-</details>
 
 ---
 
@@ -231,5 +229,4 @@ sudo rm -rf /etc/docker /var/lib/docker
 --- | --- | --- | ---
 [网友提供](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | | Docker Hub
-[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub 镜像不是最新的
-
+[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub （镜像有点旧）
