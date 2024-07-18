@@ -1,5 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 16 Jul 2024 02:52:06 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Xboard面板常见问题</title><link>http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Thu, 18 Jul 2024 07:44:26 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>关于xui面板报错`无法监听127.0.0.1:62789`的问题</title><link>http://blog.52013120.xyz/post/guan-yu-xui-mian-ban-bao-cuo-%60-wu-fa-jian-ting-127.0.0.1-62789%60-de-wen-ti.html</link><description>## 关于xui面板报错`无法监听127.0.0.1:62789`&#13;
+&#13;
+&#13;
+#### 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`&#13;
+&#13;
+#### 表现如图：&#13;
+![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)&#13;
+&#13;
+&#13;
+#### 经过我的排查，是因为服务器没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/guan-yu-xui-mian-ban-bao-cuo-%60-wu-fa-jian-ting-127.0.0.1-62789%60-de-wen-ti.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
 &#13;
 &#13;
 ### 主题目录&#13;
