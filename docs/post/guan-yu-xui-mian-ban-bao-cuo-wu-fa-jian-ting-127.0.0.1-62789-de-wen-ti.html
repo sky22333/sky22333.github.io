@@ -105,6 +105,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h4>❗这里码掉的IP是本机的公网IP，由此发现大量的连接数来自公网入站，将公网流量重定向到本地62789端口，但是为什么是自己的公网IP呢，是因为攻击者扫描你时是通过api到达<code class="notranslate">dokodemo-door</code>，不是直接入站的，这是xui面板的机制，所以这里tcp请求日志是自己的公网IP</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/c7c44eb1-c395-42b9-9f82-445a8244a702"><img src="https://github.com/user-attachments/assets/c7c44eb1-c395-42b9-9f82-445a8244a702" alt="photo_2024-07-18_15-09-16" style="max-width: 100%;"></a></p>
 <hr>
+<h3>然后我将<code class="notranslate">dokodemo-door</code>入站改为<code class="notranslate">127.0.0.1</code>后，立马就恢复正常了。</h3>
 <p>TG春雨，如果分析的不对，欢迎纠正。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
