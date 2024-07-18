@@ -90,20 +90,22 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h4>出现此问题首先使用<code class="notranslate">ip addr show lo</code>命令查看本地环回地址的IP</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e036e28b-768b-41bb-ba90-cba455f0bb79"><img src="https://github.com/user-attachments/assets/e036e28b-768b-41bb-ba90-cba455f0bb79" alt="photo_2024-07-18_15-00-50" style="max-width: 100%;"></a></p>
 <h4>❗这里可以看到本机地址确实没有<code class="notranslate">127.0.0.1</code></h4>
-<h4>解决方案其实很简单，就是把<code class="notranslate">127.0.0.1</code>分配给本地环回地址即可，命令：<code class="notranslate">sudo ip addr add 127.0.0.1/8 dev lo</code></h4>
-<h4>果然这样配置后，就没有这个报错信息了。</h4>
+<h4>解决方案其实很简单，就是把<code class="notranslate">127.0.0.1</code>分配给本地环回地址即可。</h4>
+<h4>命令：<code class="notranslate">sudo ip addr add 127.0.0.1/8 dev lo</code></h4>
+<h4>这样配置后，重启一下xray，就没有这个报错信息了。</h4>
 <hr>
-<h4>后来我看到有些网友说把<code class="notranslate">dokodemo-door</code>入站改为<code class="notranslate">0.0.0.0</code>就行了，其实这个方法是不对的，因为入站部分的<code class="notranslate">dokodemo-door</code>是用于内部转发的，将捕获的流量重定向到指定的地址和端口，方便更多自定义的出站等等，这里的入站改为<code class="notranslate">0.0.0.0</code>的话，不当的流量重定向配置可能导致内部连接循环，增加了不必要的连接数，会导致很多循环连接的尝试，最终占用大量tcp连接数，导致爆内存。</h4>
-<h4>当你把<code class="notranslate">dokodemo-door</code>入站改为<code class="notranslate">0.0.0.0</code>的话，用一段时间后就会出现下面的结果：</h4>
+<h4>后来我看到有些网友说把<code class="notranslate">dokodemo-door</code>入站改为<code class="notranslate">0.0.0.0</code>就行了，其实这个方法是不对的，因为入站部分的<code class="notranslate">dokodemo-door</code>是用于内部转发的，将捕获的流量重定向到指定的xray地址和端口，方便更多自定义的出站等等，这里的入站改为<code class="notranslate">0.0.0.0</code>的话，不当的流量重定向配置可能导致内部连接循环，增加大量连接数，也会导致很多循环连接的尝试</h4>
+<h4>重要的是会有安全问题，任何人都能访问你的api入站，公网环境时时刻刻都有攻击者在扫IP，当别人扫到你的IP后，会有脚本自动化发送各种类型的请求以测试开放端口的响应，也会出现大量tcp连接数，导致爆内存。</h4>
+<h4>当你把<code class="notranslate">dokodemo-door</code>入站改为<code class="notranslate">0.0.0.0</code>的话，用一段时间后可能会出现下面的结果：</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/d3e97c67-2af6-4a39-aaf9-64f5dce8f95c"><img src="https://github.com/user-attachments/assets/d3e97c67-2af6-4a39-aaf9-64f5dce8f95c" alt="photo_2024-07-18_15-09-07" style="max-width: 100%;"></a></p>
 <hr>
-<h4>❗这里左边的资源监控可以看到xui占满了内存，同时xui有大量的tcp连接数</h4>
+<h4>❗这里左边的资源监控可以看到xui占满了内存，同时xui有大量的tcp连接数，并且我查了xui登录日志，没有其他的IP登录，只有大量连接数。</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9727e4f8-c653-47eb-a4ef-c8049b193dbf"><img src="https://github.com/user-attachments/assets/9727e4f8-c653-47eb-a4ef-c8049b193dbf" alt="photo_2024-07-18_15-09-11" style="max-width: 100%;"></a></p>
 <hr>
-<h4>❗这里码掉的IP是本机的公网IP，由此发现大量的连接数来自本机的公网IP的不同端口，将流量重定向到本地62789端口</h4>
+<h4>❗这里码掉的IP是本机的公网IP，由此发现大量的连接数来自公网入站，将公网流量重定向到本地62789端口，但是为什么是自己的公网IP呢，是因为攻击者扫描你时是通过api到达<code class="notranslate">dokodemo-door</code>，不是直接入站的，这是xui面板的机制，所以这里tcp请求日志是自己的公网IP</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/c7c44eb1-c395-42b9-9f82-445a8244a702"><img src="https://github.com/user-attachments/assets/c7c44eb1-c395-42b9-9f82-445a8244a702" alt="photo_2024-07-18_15-09-16" style="max-width: 100%;"></a></p>
 <hr>
-<p>TG春雨</p></div>
+<p>TG春雨，如果分析的不对，欢迎纠正。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
