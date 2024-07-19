@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/115192496?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 响应码大致有五个范围：
+
+- 1xx – 信息类
+- 2xx – 请求成功
+- 3xx – 跳转
+- 4xx – 客户端错误
+- 5xx – 服务器错误
+
+
+## 1xx – 提供某种附加信息
+1xx 状态码表示服务器已收到请求，处理将继续。">
+<meta property="og:title" content="完整的网络状态码列表">
+<meta property="og:description" content="## 响应码大致有五个范围：
+
+- 1xx – 信息类
+- 2xx – 请求成功
+- 3xx – 跳转
+- 4xx – 客户端错误
+- 5xx – 服务器错误
+
+
+## 1xx – 提供某种附加信息
+1xx 状态码表示服务器已收到请求，处理将继续。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.52013120.xyz/post/wan-zheng-de-wang-luo-zhuang-tai-ma-lie-biao.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
+<title>完整的网络状态码列表</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">完整的网络状态码列表</h1>
+<div class="title-right">
+    <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>响应码大致有五个范围：</h2>
+<ul>
+<li>1xx – 信息类</li>
+<li>2xx – 请求成功</li>
+<li>3xx – 跳转</li>
+<li>4xx – 客户端错误</li>
+<li>5xx – 服务器错误</li>
+</ul>
+<h2>1xx – 提供某种附加信息</h2>
+<p>1xx 状态码表示服务器已收到请求，处理将继续。</p>
+<p>100 继续 – 现在一切正常，继续。</p>
+<p>101 切换协议 – 有消息，例如升级请求、正在将事物更改为不同的协议。</p>
+<p>102 处理 – 正在发生但尚未完成。</p>
+<p>103 预提示 – 让你预加载资源，这有助于改进核心网页指标的最大内容绘制指标。</p>
+<h2>2xx – 表明请求成功</h2>
+<p>2xx 状态码表示客户端请求已被接收、理解、和处理。</p>
+<p>200 OK — 一切都好，一切都很成功。</p>
+<p>201 已创建 — 与 200 类似，但衡量成功的标准是创建了新资源。</p>
+<p>202 已接受 — 已接受处理请求，但尚未完成。它甚至可能还没有开始。</p>
+<p>203 非授权信息 — 从服务器发送给你后发生了一些变化。</p>
+<p>204 无内容 — 请求已发送，但正文中没有内容。</p>
+<p>205 重置内容 — 将文档重置为原始状态，例如，清除表单。</p>
+<p>206 部分内容 — 只发送了部分内容。</p>
+<p>207 多状态 — 有更多的响应代码，可能是 2xx、3xx、4xx 或 5xx。</p>
+<p>208 已经报告 — 客户端告诉服务器之前提到的相同资源。</p>
+<p>218 良好 — 非官方，Apache 使用。</p>
+<p>226 IM 使用 — 这允许服务器向客户端发送资源的更改（差异）。</p>
+<blockquote>
+<p>Google 如何处理 2xx<br>
+大多数 2xxs 将允许对页面进行索引。但是，204 将被视为软 404，不会被索引。</p>
+</blockquote>
+<blockquote>
+<p>软 404 也可能是服务器说它成功 (200) 的 URL，但页面的内容说它不存在。代码应该是 404，但服务器表示一切都很好。这可能发生在内容很少或没有内容的页面上。</p>
+</blockquote>
+<blockquote>
+<p>你可以在 Google Search Console 的覆盖率报告中找到这些软 404 错误。</p>
+</blockquote>
+<h2>3xx – 主要与重定向相关，很少有例外</h2>
+<p>3xx 状态码表示客户端在请求成功之前还需要做一些事情。</p>
+<p>300 多项选择 – 有不止一种可能的响应，你可能必须选择其中之一。</p>
+<p>301 永久跳转 – 旧资源现在重定向到新的资源上。</p>
+<p>302 Found – 旧资源现在临时重定向到新资源。</p>
+<p>302 临时跳转 – 旧资源现在临时重定向到新资源。</p>
+<p>303 查看其他 – 这是另一个重定向，表明资源可能在其他地方找到。</p>
+<p>304 无修改 – 表示页面没有被修改。通常用于缓存。</p>
+<p>305 使用代理 – 请求的资源仅在你使用代理时可用。</p>
+<p>306 切换代理 – 你的下一个请求应使用指定的代理。此代码不再使用。</p>
+<p>307 临时重定向 – 具有与 302 重定向相同的功能，但你不能在 POST 和 GET 之间切换。</p>
+<p>307 HSTS 机制 – 强制客户端在发出请求时使用 HTTPS 而不是 HTTP。</p>
+<p>308 永久重定向 – 具有与 301 重定向相同的功能，但你不能在 POST 和 GET 之间切换。</p>
+<blockquote>
+<p>Google 如何处理 3xx<br>
+301 和 302 是规范化信号。它们传递 PageRank并帮助确定哪个 URL 显示在 Google 的索引中。 301 向前合并到新 URL，302 向后合并到旧 URL。如果 302 保留足够长的时间，或者如果它重定向到的 URL 已经存在，则 302 可能会被视为 301 并改为永久跳转。</p>
+</blockquote>
+<blockquote>
+<p>302 也可用于将用户重定向到特定国家/语言的主页，但同样的逻辑不应该用于更深的页面。</p>
+</blockquote>
+<blockquote>
+<p>Google 对 303 的处理方式未定义。根据它们的功能，它们可能被视为 301 或 302。</p>
+</blockquote>
+<blockquote>
+<p>307 有两种不同的情况。在临时重定向的情况下，它将被视为与 302 相同，并尝试向后合并。当网络服务器要求客户端仅使用 HTTPS 连接（HSTS 策略）时，Google 不会看到 307，因为它已缓存在浏览器中。初始访问（没有缓存）将有一个可能是 301 或 302 的服务器响应代码。但是你的浏览器会为你后续的请求显示 307 。</p>
+</blockquote>
+<blockquote>
+<p>308 与 301 被同等对待并向前合并。</p>
+</blockquote>
+<blockquote>
+<p>Google 将在重定向链中跟踪最多 10 个跃点。它通常在一个会话中跟随五个跃点，并在下一个会话中从中断的地方继续。在此之后，信号可能不会合并到重定向的页面。</p>
+</blockquote>
+<h2>4xx – 客户端错误</h2>
+<p>4xx 状态码表示客户端有错误。该错误通常会在响应中显示。</p>
+<p>400 请求错误 – 客户端请求有问题。它可能格式不正确、无效或太大、或现在服务器无法理解请求。</p>
+<p>401 未授权 – 客户端在需要时没有识别或验证自己。</p>
+<p>402 支付请求 – 这没有官方用途，它是为未来的某种数字支付系统保留的。一些商家出于自身原因使用此功能，例如 Shopify 在商店未支付费用时使用此功能，而 Stripe 将其用于潜在的欺诈性付款。</p>
+<p>403 阻止访问 – 客户端已知但没有访问权限。</p>
+<p>404 未找到 – 未找到请求的资源。</p>
+<p>405 方法不被允许 – 不支持使用的请求方法，例如，表单需要使用 POST 但使用 GET 代替。</p>
+<p>406 不被接受 – 客户端请求的接受头不能被服务器完成。</p>
+<p>407 代理身份验证 – 需要通过代理进行身份验证。</p>
+<p>408 请求超时 – 服务器已超时、或决定关闭连接。</p>
+<p>409 冲突 – 请求与服务器状态冲突。</p>
+<p>410 丢失 – 类似于未找到请求的 404，但这也表示它不会再次可用。</p>
+<p>411 字段长度请求 – 请求没有包含内容长度字段。</p>
+<p>412 前提条件失败 – 客户端对服务器的请求不满足设置条件。</p>
+<p>413 超出限制 – 请求大小超出服务器的限制。</p>
+<p>414 URI 过长 – 请求的 URI 超出服务器限制。</p>
+<p>415 不支持该格式 – 服务器不支持请求的格式。</p>
+<p>416 超出范围 – 客户端请求服务器无法提供的文件部分。例如，它请求文件实际结束位置之外的文件部分。</p>
+<p>417 预期失败 – 服务器无法满足 “Expect” 请求标头中指示的预期。</p>
+<p>418 I’m a Teapot – 当你尝试在茶壶中冲泡咖啡时发生。这始于 1998 年的愚人节玩笑，但实际上已标准化。如今，随着一切都变成智能设备，这可能会被使用。</p>
+<p>419 页面过期 – 非官方，Laravel 框架使用。</p>
+<p>420 方法失败 – 非官方，Spring Framework 使用。</p>
+<p>420 Enhance Your Calm – 非官方， Twitter 使用。</p>
+<p>421 被误导的请求 – 请求发送到的服务器无法响应。</p>
+<p>422 实体无法处理 – 请求中存在语义错误。</p>
+<p>423  锁定 – 请求的资源被锁定。</p>
+<p>424 依赖失败 – 发生此故障是因为它需要另一个同样失败的请求。</p>
+<p>425 过早请求 – 服务器此时不愿意处理请求，因为请求很可能稍后会再次出现。</p>
+<p>426 需要升级 – 服务器拒绝请求，直到客户端使用更新的协议。 “升级” 标题中会指出需要升级的内容。</p>
+<p>428 需要先决条件 – 服务器要求请求是有条件的。</p>
+<p>429 请求过多 – 这是一种保护服务器的速率限制形式，因为客户端向服务器发送的请求太快了。</p>
+<p>430 请求标头字段太大 – 非官方，Shopify 使用。</p>
+<p>431 请求标头字段太大 – 服务器不会处理请求，因为标头字段太大。</p>
+<p>440 登录超时 – 非官方，IIS 使用。</p>
+<p>444 无响应 – 非官方，nginx 使用。</p>
+<p>449 重试 – 非官方，IIS 使用。</p>
+<p>450 被 Windows 家长控制阻止 – 非官方，Microsoft 使用。</p>
+<p>451 因法律原因不可用 – 由于某种法律原因而被阻止。由于隐私或许可，你有时会在国家级屏蔽中看到它，例如，屏蔽新闻或视频。你可能会在 DMCA 删除时看到它。代码本身是对小说 Fahrenheit 451 (*注) 的引用。</p>
+<p>451 重定向 – 非官方，IIS 使用。</p>
+<p>460 – 非官方，AWS Elastic Load Balancer 使用。</p>
+<p>463 – 非官方，AWS Elastic Load Balancer 使用。</p>
+<p>494 请求标头太大 – 非官方，nginx 使用。</p>
+<p>495 SSL 证书错误 – 非官方，nginx 使用。</p>
+<p>496 需要  SSL 证书 – 非官方，nginx 使用。</p>
+<p>497 HTTP 请求发送到 HTTPS 端口 – 非官方，nginx 使用。</p>
+<p>498 非法 Token – 非官方，Esri 使用。</p>
+<p>499 客户端关闭请求 – 非官方，nginx 使用。</p>
+<p>499 需要 Token – 非官方，Esri 使用。</p>
+<blockquote>
+<p>Google 如何处理 4xx<br>
+4xx 将导致页面从索引中删除。</p>
+</blockquote>
+<blockquote>
+<p>404 和 410 有类似的处理。两者都从索引中删除页面，但 410 稍快一些。在实际应用中，它们大致相同。</p>
+</blockquote>
+<blockquote>
+<p>针对 421 ，Google 会选择不使用 HTTP/2 进行抓取。</p>
+</blockquote>
+<blockquote>
+<p>429 有点特殊，因为它们通常被视为服务器错误，会导致 Google 降低抓取速度。但最终，谷歌也会从索引中删除这些页面。</p>
+</blockquote>
+<blockquote>
+<p>你可以在 Ahrefs Site Audit（网站诊断）中找到网站的 4xx 错误。</p>
+</blockquote>
+<blockquote>
+<p>你可能要检查的另一件事是这些 404 页面是否有指向它们的链接。如果有链接指向这些 404 页面，那么你可能会因此丢失获取权重的机会。你只需要将这些页面 301 重定向到相关页面就可以。以下是如何找到这些机会：</p>
+</blockquote>
+<blockquote>
+<p>将你的域名复制到 Site Explorer（网站分析）（可以在 AWT 中免费使用)<br>
+进入 Best by links（按反链数量排序）报告<br>
+HTTP 响应过滤器中选择 “404 not found”<br>
+我通常按 Referring domains（引用域）对它进行排序。</p>
+</blockquote>
+<h2>5xx — 服务器端的错误</h2>
+<p>5xx 状态码表示服务器有错误，它知道它不能执行请求。响应将包含错误原因。</p>
+<p>500 内部服务器错误 – 服务器遇到某种问题、并且没有更好或更具体的错误代码。</p>
+<p>501 无法实现 – 服务器不支持请求方法。</p>
+<p>502 网关错误 – 服务器处于请求中间状态。但是它从它路由到的服务器收到了错误的响应。</p>
+<p>503 暂停服务 – 服务器因维护而过载或停机，现在无法处理请求。它可能很快就会恢复。</p>
+<p>504 网关超时 – 服务器处于请求中间状态。但是没有收到来自它路由到的服务器的及时响应。</p>
+<p>505 HTTP 版本不支持 – 服务器不支持请求中的 HTTP 协议版本。</p>
+<p>506 变体协商 – 当服务器有多个变体时，允许客户端获得资源的最佳变体。</p>
+<p>507 存储空间不足 – 服务器无法存储完成请求所需存储的内容。</p>
+<p>508 检测到环路 – 服务器在尝试处理请求时发现无限循环。</p>
+<p>509 超出带宽限制 – 非官方，Apache 和 cPanel 使用。</p>
+<p>510 未扩展 – 在服务器完成请求之前，需要对请求进行更多扩展。</p>
+<p>511 需要网络身份验证 – 客户端需要在服务器允许访问之前，进行身份验证。</p>
+<p>520 Web 服务器返回未知错误 – 非官方，Cloudflare 使用。</p>
+<p>521 Web 服务器已关闭 – 非官方，Cloudflare 使用。</p>
+<p>522 链接超时 – 非官方，Cloudflare 使用。</p>
+<p>523 来源失效 – 非官方，Cloudflare 使用。</p>
+<p>524 发生超时 – 非官方，Cloudflare 使用。</p>
+<p>525 SSL链接失败 – 非官方，Cloudflare 使用。</p>
+<p>526 SSL 证书无效 – 非官方，Cloudflare 使用。</p>
+<p>527 Railgun 错误 – 非官方，Cloudflare 使用。</p>
+<p>529 网站超载 – 非官方，Qualys 使用。</p>
+<p>530 – 非官方，Cloudflare 使用。</p>
+<p>530 站点被冻结 – 非官方，Pantheon 使用。</p>
+<p>561 未授权 – 非官方，AWS Elastic Load Balancer 使用。</p>
+<p>598（非正式）网络读取超时错误 – 非官方，某些 HTTP 代理使用。</p>
+<blockquote>
+<p>Google 如何处理 5xx<br>
+5xx 错误会减慢爬行速度。最终，这些页面将从 Google 的索引中删除。</p>
+</blockquote></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer">博客 © <span id="year"></span><a href="http://blog.52013120.xyz"> 繁星点点 </a>
+<p>
+<span id="runday"></span>
+</p>
+
+<script>
+if("07/01/2024"!=""){
+    var now=new Date();
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+</script>
+
+
+</html>
