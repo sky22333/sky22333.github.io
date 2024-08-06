@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 06 Aug 2024 15:12:11 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>免费的临时接码网站合集</title><link>http://blog.52013120.xyz/post/mian-fei-de-lin-shi-jie-ma-wang-zhan-he-ji.html</link><description>https://zh.mytrashmobile.com&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 06 Aug 2024 15:18:24 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>免费的临时接码网站合集</title><link>http://blog.52013120.xyz/post/mian-fei-de-lin-shi-jie-ma-wang-zhan-he-ji.html</link><description>https://zh.mytrashmobile.com&#13;
 &#13;
 https://ch.freephonenum.com&#13;
 &#13;
@@ -497,7 +497,6 @@ sudo snap install v2raya&#13;
 sudo vim /etc/systemd/system/snap.v2raya.v2raya.service&#13;
 ```&#13;
 `ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Github-jia-su.html</guid><pubDate>Tue, 02 Jul 2024 07:44:08 +0000</pubDate></item><item><title>Docker镜像加速和离线安装</title><link>http://blog.52013120.xyz/post/Docker-jing-xiang-jia-su-he-li-xian-an-zhuang.html</link><description>&#13;
-&#13;
 ## Docker镜像加速和离线安装&#13;
 &#13;
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Docker-jing-xiang-jia-su-he-li-xian-an-zhuang.html</guid><pubDate>Tue, 02 Jul 2024 07:42:16 +0000</pubDate></item><item><title>Liunx配置wrap</title><link>http://blog.52013120.xyz/post/Liunx-pei-zhi-wrap.html</link><description>[其他系统安装](https://pkg.cloudflareclient.com/)&#13;

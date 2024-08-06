@@ -1,5 +1,4 @@
 
-
 ## Docker镜像加速和离线安装
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
@@ -11,8 +10,12 @@
 ```
 curl -fsSL https://get.docker.com | sh
 ```
+国内机器安装脚本：
 
-### （可选）离线环境或者国内服务器可手动安装Docker
+```
+bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
+```
+### （可选）离线环境或者国内机器手动安装Docker
   
 
 #### 1：手动下载Docker软件包
