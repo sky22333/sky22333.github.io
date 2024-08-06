@@ -11,131 +11,85 @@
     </script>
 <meta name="description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
 
-debian系统安装：
+
+## Docker版基于warp的sk5代理
+
+[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
+
+#### 1：普通部署 
 
 ```
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-```
-```
-echo 'deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-```
-```
-sudo apt-get update && sudo apt-get install cloudflare-warp -y
-```
-
-注册客户端：
-
-```
-warp-cli registration new
+docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
 ```
 
-开启代理模式：
+此时你的9091端口的所有流量将通过WARP出站
 
+查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://ifconfig.co'`
+
+
+#### 2：WARP Plus 账户
 ```
-warp-cli mode proxy
+docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
 ```
-
-启动wrap：
-
-执行此命令前必须`开启代理模式`否则机器可能失联
-```
-warp-cli connect
-```
-
-
-wrap将代理本地的`40000`端口
-
-更改代理端口：`warp-cli proxy port 40000`
-
-配置文件：`cd /var/lib/cloudflare-warp`
-
-查看代理IP：
-```
-curl -x 'socks5://127.0.0.1:40000' ipinfo.io
-```
-
-
-
-开启全局代理：
-```
-export ALL_PROXY=socks5://127.0.0.1:40000
-```
-关闭全局代理：
-```
-unset ALL_PROXY
-```
-
-
-
-关闭wrap：
-```
-warp-cli disconnect
-```
-。">
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
 <meta property="og:title" content="Liunx配置wrap">
 <meta property="og:description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
 
-debian系统安装：
+
+## Docker版基于warp的sk5代理
+
+[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
+
+#### 1：普通部署 
 
 ```
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-```
-```
-echo 'deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-```
-```
-sudo apt-get update && sudo apt-get install cloudflare-warp -y
-```
-
-注册客户端：
-
-```
-warp-cli registration new
+docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
 ```
 
-开启代理模式：
+此时你的9091端口的所有流量将通过WARP出站
 
+查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://ifconfig.co'`
+
+
+#### 2：WARP Plus 账户
 ```
-warp-cli mode proxy
+docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
 ```
-
-启动wrap：
-
-执行此命令前必须`开启代理模式`否则机器可能失联
-```
-warp-cli connect
-```
-
-
-wrap将代理本地的`40000`端口
-
-更改代理端口：`warp-cli proxy port 40000`
-
-配置文件：`cd /var/lib/cloudflare-warp`
-
-查看代理IP：
-```
-curl -x 'socks5://127.0.0.1:40000' ipinfo.io
-```
-
-
-
-开启全局代理：
-```
-export ALL_PROXY=socks5://127.0.0.1:40000
-```
-关闭全局代理：
-```
-unset ALL_PROXY
-```
-
-
-
-关闭wrap：
-```
-warp-cli disconnect
-```
-。">
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/Liunx-pei-zhi-wrap.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -189,7 +143,62 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><p><a href="https://pkg.cloudflareclient.com/" rel="nofollow">其他系统安装</a></p>
-<p>debian系统安装：</p>
+<h2>Docker版基于warp的sk5代理</h2>
+<p><a href="https://hub.docker.com/r/monius/docker-warp-socks" rel="nofollow">项目地址</a></p>
+<h4>1：普通部署</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+</code></pre>
+<p>此时你的9091端口的所有流量将通过WARP出站</p>
+<p>查看你的warp的IP：<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
+<h4>2：WARP Plus 账户</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+</code></pre>
+<p>运行<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"</code> 看到<code class="notranslate">plus</code>则表示WARP Plus密钥应用成功。</p>
+<h4>3：sk5增加密码</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks_passwd \
+    -e SOCK_USER=用户名 \
+    -e SOCK_PWD=密码 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 9091:9091 \
+    monius/docker-warp-socks
+</code></pre>
+<p>验证是否成功<code class="notranslate">curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
+<h4>4：自定义wireguard配置</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -p 127.0.0.1:9091:9091 \
+    -v /lib/modules:/lib/modules \
+    -v ~/wireguard/:/opt/wireguard/:ro \
+    monius/docker-warp-socks
+</code></pre>
+<p>创建<code class="notranslate">wireguard</code>目录，并创建<code class="notranslate">danted.conf</code>文件填入你的<code class="notranslate">wireguard</code>配置</p>
+<h2>debian系统安装：</h2>
 <pre class="notranslate"><code class="notranslate">curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 </code></pre>
 <pre class="notranslate"><code class="notranslate">echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
