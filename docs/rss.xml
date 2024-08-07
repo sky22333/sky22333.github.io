@@ -1,5 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Tue, 06 Aug 2024 15:27:03 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>国内环境安装xui面板</title><link>http://blog.52013120.xyz/post/guo-nei-huan-jing-an-zhuang-xui-mian-ban.html</link><description>## 支持的系统&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Wed, 07 Aug 2024 05:47:35 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>无法注册TG账号和国内号码接收不到验证码详细解决方案</title><link>http://blog.52013120.xyz/post/wu-fa-zhu-ce-TG-zhang-hao-he-guo-nei-hao-ma-jie-shou-bu-dao-yan-zheng-ma-xiang-xi-jie-jue-fang-an.html</link><description>## 1：国内号码接不到验证码&#13;
+首先确保你的科学上网环境是正常的，并且你的梯子节点IP不会乱跳，是固定的IP&#13;
+&#13;
+**第一种情况是你的号码没有开通国际短信漫游**&#13;
+&#13;
+按照以下步骤开通国际短信漫游：&#13;
+&#13;
+- **移动** 短信发送 `11111` 到 `106929349125637402`&#13;
+&#13;
+- **电信** 短信发送 `11111` 到 `1068299708`&#13;
+&#13;
+- **联通** 短信发送 `11111` 到 `106829970757`&#13;
+&#13;
+&#13;
+**第二种情况是运营商直接屏蔽了TG的短信**&#13;
+&#13;
+解决方案就是下载官方`Telegram X`客户端进行注册，这个也是TG官方的测试客户端，可放心使用。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/wu-fa-zhu-ce-TG-zhang-hao-he-guo-nei-hao-ma-jie-shou-bu-dao-yan-zheng-ma-xiang-xi-jie-jue-fang-an.html</guid><pubDate>Wed, 07 Aug 2024 05:46:19 +0000</pubDate></item><item><title>国内环境安装xui面板</title><link>http://blog.52013120.xyz/post/guo-nei-huan-jing-an-zhuang-xui-mian-ban.html</link><description>## 支持的系统&#13;
 &#13;
 &gt; amd64架构&#13;
 &#13;
