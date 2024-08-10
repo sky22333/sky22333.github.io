@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/115192496?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="**收集整理的最新的常用VPS脚本工具，方便要使用的时候可以快速的找到，包含VPS测试脚本（一键测评，综合测试，IP质量/解锁，带宽测试，路由追踪，延迟/丢包测试），运维工具包等，DD重装系统脚本，科学工具，其他工具等等，会定期添加修改一些更新或者失效的脚本。">
+<meta property="og:title" content="收集整理的最新的常用VPS脚本工具">
+<meta property="og:description" content="**收集整理的最新的常用VPS脚本工具，方便要使用的时候可以快速的找到，包含VPS测试脚本（一键测评，综合测试，IP质量/解锁，带宽测试，路由追踪，延迟/丢包测试），运维工具包等，DD重装系统脚本，科学工具，其他工具等等，会定期添加修改一些更新或者失效的脚本。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.52013120.xyz/post/shou-ji-zheng-li-de-zui-xin-de-chang-yong-VPS-jiao-ben-gong-ju.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
+<title>收集整理的最新的常用VPS脚本工具</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">收集整理的最新的常用VPS脚本工具</h1>
+<div class="title-right">
+    <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><strong>收集整理的最新的常用VPS脚本工具，方便要使用的时候可以快速的找到，包含VPS测试脚本（一键测评，综合测试，IP质量/解锁，带宽测试，路由追踪，延迟/丢包测试），运维工具包等，DD重装系统脚本，科学工具，其他工具等等，会定期添加修改一些更新或者失效的脚本。</strong></p>
+<p>⏺️一键修改服务器root密码并开启root登录</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://raw.githubusercontent.com/admin8800/shell/main/root.sh)
+</code></pre>
+<p>⏺️官方脚本一键安装Docker</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
+</code></pre>
+<p>⏺️官方一键安装Docker-compose</p>
+<pre class="notranslate"><code class="notranslate">curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+</code></pre>
+<pre class="notranslate"><code class="notranslate">chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>Linux一键测评脚本<br>
+⏺️Nlbench.sh 正式版本：</p>
+<p>一键自动对主机进行Yabs、融合怪、IP质量、流媒体解锁，三网测速，iperf3，回程路由等测评，测评结束后将会保存结果为MarkDown文件。 Github项目地址：<a href="https://github.com/everett7623/nodeloc_vps_test">https://github.com/everett7623/nodeloc_vps_test</a></p>
+<pre class="notranslate"><code class="notranslate">wget -O Nlbench.sh https://raw.githubusercontent.com/everett7623/nodeloc_vps_test/main/Nlbench.sh &amp;&amp; chmod +x Nlbench.sh &amp;&amp; ./Nlbench.sh
+</code></pre>
+<p>VPS 综合测试<br>
+⏺️融合怪：</p>
+<pre class="notranslate"><code class="notranslate">curl -L https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh -o ecs.sh &amp;&amp; chmod +x ecs.sh &amp;&amp; bash ecs.sh
+</code></pre>
+<p>或</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- bash.spiritlhl.net/ecs)
+</code></pre>
+<p>⏺️融合怪GO 版本（Linux/FreeBSD/MacOS使用）：<br>
+项目地址：<a href="https://github.com/oneclickvirt/ecs">GitHub - oneclickvirt/ecs: VPS融合怪服务器测评脚本-GO重构版本</a></p>
+<pre class="notranslate"><code class="notranslate">curl -L https://raw.githubusercontent.com/oneclickvirt/ecs/master/goecs.sh -o goecs.sh &amp;&amp; chmod +x goecs.sh &amp;&amp; bash goecs.sh env &amp;&amp; bash goecs.sh install &amp;&amp; goecs
+</code></pre>
+<p>或</p>
+<pre class="notranslate"><code class="notranslate">curl -L https://cdn.spiritlhl.net/https://raw.githubusercontent.com/oneclickvirt/ecs/master/goecs.sh -o goecs.sh &amp;&amp; chmod +x goecs.sh &amp;&amp; bash goecs.sh env &amp;&amp; bash goecs.sh install &amp;&amp; goecs
+</code></pre>
+<p>⏺️LemonBench：<br>
+检查vps基本信息，网络，流媒体解锁，路由等。</p>
+<pre class="notranslate"><code class="notranslate">wget -qO- https://raw.githubusercontent.com/LemonBench/LemonBench/main/LemonBench.sh | bash -s -- --fast
+</code></pre>
+<p>⏺️UnixBench.sh： 秋水逸冰大佬的作品，Unixbench的主要测试项目有：系统调用、读写、进程、图形化测试、2D、3D、管道、运算、C库等系统基准性能提供测试数据。</p>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh &amp;&amp; chmod +x unixbench.sh &amp;&amp; ./unixbench.sh
+</code></pre>
+<p>⏺️Bench 网络带宽及硬盘读写速率： 国外部分+国内部分节点）</p>
+<pre class="notranslate"><code class="notranslate">wget -qO- bench.sh | bash
+</code></pre>
+<p>⏺️SuperBench.sh 网络带宽及硬盘读写速率： SuperBench脚本是老鬼（Oldking）大神在基于秋水逸冰（teddysun）脚本bench.sh的基础上，加入了独立服务器通电时间检测、服务器虚拟化架构、TCP拥塞控制等功能。</p>
+<pre class="notranslate"><code class="notranslate">wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
+</code></pre>
+<p>⏺️YABS 性能测试脚本： 脚本比较全面，可用来测试vps多项性能，包括配置信息、磁盘IO测试、网络带宽测试和Geekbench测试。</p>
+<pre class="notranslate"><code class="notranslate">curl -sL yabs.sh | bash
+</code></pre>
+<p>⏺️Geekbench 5 专测脚本：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sL gb5.top)
+</code></pre>
+<p>⏺️IP 质量检测：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls IP.Check.Place)
+</code></pre>
+<p>或</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- bash.spiritlhl.net/ecs-ipcheck)
+</code></pre>
+<p>⏺️流媒体解锁：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s media.ispvps.com) 
+</code></pre>
+<p>或</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media)
+</code></pre>
+<p>或</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls unlock.icmp.ing/scripts/test.sh)
+</code></pre>
+<p>⏺️OpenAI 解锁检测：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://github.com/ludashi2020/OpenAI-Checker/raw/main/openai.sh)
+</code></pre>
+<p>带宽测试<br>
+⏺️Hyperspeed 三网测速：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- https://bench.im/hyperspeed)
+</code></pre>
+<p>⏺️综合测速脚本 nws.sh：</p>
+<pre class="notranslate"><code class="notranslate">curl -sL nws.sh | bash
+</code></pre>
+<p>⏺️多功能 自更新 测速脚本： 三网，含多线程，单线程等测速</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sL bash.icu/speedtest)
+</code></pre>
+<p>⏺️DD 磁盘测试 生成5G 文件，顺序</p>
+<pre class="notranslate"><code class="notranslate">dd if=/dev/zero of=5gb bs=1M count=5120
+</code></pre>
+<p>生成 5G 文件，随机</p>
+<pre class="notranslate"><code class="notranslate">dd if=/dev/urandom of=5gb bs=1M count=5120
+</code></pre>
+<p>⏺️HTTP 单线程下载测试</p>
+<p>服务端<br>
+启动简易 http 服务</p>
+<pre class="notranslate"><code class="notranslate">python3 -m http.server
+</code></pre>
+<p>客户端<br>
+直接用浏览器下载或其他工具下载<br>
+建议用edge等浏览器<br>
+也可以试试IDM下载<br>
+替换下方yourip为你的ip地址</p>
+<pre class="notranslate"><code class="notranslate">wget http://yourip:8000/5gb
+</code></pre>
+<p>删除测试文件<br>
+服务端删除文件：</p>
+<pre class="notranslate"><code class="notranslate">rm 5gb
+</code></pre>
+<p>路由追踪<br>
+⏺️ AutoTrace 回程路由 ：</p>
+<pre class="notranslate"><code class="notranslate">wget -N --no-check-certificate https://raw.githubusercontent.com/Chennhaoo/Shell_Bash/master/AutoTrace.sh &amp;&amp; chmod +x AutoTrace.sh &amp;&amp; bash AutoTrace.sh
+</code></pre>
+<p>⏺️ BestTrace 回程路由：<br>
+进入后一键测试，北上广三网</p>
+<pre class="notranslate"><code class="notranslate">wget -qO- git.io/besttrace | bash 
+</code></pre>
+<p>⏺️ BackTrace 回程路由：</p>
+<pre class="notranslate"><code class="notranslate">curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
+</code></pre>
+<p>⏺️ NextTrace 回程路由：</p>
+<pre class="notranslate"><code class="notranslate">curl nxtrace.org/nt |bash
+</code></pre>
+<p>⏺️ OpenTrace 回程路由：<br>
+OpenTrace 是 NextTrace 的跨平台 GUI 界面，带来您熟悉但更强大的用户体验。<br>
+<a href="https://github.com/Archeb/opentrace">https://github.com/Archeb/opentrace</a></p>
+<p>⏺️ Pingsx MTR 回程路由：<br>
+<a href="https://ping.sx/mtr" rel="nofollow">https://ping.sx/mtr</a></p>
+<p>⏺️ 去程路由：<br>
+<a href="https://www.itdog.cn/traceroute/" rel="nofollow">https://www.itdog.cn/traceroute/</a><br>
+<a href="https://tools.ipip.net/traceroute.php" rel="nofollow">https://tools.ipip.net/traceroute.php</a></p>
+<p>延迟/丢包测试<br>
+⏺️ Google/Facebook/X/Youtube/Netflix/Chatgpt/Github延迟</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sL https://nodebench.mereith.com/scripts/curltime.sh)
+</code></pre>
+<p>⏺️ Ping.pe<br>
+全球延迟，丢包<br>
+<a href="https://ping.pe/" rel="nofollow">https://ping.pe</a></p>
+<p>⏺️ Pingsx Ping<br>
+在线Ping，Port，DNS，MTR等测试<br>
+<a href="https://ping.sx/" rel="nofollow">https://ping.sx</a></p>
+<p>⏺️ Itdog Ping<br>
+<a href="https://www.itdog.cn/ping/" rel="nofollow">https://www.itdog.cn/ping/</a></p>
+<p>运维工具<br>
+⏺️vps_scripts：</p>
+<pre class="notranslate"><code class="notranslate">wget -O vps_scripts.sh https://raw.githubusercontent.com/everett7623/vps_scripts/main/vps_scripts.sh &amp;&amp; chmod +x vps_scripts.sh &amp;&amp; ./vps_scripts.sh
+</code></pre>
+<p>⏺️科技 lion 一键脚本工具：</p>
+<pre class="notranslate"><code class="notranslate">curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh &amp;&amp; chmod +x kejilion.sh &amp;&amp; ./kejilion.sh
+</code></pre>
+<p>⏺️VPS 一键脚本工具箱：</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://raw.githubusercontent.com/eooce/ssh_tool/main/ssh_tool.sh -o ssh_tool.sh &amp;&amp; chmod +x ssh_tool.sh &amp;&amp; ./ssh_tool.sh
+</code></pre>
+<p>⏺️BlueSkyXN 综合工具箱：</p>
+<pre class="notranslate"><code class="notranslate">wget -O box.sh https://raw.githubusercontent.com/BlueSkyXN/SKY-BOX/main/box.sh &amp;&amp; chmod +x box.sh &amp;&amp; clear &amp;&amp; ./box.sh
+</code></pre>
+<p>⏺️jcnf 常用脚本工具包：</p>
+<pre class="notranslate"><code class="notranslate">wget -O jcnfbox.sh https://raw.githubusercontent.com/Netflixxp/jcnf-box/main/jcnfbox.sh &amp;&amp; chmod +x jcnfbox.sh &amp;&amp; clear &amp;&amp; ./jcnfbox.sh
+</code></pre>
+<p>⏺️Sm1rkBoy’s 一键脚本：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/Sm1rkBoy/monitor_config/main/install.sh)
+</code></pre>
+<p>⏺️轻量VPS测试集合：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls resource.yserver.ink/all.sh) --custom
+</code></pre>
+<p>⏺️ one-click-installation-script 一键修复与安装脚本(各种脚本), 去GitHub寻找需要的 <a href="https://github.com/spiritLHLS/one-click-installation-script">https://github.com/spiritLHLS/one-click-installation-script</a></p>
+<p>⏺️VPS ToolBox：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- https://sh.vps.dance/toolbox.sh)
+</code></pre>
+<p>⏺️Nekoneko - Linux网络优化：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- http://sh.nekoneko.cloud/tools.sh)
+</code></pre>
+<p>DD重装脚本<br>
+系统默认为debian12</p>
+<p>⏺️leitbogioro大佬的脚本（推荐） ：</p>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' &amp;&amp; chmod a+x InstallNET.sh &amp;&amp; bash InstallNET.sh -debian 12 -pwd '密码'
+</code></pre>
+<p>⏺️beta.gs大佬的脚本 ：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh') -d 12 -v 64 -p 密码 -port 端口 -a -firmware
+</code></pre>
+<p>⏺️beta.gs：</p>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate -O NewReinstall.sh https://raw.githubusercontent.com/fcurrk/reinstall/master/NewReinstall.sh &amp;&amp; chmod a+x NewReinstall.sh &amp;&amp; bash NewReinstall.sh
+</code></pre>
+<p>⏺️Nekoneko - DD一键脚本：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- http://sh.nekoneko.cloud/DD/AutoReinstall.sh)
+</code></pre>
+<p>科学工具<br>
+WARP<br>
+⏺️WARP 集合（5warp版本集合）： Cloudflare warp脚本 添加IPv4/IPv6网络，</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitlab.com/fscarmen/warp_unlock/-/raw/main/unlock.sh)
+</code></pre>
+<p>日常维护 warp</p>
+<p>⏺️FSCARMEN Warp： Cloudflare warp脚本 添加IPv4/IPv6网络</p>
+<pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh
+</code></pre>
+<p>日常维护 warp</p>
+<p>⏺️FSCARMEN WARP-GO： Cloudflare warp脚本 添加IPv4/IPv6网络</p>
+<pre class="notranslate"><code class="notranslate">wget -N https://raw.githubusercontent.com/fscarmen/warp/main/warp-go.sh &amp;&amp; bash warp-go.sh
+</code></pre>
+<p>日常维护 warp-go</p>
+<p>⏺️P3TERX Warp： Cloudflare warp脚本 添加IPv4/IPv6网络</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -fsSL git.io/warp.sh) menu
+</code></pre>
+<p>日常维护 bash warp.sh</p>
+<p>⏺️勇哥 Warp： Cloudflare warp脚本 添加IPv4/IPv6网络</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh)
+</code></pre>
+<p>BBR<br>
+⏺️BBR 脚本：</p>
+<pre class="notranslate"><code class="notranslate">echo "net.core.default_qdisc=fq" &gt;&gt; /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" &gt;&gt; /etc/sysctl.conf
+sysctl -p
+sysctl net.ipv4.tcp_available_congestion_control
+lsmod | grep bbr
+</code></pre>
+<p>⏺️Linux-NetSpeed（锐速/bbrplus/bbr 魔改版）：</p>
+<pre class="notranslate"><code class="notranslate">wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh
+</code></pre>
+<p>⏺️ylx 大佬的锐速/BBRPLUS/BBR2：</p>
+<pre class="notranslate"><code class="notranslate">wget -O tcpx.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh" &amp;&amp; chmod +x tcpx.sh &amp;&amp; ./tcpx.sh
+</code></pre>
+<p>⏺️Nekoneko - BBR一键安装：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- http://sh.nekoneko.cloud/bbr/bbr.sh)
+</code></pre>
+<p>常用科学<br>
+⏺️Sing-box 全家桶：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://raw.githubusercontent.com/fscarmen/sing-box/main/sing-box.sh)
+</code></pre>
+<p>⏺️233大佬的经典 Sing-box：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
+</code></pre>
+<p>⏺️233大佬的经典 Xray：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- -o- https://github.com/233boy/Xray/raw/main/install.sh)
+</code></pre>
+<p>⏺️一键搭建hy2：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://github.com/admin8800/shell/raw/main/hy2/hysteria.sh)
+</code></pre>
+<p>⏺️一键搭建TG代理：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://raw.githubusercontent.com/admin8800/mtprotoproxy/master/mtproxy.sh)
+</code></pre>
+<p>⏺️Mack-a 8合1：</p>
+<pre class="notranslate"><code class="notranslate">wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" &amp;&amp; chmod 700 /root/install.sh &amp;&amp; /root/install.sh
+</code></pre>
+<p>⏺️F佬的 X-UI（非开源已停更）：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+</code></pre>
+<p>⏺️原版初代 X-UI（已停更）：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+</code></pre>
+<p>⏺️适合国内环境安装的 X-UI：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh | sed 's/\r$//')
+</code></pre>
+<p>⏺️3X-UI：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+</code></pre>
+<p>⏺️勇哥 x-ui（非开源）：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh)
+</code></pre>
+<p>中转<br>
+⏺️Realm 转发： 脚本添加在中转鸡上</p>
+<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/Jaydooooooo/Port-forwarding/main/RealmOneKey.sh &amp;&amp; chmod +x RealmOneKey.sh &amp;&amp; ./RealmOneKey.sh
+</code></pre>
+<p>⏺️Nekoneko - 一键Brook转发：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- http://sh.nekoneko.cloud/brook-pf/brook-pf.sh)
+</code></pre>
+<p>IPV6<br>
+⏺️IPV6小鸡科学三步曲</p>
+<p>dns64</p>
+<pre class="notranslate"><code class="notranslate">cp /etc/resolv.conf{,.bak}; echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a01:4f9:c010:3f02::1\nnameserver 2a01:4f8:c2c:123f::1\nnameserver 2a00:1098:2c::1" &gt; /etc/resolv.conf
+</code></pre>
+<p>warp IPv4</p>
+<pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh 4
+</code></pre>
+<p>argox (xray + argo) 或者 sba( sing-box + argo)</p>
+<p>argox (xray + argo)</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://raw.githubusercontent.com/fscarmen/argox/main/argox.sh) -C
+</code></pre>
+<p>sba( sing-box + argo)</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://raw.githubusercontent.com/fscarmen/sba/main/sba.sh) -C
+</code></pre>
+<p>其他工具<br>
+⏺️超售测试脚本：</p>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate -O memoryCheck.sh https://raw.githubusercontent.com/uselibrary/memoryCheck/main/memoryCheck.sh &amp;&amp; chmod +x memoryCheck.sh &amp;&amp; bash memoryCheck.sh
+</code></pre>
+<p>⏺️移除virtio_balloon模块：</p>
+<pre class="notranslate"><code class="notranslate">rmmod virtio_balloon
+</code></pre>
+<p>⏺️内存填充测试： FunctionClub大佬作品，检测VPS真实可分配内存，适用于检测VPS超售情况</p>
+<pre class="notranslate"><code class="notranslate">apt-get update
+apt-get install wget build-essential -y
+wget https://raw.githubusercontent.com/FunctionClub/Memtester/master/memtester.cpp
+gcc -l stdc++ memtester.cpp
+
+./a.out
+</code></pre>
+<p>⏺️spiritlhl 大佬的 zram 内存压缩脚本：</p>
+<pre class="notranslate"><code class="notranslate">curl -L https://raw.githubusercontent.com/spiritLHLS/addzram/main/addzram.sh -o addzram.sh &amp;&amp; chmod +x addzram.sh &amp;&amp; bash addzram.sh
+</code></pre>
+<p>⏺️moerats 大佬的添加 swap 脚本：</p>
+<pre class="notranslate"><code class="notranslate">wget https://www.moerats.com/usr/shell/swap.sh &amp;&amp; bash swap.sh
+</code></pre>
+<p>⏺️fail2ban 服务器 ssh 防爆破：</p>
+<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh &amp;&amp; bash fail2ban.sh 2&gt;&amp;1 | tee fail2ban.log
+</code></pre>
+<p>⏺️独服硬盘测试： 独立服务器硬盘时间</p>
+<pre class="notranslate"><code class="notranslate">wget -q https://github.com/Aniverse/A/raw/i/a &amp;&amp; bash a
+</code></pre>
+<p>⏺️25端口：</p>
+<pre class="notranslate"><code class="notranslate">telnet smtp.aol.com 25
+</code></pre>
+<p>⏺️测试 IPv4 / IPv6 优先：</p>
+<pre class="notranslate"><code class="notranslate">curl ip.p3terx.com
+</code></pre>
+<p>⏺️PagerMaid-Pyro机器人 Docker安装 TG自走机器人(需要VPS)</p>
+<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/docker.sh -O docker.sh &amp;&amp; chmod +x docker.sh &amp;&amp; bash docker.sh
+</code></pre>
+<p>⏺️一键删除平台监控 一键移除大多数云服务器监控 涵盖阿里云、腾讯云、华为云、UCLOUD、甲骨文云、京东云</p>
+<pre class="notranslate"><code class="notranslate">curl -L https://raw.githubusercontent.com/spiritLHLS/one-click-installation-script/main/install_scripts/dlm.sh -o dlm.sh &amp;&amp; chmod +x dlm.sh &amp;&amp; bash dlm.sh
+</code></pre>
+<p>⏺️Nekoneko - Gost一键脚本：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- http://sh.nekoneko.cloud/EasyGost/gost.sh)
+</code></pre>
+<p>⏺️Nekoneko - Ehco一键脚本：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Lso- http://sh.nekoneko.cloud/ehco.sh/ehco.sh)
+</code></pre>
+<p>常用推荐<br>
+⏺️哪吒探针 安装：</p>
+<pre class="notranslate"><code class="notranslate">curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh  -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; sudo ./nezha.sh
+</code></pre>
+<p>⏺️Alist 一键安装：</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install
+</code></pre>
+<p>⏺️Xiao Alist 一键安装：</p>
+<pre class="notranslate"><code class="notranslate">bash -c "$(curl --insecure -fsSL https://ddsrem.com/xiaoya_install.sh)"
+</code></pre>
+<p>⏺️一键安装filebrowser平台</p>
+<p>端口设置为3030了，其他登陆信息详见提示 filebrowser平台支持下载上传文件到服务器， 批量下载多个文件(自定义压缩格式)，构建文件分享链接，设置分享时长 如果本地有启用IPV6优先级可能绑定到V6去了，使用<code class="notranslate">lsof -i:3030</code>查看绑定情况，切换优先级后再安装就正常了</p>
+<pre class="notranslate"><code class="notranslate">curl -L https://raw.githubusercontent.com/spiritLHLS/one-click-installation-script/main/install_scripts/filebrowser.sh -o filebrowser.sh &amp;&amp; chmod +x filebrowser.sh &amp;&amp; bash filebrowser.sh
+</code></pre>
+<p><a href="https://linux.do/t/topic/165688" rel="nofollow">原文链接</a> 基于此文章修改和优化</p></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer">博客 © <span id="year"></span><a href="http://blog.52013120.xyz"> 繁星点点 </a>
+<p>
+<span id="runday"></span>
+</p>
+
+<script>
+if("07/01/2024"!=""){
+    var now=new Date();
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+</script>
+
+
+</html>
