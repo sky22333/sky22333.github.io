@@ -104,7 +104,7 @@ ansible all -a "pwd"
 ```
 - 临时对所有主机运行远程脚本
 ```
-ansible all -m shell -a "bash <(wget -qO- https://github.com/sky22333/shell/raw/main/vmess-ws.sh)"
+ansible all -m shell -a "bash <(wget -qO- https://example.com//shell/raw/main/demo.sh)"
 ```
 - 临时将本地脚本复制给所有被控主机并执行
 ```
