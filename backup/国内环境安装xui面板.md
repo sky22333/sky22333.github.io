@@ -10,7 +10,7 @@
 ## 一键安装脚本（支持国内）
 
 ```
-bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh | sed 's/\r$//')
+bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
 ```
 
 ## 手动安装

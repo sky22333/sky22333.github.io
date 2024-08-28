@@ -385,7 +385,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
 :record_button:适合国内环境安装的 X-UI：
 ```
-bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh | sed 's/\r$//')
+bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
 ```
 
 :record_button:3X-UI：
@@ -393,11 +393,7 @@ bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh | sed 's/\r
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
-:record_button:勇哥 x-ui（非开源）：
 
-```
-bash <(curl -Ls https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh)
-```
 中转
 :record_button:Realm 转发： 脚本添加在中转鸡上
 
