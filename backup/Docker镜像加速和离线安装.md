@@ -1,4 +1,3 @@
-
 ## Docker镜像加速和离线安装
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
@@ -80,6 +79,7 @@ WantedBy=multi-user.target
 
 #### 3：启动并启用 Docker 服务
 ```
+sudo chmod +x /etc/systemd/system/docker.service
 sudo systemctl daemon-reload
 sudo systemctl start docker
 sudo systemctl enable docker
@@ -223,13 +223,12 @@ sudo rm -rf /etc/docker /var/lib/docker
 ```
 
 ---
-## Docker Hub 镜像加速列表
-以下镜像站来源于互联网（感谢热心网友），可能出现宕机、转内网、关停等情况，建议同时配置多个镜像源。
 
-#### 目前可用镜像加速
+## Docker最新稳定加速源列表——非私人
 
-镜像 | 镜像加速地址 | 说明 | 其它加速
+提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
-[网友提供](https://hub.rat.dev/) | `https://hub.rat.dev` | | Docker Hub
-[1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | | Docker Hub
-[阿里云](https://cr.console.aliyun.com/) | `https://<your_code>.mirror.aliyuncs.com` | 需登录分配 | Docker Hub （镜像有点旧）
+[耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
+[rainbond](https://docker.rainbond.cc) | `https://docker.rainbond.cc` | 无限制 | Docker Hub
+[1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
+[DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
