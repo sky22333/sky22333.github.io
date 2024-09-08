@@ -109,7 +109,7 @@ docker-compose --version
 ```
 
 ---
-#### （可选）离线环境或者国内服务器可[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose`，然后增加执行权限。
+#### （可选）离线环境或者国内服务器可[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose` 然后增加执行权限。
 一般下载`linux-x86_64`的包即可，其他型号则下载对应的
 
 ---
