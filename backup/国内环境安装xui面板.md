@@ -7,7 +7,7 @@
 - Debian 8+
 
 
-## 一键安装脚本（支持国内）
+## 一键安装脚本（支持纯IPV6环境和国内环境）
 
 ```
 bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
@@ -17,7 +17,7 @@ bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
 
 1. 下载压缩包[(下载地址)](https://gitlab.com/yishijie/wenjian/-/blob/main/x-ui-linux-amd64.tar.gz?ref_type=heads) 到本地。
 
-2. 将压缩包上传到服务器的`/root`目录
+2. 将压缩包上传到服务器的`root`目录
 
 3. 然后依次执行以下命令，一行一个命令
 
