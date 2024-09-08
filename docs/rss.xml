@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Wed, 28 Aug 2024 02:42:41 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>http://blog.52013120.xyz/post/zai-CloudflareWAF-zhong-ping-bi-guo-nei-liu-lan-qi.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/zai-CloudflareWAF-zhong-ping-bi-guo-nei-liu-lan-qi.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>http://blog.52013120.xyz/post/wang-luo-an-quan-zhi-bai-du-URL-qi-pian-lou-dong-fen-xi-he-fu-xian.html</link><description>- **场景介绍**&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Sun, 08 Sep 2024 07:00:10 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>http://blog.52013120.xyz/post/zai-CloudflareWAF-zhong-ping-bi-guo-nei-liu-lan-qi.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/zai-CloudflareWAF-zhong-ping-bi-guo-nei-liu-lan-qi.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>http://blog.52013120.xyz/post/wang-luo-an-quan-zhi-bai-du-URL-qi-pian-lou-dong-fen-xi-he-fu-xian.html</link><description>- **场景介绍**&#13;
 骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，`https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail`  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了&#13;
 &#13;
 - **名词解释**&#13;
@@ -90,12 +90,11 @@ bash &lt;(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)&#13;
 &#13;
 &#13;
 #### 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`&#13;
-&#13;
 #### 表现如图：&#13;
 ![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)&#13;
 &#13;
 &#13;
-#### 经过我的排查，是因为服务器没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/guan-yu-xui-mian-ban-bao-cuo-wu-fa-jian-ting-127.0.0.1-62789-de-wen-ti.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
+#### 这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/guan-yu-xui-mian-ban-bao-cuo-wu-fa-jian-ting-127.0.0.1-62789-de-wen-ti.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
 &#13;
 &#13;
 ### 主题目录&#13;

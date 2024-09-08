@@ -13,23 +13,21 @@
 
 
 #### 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`
-
 #### 表现如图：
 ![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)
 
 
-#### 经过我的排查，是因为服务器没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。">
+#### 这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。">
 <meta property="og:title" content="关于xui面板报错无法监听127.0.0.1:62789的问题">
 <meta property="og:description" content="## 关于xui面板报错`无法监听127.0.0.1:62789`
 
 
 #### 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`
-
 #### 表现如图：
 ![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)
 
 
-#### 经过我的排查，是因为服务器没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。">
+#### 这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/guan-yu-xui-mian-ban-bao-cuo-wu-fa-jian-ting-127.0.0.1-62789-de-wen-ti.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -86,8 +84,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h4>很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：<code class="notranslate">无法监听127.0.0.1:62789</code></h4>
 <h4>表现如图：</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948"><img src="https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948" alt="photo_2024-07-18_15-03-38" style="max-width: 100%;"></a></p>
-<h4>经过我的排查，是因为服务器没有把<code class="notranslate">127.0.0.1</code>绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。这是IDC的锅。</h4>
-<h4>出现此问题首先使用<code class="notranslate">ip addr show lo</code>命令查看本地环回地址的IP</h4>
+<h4>这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把<code class="notranslate">127.0.0.1</code>绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</h4>
+<h4>排查方法：使用<code class="notranslate">ip addr show lo</code>命令查看本地环回地址的IP</h4>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e036e28b-768b-41bb-ba90-cba455f0bb79"><img src="https://github.com/user-attachments/assets/e036e28b-768b-41bb-ba90-cba455f0bb79" alt="photo_2024-07-18_15-00-50" style="max-width: 100%;"></a></p>
 <h4>❗这里可以看到本机地址确实没有<code class="notranslate">127.0.0.1</code></h4>
 <h4>解决方案其实很简单，就是把<code class="notranslate">127.0.0.1</code>分配给本地环回地址即可。</h4>
