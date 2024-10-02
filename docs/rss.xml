@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Wed, 02 Oct 2024 09:08:27 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>我的自建小工具</title><link>http://blog.52013120.xyz/post/wo-de-zi-jian-xiao-gong-ju.html</link><description>## 我的一些加速项目和小工具（感谢cloudflare赛博大活佛）&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Wed, 02 Oct 2024 18:02:43 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>我的自建小工具</title><link>http://blog.52013120.xyz/post/wo-de-zi-jian-xiao-gong-ju.html</link><description>## 我的一些加速项目和小工具（感谢cloudflare赛博大活佛）&#13;
 &#13;
 &gt; [!TIP]&#13;
 &gt; #### 加速项目是白嫖的Workers，有请求限制，建议自己部署 💻&#13;
@@ -33,7 +33,9 @@
 &#13;
 - 在线制作流光卡片：https://fireflycard.shushiai.com/?temp=tempA&#13;
 &#13;
-- 匿名文件共享互传：https://wormhole.app/&#13;
+- 匿名文件快传：https://wormhole.app/&#13;
+&#13;
+- 国内文件快传：https://wkkc.vip/&#13;
 &#13;
 - 在线临时记事本：https://cn.anotepad.com/&#13;
 &#13;
