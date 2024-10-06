@@ -49,6 +49,33 @@ docker compose restart
 ---
 
 
-## Xboard迁移Xboard出现的各种问题解决方案
+### Xboard迁移Xboard出现的各种问题解决方案
 
 一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
+
+
+
+
+
+### Xboard 使用前后端分离主题导致支付转跳问题处理
+
+现象：
+该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
+
+处理：
+需要修改文件 `app/Services/PaymentService.php`
+
+将原代码的第51行：
+
+`'return_url' => url('/#/order/' . $order['trade_no']),`
+修改为如下：
+
+注意在后台设置的站点域名为主题站地址`b.aab.com`
+
+`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
+如若你是其他版本的v2board请修改为：
+
+  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
+最后首部增加如下即可（只限xboard）:
+
+`use App\Models\Setting;`

@@ -60,9 +60,36 @@ docker compose restart
 ---
 
 
-## Xboard迁移Xboard出现的各种问题解决方案
+### Xboard迁移Xboard出现的各种问题解决方案
 
-一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置。">
+一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
+
+
+
+
+
+### Xboard 使用前后端分离主题导致支付转跳问题处理
+
+现象：
+该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
+
+处理：
+需要修改文件 `app/Services/PaymentService.php`
+
+将原代码的第51行：
+
+`'return_url' => url('/#/order/' . $order['trade_no']),`
+修改为如下：
+
+注意在后台设置的站点域名为主题站地址`b.aab.com`
+
+`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
+如若你是其他版本的v2board请修改为：
+
+  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
+最后首部增加如下即可（只限xboard）:
+
+`use App\Models\Setting;`。">
 <meta property="og:title" content="Xboard面板常见问题">
 <meta property="og:description" content="### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)
 
@@ -115,9 +142,36 @@ docker compose restart
 ---
 
 
-## Xboard迁移Xboard出现的各种问题解决方案
+### Xboard迁移Xboard出现的各种问题解决方案
 
-一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置。">
+一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
+
+
+
+
+
+### Xboard 使用前后端分离主题导致支付转跳问题处理
+
+现象：
+该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
+
+处理：
+需要修改文件 `app/Services/PaymentService.php`
+
+将原代码的第51行：
+
+`'return_url' => url('/#/order/' . $order['trade_no']),`
+修改为如下：
+
+注意在后台设置的站点域名为主题站地址`b.aab.com`
+
+`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
+如若你是其他版本的v2board请修改为：
+
+  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
+最后首部增加如下即可（只限xboard）:
+
+`use App\Models\Setting;`。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -200,8 +254,22 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">docker compose restart
 </code></pre>
 <hr>
-<h2>Xboard迁移Xboard出现的各种问题解决方案</h2>
-<p>一般都是数据库里的问题，进入数据库的<code class="notranslate">v2_settings</code>表，修改https配置，域名配置，路径配置，等等配置</p></div>
+<h3>Xboard迁移Xboard出现的各种问题解决方案</h3>
+<p>一般都是数据库里的问题，进入数据库的<code class="notranslate">v2_settings</code>表，修改https配置，域名配置，路径配置，等等配置</p>
+<h3>Xboard 使用前后端分离主题导致支付转跳问题处理</h3>
+<p>现象：<br>
+该问题现象通常为源站为 <code class="notranslate">a.aab.com</code> 主题站 <code class="notranslate">b.aab.com</code> 通过<code class="notranslate">b.aab.com epay</code>支付成功后转跳至<code class="notranslate">a.aab.com</code></p>
+<p>处理：<br>
+需要修改文件 <code class="notranslate">app/Services/PaymentService.php</code></p>
+<p>将原代码的第51行：</p>
+<p><code class="notranslate">'return_url' =&gt; url('/#/order/' . $order['trade_no']),</code><br>
+修改为如下：</p>
+<p>注意在后台设置的站点域名为主题站地址<code class="notranslate">b.aab.com</code></p>
+<p><code class="notranslate">'return_url' =&gt; admin_setting('app_url'). '/#/order/' . $order['trade_no'],</code><br>
+如若你是其他版本的v2board请修改为：</p>
+<p><code class="notranslate">'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],</code><br>
+最后首部增加如下即可（只限xboard）:</p>
+<p><code class="notranslate">use App\Models\Setting;</code></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
