@@ -25,7 +25,7 @@ http://123.123.123.123 {
 }
 ```
 
-**3：将刚刚下载的验证文件上传到`/.well-known/pki-validation/`目录里**
+**3：将刚刚下载的验证文件上传到`/var/www/.well-known/pki-validation/`目录里**
 
 **4：启动`caddy`，访问你的公网IP，如果能看到验证文件，则代表成功**
 
