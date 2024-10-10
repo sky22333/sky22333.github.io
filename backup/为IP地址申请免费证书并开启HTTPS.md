@@ -36,6 +36,10 @@ http://123.123.123.123 {
 ## 🔵合并证书文件
 
 **在`/etc/caddy`目录下执行如下命令：**
+
+```
+cd etc/caddy
+```
 ```
 cat certificate.crt ca_bundle.crt > fullchain.crt
 ```

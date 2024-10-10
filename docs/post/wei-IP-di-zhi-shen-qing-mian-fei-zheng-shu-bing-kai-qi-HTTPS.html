@@ -94,6 +94,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><strong>然后<code class="notranslate">zerossl</code>网站里点击验证，验证成功后下载<code class="notranslate">zip</code>证书压缩包，上传到服务器<code class="notranslate">/etc/caddy</code>目录</strong></p>
 <h2>🔵合并证书文件</h2>
 <p><strong>在<code class="notranslate">/etc/caddy</code>目录下执行如下命令：</strong></p>
+<pre class="notranslate"><code class="notranslate">cd etc/caddy
+</code></pre>
 <pre class="notranslate"><code class="notranslate">cat certificate.crt ca_bundle.crt &gt; fullchain.crt
 </code></pre>
 <h2>🔵启动站点</h2>
