@@ -1,6 +1,7 @@
 ## 🔵打开免费申请IP SSL证书的网站
 
-https://zerossl.com/
+
+**https://zerossl.com/**
 
 **1：打开后首页就直接输入你要申请的IP，点击“Next Step"进入下一步。**
 
