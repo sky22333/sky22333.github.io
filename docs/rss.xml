@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Sun, 06 Oct 2024 03:20:33 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>我的网站收藏夹</title><link>http://blog.52013120.xyz/post/wo-de-wang-zhan-shou-cang-jia.html</link><description>## 我的一些加速项目和小工具（感谢cloudflare赛博大活佛）&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Thu, 10 Oct 2024 09:53:21 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>我的网站收藏夹</title><link>http://blog.52013120.xyz/post/wo-de-wang-zhan-shou-cang-jia.html</link><description>## 我的一些加速项目和小工具（感谢cloudflare赛博大活佛）&#13;
 &#13;
 &gt; [!TIP]&#13;
 &gt; #### 加速项目是白嫖的Workers，有请求限制，建议自己部署 💻&#13;
@@ -271,7 +271,13 @@ docker compose restart&#13;
   `'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],`&#13;
 最后首部增加如下即可（只限xboard）:&#13;
 &#13;
-`use App\Models\Setting;`。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>如何部署Github中的项目（主流语言安装依赖和构建命令）</title><link>http://blog.52013120.xyz/post/ru-he-bu-shu-Github-zhong-de-xiang-mu-%EF%BC%88-zhu-liu-yu-yan-an-zhuang-yi-lai-he-gou-jian-ming-ling-%EF%BC%89.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令&#13;
+`use App\Models\Setting;`&#13;
+&#13;
+&#13;
+&#13;
+### 知识库&#13;
+&#13;
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>如何部署Github中的项目（主流语言安装依赖和构建命令）</title><link>http://blog.52013120.xyz/post/ru-he-bu-shu-Github-zhong-de-xiang-mu-%EF%BC%88-zhu-liu-yu-yan-an-zhuang-yi-lai-he-gou-jian-ming-ling-%EF%BC%89.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令&#13;
 &#13;
 &gt; [!TIP]&#13;
 &gt; ## JavaScript（Node.js）💻&#13;

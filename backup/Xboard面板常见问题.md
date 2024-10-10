@@ -79,3 +79,25 @@ docker compose restart
 最后首部增加如下即可（只限xboard）:
 
 `use App\Models\Setting;`
+
+
+
+### 知识库
+
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。并且还内置了模板字符和功能，可以通过编写 HTML 语法做到「复制订阅地址」、「跳转其他教程」、「下载软件」、「一键导入配置」等功能。下面把代码示例发出来可以在此基础上自行修改。
+
+```
+<button class="btn btn-hero-primary" onclick="copy('{{subscribeUrl}}')"><i class="far fa fa-copy"></i> 点击复制订阅地址</button>
+```
+```
+<button class="btn btn-hero-primary" onclick="jump(2)"><i class="far fa fa-share"></i> 跳转另一个教程</button>
+```
+```
+<a href="https://www.google.com.hk" target="_blank"><button class="btn btn-hero-primary"><i class="far fa fa-download"></i> 点击下载</button></a>
+```
+```
+<a href="shadowrocket://add/sub://{{safeBase64SubscribeUrl}}?remark={{siteName}}"><button class="btn btn-hero-primary"><i class="far fa fa-share"></i> 一键导入 Shadowrocket</button></a>
+```
+```
+<a href="clash://install-config?url={{urlEncodeSubscribeUrl}}&name={{siteName}}"><button class="btn btn-hero-primary"><i class="far fa fa-share"></i> 一键导入 Clash</button></a>
+```

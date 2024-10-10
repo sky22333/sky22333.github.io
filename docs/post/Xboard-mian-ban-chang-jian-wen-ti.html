@@ -89,7 +89,13 @@ docker compose restart
   `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
 最后首部增加如下即可（只限xboard）:
 
-`use App\Models\Setting;`。">
+`use App\Models\Setting;`
+
+
+
+### 知识库
+
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。">
 <meta property="og:title" content="Xboard面板常见问题">
 <meta property="og:description" content="### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)
 
@@ -171,7 +177,13 @@ docker compose restart
   `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
 最后首部增加如下即可（只限xboard）:
 
-`use App\Models\Setting;`。">
+`use App\Models\Setting;`
+
+
+
+### 知识库
+
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -269,7 +281,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 如若你是其他版本的v2board请修改为：</p>
 <p><code class="notranslate">'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],</code><br>
 最后首部增加如下即可（只限xboard）:</p>
-<p><code class="notranslate">use App\Models\Setting;</code></p></div>
+<p><code class="notranslate">use App\Models\Setting;</code></p>
+<h3>知识库</h3>
+<p>V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。并且还内置了模板字符和功能，可以通过编写 HTML 语法做到「复制订阅地址」、「跳转其他教程」、「下载软件」、「一键导入配置」等功能。下面把代码示例发出来可以在此基础上自行修改。</p>
+<pre class="notranslate"><code class="notranslate">&lt;button class="btn btn-hero-primary" onclick="copy('{{subscribeUrl}}')"&gt;&lt;i class="far fa fa-copy"&gt;&lt;/i&gt; 点击复制订阅地址&lt;/button&gt;
+</code></pre>
+<pre class="notranslate"><code class="notranslate">&lt;button class="btn btn-hero-primary" onclick="jump(2)"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 跳转另一个教程&lt;/button&gt;
+</code></pre>
+<pre class="notranslate"><code class="notranslate">&lt;a href="https://www.google.com.hk" target="_blank"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-download"&gt;&lt;/i&gt; 点击下载&lt;/button&gt;&lt;/a&gt;
+</code></pre>
+<pre class="notranslate"><code class="notranslate">&lt;a href="shadowrocket://add/sub://{{safeBase64SubscribeUrl}}?remark={{siteName}}"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 一键导入 Shadowrocket&lt;/button&gt;&lt;/a&gt;
+</code></pre>
+<pre class="notranslate"><code class="notranslate">&lt;a href="clash://install-config?url={{urlEncodeSubscribeUrl}}&amp;name={{siteName}}"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 一键导入 Clash&lt;/button&gt;&lt;/a&gt;
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
