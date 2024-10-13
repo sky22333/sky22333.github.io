@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Sun, 13 Oct 2024 23:21:49 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>clash手搓配置最全协议示例</title><link>http://blog.52013120.xyz/post/clash-shou-cuo-pei-zhi-zui-quan-xie-yi-shi-li.html</link><description>### clash手搓配置全部协议示例，附带详细注释说明，小白也会手搓&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Sun, 13 Oct 2024 23:48:03 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>clash手搓配置最全协议示例详解</title><link>http://blog.52013120.xyz/post/clash-shou-cuo-pei-zhi-zui-quan-xie-yi-shi-li-xiang-jie.html</link><description>### clash手搓配置全部协议示例，附带详细注释说明，小白也会手搓&#13;
 &#13;
 ---&#13;
 ---&#13;
@@ -32,7 +32,7 @@ https://example.com/clash.yaml&#13;
 ```&#13;
 &#13;
 &#13;
-5：如果你已经有一个现成的站点，则直接将`clash.yaml`配置放在站点目录即可，其他同理。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/clash-shou-cuo-pei-zhi-zui-quan-xie-yi-shi-li.html</guid><pubDate>Sun, 13 Oct 2024 23:20:19 +0000</pubDate></item><item><title>为IP地址申请免费证书并开启HTTPS</title><link>http://blog.52013120.xyz/post/wei-IP-di-zhi-shen-qing-mian-fei-zheng-shu-bing-kai-qi-HTTPS.html</link><description>## 🔵打开免费申请IP SSL证书的网站&#13;
+5：如果你已经有一个现成的站点，则直接将`clash.yaml`配置放在站点目录即可，其他同理。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/clash-shou-cuo-pei-zhi-zui-quan-xie-yi-shi-li-xiang-jie.html</guid><pubDate>Sun, 13 Oct 2024 23:20:19 +0000</pubDate></item><item><title>为IP地址申请免费证书并开启HTTPS</title><link>http://blog.52013120.xyz/post/wei-IP-di-zhi-shen-qing-mian-fei-zheng-shu-bing-kai-qi-HTTPS.html</link><description>## 🔵打开免费申请IP SSL证书的网站&#13;
 &#13;
 &#13;
 **https://zerossl.com/**&#13;
