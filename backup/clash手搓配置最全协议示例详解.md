@@ -1,11 +1,14 @@
 ### clash手搓配置全部协议示例，附带详细注释说明，小白也会手搓
 
+
+- [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)
+
 ---
 ---
 
-- 🔵本地配置，`Clash Verge`为例：
+- 🔵本地配置，`clash-verge-rev`为例：
 
-打开`Clash Verge` → 订阅 → 新建 → 类型选择`Local` → 名称自定义 → 点击保存 → 右键点击该配置 → 编辑文件 → 复制配置 → 修改保存
+打开`clash-verge-rev` → 订阅 → 新建 → 类型选择`Local` → 名称自定义 → 点击保存 → 右键点击该配置 → 编辑文件 → 复制配置 → 修改保存
 
 ---
 ---
