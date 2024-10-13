@@ -582,7 +582,375 @@ rules:
 
 # 其他规则配置
 </code></pre>
-<hr></div>
+<hr>
+<hr>
+<h3>参数讲解</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>参数名称(全局配置)</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mixed-port</td>
+<td>HTTP(S) 和 SOCKS4(A)/SOCKS5 代理服务共用一个端口</td>
+</tr>
+<tr>
+<td>allow-lan</td>
+<td>设置为 true 以允许局域网的连接（可用来共享代理）</td>
+</tr>
+<tr>
+<td>bind-address</td>
+<td>仅当 allow-lan 为 true 时有效</td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>当设置为 false 时, 解析器不会将主机名解析为 IPv6 地址</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>Clash 路由工作模式</td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>日志级别: info / warning / error / debug / silent</td>
+</tr>
+<tr>
+<td>external-controller</td>
+<td>RESTful Web API 监听地址</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>RESTful API 的口令(可选)</td>
+</tr>
+<tr>
+<td>dns</td>
+<td>DNS 服务设置</td>
+</tr>
+<tr>
+<td>proxies</td>
+<td>代理节点</td>
+</tr>
+<tr>
+<td>proxy-groups</td>
+<td>策略组</td>
+</tr>
+<tr>
+<td>rules</td>
+<td>分流规则</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>参数名称(DNS配置)</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable</td>
+<td>是否启动自定义dns模块</td>
+</tr>
+<tr>
+<td>prefer-h3</td>
+<td>是否优先使用 DOH 的 http/3</td>
+</tr>
+<tr>
+<td>use-hosts</td>
+<td>是否查询配置中的 hosts</td>
+</tr>
+<tr>
+<td>use-system-hosts</td>
+<td>是否查询系统 hosts</td>
+</tr>
+<tr>
+<td>respect-rules</td>
+<td>dns 连接跟随 rules，需配置proxy-server-nameserver</td>
+</tr>
+<tr>
+<td>listen</td>
+<td>DNS 服务监听，仅支持 udp</td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>是否解析 IPV6, 如为 false, 则回应 AAAA 的空解析</td>
+</tr>
+<tr>
+<td>enhanced-mode</td>
+<td>DNS 处理模式</td>
+</tr>
+<tr>
+<td>fake-ip-range</td>
+<td>fakeip 下的 IP 段设置</td>
+</tr>
+<tr>
+<td>fake-ip-filter</td>
+<td>fakeip 过滤，以下地址不会下发 fakeip 映射用于连接</td>
+</tr>
+<tr>
+<td>default-nameserver</td>
+<td>默认 DNS, 用于解析nameserver中的加密 dns</td>
+</tr>
+<tr>
+<td>nameserver-policy</td>
+<td>指定域名查询的解析服务器，可使用 geosite</td>
+</tr>
+<tr>
+<td>nameserver</td>
+<td>默认的域名解析服务器</td>
+</tr>
+<tr>
+<td>proxy-server-nameserver</td>
+<td>代理节点域名解析服务器</td>
+</tr>
+<tr>
+<td>fallback</td>
+<td>后备域名解析服务器</td>
+</tr>
+<tr>
+<td>fallback-filter</td>
+<td>后备域名解析服务器筛选</td>
+</tr>
+<tr>
+<td>geoip</td>
+<td>是否启用 fallback filter</td>
+</tr>
+<tr>
+<td>geoip-code</td>
+<td>可选值为 国家缩写</td>
+</tr>
+<tr>
+<td>geosite</td>
+<td>可选值为 geosite 内包含的集合</td>
+</tr>
+<tr>
+<td>ipcidr</td>
+<td>书写内容为 IP/掩码</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>这些域名被视为已污染，匹配到这些域名，会直接使用 fallback解析</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>参数名称(策略组配置)</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>策略组的名字</td>
+</tr>
+<tr>
+<td>type</td>
+<td>策略组的类型</td>
+</tr>
+<tr>
+<td>proxies</td>
+<td>引入代理节点或其他策略组</td>
+</tr>
+<tr>
+<td>url</td>
+<td>健康检查测试地址</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>健康检查间隔，如不为 0 则启用定时测试，单位为秒</td>
+</tr>
+<tr>
+<td>lazy</td>
+<td>懒惰状态，默认为true,未选择到当前策略组时，不进行测试</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>健康检查超时时间，单位为毫秒</td>
+</tr>
+<tr>
+<td>max-failed-times</td>
+<td>最大失败次数，超过则触发一次强制健康检查</td>
+</tr>
+<tr>
+<td>tolerance</td>
+<td>节点切换容差，单位 ms</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>策略组是我们选择哪个网站选用什么方式连接的前置条件，简而言之就是给你的节点如何分流进行分组。</p>
+</blockquote>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>匹配方式(分流规则)</th>
+<th>匹配内容</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOMAIN</td>
+<td>匹配完整域名</td>
+<td>ad.com</td>
+</tr>
+<tr>
+<td>DOMAIN-SUFFIX</td>
+<td>匹配域名后缀</td>
+<td>google.com</td>
+</tr>
+<tr>
+<td>DOMAIN-KEYWORD</td>
+<td>使用域名关键字匹配</td>
+<td>google</td>
+</tr>
+<tr>
+<td>DOMAIN-REGEX</td>
+<td>域名正则表达式匹配</td>
+<td>^abc.*com</td>
+</tr>
+<tr>
+<td>GEOSITE</td>
+<td>匹配 Geosite 内的域名</td>
+<td>youtube</td>
+</tr>
+<tr>
+<td>IP-CIDR/IP-CIDR6</td>
+<td>匹配 IP 地址范围</td>
+<td>127.0.0.0/8</td>
+</tr>
+<tr>
+<td>IP-SUFFIX</td>
+<td>匹配 IP 后缀范围</td>
+<td>8.8.8.8/24</td>
+</tr>
+<tr>
+<td>IP-ASN</td>
+<td>匹配 IP 所属 ASN</td>
+<td>13335</td>
+</tr>
+<tr>
+<td>GEOIP</td>
+<td>匹配 IP 所属国家代码</td>
+<td>CN</td>
+</tr>
+<tr>
+<td>SRC-GEOIP</td>
+<td>匹配来源 IP 所属国家代码</td>
+<td>cn</td>
+</tr>
+<tr>
+<td>SRC-IP-ASN</td>
+<td>匹配来源 IP 所属 ASN</td>
+<td>9808</td>
+</tr>
+<tr>
+<td>SRC-IP-CIDR</td>
+<td>匹配来源 IP 地址范围</td>
+<td>192.168.1.201/32</td>
+</tr>
+<tr>
+<td>SRC-IP-SUFFIX</td>
+<td>匹配来源 IP 后缀范围</td>
+<td>192.168.1.201/8</td>
+</tr>
+<tr>
+<td>DST-PORT</td>
+<td>匹配请求目标端口范围</td>
+<td>80</td>
+</tr>
+<tr>
+<td>SRC-PORT</td>
+<td>匹配请求来源端口范围</td>
+<td>7777</td>
+</tr>
+<tr>
+<td>IN-PORT</td>
+<td>匹配入站端口,可用端口范围</td>
+<td>7890</td>
+</tr>
+<tr>
+<td>IN-TYPE</td>
+<td>匹配入站类型</td>
+<td>SOCKS/HTTP</td>
+</tr>
+<tr>
+<td>IN-USER</td>
+<td>匹配入站用户名，支持使用 / 分隔多个用户名</td>
+<td>linuxdo</td>
+</tr>
+<tr>
+<td>IN-NAME</td>
+<td>匹配入站名称</td>
+<td>ss</td>
+</tr>
+<tr>
+<td>PROCESS-PATH</td>
+<td>使用完整进程路径匹配</td>
+<td>D:\chrome.exe</td>
+</tr>
+<tr>
+<td>PROCESS-PATH-REGEX</td>
+<td>使用进程路径正则表达式匹配</td>
+<td>*bin/wget</td>
+</tr>
+<tr>
+<td>PROCESS-NAME</td>
+<td>使用进程匹配，在Android平台可以匹配包名</td>
+<td>chrome.exe</td>
+</tr>
+<tr>
+<td>PROCESS-NAME-REGEX</td>
+<td>使用进程名称正则表达式匹配，在Android平台可以匹配包名</td>
+<td>curl$</td>
+</tr>
+<tr>
+<td>UID</td>
+<td>匹配 Linux USER ID</td>
+<td>1001</td>
+</tr>
+<tr>
+<td>NETWORK</td>
+<td>匹配tcp或者udp</td>
+<td>udp</td>
+</tr>
+<tr>
+<td>DSCP</td>
+<td>匹配DSCP标记 (仅限 tproxy udp 入站)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>RULE-SET</td>
+<td>引用规则集合，需配置rule-providers</td>
+<td>providername</td>
+</tr>
+<tr>
+<td>AND/OR/NOT</td>
+<td>逻辑规则，需要注意括号的使用</td>
+<td>((DOMAIN,baidu.com),(NETWORK,UDP))</td>
+</tr>
+<tr>
+<td>SUB-RULE</td>
+<td>匹配至子规则,需要注意括号的使用</td>
+<td>(NETWORK,tcp)</td>
+</tr>
+<tr>
+<td>MATCH</td>
+<td>匹配所有请求，无需条件</td>
+<td></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>分流规则最终决定了哪个网站选用什么方式连接，通过不同的匹配策略自由地选择自己的分流规则。</p>
+<p>优先级按照从上到下的顺序匹配，上面的优先级高于下面。</p>
+</blockquote></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
