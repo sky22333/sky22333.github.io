@@ -10,7 +10,7 @@ from flask import Flask, request, render_template_string
 import os
 
 app = Flask(__name__)
-UPLOAD_FOLDER = '.' # 设置上传目录为当前工作目录
+UPLOAD_FOLDER = '.'  # 设置上传目录为当前工作目录
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 HTML = '''
@@ -49,6 +49,7 @@ HTML = '''
 <style>
     #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; }
 </style>
+'''
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
