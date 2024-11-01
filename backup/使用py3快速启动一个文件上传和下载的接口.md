@@ -17,7 +17,7 @@ HTML = '''
 <!doctype html>
 <title>文件上传</title>
 <h1>上传文件</h1>
-<div id="drop-area">
+<div id="drop-area" onclick="document.getElementById('fileElem').click();">
     <form id="form" method="post" enctype="multipart/form-data">
         <input type="file" id="fileElem" multiple accept="*/*" style="display:none;" onchange="handleFiles(this.files)">
         <label for="fileElem">选择文件</label>
@@ -50,7 +50,7 @@ HTML = '''
     }
 </script>
 <style>
-    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; }
+    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; cursor: pointer; }
 </style>
 '''
 
