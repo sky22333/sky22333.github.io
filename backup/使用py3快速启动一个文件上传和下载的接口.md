@@ -24,6 +24,7 @@ HTML = '''
         <div id="gallery"></div>
     </form>
 </div>
+<div id="message" style="color: green; margin-top: 10px;"></div>
 <script>
     let dropArea = document.getElementById('drop-area');
     dropArea.addEventListener('dragover', event => {
@@ -43,7 +44,9 @@ HTML = '''
         }
         fetch('/', { method: 'POST', body: formData })
             .then(response => response.text())
-            .then(data => console.log(data));
+            .then(data => {
+                document.getElementById('message').textContent = data;
+            });
     }
 </script>
 <style>

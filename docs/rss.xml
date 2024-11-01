@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Fri, 01 Nov 2024 06:08:39 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用py3快速启动一个文件上传和下载的接口</title><link>http://blog.52013120.xyz/post/shi-yong-py3-kuai-su-qi-dong-yi-ge-wen-jian-shang-chuan-he-xia-zai-de-jie-kou.html</link><description>### 安装py3&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Fri, 01 Nov 2024 06:16:24 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用py3快速启动一个文件上传和下载的接口</title><link>http://blog.52013120.xyz/post/shi-yong-py3-kuai-su-qi-dong-yi-ge-wen-jian-shang-chuan-he-xia-zai-de-jie-kou.html</link><description>### 安装py3&#13;
 ```&#13;
 sudo apt update&#13;
 sudo apt install python3 python3-pip -y&#13;
@@ -25,6 +25,7 @@ HTML = '''&#13;
         &lt;div id='gallery'&gt;&lt;/div&gt;&#13;
     &lt;/form&gt;&#13;
 &lt;/div&gt;&#13;
+&lt;div id='message' style='color: green; margin-top: 10px;'&gt;&lt;/div&gt;&#13;
 &lt;script&gt;&#13;
     let dropArea = document.getElementById('drop-area');&#13;
     dropArea.addEventListener('dragover', event =&gt; {&#13;
@@ -44,7 +45,9 @@ HTML = '''&#13;
         }&#13;
         fetch('/', { method: 'POST', body: formData })&#13;
             .then(response =&gt; response.text())&#13;
-            .then(data =&gt; console.log(data));&#13;
+            .then(data =&gt; {&#13;
+                document.getElementById('message').textContent = data;&#13;
+            });&#13;
     }&#13;
 &lt;/script&gt;&#13;
 &lt;style&gt;&#13;
