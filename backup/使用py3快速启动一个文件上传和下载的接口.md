@@ -72,6 +72,8 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
 ```
 
+> 在`GitHub`网页上传单个文件的大小不能超过`25M`，使用GitHub客户端限制最大`100M`，这个限制是由GitHub的服务器设定。
+
 - 安装 Flask
 ```
 pip install Flask
