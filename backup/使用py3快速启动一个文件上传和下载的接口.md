@@ -4,12 +4,12 @@ sudo apt update
 sudo apt install python3 python3-pip -y
 ```
 
-### 配置`upload.py`
+### 配置`up.py`
 ```
 from flask import Flask, request, render_template_string
 import os
 app = Flask(__name__)
-# 设置上传目录
+# 设置上传目录为当前目录
 UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # 限制上传文件大小100MB
@@ -79,7 +79,7 @@ pip install Flask
 ```
 - 运行
 ```
-python upload.py
+python up.py
 ```
 
 默认端口为`8000`，支持拖拽上传和文件夹上传

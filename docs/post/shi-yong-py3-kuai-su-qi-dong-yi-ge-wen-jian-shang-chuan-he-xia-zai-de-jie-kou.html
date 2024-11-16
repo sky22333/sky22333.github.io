@@ -15,12 +15,12 @@ sudo apt update
 sudo apt install python3 python3-pip -y
 ```
 
-### 配置`upload.py`
+### 配置`up.py`
 ```
 from flask import Flask, request, render_template_string
 import os
 app = Flask(__name__)
-# 设置上传目录
+# 设置上传目录为当前目录
 UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # 限制上传文件大小100MB
@@ -90,7 +90,7 @@ pip install Flask
 ```
 - 运行
 ```
-python upload.py
+python up.py
 ```
 
 默认端口为`8000`，支持拖拽上传和文件夹上传
@@ -108,12 +108,12 @@ sudo apt update
 sudo apt install python3 python3-pip -y
 ```
 
-### 配置`upload.py`
+### 配置`up.py`
 ```
 from flask import Flask, request, render_template_string
 import os
 app = Flask(__name__)
-# 设置上传目录
+# 设置上传目录为当前目录
 UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # 限制上传文件大小100MB
@@ -183,7 +183,7 @@ pip install Flask
 ```
 - 运行
 ```
-python upload.py
+python up.py
 ```
 
 默认端口为`8000`，支持拖拽上传和文件夹上传
@@ -250,11 +250,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">sudo apt update
 sudo apt install python3 python3-pip -y
 </code></pre>
-<h3>配置<code class="notranslate">upload.py</code></h3>
+<h3>配置<code class="notranslate">up.py</code></h3>
 <pre class="notranslate"><code class="notranslate">from flask import Flask, request, render_template_string
 import os
 app = Flask(__name__)
-# 设置上传目录
+# 设置上传目录为当前目录
 UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # 限制上传文件大小100MB
@@ -325,7 +325,7 @@ if __name__ == '__main__':
 <ul>
 <li>运行</li>
 </ul>
-<pre class="notranslate"><code class="notranslate">python upload.py
+<pre class="notranslate"><code class="notranslate">python up.py
 </code></pre>
 <p>默认端口为<code class="notranslate">8000</code>，支持拖拽上传和文件夹上传</p>
 <h3>临时下载</h3>
