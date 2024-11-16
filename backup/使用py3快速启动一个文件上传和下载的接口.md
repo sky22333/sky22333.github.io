@@ -12,13 +12,12 @@ app = Flask(__name__)
 # 设置上传目录为当前目录
 UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-# 限制上传文件大小100MB
-app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024
 
 HTML = '''
 <!doctype html>
 <title>文件上传 </title>
-<h1>上传文件(最大100MB)</h1>
+<h1>上传文件(最大25MB)</h1>
 <div id="drop-area" onclick="document.getElementById('fileElem').click();">
     <form id="form" method="post" enctype="multipart/form-data">
         <input type="file" id="fileElem" multiple accept="*/*" style="display:none;" onchange="handleFiles(this.files)">
