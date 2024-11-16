@@ -19,15 +19,17 @@ sudo apt install python3 python3-pip -y
 ```
 from flask import Flask, request, render_template_string
 import os
-
 app = Flask(__name__)
-UPLOAD_FOLDER = '.'  # 设置上传目录为当前工作目录
+# 设置上传目录
+UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+# 限制上传文件大小100MB
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
 HTML = '''
 <!doctype html>
-<title>文件上传</title>
-<h1>上传文件</h1>
+<title>文件上传 </title>
+<h1>上传文件(最大100MB)</h1>
 <div id='drop-area' onclick='document.getElementById('fileElem').click();'>
     <form id='form' method='post' enctype='multipart/form-data'>
         <input type='file' id='fileElem' multiple accept='*/*' style='display:none;' onchange='handleFiles(this.files)'>
@@ -45,6 +47,7 @@ HTML = '''
         event.preventDefault();
         handleFiles(event.dataTransfer.files);
     });
+
     function handleFiles(files) {
         const formData = new FormData();
         for (let file of files) {
@@ -53,10 +56,14 @@ HTML = '''
             listItem.textContent = file.name;
             document.getElementById('gallery').appendChild(listItem);
         }
+        document.getElementById('message').textContent = '上传中...';
         fetch('/', { method: 'POST', body: formData })
             .then(response => response.text())
             .then(data => {
                 document.getElementById('message').textContent = data;
+            })
+            .catch(() => {
+                document.getElementById('message').textContent = '上传失败！';
             });
     }
 </script>
@@ -74,7 +81,7 @@ def upload_file():
     return render_template_string(HTML)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8080)
 ```
 
 - 安装 Flask
@@ -92,7 +99,7 @@ python upload.py
 ### 临时下载
 - cd到文件目录
 ```
-python3 -m http.server 8000
+python3 -m http.server 8080
 ```。">
 <meta property="og:title" content="使用py3快速启动一个文件上传和下载的接口">
 <meta property="og:description" content="### 安装py3
@@ -105,15 +112,17 @@ sudo apt install python3 python3-pip -y
 ```
 from flask import Flask, request, render_template_string
 import os
-
 app = Flask(__name__)
-UPLOAD_FOLDER = '.'  # 设置上传目录为当前工作目录
+# 设置上传目录
+UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+# 限制上传文件大小100MB
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
 HTML = '''
 <!doctype html>
-<title>文件上传</title>
-<h1>上传文件</h1>
+<title>文件上传 </title>
+<h1>上传文件(最大100MB)</h1>
 <div id='drop-area' onclick='document.getElementById('fileElem').click();'>
     <form id='form' method='post' enctype='multipart/form-data'>
         <input type='file' id='fileElem' multiple accept='*/*' style='display:none;' onchange='handleFiles(this.files)'>
@@ -131,6 +140,7 @@ HTML = '''
         event.preventDefault();
         handleFiles(event.dataTransfer.files);
     });
+
     function handleFiles(files) {
         const formData = new FormData();
         for (let file of files) {
@@ -139,10 +149,14 @@ HTML = '''
             listItem.textContent = file.name;
             document.getElementById('gallery').appendChild(listItem);
         }
+        document.getElementById('message').textContent = '上传中...';
         fetch('/', { method: 'POST', body: formData })
             .then(response => response.text())
             .then(data => {
                 document.getElementById('message').textContent = data;
+            })
+            .catch(() => {
+                document.getElementById('message').textContent = '上传失败！';
             });
     }
 </script>
@@ -160,7 +174,7 @@ def upload_file():
     return render_template_string(HTML)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8080)
 ```
 
 - 安装 Flask
@@ -178,7 +192,7 @@ python upload.py
 ### 临时下载
 - cd到文件目录
 ```
-python3 -m http.server 8000
+python3 -m http.server 8080
 ```。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/shi-yong-py3-kuai-su-qi-dong-yi-ge-wen-jian-shang-chuan-he-xia-zai-de-jie-kou.html">
@@ -239,15 +253,17 @@ sudo apt install python3 python3-pip -y
 <h3>配置<code class="notranslate">upload.py</code></h3>
 <pre class="notranslate"><code class="notranslate">from flask import Flask, request, render_template_string
 import os
-
 app = Flask(__name__)
-UPLOAD_FOLDER = '.'  # 设置上传目录为当前工作目录
+# 设置上传目录
+UPLOAD_FOLDER = '.'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+# 限制上传文件大小100MB
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
 HTML = '''
 &lt;!doctype html&gt;
-&lt;title&gt;文件上传&lt;/title&gt;
-&lt;h1&gt;上传文件&lt;/h1&gt;
+&lt;title&gt;文件上传 &lt;/title&gt;
+&lt;h1&gt;上传文件(最大100MB)&lt;/h1&gt;
 &lt;div id="drop-area" onclick="document.getElementById('fileElem').click();"&gt;
     &lt;form id="form" method="post" enctype="multipart/form-data"&gt;
         &lt;input type="file" id="fileElem" multiple accept="*/*" style="display:none;" onchange="handleFiles(this.files)"&gt;
@@ -265,6 +281,7 @@ HTML = '''
         event.preventDefault();
         handleFiles(event.dataTransfer.files);
     });
+
     function handleFiles(files) {
         const formData = new FormData();
         for (let file of files) {
@@ -273,10 +290,14 @@ HTML = '''
             listItem.textContent = file.name;
             document.getElementById('gallery').appendChild(listItem);
         }
+        document.getElementById('message').textContent = '上传中...';
         fetch('/', { method: 'POST', body: formData })
             .then(response =&gt; response.text())
             .then(data =&gt; {
                 document.getElementById('message').textContent = data;
+            })
+            .catch(() =&gt; {
+                document.getElementById('message').textContent = '上传失败！';
             });
     }
 &lt;/script&gt;
@@ -294,7 +315,7 @@ def upload_file():
     return render_template_string(HTML)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8080)
 </code></pre>
 <ul>
 <li>安装 Flask</li>
@@ -311,7 +332,7 @@ if __name__ == '__main__':
 <ul>
 <li>cd到文件目录</li>
 </ul>
-<pre class="notranslate"><code class="notranslate">python3 -m http.server 8000
+<pre class="notranslate"><code class="notranslate">python3 -m http.server 8080
 </code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
