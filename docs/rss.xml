@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Sun, 17 Nov 2024 00:02:00 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决CF反代Docker失效的问题</title><link>http://blog.52013120.xyz/post/jie-jue-CF-fan-dai-Docker-shi-xiao-de-wen-ti.html</link><description>## 解决CF反代Docker失效的问题&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>http://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>http://blog.52013120.xyz</link></image><lastBuildDate>Sun, 17 Nov 2024 22:08:31 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决CF反代Docker失效的问题</title><link>http://blog.52013120.xyz/post/jie-jue-CF-fan-dai-Docker-shi-xiao-de-wen-ti.html</link><description>## 解决CF反代Docker失效的问题&#13;
 &#13;
 **最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。</description><guid isPermaLink="true">http://blog.52013120.xyz/post/jie-jue-CF-fan-dai-Docker-shi-xiao-de-wen-ti.html</guid><pubDate>Sat, 16 Nov 2024 23:52:36 +0000</pubDate></item><item><title>隐式转发-骚套路建站方案</title><link>http://blog.52013120.xyz/post/yin-shi-zhuan-fa---sao-tao-lu-jian-zhan-fang-an.html</link><description>### 隐式转发-骚套路建站方案&#13;
 &#13;
@@ -170,13 +170,13 @@ https://example.com/clash.yaml&#13;
 &#13;
 #### 素材类&#13;
 &#13;
+- 免费图标下载：https://igoutu.cn/&#13;
+&#13;
 - 网站图标代码：https://fontawesome.com/search&#13;
 &#13;
 - Youtube视频内容转换为文字：https://www.videotoblog.ai/&#13;
 &#13;
-- 图标LOGO素材：https://www.aigei.com/&#13;
-&#13;
-- 图标素材：https://www.aigei.com/&#13;
+- 图标LOGO：https://www.aigei.com/&#13;
 &#13;
 - 艺术渐变网页背景：https://www.color4bg.com/zh-hans/&#13;
 &#13;
