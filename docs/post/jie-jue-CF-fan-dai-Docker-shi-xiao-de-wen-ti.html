@@ -11,11 +11,11 @@
     </script>
 <meta name="description" content="## 解决CF反代Docker失效的问题
 
-**最近国内拉取镜像时发现之前的`worker`反代的`docker`用不了了，报错为`auth.docker.io/token`这个域名的问题。">
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。">
 <meta property="og:title" content="解决CF反代Docker失效的问题">
 <meta property="og:description" content="## 解决CF反代Docker失效的问题
 
-**最近国内拉取镜像时发现之前的`worker`反代的`docker`用不了了，报错为`auth.docker.io/token`这个域名的问题。">
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.52013120.xyz/post/jie-jue-CF-fan-dai-Docker-shi-xiao-de-wen-ti.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -69,7 +69,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h2>解决CF反代Docker失效的问题</h2>
-<p><strong>最近国内拉取镜像时发现之前的<code class="notranslate">worker</code>反代的<code class="notranslate">docker</code>用不了了，报错为<code class="notranslate">auth.docker.io/token</code>这个域名的问题。</strong></p>
+<p><strong>最近国内拉取镜像时发现之前的<code class="notranslate">worker</code>反代的<code class="notranslate">docker</code>加速用不了了，报错为<code class="notranslate">auth.docker.io/token</code>这个域名的问题。</strong></p>
 <p>经过抓包发现，现在拉取镜像会请求三个域名，顺序是先请求了<code class="notranslate">registry-1.docker.io</code>得到了 <code class="notranslate">401</code> 的 <code class="notranslate">http</code> 状态码后转去访问了<code class="notranslate">auth.docker.io</code>得到了 <code class="notranslate">Authorization</code>字段以后重新请求 <code class="notranslate">registry-1.docker.io</code>，获取源数据后被 <code class="notranslate">307</code> 转发到了 <code class="notranslate">production.cloudflare.docker.com</code> 上。</p>
 <hr>
 <blockquote>

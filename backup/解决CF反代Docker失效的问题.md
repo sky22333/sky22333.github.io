@@ -1,6 +1,6 @@
 ## 解决CF反代Docker失效的问题
 
-**最近国内拉取镜像时发现之前的`worker`反代的`docker`用不了了，报错为`auth.docker.io/token`这个域名的问题。**
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。**
 
 经过抓包发现，现在拉取镜像会请求三个域名，顺序是先请求了`registry-1.docker.io`得到了 `401` 的 `http` 状态码后转去访问了`auth.docker.io`得到了 `Authorization`字段以后重新请求 `registry-1.docker.io`，获取源数据后被 `307` 转发到了 `production.cloudflare.docker.com` 上。
 
