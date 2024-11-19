@@ -79,7 +79,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>1：源域直接填源站域名，协议选<code class="notranslate">HTTPS</code>，最小源选<code class="notranslate">TLSv1</code>，</p>
 <p>2：行为里的压缩建议选<code class="notranslate">NO</code>，<code class="notranslate">缓存键和源请求</code>要选<code class="notranslate">旧版缓存设置</code>，也就是第二个。</p>
 <blockquote>
-<p>这里是大坑，必须选<code class="notranslate">旧版缓存</code>，不然访问站点一直报错502</p>
+<p>这里是大坑，必须选<code class="notranslate">旧版缓存</code>，不然访问站点会报错502</p>
 </blockquote>
 <p>3：<code class="notranslate">WAF</code>防火墙选<code class="notranslate">不启用</code>，因为这个是付费的。</p>
 <p>4：<code class="notranslate">支持的 HTTP 版本</code>建议全部选中，然后点击<code class="notranslate">创建分配</code>，等待部署完成，会给你分配一个域名，访问这个域名查看是否正常。</p>
