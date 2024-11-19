@@ -85,9 +85,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>4：<code class="notranslate">支持的 HTTP 版本</code>建议全部选中，然后点击<code class="notranslate">创建分配</code>，等待部署完成，会给你分配一个域名，访问这个域名查看是否正常。</p>
 <h4>自定义域名</h4>
 <p>1：进入到<code class="notranslate">常规</code>的<code class="notranslate">设置</code>里的<code class="notranslate">编辑</code>，添加<code class="notranslate">备用域名</code>  &gt; 也就是给用户访问的域名，然后<code class="notranslate">申请证书</code>，然后在申请证书的页面里直接点下一步，输入一个域名，验证方法就用默认的<code class="notranslate">DNS 验证</code>，然后点请求。</p>
-<p>2：这里以CF为例，在域名里添加一个<code class="notranslate">CNAME</code>，名称和值直接复制aws里的即可，等待一会aws里会显示验证成功，需要耐心等待。</p>
+<p>2：这里以cloudflare为例，在域名里添加一个<code class="notranslate">CNAME</code>，名称和值直接复制aws里的即可，等待一会aws里会显示验证成功，需要耐心等待。</p>
 <p>3：证书验证完成后，记得回到上一个页面，选中刚刚颁发的域名，然后点保存，保存成功后等待部署完成。</p>
-<p>4：部署完成后，在CF里把刚刚的那个用于验证域名的<code class="notranslate">CNAME</code>修改一下，<code class="notranslate">名称</code>就填你刚刚申请证书的二级域名，<code class="notranslate">目标</code>填aws给你分配的域名即可。</p>
+<p>4：部署完成后，在cloudflare里把刚刚的那个用于验证域名的<code class="notranslate">CNAME</code>修改一下，<code class="notranslate">名称</code>就填你刚刚申请证书的二级域名，<code class="notranslate">目标</code>填aws给你分配的域名即可。</p>
 <p>5：此教程我测试了是没问题的，如果无法访问可能是有延迟或者缓存，刷新一下，或者多等待一会即可。</p>
 <hr>
 <p><strong>PS：需要注意的是，CFT的免费额度是<code class="notranslate">每个月1000G</code>流量，并且只是<code class="notranslate">下载</code>的流量是免费，<code class="notranslate">上传</code>是收费的，注意别被反薅了，上传就是用户往你的网站上传文件，或者你给代理节点套CFT的话，测速的上传这段是收费的。</strong></p></div>
