@@ -10,13 +10,47 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。">
-<meta property="og:title" content="在CloudflareWAF中屏蔽国内浏览器">
-<meta property="og:description" content="**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。">
+<meta name="description" content="## 支持的系统
+
+> amd64架构
+
+- CentOS 7+
+- Ubuntu 18+
+- Debian 8+
+
+
+## 一键安装脚本（支持纯IPV6环境和国内环境）
+
+```
+bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
+```
+
+## 手动安装
+
+1. 下载压缩包[(下载地址)](https://gitlab.com/yishijie/wenjian/-/blob/main/x-ui-linux-amd64.tar.gz?ref_type=heads) 到本地。">
+<meta property="og:title" content="国内环境安装xui面板">
+<meta property="og:description" content="## 支持的系统
+
+> amd64架构
+
+- CentOS 7+
+- Ubuntu 18+
+- Debian 8+
+
+
+## 一键安装脚本（支持纯IPV6环境和国内环境）
+
+```
+bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
+```
+
+## 手动安装
+
+1. 下载压缩包[(下载地址)](https://gitlab.com/yishijie/wenjian/-/blob/main/x-ui-linux-amd64.tar.gz?ref_type=heads) 到本地。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/zai-CloudflareWAF-zhong-ping-bi-guo-nei-liu-lan-qi.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/16.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>在CloudflareWAF中屏蔽国内浏览器</title>
+<title>国内环境安装xui面板</title>
 
 
 
@@ -59,7 +93,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">在CloudflareWAF中屏蔽国内浏览器</h1>
+<h1 class="postTitle">国内环境安装xui面板</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -77,70 +111,45 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p><strong>要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。这个规则基于用户代理字符串来屏蔽特定的浏览器。以下是具体的步骤和完整的规则表达式：</strong></p>
-<p>步骤：</p>
+<div class="markdown-body" id="postBody"><h2>支持的系统</h2>
+<blockquote>
+<p>amd64架构</p>
+</blockquote>
 <ul>
-<li><strong>登录到 Cloudflare Dashboard</strong></li>
-<li><strong>选择托管的域名</strong></li>
-<li><strong>在左侧导航栏中选择 <code class="notranslate">Security</code></strong></li>
-<li><strong>点击 <code class="notranslate">WAF</code></strong></li>
-<li><strong>选择 <code class="notranslate">Custom rules</code></strong></li>
-<li><strong>点击 <code class="notranslate">Create rule</code></strong></li>
-<li><strong>在 <code class="notranslate">Expression preview</code> 右侧点击 <code class="notranslate">Edit expression</code></strong></li>
-<li><strong>复制以下规则表达式</strong></li>
+<li>CentOS 7+</li>
+<li>Ubuntu 18+</li>
+<li>Debian 8+</li>
 </ul>
-<pre class="notranslate"><code class="notranslate">(http.user_agent contains "115Browser") or 
-(http.user_agent contains "2345chrome") or 
-(http.user_agent contains "2345Explorer") or 
-(http.user_agent contains "360EE") or 
-(http.user_agent contains "360SE") or 
-(http.user_agent contains "AliApp") or 
-(http.user_agent contains "Baidu") or 
-(http.user_agent contains "BaiduHD") or 
-(http.user_agent contains "baidubrowser") or 
-(http.user_agent contains "baiduboxapp") or 
-(http.user_agent contains "baidu") or 
-(http.user_agent contains "BIDUBrowser") or 
-(http.user_agent contains "com.douban.frodo") or 
-(http.user_agent contains "DingTalk") or 
-(http.user_agent contains "HarmonyOS") or 
-(http.user_agent contains "HUAWEI") or 
-(http.user_agent contains "HuaweiBrowser") or 
-(http.user_agent contains "huawei") or 
-(http.user_agent contains "IqiyiApp") or 
-(http.user_agent contains "LBBROWSER") or 
-(http.user_agent contains "LieBaoFast") or 
-(http.user_agent contains "Mb2345Browser") or 
-(http.user_agent contains "MetaSr") or 
-(http.user_agent contains "MicroMessenger") or 
-(http.user_agent contains "MiuiBrowser") or 
-(http.user_agent contains "MZBrowser") or 
-(http.user_agent contains "OppoBrowser") or 
-(http.user_agent contains "QHBrowser") or 
-(http.user_agent contains "QihooBrowser") or 
-(http.user_agent contains "QQ") or 
-(http.user_agent contains "QQBrowser") or 
-(http.user_agent contains "Quark") or 
-(http.user_agent contains "SNEBUY-APP") or 
-(http.user_agent contains "Sogou") or 
-(http.user_agent contains "SP-engine") or 
-(http.user_agent contains "TheWorld") or 
-(http.user_agent contains "UC") or 
-(http.user_agent contains "UCBrowser") or 
-(http.user_agent contains "UCWEB") or 
-(http.user_agent contains "UBrowser") or 
-(http.user_agent contains "VivoBrowser") or 
-(http.user_agent contains "WeChat") or 
-(http.user_agent contains "Weibo") or 
-(http.user_agent contains "Weixin") or 
-(http.user_agent contains "wxwork")
+<h2>一键安装脚本（支持纯IPV6环境和国内环境）</h2>
+<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
 </code></pre>
-<p><strong>注意事项：</strong></p>
-<ul>
-<li>区分大小写：Cloudflare WAF 的规则是区分大小写的，因此请确保所有用户代理字符串都使用正确的大小写格式。</li>
-<li>验证规则：在应用规则之前，可以使用 Cloudflare 的表达式预览功能来验证规则的正确性和效果。</li>
-<li>这个规则涵盖了大多数常见的国内浏览器用户代理字符串，并按照字母顺序进行了排序。如果有遗漏，可以根据需要进行补充。</li>
-</ul></div>
+<h2>手动安装</h2>
+<ol>
+<li>
+<p>下载压缩包<a href="https://gitlab.com/yishijie/wenjian/-/blob/main/x-ui-linux-amd64.tar.gz?ref_type=heads" rel="nofollow">(下载地址)</a> 到本地。</p>
+</li>
+<li>
+<p>将压缩包上传到服务器的<code class="notranslate">root</code>目录</p>
+</li>
+<li>
+<p>然后依次执行以下命令，一行一个命令</p>
+</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">cd /root
+rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf
+tar zxvf x-ui-linux-amd64.tar.gz
+chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh
+cp x-ui/x-ui.sh /usr/bin/x-ui
+cp -f x-ui/x-ui.service /etc/systemd/system/
+mv x-ui/ /usr/local/
+systemctl daemon-reload
+systemctl enable x-ui
+systemctl restart x-ui
+x-ui
+</code></pre>
+<p>默认面板端口：54321</p>
+<p>默认用户名：admin</p>
+<p>默认密码：admin</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

@@ -10,161 +10,17 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 安装py3
-```
-sudo apt update
-sudo apt install python3 python3-pip -y
-```
+<meta name="description" content="### 纯CSS实现剧透效果
 
-### 配置`up.py`
-```
-from flask import Flask, request, render_template_string
-import os
-app = Flask(__name__)
-# 设置上传目录为当前目录
-UPLOAD_FOLDER = '.'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024
+**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。">
+<meta property="og:title" content="纯CSS实现剧透效果">
+<meta property="og:description" content="### 纯CSS实现剧透效果
 
-HTML = '''
-<!doctype html>
-<title>文件上传 </title>
-<h1>上传文件(最大25MB)</h1>
-<div id='drop-area' onclick='document.getElementById('fileElem').click();'>
-    <form id='form' method='post' enctype='multipart/form-data'>
-        <input type='file' id='fileElem' multiple accept='*/*' style='display:none;' onchange='handleFiles(this.files)'>
-        <label for='fileElem'>选择文件</label>
-        <div id='gallery'></div>
-    </form>
-</div>
-<div id='message' style='color: green; margin-top: 10px;'></div>
-<script>
-    let dropArea = document.getElementById('drop-area');
-    dropArea.addEventListener('dragover', event => {
-        event.preventDefault();
-    });
-    dropArea.addEventListener('drop', event => {
-        event.preventDefault();
-        handleFiles(event.dataTransfer.files);
-    });
-
-    function handleFiles(files) {
-        const formData = new FormData();
-        for (let file of files) {
-            formData.append('file', file);
-            const listItem = document.createElement('div');
-            listItem.textContent = file.name;
-            document.getElementById('gallery').appendChild(listItem);
-        }
-        document.getElementById('message').textContent = '上传中...';
-        fetch('/', { method: 'POST', body: formData })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('message').textContent = data;
-            })
-            .catch(() => {
-                document.getElementById('message').textContent = '上传失败！';
-            });
-    }
-</script>
-<style>
-    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; cursor: pointer; }
-</style>
-'''
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        for f in request.files.getlist('file'):
-            f.save(os.path.join(UPLOAD_FOLDER, f.filename))
-        return '文件上传成功！'
-    return render_template_string(HTML)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
-```
-
-> 在`GitHub`网页上传单个文件的大小不能超过`25M`，使用GitHub客户端限制最大`100M`，这个限制是由GitHub的服务器设定。">
-<meta property="og:title" content="使用py3快速启动一个文件上传和下载的接口">
-<meta property="og:description" content="### 安装py3
-```
-sudo apt update
-sudo apt install python3 python3-pip -y
-```
-
-### 配置`up.py`
-```
-from flask import Flask, request, render_template_string
-import os
-app = Flask(__name__)
-# 设置上传目录为当前目录
-UPLOAD_FOLDER = '.'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024
-
-HTML = '''
-<!doctype html>
-<title>文件上传 </title>
-<h1>上传文件(最大25MB)</h1>
-<div id='drop-area' onclick='document.getElementById('fileElem').click();'>
-    <form id='form' method='post' enctype='multipart/form-data'>
-        <input type='file' id='fileElem' multiple accept='*/*' style='display:none;' onchange='handleFiles(this.files)'>
-        <label for='fileElem'>选择文件</label>
-        <div id='gallery'></div>
-    </form>
-</div>
-<div id='message' style='color: green; margin-top: 10px;'></div>
-<script>
-    let dropArea = document.getElementById('drop-area');
-    dropArea.addEventListener('dragover', event => {
-        event.preventDefault();
-    });
-    dropArea.addEventListener('drop', event => {
-        event.preventDefault();
-        handleFiles(event.dataTransfer.files);
-    });
-
-    function handleFiles(files) {
-        const formData = new FormData();
-        for (let file of files) {
-            formData.append('file', file);
-            const listItem = document.createElement('div');
-            listItem.textContent = file.name;
-            document.getElementById('gallery').appendChild(listItem);
-        }
-        document.getElementById('message').textContent = '上传中...';
-        fetch('/', { method: 'POST', body: formData })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('message').textContent = data;
-            })
-            .catch(() => {
-                document.getElementById('message').textContent = '上传失败！';
-            });
-    }
-</script>
-<style>
-    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; cursor: pointer; }
-</style>
-'''
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        for f in request.files.getlist('file'):
-            f.save(os.path.join(UPLOAD_FOLDER, f.filename))
-        return '文件上传成功！'
-    return render_template_string(HTML)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
-```
-
-> 在`GitHub`网页上传单个文件的大小不能超过`25M`，使用GitHub客户端限制最大`100M`，这个限制是由GitHub的服务器设定。">
+**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/shi-yong-py3-kuai-su-qi-dong-yi-ge-wen-jian-shang-chuan-he-xia-zai-de-jie-kou.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/22.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>使用py3快速启动一个文件上传和下载的接口</title>
+<title>纯CSS实现剧透效果</title>
 
 
 
@@ -207,7 +63,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">使用py3快速启动一个文件上传和下载的接口</h1>
+<h1 class="postTitle">纯CSS实现剧透效果</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -225,95 +81,34 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>安装py3</h3>
-<pre class="notranslate"><code class="notranslate">sudo apt update
-sudo apt install python3 python3-pip -y
-</code></pre>
-<h3>配置<code class="notranslate">up.py</code></h3>
-<pre class="notranslate"><code class="notranslate">from flask import Flask, request, render_template_string
-import os
-app = Flask(__name__)
-# 设置上传目录为当前目录
-UPLOAD_FOLDER = '.'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024
-
-HTML = '''
-&lt;!doctype html&gt;
-&lt;title&gt;文件上传 &lt;/title&gt;
-&lt;h1&gt;上传文件(最大25MB)&lt;/h1&gt;
-&lt;div id="drop-area" onclick="document.getElementById('fileElem').click();"&gt;
-    &lt;form id="form" method="post" enctype="multipart/form-data"&gt;
-        &lt;input type="file" id="fileElem" multiple accept="*/*" style="display:none;" onchange="handleFiles(this.files)"&gt;
-        &lt;label for="fileElem"&gt;选择文件&lt;/label&gt;
-        &lt;div id="gallery"&gt;&lt;/div&gt;
-    &lt;/form&gt;
-&lt;/div&gt;
-&lt;div id="message" style="color: green; margin-top: 10px;"&gt;&lt;/div&gt;
-&lt;script&gt;
-    let dropArea = document.getElementById('drop-area');
-    dropArea.addEventListener('dragover', event =&gt; {
-        event.preventDefault();
-    });
-    dropArea.addEventListener('drop', event =&gt; {
-        event.preventDefault();
-        handleFiles(event.dataTransfer.files);
-    });
-
-    function handleFiles(files) {
-        const formData = new FormData();
-        for (let file of files) {
-            formData.append('file', file);
-            const listItem = document.createElement('div');
-            listItem.textContent = file.name;
-            document.getElementById('gallery').appendChild(listItem);
-        }
-        document.getElementById('message').textContent = '上传中...';
-        fetch('/', { method: 'POST', body: formData })
-            .then(response =&gt; response.text())
-            .then(data =&gt; {
-                document.getElementById('message').textContent = data;
-            })
-            .catch(() =&gt; {
-                document.getElementById('message').textContent = '上传失败！';
-            });
-    }
-&lt;/script&gt;
-&lt;style&gt;
-    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; cursor: pointer; }
-&lt;/style&gt;
-'''
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        for f in request.files.getlist('file'):
-            f.save(os.path.join(UPLOAD_FOLDER, f.filename))
-        return '文件上传成功！'
-    return render_template_string(HTML)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
-</code></pre>
-<blockquote>
-<p>在<code class="notranslate">GitHub</code>网页上传单个文件的大小不能超过<code class="notranslate">25M</code>，使用GitHub客户端限制最大<code class="notranslate">100M</code>，这个限制是由GitHub的服务器设定。</p>
-</blockquote>
+<div class="markdown-body" id="postBody"><h3>纯CSS实现剧透效果</h3>
+<p><strong>在Telegram客户端中，文字的<code class="notranslate">spoiler</code>效果可以通过特定的格式来实现。用户可以将某些文本标记为<code class="notranslate">spoiler</code>，使其在聊天中不直接显示，而是被一个模糊的、可点击的框包裹。我在网上搜了一些实现方法，以下是最简单的方法，并且比Telegram客户端更好看。</strong></p>
 <ul>
-<li>安装 Flask</li>
+<li><strong>在全局css 样式中定义如下样式</strong></li>
 </ul>
-<pre class="notranslate"><code class="notranslate">pip install Flask
+<pre class="notranslate"><code class="notranslate">.spoiler {
+    position: relative; /* 使得伪元素可以定位 */
+    background-color: rgba(200, 200, 200, 0.3); /* 浅灰色半透明背景 */
+    color: rgba(0, 0, 0, 0.5); /* 半透明黑色文字 */
+    user-select: none; /* 禁止选中文字 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    cursor: pointer; /* 鼠标悬停时光标变为手型 */
+    filter: blur(3px); /* 添加模糊效果 */
+    padding: 5px; /* 为文本添加内边距以增强效果 */
+    transition: filter 0.3s ease; /* 添加平滑过渡效果 */
+}
+
+.spoiler:hover {
+    background-color: inherit; /* 悬停时使用父元素的背景色 */
+    color: inherit; /* 悬停时显示原色 */
+    filter: blur(0); /* 悬停消除模糊效果 */
+}
 </code></pre>
+<p><strong>保存即可。后面就是写文章时直接引用该class即可。</strong></p>
 <ul>
-<li>运行</li>
+<li><strong>例如使用<code class="notranslate">&lt;span&gt;</code>标签。比如原文是<code class="notranslate">快来看，这是一个剧透效果</code>，让<code class="notranslate">剧透效果</code>这四个字实现剧透效果</strong></li>
 </ul>
-<pre class="notranslate"><code class="notranslate">python up.py
-</code></pre>
-<p>端口为<code class="notranslate">8080</code>，支持拖拽和选择上传</p>
-<h3>临时下载</h3>
-<ul>
-<li>cd到文件目录</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">python3 -m http.server 8080
+<pre class="notranslate"><code class="notranslate">快来看，这是一个&lt;span class="spoiler"&gt;剧透效果&lt;/span&gt;。
 </code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 

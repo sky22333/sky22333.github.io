@@ -10,17 +10,83 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 隐式转发-骚套路建站方案
+<meta name="description" content="> [!NOTE]
+> ## 前后端分离主题部署
 
-在帮别人弄域名的时候，看到了`隐式 URL`，于是就研究了一下相关内容。">
-<meta property="og:title" content="隐式转发-骚套路建站方案">
-<meta property="og:description" content="### 隐式转发-骚套路建站方案
+### `V2board`和`Xboard`步骤一样
 
-在帮别人弄域名的时候，看到了`隐式 URL`，于是就研究了一下相关内容。">
+###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：
+````
+├── assets
+│   ├── ArrowPathIcon-BcKBEic3.js
+│   ├── CheckOutlined-kSoYgoEi.js
+│   ├── Detail-CZ1NhySb.js
+│   ├── Detail-CiCRNMEx.css
+│   └── Home-BIEpZQVD.css
+├── .DS_Store
+├── config.js
+├── favicon.ico
+└── index.html
+````
+
+### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息
+
+#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多
+```
+window.config={
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
+    title:'一元机场', // 网站标题
+    host:'https://xxxxxxx.com/', // 机场原来的域名地址
+    storeHome: {
+         
+        下面的代码省略.......
+       ............
+       ..........
+
+```
+
+### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。">
+<meta property="og:title" content="V2board前后端分离">
+<meta property="og:description" content="> [!NOTE]
+> ## 前后端分离主题部署
+
+### `V2board`和`Xboard`步骤一样
+
+###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：
+````
+├── assets
+│   ├── ArrowPathIcon-BcKBEic3.js
+│   ├── CheckOutlined-kSoYgoEi.js
+│   ├── Detail-CZ1NhySb.js
+│   ├── Detail-CiCRNMEx.css
+│   └── Home-BIEpZQVD.css
+├── .DS_Store
+├── config.js
+├── favicon.ico
+└── index.html
+````
+
+### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息
+
+#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多
+```
+window.config={
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
+    title:'一元机场', // 网站标题
+    host:'https://xxxxxxx.com/', // 机场原来的域名地址
+    storeHome: {
+         
+        下面的代码省略.......
+       ............
+       ..........
+
+```
+
+### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/yin-shi-zhuan-fa---sao-tao-lu-jian-zhan-fang-an.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/8.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>隐式转发-骚套路建站方案</title>
+<title>V2board前后端分离</title>
 
 
 
@@ -57,13 +123,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     font-size: 12px;
 }
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-important {border-left-color:var(--borderColor-done-emphasis, var(--color-done-emphasis));background-color:var(--color-done-subtle);}.markdown-alert.markdown-alert-important .markdown-alert-title {color: var(--fgColor-done,var(--color-done-fg));}</style>
 
 
 
 <body>
     <div id="header">
-<h1 class="postTitle">隐式转发-骚套路建站方案</h1>
+<h1 class="postTitle">V2board前后端分离</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -81,116 +147,69 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>隐式转发-骚套路建站方案</h3>
-<p>在帮别人弄域名的时候，看到了<code class="notranslate">隐式 URL</code>，于是就研究了一下相关内容。</p>
+<div class="markdown-body" id="postBody"><div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<h2>前后端分离主题部署</h2>
+</div>
+<h3><code class="notranslate">V2board</code>和<code class="notranslate">Xboard</code>步骤一样</h3>
+<h3>当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：</h3>
+<pre class="notranslate"><code class="notranslate">├── assets
+│   ├── ArrowPathIcon-BcKBEic3.js
+│   ├── CheckOutlined-kSoYgoEi.js
+│   ├── Detail-CZ1NhySb.js
+│   ├── Detail-CiCRNMEx.css
+│   └── Home-BIEpZQVD.css
+├── .DS_Store
+├── config.js
+├── favicon.ico
+└── index.html
+</code></pre>
+<h3>重点在于<code class="notranslate">config.js</code>这个文件，这个文件里需要填写你机场的配置信息</h3>
+<h4>文件内容以这个为例，自己举一反三，基本逻辑都差不多</h4>
+<pre class="notranslate"><code class="notranslate">window.config={
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
+    title:"一元机场", // 网站标题
+    host:"https://xxxxxxx.com/", // 机场原来的域名地址
+    storeHome: {
+         
+        下面的代码省略.......
+       ............
+       ..........
+
+</code></pre>
+<h3>配置好后就用就把整个项目文件用<code class="notranslate">nginx</code>或者<code class="notranslate">caddy</code>运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。域名要用一个新域名，不能和机场原来的域名一样。(为了方便小白理解)</h3>
+<h3>分离后的常见问题</h3>
 <blockquote>
-<p>隐性转发：用的是 iframe 框架技术、非重定向技术，效果为浏览器地址栏输入 <a href="http://www.dnspod.cn" rel="nofollow">http://www.dnspod.cn</a> 回车，打开网站内容是目标地址 <a href="http://cloud.tencent.com/" rel="nofollow">http://cloud.tencent.com/</a> 的网站内容，但地址栏显示当前地址 <a href="http://www.dnspod.cn" rel="nofollow">http://www.dnspod.cn</a> 。</p>
+<p>支付完成后跳回原来的机场界面：一般是支付回调的问题，把你机场后台的官网域名换成你的新主题域名，或者改一下支付回调</p>
 </blockquote>
-<p>也就是说，所谓「隐式 URL」，只不过是域名解析的服务商用他们的服务器去响应了访客的请求，并回应了一段使用了 iframe 的 html 。这段代码打开了一个大小为 100% 的窗口去请求了被“隐式代理”的站点。</p>
-<p>然后我突发奇想，这样的话好像可以绕过国内建站需要备案的问题，将web服务直接部署在非常规端口，然后使用隐式转发到IP+端口，<br>
-或许还能减少一些敏感网址被墙的几率。</p>
-<p>这里帖一下代码：</p>
-<pre class="notranslate"><code class="notranslate">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;示例站点&lt;/title&gt;
-  &lt;style&gt;
-    iframe {
-      width: 100%;
-      height: 100vh;
-      border: none;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;iframe id="mainFrame" title="Embedded Content"&gt;&lt;/iframe&gt;
-
-  &lt;script&gt;
-    function encodeURL(url) {
-      return btoa(url).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    }
-    
-    function decodeURL(encoded) {
-      encoded = encoded.replace(/-/g, '+').replace(/_/g, '/');
-      while (encoded.length % 4) encoded += '=';
-      return atob(encoded);
-    }
-
-    function initializeFrame() {
-      const iframe = document.getElementById('mainFrame');
-      
-      // 使用base64编码的域名
-      const encodedDomain = 'base64编码后的字符';
-      const targetUrl = decodeURL(encodedDomain);
-
-      iframe.src = targetUrl;
-
-      iframe.addEventListener('load', function() {
-        try {
-          const iframeDoc = iframe.contentWindow.document;
-          
-          function modifyLinks(doc) {
-            const links = doc.getElementsByTagName('a');
-            Array.from(links).forEach(link =&gt; {
-              link.addEventListener('click', function(e) {
-                e.preventDefault();
-                let newUrl = this.href;
-
-                if (!newUrl.includes(decodeURL(encodedDomain))) {
-                  if (newUrl.startsWith('/')) {
-                    newUrl = decodeURL(encodedDomain) + newUrl;
-                  }
-                }
-                
-                iframe.src = newUrl;
-                
-                const encodedNewUrl = encodeURL(newUrl);
-                window.history.pushState({}, '', '?url=' + encodedNewUrl);
-              });
-            });
-          }
-          
-          const observer = new MutationObserver((mutations) =&gt; {
-            mutations.forEach(mutation =&gt; {
-              if (mutation.type === 'childList') {
-                modifyLinks(iframeDoc);
-              }
-            });
-          });
-
-          observer.observe(iframeDoc.body, {
-            childList: true,
-            subtree: true
-          });
-
-          modifyLinks(iframeDoc);
-
-        } catch (e) {
-          console.log('无法访问内容，可能是因为同源策略限制');
-        }
-      });
-    }
-
-    window.addEventListener('load', initializeFrame);
-
-    window.addEventListener('popstate', function(e) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const encodedUrl = urlParams.get('url');
-      if (encodedUrl) {
-        document.getElementById('mainFrame').src = decodeURL(encodedUrl);
-      }
-    });
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></div>
+<blockquote>
+<p>无法登录：一般是你新主题的服务器和面板服务器之间无法连通，也可能是机场被墙了（严谨点讲是机场后端）</p>
+</blockquote>
+<p>更多问题可以点击博客主页的右上角私聊我的TG有偿协助</p>
+<p>一般前后端分离主题也可以不需要服务器，直接部署在CF上，只用添加<code class="notranslate">/functions/api /[[path]].js</code>文件即可，文件中的配置自己研究，或者联系我有偿协助。</p>
+<hr>
+<hr>
+<h2>免费的万能解决方案，可解决机场的所有复杂问题，收集了多位专业运维大佬的解答，扫码查看。</h2>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4"><img src="https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4" alt="222" style="max-width: 100%;"></a></p>
+<hr>
+<hr>
+<hr>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<h2>前后端分离原理解释</h2>
+</div>
+<h3>默认架构下，V2board 同时扮演后端和前端的角色：</h3>
+<p>对于 <code class="notranslate">/ </code>路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件</p>
+<p>对于 <code class="notranslate">/api/*</code> 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色</p>
+<p>出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。V2board 只需承担后端的职责，前端主题 将会作为一个静态站点担任前端：</p>
+<p>用户的所有请求都会由部署了 前端主题 的前端站点处理</p>
+<p>用户加载 前端主题 后，前端主题 会向部署了 V2board 的后端站点请求数据</p>
+<p>假设 前端主题 部署在 <code class="notranslate">https://example.org</code>，V2board 部署在 <code class="notranslate">https://v2board.example.org</code>，用户的浏览器会产生类似如下的请求：</p>
+<p><code class="notranslate">GET https://example.org/ </code>- 由用户发起的请求，加载 前端主题 资源文件</p>
+<p><code class="notranslate">GET https://v2board.example.org/api/ </code>- 由 前端主题 发起的请求，从 V2board 加载数据</p>
+<p>若您不希望使用多个域名，也可以通过使用<a href="https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86" rel="nofollow">反向代理</a></p>
+<p>，将对于 前端主题 站点 <code class="notranslate">/api/ </code>路径的请求委托给 V2board 站点处理。</p>
+<p>沿用上面的例子，通过配置反向代理，所有对于 <code class="notranslate">https://example.org/api/ </code>的请求都将会被委托给 <code class="notranslate">https://v2board.example.org/api/</code> 处理。这种情况下，用户的浏览器会产生类似如下的请求：</p>
+<p><code class="notranslate">GET https://example.org/</code> - 由用户发起的请求，加载 前端主题 资源文件</p>
+<p><code class="notranslate">GET https://example.org/api/</code> - 由 前端主题 发起的请求，从 V2board 加载数据</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

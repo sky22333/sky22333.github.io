@@ -10,18 +10,18 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 纯CSS实现剧透效果
+<meta name="description" content="## Docker镜像加速和离线安装
 
-**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。">
-<meta property="og:title" content="纯CSS实现剧透效果">
-<meta property="og:description" content="### 纯CSS实现剧透效果
+国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。">
+<meta property="og:title" content="Docker镜像加速和离线安装">
+<meta property="og:description" content="## Docker镜像加速和离线安装
 
-**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。">
+国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/chun-CSS-shi-xian-ju-tou-xiao-guo.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/5.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>纯CSS实现剧透效果</title>
-
+<title>Docker镜像加速和离线安装</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -63,7 +63,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">纯CSS实现剧透效果</h1>
+<h1 class="postTitle">Docker镜像加速和离线安装</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -81,35 +81,202 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>纯CSS实现剧透效果</h3>
-<p><strong>在Telegram客户端中，文字的<code class="notranslate">spoiler</code>效果可以通过特定的格式来实现。用户可以将某些文本标记为<code class="notranslate">spoiler</code>，使其在聊天中不直接显示，而是被一个模糊的、可点击的框包裹。我在网上搜了一些实现方法，以下是最简单的方法，并且比Telegram客户端更好看。</strong></p>
-<ul>
-<li><strong>在全局css 样式中定义如下样式</strong></li>
-</ul>
-<pre class="notranslate"><code class="notranslate">.spoiler {
-    position: relative; /* 使得伪元素可以定位 */
-    background-color: rgba(200, 200, 200, 0.3); /* 浅灰色半透明背景 */
-    color: rgba(0, 0, 0, 0.5); /* 半透明黑色文字 */
-    user-select: none; /* 禁止选中文字 */
-    overflow: hidden; /* 隐藏溢出的内容 */
-    cursor: pointer; /* 鼠标悬停时光标变为手型 */
-    filter: blur(3px); /* 添加模糊效果 */
-    padding: 5px; /* 为文本添加内边距以增强效果 */
-    transition: filter 0.3s ease; /* 添加平滑过渡效果 */
-}
-
-.spoiler:hover {
-    background-color: inherit; /* 悬停时使用父元素的背景色 */
-    color: inherit; /* 悬停时显示原色 */
-    filter: blur(0); /* 悬停消除模糊效果 */
-}
+<div class="markdown-body" id="postBody"><h2>Docker镜像加速和离线安装</h2>
+<p>国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</p>
+<h3>安装Docker（如果安装困难可以选择手动安装）</h3>
+<p>官方脚本安装：</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
 </code></pre>
-<p><strong>保存即可。后面就是写文章时直接引用该class即可。</strong></p>
-<ul>
-<li><strong>例如使用<code class="notranslate">&lt;span&gt;</code>标签。比如原文是<code class="notranslate">快来看，这是一个剧透效果</code>，让<code class="notranslate">剧透效果</code>这四个字实现剧透效果</strong></li>
-</ul>
-<pre class="notranslate"><code class="notranslate">快来看，这是一个&lt;span class="spoiler"&gt;剧透效果&lt;/span&gt;。
-</code></pre></div>
+<p>国内机器安装脚本：</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://linuxmirrors.cn/docker.sh)
+</code></pre>
+<h3>（可选）离线环境或者国内机器手动安装Docker</h3>
+<h4>1：手动下载Docker软件包</h4>
+<p><a href="https://download.docker.com/linux/static/stable/x86_64/" rel="nofollow">Docker软件包下载地址</a></p>
+<p>上传到服务器的root目录后执行以下命令</p>
+<pre class="notranslate"><code class="notranslate">tar xzvf docker-27.0.3.tgz   // 替换对应的版本号
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo mv docker/* /usr/local/bin/
+</code></pre>
+<h4>2：创建 Docker 服务文件</h4>
+<pre class="notranslate"><code class="notranslate">sudo vim /etc/systemd/system/docker.service
+</code></pre>
+<p>添加以下内容</p>
+<pre class="notranslate"><code class="notranslate">[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/local/bin/dockerd
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
+
+# Note that StartLimit* options were moved from "Service" to "Unit" in systemd 229.
+# Both the old, and new location are accepted by systemd 229 and up, so using the old location
+# to make them work for either version of systemd.
+StartLimitBurst=3
+
+# Note that StartLimitInterval was renamed to StartLimitIntervalSec in systemd 230.
+StartLimitInterval=60s
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h4>3：启动并启用 Docker 服务</h4>
+<pre class="notranslate"><code class="notranslate">sudo chmod +x /etc/systemd/system/docker.service
+sudo systemctl daemon-reload
+sudo systemctl start docker
+sudo systemctl enable docker
+</code></pre>
+<h4>4：查看版本</h4>
+<pre class="notranslate"><code class="notranslate">docker -v
+</code></pre>
+<h3>安装Docker Compose</h3>
+<p>运行以下命令来下载 Docker Compose：</p>
+<pre class="notranslate"><code class="notranslate">curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+</code></pre>
+<p>添加可执行权限:</p>
+<pre class="notranslate"><code class="notranslate">chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>查看版本:</p>
+<pre class="notranslate"><code class="notranslate">docker-compose --version
+</code></pre>
+<hr>
+<h4>（可选）离线环境或者国内服务器可<a href="https://github.com/docker/compose/releases">手动下载文件</a>上传到<code class="notranslate">/usr/local/bin</code>目录，并重命名为<code class="notranslate">docker-compose</code> 然后增加执行权限。</h4>
+<p>一般下载<code class="notranslate">linux-x86_64</code>的包即可，其他型号则下载对应的</p>
+<hr>
+<hr>
+<h2>配置加速地址</h2>
+<blockquote>
+<p>Ubuntu 16.04+、Debian 8+、CentOS 7+</p>
+</blockquote>
+<p>创建或修改 <code class="notranslate">/etc/docker/daemon.json</code>：</p>
+<pre class="notranslate"><code class="notranslate">sudo mkdir -p /etc/docker
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
+{
+    "registry-mirrors": [
+        "https://hub.rat.dev",
+        "https://docker.1panel.live"
+    ]
+}
+EOF
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo systemctl restart docker
+</code></pre>
+<h3>检查加速是否生效</h3>
+<p>查看docker系统信息 <code class="notranslate">docker info</code>，如果从结果中看到了如下内容，说明配置成功。</p>
+<div class="highlight highlight-text-shell-session"><pre class="notranslate"><span class="pl-c1">Registry Mirrors:</span>
+<span class="pl-c1"> [...]</span>
+<span class="pl-c1"> https://docker.1panel.live</span></pre></div>
+<p>对于 Mac 和 Windows 用户，直接在 Docker Desktop 系统设置中，配置 registry-mirrors 即可。</p>
+<hr>
+<h2>使用代理拉取镜像</h2>
+<h4>创建配置文件</h4>
+<pre class="notranslate"><code class="notranslate">sudo mkdir -p /etc/systemd/system/docker.service.d
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+</code></pre>
+<h4>在文件中添加代理</h4>
+<pre class="notranslate"><code class="notranslate">[Service]
+Environment="HTTP_PROXY=socks5://user:pass@127.0.0.1:1080"
+Environment="HTTPS_PROXY=socks5://user:pass@127.0.0.1:1080"
+</code></pre>
+<h4>重启Docker</h4>
+<pre class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre>
+<h4>查看环境变量</h4>
+<pre class="notranslate"><code class="notranslate">sudo systemctl show --property=Environment docker
+</code></pre>
+<hr>
+<h2>备用方法：直接传送镜像</h2>
+<p>国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，<code class="notranslate">myimage</code>为镜像名</p>
+<h4>A服务器保存Docker镜像</h4>
+<pre class="notranslate"><code class="notranslate">docker save myimage &gt; myimage.tar
+</code></pre>
+<h4>传送到B服务器</h4>
+<pre class="notranslate"><code class="notranslate">scp myimage.tar root@192.0.2.0:/home
+</code></pre>
+<p>然后输入B服务器root密码</p>
+<h4>B服务器加载Docker镜像</h4>
+<pre class="notranslate"><code class="notranslate">cd /home
+</code></pre>
+<pre class="notranslate"><code class="notranslate">docker load &lt; myimage.tar
+</code></pre>
+<p>查看镜像</p>
+<pre class="notranslate"><code class="notranslate">docker images
+</code></pre>
+<hr>
+<h2>Docker Hub 镜像测速</h2>
+<p>拉取镜像时，可使用 <code class="notranslate">time</code> 统计所花费的总时间。测速前记得移除本地的镜像。</p>
+<p>例如：<code class="notranslate">time docker pull node:latest</code></p>
+<h2>卸载Docker</h2>
+<pre class="notranslate"><code class="notranslate">sudo systemctl stop docker
+sudo apt-get purge docker-ce docker-ce-cli containerd.io
+sudo rm -rf /etc/docker /var/lib/docker
+</code></pre>
+<hr>
+<h2>Docker最新稳定加速源列表——非私人</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>提供者</th>
+<th>镜像加速地址</th>
+<th>说明</th>
+<th>加速类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://hub.rat.dev/" rel="nofollow">耗子面板</a></td>
+<td><code class="notranslate">https://hub.rat.dev</code></td>
+<td>无限制</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://docker.rainbond.cc" rel="nofollow">rainbond</a></td>
+<td><code class="notranslate">https://docker.rainbond.cc</code></td>
+<td>无限制</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://1panel.cn/docs/user_manual/containers/setting/" rel="nofollow">1panel</a></td>
+<td><code class="notranslate">https://docker.1panel.live</code></td>
+<td>无限制</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://github.com/DaoCloud/public-image-mirror">DaoCloud</a></td>
+<td><code class="notranslate">https://docker.m.daocloud.io</code></td>
+<td>白名单和限流</td>
+<td>Docker Hub</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

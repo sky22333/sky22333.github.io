@@ -10,309 +10,163 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 安装node环境
-```
-curl https://get.volta.sh | bash
-```
-```
-export VOLTA_HOME='$HOME/.volta'
-export PATH='$VOLTA_HOME/bin:$PATH'
-```
-```
-source ~/.bashrc
-```
-```
-volta install node@16.0.0
-```
-切换node版本只需再次安装需要的版本即可自动切换
+<meta name="description" content="#  GitHub加速方法
 
+#  方法一：
 
-
-### 3xui
-
+首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
-```
-
-
-###  一键wrap
-
-```
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
-```
-
-```
-warp [option] [lisence]
-```
-
-###  一键安装docker
-
-```
-curl -fsSL https://get.docker.com | sh
-```
-
-###  查看系统内核
-```
-dpkg --print-architecture
-```
-
-
-
-```
-uname -a
-```
-
-####  查看系统版本
-```
-cat /etc/os-release
+sudo vim ~/.bashrc
 ```
 ```
-lsb_release -a
-```
-
-###  VPS开启root登录并且修改密码：
-```
-bash <(curl -L -s check.unlock.media)
-```
-
- 
-```
-bash <(curl -L -s check.unlock.media) -M 4
-```
-
- 
-```
-bash <(curl -L -s check.unlock.media) -M 6
-```
-
-###  查看端口占用：
-```
-sudo lsof -i -P -n
-```
-```
-ss -tuln
-```
-```
-lsof -i:端口号
-```
-#### 释放端口
-```
-kill PID数字
-```
-
-###  放行端口：
-
-`sudo ufw allow 端口号`
-
-`sudo ufw allow 起始端口:结束端口`
-
-`sudo ufw enable`   #  重启ufw防火墙
-
-###  关闭端口：
-`sudo ufw deny 端口号`
-
-###  只允许指定IP连接22端口：
-`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
-
-###  文件类型转换：
-
-`mv config.txt config.json`
-
-`mv shell.txt shell.sh`
-
-
-###  开启虚拟内存：
-
-```
-sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
-
-
-###  防火墙
-
-`firewall-cmd --state`                          # 查看防火墙状态    
-
-
-`systemctl stop firewalld.service`                # 停止防火墙    
-
-
-`systemctl disable firewalld.service`             # 禁止防火墙开机自启
-
-###  一键开启bbr加速
-
-```
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-```
-
-```
-sysctl net.ipv4.tcp_congestion_control
-```
-
-
-
-###  人型自走bot乌班图脚本
-
-
-```
-wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
-```
-
-
-使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。">
-<meta property="og:title" content="VPS常用命令">
-<meta property="og:description" content="### 安装node环境
-```
-curl https://get.volta.sh | bash
-```
-```
-export VOLTA_HOME='$HOME/.volta'
-export PATH='$VOLTA_HOME/bin:$PATH'
+export all_proxy='socks5://user:pass@127.0.0.1:20170'
+export HTTP_PROXY='socks5://user:pass@127.0.0.1:20170'
+export HTTPS_PROXY='socks5://user:pass@127.0.0.1:20170'
 ```
 ```
 source ~/.bashrc
 ```
-```
-volta install node@16.0.0
-```
-切换node版本只需再次安装需要的版本即可自动切换
+
+此时输入```curl ip.sb```查看本机IP判断是否配置成功
+
+如需删除并停止，只需清空文件并重新加载即可
+
+注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
 
 
 
-### 3xui
 
-```
-bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
-```
+---
 
+# 方法二：v2rayA代理
 
-###  一键wrap
+#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
 
-```
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
-```
+#### 手动使用软件源安装
+[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
 
-```
-warp [option] [lisence]
-```
+[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
 
-###  一键安装docker
+安装
+```
+sudo apt install xray.deb路径 v2rayA.deb路径
+```
+替换两个deb包所在的实际路径
 
+启动
 ```
-curl -fsSL https://get.docker.com | sh
-```
-
-###  查看系统内核
-```
-dpkg --print-architecture
-```
-
-
-
-```
-uname -a
-```
-
-####  查看系统版本
-```
-cat /etc/os-release
+sudo systemctl start v2raya.service
 ```
 ```
-lsb_release -a
+默认端口：
+2017: v2rayA面板端口
+20170: SOCKS协议
+20171: HTTP协议
+20172: 带分流规则的HTTP协议
+32345: tproxy透明代理所需
 ```
 
-###  VPS开启root登录并且修改密码：
+卸载
 ```
-bash <(curl -L -s check.unlock.media)
-```
-
- 
-```
-bash <(curl -L -s check.unlock.media) -M 4
-```
-
- 
-```
-bash <(curl -L -s check.unlock.media) -M 6
-```
-
-###  查看端口占用：
-```
-sudo lsof -i -P -n
-```
-```
-ss -tuln
-```
-```
-lsof -i:端口号
-```
-#### 释放端口
-```
-kill PID数字
-```
-
-###  放行端口：
-
-`sudo ufw allow 端口号`
-
-`sudo ufw allow 起始端口:结束端口`
-
-`sudo ufw enable`   #  重启ufw防火墙
-
-###  关闭端口：
-`sudo ufw deny 端口号`
-
-###  只允许指定IP连接22端口：
-`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
-
-###  文件类型转换：
-
-`mv config.txt config.json`
-
-`mv shell.txt shell.sh`
-
-
-###  开启虚拟内存：
-
-```
-sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
-
-
-###  防火墙
-
-`firewall-cmd --state`                          # 查看防火墙状态    
-
-
-`systemctl stop firewalld.service`                # 停止防火墙    
-
-
-`systemctl disable firewalld.service`             # 禁止防火墙开机自启
-
-###  一键开启bbr加速
-
-```
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-```
-
-```
-sysctl net.ipv4.tcp_congestion_control
+sudo apt-get remove v2raya xray
 ```
 
 
 
-###  人型自走bot乌班图脚本
-
-
+### 快捷安装方式
+v2ray内核
 ```
-wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
+sudo apt install snapd
+```
+```
+sudo snap install v2raya
+```
+需要修改配置文件
+```
+sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
+```
+`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。">
+<meta property="og:title" content="Github加速">
+<meta property="og:description" content="#  GitHub加速方法
+
+#  方法一：
+
+首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
+```
+sudo vim ~/.bashrc
+```
+```
+export all_proxy='socks5://user:pass@127.0.0.1:20170'
+export HTTP_PROXY='socks5://user:pass@127.0.0.1:20170'
+export HTTPS_PROXY='socks5://user:pass@127.0.0.1:20170'
+```
+```
+source ~/.bashrc
+```
+
+此时输入```curl ip.sb```查看本机IP判断是否配置成功
+
+如需删除并停止，只需清空文件并重新加载即可
+
+注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
+
+
+
+
+---
+
+# 方法二：v2rayA代理
+
+#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
+
+#### 手动使用软件源安装
+[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
+
+[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
+
+安装
+```
+sudo apt install xray.deb路径 v2rayA.deb路径
+```
+替换两个deb包所在的实际路径
+
+启动
+```
+sudo systemctl start v2raya.service
+```
+```
+默认端口：
+2017: v2rayA面板端口
+20170: SOCKS协议
+20171: HTTP协议
+20172: 带分流规则的HTTP协议
+32345: tproxy透明代理所需
+```
+
+卸载
+```
+sudo apt-get remove v2raya xray
 ```
 
 
-使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。">
+
+### 快捷安装方式
+v2ray内核
+```
+sudo apt install snapd
+```
+```
+sudo snap install v2raya
+```
+需要修改配置文件
+```
+sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
+```
+`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/VPS-chang-yong-ming-ling.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/6.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>VPS常用命令</title>
+<title>Github加速</title>
 
 
 
@@ -355,7 +209,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">VPS常用命令</h1>
+<h1 class="postTitle">Github加速</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -373,97 +227,143 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>安装node环境</h3>
-<pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
+<div class="markdown-body" id="postBody"><h1>GitHub加速方法</h1>
+<h1>方法一：</h1>
+<p>首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建</p>
+<pre class="notranslate"><code class="notranslate">sudo vim ~/.bashrc
 </code></pre>
-<pre class="notranslate"><code class="notranslate">export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+<pre class="notranslate"><code class="notranslate">export all_proxy="socks5://user:pass@127.0.0.1:20170"
+export HTTP_PROXY="socks5://user:pass@127.0.0.1:20170"
+export HTTPS_PROXY="socks5://user:pass@127.0.0.1:20170"
 </code></pre>
 <pre class="notranslate"><code class="notranslate">source ~/.bashrc
 </code></pre>
-<pre class="notranslate"><code class="notranslate">volta install node@16.0.0
+<p>此时输入<code class="notranslate">curl ip.sb</code>查看本机IP判断是否配置成功</p>
+<p>如需删除并停止，只需清空文件并重新加载即可</p>
+<p>注意：如果脚本命令前面带<code class="notranslate">sudo</code>，则需要添加<code class="notranslate">-E</code>传递环境变量才会生效</p>
+<hr>
+<h1>方法二：v2rayA代理</h1>
+<h4><a href="https://v2raya.org/docs/prologue/installation/debian/" rel="nofollow">官方文档</a></h4>
+<h4>手动使用软件源安装</h4>
+<p><a href="https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya">手动下载v2rayA软件源</a>上传到服务器</p>
+<p><a href="https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray">手动下载xray软件源</a>上传到服务器</p>
+<p>安装</p>
+<pre class="notranslate"><code class="notranslate">sudo apt install xray.deb路径 v2rayA.deb路径
 </code></pre>
-<p>切换node版本只需再次安装需要的版本即可自动切换</p>
-<h3>3xui</h3>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+<p>替换两个deb包所在的实际路径</p>
+<p>启动</p>
+<pre class="notranslate"><code class="notranslate">sudo systemctl start v2raya.service
 </code></pre>
-<h3>一键wrap</h3>
-<pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
+<pre class="notranslate"><code class="notranslate">默认端口：
+2017: v2rayA面板端口
+20170: SOCKS协议
+20171: HTTP协议
+20172: 带分流规则的HTTP协议
+32345: tproxy透明代理所需
 </code></pre>
-<pre class="notranslate"><code class="notranslate">warp [option] [lisence]
+<p>卸载</p>
+<pre class="notranslate"><code class="notranslate">sudo apt-get remove v2raya xray
 </code></pre>
-<h3>一键安装docker</h3>
-<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
+<h3>快捷安装方式</h3>
+<p>v2ray内核</p>
+<pre class="notranslate"><code class="notranslate">sudo apt install snapd
 </code></pre>
-<h3>查看系统内核</h3>
-<pre class="notranslate"><code class="notranslate">dpkg --print-architecture
+<pre class="notranslate"><code class="notranslate">sudo snap install v2raya
 </code></pre>
-<pre class="notranslate"><code class="notranslate">uname -a
+<p>需要修改配置文件</p>
+<pre class="notranslate"><code class="notranslate">sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
 </code></pre>
-<h4>查看系统版本</h4>
-<pre class="notranslate"><code class="notranslate">cat /etc/os-release
+<p><code class="notranslate">ExecStart</code>参数后面增加<code class="notranslate"> --address 0.0.0.0:2017</code>，只需增加即可，注意空格需保留。</p>
+<p>加载并重启</p>
+<pre class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
+sudo systemctl restart snap.v2raya.v2raya.service
 </code></pre>
-<pre class="notranslate"><code class="notranslate">lsb_release -a
+<p>卸载</p>
+<pre class="notranslate"><code class="notranslate">sudo snap remove v2raya
 </code></pre>
-<h3>VPS开启root登录并且修改密码：</h3>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media)
+<h3>win系统安装</h3>
+<p>以管理员身份运行PowerShell</p>
+<pre class="notranslate"><code class="notranslate">winget install --id v2rayA.v2rayA
 </code></pre>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 4
+<p>会自动安装到桌面，启动后自动配置系统代理，端口为<code class="notranslate">52345</code></p>
+<p>部分应用（比如命令行程序）可能不读取或者不使用系统代理，你可能需要<code class="notranslate">proxychains</code>来强行让它们走代理，或者使用程序自身的代理配置。</p>
+<p>如果 v2rayA 意外退出，那么 v2rayA 无法在退出的时候帮你取消系统代理，这种情况下你需要自行去<code class="notranslate">Internet</code>选项或者系统设置里面关掉代理。</p>
+<p>更新</p>
+<pre class="notranslate"><code class="notranslate">winget upgrade --id v2rayA.v2rayA
 </code></pre>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 6
+<p>卸载</p>
+<pre class="notranslate"><code class="notranslate">winget uninstall --id v2rayA.v2rayA
 </code></pre>
-<h3>查看端口占用：</h3>
-<pre class="notranslate"><code class="notranslate">sudo lsof -i -P -n
+<p>开机自启</p>
+<p>将你<code class="notranslate">scoop\shims</code>目录下的<code class="notranslate">start-v2raya.cmd</code>复制到<code class="notranslate">启动</code>文件夹（一般位于 <code class="notranslate">C:\Users\YourUserName\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>）。</p>
+<p>命令运行示例：</p>
+<pre class="notranslate"><code class="notranslate">Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
 </code></pre>
-<pre class="notranslate"><code class="notranslate">ss -tuln
+<hr>
+<h3>配置 APT 包管理器的代理服务器设置</h3>
+<p>编辑<code class="notranslate">/etc/apt/apt.conf.d/proxy.conf</code></p>
+<pre class="notranslate"><code class="notranslate">Acquire::http::Proxy "socks5h://username:password@127.0.0.1:1080";
+Acquire::https::Proxy "socks5h://username:password@127.0.0.1:1080";
+Acquire::socks::Proxy "socks5h://username:password@127.0.0.1:1080";
 </code></pre>
-<pre class="notranslate"><code class="notranslate">lsof -i:端口号
+<pre class="notranslate"><code class="notranslate">sudo apt update
 </code></pre>
-<h4>释放端口</h4>
-<pre class="notranslate"><code class="notranslate">kill PID数字
+<hr>
+<h3>方法三：修改系统hosts文件实现加速(老方法不稳定)：</h3>
+<ul>
+<li>文件路径：</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">windows: C:\Windows\System32\drivers\etc 
+linux: /etc/hosts
 </code></pre>
-<h3>放行端口：</h3>
-<p><code class="notranslate">sudo ufw allow 端口号</code></p>
-<p><code class="notranslate">sudo ufw allow 起始端口:结束端口</code></p>
-<p><code class="notranslate">sudo ufw enable</code>   #  重启ufw防火墙</p>
-<h3>关闭端口：</h3>
-<p><code class="notranslate">sudo ufw deny 端口号</code></p>
-<h3>只允许指定IP连接22端口：</h3>
-<p><code class="notranslate">sudo ufw allow from 192.168.1.100 to any port 22</code>      #  多IP用英文的逗号分开</p>
-<h3>文件类型转换：</h3>
-<p><code class="notranslate">mv config.txt config.json</code></p>
-<p><code class="notranslate">mv shell.txt shell.sh</code></p>
-<h3>开启虚拟内存：</h3>
-<pre class="notranslate"><code class="notranslate">sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+<ul>
+<li>格式：</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">127.0.0.11 github.com
+127.0.0.11 raw.githubusercontent.com
+127.0.0.11 assets-cdn.github.com
+127.0.0.11 github.global.ssl.fastly.net
 </code></pre>
-<h3>防火墙</h3>
-<p><code class="notranslate">firewall-cmd --state</code>                          # 查看防火墙状态</p>
-<p><code class="notranslate">systemctl stop firewalld.service</code>                # 停止防火墙</p>
-<p><code class="notranslate">systemctl disable firewalld.service</code>             # 禁止防火墙开机自启</p>
-<h3>一键开启bbr加速</h3>
-<pre class="notranslate"><code class="notranslate">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh
-</code></pre>
-<pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
-</code></pre>
-<h3>人型自走bot乌班图脚本</h3>
-<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh
-</code></pre>
-<p>使用该脚本会将 <code class="notranslate">Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid</code> 目录下。</p>
-<h3>久激活 Windows 系统和 Office 软件</h3>
-<p>在 Windows 8.1/10/11 上，右键单击 Windows 开始菜单并 选择 PowerShell 或终端（非 CMD）</p>
-<pre class="notranslate"><code class="notranslate">irm https://massgrave.dev/get | iex
-</code></pre>
-<p>稍微等待一下，他会自动适配，并激活您的系统，当出现 Successful 的时候说明系统已经激活成功了</p>
-<h3>查看电脑wifi密码CMD命令</h3>
-<p>查看已连接过的wifi：</p>
-<pre class="notranslate"><code class="notranslate">netsh wlan show profile
-</code></pre>
-<p>查看密码：</p>
-<pre class="notranslate"><code class="notranslate">netsh wlan show profile name="WiFi名称" key=clear
-</code></pre>
-<p>打印到C盘：</p>
-<pre class="notranslate"><code class="notranslate">netsh wlan export profile folder=C:\ key=clear
-</code></pre></div>
+<p>把<code class="notranslate">127.0.0.11</code>替换为查询到的地址</p>
+<p>可以从这里获取最新可用的hosts地址：<a href="https://github.com/521xueweihan/GitHub520/blob/main/hosts">https://github.com/521xueweihan/GitHub520/blob/main/hosts</a></p>
+<p>该内容会每天自动更新。</p>
+<h4>修改 hosts 文件</h4>
+<p>hosts 文件在每个系统的位置不一，详情如下：</p>
+<ul>
+<li>Windows 系统：<code class="notranslate">C:\Windows\System32\drivers\etc\hosts</code></li>
+<li>Linux 系统：<code class="notranslate">/etc/hosts</code></li>
+<li>Mac（苹果电脑）系统：<code class="notranslate">/etc/hosts</code></li>
+<li>Android（安卓）系统：<code class="notranslate">/system/etc/hosts</code></li>
+<li>iPhone（iOS）系统：<code class="notranslate">/etc/hosts</code></li>
+</ul>
+<p>修改方法，把上面的内容复制到文本末尾：</p>
+<ol>
+<li>Windows 使用记事本</li>
+<li>Linux、Mac 使用 Root 权限：<code class="notranslate">sudo nano /etc/hosts</code></li>
+<li>iPhone、iPad 须越狱、Android 必须要 root</li>
+</ol>
+<h4>激活生效</h4>
+<p>大部分情况下是直接生效，如未生效可尝试下面的办法，刷新 DNS：</p>
+<ol>
+<li>
+<p>Windows：在CMD窗口输入：<code class="notranslate">ipconfig /flushdns</code></p>
+</li>
+<li>
+<p>Linux命令：<code class="notranslate">sudo systemctl restart nscd</code> 如报错则须安装：<code class="notranslate">sudo apt install nscd</code> 或 <code class="notranslate">sudo /etc/init.d/nscd restart</code></p>
+</li>
+<li>
+<p>Mac命令：<code class="notranslate">sudo killall -HUP mDNSResponder</code></p>
+</li>
+</ol>
+<p><strong>PS：</strong> 上述方法无效可以尝试重启机器。</p>
+<h3>GitHub加速网站（不会使用请谷歌）</h3>
+<p><a href="https://www.jsdelivr.com/github" rel="nofollow">https://www.jsdelivr.com/github</a></p>
+<p><a href="https://gh.api.99988866.xyz/" rel="nofollow">https://gh.api.99988866.xyz/</a></p>
+<p><a href="https://mirror.ghproxy.com/" rel="nofollow">https://mirror.ghproxy.com/</a></p>
+<p><a href="https://gitclone.com/" rel="nofollow">https://gitclone.com/</a></p>
+<p><a href="https://hub.nuaa.cf/" rel="nofollow">https://hub.nuaa.cf/</a></p>
+<p><a href="https://github.welab.eu.org/" rel="nofollow">https://github.welab.eu.org/</a></p>
+<p><a href="https://ghps.cc/" rel="nofollow">https://ghps.cc/</a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

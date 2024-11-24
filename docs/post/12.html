@@ -10,163 +10,185 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="#  GitHub加速方法
+<meta name="description" content="### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)
 
-#  方法一：
 
-首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
+### 主题目录
 ```
-sudo vim ~/.bashrc
-```
-```
-export all_proxy='socks5://user:pass@127.0.0.1:20170'
-export HTTP_PROXY='socks5://user:pass@127.0.0.1:20170'
-export HTTPS_PROXY='socks5://user:pass@127.0.0.1:20170'
-```
-```
-source ~/.bashrc
+public/theme
 ```
 
-此时输入```curl ip.sb```查看本机IP判断是否配置成功
+### 支付插件目录
+```
+app/Payments
+```
 
-如需删除并停止，只需清空文件并重新加载即可
+### 客户端适配参考目录
+```
+app/Http/Controllers/Client/Protocols
+```
 
-注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
+### 订阅下发文件目录
+```
+/www/resources/rules/custom.clash.yaml
+```
+[查看目录中的所有文件](https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols)
 
 
+### 强制获取订阅（URL后面加上这个参数）
 
+一般用于订阅地址输入到浏览器后无法获取订阅信息
+```
+&flag=meta&types=all
+```
 
+### 忘记管理员密码
+
+可以在站点目录下执行命令找回密码
+```
+docker exec -it xboard-xboard-1 /bin/sh
+```
+```
+php artisan reset:password 管理员邮箱
+```
+重启
+```
+cd /root/Xboard
+```
+```
+docker compose restart
+```
 ---
 
-# 方法二：v2rayA代理
 
-#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
+### Xboard迁移Xboard出现的各种问题解决方案
 
-#### 手动使用软件源安装
-[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
-
-[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
-
-安装
-```
-sudo apt install xray.deb路径 v2rayA.deb路径
-```
-替换两个deb包所在的实际路径
-
-启动
-```
-sudo systemctl start v2raya.service
-```
-```
-默认端口：
-2017: v2rayA面板端口
-20170: SOCKS协议
-20171: HTTP协议
-20172: 带分流规则的HTTP协议
-32345: tproxy透明代理所需
-```
-
-卸载
-```
-sudo apt-get remove v2raya xray
-```
-
-
-
-### 快捷安装方式
-v2ray内核
-```
-sudo apt install snapd
-```
-```
-sudo snap install v2raya
-```
-需要修改配置文件
-```
-sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
-```
-`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。">
-<meta property="og:title" content="Github加速">
-<meta property="og:description" content="#  GitHub加速方法
-
-#  方法一：
-
-首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
-```
-sudo vim ~/.bashrc
-```
-```
-export all_proxy='socks5://user:pass@127.0.0.1:20170'
-export HTTP_PROXY='socks5://user:pass@127.0.0.1:20170'
-export HTTPS_PROXY='socks5://user:pass@127.0.0.1:20170'
-```
-```
-source ~/.bashrc
-```
-
-此时输入```curl ip.sb```查看本机IP判断是否配置成功
-
-如需删除并停止，只需清空文件并重新加载即可
-
-注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
+一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
 
 
 
 
+
+### Xboard 使用前后端分离主题导致支付转跳问题处理
+
+现象：
+该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
+
+处理：
+需要修改文件 `app/Services/PaymentService.php`
+
+将原代码的第51行：
+
+`'return_url' => url('/#/order/' . $order['trade_no']),`
+修改为如下：
+
+注意在后台设置的站点域名为主题站地址`b.aab.com`
+
+`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
+如若你是其他版本的v2board请修改为：
+
+  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
+最后首部增加如下即可（只限xboard）:
+
+`use App\Models\Setting;`
+
+
+
+### 知识库
+
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。">
+<meta property="og:title" content="Xboard面板常见问题">
+<meta property="og:description" content="### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)
+
+
+### 主题目录
+```
+public/theme
+```
+
+### 支付插件目录
+```
+app/Payments
+```
+
+### 客户端适配参考目录
+```
+app/Http/Controllers/Client/Protocols
+```
+
+### 订阅下发文件目录
+```
+/www/resources/rules/custom.clash.yaml
+```
+[查看目录中的所有文件](https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols)
+
+
+### 强制获取订阅（URL后面加上这个参数）
+
+一般用于订阅地址输入到浏览器后无法获取订阅信息
+```
+&flag=meta&types=all
+```
+
+### 忘记管理员密码
+
+可以在站点目录下执行命令找回密码
+```
+docker exec -it xboard-xboard-1 /bin/sh
+```
+```
+php artisan reset:password 管理员邮箱
+```
+重启
+```
+cd /root/Xboard
+```
+```
+docker compose restart
+```
 ---
 
-# 方法二：v2rayA代理
 
-#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
+### Xboard迁移Xboard出现的各种问题解决方案
 
-#### 手动使用软件源安装
-[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
-
-[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
-
-安装
-```
-sudo apt install xray.deb路径 v2rayA.deb路径
-```
-替换两个deb包所在的实际路径
-
-启动
-```
-sudo systemctl start v2raya.service
-```
-```
-默认端口：
-2017: v2rayA面板端口
-20170: SOCKS协议
-20171: HTTP协议
-20172: 带分流规则的HTTP协议
-32345: tproxy透明代理所需
-```
-
-卸载
-```
-sudo apt-get remove v2raya xray
-```
+一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
 
 
 
-### 快捷安装方式
-v2ray内核
-```
-sudo apt install snapd
-```
-```
-sudo snap install v2raya
-```
-需要修改配置文件
-```
-sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
-```
-`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。">
+
+
+### Xboard 使用前后端分离主题导致支付转跳问题处理
+
+现象：
+该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
+
+处理：
+需要修改文件 `app/Services/PaymentService.php`
+
+将原代码的第51行：
+
+`'return_url' => url('/#/order/' . $order['trade_no']),`
+修改为如下：
+
+注意在后台设置的站点域名为主题站地址`b.aab.com`
+
+`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
+如若你是其他版本的v2board请修改为：
+
+  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
+最后首部增加如下即可（只限xboard）:
+
+`use App\Models\Setting;`
+
+
+
+### 知识库
+
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/Github-jia-su.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/12.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>Github加速</title>
+<title>Xboard面板常见问题</title>
 
 
 
@@ -209,7 +231,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">Github加速</h1>
+<h1 class="postTitle">Xboard面板常见问题</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -227,143 +249,64 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>GitHub加速方法</h1>
-<h1>方法一：</h1>
-<p>首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建</p>
-<pre class="notranslate"><code class="notranslate">sudo vim ~/.bashrc
+<div class="markdown-body" id="postBody"><h3><a href="https://www.emojiall.com/zh-hans/sub-categories/J2" rel="nofollow">国旗图标</a></h3>
+<h3>主题目录</h3>
+<pre class="notranslate"><code class="notranslate">public/theme
 </code></pre>
-<pre class="notranslate"><code class="notranslate">export all_proxy="socks5://user:pass@127.0.0.1:20170"
-export HTTP_PROXY="socks5://user:pass@127.0.0.1:20170"
-export HTTPS_PROXY="socks5://user:pass@127.0.0.1:20170"
+<h3>支付插件目录</h3>
+<pre class="notranslate"><code class="notranslate">app/Payments
 </code></pre>
-<pre class="notranslate"><code class="notranslate">source ~/.bashrc
+<h3>客户端适配参考目录</h3>
+<pre class="notranslate"><code class="notranslate">app/Http/Controllers/Client/Protocols
 </code></pre>
-<p>此时输入<code class="notranslate">curl ip.sb</code>查看本机IP判断是否配置成功</p>
-<p>如需删除并停止，只需清空文件并重新加载即可</p>
-<p>注意：如果脚本命令前面带<code class="notranslate">sudo</code>，则需要添加<code class="notranslate">-E</code>传递环境变量才会生效</p>
-<hr>
-<h1>方法二：v2rayA代理</h1>
-<h4><a href="https://v2raya.org/docs/prologue/installation/debian/" rel="nofollow">官方文档</a></h4>
-<h4>手动使用软件源安装</h4>
-<p><a href="https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya">手动下载v2rayA软件源</a>上传到服务器</p>
-<p><a href="https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray">手动下载xray软件源</a>上传到服务器</p>
-<p>安装</p>
-<pre class="notranslate"><code class="notranslate">sudo apt install xray.deb路径 v2rayA.deb路径
+<h3>订阅下发文件目录</h3>
+<pre class="notranslate"><code class="notranslate">/www/resources/rules/custom.clash.yaml
 </code></pre>
-<p>替换两个deb包所在的实际路径</p>
-<p>启动</p>
-<pre class="notranslate"><code class="notranslate">sudo systemctl start v2raya.service
+<p><a href="https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols">查看目录中的所有文件</a></p>
+<h3>强制获取订阅（URL后面加上这个参数）</h3>
+<p>一般用于订阅地址输入到浏览器后无法获取订阅信息</p>
+<pre class="notranslate"><code class="notranslate">&amp;flag=meta&amp;types=all
 </code></pre>
-<pre class="notranslate"><code class="notranslate">默认端口：
-2017: v2rayA面板端口
-20170: SOCKS协议
-20171: HTTP协议
-20172: 带分流规则的HTTP协议
-32345: tproxy透明代理所需
+<h3>忘记管理员密码</h3>
+<p>可以在站点目录下执行命令找回密码</p>
+<pre class="notranslate"><code class="notranslate">docker exec -it xboard-xboard-1 /bin/sh
 </code></pre>
-<p>卸载</p>
-<pre class="notranslate"><code class="notranslate">sudo apt-get remove v2raya xray
+<pre class="notranslate"><code class="notranslate">php artisan reset:password 管理员邮箱
 </code></pre>
-<h3>快捷安装方式</h3>
-<p>v2ray内核</p>
-<pre class="notranslate"><code class="notranslate">sudo apt install snapd
+<p>重启</p>
+<pre class="notranslate"><code class="notranslate">cd /root/Xboard
 </code></pre>
-<pre class="notranslate"><code class="notranslate">sudo snap install v2raya
-</code></pre>
-<p>需要修改配置文件</p>
-<pre class="notranslate"><code class="notranslate">sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
-</code></pre>
-<p><code class="notranslate">ExecStart</code>参数后面增加<code class="notranslate"> --address 0.0.0.0:2017</code>，只需增加即可，注意空格需保留。</p>
-<p>加载并重启</p>
-<pre class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
-sudo systemctl restart snap.v2raya.v2raya.service
-</code></pre>
-<p>卸载</p>
-<pre class="notranslate"><code class="notranslate">sudo snap remove v2raya
-</code></pre>
-<h3>win系统安装</h3>
-<p>以管理员身份运行PowerShell</p>
-<pre class="notranslate"><code class="notranslate">winget install --id v2rayA.v2rayA
-</code></pre>
-<p>会自动安装到桌面，启动后自动配置系统代理，端口为<code class="notranslate">52345</code></p>
-<p>部分应用（比如命令行程序）可能不读取或者不使用系统代理，你可能需要<code class="notranslate">proxychains</code>来强行让它们走代理，或者使用程序自身的代理配置。</p>
-<p>如果 v2rayA 意外退出，那么 v2rayA 无法在退出的时候帮你取消系统代理，这种情况下你需要自行去<code class="notranslate">Internet</code>选项或者系统设置里面关掉代理。</p>
-<p>更新</p>
-<pre class="notranslate"><code class="notranslate">winget upgrade --id v2rayA.v2rayA
-</code></pre>
-<p>卸载</p>
-<pre class="notranslate"><code class="notranslate">winget uninstall --id v2rayA.v2rayA
-</code></pre>
-<p>开机自启</p>
-<p>将你<code class="notranslate">scoop\shims</code>目录下的<code class="notranslate">start-v2raya.cmd</code>复制到<code class="notranslate">启动</code>文件夹（一般位于 <code class="notranslate">C:\Users\YourUserName\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>）。</p>
-<p>命令运行示例：</p>
-<pre class="notranslate"><code class="notranslate">Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
+<pre class="notranslate"><code class="notranslate">docker compose restart
 </code></pre>
 <hr>
-<h3>配置 APT 包管理器的代理服务器设置</h3>
-<p>编辑<code class="notranslate">/etc/apt/apt.conf.d/proxy.conf</code></p>
-<pre class="notranslate"><code class="notranslate">Acquire::http::Proxy "socks5h://username:password@127.0.0.1:1080";
-Acquire::https::Proxy "socks5h://username:password@127.0.0.1:1080";
-Acquire::socks::Proxy "socks5h://username:password@127.0.0.1:1080";
+<h3>Xboard迁移Xboard出现的各种问题解决方案</h3>
+<p>一般都是数据库里的问题，进入数据库的<code class="notranslate">v2_settings</code>表，修改https配置，域名配置，路径配置，等等配置</p>
+<h3>Xboard 使用前后端分离主题导致支付转跳问题处理</h3>
+<p>现象：<br>
+该问题现象通常为源站为 <code class="notranslate">a.aab.com</code> 主题站 <code class="notranslate">b.aab.com</code> 通过<code class="notranslate">b.aab.com epay</code>支付成功后转跳至<code class="notranslate">a.aab.com</code></p>
+<p>处理：<br>
+需要修改文件 <code class="notranslate">app/Services/PaymentService.php</code></p>
+<p>将原代码的第51行：</p>
+<p><code class="notranslate">'return_url' =&gt; url('/#/order/' . $order['trade_no']),</code><br>
+修改为如下：</p>
+<p>注意在后台设置的站点域名为主题站地址<code class="notranslate">b.aab.com</code></p>
+<p><code class="notranslate">'return_url' =&gt; admin_setting('app_url'). '/#/order/' . $order['trade_no'],</code><br>
+如若你是其他版本的v2board请修改为：</p>
+<p><code class="notranslate">'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],</code><br>
+最后首部增加如下即可（只限xboard）:</p>
+<p><code class="notranslate">use App\Models\Setting;</code></p>
+<h3>知识库</h3>
+<p>V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。并且还内置了模板字符和功能，可以通过编写 HTML 语法做到「复制订阅地址」、「跳转其他教程」、「下载软件」、「一键导入配置」等功能。下面把代码示例发出来可以在此基础上自行修改。</p>
+<pre class="notranslate"><code class="notranslate">&lt;button class="btn btn-hero-primary" onclick="copy('{{subscribeUrl}}')"&gt;&lt;i class="far fa fa-copy"&gt;&lt;/i&gt; 点击复制订阅地址&lt;/button&gt;
 </code></pre>
-<pre class="notranslate"><code class="notranslate">sudo apt update
+<pre class="notranslate"><code class="notranslate">&lt;button class="btn btn-hero-primary" onclick="jump(2)"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 跳转另一个教程&lt;/button&gt;
 </code></pre>
-<hr>
-<h3>方法三：修改系统hosts文件实现加速(老方法不稳定)：</h3>
-<ul>
-<li>文件路径：</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">windows: C:\Windows\System32\drivers\etc 
-linux: /etc/hosts
+<pre class="notranslate"><code class="notranslate">&lt;a href="https://www.google.com.hk" target="_blank"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-download"&gt;&lt;/i&gt; 点击下载&lt;/button&gt;&lt;/a&gt;
 </code></pre>
-<ul>
-<li>格式：</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">127.0.0.11 github.com
-127.0.0.11 raw.githubusercontent.com
-127.0.0.11 assets-cdn.github.com
-127.0.0.11 github.global.ssl.fastly.net
+<pre class="notranslate"><code class="notranslate">&lt;a href="shadowrocket://add/sub://{{safeBase64SubscribeUrl}}?remark={{siteName}}"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 一键导入 Shadowrocket&lt;/button&gt;&lt;/a&gt;
 </code></pre>
-<p>把<code class="notranslate">127.0.0.11</code>替换为查询到的地址</p>
-<p>可以从这里获取最新可用的hosts地址：<a href="https://github.com/521xueweihan/GitHub520/blob/main/hosts">https://github.com/521xueweihan/GitHub520/blob/main/hosts</a></p>
-<p>该内容会每天自动更新。</p>
-<h4>修改 hosts 文件</h4>
-<p>hosts 文件在每个系统的位置不一，详情如下：</p>
-<ul>
-<li>Windows 系统：<code class="notranslate">C:\Windows\System32\drivers\etc\hosts</code></li>
-<li>Linux 系统：<code class="notranslate">/etc/hosts</code></li>
-<li>Mac（苹果电脑）系统：<code class="notranslate">/etc/hosts</code></li>
-<li>Android（安卓）系统：<code class="notranslate">/system/etc/hosts</code></li>
-<li>iPhone（iOS）系统：<code class="notranslate">/etc/hosts</code></li>
-</ul>
-<p>修改方法，把上面的内容复制到文本末尾：</p>
-<ol>
-<li>Windows 使用记事本</li>
-<li>Linux、Mac 使用 Root 权限：<code class="notranslate">sudo nano /etc/hosts</code></li>
-<li>iPhone、iPad 须越狱、Android 必须要 root</li>
-</ol>
-<h4>激活生效</h4>
-<p>大部分情况下是直接生效，如未生效可尝试下面的办法，刷新 DNS：</p>
-<ol>
-<li>
-<p>Windows：在CMD窗口输入：<code class="notranslate">ipconfig /flushdns</code></p>
-</li>
-<li>
-<p>Linux命令：<code class="notranslate">sudo systemctl restart nscd</code> 如报错则须安装：<code class="notranslate">sudo apt install nscd</code> 或 <code class="notranslate">sudo /etc/init.d/nscd restart</code></p>
-</li>
-<li>
-<p>Mac命令：<code class="notranslate">sudo killall -HUP mDNSResponder</code></p>
-</li>
-</ol>
-<p><strong>PS：</strong> 上述方法无效可以尝试重启机器。</p>
-<h3>GitHub加速网站（不会使用请谷歌）</h3>
-<p><a href="https://www.jsdelivr.com/github" rel="nofollow">https://www.jsdelivr.com/github</a></p>
-<p><a href="https://gh.api.99988866.xyz/" rel="nofollow">https://gh.api.99988866.xyz/</a></p>
-<p><a href="https://mirror.ghproxy.com/" rel="nofollow">https://mirror.ghproxy.com/</a></p>
-<p><a href="https://gitclone.com/" rel="nofollow">https://gitclone.com/</a></p>
-<p><a href="https://hub.nuaa.cf/" rel="nofollow">https://hub.nuaa.cf/</a></p>
-<p><a href="https://github.welab.eu.org/" rel="nofollow">https://github.welab.eu.org/</a></p>
-<p><a href="https://ghps.cc/" rel="nofollow">https://ghps.cc/</a></p></div>
+<pre class="notranslate"><code class="notranslate">&lt;a href="clash://install-config?url={{urlEncodeSubscribeUrl}}&amp;name={{siteName}}"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 一键导入 Clash&lt;/button&gt;&lt;/a&gt;
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

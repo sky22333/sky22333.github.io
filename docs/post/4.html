@@ -10,17 +10,91 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 解决CF反代Docker失效的问题
+<meta name="description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
 
-**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。">
-<meta property="og:title" content="解决CF反代Docker失效的问题">
-<meta property="og:description" content="## 解决CF反代Docker失效的问题
 
-**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。">
+## Docker版基于warp的sk5代理
+
+[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
+
+#### 1：普通部署 
+
+```
+docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+```
+
+此时你的9091端口的所有流量将通过WARP出站
+
+查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://ifconfig.co'`
+
+
+#### 2：WARP Plus 账户
+```
+docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+```
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
+<meta property="og:title" content="Liunx配置wrap">
+<meta property="og:description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
+
+
+## Docker版基于warp的sk5代理
+
+[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
+
+#### 1：普通部署 
+
+```
+docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+```
+
+此时你的9091端口的所有流量将通过WARP出站
+
+查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://ifconfig.co'`
+
+
+#### 2：WARP Plus 账户
+```
+docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+```
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/jie-jue-CF-fan-dai-Docker-shi-xiao-de-wen-ti.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/4.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>解决CF反代Docker失效的问题</title>
+<title>Liunx配置wrap</title>
 
 
 
@@ -63,7 +137,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">解决CF反代Docker失效的问题</h1>
+<h1 class="postTitle">Liunx配置wrap</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -81,133 +155,94 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>解决CF反代Docker失效的问题</h2>
-<p><strong>最近国内拉取镜像时发现之前的<code class="notranslate">worker</code>反代的<code class="notranslate">docker</code>加速用不了了，报错为<code class="notranslate">auth.docker.io/token</code>这个域名的问题。</strong></p>
-<p>经过抓包发现，现在拉取镜像会请求三个域名，顺序是先请求了<code class="notranslate">registry-1.docker.io</code>得到了 <code class="notranslate">401</code> 的 <code class="notranslate">http</code> 状态码后转去访问了<code class="notranslate">auth.docker.io</code>得到了 <code class="notranslate">Authorization</code>字段以后重新请求 <code class="notranslate">registry-1.docker.io</code>，获取源数据后被 <code class="notranslate">307</code> 转发到了 <code class="notranslate">production.cloudflare.docker.com</code> 上。</p>
-<hr>
-<blockquote>
-<p>由此看出<code class="notranslate">auth.docker.io</code>是用于验证鉴权的域名，<code class="notranslate">production.cloudflare.docker.com</code> 是用于下载镜像文件的域名，这些域名我测了一下全都被墙了。</p>
-</blockquote>
-<p>之前的CF代码只反代了<code class="notranslate">registry-1.docker.io</code>，所以导致失效，既然找到问题所在就比较好解决了。</p>
-<p>下面贴出我修改的<code class="notranslate">worker</code>代码：</p>
-<pre class="notranslate"><code class="notranslate">import HTML from './docker.html';
-
-export default {
-  async fetch(request) {
-    const url = new URL(request.url);
-    const host = request.headers.get("host");
-    
-    const registryHost = "registry-1.docker.io";
-    const authHost = "auth.docker.io";
-    const productionHost = "production.cloudflare.docker.com";
-
-    // 处理认证请求
-    if (url.pathname.startsWith('/token')) {
-      const headers = new Headers(request.headers);
-      headers.set('host', authHost);
-      
-      const authUrl = `https://${authHost}${url.pathname}${url.search}`;
-      const authRequest = new Request(authUrl, {
-        method: request.method,
-        headers: headers,
-        body: request.body,
-        redirect: "follow",
-      });
-
-      const response = await fetch(authRequest);
-      const responseHeaders = new Headers(response.headers);
-      responseHeaders.set('access-control-allow-origin', host);
-      responseHeaders.set('access-control-allow-headers', 'Authorization');
-      
-      return new Response(response.body, {
-        status: response.status,
-        statusText: response.statusText,
-        headers: responseHeaders,
-      });
-    }
-    
-    // 处理 registry v2 请求
-    if (url.pathname.startsWith('/v2/')) {
-      const headers = new Headers(request.headers);
-      headers.set('host', registryHost);
-      
-      const registryUrl = `https://${registryHost}${url.pathname}${url.search}`;
-      const registryRequest = new Request(registryUrl, {
-        method: request.method,
-        headers: headers,
-        body: request.body,
-        redirect: "follow",
-      });
-
-      const response = await fetch(registryRequest);
-      const responseHeaders = new Headers(response.headers);
-      responseHeaders.set('access-control-allow-origin', host);
-      responseHeaders.set('access-control-allow-headers', 'Authorization');
-
-      // 修改认证头，将认证请求指向主域名
-      const wwwAuth = responseHeaders.get('www-authenticate');
-      if (wwwAuth) {
-        const newWwwAuth = wwwAuth
-          .replace('https://auth.docker.io', `https://${host}`)
-          .replace('https://auth.hub.docker.com', `https://${host}`);
-        responseHeaders.set('www-authenticate', newWwwAuth);
-      }
-
-      // 修改重定向地址
-      const location = responseHeaders.get('location');
-      if (location) {
-        const newLocation = location
-          .replace('https://production.cloudflare.docker.com', `https://${host}`);
-        responseHeaders.set('location', newLocation);
-      }
-
-      return new Response(response.body, {
-        status: response.status,
-        statusText: response.statusText,
-        headers: responseHeaders,
-      });
-    }
-
-    // 处理默认请求
-    return new Response(HTML.replace(/{{host}}/g, host), {
-      status: 200,
-      headers: {
-        "content-type": "text/html"
-      }
-    });
-  }
-}
+<div class="markdown-body" id="postBody"><p><a href="https://pkg.cloudflareclient.com/" rel="nofollow">其他系统安装</a></p>
+<h2>Docker版基于warp的sk5代理</h2>
+<p><a href="https://hub.docker.com/r/monius/docker-warp-socks" rel="nofollow">项目地址</a></p>
+<h4>1：普通部署</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
 </code></pre>
-<p><code class="notranslate">./docker.html</code>是前端文件可以不要，不影响加速使用，我就不提供了，部署后记得绑定自定义域，因为默认的<code class="notranslate">worker</code>域名是被墙的。</p>
-<hr>
-<ul>
-<li><strong>基于这个思路我还写了<code class="notranslate">caddy</code>反代的配置，<code class="notranslate">caddy</code>自动配置SSL证书可太香了，并且不依赖CF，可以自己部署在服务器上。</strong></li>
-</ul>
-<pre class="notranslate"><code class="notranslate">hub.example.com {
-    handle /v2/* {
-        reverse_proxy https://registry-1.docker.io {
-            header_up Host {http.reverse_proxy.upstream.hostport}
-            header_down WWW-Authenticate "https://auth.docker.io" "https://{http.request.host}"
-            header_down Location "https://production.cloudflare.docker.com" "https://{http.request.host}"
-        }
-    }
-
-    handle /token* {
-        reverse_proxy https://auth.docker.io {
-            header_up Host {http.reverse_proxy.upstream.hostport}
-        }
-    }
-
-    handle /* {
-        reverse_proxy https://production.cloudflare.docker.com {
-            header_up Host {http.reverse_proxy.upstream.hostport}
-        }
-    }
-}
+<p>此时你的9091端口的所有流量将通过WARP出站</p>
+<p>查看你的warp的IP：<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
+<h4>2：WARP Plus 账户</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
 </code></pre>
-<blockquote>
-<p>记得第一行的<code class="notranslate">hub.example.com</code>替换为你的域名</p>
-</blockquote></div>
+<p>运行<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"</code> 看到<code class="notranslate">plus</code>则表示WARP Plus密钥应用成功。</p>
+<h4>3：sk5增加密码</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks_passwd \
+    -e SOCK_USER=用户名 \
+    -e SOCK_PWD=密码 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 9091:9091 \
+    monius/docker-warp-socks
+</code></pre>
+<p>验证是否成功<code class="notranslate">curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
+<h4>4：自定义wireguard配置</h4>
+<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
+    --name warp_socks \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -p 127.0.0.1:9091:9091 \
+    -v /lib/modules:/lib/modules \
+    -v ~/wireguard/:/opt/wireguard/:ro \
+    monius/docker-warp-socks
+</code></pre>
+<p>创建<code class="notranslate">wireguard</code>目录，并创建<code class="notranslate">danted.conf</code>文件填入你的<code class="notranslate">wireguard</code>配置</p>
+<h2>debian系统安装：</h2>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+</code></pre>
+<pre class="notranslate"><code class="notranslate">echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo apt-get update &amp;&amp; sudo apt-get install cloudflare-warp -y
+</code></pre>
+<p>注册客户端：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli registration new
+</code></pre>
+<p>开启代理模式：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli mode proxy
+</code></pre>
+<p>启动wrap：</p>
+<p>执行此命令前必须<code class="notranslate">开启代理模式</code>否则机器可能失联</p>
+<pre class="notranslate"><code class="notranslate">warp-cli connect
+</code></pre>
+<p>wrap将代理本地的<code class="notranslate">40000</code>端口</p>
+<p>更改代理端口：<code class="notranslate">warp-cli proxy port 40000</code></p>
+<p>配置文件：<code class="notranslate">cd /var/lib/cloudflare-warp</code></p>
+<p>查看代理IP：</p>
+<pre class="notranslate"><code class="notranslate">curl -x "socks5://127.0.0.1:40000" ipinfo.io
+</code></pre>
+<p>开启全局代理：</p>
+<pre class="notranslate"><code class="notranslate">export ALL_PROXY=socks5://127.0.0.1:40000
+</code></pre>
+<p>关闭全局代理：</p>
+<pre class="notranslate"><code class="notranslate">unset ALL_PROXY
+</code></pre>
+<p>关闭wrap：</p>
+<pre class="notranslate"><code class="notranslate">warp-cli disconnect
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

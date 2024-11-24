@@ -10,185 +10,309 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)
-
-
-### 主题目录
+<meta name="description" content="### 安装node环境
 ```
-public/theme
-```
-
-### 支付插件目录
-```
-app/Payments
-```
-
-### 客户端适配参考目录
-```
-app/Http/Controllers/Client/Protocols
-```
-
-### 订阅下发文件目录
-```
-/www/resources/rules/custom.clash.yaml
-```
-[查看目录中的所有文件](https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols)
-
-
-### 强制获取订阅（URL后面加上这个参数）
-
-一般用于订阅地址输入到浏览器后无法获取订阅信息
-```
-&flag=meta&types=all
-```
-
-### 忘记管理员密码
-
-可以在站点目录下执行命令找回密码
-```
-docker exec -it xboard-xboard-1 /bin/sh
+curl https://get.volta.sh | bash
 ```
 ```
-php artisan reset:password 管理员邮箱
-```
-重启
-```
-cd /root/Xboard
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
 ```
 ```
-docker compose restart
-```
----
-
-
-### Xboard迁移Xboard出现的各种问题解决方案
-
-一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
-
-
-
-
-
-### Xboard 使用前后端分离主题导致支付转跳问题处理
-
-现象：
-该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
-
-处理：
-需要修改文件 `app/Services/PaymentService.php`
-
-将原代码的第51行：
-
-`'return_url' => url('/#/order/' . $order['trade_no']),`
-修改为如下：
-
-注意在后台设置的站点域名为主题站地址`b.aab.com`
-
-`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
-如若你是其他版本的v2board请修改为：
-
-  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
-最后首部增加如下即可（只限xboard）:
-
-`use App\Models\Setting;`
-
-
-
-### 知识库
-
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。">
-<meta property="og:title" content="Xboard面板常见问题">
-<meta property="og:description" content="### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)
-
-
-### 主题目录
-```
-public/theme
-```
-
-### 支付插件目录
-```
-app/Payments
-```
-
-### 客户端适配参考目录
-```
-app/Http/Controllers/Client/Protocols
-```
-
-### 订阅下发文件目录
-```
-/www/resources/rules/custom.clash.yaml
-```
-[查看目录中的所有文件](https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols)
-
-
-### 强制获取订阅（URL后面加上这个参数）
-
-一般用于订阅地址输入到浏览器后无法获取订阅信息
-```
-&flag=meta&types=all
-```
-
-### 忘记管理员密码
-
-可以在站点目录下执行命令找回密码
-```
-docker exec -it xboard-xboard-1 /bin/sh
+source ~/.bashrc
 ```
 ```
-php artisan reset:password 管理员邮箱
+volta install node@16.0.0
 ```
-重启
+切换node版本只需再次安装需要的版本即可自动切换
+
+
+
+### 3xui
+
 ```
-cd /root/Xboard
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+```
+
+
+###  一键wrap
+
+```
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+```
+
+```
+warp [option] [lisence]
+```
+
+###  一键安装docker
+
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+###  查看系统内核
+```
+dpkg --print-architecture
+```
+
+
+
+```
+uname -a
+```
+
+####  查看系统版本
+```
+cat /etc/os-release
 ```
 ```
-docker compose restart
+lsb_release -a
 ```
----
+
+###  VPS开启root登录并且修改密码：
+```
+bash <(curl -L -s check.unlock.media)
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 4
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 6
+```
+
+###  查看端口占用：
+```
+sudo lsof -i -P -n
+```
+```
+ss -tuln
+```
+```
+lsof -i:端口号
+```
+#### 释放端口
+```
+kill PID数字
+```
+
+###  放行端口：
+
+`sudo ufw allow 端口号`
+
+`sudo ufw allow 起始端口:结束端口`
+
+`sudo ufw enable`   #  重启ufw防火墙
+
+###  关闭端口：
+`sudo ufw deny 端口号`
+
+###  只允许指定IP连接22端口：
+`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
+
+###  文件类型转换：
+
+`mv config.txt config.json`
+
+`mv shell.txt shell.sh`
 
 
-### Xboard迁移Xboard出现的各种问题解决方案
+###  开启虚拟内存：
 
-一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置
+```
+sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
 
 
+###  防火墙
+
+`firewall-cmd --state`                          # 查看防火墙状态    
 
 
+`systemctl stop firewalld.service`                # 停止防火墙    
 
-### Xboard 使用前后端分离主题导致支付转跳问题处理
 
-现象：
-该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`
+`systemctl disable firewalld.service`             # 禁止防火墙开机自启
 
-处理：
-需要修改文件 `app/Services/PaymentService.php`
+###  一键开启bbr加速
 
-将原代码的第51行：
+```
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+```
 
-`'return_url' => url('/#/order/' . $order['trade_no']),`
-修改为如下：
-
-注意在后台设置的站点域名为主题站地址`b.aab.com`
-
-`'return_url' => admin_setting('app_url'). '/#/order/' . $order['trade_no'],`
-如若你是其他版本的v2board请修改为：
-
-  `'return_url' => config('v2board.app_url') . '/#/order/' . $order['trade_no'],`
-最后首部增加如下即可（只限xboard）:
-
-`use App\Models\Setting;`
+```
+sysctl net.ipv4.tcp_congestion_control
+```
 
 
 
-### 知识库
+###  人型自走bot乌班图脚本
 
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。">
+
+```
+wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
+```
+
+
+使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。">
+<meta property="og:title" content="VPS常用命令">
+<meta property="og:description" content="### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
+
+
+
+### 3xui
+
+```
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
+```
+
+
+###  一键wrap
+
+```
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+```
+
+```
+warp [option] [lisence]
+```
+
+###  一键安装docker
+
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+###  查看系统内核
+```
+dpkg --print-architecture
+```
+
+
+
+```
+uname -a
+```
+
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
+
+###  VPS开启root登录并且修改密码：
+```
+bash <(curl -L -s check.unlock.media)
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 4
+```
+
+ 
+```
+bash <(curl -L -s check.unlock.media) -M 6
+```
+
+###  查看端口占用：
+```
+sudo lsof -i -P -n
+```
+```
+ss -tuln
+```
+```
+lsof -i:端口号
+```
+#### 释放端口
+```
+kill PID数字
+```
+
+###  放行端口：
+
+`sudo ufw allow 端口号`
+
+`sudo ufw allow 起始端口:结束端口`
+
+`sudo ufw enable`   #  重启ufw防火墙
+
+###  关闭端口：
+`sudo ufw deny 端口号`
+
+###  只允许指定IP连接22端口：
+`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开
+
+###  文件类型转换：
+
+`mv config.txt config.json`
+
+`mv shell.txt shell.sh`
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+
+###  防火墙
+
+`firewall-cmd --state`                          # 查看防火墙状态    
+
+
+`systemctl stop firewalld.service`                # 停止防火墙    
+
+
+`systemctl disable firewalld.service`             # 禁止防火墙开机自启
+
+###  一键开启bbr加速
+
+```
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+```
+
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+
+
+###  人型自走bot乌班图脚本
+
+
+```
+wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
+```
+
+
+使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/Xboard-mian-ban-chang-jian-wen-ti.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/1.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>Xboard面板常见问题</title>
+<title>VPS常用命令</title>
 
 
 
@@ -231,7 +355,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">Xboard面板常见问题</h1>
+<h1 class="postTitle">VPS常用命令</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -249,63 +373,96 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3><a href="https://www.emojiall.com/zh-hans/sub-categories/J2" rel="nofollow">国旗图标</a></h3>
-<h3>主题目录</h3>
-<pre class="notranslate"><code class="notranslate">public/theme
+<div class="markdown-body" id="postBody"><h3>安装node环境</h3>
+<pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
 </code></pre>
-<h3>支付插件目录</h3>
-<pre class="notranslate"><code class="notranslate">app/Payments
+<pre class="notranslate"><code class="notranslate">export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 </code></pre>
-<h3>客户端适配参考目录</h3>
-<pre class="notranslate"><code class="notranslate">app/Http/Controllers/Client/Protocols
+<pre class="notranslate"><code class="notranslate">source ~/.bashrc
 </code></pre>
-<h3>订阅下发文件目录</h3>
-<pre class="notranslate"><code class="notranslate">/www/resources/rules/custom.clash.yaml
+<pre class="notranslate"><code class="notranslate">volta install node@16.0.0
 </code></pre>
-<p><a href="https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols">查看目录中的所有文件</a></p>
-<h3>强制获取订阅（URL后面加上这个参数）</h3>
-<p>一般用于订阅地址输入到浏览器后无法获取订阅信息</p>
-<pre class="notranslate"><code class="notranslate">&amp;flag=meta&amp;types=all
+<p>切换node版本只需再次安装需要的版本即可自动切换</p>
+<h3>3xui</h3>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)
 </code></pre>
-<h3>忘记管理员密码</h3>
-<p>可以在站点目录下执行命令找回密码</p>
-<pre class="notranslate"><code class="notranslate">docker exec -it xboard-xboard-1 /bin/sh
+<h3>一键wrap</h3>
+<pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
 </code></pre>
-<pre class="notranslate"><code class="notranslate">php artisan reset:password 管理员邮箱
+<pre class="notranslate"><code class="notranslate">warp [option] [lisence]
 </code></pre>
-<p>重启</p>
-<pre class="notranslate"><code class="notranslate">cd /root/Xboard
+<h3>一键安装docker</h3>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
 </code></pre>
-<pre class="notranslate"><code class="notranslate">docker compose restart
+<h3>查看系统内核</h3>
+<pre class="notranslate"><code class="notranslate">dpkg --print-architecture
 </code></pre>
-<hr>
-<h3>Xboard迁移Xboard出现的各种问题解决方案</h3>
-<p>一般都是数据库里的问题，进入数据库的<code class="notranslate">v2_settings</code>表，修改https配置，域名配置，路径配置，等等配置</p>
-<h3>Xboard 使用前后端分离主题导致支付转跳问题处理</h3>
-<p>现象：<br>
-该问题现象通常为源站为 <code class="notranslate">a.aab.com</code> 主题站 <code class="notranslate">b.aab.com</code> 通过<code class="notranslate">b.aab.com epay</code>支付成功后转跳至<code class="notranslate">a.aab.com</code></p>
-<p>处理：<br>
-需要修改文件 <code class="notranslate">app/Services/PaymentService.php</code></p>
-<p>将原代码的第51行：</p>
-<p><code class="notranslate">'return_url' =&gt; url('/#/order/' . $order['trade_no']),</code><br>
-修改为如下：</p>
-<p>注意在后台设置的站点域名为主题站地址<code class="notranslate">b.aab.com</code></p>
-<p><code class="notranslate">'return_url' =&gt; admin_setting('app_url'). '/#/order/' . $order['trade_no'],</code><br>
-如若你是其他版本的v2board请修改为：</p>
-<p><code class="notranslate">'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],</code><br>
-最后首部增加如下即可（只限xboard）:</p>
-<p><code class="notranslate">use App\Models\Setting;</code></p>
-<h3>知识库</h3>
-<p>V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。并且还内置了模板字符和功能，可以通过编写 HTML 语法做到「复制订阅地址」、「跳转其他教程」、「下载软件」、「一键导入配置」等功能。下面把代码示例发出来可以在此基础上自行修改。</p>
-<pre class="notranslate"><code class="notranslate">&lt;button class="btn btn-hero-primary" onclick="copy('{{subscribeUrl}}')"&gt;&lt;i class="far fa fa-copy"&gt;&lt;/i&gt; 点击复制订阅地址&lt;/button&gt;
+<pre class="notranslate"><code class="notranslate">uname -a
 </code></pre>
-<pre class="notranslate"><code class="notranslate">&lt;button class="btn btn-hero-primary" onclick="jump(2)"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 跳转另一个教程&lt;/button&gt;
+<h4>查看系统版本</h4>
+<pre class="notranslate"><code class="notranslate">cat /etc/os-release
 </code></pre>
-<pre class="notranslate"><code class="notranslate">&lt;a href="https://www.google.com.hk" target="_blank"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-download"&gt;&lt;/i&gt; 点击下载&lt;/button&gt;&lt;/a&gt;
+<pre class="notranslate"><code class="notranslate">lsb_release -a
 </code></pre>
-<pre class="notranslate"><code class="notranslate">&lt;a href="shadowrocket://add/sub://{{safeBase64SubscribeUrl}}?remark={{siteName}}"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 一键导入 Shadowrocket&lt;/button&gt;&lt;/a&gt;
+<h3>VPS开启root登录并且修改密码：</h3>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media)
 </code></pre>
-<pre class="notranslate"><code class="notranslate">&lt;a href="clash://install-config?url={{urlEncodeSubscribeUrl}}&amp;name={{siteName}}"&gt;&lt;button class="btn btn-hero-primary"&gt;&lt;i class="far fa fa-share"&gt;&lt;/i&gt; 一键导入 Clash&lt;/button&gt;&lt;/a&gt;
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 4
+</code></pre>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -L -s check.unlock.media) -M 6
+</code></pre>
+<h3>查看端口占用：</h3>
+<pre class="notranslate"><code class="notranslate">sudo lsof -i -P -n
+</code></pre>
+<pre class="notranslate"><code class="notranslate">ss -tuln
+</code></pre>
+<pre class="notranslate"><code class="notranslate">lsof -i:端口号
+</code></pre>
+<h4>释放端口</h4>
+<pre class="notranslate"><code class="notranslate">kill PID数字
+</code></pre>
+<h3>放行端口：</h3>
+<p><code class="notranslate">sudo ufw allow 端口号</code></p>
+<p><code class="notranslate">sudo ufw allow 起始端口:结束端口</code></p>
+<p><code class="notranslate">sudo ufw enable</code>   #  重启ufw防火墙</p>
+<h3>关闭端口：</h3>
+<p><code class="notranslate">sudo ufw deny 端口号</code></p>
+<h3>只允许指定IP连接22端口：</h3>
+<p><code class="notranslate">sudo ufw allow from 192.168.1.100 to any port 22</code>      #  多IP用英文的逗号分开</p>
+<h3>文件类型转换：</h3>
+<p><code class="notranslate">mv config.txt config.json</code></p>
+<p><code class="notranslate">mv shell.txt shell.sh</code></p>
+<h3>开启虚拟内存：</h3>
+<pre class="notranslate"><code class="notranslate">sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+</code></pre>
+<h3>防火墙</h3>
+<p><code class="notranslate">firewall-cmd --state</code>                          # 查看防火墙状态</p>
+<p><code class="notranslate">systemctl stop firewalld.service</code>                # 停止防火墙</p>
+<p><code class="notranslate">systemctl disable firewalld.service</code>             # 禁止防火墙开机自启</p>
+<h3>一键开启bbr加速</h3>
+<pre class="notranslate"><code class="notranslate">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
+</code></pre>
+<h3>人型自走bot乌班图脚本</h3>
+<pre class="notranslate"><code class="notranslate">wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh
+</code></pre>
+<p>使用该脚本会将 <code class="notranslate">Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid</code> 目录下。</p>
+<h3>久激活 Windows 系统和 Office 软件</h3>
+<p>在 Windows 8.1/10/11 上，右键单击 Windows 开始菜单并 选择 PowerShell 或终端（非 CMD）</p>
+<pre class="notranslate"><code class="notranslate">irm https://massgrave.dev/get | iex
+</code></pre>
+<p>稍微等待一下，他会自动适配，并激活您的系统，当出现 Successful 的时候说明系统已经激活成功了</p>
+<h3>查看电脑wifi密码CMD命令</h3>
+<p>查看已连接过的wifi：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan show profile
+</code></pre>
+<p>查看密码：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan show profile name="WiFi名称" key=clear
+</code></pre>
+<p>打印到C盘：</p>
+<pre class="notranslate"><code class="notranslate">netsh wlan export profile folder=C:\ key=clear
 </code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 

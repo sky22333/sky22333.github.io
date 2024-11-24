@@ -10,83 +10,17 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="> [!NOTE]
-> ## 前后端分离主题部署
+<meta name="description" content="## 解决CF反代Docker失效的问题
 
-### `V2board`和`Xboard`步骤一样
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。">
+<meta property="og:title" content="解决CF反代Docker失效的问题">
+<meta property="og:description" content="## 解决CF反代Docker失效的问题
 
-###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：
-````
-├── assets
-│   ├── ArrowPathIcon-BcKBEic3.js
-│   ├── CheckOutlined-kSoYgoEi.js
-│   ├── Detail-CZ1NhySb.js
-│   ├── Detail-CiCRNMEx.css
-│   └── Home-BIEpZQVD.css
-├── .DS_Store
-├── config.js
-├── favicon.ico
-└── index.html
-````
-
-### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息
-
-#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多
-```
-window.config={
-    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
-    title:'一元机场', // 网站标题
-    host:'https://xxxxxxx.com/', // 机场原来的域名地址
-    storeHome: {
-         
-        下面的代码省略.......
-       ............
-       ..........
-
-```
-
-### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。">
-<meta property="og:title" content="V2board前后端分离">
-<meta property="og:description" content="> [!NOTE]
-> ## 前后端分离主题部署
-
-### `V2board`和`Xboard`步骤一样
-
-###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：
-````
-├── assets
-│   ├── ArrowPathIcon-BcKBEic3.js
-│   ├── CheckOutlined-kSoYgoEi.js
-│   ├── Detail-CZ1NhySb.js
-│   ├── Detail-CiCRNMEx.css
-│   └── Home-BIEpZQVD.css
-├── .DS_Store
-├── config.js
-├── favicon.ico
-└── index.html
-````
-
-### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息
-
-#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多
-```
-window.config={
-    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
-    title:'一元机场', // 网站标题
-    host:'https://xxxxxxx.com/', // 机场原来的域名地址
-    storeHome: {
-         
-        下面的代码省略.......
-       ............
-       ..........
-
-```
-
-### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。">
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/V2board-qian-hou-duan-fen-li.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/29.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>V2board前后端分离</title>
+<title>解决CF反代Docker失效的问题</title>
 
 
 
@@ -123,13 +57,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     font-size: 12px;
 }
 </style>
-<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-important {border-left-color:var(--borderColor-done-emphasis, var(--color-done-emphasis));background-color:var(--color-done-subtle);}.markdown-alert.markdown-alert-important .markdown-alert-title {color: var(--fgColor-done,var(--color-done-fg));}</style>
+
 
 
 
 <body>
     <div id="header">
-<h1 class="postTitle">V2board前后端分离</h1>
+<h1 class="postTitle">解决CF反代Docker失效的问题</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -147,69 +81,133 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<h2>前后端分离主题部署</h2>
-</div>
-<h3><code class="notranslate">V2board</code>和<code class="notranslate">Xboard</code>步骤一样</h3>
-<h3>当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：</h3>
-<pre class="notranslate"><code class="notranslate">├── assets
-│   ├── ArrowPathIcon-BcKBEic3.js
-│   ├── CheckOutlined-kSoYgoEi.js
-│   ├── Detail-CZ1NhySb.js
-│   ├── Detail-CiCRNMEx.css
-│   └── Home-BIEpZQVD.css
-├── .DS_Store
-├── config.js
-├── favicon.ico
-└── index.html
-</code></pre>
-<h3>重点在于<code class="notranslate">config.js</code>这个文件，这个文件里需要填写你机场的配置信息</h3>
-<h4>文件内容以这个为例，自己举一反三，基本逻辑都差不多</h4>
-<pre class="notranslate"><code class="notranslate">window.config={
-    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo
-    title:"一元机场", // 网站标题
-    host:"https://xxxxxxx.com/", // 机场原来的域名地址
-    storeHome: {
-         
-        下面的代码省略.......
-       ............
-       ..........
+<div class="markdown-body" id="postBody"><h2>解决CF反代Docker失效的问题</h2>
+<p><strong>最近国内拉取镜像时发现之前的<code class="notranslate">worker</code>反代的<code class="notranslate">docker</code>加速用不了了，报错为<code class="notranslate">auth.docker.io/token</code>这个域名的问题。</strong></p>
+<p>经过抓包发现，现在拉取镜像会请求三个域名，顺序是先请求了<code class="notranslate">registry-1.docker.io</code>得到了 <code class="notranslate">401</code> 的 <code class="notranslate">http</code> 状态码后转去访问了<code class="notranslate">auth.docker.io</code>得到了 <code class="notranslate">Authorization</code>字段以后重新请求 <code class="notranslate">registry-1.docker.io</code>，获取源数据后被 <code class="notranslate">307</code> 转发到了 <code class="notranslate">production.cloudflare.docker.com</code> 上。</p>
+<hr>
+<blockquote>
+<p>由此看出<code class="notranslate">auth.docker.io</code>是用于验证鉴权的域名，<code class="notranslate">production.cloudflare.docker.com</code> 是用于下载镜像文件的域名，这些域名我测了一下全都被墙了。</p>
+</blockquote>
+<p>之前的CF代码只反代了<code class="notranslate">registry-1.docker.io</code>，所以导致失效，既然找到问题所在就比较好解决了。</p>
+<p>下面贴出我修改的<code class="notranslate">worker</code>代码：</p>
+<pre class="notranslate"><code class="notranslate">import HTML from './docker.html';
 
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    const host = request.headers.get("host");
+    
+    const registryHost = "registry-1.docker.io";
+    const authHost = "auth.docker.io";
+    const productionHost = "production.cloudflare.docker.com";
+
+    // 处理认证请求
+    if (url.pathname.startsWith('/token')) {
+      const headers = new Headers(request.headers);
+      headers.set('host', authHost);
+      
+      const authUrl = `https://${authHost}${url.pathname}${url.search}`;
+      const authRequest = new Request(authUrl, {
+        method: request.method,
+        headers: headers,
+        body: request.body,
+        redirect: "follow",
+      });
+
+      const response = await fetch(authRequest);
+      const responseHeaders = new Headers(response.headers);
+      responseHeaders.set('access-control-allow-origin', host);
+      responseHeaders.set('access-control-allow-headers', 'Authorization');
+      
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: responseHeaders,
+      });
+    }
+    
+    // 处理 registry v2 请求
+    if (url.pathname.startsWith('/v2/')) {
+      const headers = new Headers(request.headers);
+      headers.set('host', registryHost);
+      
+      const registryUrl = `https://${registryHost}${url.pathname}${url.search}`;
+      const registryRequest = new Request(registryUrl, {
+        method: request.method,
+        headers: headers,
+        body: request.body,
+        redirect: "follow",
+      });
+
+      const response = await fetch(registryRequest);
+      const responseHeaders = new Headers(response.headers);
+      responseHeaders.set('access-control-allow-origin', host);
+      responseHeaders.set('access-control-allow-headers', 'Authorization');
+
+      // 修改认证头，将认证请求指向主域名
+      const wwwAuth = responseHeaders.get('www-authenticate');
+      if (wwwAuth) {
+        const newWwwAuth = wwwAuth
+          .replace('https://auth.docker.io', `https://${host}`)
+          .replace('https://auth.hub.docker.com', `https://${host}`);
+        responseHeaders.set('www-authenticate', newWwwAuth);
+      }
+
+      // 修改重定向地址
+      const location = responseHeaders.get('location');
+      if (location) {
+        const newLocation = location
+          .replace('https://production.cloudflare.docker.com', `https://${host}`);
+        responseHeaders.set('location', newLocation);
+      }
+
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: responseHeaders,
+      });
+    }
+
+    // 处理默认请求
+    return new Response(HTML.replace(/{{host}}/g, host), {
+      status: 200,
+      headers: {
+        "content-type": "text/html"
+      }
+    });
+  }
+}
 </code></pre>
-<h3>配置好后就用就把整个项目文件用<code class="notranslate">nginx</code>或者<code class="notranslate">caddy</code>运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。域名要用一个新域名，不能和机场原来的域名一样。(为了方便小白理解)</h3>
-<h3>分离后的常见问题</h3>
+<p><code class="notranslate">./docker.html</code>是前端文件可以不要，不影响加速使用，我就不提供了，部署后记得绑定自定义域，因为默认的<code class="notranslate">worker</code>域名是被墙的。</p>
+<hr>
+<ul>
+<li><strong>基于这个思路我还写了<code class="notranslate">caddy</code>反代的配置，<code class="notranslate">caddy</code>自动配置SSL证书可太香了，并且不依赖CF，可以自己部署在服务器上。</strong></li>
+</ul>
+<pre class="notranslate"><code class="notranslate">hub.example.com {
+    handle /v2/* {
+        reverse_proxy https://registry-1.docker.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+            header_down WWW-Authenticate "https://auth.docker.io" "https://{http.request.host}"
+            header_down Location "https://production.cloudflare.docker.com" "https://{http.request.host}"
+        }
+    }
+
+    handle /token* {
+        reverse_proxy https://auth.docker.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+
+    handle /* {
+        reverse_proxy https://production.cloudflare.docker.com {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+}
+</code></pre>
 <blockquote>
-<p>支付完成后跳回原来的机场界面：一般是支付回调的问题，把你机场后台的官网域名换成你的新主题域名，或者改一下支付回调</p>
-</blockquote>
-<blockquote>
-<p>无法登录：一般是你新主题的服务器和面板服务器之间无法连通，也可能是机场被墙了（严谨点讲是机场后端）</p>
-</blockquote>
-<p>更多问题可以点击博客主页的右上角私聊我的TG有偿协助</p>
-<p>一般前后端分离主题也可以不需要服务器，直接部署在CF上，只用添加<code class="notranslate">/functions/api /[[path]].js</code>文件即可，文件中的配置自己研究，或者联系我有偿协助。</p>
-<hr>
-<hr>
-<h2>免费的万能解决方案，可解决机场的所有复杂问题，收集了多位专业运维大佬的解答，扫码查看。</h2>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4"><img src="https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4" alt="222" style="max-width: 100%;"></a></p>
-<hr>
-<hr>
-<hr>
-<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<h2>前后端分离原理解释</h2>
-</div>
-<h3>默认架构下，V2board 同时扮演后端和前端的角色：</h3>
-<p>对于 <code class="notranslate">/ </code>路径的请求，V2board 调用其模板引擎填充前端配置，并返回前端资源文件</p>
-<p>对于 <code class="notranslate">/api/*</code> 路径的请求，V2board 执行相对应的逻辑，扮演后端的角色</p>
-<p>出于对多种因素的考虑，前端主题 只支持通过前后端分离的方式部署。V2board 只需承担后端的职责，前端主题 将会作为一个静态站点担任前端：</p>
-<p>用户的所有请求都会由部署了 前端主题 的前端站点处理</p>
-<p>用户加载 前端主题 后，前端主题 会向部署了 V2board 的后端站点请求数据</p>
-<p>假设 前端主题 部署在 <code class="notranslate">https://example.org</code>，V2board 部署在 <code class="notranslate">https://v2board.example.org</code>，用户的浏览器会产生类似如下的请求：</p>
-<p><code class="notranslate">GET https://example.org/ </code>- 由用户发起的请求，加载 前端主题 资源文件</p>
-<p><code class="notranslate">GET https://v2board.example.org/api/ </code>- 由 前端主题 发起的请求，从 V2board 加载数据</p>
-<p>若您不希望使用多个域名，也可以通过使用<a href="https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86" rel="nofollow">反向代理</a></p>
-<p>，将对于 前端主题 站点 <code class="notranslate">/api/ </code>路径的请求委托给 V2board 站点处理。</p>
-<p>沿用上面的例子，通过配置反向代理，所有对于 <code class="notranslate">https://example.org/api/ </code>的请求都将会被委托给 <code class="notranslate">https://v2board.example.org/api/</code> 处理。这种情况下，用户的浏览器会产生类似如下的请求：</p>
-<p><code class="notranslate">GET https://example.org/</code> - 由用户发起的请求，加载 前端主题 资源文件</p>
-<p><code class="notranslate">GET https://example.org/api/</code> - 由 前端主题 发起的请求，从 V2board 加载数据</p></div>
+<p>记得第一行的<code class="notranslate">hub.example.com</code>替换为你的域名</p>
+</blockquote></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

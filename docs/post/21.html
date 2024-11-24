@@ -10,91 +10,13 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
-
-
-## Docker版基于warp的sk5代理
-
-[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
-
-#### 1：普通部署 
-
-```
-docker run --privileged --restart=always -itd \
-    --name warp_socks \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
-```
-
-此时你的9091端口的所有流量将通过WARP出站
-
-查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://ifconfig.co'`
-
-
-#### 2：WARP Plus 账户
-```
-docker run --privileged --restart=always -itd \
-    --name warp_socks_plus \
-    -e WGCF_LICENSE_KEY=你的plus密钥 \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
-```
-运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
-<meta property="og:title" content="Liunx配置wrap">
-<meta property="og:description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
-
-
-## Docker版基于warp的sk5代理
-
-[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
-
-#### 1：普通部署 
-
-```
-docker run --privileged --restart=always -itd \
-    --name warp_socks \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
-```
-
-此时你的9091端口的所有流量将通过WARP出站
-
-查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://ifconfig.co'`
-
-
-#### 2：WARP Plus 账户
-```
-docker run --privileged --restart=always -itd \
-    --name warp_socks_plus \
-    -e WGCF_LICENSE_KEY=你的plus密钥 \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
-```
-运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
+<meta name="description" content="**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。">
+<meta property="og:title" content="在CloudflareWAF中屏蔽国内浏览器">
+<meta property="og:description" content="**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.52013120.xyz/post/Liunx-pei-zhi-wrap.html">
+<meta property="og:url" content="http://blog.52013120.xyz/post/21.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
-<title>Liunx配置wrap</title>
+<title>在CloudflareWAF中屏蔽国内浏览器</title>
 
 
 
@@ -137,7 +59,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">Liunx配置wrap</h1>
+<h1 class="postTitle">在CloudflareWAF中屏蔽国内浏览器</h1>
 <div class="title-right">
     <a href="http://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -155,94 +77,70 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p><a href="https://pkg.cloudflareclient.com/" rel="nofollow">其他系统安装</a></p>
-<h2>Docker版基于warp的sk5代理</h2>
-<p><a href="https://hub.docker.com/r/monius/docker-warp-socks" rel="nofollow">项目地址</a></p>
-<h4>1：普通部署</h4>
-<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
-    --name warp_socks \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
+<div class="markdown-body" id="postBody"><p><strong>要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。这个规则基于用户代理字符串来屏蔽特定的浏览器。以下是具体的步骤和完整的规则表达式：</strong></p>
+<p>步骤：</p>
+<ul>
+<li><strong>登录到 Cloudflare Dashboard</strong></li>
+<li><strong>选择托管的域名</strong></li>
+<li><strong>在左侧导航栏中选择 <code class="notranslate">Security</code></strong></li>
+<li><strong>点击 <code class="notranslate">WAF</code></strong></li>
+<li><strong>选择 <code class="notranslate">Custom rules</code></strong></li>
+<li><strong>点击 <code class="notranslate">Create rule</code></strong></li>
+<li><strong>在 <code class="notranslate">Expression preview</code> 右侧点击 <code class="notranslate">Edit expression</code></strong></li>
+<li><strong>复制以下规则表达式</strong></li>
+</ul>
+<pre class="notranslate"><code class="notranslate">(http.user_agent contains "115Browser") or 
+(http.user_agent contains "2345chrome") or 
+(http.user_agent contains "2345Explorer") or 
+(http.user_agent contains "360EE") or 
+(http.user_agent contains "360SE") or 
+(http.user_agent contains "AliApp") or 
+(http.user_agent contains "Baidu") or 
+(http.user_agent contains "BaiduHD") or 
+(http.user_agent contains "baidubrowser") or 
+(http.user_agent contains "baiduboxapp") or 
+(http.user_agent contains "baidu") or 
+(http.user_agent contains "BIDUBrowser") or 
+(http.user_agent contains "com.douban.frodo") or 
+(http.user_agent contains "DingTalk") or 
+(http.user_agent contains "HarmonyOS") or 
+(http.user_agent contains "HUAWEI") or 
+(http.user_agent contains "HuaweiBrowser") or 
+(http.user_agent contains "huawei") or 
+(http.user_agent contains "IqiyiApp") or 
+(http.user_agent contains "LBBROWSER") or 
+(http.user_agent contains "LieBaoFast") or 
+(http.user_agent contains "Mb2345Browser") or 
+(http.user_agent contains "MetaSr") or 
+(http.user_agent contains "MicroMessenger") or 
+(http.user_agent contains "MiuiBrowser") or 
+(http.user_agent contains "MZBrowser") or 
+(http.user_agent contains "OppoBrowser") or 
+(http.user_agent contains "QHBrowser") or 
+(http.user_agent contains "QihooBrowser") or 
+(http.user_agent contains "QQ") or 
+(http.user_agent contains "QQBrowser") or 
+(http.user_agent contains "Quark") or 
+(http.user_agent contains "SNEBUY-APP") or 
+(http.user_agent contains "Sogou") or 
+(http.user_agent contains "SP-engine") or 
+(http.user_agent contains "TheWorld") or 
+(http.user_agent contains "UC") or 
+(http.user_agent contains "UCBrowser") or 
+(http.user_agent contains "UCWEB") or 
+(http.user_agent contains "UBrowser") or 
+(http.user_agent contains "VivoBrowser") or 
+(http.user_agent contains "WeChat") or 
+(http.user_agent contains "Weibo") or 
+(http.user_agent contains "Weixin") or 
+(http.user_agent contains "wxwork")
 </code></pre>
-<p>此时你的9091端口的所有流量将通过WARP出站</p>
-<p>查看你的warp的IP：<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
-<h4>2：WARP Plus 账户</h4>
-<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
-    --name warp_socks_plus \
-    -e WGCF_LICENSE_KEY=你的plus密钥 \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
-</code></pre>
-<p>运行<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"</code> 看到<code class="notranslate">plus</code>则表示WARP Plus密钥应用成功。</p>
-<h4>3：sk5增加密码</h4>
-<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
-    --name warp_socks_passwd \
-    -e SOCK_USER=用户名 \
-    -e SOCK_PWD=密码 \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
-    -p 9091:9091 \
-    monius/docker-warp-socks
-</code></pre>
-<p>验证是否成功<code class="notranslate">curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
-<h4>4：自定义wireguard配置</h4>
-<pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
-    --name warp_socks \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -p 127.0.0.1:9091:9091 \
-    -v /lib/modules:/lib/modules \
-    -v ~/wireguard/:/opt/wireguard/:ro \
-    monius/docker-warp-socks
-</code></pre>
-<p>创建<code class="notranslate">wireguard</code>目录，并创建<code class="notranslate">danted.conf</code>文件填入你的<code class="notranslate">wireguard</code>配置</p>
-<h2>debian系统安装：</h2>
-<pre class="notranslate"><code class="notranslate">curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-</code></pre>
-<pre class="notranslate"><code class="notranslate">echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-</code></pre>
-<pre class="notranslate"><code class="notranslate">sudo apt-get update &amp;&amp; sudo apt-get install cloudflare-warp -y
-</code></pre>
-<p>注册客户端：</p>
-<pre class="notranslate"><code class="notranslate">warp-cli registration new
-</code></pre>
-<p>开启代理模式：</p>
-<pre class="notranslate"><code class="notranslate">warp-cli mode proxy
-</code></pre>
-<p>启动wrap：</p>
-<p>执行此命令前必须<code class="notranslate">开启代理模式</code>否则机器可能失联</p>
-<pre class="notranslate"><code class="notranslate">warp-cli connect
-</code></pre>
-<p>wrap将代理本地的<code class="notranslate">40000</code>端口</p>
-<p>更改代理端口：<code class="notranslate">warp-cli proxy port 40000</code></p>
-<p>配置文件：<code class="notranslate">cd /var/lib/cloudflare-warp</code></p>
-<p>查看代理IP：</p>
-<pre class="notranslate"><code class="notranslate">curl -x "socks5://127.0.0.1:40000" ipinfo.io
-</code></pre>
-<p>开启全局代理：</p>
-<pre class="notranslate"><code class="notranslate">export ALL_PROXY=socks5://127.0.0.1:40000
-</code></pre>
-<p>关闭全局代理：</p>
-<pre class="notranslate"><code class="notranslate">unset ALL_PROXY
-</code></pre>
-<p>关闭wrap：</p>
-<pre class="notranslate"><code class="notranslate">warp-cli disconnect
-</code></pre></div>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>区分大小写：Cloudflare WAF 的规则是区分大小写的，因此请确保所有用户代理字符串都使用正确的大小写格式。</li>
+<li>验证规则：在应用规则之前，可以使用 Cloudflare 的表达式预览功能来验证规则的正确性和效果。</li>
+<li>这个规则涵盖了大多数常见的国内浏览器用户代理字符串，并按照字母顺序进行了排序。如果有遗漏，可以根据需要进行补充。</li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
