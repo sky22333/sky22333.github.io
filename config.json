@@ -13,6 +13,7 @@
     "nightTheme":"dark_colorblind",
     "i18n":"CN",
     "UTC":8,
+    "urlMode":"issue",
     "onePageListNum":15,
     "startSite":"07/01/2024",
     "GMEEK_VERSION":"last",
