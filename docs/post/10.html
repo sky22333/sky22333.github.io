@@ -392,16 +392,32 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div id="footer2">
     <span id="runday"></span>
 </div>
+<!-- 显示访问人数的地方 -->
+<div id="visit-counter" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; padding: 5px 10px; border-radius: 5px; font-size: 14px;"></div>
 
 <script>
-var now=new Date();
-document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+  // 使用 CountAPI 获取访问人数
+  fetch('https://api.countapi.xyz/hit/blog.52013120.xyz/visits')
+    .then(response => response.json())
+    .then(data => {
+      // 将访问人数显示在页面底部
+      document.getElementById('visit-counter').innerText = `站点访问量: ${data.value}`;
+    })
+    .catch(error => {
+      console.error("访问人数加载失败", error);
+      document.getElementById('visit-counter').innerText = "访问人数加载失败";
+    });
+</script>
 
-if("07/01/2024"!=""){
-    var startSite=new Date("07/01/2024");
-    var diff=now.getTime()-startSite.getTime();
-    var diffDay=Math.floor(diff/(1000*60*60*24));
-    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+<script>
+var now = new Date();
+document.getElementById("copyrightYear").innerHTML = now.getFullYear();
+
+if ("07/01/2024" != "") {
+    var startSite = new Date("07/01/2024");
+    var diff = now.getTime() - startSite.getTime();
+    var diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("runday").innerHTML = "网站运行" + diffDay + "天" + " • ";
 }
 </script></div>
 </body>
