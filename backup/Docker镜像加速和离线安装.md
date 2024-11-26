@@ -104,6 +104,16 @@ chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
+###  注意：
+由于是以二进制文件安装的`docker-compose`，所以运行命令有所变化，运行示例
+```
+docker-compose up -d
+```
+
+区别在于中间的`-`，官方安装脚本是以插件形式安装的`docker-compose`，所以中间不需要`-`
+
+
+
 ---
 
 </details>

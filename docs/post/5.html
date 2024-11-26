@@ -153,6 +153,11 @@ sudo systemctl enable docker.service
 <p>验证安装</p>
 <pre class="notranslate"><code class="notranslate">docker-compose --version
 </code></pre>
+<h3>注意：</h3>
+<p>由于是以二进制文件安装的<code class="notranslate">docker-compose</code>，所以运行命令有所变化，运行示例</p>
+<pre class="notranslate"><code class="notranslate">docker-compose up -d
+</code></pre>
+<p>区别在于中间的<code class="notranslate">-</code>，官方安装脚本是以插件形式安装的<code class="notranslate">docker-compose</code>，所以中间不需要<code class="notranslate">-</code></p>
 <hr>
 </details>
 <hr>
