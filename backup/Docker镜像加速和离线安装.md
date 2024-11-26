@@ -3,7 +3,7 @@
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
 
 
-### 安装Docker（如果安装困难可以选择手动安装）
+### 安装Docker
 官方安装脚本：
 
 ```
@@ -24,7 +24,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 
 <details>
-  <summary>手动安装Docker</summary>
+  <summary>手动离线安装Docker</summary>
   
 ####  下载 Docker:
 
@@ -84,7 +84,7 @@ docker -v
 
 
 <details>
-  <summary>手动安装Docker-compose</summary>
+  <summary>手动离线安装Docker-compose</summary>
   
 
 ### 国内环境手动安装Docker-compose

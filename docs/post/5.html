@@ -83,7 +83,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>Docker Hub 镜像加速</h1>
 <p>国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</p>
-<h3>安装Docker（如果安装困难可以选择手动安装）</h3>
+<h3>安装Docker</h3>
 <p>官方安装脚本：</p>
 <pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
 </code></pre>
@@ -97,7 +97,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 </code></pre>
 <details>
-  <summary>手动安装Docker</summary>
+  <summary>手动离线安装Docker</summary>
 <h4>下载 Docker:</h4>
 <p><a href="https://download.docker.com/linux/static/stable/x86_64/" rel="nofollow">官方文件下载地址——下载后上传到root目录</a></p>
 <p><a href="https://mirrors.tuna.tsinghua.edu.cn/docker-ce/" rel="nofollow">清华大学下载地址</a></p>
@@ -141,7 +141,7 @@ sudo systemctl enable docker.service
 </code></pre>
 </details>
 <details>
-  <summary>手动安装Docker-compose</summary>
+  <summary>手动离线安装Docker-compose</summary>
 <h3>国内环境手动安装Docker-compose</h3>
 <p><a href="https://github.com/docker/compose/releases">点这里手动下载文件</a> 上传到服务器的<code class="notranslate">/usr/local/bin</code>目录</p>
 <p>重命名为docker-compose</p>
