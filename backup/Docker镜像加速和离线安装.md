@@ -1,35 +1,42 @@
-## Docker镜像加速和离线安装
+# Docker Hub 镜像加速
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。
 
 
 ### 安装Docker（如果安装困难可以选择手动安装）
-官方脚本安装：
+官方安装脚本：
 
 ```
 curl -fsSL https://get.docker.com | sh
 ```
-国内机器安装脚本：
+>会以插件的形式自动安装`docker compose`    输入`docker compose version`查看版本
+
+国内安装脚本  [(说明)](https://linuxmirrors.cn/other/)
 
 ```
-bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
-### （可选）离线环境或者国内机器手动安装Docker
+
+或者使用阿里云源
+```
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+
+
+<details>
+  <summary>手动安装Docker</summary>
   
+####  下载 Docker:
 
-#### 1：手动下载Docker软件包
+[官方文件下载地址——下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
 
-[Docker软件包下载地址](https://download.docker.com/linux/static/stable/x86_64/)
-
-上传到服务器的root目录后执行以下命令
+[清华大学下载地址](https://mirrors.tuna.tsinghua.edu.cn/docker-ce/)
 
 ```
-tar xzvf docker-27.0.3.tgz   // 替换对应的版本号
-```
-```
+tar xzvf docker-26.1.3.tgz     # 替换版本号
 sudo mv docker/* /usr/local/bin/
 ```
-#### 2：创建 Docker 服务文件
+#### 创建 Docker 服务文件
 ```
 sudo vim /etc/systemd/system/docker.service
 ```
@@ -37,7 +44,6 @@ sudo vim /etc/systemd/system/docker.service
 ```
 [Unit]
 Description=Docker Application Container Engine
-Documentation=https://docs.docker.com
 After=network-online.target firewalld.service
 Wants=network-online.target
 
@@ -45,46 +51,28 @@ Wants=network-online.target
 Type=notify
 ExecStart=/usr/local/bin/dockerd
 ExecReload=/bin/kill -s HUP $MAINPID
-TimeoutSec=0
-RestartSec=2
 Restart=always
-
-# Note that StartLimit* options were moved from "Service" to "Unit" in systemd 229.
-# Both the old, and new location are accepted by systemd 229 and up, so using the old location
-# to make them work for either version of systemd.
+RestartSec=2
 StartLimitBurst=3
-
-# Note that StartLimitInterval was renamed to StartLimitIntervalSec in systemd 230.
 StartLimitInterval=60s
-
-# Having non-zero Limit*s causes performance problems due to accounting overhead
-# in the kernel. We recommend using cgroups to do container-local accounting.
 LimitNOFILE=infinity
 LimitNPROC=infinity
 LimitCORE=infinity
-
-# Uncomment TasksMax if your systemd version supports it.
-# Only systemd 226 and above support this version.
-TasksMax=infinity
-
-# set delegate yes so that systemd does not reset the cgroups of docker containers
 Delegate=yes
-
-# kill only the docker process, not all processes in the cgroup
 KillMode=process
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-#### 3：启动并启用 Docker 服务
+#### 启动并启用 Docker 服务
 ```
 sudo chmod +x /etc/systemd/system/docker.service
 sudo systemctl daemon-reload
 sudo systemctl start docker
-sudo systemctl enable docker
+sudo systemctl enable docker.service
 ```
-#### 4：查看版本
+#### 查看版本
 ```
 docker -v
 ```
@@ -92,31 +80,38 @@ docker -v
 
 
 
-### 安装Docker Compose
+</details>
 
-运行以下命令来下载 Docker Compose：
 
+<details>
+  <summary>手动安装Docker-compose</summary>
+  
+
+### 国内环境手动安装Docker-compose
+
+[点这里手动下载文件](https://github.com/docker/compose/releases) 上传到服务器的`/usr/local/bin`目录
+
+重命名为docker-compose
 ```
-curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 ```
-添加可执行权限:
+增加执行权限
 ```
 chmod +x /usr/local/bin/docker-compose
 ```
-查看版本:
+验证安装
 ```
 docker-compose --version
 ```
 
 ---
-#### （可选）离线环境或者国内服务器可[手动下载文件](https://github.com/docker/compose/releases)上传到`/usr/local/bin`目录，并重命名为`docker-compose` 然后增加执行权限。
-一般下载`linux-x86_64`的包即可，其他型号则下载对应的
+
+</details>
+
+
+
 
 ---
-
-
----
-
 ## 配置加速地址
 
 > Ubuntu 16.04+、Debian 8+、CentOS 7+
@@ -130,6 +125,7 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<EOF
 {
     "registry-mirrors": [
+        "https://docker.1ms.run",
         "https://hub.rat.dev",
         "https://docker.1panel.live"
     ]
@@ -142,6 +138,13 @@ sudo systemctl daemon-reload
 ```
 sudo systemctl restart docker
 ```
+
+
+#### 如果您当前有正在运行的容器不方便重启Docker服务，则不用设置环境也可以直接使用，用法示例：
+```
+docker pull docker.1panel.live/library/mysql:5.7
+```
+说明：`library`是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把`library`替换为镜像的用户名。
 
 
 ### 检查加速是否生效
@@ -169,8 +172,8 @@ sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
 #### 在文件中添加代理
 ```
 [Service]
-Environment="HTTP_PROXY=socks5://user:pass@127.0.0.1:1080"
-Environment="HTTPS_PROXY=socks5://user:pass@127.0.0.1:1080"
+Environment="HTTP_PROXY=http://127.0.0.1:1080"
+Environment="HTTPS_PROXY=http://127.0.0.1:1080"
 ```
 #### 重启Docker
 ```
@@ -183,14 +186,14 @@ sudo systemctl show --property=Environment docker
 ```
 ---
 ## 备用方法：直接传送镜像
-国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`myimage`为镜像名
-#### A服务器保存Docker镜像
+国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`mysql`为例
+#### A服务器压缩保存Docker镜像
 ```
-docker save myimage > myimage.tar
+docker save mysql > mysql.tar
 ```
 #### 传送到B服务器
 ```
-scp myimage.tar root@192.0.2.0:/home
+scp mysql.tar root@192.168.12.23:/home
 ```
 然后输入B服务器root密码
 
@@ -201,7 +204,7 @@ cd /home
 ```
 
 ```
-docker load < myimage.tar
+docker load < mysql.tar
 ```
 查看镜像
 ```
@@ -223,12 +226,17 @@ sudo rm -rf /etc/docker /var/lib/docker
 ```
 
 ---
+## Docker最新稳定加速源列表
 
-## Docker最新稳定加速源列表——非私人
+> 企业自建的镜像加速，稳定
 
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
 [耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
 [rainbond](https://docker.rainbond.cc) | `https://docker.rainbond.cc` | 无限制 | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
+[毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 大部分镜像都能拉 | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
+[阿里云](https://cr.console.aliyun.com/) | `https://xxx.mirror.aliyuncs.com` | 需登录分配 | 镜像太旧
+[南京大学](https://doc.nju.edu.cn/) | `https://ghcr.nju.edu.cn` | 暂无限制 | ghcr.io
+
