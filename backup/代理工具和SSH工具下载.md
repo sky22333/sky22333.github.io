@@ -16,6 +16,7 @@
 | 安卓SSH  | serverbox  |https://github.com/lollipopkit/flutter_server_box/releases|
 | 安卓code  | Acode |https://acode.app|
 | 电脑SSH  | tabby  |https://github.com/Eugeny/tabby/releases|
+| 电脑SSH  | hexhub  |https://www.hexhub.cn|
 | 电脑SSH  | WindTerm  |https://github.com/kingToolbox/WindTerm/releases|
 | 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|
 | 电脑code  | Visual Studio Code  |https://code.visualstudio.com|
