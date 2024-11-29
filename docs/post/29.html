@@ -89,7 +89,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>由此看出<code class="notranslate">auth.docker.io</code>是用于验证鉴权的域名，<code class="notranslate">production.cloudflare.docker.com</code> 是用于下载镜像文件的域名，这些域名我测了一下全都被墙了。</p>
 </blockquote>
 <p>之前的CF代码只反代了<code class="notranslate">registry-1.docker.io</code>，所以导致失效，既然找到问题所在就比较好解决了。</p>
-<p>下面贴出我修改的<code class="notranslate">worker</code>代码：</p>
+<p>下面贴出我修改的<code class="notranslate">worker.js</code>代码：</p>
 <pre class="notranslate"><code class="notranslate">import HTML from './docker.html';
 
 export default {
@@ -178,7 +178,7 @@ export default {
   }
 }
 </code></pre>
-<h4>新建一个<code class="notranslate">docker.html</code>文件，部署后记得绑定自定义域，因为默认的<code class="notranslate">worker</code>域名是被墙的。</h4>
+<h4>新建一个<code class="notranslate">docker.html</code>前端文件，填入以下代码，部署后记得绑定自定义域，因为默认的<code class="notranslate">worker</code>域名是被墙的，其他的默认即可。</h4>
 <details>
   <summary>docker.html文件的代码</summary>
 <pre class="notranslate"><code class="notranslate">&lt;!DOCTYPE html&gt;

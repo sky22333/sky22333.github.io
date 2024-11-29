@@ -11,7 +11,7 @@
 之前的CF代码只反代了`registry-1.docker.io`，所以导致失效，既然找到问题所在就比较好解决了。
 
 
-下面贴出我修改的`worker`代码：
+下面贴出我修改的`worker.js`代码：
 ```
 import HTML from './docker.html';
 
@@ -102,7 +102,7 @@ export default {
 }
 ```
 
-#### 新建一个`docker.html`文件，部署后记得绑定自定义域，因为默认的`worker`域名是被墙的。
+#### 新建一个`docker.html`前端文件，填入以下代码，部署后记得绑定自定义域，因为默认的`worker`域名是被墙的，其他的默认即可。
 
 
 
