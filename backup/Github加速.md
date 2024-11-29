@@ -1,5 +1,26 @@
 #  GitHub加速方法
 
+
+### GitHub加速站
+- https://www.jsdelivr.com/github
+- https://github.moeyy.xyz
+- https://tool.mintimate.cn/gh
+- https://github.akams.cn
+- https://toolwa.com/github
+- https://gh.api.99988866.xyz
+- https://mirror.ghproxy.com
+- https://gitclone.com
+- https://github.welab.eu.org
+- https://ghps.cc
+- https://github.hscsec.cn
+- https://ghproxy.wujiyan.cc
+- https://ghproxy.homeboyc.cn
+- https://down.npee.cn
+- https://github.welab.eu.org
+- https://ghproxy.imciel.com
+
+
+
 #  方法一：
 
 首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
@@ -119,6 +140,91 @@ Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming
 
 
 ---
+
+---
+
+## 国内Debian / Ubuntu切换apt源教程
+
+
+国内Gitee一键换源脚本
+```
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
+```
+
+
+#### 手动换源
+需要root权限
+
+先备份`sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak`
+
+打开文件`/etc/apt/sources.list`
+
+国内清华大学`debian 11`源
+```
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+```
+
+国内清华大学`ubuntu 20.04`源
+
+```
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+## Pre-released source, not recommended.
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+官方`debian 11`源
+```
+deb https://deb.debian.org/debian/ bullseye main contrib non-free
+deb-src https://deb.debian.org/debian/ bullseye main contrib non-free
+
+deb https://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb-src https://deb.debian.org/debian/ bullseye-updates main contrib non-free
+
+deb https://deb.debian.org/debian/ bullseye-backports main contrib non-free
+deb-src https://deb.debian.org/debian/ bullseye-backports main contrib non-free
+
+deb https://deb.debian.org/debian-security/ bullseye-security main contrib non-free
+deb-src https://deb.debian.org/debian-security/ bullseye-security main contrib non-free
+```
+
+官方`debian 12`源
+```
+deb http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+```
+
+更新源
+```
+sudo apt update
+```
+
+切换完成
+
+
+---
 ### 配置 APT 包管理器的代理服务器设置
 
 编辑`/etc/apt/apt.conf.d/proxy.conf`
@@ -180,18 +286,3 @@ hosts 文件在每个系统的位置不一，详情如下：
 
 **PS：** 上述方法无效可以尝试重启机器。
 
-###  GitHub加速网站（不会使用请谷歌） 
-
-https://www.jsdelivr.com/github
-
-https://gh.api.99988866.xyz/
-
-https://mirror.ghproxy.com/
-
-https://gitclone.com/
-
-https://hub.nuaa.cf/
-
-https://github.welab.eu.org/
-
-https://ghps.cc/

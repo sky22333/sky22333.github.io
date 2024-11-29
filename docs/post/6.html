@@ -12,6 +12,27 @@
     </script>
 <meta name="description" content="#  GitHub加速方法
 
+
+### GitHub加速站
+- https://www.jsdelivr.com/github
+- https://github.moeyy.xyz
+- https://tool.mintimate.cn/gh
+- https://github.akams.cn
+- https://toolwa.com/github
+- https://gh.api.99988866.xyz
+- https://mirror.ghproxy.com
+- https://gitclone.com
+- https://github.welab.eu.org
+- https://ghps.cc
+- https://github.hscsec.cn
+- https://ghproxy.wujiyan.cc
+- https://ghproxy.homeboyc.cn
+- https://down.npee.cn
+- https://github.welab.eu.org
+- https://ghproxy.imciel.com
+
+
+
 #  方法一：
 
 首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
@@ -88,6 +109,27 @@ sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
 `ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。">
 <meta property="og:title" content="Github加速">
 <meta property="og:description" content="#  GitHub加速方法
+
+
+### GitHub加速站
+- https://www.jsdelivr.com/github
+- https://github.moeyy.xyz
+- https://tool.mintimate.cn/gh
+- https://github.akams.cn
+- https://toolwa.com/github
+- https://gh.api.99988866.xyz
+- https://mirror.ghproxy.com
+- https://gitclone.com
+- https://github.welab.eu.org
+- https://ghps.cc
+- https://github.hscsec.cn
+- https://ghproxy.wujiyan.cc
+- https://ghproxy.homeboyc.cn
+- https://down.npee.cn
+- https://github.welab.eu.org
+- https://ghproxy.imciel.com
+
+
 
 #  方法一：
 
@@ -228,6 +270,25 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>GitHub加速方法</h1>
+<h3>GitHub加速站</h3>
+<ul>
+<li><a href="https://www.jsdelivr.com/github" rel="nofollow">https://www.jsdelivr.com/github</a></li>
+<li><a href="https://github.moeyy.xyz" rel="nofollow">https://github.moeyy.xyz</a></li>
+<li><a href="https://tool.mintimate.cn/gh" rel="nofollow">https://tool.mintimate.cn/gh</a></li>
+<li><a href="https://github.akams.cn" rel="nofollow">https://github.akams.cn</a></li>
+<li><a href="https://toolwa.com/github" rel="nofollow">https://toolwa.com/github</a></li>
+<li><a href="https://gh.api.99988866.xyz" rel="nofollow">https://gh.api.99988866.xyz</a></li>
+<li><a href="https://mirror.ghproxy.com" rel="nofollow">https://mirror.ghproxy.com</a></li>
+<li><a href="https://gitclone.com" rel="nofollow">https://gitclone.com</a></li>
+<li><a href="https://github.welab.eu.org" rel="nofollow">https://github.welab.eu.org</a></li>
+<li><a href="https://ghps.cc" rel="nofollow">https://ghps.cc</a></li>
+<li><a href="https://github.hscsec.cn" rel="nofollow">https://github.hscsec.cn</a></li>
+<li><a href="https://ghproxy.wujiyan.cc" rel="nofollow">https://ghproxy.wujiyan.cc</a></li>
+<li><a href="https://ghproxy.homeboyc.cn" rel="nofollow">https://ghproxy.homeboyc.cn</a></li>
+<li><a href="https://down.npee.cn" rel="nofollow">https://down.npee.cn</a></li>
+<li><a href="https://github.welab.eu.org" rel="nofollow">https://github.welab.eu.org</a></li>
+<li><a href="https://ghproxy.imciel.com" rel="nofollow">https://ghproxy.imciel.com</a></li>
+</ul>
 <h1>方法一：</h1>
 <p>首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建</p>
 <pre class="notranslate"><code class="notranslate">sudo vim ~/.bashrc
@@ -300,6 +361,68 @@ sudo systemctl restart snap.v2raya.v2raya.service
 <pre class="notranslate"><code class="notranslate">Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
 </code></pre>
 <hr>
+<hr>
+<h2>国内Debian / Ubuntu切换apt源教程</h2>
+<p>国内Gitee一键换源脚本</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
+</code></pre>
+<h4>手动换源</h4>
+<p>需要root权限</p>
+<p>先备份<code class="notranslate">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></p>
+<p>打开文件<code class="notranslate">/etc/apt/sources.list</code></p>
+<p>国内清华大学<code class="notranslate">debian 11</code>源</p>
+<pre class="notranslate"><code class="notranslate">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+</code></pre>
+<p>国内清华大学<code class="notranslate">ubuntu 20.04</code>源</p>
+<pre class="notranslate"><code class="notranslate">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+## Pre-released source, not recommended.
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+</code></pre>
+<p>官方<code class="notranslate">debian 11</code>源</p>
+<pre class="notranslate"><code class="notranslate">deb https://deb.debian.org/debian/ bullseye main contrib non-free
+deb-src https://deb.debian.org/debian/ bullseye main contrib non-free
+
+deb https://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb-src https://deb.debian.org/debian/ bullseye-updates main contrib non-free
+
+deb https://deb.debian.org/debian/ bullseye-backports main contrib non-free
+deb-src https://deb.debian.org/debian/ bullseye-backports main contrib non-free
+
+deb https://deb.debian.org/debian-security/ bullseye-security main contrib non-free
+deb-src https://deb.debian.org/debian-security/ bullseye-security main contrib non-free
+</code></pre>
+<p>官方<code class="notranslate">debian 12</code>源</p>
+<pre class="notranslate"><code class="notranslate">deb http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+
+deb http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+</code></pre>
+<p>更新源</p>
+<pre class="notranslate"><code class="notranslate">sudo apt update
+</code></pre>
+<p>切换完成</p>
+<hr>
 <h3>配置 APT 包管理器的代理服务器设置</h3>
 <p>编辑<code class="notranslate">/etc/apt/apt.conf.d/proxy.conf</code></p>
 <pre class="notranslate"><code class="notranslate">Acquire::http::Proxy "socks5h://username:password@127.0.0.1:1080";
@@ -355,15 +478,7 @@ linux: /etc/hosts
 <p>Mac命令：<code class="notranslate">sudo killall -HUP mDNSResponder</code></p>
 </li>
 </ol>
-<p><strong>PS：</strong> 上述方法无效可以尝试重启机器。</p>
-<h3>GitHub加速网站（不会使用请谷歌）</h3>
-<p><a href="https://www.jsdelivr.com/github" rel="nofollow">https://www.jsdelivr.com/github</a></p>
-<p><a href="https://gh.api.99988866.xyz/" rel="nofollow">https://gh.api.99988866.xyz/</a></p>
-<p><a href="https://mirror.ghproxy.com/" rel="nofollow">https://mirror.ghproxy.com/</a></p>
-<p><a href="https://gitclone.com/" rel="nofollow">https://gitclone.com/</a></p>
-<p><a href="https://hub.nuaa.cf/" rel="nofollow">https://hub.nuaa.cf/</a></p>
-<p><a href="https://github.welab.eu.org/" rel="nofollow">https://github.welab.eu.org/</a></p>
-<p><a href="https://ghps.cc/" rel="nofollow">https://ghps.cc/</a></p></div>
+<p><strong>PS：</strong> 上述方法无效可以尝试重启机器。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
