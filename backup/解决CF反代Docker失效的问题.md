@@ -102,7 +102,135 @@ export default {
 }
 ```
 
-`./docker.html`是前端文件可以不要，不影响加速使用，我就不提供了，部署后记得绑定自定义域，因为默认的`worker`域名是被墙的。
+#### 新建一个`docker.html`文件，部署后记得绑定自定义域，因为默认的`worker`域名是被墙的。
+
+
+
+<details>
+  <summary>docker.html文件的代码</summary>
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Docker Hub 镜像加速</title>
+        <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 600px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #438cf8;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            padding: 32px;
+            flex-grow: 1;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 16px;
+            border-radius: 4px;
+            position: relative;
+            overflow: auto;
+            margin-bottom: 16px;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            background-color: #438cf8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .footer {
+            padding: 5px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .footer a {
+            color: #438cf8;
+            text-decoration: none;
+        }
+        </style>
+        <script>
+            function copyCode(button) {
+                const code = button.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code).then(function() {
+                    button.innerText = "已复制";
+                    setTimeout(function() {
+                        button.innerText = "复制";
+                    }, 2000);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Docker Hub 镜像加速</h1>
+        </div>
+        <div class="container">
+            <div class="content">
+                <h2>Docker Hub 镜像加速</h2>
+                <p>为了加速镜像拉取，你可以使用以下命令设置 registry mirror</p>
+                <pre><code>sudo mkdir -p /etc/docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>sudo tee /etc/docker/daemon.json &lt;&lt;EOF
+{
+    "registry-mirrors": ["https://{{host}}"]
+}
+EOF</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>sudo systemctl daemon-reload</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <pre><code>sudo systemctl restart docker</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <br>
+                <p>不用设置环境也可以直接使用，用法示例：</p>
+                <pre><code>docker pull {{host}}/library/mysql:5.7</code><button class="copy-button" onclick="copyCode(this)">复制</button></pre>
+                <p>说明：library是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把library替换为镜像的用户名</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p><a href="https://blog.52013120.xyz/post/29.html" target="_blank">代码地址</a></p>
+        </div>
+    </body>
+</html>
+```
+
+</details>
+
+
 
 
 ---
@@ -135,3 +263,30 @@ hub.example.com {
 ```
 
 > 记得第一行的`hub.example.com`替换为你的域名
+
+
+- **`caddy`反代`ghcr.io`**
+
+```
+example.com {
+    handle /v2/* {
+        reverse_proxy https://ghcr.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+            header_down WWW-Authenticate "https://ghcr.io" "https://{http.request.host}"
+            header_down Location "https://pkg-containers.githubusercontent.com" "https://{http.request.host}"
+        }
+    }
+
+    handle /token* {
+        reverse_proxy https://ghcr.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+
+    handle /* {
+        reverse_proxy https://pkg-containers.githubusercontent.com {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+}
+```

@@ -178,7 +178,127 @@ export default {
   }
 }
 </code></pre>
-<p><code class="notranslate">./docker.html</code>是前端文件可以不要，不影响加速使用，我就不提供了，部署后记得绑定自定义域，因为默认的<code class="notranslate">worker</code>域名是被墙的。</p>
+<h4>新建一个<code class="notranslate">docker.html</code>文件，部署后记得绑定自定义域，因为默认的<code class="notranslate">worker</code>域名是被墙的。</h4>
+<details>
+  <summary>docker.html文件的代码</summary>
+<pre class="notranslate"><code class="notranslate">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+        &lt;title&gt;Docker Hub 镜像加速&lt;/title&gt;
+        &lt;style&gt;
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 600px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #438cf8;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            padding: 32px;
+            flex-grow: 1;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 16px;
+            border-radius: 4px;
+            position: relative;
+            overflow: auto;
+            margin-bottom: 16px;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            background-color: #438cf8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .footer {
+            padding: 5px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .footer a {
+            color: #438cf8;
+            text-decoration: none;
+        }
+        &lt;/style&gt;
+        &lt;script&gt;
+            function copyCode(button) {
+                const code = button.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code).then(function() {
+                    button.innerText = "已复制";
+                    setTimeout(function() {
+                        button.innerText = "复制";
+                    }, 2000);
+                });
+            }
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="header"&gt;
+            &lt;h1&gt;Docker Hub 镜像加速&lt;/h1&gt;
+        &lt;/div&gt;
+        &lt;div class="container"&gt;
+            &lt;div class="content"&gt;
+                &lt;h2&gt;Docker Hub 镜像加速&lt;/h2&gt;
+                &lt;p&gt;为了加速镜像拉取，你可以使用以下命令设置 registry mirror&lt;/p&gt;
+                &lt;pre&gt;&lt;code&gt;sudo mkdir -p /etc/docker&lt;/code&gt;&lt;button class="copy-button" onclick="copyCode(this)"&gt;复制&lt;/button&gt;&lt;/pre&gt;
+                &lt;pre&gt;&lt;code&gt;sudo tee /etc/docker/daemon.json &amp;lt;&amp;lt;EOF
+{
+    "registry-mirrors": ["https://{{host}}"]
+}
+EOF&lt;/code&gt;&lt;button class="copy-button" onclick="copyCode(this)"&gt;复制&lt;/button&gt;&lt;/pre&gt;
+                &lt;pre&gt;&lt;code&gt;sudo systemctl daemon-reload&lt;/code&gt;&lt;button class="copy-button" onclick="copyCode(this)"&gt;复制&lt;/button&gt;&lt;/pre&gt;
+                &lt;pre&gt;&lt;code&gt;sudo systemctl restart docker&lt;/code&gt;&lt;button class="copy-button" onclick="copyCode(this)"&gt;复制&lt;/button&gt;&lt;/pre&gt;
+                &lt;br&gt;
+                &lt;p&gt;不用设置环境也可以直接使用，用法示例：&lt;/p&gt;
+                &lt;pre&gt;&lt;code&gt;docker pull {{host}}/library/mysql:5.7&lt;/code&gt;&lt;button class="copy-button" onclick="copyCode(this)"&gt;复制&lt;/button&gt;&lt;/pre&gt;
+                &lt;p&gt;说明：library是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把library替换为镜像的用户名&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="footer"&gt;
+            &lt;p&gt;&lt;a href="https://blog.52013120.xyz/post/29.html" target="_blank"&gt;代码地址&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</details>
 <hr>
 <ul>
 <li><strong>基于这个思路我还写了<code class="notranslate">caddy</code>反代的配置，<code class="notranslate">caddy</code>自动配置SSL证书可太香了，并且不依赖CF，可以自己部署在服务器上。</strong></li>
@@ -207,7 +327,32 @@ export default {
 </code></pre>
 <blockquote>
 <p>记得第一行的<code class="notranslate">hub.example.com</code>替换为你的域名</p>
-</blockquote></div>
+</blockquote>
+<ul>
+<li><strong><code class="notranslate">caddy</code>反代<code class="notranslate">ghcr.io</code></strong></li>
+</ul>
+<pre class="notranslate"><code class="notranslate">example.com {
+    handle /v2/* {
+        reverse_proxy https://ghcr.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+            header_down WWW-Authenticate "https://ghcr.io" "https://{http.request.host}"
+            header_down Location "https://pkg-containers.githubusercontent.com" "https://{http.request.host}"
+        }
+    }
+
+    handle /token* {
+        reverse_proxy https://ghcr.io {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+
+    handle /* {
+        reverse_proxy https://pkg-containers.githubusercontent.com {
+            header_up Host {http.reverse_proxy.upstream.hostport}
+        }
+    }
+}
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
