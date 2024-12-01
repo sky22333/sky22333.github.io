@@ -1,6 +1,7 @@
 ### Docker部署哪吒监控
 
 ### v1版本
+`docker-compose.yaml`配置
 ```
 services:
   dashboard:
