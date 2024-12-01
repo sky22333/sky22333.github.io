@@ -22,6 +22,12 @@ example.com {
 ```
 
 
+如果域名开启了`cdn`，则复制出来的被控机脚本需要修改，并且`cf`里的网络配置需要开启`grpc`选项，修改示例：
+```
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh -o nezha.sh && chmod +x nezha.sh && env NZ_SERVER=你的域名:443 NZ_TLS=true NZ_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxx ./nezha.sh
+```
+
+
 
 后台地址 `/dashboard`
 默认用户名密码 `admin/admin`
