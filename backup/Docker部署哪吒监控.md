@@ -90,7 +90,7 @@ oauth2:
     oidcautologin: false
 httpport: 80
 grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名
+grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个这里的域名)
 proxygrpcport: 0 # 被控端连接域名套CF需改成443
 tls: false # 被控端连接域名套CF需改成true
 enableplainipinnotification: false
