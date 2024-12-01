@@ -11,6 +11,7 @@
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
 <meta name="description" content="### Docker部署哪吒监控
+> v0版本
 
 创建相关文件：
 ```
@@ -22,7 +23,7 @@ cd /homoe && mkdir -p template data
 ```
 services:
   nezha:
-    image: ghcr.io/naiba/nezha-dashboard:v0.20.13
+    image: dapiaoliang666/nezha:v0.20.13
     container_name: nezha
     restart: always
     ports:
@@ -64,7 +65,7 @@ oauth2:
     oidcautologin: false
 httpport: 80
 grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个配置)
+grpchost: grpc.example.com # 被控端连接域名
 proxygrpcport: 0 # 被控端连接域名套CF需改成443
 tls: false # 被控端连接域名套CF需改成true
 enableplainipinnotification: false
@@ -107,16 +108,19 @@ grpc.example.com {
 
 ---
 
-（可选）对于`国内被控机`请替换国内脚本
+将面板中复制所得的指令中的sh的raw文件url替换成
 ```
-https://gitee.com/naibahq/scripts/raw/main/install.sh
+https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 ```
+然后接着去vps安装即可
 
 ---
 
-[项目地址](https://github.com/naiba/nezha)。">
+[官方项目地址](https://github.com/naiba/nezha)
+> 官方已经更新了v1版本，此教程的镜像和脚本为个人备份的`v0.20.13`版本。">
 <meta property="og:title" content="Docker部署哪吒监控">
 <meta property="og:description" content="### Docker部署哪吒监控
+> v0版本
 
 创建相关文件：
 ```
@@ -128,7 +132,7 @@ cd /homoe && mkdir -p template data
 ```
 services:
   nezha:
-    image: ghcr.io/naiba/nezha-dashboard:v0.20.13
+    image: dapiaoliang666/nezha:v0.20.13
     container_name: nezha
     restart: always
     ports:
@@ -170,7 +174,7 @@ oauth2:
     oidcautologin: false
 httpport: 80
 grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个配置)
+grpchost: grpc.example.com # 被控端连接域名
 proxygrpcport: 0 # 被控端连接域名套CF需改成443
 tls: false # 被控端连接域名套CF需改成true
 enableplainipinnotification: false
@@ -213,14 +217,16 @@ grpc.example.com {
 
 ---
 
-（可选）对于`国内被控机`请替换国内脚本
+将面板中复制所得的指令中的sh的raw文件url替换成
 ```
-https://gitee.com/naibahq/scripts/raw/main/install.sh
+https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 ```
+然后接着去vps安装即可
 
 ---
 
-[项目地址](https://github.com/naiba/nezha)。">
+[官方项目地址](https://github.com/naiba/nezha)
+> 官方已经更新了v1版本，此教程的镜像和脚本为个人备份的`v0.20.13`版本。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/32.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -286,13 +292,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h3>Docker部署哪吒监控</h3>
+<blockquote>
+<p>v0版本</p>
+</blockquote>
 <p>创建相关文件：</p>
 <pre class="notranslate"><code class="notranslate">cd /homoe &amp;&amp; mkdir -p template data
 </code></pre>
 <p><code class="notranslate">docker-compose.yml</code>配置</p>
 <pre class="notranslate"><code class="notranslate">services:
   nezha:
-    image: ghcr.io/naiba/nezha-dashboard:v0.20.13
+    image: dapiaoliang666/nezha:v0.20.13
     container_name: nezha
     restart: always
     ports:
@@ -331,7 +340,7 @@ oauth2:
     oidcautologin: false
 httpport: 80
 grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个配置)
+grpchost: grpc.example.com # 被控端连接域名
 proxygrpcport: 0 # 被控端连接域名套CF需改成443
 tls: false # 被控端连接域名套CF需改成true
 enableplainipinnotification: false
@@ -367,11 +376,15 @@ grpc.example.com {
 }
 </code></pre>
 <hr>
-<p>（可选）对于<code class="notranslate">国内被控机</code>请替换国内脚本</p>
-<pre class="notranslate"><code class="notranslate">https://gitee.com/naibahq/scripts/raw/main/install.sh
+<p>将面板中复制所得的指令中的sh的raw文件url替换成</p>
+<pre class="notranslate"><code class="notranslate">https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 </code></pre>
+<p>然后接着去vps安装即可</p>
 <hr>
-<p><a href="https://github.com/naiba/nezha">项目地址</a></p></div>
+<p><a href="https://github.com/naiba/nezha">官方项目地址</a></p>
+<blockquote>
+<p>官方已经更新了v1版本，此教程的镜像和脚本为个人备份的<code class="notranslate">v0.20.13</code>版本</p>
+</blockquote></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

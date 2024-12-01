@@ -1,4 +1,5 @@
 ### Docker部署哪吒监控
+> v0版本
 
 创建相关文件：
 ```
@@ -10,7 +11,7 @@ cd /homoe && mkdir -p template data
 ```
 services:
   nezha:
-    image: ghcr.io/naiba/nezha-dashboard:v0.20.13
+    image: dapiaoliang666/nezha:v0.20.13
     container_name: nezha
     restart: always
     ports:
@@ -52,7 +53,7 @@ oauth2:
     oidcautologin: false
 httpport: 80
 grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个配置)
+grpchost: grpc.example.com # 被控端连接域名
 proxygrpcport: 0 # 被控端连接域名套CF需改成443
 tls: false # 被控端连接域名套CF需改成true
 enableplainipinnotification: false
@@ -95,11 +96,13 @@ grpc.example.com {
 
 ---
 
-（可选）对于`国内被控机`请替换国内脚本
+将面板中复制所得的指令中的sh的raw文件url替换成
 ```
-https://gitee.com/naibahq/scripts/raw/main/install.sh
+https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 ```
+然后接着去vps安装即可
 
 ---
 
-[项目地址](https://github.com/naiba/nezha)
+[官方项目地址](https://github.com/naiba/nezha)
+> 官方已经更新了v1版本，此教程的镜像和脚本为个人备份的`v0.20.13`版本
