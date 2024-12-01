@@ -27,7 +27,7 @@ services:
 `caddy`反代配置
 ```
 example.com {
-    reverse_proxy /proto.NezhaService/* grpc://127.0.0.1:8080
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8080
     
     reverse_proxy /* 127.0.0.1:8080
 }
@@ -166,7 +166,7 @@ services:
 `caddy`反代配置
 ```
 example.com {
-    reverse_proxy /proto.NezhaService/* grpc://127.0.0.1:8080
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8080
     
     reverse_proxy /* 127.0.0.1:8080
 }
@@ -364,7 +364,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </code></pre>
 <p><code class="notranslate">caddy</code>反代配置</p>
 <pre class="notranslate"><code class="notranslate">example.com {
-    reverse_proxy /proto.NezhaService/* grpc://127.0.0.1:8080
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8080
     
     reverse_proxy /* 127.0.0.1:8080
 }
