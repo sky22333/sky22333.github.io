@@ -38,122 +38,7 @@ example.com {
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh -o nezha.sh && chmod +x nezha.sh && env NZ_SERVER=你的域名:443 NZ_TLS=true NZ_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxx ./nezha.sh
 ```
-
-
-
-后台地址 `/dashboard`
-默认用户名密码 `admin/admin`
-
-
----
-
-### v0版本
-
-创建相关文件：
-```
-cd /homoe && mkdir -p template data
-```
-
-`docker-compose.yml`配置
-
-```
-services:
-  nezha:
-    image: dapiaoliang666/nezha:v0.20.13
-    container_name: nezha
-    restart: always
-    ports:
-      - '8080:80'
-      - '5555:5555'
-    volumes:
-      - ./data:/dashboard/data
-      - ./template:/dashboard/resource/template
-```
-
-
-在`data`目录添加`config.yaml`配置
-```
-debug: false
-language: zh-CN
-site:
-    brand: 服务器监控
-    cookiename: nezha-dashboard
-    theme: server-status
-    dashboardtheme: default
-    customcode: ''
-    customcodedashboard: ''
-    viewpassword: ''
-oauth2:
-    type: github
-    admin: github用户名
-    admingroups: ''
-    clientid: 验证ID
-    clientsecret: 验证密钥
-    endpoint: ''
-    oidcdisplayname: OIDC
-    oidcissuer: ''
-    oidclogouturl: ''
-    oidcregisterurl: ''
-    oidcloginclaim: sub
-    oidcgroupclaim: groups
-    oidcscopes: openid,profile,email
-    oidcautocreate: false
-    oidcautologin: false
-httpport: 80
-grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名
-proxygrpcport: 0 # 被控端连接域名套CF需改成443
-tls: false # 被控端连接域名套CF需改成true
-enableplainipinnotification: false
-disableswitchtemplateinfrontend: false
-enableipchangenotification: false
-ipchangenotificationtag: default
-cover: 0
-ignoredipnotification: ''
-location: Asia/Shanghai
-ignoredipnotificationserverids: {}
-maxtcppingvalue: 1000
-avgpingcount: 2
-dnsservers: ''
-```
-
-`oauth2`回调URL示例：
-```
-https://example.com/oauth2/callback
-```
-
-`caddy`配置示例
-```
-# 前端域名
-example.com {
-    encode zstd gzip
-    reverse_proxy localhost:8080
-}
-
-# 被控端连接域名(前端不开CDN可去掉这个配置)
-grpc.example.com {
-    reverse_proxy {
-        to localhost:5555
-        transport http {
-            versions h2c 2
-        }
-    }
-}
-```
-
-
----
-
-将面板中复制所得的指令中的sh的raw文件url替换成
-```
-https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
-```
-然后接着去被控机安装即可
-
----
-
-[官方项目地址](https://github.com/naiba/nezha)
-> 官方已经更新了v1版本，v0的镜像和脚本是我个人备份，不是官方的。">
+> 主要修改了脚本中的域名后面的端口为`443`和`NZ_TLS=true`，其他不变。">
 <meta property="og:title" content="Docker部署哪吒监控">
 <meta property="og:description" content="### Docker部署哪吒监控
 
@@ -183,122 +68,7 @@ example.com {
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh -o nezha.sh && chmod +x nezha.sh && env NZ_SERVER=你的域名:443 NZ_TLS=true NZ_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxx ./nezha.sh
 ```
-
-
-
-后台地址 `/dashboard`
-默认用户名密码 `admin/admin`
-
-
----
-
-### v0版本
-
-创建相关文件：
-```
-cd /homoe && mkdir -p template data
-```
-
-`docker-compose.yml`配置
-
-```
-services:
-  nezha:
-    image: dapiaoliang666/nezha:v0.20.13
-    container_name: nezha
-    restart: always
-    ports:
-      - '8080:80'
-      - '5555:5555'
-    volumes:
-      - ./data:/dashboard/data
-      - ./template:/dashboard/resource/template
-```
-
-
-在`data`目录添加`config.yaml`配置
-```
-debug: false
-language: zh-CN
-site:
-    brand: 服务器监控
-    cookiename: nezha-dashboard
-    theme: server-status
-    dashboardtheme: default
-    customcode: ''
-    customcodedashboard: ''
-    viewpassword: ''
-oauth2:
-    type: github
-    admin: github用户名
-    admingroups: ''
-    clientid: 验证ID
-    clientsecret: 验证密钥
-    endpoint: ''
-    oidcdisplayname: OIDC
-    oidcissuer: ''
-    oidclogouturl: ''
-    oidcregisterurl: ''
-    oidcloginclaim: sub
-    oidcgroupclaim: groups
-    oidcscopes: openid,profile,email
-    oidcautocreate: false
-    oidcautologin: false
-httpport: 80
-grpcport: 5555
-grpchost: grpc.example.com # 被控端连接域名
-proxygrpcport: 0 # 被控端连接域名套CF需改成443
-tls: false # 被控端连接域名套CF需改成true
-enableplainipinnotification: false
-disableswitchtemplateinfrontend: false
-enableipchangenotification: false
-ipchangenotificationtag: default
-cover: 0
-ignoredipnotification: ''
-location: Asia/Shanghai
-ignoredipnotificationserverids: {}
-maxtcppingvalue: 1000
-avgpingcount: 2
-dnsservers: ''
-```
-
-`oauth2`回调URL示例：
-```
-https://example.com/oauth2/callback
-```
-
-`caddy`配置示例
-```
-# 前端域名
-example.com {
-    encode zstd gzip
-    reverse_proxy localhost:8080
-}
-
-# 被控端连接域名(前端不开CDN可去掉这个配置)
-grpc.example.com {
-    reverse_proxy {
-        to localhost:5555
-        transport http {
-            versions h2c 2
-        }
-    }
-}
-```
-
-
----
-
-将面板中复制所得的指令中的sh的raw文件url替换成
-```
-https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
-```
-然后接着去被控机安装即可
-
----
-
-[官方项目地址](https://github.com/naiba/nezha)
-> 官方已经更新了v1版本，v0的镜像和脚本是我个人备份，不是官方的。">
+> 主要修改了脚本中的域名后面的端口为`443`和`NZ_TLS=true`，其他不变。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/32.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -384,6 +154,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>如果域名开启了<code class="notranslate">cdn</code>，则复制出来的被控机脚本需要修改，并且<code class="notranslate">cf</code>里的网络配置需要开启<code class="notranslate">grpc</code>选项，修改示例：</p>
 <pre class="notranslate"><code class="notranslate">curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; env NZ_SERVER=你的域名:443 NZ_TLS=true NZ_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxx ./nezha.sh
 </code></pre>
+<blockquote>
+<p>主要修改了脚本中的域名后面的端口为<code class="notranslate">443</code>和<code class="notranslate">NZ_TLS=true</code>，其他不变。</p>
+</blockquote>
 <p>后台地址 <code class="notranslate">/dashboard</code><br>
 默认用户名密码 <code class="notranslate">admin/admin</code></p>
 <hr>

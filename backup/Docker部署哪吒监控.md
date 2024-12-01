@@ -26,7 +26,7 @@ example.com {
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh -o nezha.sh && chmod +x nezha.sh && env NZ_SERVER=你的域名:443 NZ_TLS=true NZ_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxx ./nezha.sh
 ```
-
+> 主要修改了脚本中的域名后面的端口为`443`和`NZ_TLS=true`，其他不变。
 
 
 后台地址 `/dashboard`
