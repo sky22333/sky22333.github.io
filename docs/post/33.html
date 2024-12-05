@@ -17,13 +17,16 @@
 **1：开机重复按`F2`或者`F12`或者`DELETE`或者`DEL`键 进入BIOS界面**
 
 
-**2：U盘引导，`UEFI` ——> 对应`GPT`磁盘格式**
+**2：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式**
 
 **3：将U盘改为第一启动项，然后保存并重启**
 
 **4：第一个分区默认就是C盘，建议分区200G：填`204806`MB**
 
+---
+
 ### 可选项
+> 一般现代的电脑只看上面4步即可
 
 如果磁盘格式不对，可以按`Shift + F10`，打开`命令提示符`，更改磁盘存储格式：
 ```
@@ -31,11 +34,11 @@ diskpart                     # 进入磁盘管理
 list disk                    # 列出所有磁盘
 select disk 0                # 选择要操作的磁盘，0 是磁盘编号
 clean                        # 清除磁盘上的所有分区和数据
-convert gpt                  # 将磁盘转换为 GPT 格式
+convert gpt                  # 将磁盘转换为 GPT 分区格式
 exit                         # 退出
 ```
 
-完成以上步骤后，硬盘已被格式化并转换为 **UEFI** 的 **GPT** 格式。">
+完成以上步骤后，硬盘已被格式化并转换为 **UEFI** 的 **GPT** 分区格式。">
 <meta property="og:title" content="windows重装系统教程">
 <meta property="og:description" content="### windows重装系统
 
@@ -44,13 +47,16 @@ exit                         # 退出
 **1：开机重复按`F2`或者`F12`或者`DELETE`或者`DEL`键 进入BIOS界面**
 
 
-**2：U盘引导，`UEFI` ——> 对应`GPT`磁盘格式**
+**2：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式**
 
 **3：将U盘改为第一启动项，然后保存并重启**
 
 **4：第一个分区默认就是C盘，建议分区200G：填`204806`MB**
 
+---
+
 ### 可选项
+> 一般现代的电脑只看上面4步即可
 
 如果磁盘格式不对，可以按`Shift + F10`，打开`命令提示符`，更改磁盘存储格式：
 ```
@@ -58,11 +64,11 @@ diskpart                     # 进入磁盘管理
 list disk                    # 列出所有磁盘
 select disk 0                # 选择要操作的磁盘，0 是磁盘编号
 clean                        # 清除磁盘上的所有分区和数据
-convert gpt                  # 将磁盘转换为 GPT 格式
+convert gpt                  # 将磁盘转换为 GPT 分区格式
 exit                         # 退出
 ```
 
-完成以上步骤后，硬盘已被格式化并转换为 **UEFI** 的 **GPT** 格式。">
+完成以上步骤后，硬盘已被格式化并转换为 **UEFI** 的 **GPT** 分区格式。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/33.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -130,19 +136,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="markdown-body" id="postBody"><h3>windows重装系统</h3>
 <p>微软官方启动盘下载(写入到U盘)：<a href="https://www.microsoft.com/zh-cn/software-download/windows11" rel="nofollow">https://www.microsoft.com/zh-cn/software-download/windows11</a></p>
 <p><strong>1：开机重复按<code class="notranslate">F2</code>或者<code class="notranslate">F12</code>或者<code class="notranslate">DELETE</code>或者<code class="notranslate">DEL</code>键 进入BIOS界面</strong></p>
-<p><strong>2：U盘引导，<code class="notranslate">UEFI</code> ——&gt; 对应<code class="notranslate">GPT</code>磁盘格式</strong></p>
+<p><strong>2：U盘引导，<code class="notranslate">UEFI</code> ——&gt; 对应<code class="notranslate">GPT</code>磁盘分区格式</strong></p>
 <p><strong>3：将U盘改为第一启动项，然后保存并重启</strong></p>
 <p><strong>4：第一个分区默认就是C盘，建议分区200G：填<code class="notranslate">204806</code>MB</strong></p>
+<hr>
 <h3>可选项</h3>
+<blockquote>
+<p>一般现代的电脑只看上面4步即可</p>
+</blockquote>
 <p>如果磁盘格式不对，可以按<code class="notranslate">Shift + F10</code>，打开<code class="notranslate">命令提示符</code>，更改磁盘存储格式：</p>
 <pre class="notranslate"><code class="notranslate">diskpart                     # 进入磁盘管理
 list disk                    # 列出所有磁盘
 select disk 0                # 选择要操作的磁盘，0 是磁盘编号
 clean                        # 清除磁盘上的所有分区和数据
-convert gpt                  # 将磁盘转换为 GPT 格式
+convert gpt                  # 将磁盘转换为 GPT 分区格式
 exit                         # 退出
 </code></pre>
-<p>完成以上步骤后，硬盘已被格式化并转换为 <strong>UEFI</strong> 的 <strong>GPT</strong> 格式。然后刷新可以继续进行操作系统安装。</p>
+<p>完成以上步骤后，硬盘已被格式化并转换为 <strong>UEFI</strong> 的 <strong>GPT</strong> 分区格式。然后刷新可以继续进行操作系统安装。</p>
 <p>驱动器0，即表示第一块物理磁盘，该类型索引从0开始</p>
 <p>分区1、2、3编号，即第一个分区……依次排列，分区从1开始索引编号</p>
 <h3>备注：</h3>
