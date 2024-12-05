@@ -85,6 +85,8 @@ irm https://get.activated.win | iex
 
 - 文件搜索：https://www.listary.net/
 
+- 文件备份和同步：https://freefilesync.org/
+
 - host管理工具：https://github.com/oldj/SwitchHosts
 
 - 火绒安全软件：https://www.huorong.cn/
