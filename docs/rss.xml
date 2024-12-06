@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 06 Dec 2024 10:49:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 06 Dec 2024 10:52:14 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导&#13;
 &#13;
 微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11&#13;
 &#13;
@@ -29,7 +29,7 @@
 &#13;
 ### 安装界面绕过联网&#13;
 &#13;
-1：安装界面按`Shift + F10`，打开`命令提示符`&#13;
+1：安装界面按`Shift + F10`，打开命令窗口&#13;
 &#13;
 2：执行`oobe\bypassnro`命令&#13;
 &#13;
