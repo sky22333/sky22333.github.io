@@ -2,7 +2,7 @@
 
 微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11
 
-1：下载`Windows 11 安装媒体`并写入到U盘
+1：下载`Windows 11 安装媒体`并执行程序写入到U盘
 
 2：开机重复按`F2`或者`F12`或者`DELETE`键 进入BIOS界面
 
