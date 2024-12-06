@@ -1,22 +1,43 @@
-### windows重装系统
+### windows重装系统之U盘引导
 
-微软官方启动盘下载(写入到U盘)：https://www.microsoft.com/zh-cn/software-download/windows11
+微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11
 
-**1：开机重复按`F2`或者`F12`或者`DELETE`或者`DEL`键 进入BIOS界面**
+1：下载`Windows 11 安装媒体`并写入到U盘
+
+2：开机重复按`F2`或者`F12`或者`DELETE`键 进入BIOS界面
+
+3：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式
+
+4：将U盘改为第一启动项，然后保存并重启
+
+5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的空间全给第二个分区即可
 
 
-**2：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式**
+---
+### windows重装系统之本地重装
 
-**3：将U盘改为第一启动项，然后保存并重启**
+1：微软官网下载`Windows 11 磁盘映像 (ISO)`
 
-**4：第一个分区默认就是C盘，建议分区200G：填`204806`MB**
+2：打开下载的文件点击`5etup`按提示重装即可
+
+3：如果提示不满足要求，则在当前目录下执行`.\setup.exe /product server`命令即可跳过检测
+
+
 
 ---
 
-### 可选项
-> 一般现代的电脑只看上面4步即可
+### 安装界面绕过联网
 
-如果磁盘格式不对，可以按`Shift + F10`，打开`命令提示符`，更改磁盘存储格式：
+1：安装界面按`Shift + F10`，打开`命令提示符`
+
+2：执行`oobe\bypassnro`命令
+
+3：执行命令后，系统会自动重启并跳过联网步骤，你可以继续安装并创建本地账户。
+
+
+### 磁盘分区格式
+
+如果磁盘分区格式不对，可以按`Shift + F10`，打开`命令提示符`，更改磁盘存储格式：
 ```
 diskpart                     # 进入磁盘管理
 list disk                    # 列出所有磁盘
@@ -31,7 +52,26 @@ exit                         # 退出
 
 驱动器0，即表示第一块物理磁盘，该类型索引从0开始
 
-分区1、2、3编号，即第一个分区……依次排列，分区从1开始索引编号
+分区1、2、3编号，即第一个分区……依次排列，分区从1开始索引编号。
+
+
+### 报错解决
+
+报错信息：这台电脑不符合安装此版本的 Windows 所需的最低系统要求。
+
+绕过`TPM`检查命令：
+```
+reg load HKLM\temp C:\Windows\System32\Config\SOFTWARE
+reg add "HKLM\temp\Microsoft\Windows\CurrentVersion\Setup" /v BypassTPMCheck /t REG_DWORD /d 1 /f
+reg unload HKLM\temp
+```
+绕过`Secure Boot`检查命令：
+```
+reg load HKLM\temp C:\Windows\System32\Config\SOFTWARE
+reg add "HKLM\temp\Microsoft\Windows\CurrentVersion\Setup" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f
+reg unload HKLM\temp
+```
+
 
 ### 备注：
 
