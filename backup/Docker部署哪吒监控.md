@@ -141,4 +141,4 @@ https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 
 ---
 
-[官方项目地址](https://github.com/naiba/nezha)
+[官方项目地址](https://github.com/nezhahq/nezha)
