@@ -24,28 +24,7 @@
 
 5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的空间全给第二个分区即可
 
-
----
-### windows重装系统之本地重装
-
-1：微软官网下载`Windows 11 磁盘映像 (ISO)`
-
-2：打开下载的文件点击`5etup`按提示重装即可
-
-3：如果提示不满足要求，则在当前目录下执行`.\setup.exe /product server`命令即可跳过检测
-
-
----
-
-### 安装界面绕过联网
-
-1：安装界面按`Shift + F10`，打开命令窗口
-
-2：执行`oobe\bypassnro`命令
-
-3：执行命令后，系统会自动重启并跳过联网步骤，你可以继续安装并创建本地账户
-
-4：回到安装页面后选择`继续执行受限设备`，创建账户时可以创建本地账户，名称最好用纯英文。">
+> 现在的大部分电脑都是`UEFI`引导，和`GPT`磁盘分区格式。">
 <meta property="og:title" content="windows重装系统教程">
 <meta property="og:description" content="### windows重装系统之U盘引导
 
@@ -61,28 +40,7 @@
 
 5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的空间全给第二个分区即可
 
-
----
-### windows重装系统之本地重装
-
-1：微软官网下载`Windows 11 磁盘映像 (ISO)`
-
-2：打开下载的文件点击`5etup`按提示重装即可
-
-3：如果提示不满足要求，则在当前目录下执行`.\setup.exe /product server`命令即可跳过检测
-
-
----
-
-### 安装界面绕过联网
-
-1：安装界面按`Shift + F10`，打开命令窗口
-
-2：执行`oobe\bypassnro`命令
-
-3：执行命令后，系统会自动重启并跳过联网步骤，你可以继续安装并创建本地账户
-
-4：回到安装页面后选择`继续执行受限设备`，创建账户时可以创建本地账户，名称最好用纯英文。">
+> 现在的大部分电脑都是`UEFI`引导，和`GPT`磁盘分区格式。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/33.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -154,6 +112,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>3：U盘引导，<code class="notranslate">UEFI</code> ——&gt; 对应<code class="notranslate">GPT</code>磁盘分区格式</p>
 <p>4：将U盘改为第一启动项，然后保存并重启</p>
 <p>5：第一个分区默认就是C盘，建议分区200G：填<code class="notranslate">204806</code>MB，剩下的空间全给第二个分区即可</p>
+<blockquote>
+<p>现在的大部分电脑都是<code class="notranslate">UEFI</code>引导，和<code class="notranslate">GPT</code>磁盘分区格式。部分情况需要关闭安全启动<code class="notranslate">Secure Boot</code>选项，才能正常进入安装系统的界面。比较旧的电脑或者主板是<code class="notranslate">Legacy BIOS</code>引导，和<code class="notranslate">MBR</code>磁盘分区格式。Linux 系统默认的磁盘分区格式主要是<code class="notranslate">ext4</code>。</p>
+</blockquote>
 <hr>
 <h3>windows重装系统之本地重装</h3>
 <p>1：微软官网下载<code class="notranslate">Windows 11 磁盘映像 (ISO)</code></p>
@@ -191,7 +152,7 @@ reg unload HKLM\temp
 </code></pre>
 <h3>备注：</h3>
 <p>1：<code class="notranslate">win+R</code>运行<code class="notranslate">msinfo32</code>查看BIOS引导模式，或者<code class="notranslate">cmd</code>命令运行<code class="notranslate">bcdedit</code>查看引导模式，如果是<code class="notranslate">\WINDOWS\system32\winload.efi</code>则是<code class="notranslate">UEFI</code>引导</p>
-<p>2：重装系统时有的机器需要进入<code class="notranslate">UEFI BIOS</code>固件设置，关闭安全启动<code class="notranslate">Secure Boot</code>选项（导致此原因可能是由于系统镜像不是官方来源）</p>
+<p>2：重装系统时有的机器需要进入<code class="notranslate">UEFI BIOS</code>固件设置，关闭安全启动<code class="notranslate">Secure Boot</code>选项。</p>
 <p>3：如果启动时有多个系统，可以<code class="notranslate">win+R</code>运行<code class="notranslate">msconfig</code>查看<code class="notranslate">引导</code>选项卡，删掉不需要的。</p>
 <h3>系统激活代码</h3>
 <p><code class="notranslate">PowerShell</code>脚本命令：</p>
@@ -212,28 +173,7 @@ reg unload HKLM\temp
 <p>7z解压工具：<a href="https://www.7-zip.org/" rel="nofollow">https://www.7-zip.org/</a></p>
 </li>
 <li>
-<p>vscode：<a href="https://code.visualstudio.com/" rel="nofollow">https://code.visualstudio.com/</a></p>
-</li>
-<li>
 <p>驱动总裁：<a href="https://www.sysceo.com/dc" rel="nofollow">https://www.sysceo.com/dc</a></p>
-</li>
-<li>
-<p>obs：<a href="https://obsproject.com/" rel="nofollow">https://obsproject.com/</a></p>
-</li>
-<li>
-<p>git：<a href="https://git-scm.com/downloads" rel="nofollow">https://git-scm.com/downloads</a></p>
-</li>
-<li>
-<p>SSH工具：<a href="https://www.hostbuf.com/" rel="nofollow">https://www.hostbuf.com/</a></p>
-</li>
-<li>
-<p>SSH工具：<a href="https://www.hexhub.cn/" rel="nofollow">https://www.hexhub.cn/</a></p>
-</li>
-<li>
-<p>todesk远程工具：<a href="https://www.todesk.com/" rel="nofollow">https://www.todesk.com/</a></p>
-</li>
-<li>
-<p>deskin远程工具：<a href="https://www.deskin.io/zht" rel="nofollow">https://www.deskin.io/zht</a></p>
 </li>
 <li>
 <p>图吧工具箱：<a href="https://www.tbtool.cn/" rel="nofollow">https://www.tbtool.cn/</a></p>
@@ -249,9 +189,6 @@ reg unload HKLM\temp
 </li>
 <li>
 <p>火绒安全软件：<a href="https://www.huorong.cn/" rel="nofollow">https://www.huorong.cn/</a></p>
-</li>
-<li>
-<p>致美化：<a href="https://zhutix.com/" rel="nofollow">https://zhutix.com/</a></p>
 </li>
 </ul>
 <h3>装机启动盘</h3>
@@ -276,7 +213,7 @@ reg unload HKLM\temp
 ├── autorun.inf        &lt;- 自动运行配置文件
 └── setup.exe          &lt;- 安装程序
 </code></pre>
-<p>可以在启动盘中创建<code class="notranslate">driver</code>文件夹，驱动压缩包放至<code class="notranslate">driver</code>目录下，并将其解压，然后安装系统界面可以加载驱动程序，最好是将驱动解压缩并按硬件类别放置在子文件夹中。</p></div>
+<p>可以在启动盘中创建<code class="notranslate">driver</code>文件夹，驱动压缩包放至<code class="notranslate">driver</code>目录下，并将其解压，然后安装系统界面可以加载驱动程序，最好是将驱动解压缩并按硬件类别放置在子文件夹中。这样就可以实现离线安装网卡驱动了。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

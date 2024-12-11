@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 11 Dec 2024 17:43:18 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 11 Dec 2024 17:55:33 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导&#13;
 &#13;
 微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11&#13;
 &#13;
@@ -13,28 +13,7 @@
 &#13;
 5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的空间全给第二个分区即可&#13;
 &#13;
-&#13;
----&#13;
-### windows重装系统之本地重装&#13;
-&#13;
-1：微软官网下载`Windows 11 磁盘映像 (ISO)`&#13;
-&#13;
-2：打开下载的文件点击`5etup`按提示重装即可&#13;
-&#13;
-3：如果提示不满足要求，则在当前目录下执行`.\setup.exe /product server`命令即可跳过检测&#13;
-&#13;
-&#13;
----&#13;
-&#13;
-### 安装界面绕过联网&#13;
-&#13;
-1：安装界面按`Shift + F10`，打开命令窗口&#13;
-&#13;
-2：执行`oobe\bypassnro`命令&#13;
-&#13;
-3：执行命令后，系统会自动重启并跳过联网步骤，你可以继续安装并创建本地账户&#13;
-&#13;
-4：回到安装页面后选择`继续执行受限设备`，创建账户时可以创建本地账户，名称最好用纯英文。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/33.html</guid><pubDate>Thu, 05 Dec 2024 17:22:17 +0000</pubDate></item><item><title>Docker部署哪吒监控</title><link>https://blog.52013120.xyz/post/32.html</link><description>### Docker部署哪吒监控&#13;
+&gt; 现在的大部分电脑都是`UEFI`引导，和`GPT`磁盘分区格式。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/33.html</guid><pubDate>Thu, 05 Dec 2024 17:22:17 +0000</pubDate></item><item><title>Docker部署哪吒监控</title><link>https://blog.52013120.xyz/post/32.html</link><description>### Docker部署哪吒监控&#13;
 &#13;
 ### v1版本&#13;
 `docker-compose.yaml`配置&#13;

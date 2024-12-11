@@ -12,7 +12,7 @@
 
 5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的空间全给第二个分区即可
 
-
+> 现在的大部分电脑都是`UEFI`引导，和`GPT`磁盘分区格式。部分情况需要关闭安全启动`Secure Boot`选项，才能正常进入安装系统的界面。比较旧的电脑或者主板是`Legacy BIOS`引导，和`MBR`磁盘分区格式。Linux 系统默认的磁盘分区格式主要是`ext4`。
 ---
 ### windows重装系统之本地重装
 
@@ -78,7 +78,7 @@ reg unload HKLM\temp
 
 1：`win+R`运行`msinfo32`查看BIOS引导模式，或者`cmd`命令运行`bcdedit`查看引导模式，如果是`\WINDOWS\system32\winload.efi`则是`UEFI`引导
 
-2：重装系统时有的机器需要进入`UEFI BIOS`固件设置，关闭安全启动`Secure Boot`选项（导致此原因可能是由于系统镜像不是官方来源）
+2：重装系统时有的机器需要进入`UEFI BIOS`固件设置，关闭安全启动`Secure Boot`选项。
 
 3：如果启动时有多个系统，可以`win+R`运行`msconfig`查看`引导`选项卡，删掉不需要的。
 
@@ -106,21 +106,7 @@ irm https://get.activated.win | iex
 
 - 7z解压工具：https://www.7-zip.org/
 
-- vscode：https://code.visualstudio.com/
-
 - 驱动总裁：https://www.sysceo.com/dc
-
-- obs：https://obsproject.com/
-
-- git：https://git-scm.com/downloads
-
-- SSH工具：https://www.hostbuf.com/
-
-- SSH工具：https://www.hexhub.cn/
-
-- todesk远程工具：https://www.todesk.com/
-
-- deskin远程工具：https://www.deskin.io/zht
 
 - 图吧工具箱：https://www.tbtool.cn/
 
@@ -131,8 +117,6 @@ irm https://get.activated.win | iex
 - host管理工具：https://github.com/oldj/SwitchHosts
 
 - 火绒安全软件：https://www.huorong.cn/
-
-- 致美化：https://zhutix.com/
 
 ###  装机启动盘
 
@@ -155,4 +139,4 @@ irm https://get.activated.win | iex
 ├── autorun.inf        <- 自动运行配置文件
 └── setup.exe          <- 安装程序
 ```
-可以在启动盘中创建`driver`文件夹，驱动压缩包放至`driver`目录下，并将其解压，然后安装系统界面可以加载驱动程序，最好是将驱动解压缩并按硬件类别放置在子文件夹中。
+可以在启动盘中创建`driver`文件夹，驱动压缩包放至`driver`目录下，并将其解压，然后安装系统界面可以加载驱动程序，最好是将驱动解压缩并按硬件类别放置在子文件夹中。这样就可以实现离线安装网卡驱动了。
