@@ -1,5 +1,5 @@
 > [!NOTE]
-> ## 前后端分离主题部署
+> ### 前后端分离主题部署
 
 ### `V2board`和`Xboard`步骤一样
 
@@ -11,7 +11,6 @@
 │   ├── Detail-CZ1NhySb.js
 │   ├── Detail-CiCRNMEx.css
 │   └── Home-BIEpZQVD.css
-├── .DS_Store
 ├── config.js
 ├── favicon.ico
 └── index.html
@@ -53,26 +52,11 @@ window.config={
 
 ---
 
----
-
-
-## 免费的万能解决方案，可解决机场的所有复杂问题，收集了多位专业运维大佬的解答，扫码查看。
-
-
-
-
-![222](https://github.com/sky22333/sky22333.github.io/assets/115192496/1cb0b8d5-0782-4fd3-984c-c09f3bd457c4)
-
-
-
----
-
----
 
 ---
 
 > [!IMPORTANT]
-> ## 前后端分离原理解释
+> ### 前后端分离原理解释
 
 ### 默认架构下，V2board 同时扮演后端和前端的角色：
 
