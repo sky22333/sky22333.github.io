@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 06 Dec 2024 16:33:34 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 11 Dec 2024 17:20:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导&#13;
 &#13;
 微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11&#13;
 &#13;
@@ -401,12 +401,12 @@ bash &lt;(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)&#13;
 1xx 状态码表示服务器已收到请求，处理将继续。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/14.html</guid><pubDate>Fri, 19 Jul 2024 04:12:54 +0000</pubDate></item><item><title>关于xui面板报错无法监听127.0.0.1:62789的问题</title><link>https://blog.52013120.xyz/post/13.html</link><description>## 关于xui面板报错`无法监听127.0.0.1:62789`&#13;
 &#13;
 &#13;
-#### 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`&#13;
+ 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`&#13;
 #### 表现如图：&#13;
 ![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)&#13;
 &#13;
 &#13;
-#### 这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/13.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>https://blog.52013120.xyz/post/12.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
+这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/13.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>https://blog.52013120.xyz/post/12.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
 &#13;
 &#13;
 ### 主题目录&#13;
