@@ -238,15 +238,15 @@ sudo rm -rf /etc/docker /var/lib/docker
 ---
 ## Docker最新稳定加速源列表
 
-> 企业自建的镜像加速，稳定
-
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
 [耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
-[rainbond](https://docker.rainbond.cc) | `https://docker.rainbond.cc` | 无限制 | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
-[毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 大部分镜像都能拉 | Docker Hub
+[1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://proxy.1panel.live` | 无限制 | Docker Hub
+[rainbond](https://docker.rainbond.cc) | `https://docker.rainbond.cc` | 无限制 | Docker Hub
+[毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 国内CDN & 有黑名单 | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
-[阿里云](https://cr.console.aliyun.com/) | `https://xxx.mirror.aliyuncs.com` | 需登录分配 | 镜像太旧
-[南京大学](https://doc.nju.edu.cn/) | `https://ghcr.nju.edu.cn` | 暂无限制 | ghcr.io
+[华为云](https://console.huaweicloud.com/swr/#/swr/dashboard) | `https://***.mirror.swr.myhuaweicloud.com` | 需登录分配 | Docker Hub
+[南京大学](https://doc.nju.edu.cn/) | `https://ghcr.nju.edu.cn` | 国内CDN & ghcr加速 | ghcr.io
+[飞牛NAS](https://www.fnnas.com/) | `https://docker.ketches.cn` | 国内CDN & 暂无限制 | Docker Hub
 
