@@ -20,10 +20,22 @@
 
 2：解压下载的`iso`文件，点击`5etup`按提示重装即可
 
-3：如果提示不满足要求，则在当前目录下执行`.\setup.exe /product server`命令即可跳过检测
-
-
 ---
+
+### 安装界面绕过硬件检查
+
+报错信息：这台电脑不符合安装此版本的 Windows 所需的最低系统要求。
+
+
+1：在安装界面按下`Shift+F10`组合键调出管理员命令窗口
+
+2：输入`regedit`按回车键调出注册表
+
+3：依次展开`HKEY_LOCAL_MACHINE \ SYSTEM \ Setup`目录，右键点击`Setup`选择新建`项`，命名为`LabConfig`
+
+4：选择`LabConfig`右键–新建–DWORD（32 位）值，需要创建5个，分别命名为：`BypassCPUCheck`、`BypassRAMCheck`、`BypassSecureBootCheck`、`BypassStorageCheck`、`BypassTPMCheck`
+
+5：将这些十进制的值都改成`1`确定后即可绕过硬件检测，继续安装
 
 ### 安装界面绕过联网
 
@@ -54,24 +66,6 @@ exit                         # 退出
 驱动器0，即表示第一块物理磁盘，该类型索引从0开始
 
 分区1、2、3编号，即第一个分区……依次排列，分区从1开始索引编号。
-
-
-### 报错解决
-
-报错信息：这台电脑不符合安装此版本的 Windows 所需的最低系统要求。
-
-绕过`TPM`检查命令：
-```
-reg load HKLM\temp C:\Windows\System32\Config\SOFTWARE
-reg add "HKLM\temp\Microsoft\Windows\CurrentVersion\Setup" /v BypassTPMCheck /t REG_DWORD /d 1 /f
-reg unload HKLM\temp
-```
-绕过`Secure Boot`检查命令：
-```
-reg load HKLM\temp C:\Windows\System32\Config\SOFTWARE
-reg add "HKLM\temp\Microsoft\Windows\CurrentVersion\Setup" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f
-reg unload HKLM\temp
-```
 
 
 ### 备注：

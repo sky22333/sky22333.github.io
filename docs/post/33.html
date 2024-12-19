@@ -115,8 +115,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h3>windows重装系统之本地重装</h3>
 <p>1：微软官网下载<code class="notranslate">Windows 11 磁盘映像 (ISO)</code></p>
 <p>2：解压下载的<code class="notranslate">iso</code>文件，点击<code class="notranslate">5etup</code>按提示重装即可</p>
-<p>3：如果提示不满足要求，则在当前目录下执行<code class="notranslate">.\setup.exe /product server</code>命令即可跳过检测</p>
 <hr>
+<h3>安装界面绕过硬件检查</h3>
+<p>报错信息：这台电脑不符合安装此版本的 Windows 所需的最低系统要求。</p>
+<p>1：在安装界面按下<code class="notranslate">Shift+F10</code>组合键调出管理员命令窗口</p>
+<p>2：输入<code class="notranslate">regedit</code>按回车键调出注册表</p>
+<p>3：依次展开<code class="notranslate">HKEY_LOCAL_MACHINE \ SYSTEM \ Setup</code>目录，右键点击<code class="notranslate">Setup</code>选择新建<code class="notranslate">项</code>，命名为<code class="notranslate">LabConfig</code></p>
+<p>4：选择<code class="notranslate">LabConfig</code>右键–新建–DWORD（32 位）值，需要创建5个，分别命名为：<code class="notranslate">BypassCPUCheck</code>、<code class="notranslate">BypassRAMCheck</code>、<code class="notranslate">BypassSecureBootCheck</code>、<code class="notranslate">BypassStorageCheck</code>、<code class="notranslate">BypassTPMCheck</code></p>
+<p>5：将这些十进制的值都改成<code class="notranslate">1</code>确定后即可绕过硬件检测，继续安装</p>
 <h3>安装界面绕过联网</h3>
 <p>1：安装界面按<code class="notranslate">Shift + F10</code>，打开命令窗口</p>
 <p>2：执行<code class="notranslate">oobe\bypassnro</code>命令</p>
@@ -134,18 +140,6 @@ exit                         # 退出
 <p>完成以上步骤后，硬盘已被格式化并转换为 <strong>UEFI</strong> 的 <strong>GPT</strong> 分区格式。然后刷新可以继续进行操作系统安装。</p>
 <p>驱动器0，即表示第一块物理磁盘，该类型索引从0开始</p>
 <p>分区1、2、3编号，即第一个分区……依次排列，分区从1开始索引编号。</p>
-<h3>报错解决</h3>
-<p>报错信息：这台电脑不符合安装此版本的 Windows 所需的最低系统要求。</p>
-<p>绕过<code class="notranslate">TPM</code>检查命令：</p>
-<pre class="notranslate"><code class="notranslate">reg load HKLM\temp C:\Windows\System32\Config\SOFTWARE
-reg add "HKLM\temp\Microsoft\Windows\CurrentVersion\Setup" /v BypassTPMCheck /t REG_DWORD /d 1 /f
-reg unload HKLM\temp
-</code></pre>
-<p>绕过<code class="notranslate">Secure Boot</code>检查命令：</p>
-<pre class="notranslate"><code class="notranslate">reg load HKLM\temp C:\Windows\System32\Config\SOFTWARE
-reg add "HKLM\temp\Microsoft\Windows\CurrentVersion\Setup" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f
-reg unload HKLM\temp
-</code></pre>
 <h3>备注：</h3>
 <p>1：<code class="notranslate">win+R</code>运行<code class="notranslate">msinfo32</code>查看BIOS引导模式，或者<code class="notranslate">cmd</code>命令运行<code class="notranslate">bcdedit</code>查看引导模式，如果是<code class="notranslate">\WINDOWS\system32\winload.efi</code>则是<code class="notranslate">UEFI</code>引导</p>
 <p>2：重装系统时有的机器需要进入<code class="notranslate">UEFI BIOS</code>固件设置，关闭安全启动<code class="notranslate">Secure Boot</code>选项。</p>
