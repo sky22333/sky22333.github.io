@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 31 Dec 2024 14:00:24 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>服务器配置SSH密钥登录</title><link>https://blog.52013120.xyz/post/34.html</link><description>## 服务器配置SSH密钥登录&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 31 Dec 2024 14:07:06 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>服务器配置SSH密钥登录</title><link>https://blog.52013120.xyz/post/34.html</link><description>## 服务器配置SSH密钥登录&#13;
 &#13;
 &gt; 适用于`Debian`和`Ubuntu`系统&#13;
 &#13;
@@ -242,6 +242,8 @@ https://example.com/clash.yaml&#13;
 - 免费短链：https://goo.su&#13;
 &#13;
 - 免费短链（国内）：https://pbs.ink&#13;
+&#13;
+- 免费短链（国内）：https://ddz.red&#13;
 &#13;
 - 免费短链：https://l8.nu/cn&#13;
 &#13;
