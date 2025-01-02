@@ -12,11 +12,11 @@
     </script>
 <meta name="description" content="### NAT64服务让纯V6网络支持访问纯V4站点
 
-众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，很多网友都会使用`warp VPN`让自己的v6小鸡拥有v4出栈，但是我有时候只是想跑一下github的脚本，用`warp`的话配置很麻烦，所以很多人都选择使用`一键warp脚本`，这个脚本确实很简单，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，还会改网络配置，想卸载干净也很麻烦。">
+众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。">
 <meta property="og:title" content="让纯v6网络环境支持访问仅v4的站点最简单的方法">
 <meta property="og:description" content="### NAT64服务让纯V6网络支持访问纯V4站点
 
-众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，很多网友都会使用`warp VPN`让自己的v6小鸡拥有v4出栈，但是我有时候只是想跑一下github的脚本，用`warp`的话配置很麻烦，所以很多人都选择使用`一键warp脚本`，这个脚本确实很简单，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，还会改网络配置，想卸载干净也很麻烦。">
+众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/35.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
@@ -82,7 +82,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h3>NAT64服务让纯V6网络支持访问纯V4站点</h3>
-<p>众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是<code class="notranslate">github.com</code>和<code class="notranslate">api.github.com</code>居然不支持ipv6，很多网友都会使用<code class="notranslate">warp VPN</code>让自己的v6小鸡拥有v4出栈，但是我有时候只是想跑一下github的脚本，用<code class="notranslate">warp</code>的话配置很麻烦，所以很多人都选择使用<code class="notranslate">一键warp脚本</code>，这个脚本确实很简单，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，还会改网络配置，想卸载干净也很麻烦。所以我就找到了最简单的方法，当然<code class="notranslate">warp一键脚本</code>还是很好用的，但是我图简单，就通过NAT64服务让纯V6网络支持访问纯V4站点。</p>
+<p>众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是<code class="notranslate">github.com</code>和<code class="notranslate">api.github.com</code>居然不支持ipv6，所以很多人都选择使用<code class="notranslate">一键warp脚本</code>，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。所以我就找到了最简单的方法，当然<code class="notranslate">warp一键脚本</code>还是很好用的，但是我图简单，就使用NAT64服务了，唯一的不足的是提供公共免费的NAT64很少，下面是我找到的可用的DNS。</p>
 <p><strong>原理如下：</strong></p>
 <p>NAT64的作用就是把IPv6网络的数据转换为IPv4网络的数据。它通过将IPv6请求中的地址转换成IPv4地址，使得IPv6设备可以通过NAT64网关访问只支持IPv4的服务器和网站。简单来说，NAT64在IPv6和IPv4之间充当了一个桥梁，负责地址和数据包的转换。</p>
 <p><strong>配置方法如下：</strong></p>
