@@ -92,8 +92,8 @@ nameserver 2a00:1098:2c::1
 nameserver 2a01:4f9:c010:3f02::1
 nameserver 2a01:4f8:c2c:123f::1
 </code></pre>
-<p><strong>测试能否访问ipv4的站点：</strong></p>
-<pre class="notranslate"><code class="notranslate">curl -s https://api.github.com/repos/Microsoft/vscode/releases/latest | grep '"tag_name"'
+<p><strong>测试能否访问仅支持ipv4的站点：</strong></p>
+<pre class="notranslate"><code class="notranslate">curl -I ipv4.google.com
 </code></pre>
 <h3>温馨提示</h3>
 <ul>
