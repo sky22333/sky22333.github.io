@@ -249,32 +249,186 @@ observer.observe(document.body, config);
 </code></pre>
 </details>
 <details>
-  <summary>自动GFW内外R18分级视频背景</summary>
-<p>开启和关闭梯子分别进入查看不同效果。</p>
-<pre class="notranslate"><code class="notranslate">&lt;script&gt;
-  const url = new URL(window.location.href);
-  const params = url.searchParams;
-  const r18Param = params.get('r18');
-  let r18 = false; 
+  <summary>视频背景</summary>
+<pre class="notranslate"><code class="notranslate">&lt;meta name="referrer" content="no-referrer"&gt;
+&lt;div class="video-box"&gt;
+  &lt;!-- 视频背景源 --&gt;
+  &lt;video id="myVideo" muted
+    src="https://www.douyin.com/aweme/v1/play/?video_id=v0200fg10000clk1n23c77ufubooagpg&amp;line=0&amp;file_id=16946e5b1182485490028bc5c0bcc4b7&amp;sign=c0c4f7a6fd4a99a7b1691dada6782081&amp;is_play_url=1&amp;source=PackSourceEnum_AWEME_DETAIL"
+    autoplay playsinline loop&gt;
 
-  if (r18Param === "true") {
-    r18 = true;
-  }
-  let videoUrls;
-  if (r18) {
-    videoUrls = [
-          自己找
-      ];
-      
-  } else {
-    videoUrls = [
-			自己找
-
-      ];
-
+  &lt;/video&gt;
+&lt;/div&gt;
+&lt;style&gt;
+  :root {
+    --custom-border-color: rgba(13, 11, 9, 0.1);
+    --custom-background-color: rgba(13, 11, 9, 0.4);
+    --custom-background-image: unset;
   }
 
-&lt;/script&gt;
+  .dark #root {
+    background-color: unset !important;
+  }
+
+  .dark .bg-card {
+    background-color: var(--custom-background-color);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(13, 11, 9, 0.1);
+    box-shadow: 0 4px 6px rgba(13, 11, 9, 0.2);
+    /* 阴影效果 */
+  }
+
+  .focus\:text-accent-foreground:focus {
+    background-color: rgba(13, 11, 9, 0.5);
+  }
+
+  .dark .text-muted-foreground {
+    color: #fff;
+  }
+
+  .dark\:bg-stone-700:is(.dark *) {
+    --tw-bg-opacity: 0.5;
+  }
+
+  html.dark * {
+    border-color: var(--custom-border-color);
+  }
+
+  html.dark body {
+    color: #f4f5f6;
+    background: unset;
+    position: relative;
+  }
+
+  img {
+    border: none;
+  }
+
+  .dark\:border-neutral-800:is(.dark *) {
+    border-color: var(--custom-border-color);
+  }
+
+  .dark\:bg-stone-800:is(.dark *) {
+    --tw-bg-opacity: 0.5;
+    background-color: rgb(41 37 36 / var(--tw-bg-opacity, 1));
+  }
+
+  .dark\:text-stone-500:is(.dark *) {
+    color: #f4f5f6;
+  }
+
+  .dark .bg-secondary {
+    background-color: unset;
+  }
+
+  .dark .bg-popover {
+    background-color: unset;
+  }
+
+  .dark .bg-muted {
+    background-color: var(--custom-border-color);
+  }
+
+  .dark\:bg-black:is(.dark *) {
+    background-color: rgba(13, 11, 9, 0.1);
+  }
+
+  .dark .bg-border {
+    background-color: var(--custom-border-color);
+  }
+
+  .dark .border-input {
+    border-color: var(--custom-border-color);
+  }
+
+  .dark\:text-neutral-300\/50:is(.dark *) {
+    color: #999;
+  }
+
+  .dark\:text-stone-400:is(.dark *) {
+    color: #fff;
+  }
+
+  div#radix-\:r4\: {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .dark .bg-stone-800 {
+    background: var(--custom-background-color);
+  }
+
+  .text-green-600 {
+    color: rgb(34, 197, 94);
+  }
+
+  .bg-green-600 {
+    background-color: rgb(34, 197, 94);
+  }
+
+  .dark .vps-info {
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .dark .font-medium.opacity-40 {
+    opacity: unset;
+  }
+
+  .dark .font-medium.opacity-50 {
+    opacity: unset;
+  }
+
+  .dark .max-w-5xl.gap-4&gt;div:first-child {
+    background-color: var(--custom-background-color);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(13, 11, 9, 0.2);
+    box-shadow: 0 4px 6px rgba(13, 11, 9, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  img[alt="BackIcon"] {
+    /* 样式规则 */
+    margin-right: 12px;
+  }
+
+  .flex.items-center.gap-1.rounded-\[50px\].bg-stone-100.p-\[3px\].dark\:bg-stone-800 {
+    backdrop-filter: blur(2px);
+  }
+
+  .\[\&amp;_\.recharts-cartesian-axis-tick_text\]\:fill-muted-foreground .recharts-cartesian-axis-tick text {
+    fill: #fff;
+  }
+
+  .dark\:fill-neutral-800:is(.dark *) {
+    fill: #fff;
+  }
+
+  .data-\[state\=unchecked\]\:bg-input[data-state=unchecked] {
+    background-color: unset;
+  }
+
+  .data-\[state\=checked\]\:bg-primary[data-state=checked] {
+    background-color: var(--custom-background-color);
+  }
+
+
+
+  .video-box {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+&lt;/style&gt;
 </code></pre>
 </details>
 <hr>
