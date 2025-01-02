@@ -35,6 +35,8 @@ curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh 
 
 ### 配置多`oauth2`登录
 
+
+
 ```
 oauth2:
   Gitee:
@@ -72,6 +74,8 @@ oauth2:
 
 
 ### 美化
+
+放到自定义代码（样式和脚本）
 
 <details>
   <summary>美化一</summary>
