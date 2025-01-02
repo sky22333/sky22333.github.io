@@ -108,6 +108,18 @@ nameserver 2a01:4f8:c2c:123f::1
 </li>
 </ul>
 <hr>
+<h3>永久生效的配置方法</h3>
+<p>1：编辑 <code class="notranslate">/etc/systemd/resolved.conf</code> 文件：</p>
+<pre class="notranslate"><code class="notranslate">sudo vim /etc/systemd/resolved.conf
+</code></pre>
+<p>2：添加或修改以下内容：</p>
+<pre class="notranslate"><code class="notranslate">[Resolve]
+DNS=2a00:1098:2b::1 2a00:1098:2c::1 2a01:4f9:c010:3f02::1 2a01:4f8:c2c:123f::1
+</code></pre>
+<p>3：重启 systemd-resolved 服务：</p>
+<pre class="notranslate"><code class="notranslate">sudo systemctl restart systemd-resolved
+</code></pre>
+<hr>
 <h3>当然还有个精简的开源<code class="notranslate">warp一键脚本</code>可以使用：</h3>
 <pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://gitlab.com/yishijie/warp-sh/raw/main/warp.sh) menu
 </code></pre></div>
