@@ -162,6 +162,121 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <p>后台路径 <code class="notranslate">/dashboard</code><br>
 默认用户名密码 <code class="notranslate">admin</code> <code class="notranslate">admin</code></p>
+<h3>配置多<code class="notranslate">oauth2</code>登录</h3>
+<pre class="notranslate"><code class="notranslate">oauth2:
+  Gitee:
+    clientid: "your id"
+    clientsecret: "your secret"
+    endpoint:
+      authurl: "https://gitee.com/oauth/authorize"
+      tokenurl: "https://gitee.com/oauth/token"
+    scopes:
+      - user_info
+    userinfourl: "https://gitee.com/api/v5/user"
+    useridpath: "id"
+  GitHub:
+    clientid: "your id"
+    clientsecret: "your secret"
+    endpoint:
+      authurl: "https://github.com/login/oauth/authorize"
+      tokenurl: "https://github.com/login/oauth/access_token"
+    userinfourl: "https://api.github.com/user"
+    useridpath: "id"
+  Cloudflare:
+    clientid: "your id"
+    clientsecret: "your secret"
+    endpoint:
+      authurl: "https://XXXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/authorization"
+      tokenurl: "https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/token"
+    scopes:
+      - openid
+      - profile
+    userinfourl: "https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/userinfo"
+    useridpath: "sub"
+</code></pre>
+<h3>美化</h3>
+<details>
+  <summary>美化一</summary>
+<pre class="notranslate"><code class="notranslate">&lt;!-- 引入霞鹜文楷字体 --&gt;
+&lt;script&gt;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css';
+    document.head.appendChild(link);
+&lt;/script&gt;
+&lt;!-- 设置页面字体 --&gt;
+&lt;style&gt;
+    * {
+        font-family: 'LXGW WenKai Screen'; /* 设置所有元素使用霞鹜文楷字体 */
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'LXGW WenKai Screen', sans-serif; /* 设置标题使用霞鹜文楷字体 */
+    }
+&lt;/style&gt;
+&lt;script&gt;
+    window.CustomLogo = "https://img.zer02.cn/upload/202412/676fed804b61b5.30256068.jpg"; /* 自定义Logo */
+    window.ShowNetTransfer  = "true"; /* 卡片显示上下行流量 */
+    window.DisableAnimatedMan  = "true"; /* 关掉动画人物插图 */
+    window.CustomDesc ="Darling"; /* 自定义描述 */
+    window.CustomBackgroundImage="https://img.zer02.cn/upload/202412/67723c8dc5e2c0.84995785.webp"; /* 页面背景图 */
+    window.CustomMobileBackgroundImage="https://t.mwm.moe/mp"; /* 手机端背景图 */
+&lt;/script&gt;
+&lt;!-- 调整02半身图 --&gt;
+&lt;script&gt;
+var observer = new MutationObserver(function(mutationsList, observer) {
+    var xpath = "/html/body/div/div/main/div[2]/section[1]/div[4]/div";
+    var container = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+    if (container) {
+        observer.disconnect();
+        var existingImg = container.querySelector("img");
+        if (existingImg) {
+            container.removeChild(existingImg);
+        }
+        var imgElement = document.createElement("img");
+        imgElement.src = "https://img.zer02.cn/upload/202412/676fbb0c9725f9.77069239.png";  /* 02半身图 */
+        imgElement.style.position = "absolute";
+        imgElement.style.right = "-5px";
+        imgElement.style.top = "-117px";
+        imgElement.style.zIndex = "10";
+        imgElement.style.width = "90px";
+        container.appendChild(imgElement);
+    }
+});
+var config = { childList: true, subtree: true };
+observer.observe(document.body, config);
+&lt;/script&gt;
+</code></pre>
+</details>
+<details>
+  <summary>自动GFW内外R18分级视频背景</summary>
+<p>开启和关闭梯子分别进入查看不同效果。</p>
+<pre class="notranslate"><code class="notranslate">&lt;script&gt;
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+  const r18Param = params.get('r18');
+  let r18 = false; 
+
+  if (r18Param === "true") {
+    r18 = true;
+  }
+  let videoUrls;
+  if (r18) {
+    videoUrls = [
+          自己找
+      ];
+      
+  } else {
+    videoUrls = [
+			自己找
+
+      ];
+
+  }
+
+&lt;/script&gt;
+</code></pre>
+</details>
 <hr>
 <h3>v0版本</h3>
 <p>创建相关文件：</p>

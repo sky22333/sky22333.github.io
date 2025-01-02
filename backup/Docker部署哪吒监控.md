@@ -33,6 +33,142 @@ curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/agent/install.sh 
 后台路径 `/dashboard`
 默认用户名密码 `admin` `admin`
 
+### 配置多`oauth2`登录
+
+```
+oauth2:
+  Gitee:
+    clientid: "your id"
+    clientsecret: "your secret"
+    endpoint:
+      authurl: "https://gitee.com/oauth/authorize"
+      tokenurl: "https://gitee.com/oauth/token"
+    scopes:
+      - user_info
+    userinfourl: "https://gitee.com/api/v5/user"
+    useridpath: "id"
+  GitHub:
+    clientid: "your id"
+    clientsecret: "your secret"
+    endpoint:
+      authurl: "https://github.com/login/oauth/authorize"
+      tokenurl: "https://github.com/login/oauth/access_token"
+    userinfourl: "https://api.github.com/user"
+    useridpath: "id"
+  Cloudflare:
+    clientid: "your id"
+    clientsecret: "your secret"
+    endpoint:
+      authurl: "https://XXXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/authorization"
+      tokenurl: "https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/token"
+    scopes:
+      - openid
+      - profile
+    userinfourl: "https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/userinfo"
+    useridpath: "sub"
+```
+
+
+
+
+### 美化
+
+<details>
+  <summary>美化一</summary>
+ 
+```
+<!-- 引入霞鹜文楷字体 -->
+<script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css';
+    document.head.appendChild(link);
+</script>
+<!-- 设置页面字体 -->
+<style>
+    * {
+        font-family: 'LXGW WenKai Screen'; /* 设置所有元素使用霞鹜文楷字体 */
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'LXGW WenKai Screen', sans-serif; /* 设置标题使用霞鹜文楷字体 */
+    }
+</style>
+<script>
+    window.CustomLogo = "https://img.zer02.cn/upload/202412/676fed804b61b5.30256068.jpg"; /* 自定义Logo */
+    window.ShowNetTransfer  = "true"; /* 卡片显示上下行流量 */
+    window.DisableAnimatedMan  = "true"; /* 关掉动画人物插图 */
+    window.CustomDesc ="Darling"; /* 自定义描述 */
+    window.CustomBackgroundImage="https://img.zer02.cn/upload/202412/67723c8dc5e2c0.84995785.webp"; /* 页面背景图 */
+    window.CustomMobileBackgroundImage="https://t.mwm.moe/mp"; /* 手机端背景图 */
+</script>
+<!-- 调整02半身图 -->
+<script>
+var observer = new MutationObserver(function(mutationsList, observer) {
+    var xpath = "/html/body/div/div/main/div[2]/section[1]/div[4]/div";
+    var container = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+    if (container) {
+        observer.disconnect();
+        var existingImg = container.querySelector("img");
+        if (existingImg) {
+            container.removeChild(existingImg);
+        }
+        var imgElement = document.createElement("img");
+        imgElement.src = "https://img.zer02.cn/upload/202412/676fbb0c9725f9.77069239.png";  /* 02半身图 */
+        imgElement.style.position = "absolute";
+        imgElement.style.right = "-5px";
+        imgElement.style.top = "-117px";
+        imgElement.style.zIndex = "10";
+        imgElement.style.width = "90px";
+        container.appendChild(imgElement);
+    }
+});
+var config = { childList: true, subtree: true };
+observer.observe(document.body, config);
+</script>
+```
+
+</details>
+
+
+
+<details>
+  <summary>自动GFW内外R18分级视频背景</summary>
+
+开启和关闭梯子分别进入查看不同效果。
+
+```
+<script>
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+  const r18Param = params.get('r18');
+  let r18 = false; 
+
+  if (r18Param === "true") {
+    r18 = true;
+  }
+  let videoUrls;
+  if (r18) {
+    videoUrls = [
+          自己找
+      ];
+      
+  } else {
+    videoUrls = [
+			自己找
+
+      ];
+
+  }
+
+</script>
+```
+
+
+</details>
+
+
+
 
 ---
 
