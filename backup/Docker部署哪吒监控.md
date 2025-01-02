@@ -101,7 +101,7 @@ oauth2:
     window.CustomLogo = "https://img.zer02.cn/upload/202412/676fed804b61b5.30256068.jpg"; /* 自定义Logo */
     window.ShowNetTransfer  = "true"; /* 卡片显示上下行流量 */
     window.DisableAnimatedMan  = "true"; /* 关掉动画人物插图 */
-    window.CustomDesc ="Darling"; /* 自定义描述 */
+    window.CustomDesc ="云监测"; /* 自定义描述 */
     window.CustomBackgroundImage="https://img.zer02.cn/upload/202412/67723c8dc5e2c0.84995785.webp"; /* 页面背景图 */
     window.CustomMobileBackgroundImage="https://t.mwm.moe/mp"; /* 手机端背景图 */
 </script>
