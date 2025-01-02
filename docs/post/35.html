@@ -86,7 +86,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h3>原理如下：</h3>
 <p>NAT64的作用就是把IPv6网络的数据转换为IPv4网络的数据。它通过将IPv6请求中的地址转换成IPv4地址，使得IPv6设备可以通过NAT64网关访问只支持IPv4的服务器和网站。简单来说，NAT64在IPv6和IPv4之间充当了一个桥梁，负责地址和数据包的转换。</p>
 <h3>配置方法如下：</h3>
-<p>编辑<code class="notranslate">/etc/resolv.conf</code>文件，加入以下DNS服务器。</p>
+<p>编辑<code class="notranslate">/etc/resolv.conf</code>文件，加入以下DNS服务器，然后保存即可。</p>
 <pre class="notranslate"><code class="notranslate">nameserver 2a00:1098:2b::1
 nameserver 2a00:1098:2c::1
 nameserver 2a01:4f9:c010:3f02::1
