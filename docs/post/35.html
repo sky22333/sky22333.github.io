@@ -85,12 +85,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是<code class="notranslate">github.com</code>和<code class="notranslate">api.github.com</code>居然不支持ipv6，所以很多人都选择使用<code class="notranslate">一键warp脚本</code>，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。所以我就找到了最简单的方法，当然<code class="notranslate">warp一键脚本</code>还是很好用的，但是我图简单，就使用NAT64服务了，唯一的不足的是提供公共免费的NAT64很少，下面是我找到的可用的DNS。</p>
 <h3>原理如下：</h3>
 <p>NAT64的作用就是把IPv6网络的数据转换为IPv4网络的数据。它通过将IPv6请求中的地址转换成IPv4地址，使得IPv6设备可以通过NAT64网关访问只支持IPv4的服务器和网站。简单来说，NAT64在IPv6和IPv4之间充当了一个桥梁，负责地址和数据包的转换。</p>
-<h3>配置方法如下：</h3>
-<p>编辑<code class="notranslate">/etc/resolv.conf</code>文件，加入以下DNS服务器，然后保存即可。</p>
-<pre class="notranslate"><code class="notranslate">nameserver 2a00:1098:2b::1
+<h3>配置命令如下：</h3>
+<pre class="notranslate"><code class="notranslate">sudo tee /etc/resolv.conf &lt;&lt;EOF
+nameserver 2a00:1098:2b::1
 nameserver 2a00:1098:2c::1
 nameserver 2a01:4f9:c010:3f02::1
 nameserver 2a01:4f8:c2c:123f::1
+EOF
 </code></pre>
 <p><strong>测试能否访问仅支持ipv4的站点：</strong></p>
 <pre class="notranslate"><code class="notranslate">curl -I ipv4.google.com
