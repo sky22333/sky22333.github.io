@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 10 Jan 2025 01:54:32 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>纯v6网络访问v4站点最简单的方法</title><link>https://blog.52013120.xyz/post/35.html</link><description>## NAT64服务让纯V6网络支持访问纯V4站点&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 12 Jan 2025 14:58:43 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>纯v6网络访问v4站点最简单的方法</title><link>https://blog.52013120.xyz/post/35.html</link><description>## NAT64服务让纯V6网络支持访问纯V4站点&#13;
 &#13;
 众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/35.html</guid><pubDate>Thu, 02 Jan 2025 10:09:20 +0000</pubDate></item><item><title>服务器配置SSH密钥登录</title><link>https://blog.52013120.xyz/post/34.html</link><description>## 服务器配置SSH密钥登录&#13;
 &#13;
@@ -375,6 +375,8 @@ https://example.com/clash.yaml&#13;
 - 匿名文件快传：https://wormhole.app/&#13;
 &#13;
 - 国内文件快传：https://wkkc.vip/&#13;
+&#13;
+- 文件临时分享（支持命令行下载）：https://www.tmp.link/&#13;
 &#13;
 - 在线临时记事本：https://cn.anotepad.com/&#13;
 &#13;
