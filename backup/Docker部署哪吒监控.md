@@ -85,7 +85,7 @@ oauth2:
 
 创建相关文件：
 ```
-cd /homoe && mkdir -p template data
+cd /home && mkdir -p template data
 ```
 
 `docker-compose.yml`配置

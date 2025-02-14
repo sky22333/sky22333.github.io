@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 12 Jan 2025 14:58:43 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>纯v6网络访问v4站点最简单的方法</title><link>https://blog.52013120.xyz/post/35.html</link><description>## NAT64服务让纯V6网络支持访问纯V4站点&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 14 Feb 2025 16:03:39 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>纯v6网络访问v4站点最简单的方法</title><link>https://blog.52013120.xyz/post/35.html</link><description>## NAT64服务让纯V6网络支持访问纯V4站点&#13;
 &#13;
 众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/35.html</guid><pubDate>Thu, 02 Jan 2025 10:09:20 +0000</pubDate></item><item><title>服务器配置SSH密钥登录</title><link>https://blog.52013120.xyz/post/34.html</link><description>## 服务器配置SSH密钥登录&#13;
 &#13;
@@ -24,190 +24,190 @@ ssh-keygen -t ed25519&#13;
 &#13;
 4：将U盘改为第一启动项，然后保存并重启&#13;
 &#13;
-5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的全给第二个分区，记得给盘符命名。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/33.html</guid><pubDate>Thu, 05 Dec 2024 17:22:17 +0000</pubDate></item><item><title>Docker部署哪吒监控</title><link>https://blog.52013120.xyz/post/32.html</link><description>### Docker部署哪吒监控&#13;
-&#13;
-### v1版本&#13;
-`docker-compose.yaml`配置&#13;
-```&#13;
-services:&#13;
-  dashboard:&#13;
-    image: ghcr.io/nezhahq/nezha&#13;
-    restart: always&#13;
-    ports:&#13;
-      - '8008:8008'&#13;
-    volumes:&#13;
-      - ./data:/dashboard/data&#13;
-```&#13;
-&#13;
-`caddy`反代配置&#13;
-```&#13;
-example.com {&#13;
-    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8008&#13;
-    &#13;
-    reverse_proxy /* 127.0.0.1:8008&#13;
-}&#13;
-```&#13;
-&#13;
-⚠️必须修改面板后台Agent对接地址，填`example.com:443`，并选中`使用 TLS 连接`&#13;
-&#13;
-&gt; 如果套了`cf`，则网络配置需要开启`grpc`选项&#13;
-&#13;
-&#13;
-&gt; 国内被控机替换脚本地址：`https://gitee.com/naibahq/scripts/raw/main/agent/install.sh`&#13;
-&#13;
-&#13;
-后台路径 `/dashboard`&#13;
-默认用户名密码 `admin` `admin`&#13;
-&#13;
-&#13;
-&#13;
-### 配置多`oauth2`登录&#13;
-&#13;
-&#13;
-&#13;
-```&#13;
-oauth2:&#13;
-  Gitee:&#13;
-    clientid: 'your id'&#13;
-    clientsecret: 'your secret'&#13;
-    endpoint:&#13;
-      authurl: 'https://gitee.com/oauth/authorize'&#13;
-      tokenurl: 'https://gitee.com/oauth/token'&#13;
-    scopes:&#13;
-      - user_info&#13;
-    userinfourl: 'https://gitee.com/api/v5/user'&#13;
-    useridpath: 'id'&#13;
-  GitHub:&#13;
-    clientid: 'your id'&#13;
-    clientsecret: 'your secret'&#13;
-    endpoint:&#13;
-      authurl: 'https://github.com/login/oauth/authorize'&#13;
-      tokenurl: 'https://github.com/login/oauth/access_token'&#13;
-    userinfourl: 'https://api.github.com/user'&#13;
-    useridpath: 'id'&#13;
-  Cloudflare:&#13;
-    clientid: 'your id'&#13;
-    clientsecret: 'your secret'&#13;
-    endpoint:&#13;
-      authurl: 'https://XXXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/authorization'&#13;
-      tokenurl: 'https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/token'&#13;
-    scopes:&#13;
-      - openid&#13;
-      - profile&#13;
-    userinfourl: 'https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/userinfo'&#13;
-    useridpath: 'sub'&#13;
-```&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
----&#13;
-&#13;
-### v0版本&#13;
-&#13;
-创建相关文件：&#13;
-```&#13;
-cd /homoe &amp;&amp; mkdir -p template data&#13;
-```&#13;
-&#13;
-`docker-compose.yml`配置&#13;
-&#13;
-```&#13;
-services:&#13;
-  nezha:&#13;
-    image: ghcr.io/naiba/nezha-dashboard:v0.20.13&#13;
-    container_name: nezha&#13;
-    restart: always&#13;
-    ports:&#13;
-      - '8080:80'&#13;
-      - '5555:5555'&#13;
-    volumes:&#13;
-      - ./data:/dashboard/data&#13;
-      - ./template:/dashboard/resource/template&#13;
-```&#13;
-&#13;
-&#13;
-在`data`目录添加`config.yaml`配置&#13;
-```&#13;
-debug: false&#13;
-language: zh-CN&#13;
-site:&#13;
-    brand: 服务器监控&#13;
-    cookiename: nezha-dashboard&#13;
-    theme: server-status&#13;
-    dashboardtheme: default&#13;
-    customcode: ''&#13;
-    customcodedashboard: ''&#13;
-    viewpassword: ''&#13;
-oauth2:&#13;
-    type: github&#13;
-    admin: github用户名&#13;
-    admingroups: ''&#13;
-    clientid: 验证ID&#13;
-    clientsecret: 验证密钥&#13;
-    endpoint: ''&#13;
-    oidcdisplayname: OIDC&#13;
-    oidcissuer: ''&#13;
-    oidclogouturl: ''&#13;
-    oidcregisterurl: ''&#13;
-    oidcloginclaim: sub&#13;
-    oidcgroupclaim: groups&#13;
-    oidcscopes: openid,profile,email&#13;
-    oidcautocreate: false&#13;
-    oidcautologin: false&#13;
-httpport: 80&#13;
-grpcport: 5555&#13;
-grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个这里的域名)&#13;
-proxygrpcport: 0 # 被控端连接域名套CF需改成443&#13;
-tls: false # 被控端连接域名套CF需改成true&#13;
-enableplainipinnotification: false&#13;
-disableswitchtemplateinfrontend: false&#13;
-enableipchangenotification: false&#13;
-ipchangenotificationtag: default&#13;
-cover: 0&#13;
-ignoredipnotification: ''&#13;
-location: Asia/Shanghai&#13;
-ignoredipnotificationserverids: {}&#13;
-maxtcppingvalue: 1000&#13;
-avgpingcount: 2&#13;
-dnsservers: ''&#13;
-```&#13;
-&#13;
-`oauth2`回调URL示例：&#13;
-```&#13;
-https://example.com/oauth2/callback&#13;
-```&#13;
-&#13;
-`caddy`配置示例&#13;
-```&#13;
-# 前端域名&#13;
-example.com {&#13;
-    encode zstd gzip&#13;
-    reverse_proxy localhost:8080&#13;
-}&#13;
-&#13;
-# 被控端连接域名(前端不开CDN可去掉这个配置)&#13;
-grpc.example.com {&#13;
-    reverse_proxy {&#13;
-        to localhost:5555&#13;
-        transport http {&#13;
-            versions h2c 2&#13;
-        }&#13;
-    }&#13;
-}&#13;
-```&#13;
-&#13;
-&#13;
----&#13;
-&#13;
-将面板中复制所得的指令中的sh的raw文件url替换成&#13;
-```&#13;
-https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh&#13;
-```&#13;
+5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的全给第二个分区，记得给盘符命名。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/33.html</guid><pubDate>Thu, 05 Dec 2024 17:22:17 +0000</pubDate></item><item><title>Docker部署哪吒监控</title><link>https://blog.52013120.xyz/post/32.html</link><description>### Docker部署哪吒监控
+
+### v1版本
+`docker-compose.yaml`配置
+```
+services:
+  dashboard:
+    image: ghcr.io/nezhahq/nezha
+    restart: always
+    ports:
+      - '8008:8008'
+    volumes:
+      - ./data:/dashboard/data
+```
+
+`caddy`反代配置
+```
+example.com {
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8008
+    
+    reverse_proxy /* 127.0.0.1:8008
+}
+```
+
+⚠️必须修改面板后台Agent对接地址，填`example.com:443`，并选中`使用 TLS 连接`
+
+&gt; 如果套了`cf`，则网络配置需要开启`grpc`选项
+
+
+&gt; 国内被控机替换脚本地址：`https://gitee.com/naibahq/scripts/raw/main/agent/install.sh`
+
+
+后台路径 `/dashboard`
+默认用户名密码 `admin` `admin`
+
+
+
+### 配置多`oauth2`登录
+
+
+
+```
+oauth2:
+  Gitee:
+    clientid: 'your id'
+    clientsecret: 'your secret'
+    endpoint:
+      authurl: 'https://gitee.com/oauth/authorize'
+      tokenurl: 'https://gitee.com/oauth/token'
+    scopes:
+      - user_info
+    userinfourl: 'https://gitee.com/api/v5/user'
+    useridpath: 'id'
+  GitHub:
+    clientid: 'your id'
+    clientsecret: 'your secret'
+    endpoint:
+      authurl: 'https://github.com/login/oauth/authorize'
+      tokenurl: 'https://github.com/login/oauth/access_token'
+    userinfourl: 'https://api.github.com/user'
+    useridpath: 'id'
+  Cloudflare:
+    clientid: 'your id'
+    clientsecret: 'your secret'
+    endpoint:
+      authurl: 'https://XXXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/authorization'
+      tokenurl: 'https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/token'
+    scopes:
+      - openid
+      - profile
+    userinfourl: 'https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/userinfo'
+    useridpath: 'sub'
+```
+
+
+
+
+
+
+
+
+---
+
+### v0版本
+
+创建相关文件：
+```
+cd /home &amp;&amp; mkdir -p template data
+```
+
+`docker-compose.yml`配置
+
+```
+services:
+  nezha:
+    image: ghcr.io/naiba/nezha-dashboard:v0.20.13
+    container_name: nezha
+    restart: always
+    ports:
+      - '8080:80'
+      - '5555:5555'
+    volumes:
+      - ./data:/dashboard/data
+      - ./template:/dashboard/resource/template
+```
+
+
+在`data`目录添加`config.yaml`配置
+```
+debug: false
+language: zh-CN
+site:
+    brand: 服务器监控
+    cookiename: nezha-dashboard
+    theme: server-status
+    dashboardtheme: default
+    customcode: ''
+    customcodedashboard: ''
+    viewpassword: ''
+oauth2:
+    type: github
+    admin: github用户名
+    admingroups: ''
+    clientid: 验证ID
+    clientsecret: 验证密钥
+    endpoint: ''
+    oidcdisplayname: OIDC
+    oidcissuer: ''
+    oidclogouturl: ''
+    oidcregisterurl: ''
+    oidcloginclaim: sub
+    oidcgroupclaim: groups
+    oidcscopes: openid,profile,email
+    oidcautocreate: false
+    oidcautologin: false
+httpport: 80
+grpcport: 5555
+grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个这里的域名)
+proxygrpcport: 0 # 被控端连接域名套CF需改成443
+tls: false # 被控端连接域名套CF需改成true
+enableplainipinnotification: false
+disableswitchtemplateinfrontend: false
+enableipchangenotification: false
+ipchangenotificationtag: default
+cover: 0
+ignoredipnotification: ''
+location: Asia/Shanghai
+ignoredipnotificationserverids: {}
+maxtcppingvalue: 1000
+avgpingcount: 2
+dnsservers: ''
+```
+
+`oauth2`回调URL示例：
+```
+https://example.com/oauth2/callback
+```
+
+`caddy`配置示例
+```
+# 前端域名
+example.com {
+    encode zstd gzip
+    reverse_proxy localhost:8080
+}
+
+# 被控端连接域名(前端不开CDN可去掉这个配置)
+grpc.example.com {
+    reverse_proxy {
+        to localhost:5555
+        transport http {
+            versions h2c 2
+        }
+    }
+}
+```
+
+
+---
+
+将面板中复制所得的指令中的sh的raw文件url替换成
+```
+https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
+```
 其他参数不变，然后去被控机安装即可。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/32.html</guid><pubDate>Sat, 30 Nov 2024 22:58:39 +0000</pubDate></item><item><title>Github-Actions默认用户变量GITHUB_TOKEN的提权语法</title><link>https://blog.52013120.xyz/post/31.html</link><description>### `Github-Actions`默认用户变量`GITHUB_TOKEN`的提权语法&#13;
 &#13;
 -  众所周知工作流默认用户变量`GITHUB_TOKEN`由`GitHub`自动生成并提供的，不需要你手动创建，非常方便。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/31.html</guid><pubDate>Thu, 28 Nov 2024 18:42:01 +0000</pubDate></item><item><title>给站点套CFT的一些坑</title><link>https://blog.52013120.xyz/post/30.html</link><description>##  给站点套CFT的一些坑（亚马逊云AWS的CDN）&#13;
