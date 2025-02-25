@@ -19,5 +19,5 @@
     "GMEEK_VERSION":"last",
     "indexScript":"<script src='/assets/main.js'></script>",
     "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>",
-    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>"
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script defer src="https://api.adminlove.me/script.js" data-website-id="68b84108-618a-4b39-a4cc-6ab3bdd869c7"></script>"
 }
