@@ -1,5 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 09 Mar 2025 03:30:49 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>一些可用于速度测试的下载测速文件</title><link>https://blog.52013120.xyz/post/37.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 09 Mar 2025 04:47:29 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CDN后获取访客真实IP</title><link>https://blog.52013120.xyz/post/38.html</link><description>- Cloudflare
+使用Cloudflare后，在Nginx配置中相应位置添加如下代码以获取用户真实IP
+```
+set_real_ip_from 0.0.0.0/0;
+real_ip_header CF-Connecting-IP;
+```
+- Gcore CDN
+可参考Gcore官方博文[https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header](https://lot.pm/go/?url=https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header)
+```
+set_real_ip_from 0.0.0.0/0;
+real_ip_header X-Forwarded-For;
+```
+- AWS Cloudfront
+需要利用到CloudFront-Viewer-Address请求头，但该请求头默认未启用，需手动前往Cloudfront控制面板开启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/38.html</guid><pubDate>Sun, 09 Mar 2025 04:47:07 +0000</pubDate></item><item><title>一些可用于速度测试的下载测速文件</title><link>https://blog.52013120.xyz/post/37.html</link><description>
 本文搜集了一些可用于VPS/服务器的下载测速文件，从`100MB`到`10GB`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/37.html</guid><pubDate>Sun, 09 Mar 2025 03:29:50 +0000</pubDate></item><item><title>免费国内代理</title><link>https://blog.52013120.xyz/post/36.html</link><description>**每日提供免费额度国内http代理商（不定期更新）**
 
 - **每日自动送**
