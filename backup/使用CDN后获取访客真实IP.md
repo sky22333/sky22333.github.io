@@ -5,13 +5,13 @@ set_real_ip_from 0.0.0.0/0;
 real_ip_header CF-Connecting-IP;
 ```
 - **Gcore CDN**
-可参考`Gcore`官方博文[https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header](https://lot.pm/go/?url=https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header)
+可参考`Gcore` [官方博文](https://gcore.com/docs/waap/about-waap)
 ```
 set_real_ip_from 0.0.0.0/0;
 real_ip_header X-Forwarded-For;
 ```
 - **AWS Cloudfront**
-需要利用到`CloudFront-Viewer-Address`请求头，但该请求头默认未启用，需手动前往`Cloudfront`控制面板开启。开启方法可参考[如何从CloudFront上获取客户端真实IP地址](https://lot.pm/go/?url=https://blog.bitipcman.com/get-client-ip-from-cloudfront-viewer-header/)。开启后，使用以下代码获取访客真实IP。
+需要利用到`CloudFront-Viewer-Address`请求头，但该请求头默认未启用，需手动前往`Cloudfront`控制面板开启。开启方法可参考[如何从CloudFront上获取客户端真实IP地址](https://docs.aws.amazon.com/zh_cn/AmazonCloudFront/latest/DeveloperGuide/adding-cloudfront-headers.html)。开启后，使用以下代码获取访客真实IP。
 ```
 set_real_ip_from 0.0.0.0/0;
 real_ip_header CloudFront-Viewer-Address;

@@ -17,7 +17,7 @@ set_real_ip_from 0.0.0.0/0;
 real_ip_header CF-Connecting-IP;
 ```
 - **Gcore CDN**
-可参考`Gcore`官方博文[https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header](https://lot.pm/go/?url=https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header)
+可参考`Gcore` [官方博文](https://gcore.com/docs/waap/about-waap)
 ```
 set_real_ip_from 0.0.0.0/0;
 real_ip_header X-Forwarded-For;
@@ -32,7 +32,7 @@ set_real_ip_from 0.0.0.0/0;
 real_ip_header CF-Connecting-IP;
 ```
 - **Gcore CDN**
-可参考`Gcore`官方博文[https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header](https://lot.pm/go/?url=https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header)
+可参考`Gcore` [官方博文](https://gcore.com/docs/waap/about-waap)
 ```
 set_real_ip_from 0.0.0.0/0;
 real_ip_header X-Forwarded-For;
@@ -112,14 +112,14 @@ real_ip_header CF-Connecting-IP;
 </code></pre>
 <ul>
 <li><strong>Gcore CDN</strong><br>
-可参考<code class="notranslate">Gcore</code>官方博文<a href="https://lot.pm/go/?url=https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header" rel="nofollow">https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header</a></li>
+可参考<code class="notranslate">Gcore</code> <a href="https://gcore.com/docs/waap/about-waap" rel="nofollow">官方博文</a></li>
 </ul>
 <pre class="notranslate"><code class="notranslate">set_real_ip_from 0.0.0.0/0;
 real_ip_header X-Forwarded-For;
 </code></pre>
 <ul>
 <li><strong>AWS Cloudfront</strong><br>
-需要利用到<code class="notranslate">CloudFront-Viewer-Address</code>请求头，但该请求头默认未启用，需手动前往<code class="notranslate">Cloudfront</code>控制面板开启。开启方法可参考<a href="https://lot.pm/go/?url=https://blog.bitipcman.com/get-client-ip-from-cloudfront-viewer-header/" rel="nofollow">如何从CloudFront上获取客户端真实IP地址</a>。开启后，使用以下代码获取访客真实IP。</li>
+需要利用到<code class="notranslate">CloudFront-Viewer-Address</code>请求头，但该请求头默认未启用，需手动前往<code class="notranslate">Cloudfront</code>控制面板开启。开启方法可参考<a href="https://docs.aws.amazon.com/zh_cn/AmazonCloudFront/latest/DeveloperGuide/adding-cloudfront-headers.html" rel="nofollow">如何从CloudFront上获取客户端真实IP地址</a>。开启后，使用以下代码获取访客真实IP。</li>
 </ul>
 <pre class="notranslate"><code class="notranslate">set_real_ip_from 0.0.0.0/0;
 real_ip_header CloudFront-Viewer-Address;

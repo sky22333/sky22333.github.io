@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 09 Mar 2025 04:50:28 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CDN后获取访客真实IP</title><link>https://blog.52013120.xyz/post/38.html</link><description>- **Cloudflare**
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 09 Mar 2025 04:55:09 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CDN后获取访客真实IP</title><link>https://blog.52013120.xyz/post/38.html</link><description>- **Cloudflare**
 使用`Cloudflare`后，在`Nginx`配置中相应位置添加如下代码以获取用户真实IP
 ```
 set_real_ip_from 0.0.0.0/0;
 real_ip_header CF-Connecting-IP;
 ```
 - **Gcore CDN**
-可参考`Gcore`官方博文[https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header](https://lot.pm/go/?url=https://gcore.com/docs/web-security/get-an-actual-ip-addresses-of-visitors-from-the-x-forward-for-header)
+可参考`Gcore` [官方博文](https://gcore.com/docs/waap/about-waap)
 ```
 set_real_ip_from 0.0.0.0/0;
 real_ip_header X-Forwarded-For;
