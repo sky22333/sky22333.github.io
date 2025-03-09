@@ -108,6 +108,14 @@ Total time: 1.500s
 <code class="notranslate">SSL handshake</code>：TLS 握手时间<br>
 <code class="notranslate">Server processing</code>：服务器响应时间<br>
 <code class="notranslate">Total time</code>：整个请求的时间，也就是真连接延迟</p>
+<h3>查看解析的IP和状态码</h3>
+<pre class="notranslate"><code class="notranslate">curl -o /dev/null -s --resolve docker-cf.mrs.1ms.run:443:$(dig +short docker-cf.mrs.1ms.run | head -n1) \
+-w "Remote IP: %{remote_ip}\nHTTP Status: %{http_code}\n" \
+https://docker-cf.mrs.1ms.run
+</code></pre>
+<h4>清理DNS缓存</h4>
+<pre class="notranslate"><code class="notranslate">sudo systemctl restart systemd-resolved
+</code></pre>
 <h1>下载速度测试</h1>
 <ul>
 <li><strong>使用<code class="notranslate">wget</code>测速的话部分链接需要加双引号</strong></li>
