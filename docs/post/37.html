@@ -87,11 +87,32 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>谷歌</p>
 <pre class="notranslate"><code class="notranslate">https://www.google.com/generate_204
 </code></pre>
-<h3>推荐：全球通用（Cloudflare Anycast）</h3>
+<h3><code class="notranslate">curl</code>分析网络延迟</h3>
+<pre class="notranslate"><code class="notranslate">curl -o /dev/null -s -w "DNS lookup: %{time_namelookup}s\nTCP connect: %{time_connect}s\nSSL handshake: %{time_appconnect}s\nServer processing: %{time_starttransfer}s\nTotal time: %{time_total}s\n" \
+  -H "Cache-Control: no-cache, no-store, must-revalidate" \
+  -H "Pragma: no-cache" \
+  -H "Expires: 0" \
+  --resolve www.apple.com:443:$(dig +short www.apple.com | head -n1) \
+  https://www.apple.com/library/test/success.html
+</code></pre>
+<p>这个命令会禁用缓存并输出如下参数：</p>
+<pre class="notranslate"><code class="notranslate">DNS lookup: 0.050s
+TCP connect: 0.200s
+SSL handshake: 0.350s
+Server processing: 0.900s
+Total time: 1.500s
+</code></pre>
+<p>介绍：<br>
+<code class="notranslate">DNS lookup</code>：如果值大，说明 DNS 解析慢<br>
+<code class="notranslate">TCP connect</code>：如果值大，说明 网络连接慢<br>
+<code class="notranslate">SSL handshake</code>：如果值大，说明 TLS 握手慢<br>
+<code class="notranslate">Server processing</code>：如果值大，说明 服务器响应慢<br>
+<code class="notranslate">Total time</code>：整个请求的时间，也就是真连接延迟</p>
+<h3>下载速度测试</h3>
 <ul>
 <li><strong>使用<code class="notranslate">wget</code>测速的话部分链接需要加双引号</strong></li>
 </ul>
-<h4>推荐国外使用。</h4>
+<h4>推荐国外使用（Cloudflare Anycast）。</h4>
 <p>100MB</p>
 <pre class="notranslate"><code class="notranslate">https://speed.cloudflare.com/__down?during=download&amp;bytes=104857600
 </code></pre>
