@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 19 Mar 2025 23:48:17 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CDN后获取访客真实IP</title><link>https://blog.52013120.xyz/post/38.html</link><description>- **Cloudflare**
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 19 Mar 2025 23:56:01 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CDN后获取访客真实IP</title><link>https://blog.52013120.xyz/post/38.html</link><description>- **Cloudflare**
 使用`Cloudflare`后，在`Nginx`配置中相应位置添加如下代码以获取用户真实IP
 ```
 set_real_ip_from 0.0.0.0/0;
@@ -491,32 +491,8 @@ https://example.com/clash.yaml&#13;
 - tailscale：https://login.tailscale.com
 
 
-### 前端学习
-
 全球最大的技术问答社区：https://stackoverflow.com/
 
-UI：
-
-- vuetifyjs-uihttps://vuetifyjs.com/zh-Hans/getting-started/installation/
- 
-- material-ui：https://mui.com/material-ui/guides/responsive-ui
-
-- 饿了么UI：https://element-plus.org/zh-CN/guide/installation.html
-
-- Bootstrap：https://v5.bootcss.com/docs/getting-started/introduction
-
-
-| **需求**             | **推荐库**       | **官方地址** |
-|---------------------|----------------|-------------|
-| **工具类（数组/对象/日期）** | [lodash](https://lodash.com/) 、 [day.js](https://day.js.org/) | [lodash 官网](https://lodash.com/) / [day.js 官网](https://day.js.org/) |
-| **AJAX 数据请求**     | [axios](https://axios-http.com/) | [axios 官网](https://axios-http.com/) |
-| **轻量级动画**       | [anime.js](https://animejs.com/) | [anime.js 官网](https://animejs.com/) |
-| **复杂动画**         | [GSAP](https://greensock.com/gsap/) | [GSAP 官网](https://greensock.com/gsap/) |
-| **简单 UI 组件**     | [Shoelace](https://shoelace.style/) | [Shoelace 官网](https://shoelace.style/) |
-| **轻量前端框架**     | [Alpine.js](https://alpinejs.dev/) | [Alpine.js 官网](https://alpinejs.dev/) |
-| **模板渲染**         | [Mustache.js](https://mustache.github.io/) | [Mustache.js 官网](https://mustache.github.io/) |
-| **数据可视化**       | [Chart.js](https://www.chartjs.org/) 、 [D3.js](https://d3js.org/) | [Chart.js 官网](https://www.chartjs.org/) / [D3.js 官网](https://d3js.org/) |
-| **3D 渲染**         | [Three.js](https://threejs.org/) | [Three.js 官网](https://threejs.org/) |
 。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
 &#13;
 **在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>https://blog.52013120.xyz/post/20.html</link><description>- **场景介绍**&#13;
