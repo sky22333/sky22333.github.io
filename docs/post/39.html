@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/115192496?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 前端
+
+UI：
+
+- vue3：https://cn.vuejs.org/guide/introduction.html
+
+- vuetifyjs-ui：https://vuetifyjs.com/zh-Hans/getting-started/installation/
+ 
+- material-ui：https://mui.com/material-ui/guides/responsive-ui
+
+- 饿了么UI：https://element-plus.org/zh-CN/guide/installation.html
+
+- Bootstrap：https://v5.bootcss.com/docs/getting-started/introduction
+
+
+| **原生前端库**             | **推荐库**       | **官方地址** |
+|---------------------|----------------|-------------|
+| **工具类（数组/对象/日期）** | [lodash](https://lodash.com/) 、 [day.js](https://day.js.org/) | [lodash 官网](https://lodash.com/) / [day.js 官网](https://day.js.org/) |
+| **AJAX 数据请求**     | [axios](https://axios-http.com/) | [axios 官网](https://axios-http.com/) |
+| **轻量级动画**       | [anime.js](https://animejs.com/) | [anime.js 官网](https://animejs.com/) |
+| **复杂动画**         | [GSAP](https://greensock.com/gsap/) | [GSAP 官网](https://greensock.com/gsap/) |
+| **简单 UI 组件**     | [Shoelace](https://shoelace.style/) | [Shoelace 官网](https://shoelace.style/) |
+| **轻量前端框架**     | [Alpine.js](https://alpinejs.dev/) | [Alpine.js 官网](https://alpinejs.dev/) |
+| **模板渲染**         | [Mustache.js](https://mustache.github.io/) | [Mustache.js 官网](https://mustache.github.io/) |
+| **数据可视化**       | [Chart.js](https://www.chartjs.org/) 、 [D3.js](https://d3js.org/) | [Chart.js 官网](https://www.chartjs.org/) / [D3.js 官网](https://d3js.org/) |
+| **3D 渲染**         | [Three.js](https://threejs.org/) | [Three.js 官网](https://threejs.org/) |
+
+ 
+## GO语言学习：
+
+| **Go语言语法**     | **中文理解**                          |
+|-------------------|--------------------------------------|
+| `if`              | 如果...，则...                        |
+| `else if`         | 否则如果...，则...                    |
+| `else`            | 否则...                                |
+| `for`             | 对于...，执行...                      |
+| `range`           | 遍历...                               |
+| `switch`          | 根据不同情况，选择执行...            |
+| `case`            | 情况...，执行...                      |
+| `default`         | 默认情况下，执行...                   |
+| `break`           | 跳出循环或 `switch`                   |
+| `continue`        | 跳过本次循环，继续下一次循环          |
+| `select`          | 在多个渠道中选择一个进行通信          |
+| `defer`           | 延迟执行，直到函数结束时才执行        |
+| `return`          | 返回函数结果                          |
+| `func`            | 定义一个...的功能                     |
+| `var`             | 定义一个变量                          |
+| `const`           | 定义一个常量                          |
+| `type`            | 定义一个新的类型                      |
+| `interface`       | 定义一个接口                          |
+| `struct`          | 定义一个结构体                        |
+| `map`             | 一个东西对应另一个东西                |
+| `chan`            | 用于在 goroutine 之间传递数据         |
+| `go`              | 启动一个新的 goroutine（轻量级线程）   |
+| `select`          | 监听多个通道的操作                    |
+| `make`            | 创建一个切片、映射或通道               |
+| `new`             | 创建一个对象并返回其指针              |
+| `len`             | 获取数据的长度                        |
+| `cap`             | 获取切片的容量                        |
+| `append`          | 向切片添加元素                        |
+| `copy`            | 复制切片                              |
+| `panic`           | 抛出运行时错误，通常会导致程序崩溃    |
+| `recover`         | 捕获 `panic` 引发的异常                |
+| `import`          | 从...拿...                            |
+| `open`            | 打开...，然后读/写...                 |
+| `:=`              | 简短声明并初始化变量                  |
+| `&`               | 获取变量的地址                        |
+| `*`               | 获取指针指向的值                      |
+| `interface{}`     | 任意类型的接口                        |
+| `switch`          | 根据不同的条件执行不同的操作          |
+
+
+### 前端JS
+
+| **JavaScript语法**        | **通俗理解**                                  |
+|------------------------|---------------------------------------------|
+| `let`                  | 定义一个可以改变的东西                        |
+| `const`                | 定义一个不能改变的东西                        |
+| `箭头函数 (=>)`          | 更简洁地定义一个做事的方法                    |
+| ``模板字符串`` (反引号)    | 可以更方便地做一串话，里面可以插入其他信息      |
+| `解构`                  | 从一个大盒子里拿出我们需要的东西               |
+| `展开/收集`              | 把东西放开（复制）或收起来（合并成一个）         |
+| `async/await`          | 让你等某件事完成后再继续做，写法更简洁          |
+| `Promise`              | 承诺过一会儿会告诉你事情是否完成                 |
+| `for...of`             | 一个个处理列表中的每一项                        |
+| `for...in`             | 检查一个东西里面的每个部分                     |
+| `map`                  | 遍历列表中的每个元素，做相同的事情并返回新列表   |
+| `filter`               | 从列表中挑选符合条件的元素，留下合适的部分       |
+| `reduce`               | 把列表中的每一项合并成一个结果                  |
+| `Set`                  | 只有不同的东西才能放进去的集合                  |
+| `Map`                  | 存放一对一的关系（像名字和电话号码）            |
+| `Symbol`               | 定义独一无二的东西，避免重复的东西               |
+| `Object.assign()`      | 把好几个东西放到一起合并成一个新东西             |
+| `Object.entries()`     | 把东西的名字和值变成列表                        |
+| `Object.values()`      | 只取出东西的值，放成一个列表                    |
+| `Array.from()`         | 把类数组的东西变成真正的数组                    |
+| `Array.includes()`     | 判断某个东西是否在列表里                        |
+| `Array.find()`         | 找到符合条件的第一个东西                        |
+| `Array.findIndex()`    | 找到符合条件的第一个东西的位置                  |
+| `Array.some()`         | 判断列表里有没有符合条件的东西                  |
+| `Array.every()`        | 判断列表里每一项是否都符合条件                  |
+| `String.startsWith()`  | 判断一段话是否以某个词开头                      |
+| `String.endsWith()`    | 判断一段话是否以某个词结尾                      |
+| `String.includes()`    | 判断一段话是否包含某个词                        |
+| `import`               | 从其他地方拿来一些有用的东西                    |
+| `export`               | 把自己做的东西分享给别人使用                    |
+| `default`              | 设置一个默认的值，别人不特别指定就使用这个值     |
+| `dynamic import`       | 按需加载东西，只有在需要的时候才去拿             |
+| `BigInt`               | 处理非常大的数字                                |
+| `Nullish Coalescing`   | 只有当值是空的或没有时，才用后面的默认值         |
+| `Optional Chaining`    | 如果中间某个部分不存在，不会报错，直接跳过       |
+。">
+<meta property="og:title" content="学习文档">
+<meta property="og:description" content="## 前端
+
+UI：
+
+- vue3：https://cn.vuejs.org/guide/introduction.html
+
+- vuetifyjs-ui：https://vuetifyjs.com/zh-Hans/getting-started/installation/
+ 
+- material-ui：https://mui.com/material-ui/guides/responsive-ui
+
+- 饿了么UI：https://element-plus.org/zh-CN/guide/installation.html
+
+- Bootstrap：https://v5.bootcss.com/docs/getting-started/introduction
+
+
+| **原生前端库**             | **推荐库**       | **官方地址** |
+|---------------------|----------------|-------------|
+| **工具类（数组/对象/日期）** | [lodash](https://lodash.com/) 、 [day.js](https://day.js.org/) | [lodash 官网](https://lodash.com/) / [day.js 官网](https://day.js.org/) |
+| **AJAX 数据请求**     | [axios](https://axios-http.com/) | [axios 官网](https://axios-http.com/) |
+| **轻量级动画**       | [anime.js](https://animejs.com/) | [anime.js 官网](https://animejs.com/) |
+| **复杂动画**         | [GSAP](https://greensock.com/gsap/) | [GSAP 官网](https://greensock.com/gsap/) |
+| **简单 UI 组件**     | [Shoelace](https://shoelace.style/) | [Shoelace 官网](https://shoelace.style/) |
+| **轻量前端框架**     | [Alpine.js](https://alpinejs.dev/) | [Alpine.js 官网](https://alpinejs.dev/) |
+| **模板渲染**         | [Mustache.js](https://mustache.github.io/) | [Mustache.js 官网](https://mustache.github.io/) |
+| **数据可视化**       | [Chart.js](https://www.chartjs.org/) 、 [D3.js](https://d3js.org/) | [Chart.js 官网](https://www.chartjs.org/) / [D3.js 官网](https://d3js.org/) |
+| **3D 渲染**         | [Three.js](https://threejs.org/) | [Three.js 官网](https://threejs.org/) |
+
+ 
+## GO语言学习：
+
+| **Go语言语法**     | **中文理解**                          |
+|-------------------|--------------------------------------|
+| `if`              | 如果...，则...                        |
+| `else if`         | 否则如果...，则...                    |
+| `else`            | 否则...                                |
+| `for`             | 对于...，执行...                      |
+| `range`           | 遍历...                               |
+| `switch`          | 根据不同情况，选择执行...            |
+| `case`            | 情况...，执行...                      |
+| `default`         | 默认情况下，执行...                   |
+| `break`           | 跳出循环或 `switch`                   |
+| `continue`        | 跳过本次循环，继续下一次循环          |
+| `select`          | 在多个渠道中选择一个进行通信          |
+| `defer`           | 延迟执行，直到函数结束时才执行        |
+| `return`          | 返回函数结果                          |
+| `func`            | 定义一个...的功能                     |
+| `var`             | 定义一个变量                          |
+| `const`           | 定义一个常量                          |
+| `type`            | 定义一个新的类型                      |
+| `interface`       | 定义一个接口                          |
+| `struct`          | 定义一个结构体                        |
+| `map`             | 一个东西对应另一个东西                |
+| `chan`            | 用于在 goroutine 之间传递数据         |
+| `go`              | 启动一个新的 goroutine（轻量级线程）   |
+| `select`          | 监听多个通道的操作                    |
+| `make`            | 创建一个切片、映射或通道               |
+| `new`             | 创建一个对象并返回其指针              |
+| `len`             | 获取数据的长度                        |
+| `cap`             | 获取切片的容量                        |
+| `append`          | 向切片添加元素                        |
+| `copy`            | 复制切片                              |
+| `panic`           | 抛出运行时错误，通常会导致程序崩溃    |
+| `recover`         | 捕获 `panic` 引发的异常                |
+| `import`          | 从...拿...                            |
+| `open`            | 打开...，然后读/写...                 |
+| `:=`              | 简短声明并初始化变量                  |
+| `&`               | 获取变量的地址                        |
+| `*`               | 获取指针指向的值                      |
+| `interface{}`     | 任意类型的接口                        |
+| `switch`          | 根据不同的条件执行不同的操作          |
+
+
+### 前端JS
+
+| **JavaScript语法**        | **通俗理解**                                  |
+|------------------------|---------------------------------------------|
+| `let`                  | 定义一个可以改变的东西                        |
+| `const`                | 定义一个不能改变的东西                        |
+| `箭头函数 (=>)`          | 更简洁地定义一个做事的方法                    |
+| ``模板字符串`` (反引号)    | 可以更方便地做一串话，里面可以插入其他信息      |
+| `解构`                  | 从一个大盒子里拿出我们需要的东西               |
+| `展开/收集`              | 把东西放开（复制）或收起来（合并成一个）         |
+| `async/await`          | 让你等某件事完成后再继续做，写法更简洁          |
+| `Promise`              | 承诺过一会儿会告诉你事情是否完成                 |
+| `for...of`             | 一个个处理列表中的每一项                        |
+| `for...in`             | 检查一个东西里面的每个部分                     |
+| `map`                  | 遍历列表中的每个元素，做相同的事情并返回新列表   |
+| `filter`               | 从列表中挑选符合条件的元素，留下合适的部分       |
+| `reduce`               | 把列表中的每一项合并成一个结果                  |
+| `Set`                  | 只有不同的东西才能放进去的集合                  |
+| `Map`                  | 存放一对一的关系（像名字和电话号码）            |
+| `Symbol`               | 定义独一无二的东西，避免重复的东西               |
+| `Object.assign()`      | 把好几个东西放到一起合并成一个新东西             |
+| `Object.entries()`     | 把东西的名字和值变成列表                        |
+| `Object.values()`      | 只取出东西的值，放成一个列表                    |
+| `Array.from()`         | 把类数组的东西变成真正的数组                    |
+| `Array.includes()`     | 判断某个东西是否在列表里                        |
+| `Array.find()`         | 找到符合条件的第一个东西                        |
+| `Array.findIndex()`    | 找到符合条件的第一个东西的位置                  |
+| `Array.some()`         | 判断列表里有没有符合条件的东西                  |
+| `Array.every()`        | 判断列表里每一项是否都符合条件                  |
+| `String.startsWith()`  | 判断一段话是否以某个词开头                      |
+| `String.endsWith()`    | 判断一段话是否以某个词结尾                      |
+| `String.includes()`    | 判断一段话是否包含某个词                        |
+| `import`               | 从其他地方拿来一些有用的东西                    |
+| `export`               | 把自己做的东西分享给别人使用                    |
+| `default`              | 设置一个默认的值，别人不特别指定就使用这个值     |
+| `dynamic import`       | 按需加载东西，只有在需要的时候才去拿             |
+| `BigInt`               | 处理非常大的数字                                |
+| `Nullish Coalescing`   | 只有当值是空的或没有时，才用后面的默认值         |
+| `Optional Chaining`    | 如果中间某个部分不存在，不会报错，直接跳过       |
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.52013120.xyz/post/39.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/115192496?v=4">
+<title>学习文档</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">学习文档</h1>
+<div class="title-right">
+    <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>前端</h2>
+<p>UI：</p>
+<ul>
+<li>
+<p>vue3：<a href="https://cn.vuejs.org/guide/introduction.html" rel="nofollow">https://cn.vuejs.org/guide/introduction.html</a></p>
+</li>
+<li>
+<p>vuetifyjs-ui：<a href="https://vuetifyjs.com/zh-Hans/getting-started/installation/" rel="nofollow">https://vuetifyjs.com/zh-Hans/getting-started/installation/</a></p>
+</li>
+<li>
+<p>material-ui：<a href="https://mui.com/material-ui/guides/responsive-ui" rel="nofollow">https://mui.com/material-ui/guides/responsive-ui</a></p>
+</li>
+<li>
+<p>饿了么UI：<a href="https://element-plus.org/zh-CN/guide/installation.html" rel="nofollow">https://element-plus.org/zh-CN/guide/installation.html</a></p>
+</li>
+<li>
+<p>Bootstrap：<a href="https://v5.bootcss.com/docs/getting-started/introduction" rel="nofollow">https://v5.bootcss.com/docs/getting-started/introduction</a></p>
+</li>
+</ul>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th><strong>原生前端库</strong></th>
+<th><strong>推荐库</strong></th>
+<th><strong>官方地址</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>工具类（数组/对象/日期）</strong></td>
+<td><a href="https://lodash.com/" rel="nofollow">lodash</a> 、 <a href="https://day.js.org/" rel="nofollow">day.js</a></td>
+<td><a href="https://lodash.com/" rel="nofollow">lodash 官网</a> / <a href="https://day.js.org/" rel="nofollow">day.js 官网</a></td>
+</tr>
+<tr>
+<td><strong>AJAX 数据请求</strong></td>
+<td><a href="https://axios-http.com/" rel="nofollow">axios</a></td>
+<td><a href="https://axios-http.com/" rel="nofollow">axios 官网</a></td>
+</tr>
+<tr>
+<td><strong>轻量级动画</strong></td>
+<td><a href="https://animejs.com/" rel="nofollow">anime.js</a></td>
+<td><a href="https://animejs.com/" rel="nofollow">anime.js 官网</a></td>
+</tr>
+<tr>
+<td><strong>复杂动画</strong></td>
+<td><a href="https://greensock.com/gsap/" rel="nofollow">GSAP</a></td>
+<td><a href="https://greensock.com/gsap/" rel="nofollow">GSAP 官网</a></td>
+</tr>
+<tr>
+<td><strong>简单 UI 组件</strong></td>
+<td><a href="https://shoelace.style/" rel="nofollow">Shoelace</a></td>
+<td><a href="https://shoelace.style/" rel="nofollow">Shoelace 官网</a></td>
+</tr>
+<tr>
+<td><strong>轻量前端框架</strong></td>
+<td><a href="https://alpinejs.dev/" rel="nofollow">Alpine.js</a></td>
+<td><a href="https://alpinejs.dev/" rel="nofollow">Alpine.js 官网</a></td>
+</tr>
+<tr>
+<td><strong>模板渲染</strong></td>
+<td><a href="https://mustache.github.io/" rel="nofollow">Mustache.js</a></td>
+<td><a href="https://mustache.github.io/" rel="nofollow">Mustache.js 官网</a></td>
+</tr>
+<tr>
+<td><strong>数据可视化</strong></td>
+<td><a href="https://www.chartjs.org/" rel="nofollow">Chart.js</a> 、 <a href="https://d3js.org/" rel="nofollow">D3.js</a></td>
+<td><a href="https://www.chartjs.org/" rel="nofollow">Chart.js 官网</a> / <a href="https://d3js.org/" rel="nofollow">D3.js 官网</a></td>
+</tr>
+<tr>
+<td><strong>3D 渲染</strong></td>
+<td><a href="https://threejs.org/" rel="nofollow">Three.js</a></td>
+<td><a href="https://threejs.org/" rel="nofollow">Three.js 官网</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2>GO语言学习：</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th><strong>Go语言语法</strong></th>
+<th><strong>中文理解</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">if</code></td>
+<td>如果...，则...</td>
+</tr>
+<tr>
+<td><code class="notranslate">else if</code></td>
+<td>否则如果...，则...</td>
+</tr>
+<tr>
+<td><code class="notranslate">else</code></td>
+<td>否则...</td>
+</tr>
+<tr>
+<td><code class="notranslate">for</code></td>
+<td>对于...，执行...</td>
+</tr>
+<tr>
+<td><code class="notranslate">range</code></td>
+<td>遍历...</td>
+</tr>
+<tr>
+<td><code class="notranslate">switch</code></td>
+<td>根据不同情况，选择执行...</td>
+</tr>
+<tr>
+<td><code class="notranslate">case</code></td>
+<td>情况...，执行...</td>
+</tr>
+<tr>
+<td><code class="notranslate">default</code></td>
+<td>默认情况下，执行...</td>
+</tr>
+<tr>
+<td><code class="notranslate">break</code></td>
+<td>跳出循环或 <code class="notranslate">switch</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">continue</code></td>
+<td>跳过本次循环，继续下一次循环</td>
+</tr>
+<tr>
+<td><code class="notranslate">select</code></td>
+<td>在多个渠道中选择一个进行通信</td>
+</tr>
+<tr>
+<td><code class="notranslate">defer</code></td>
+<td>延迟执行，直到函数结束时才执行</td>
+</tr>
+<tr>
+<td><code class="notranslate">return</code></td>
+<td>返回函数结果</td>
+</tr>
+<tr>
+<td><code class="notranslate">func</code></td>
+<td>定义一个...的功能</td>
+</tr>
+<tr>
+<td><code class="notranslate">var</code></td>
+<td>定义一个变量</td>
+</tr>
+<tr>
+<td><code class="notranslate">const</code></td>
+<td>定义一个常量</td>
+</tr>
+<tr>
+<td><code class="notranslate">type</code></td>
+<td>定义一个新的类型</td>
+</tr>
+<tr>
+<td><code class="notranslate">interface</code></td>
+<td>定义一个接口</td>
+</tr>
+<tr>
+<td><code class="notranslate">struct</code></td>
+<td>定义一个结构体</td>
+</tr>
+<tr>
+<td><code class="notranslate">map</code></td>
+<td>一个东西对应另一个东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">chan</code></td>
+<td>用于在 goroutine 之间传递数据</td>
+</tr>
+<tr>
+<td><code class="notranslate">go</code></td>
+<td>启动一个新的 goroutine（轻量级线程）</td>
+</tr>
+<tr>
+<td><code class="notranslate">select</code></td>
+<td>监听多个通道的操作</td>
+</tr>
+<tr>
+<td><code class="notranslate">make</code></td>
+<td>创建一个切片、映射或通道</td>
+</tr>
+<tr>
+<td><code class="notranslate">new</code></td>
+<td>创建一个对象并返回其指针</td>
+</tr>
+<tr>
+<td><code class="notranslate">len</code></td>
+<td>获取数据的长度</td>
+</tr>
+<tr>
+<td><code class="notranslate">cap</code></td>
+<td>获取切片的容量</td>
+</tr>
+<tr>
+<td><code class="notranslate">append</code></td>
+<td>向切片添加元素</td>
+</tr>
+<tr>
+<td><code class="notranslate">copy</code></td>
+<td>复制切片</td>
+</tr>
+<tr>
+<td><code class="notranslate">panic</code></td>
+<td>抛出运行时错误，通常会导致程序崩溃</td>
+</tr>
+<tr>
+<td><code class="notranslate">recover</code></td>
+<td>捕获 <code class="notranslate">panic</code> 引发的异常</td>
+</tr>
+<tr>
+<td><code class="notranslate">import</code></td>
+<td>从...拿...</td>
+</tr>
+<tr>
+<td><code class="notranslate">open</code></td>
+<td>打开...，然后读/写...</td>
+</tr>
+<tr>
+<td><code class="notranslate">:=</code></td>
+<td>简短声明并初始化变量</td>
+</tr>
+<tr>
+<td><code class="notranslate">&amp;</code></td>
+<td>获取变量的地址</td>
+</tr>
+<tr>
+<td><code class="notranslate">*</code></td>
+<td>获取指针指向的值</td>
+</tr>
+<tr>
+<td><code class="notranslate">interface{}</code></td>
+<td>任意类型的接口</td>
+</tr>
+<tr>
+<td><code class="notranslate">switch</code></td>
+<td>根据不同的条件执行不同的操作</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>前端JS</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th><strong>JavaScript语法</strong></th>
+<th><strong>通俗理解</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">let</code></td>
+<td>定义一个可以改变的东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">const</code></td>
+<td>定义一个不能改变的东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">箭头函数 (=&gt;)</code></td>
+<td>更简洁地定义一个做事的方法</td>
+</tr>
+<tr>
+<td><code class="notranslate">模板字符串</code> (反引号)</td>
+<td>可以更方便地做一串话，里面可以插入其他信息</td>
+</tr>
+<tr>
+<td><code class="notranslate">解构</code></td>
+<td>从一个大盒子里拿出我们需要的东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">展开/收集</code></td>
+<td>把东西放开（复制）或收起来（合并成一个）</td>
+</tr>
+<tr>
+<td><code class="notranslate">async/await</code></td>
+<td>让你等某件事完成后再继续做，写法更简洁</td>
+</tr>
+<tr>
+<td><code class="notranslate">Promise</code></td>
+<td>承诺过一会儿会告诉你事情是否完成</td>
+</tr>
+<tr>
+<td><code class="notranslate">for...of</code></td>
+<td>一个个处理列表中的每一项</td>
+</tr>
+<tr>
+<td><code class="notranslate">for...in</code></td>
+<td>检查一个东西里面的每个部分</td>
+</tr>
+<tr>
+<td><code class="notranslate">map</code></td>
+<td>遍历列表中的每个元素，做相同的事情并返回新列表</td>
+</tr>
+<tr>
+<td><code class="notranslate">filter</code></td>
+<td>从列表中挑选符合条件的元素，留下合适的部分</td>
+</tr>
+<tr>
+<td><code class="notranslate">reduce</code></td>
+<td>把列表中的每一项合并成一个结果</td>
+</tr>
+<tr>
+<td><code class="notranslate">Set</code></td>
+<td>只有不同的东西才能放进去的集合</td>
+</tr>
+<tr>
+<td><code class="notranslate">Map</code></td>
+<td>存放一对一的关系（像名字和电话号码）</td>
+</tr>
+<tr>
+<td><code class="notranslate">Symbol</code></td>
+<td>定义独一无二的东西，避免重复的东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">Object.assign()</code></td>
+<td>把好几个东西放到一起合并成一个新东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">Object.entries()</code></td>
+<td>把东西的名字和值变成列表</td>
+</tr>
+<tr>
+<td><code class="notranslate">Object.values()</code></td>
+<td>只取出东西的值，放成一个列表</td>
+</tr>
+<tr>
+<td><code class="notranslate">Array.from()</code></td>
+<td>把类数组的东西变成真正的数组</td>
+</tr>
+<tr>
+<td><code class="notranslate">Array.includes()</code></td>
+<td>判断某个东西是否在列表里</td>
+</tr>
+<tr>
+<td><code class="notranslate">Array.find()</code></td>
+<td>找到符合条件的第一个东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">Array.findIndex()</code></td>
+<td>找到符合条件的第一个东西的位置</td>
+</tr>
+<tr>
+<td><code class="notranslate">Array.some()</code></td>
+<td>判断列表里有没有符合条件的东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">Array.every()</code></td>
+<td>判断列表里每一项是否都符合条件</td>
+</tr>
+<tr>
+<td><code class="notranslate">String.startsWith()</code></td>
+<td>判断一段话是否以某个词开头</td>
+</tr>
+<tr>
+<td><code class="notranslate">String.endsWith()</code></td>
+<td>判断一段话是否以某个词结尾</td>
+</tr>
+<tr>
+<td><code class="notranslate">String.includes()</code></td>
+<td>判断一段话是否包含某个词</td>
+</tr>
+<tr>
+<td><code class="notranslate">import</code></td>
+<td>从其他地方拿来一些有用的东西</td>
+</tr>
+<tr>
+<td><code class="notranslate">export</code></td>
+<td>把自己做的东西分享给别人使用</td>
+</tr>
+<tr>
+<td><code class="notranslate">default</code></td>
+<td>设置一个默认的值，别人不特别指定就使用这个值</td>
+</tr>
+<tr>
+<td><code class="notranslate">dynamic import</code></td>
+<td>按需加载东西，只有在需要的时候才去拿</td>
+</tr>
+<tr>
+<td><code class="notranslate">BigInt</code></td>
+<td>处理非常大的数字</td>
+</tr>
+<tr>
+<td><code class="notranslate">Nullish Coalescing</code></td>
+<td>只有当值是空的或没有时，才用后面的默认值</td>
+</tr>
+<tr>
+<td><code class="notranslate">Optional Chaining</code></td>
+<td>如果中间某个部分不存在，不会报错，直接跳过</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.52013120.xyz">繁星点点</a></div>
+<div id="footer2">
+    <span id="runday"></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" ";
+}
+</script>
+<script defer src="https://api.adminlove.me/script.js" data-website-id="68b84108-618a-4b39-a4cc-6ab3bdd869c7"></script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+
+
+
+
+
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
