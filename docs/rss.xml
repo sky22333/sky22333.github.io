@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 23 Mar 2025 10:59:16 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 26 Mar 2025 10:12:34 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
 
 UI：
 
@@ -29,6 +29,7 @@ UI：
 | **模板渲染**         | [Mustache.js](https://mustache.github.io/) | [Mustache.js 官网](https://mustache.github.io/) |
 | **数据可视化**       | [Chart.js](https://www.chartjs.org/) 、 [D3.js](https://d3js.org/) | [Chart.js 官网](https://www.chartjs.org/) / [D3.js 官网](https://d3js.org/) |
 | **3D 渲染**         | [Three.js](https://threejs.org/) | [Three.js 官网](https://threejs.org/) |
+| **播放器**         | [videojs](https://github.com/videojs/video.js) | [videojs 官网](https://videojs.com/) |
 
  
 ## GO语言学习：
