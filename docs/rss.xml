@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 01:04:10 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 01:09:36 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
 | 命令参数            | 作用                                                         | 使用示例                                                         |
 |---------------------|--------------------------------------------------------------|------------------------------------------------------------------|
 | `-p &lt;port&gt;`         | 指定扫描的单一端口或端口范围                                 | `nmap -p 80 192.168.1.1` 扫描 80 端口                          |
@@ -653,23 +653,17 @@ https://example.com/clash.yaml&#13;
 &#13;
 **https://zerossl.com/**&#13;
 &#13;
-**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>我的网站收藏夹</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 我的一些加速项目和小工具（感谢cloudflare赛博大活佛）
+**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>我的网站收藏夹</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 我的一些加速项目和小工具
 
 &gt; [!TIP]
 &gt; #### 加速项目是白嫖的Workers，有请求限制，建议自己部署 💻
 
 - Github加速：https://blog.52013120.xyz/Docker-Hub
-
 - Github文件加速：https://yishijie.gitlab.io/ziyuan
-
 - Docker-Hub加速：https://hub.52013120.xyz
-
 - 在线代码编辑器：https://blog.52013120.xyz/caddy
-
 - 在线m3u8播放器：https://blog.52013120.xyz/zhibo
-
 - VIP视频在线播放：https://blog.52013120.xyz/video
-
 
 ---
 
@@ -678,60 +672,35 @@ https://example.com/clash.yaml&#13;
 #### 工具类
 
 - MD语法在线记事本：https://markdown-editor.org/
-
 - 在线绘图：https://excalidraw.com/
-
 - 临时匿名邮箱：https://vmail.dev/
-
 - 临时匿名邮箱：https://temp-mail.org/zh/
-
 - 阅后即焚发信：https://www.sixin.cc/
-
 - 各大软件快捷键查询：https://hotkeycheatsheet.com/zh
-
 - 直播工具：https://hao.yuenos.com/
-
 - 在线制作好看的文字卡片：https://geekcard.app/
-
 - 在线制作流光卡片：https://fireflycard.shushiai.com/
-
 - 匿名文件快传：https://wormhole.app/
-
 - 国内文件快传：https://wkkc.vip/
-
 - 文件临时分享（支持命令行下载）：https://www.tmp.link/
-
 - 在线临时记事本：https://cn.anotepad.com/
-
 - 互联网存档：https://archive.org/
-
 - js代码混淆：https://obfuscator.io/
-
 - 运维项目合集：https://github.com/eryajf/awesome-ops
-
 - 代码片段分享（中文和阅后即焚）：https://privatebin.support-tools.com
-
 - 代码片段分享（中文和阅后即焚）：https://pastbin.cc
-
 - 代码分享（支持raw和阅后即焚）：https://dpaste.org
-
 - 代码分享（国内阅后即焚）：https://paste.org.cn
-
 - 代码片段分享：https://pastebin.com
-
 - 免费短链（国内）：https://pbs.ink
-
 - 免费短链（国内）：https://ddz.red
-
 - 免费短链：https://goo.su
-
 - 免费短链：https://l8.nu/cn
-
 - 免费短链：https://db.onl
+- 软件搜索和替代推荐：https://alternativeto.net
 
-- 免费短链（临时）：https://sink.cool/dashboard/login
+---
 
-- 网站分析：https://pagespeed.web.dev
 
 ### 网络工具
 
@@ -744,39 +713,26 @@ https://example.com/clash.yaml&#13;
 #### 域名购买
 
 - https://www.godaddy.com/zh-sg/domains
-
 - https://www.spaceship.com/zh/domains
+- 海外礼品卡购买：https://shop.pockyt.io/pc/brands/all
+
 
 #### 素材类
 
 - 免费图标下载：https://igoutu.cn/
-
 - 网站图标代码：https://fontawesome.com/search
-
 - Youtube视频内容转换为文字：https://www.videotoblog.ai/
-
 - 图标LOGO：https://www.aigei.com/
-
 - 艺术渐变网页背景：https://www.color4bg.com/zh-hans/
-
 - icon图标转换：https://www.aconvert.com/cn/icon/png-to-ico/ 
-
 - 免费LOGO图标设计：https://ray.so/icon
-
 - Youtube视频解析下载：https://ytshorts.savetube.me/
-
 - 全平台视频下载：https://www.datatool.vip/
-
 - 一键AI抠图：https://www.remove.bg/zh
-
 - 在线图片压缩：https://www.iloveimg.com/zh-cn/compress-image/compress-png
-
 - emo表情：https://www.emojiall.com/zh-hans/sub-categories/J2
-
 - 免费图床：https://lvse.eu.org/
-
 - 免费云资源汇总：https://gist.github.com/imba-tjd/d73258f0817255dbe77d64d40d985e76
-
 
 #### APK软件下载
 
@@ -787,28 +743,19 @@ https://example.com/clash.yaml&#13;
 #### openwrt
 
 - 官方openwrt固件下载：https://firmware-selector.openwrt.org/
-
 - ImmortalWrt固件下载：https://firmware-selector.immortalwrt.org
-
 - ImmortalWrt软件包（注意对应版本号）：https://downloads.immortalwrt.org/releases/23.05.4/packages/x86_64/luci
-
 - openwrt硬件支持查询：https://openwrt.org/zh/toh/start
-
 - 第三方openwrt固件下载：https://openwrt.ai/
-
 - argon主题：https://github.com/jerrykuku/luci-theme-argon
-
 - homeproxy代理：https://github.com/immortalwrt/homeproxy
-
 - passwall代理：https://github.com/xiaorouji/openwrt-passwall
 
 #### 免费组网工具
 - tailscale：https://login.tailscale.com
 
-
 全球最大的技术问答社区：https://stackoverflow.com/
 
-海外礼品卡购买：https://shop.pockyt.io/pc/brands/all
 。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
 &#13;
 **在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>https://blog.52013120.xyz/post/20.html</link><description>- **场景介绍**&#13;
