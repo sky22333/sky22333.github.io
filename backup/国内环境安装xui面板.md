@@ -10,12 +10,12 @@
 ## 一键安装脚本（支持纯IPV6环境和国内环境）
 
 ```
-bash <(wget -qO- https://gitlab.com/yishijie/wenjian/raw/main/xui.sh)
+bash <(wget -qO- https://gitlab.com/yishijie/3xui/raw/main/3xui.sh)
 ```
 
 ## 手动安装
 
-1. 下载压缩包[(下载地址)](https://gitlab.com/yishijie/wenjian/-/blob/main/x-ui-linux-amd64.tar.gz?ref_type=heads) 到本地。
+1. 下载压缩包[(下载地址)](https://gitlab.com/yishijie/3xui/raw/main/x-ui-linux-amd64.tar.gz) 到本地。
 
 2. 将压缩包上传到服务器的`root`目录
 
@@ -34,9 +34,3 @@ systemctl enable x-ui
 systemctl restart x-ui
 x-ui
 ```
-
-默认面板端口：54321
-
-默认用户名：admin
-
-默认密码：admin
