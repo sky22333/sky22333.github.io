@@ -1,18 +1,25 @@
 ### 最好用的 sing-box 一键安装脚本&管理脚本&多协议
 
-博主自己的脚本，基于233boy大佬的优化修改版
+基于233boy大佬的优化修改版
 
 > [!NOTE]
 > 一键安装运行
 
 ```
-bash <(wget -qO- -o- https://github.com/admin8800/sing-box/raw/main/install.sh)
+bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh)
+```
+
+**国内下载**
+
+> 注意国内机器不能使用带TLS的协议，所以初始默认的协议无法使用，请换成不带TLS的协议
+```
+bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh) -p https://gh-proxy.com/
 ```
 
 > [!TIP]
 > 脚本管理
 
-## 输入`sing-box`可打开管理菜单
+## 输入`sb`可打开管理菜单
 
 首次运行会自动搭建一个`reality`协议
 

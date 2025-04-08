@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 02:38:14 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 02:56:02 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
 | 命令参数            | 作用                                                         | 使用示例                                                         |
 |---------------------|--------------------------------------------------------------|------------------------------------------------------------------|
 | `-p &lt;port&gt;`         | 指定扫描的单一端口或端口范围                                 | `nmap -p 80 192.168.1.1` 扫描 80 端口                          |
@@ -1097,113 +1097,120 @@ npm install&#13;
 npm run build&#13;
 ```&#13;
 &#13;
-`React`项目默认会将构建后的文件输出到 `build` 目录，使用 `nginx`  `caddy`等等工具运行构建出来的静态文件。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>最好用的 sing-box 一键搭建节点脚本</title><link>https://blog.52013120.xyz/post/10.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议&#13;
-&#13;
-博主自己的脚本，基于233boy大佬的优化修改版&#13;
-&#13;
-&gt; [!NOTE]&#13;
-&gt; 一键安装运行&#13;
-&#13;
-```&#13;
-bash &lt;(wget -qO- -o- https://github.com/admin8800/sing-box/raw/main/install.sh)&#13;
-```&#13;
-&#13;
-&gt; [!TIP]&#13;
-&gt; 脚本管理&#13;
-&#13;
-## 输入`sing-box`可打开管理菜单&#13;
-&#13;
-首次运行会自动搭建一个`reality`协议&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&gt; [!NOTE]&#13;
-&gt; 特点介绍&#13;
-&#13;
-- 快速安装&#13;
-- 无敌好用&#13;
-- 零学习成本&#13;
-- 自动化 TLS&#13;
-- 简化所有流程&#13;
-- 兼容 sing-box 命令&#13;
-- 强大的快捷参数&#13;
-- 支持所有常用协议&#13;
-- 一键添加 VLESS-REALITY (默认)&#13;
-- 一键添加 TUIC&#13;
-- 一键添加 Trojan&#13;
-- 一键添加 Hysteria2&#13;
-- 一键添加 Shadowsocks 2022&#13;
-- 一键添加 VMess-(TCP/HTTP/QUIC)&#13;
-- 一键添加 VMess-(WS/H2/HTTPUpgrade)-TLS&#13;
-- 一键添加 VLESS-(WS/H2/HTTPUpgrade)-TLS&#13;
-- 一键添加 Trojan-(WS/H2/HTTPUpgrade)-TLS&#13;
-- 一键启用 BBR&#13;
-- 一键更改伪装网站&#13;
-- 一键更改 (端口/UUID/密码/域名/路径/加密方式/SNI/等...)&#13;
-- 还有更多...&#13;
-&#13;
-&gt; [!TIP]&#13;
-&gt; 更多管理命令&#13;
-```&#13;
-基本:&#13;
-   v, version                                      显示当前版本&#13;
-   ip                                              返回当前主机的 IP&#13;
-   pbk                                             同等于 sing-box generate reality-keypair&#13;
-   get-port                                        返回一个可用的端口&#13;
-   ss2022                                          返回一个可用于 Shadowsocks 2022 的密码&#13;
-&#13;
-一般:&#13;
-   a, add [protocol] [args... | auto]              添加配置&#13;
-   c, change [name] [option] [args... | auto]      更改配置&#13;
-   d, del [name]                                   删除配置**&#13;
-   i, info [name]                                  查看配置&#13;
-   qr [name]                                       二维码信息&#13;
-   url [name]                                      URL 信息&#13;
-   log                                             查看日志&#13;
-更改:&#13;
-   full [name] [...]                               更改多个参数&#13;
-   id [name] [uuid | auto]                         更改 UUID&#13;
-   host [name] [domain]                            更改域名&#13;
-   port [name] [port | auto]                       更改端口&#13;
-   path [name] [path | auto]                       更改路径&#13;
-   passwd [name] [password | auto]                 更改密码&#13;
-   key [name] [Private key | atuo] [Public key]    更改密钥&#13;
-   method [name] [method | auto]                   更改加密方式&#13;
-   sni [name] [ ip | domain]                       更改 serverName&#13;
-   new [name] [...]                                更改协议&#13;
-   web [name] [domain]                             更改伪装网站&#13;
-&#13;
-进阶:&#13;
-   dns [...]                                       设置 DNS&#13;
-   dd, ddel [name...]                              删除多个配置**&#13;
-   fix [name]                                      修复一个配置&#13;
-   fix-all                                         修复全部配置&#13;
-   fix-caddyfile                                   修复 Caddyfile&#13;
-   fix-config.json                                 修复 config.json&#13;
-   import                                          导入 sing-box/v2ray 脚本配置&#13;
-&#13;
-管理:&#13;
-   un, uninstall                                   卸载&#13;
-   u, update [core | sh | caddy] [ver]             更新&#13;
-   U, update.sh                                    更新脚本&#13;
-   s, status                                       运行状态&#13;
-   start, stop, restart [caddy]                    启动, 停止, 重启&#13;
-   t, test                                         测试运行&#13;
-   reinstall                                       重装脚本&#13;
-&#13;
-测试:&#13;
-   debug [name]                                    显示一些 debug 信息, 仅供参考&#13;
-   gen [...]                                       同等于 add, 但只显示 JSON 内容, 不创建文件, 测试使用&#13;
-   no-auto-tls [...]                               同等于 add, 但禁止自动配置 TLS, 可用于 *TLS 相关协议&#13;
-其他:&#13;
-   bbr                                             启用 BBR, 如果支持&#13;
-   bin [...]                                       运行 sing-box 命令, 例如: sing-box bin help&#13;
-   [...] [...]                                     兼容绝大多数的 sing-box 命令, 例如: sing-box generate uuid&#13;
-   h, help                                         显示此帮助界面&#13;
-```&#13;
-&#13;
----&#13;
+`React`项目默认会将构建后的文件输出到 `build` 目录，使用 `nginx`  `caddy`等等工具运行构建出来的静态文件。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>最好用的 sing-box 一键搭建节点脚本</title><link>https://blog.52013120.xyz/post/10.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议
+
+基于233boy大佬的优化修改版
+
+&gt; [!NOTE]
+&gt; 一键安装运行
+
+```
+bash &lt;(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh)
+```
+
+**国内下载**
+
+&gt; 注意国内机器不能使用带TLS的协议，所以初始默认的协议无法使用，请换成不带TLS的协议
+```
+bash &lt;(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh) -p https://gh-proxy.com/
+```
+
+&gt; [!TIP]
+&gt; 脚本管理
+
+## 输入`sb`可打开管理菜单
+
+首次运行会自动搭建一个`reality`协议
+
+
+
+
+&gt; [!NOTE]
+&gt; 特点介绍
+
+- 快速安装
+- 无敌好用
+- 零学习成本
+- 自动化 TLS
+- 简化所有流程
+- 兼容 sing-box 命令
+- 强大的快捷参数
+- 支持所有常用协议
+- 一键添加 VLESS-REALITY (默认)
+- 一键添加 TUIC
+- 一键添加 Trojan
+- 一键添加 Hysteria2
+- 一键添加 Shadowsocks 2022
+- 一键添加 VMess-(TCP/HTTP/QUIC)
+- 一键添加 VMess-(WS/H2/HTTPUpgrade)-TLS
+- 一键添加 VLESS-(WS/H2/HTTPUpgrade)-TLS
+- 一键添加 Trojan-(WS/H2/HTTPUpgrade)-TLS
+- 一键启用 BBR
+- 一键更改伪装网站
+- 一键更改 (端口/UUID/密码/域名/路径/加密方式/SNI/等...)
+- 还有更多...
+
+&gt; [!TIP]
+&gt; 更多管理命令
+```
+基本:
+   v, version                                      显示当前版本
+   ip                                              返回当前主机的 IP
+   pbk                                             同等于 sing-box generate reality-keypair
+   get-port                                        返回一个可用的端口
+   ss2022                                          返回一个可用于 Shadowsocks 2022 的密码
+
+一般:
+   a, add [protocol] [args... | auto]              添加配置
+   c, change [name] [option] [args... | auto]      更改配置
+   d, del [name]                                   删除配置**
+   i, info [name]                                  查看配置
+   qr [name]                                       二维码信息
+   url [name]                                      URL 信息
+   log                                             查看日志
+更改:
+   full [name] [...]                               更改多个参数
+   id [name] [uuid | auto]                         更改 UUID
+   host [name] [domain]                            更改域名
+   port [name] [port | auto]                       更改端口
+   path [name] [path | auto]                       更改路径
+   passwd [name] [password | auto]                 更改密码
+   key [name] [Private key | atuo] [Public key]    更改密钥
+   method [name] [method | auto]                   更改加密方式
+   sni [name] [ ip | domain]                       更改 serverName
+   new [name] [...]                                更改协议
+   web [name] [domain]                             更改伪装网站
+
+进阶:
+   dns [...]                                       设置 DNS
+   dd, ddel [name...]                              删除多个配置**
+   fix [name]                                      修复一个配置
+   fix-all                                         修复全部配置
+   fix-caddyfile                                   修复 Caddyfile
+   fix-config.json                                 修复 config.json
+   import                                          导入 sing-box/v2ray 脚本配置
+
+管理:
+   un, uninstall                                   卸载
+   u, update [core | sh | caddy] [ver]             更新
+   U, update.sh                                    更新脚本
+   s, status                                       运行状态
+   start, stop, restart [caddy]                    启动, 停止, 重启
+   t, test                                         测试运行
+   reinstall                                       重装脚本
+
+测试:
+   debug [name]                                    显示一些 debug 信息, 仅供参考
+   gen [...]                                       同等于 add, 但只显示 JSON 内容, 不创建文件, 测试使用
+   no-auto-tls [...]                               同等于 add, 但禁止自动配置 TLS, 可用于 *TLS 相关协议
+其他:
+   bbr                                             启用 BBR, 如果支持
+   bin [...]                                       运行 sing-box 命令, 例如: sing-box bin help
+   [...] [...]                                     兼容绝大多数的 sing-box 命令, 例如: sing-box generate uuid
+   h, help                                         显示此帮助界面
+```
+
+---
 。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/10.html</guid><pubDate>Tue, 02 Jul 2024 09:02:16 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程&#13;
 &#13;
 1】首先浏览器里打开网页版iCloud：  www.icloud.com&#13;
