@@ -15,7 +15,7 @@ bash <(wget -qO- https://gitlab.com/yishijie/3xui/raw/main/3xui.sh)
 
 ## 手动安装
 
-1. 下载压缩包[(下载地址)](https://gitlab.com/yishijie/3xui/raw/main/x-ui-linux-amd64.tar.gz) 到本地。
+1. 下载压缩包 [(点击下载)](https://gitlab.com/yishijie/3xui/raw/main/x-ui-linux-amd64.tar.gz) 到本地。
 
 2. 将压缩包上传到服务器的`root`目录
 
