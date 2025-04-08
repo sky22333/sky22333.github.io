@@ -1,5 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 00:43:34 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Git推送GitHub常用命令</title><link>https://blog.52013120.xyz/post/40.html</link><description>### 先在github创建一个仓库，然后本地CD到项目目录
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 00:44:25 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>snap和winget包管理器</title><link>https://blog.52013120.xyz/post/41.html</link><description>## 常用liunx系统Snap包管理器文档
+
+
+| 发行版 | 安装Snap | 启动Snap服务 | 安装Docker示例 | 安装Caddy示例 |
+|--------|----------|--------------|------------|-----------|
+| Debian&lt;br&gt;Uubuntu | `sudo apt update &amp;&amp; sudo apt install snapd` | `sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
+| CentOS | `sudo yum install epel-release &amp;&amp; sudo yum install snapd &amp;&amp; sudo systemctl enable --now snapd.socket` | `sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
+| Alpine&lt;br&gt;Linux | `apk add snapd &amp;&amp; rc-update add snapd` | `service snapd start` | `snap install docker` | `snap install caddy` |
+| Kali&lt;br&gt;Linux | `sudo apt update &amp;&amp; sudo apt install snapd` | `sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
+
+### 说明：
+
+1. **重启系统**：安装snap后，建议重新启动系统或重新登录，以确保snap的路径正确添加到系统环境中。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/41.html</guid><pubDate>Tue, 08 Apr 2025 00:44:06 +0000</pubDate></item><item><title>Git推送GitHub常用命令</title><link>https://blog.52013120.xyz/post/40.html</link><description>### 先在github创建一个仓库，然后本地CD到项目目录
 
 
 ### 初始化本地仓库
