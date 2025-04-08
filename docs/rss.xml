@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 00:46:12 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 00:54:12 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
 | 命令参数            | 作用                                                         | 使用示例                                                         |
 |---------------------|--------------------------------------------------------------|------------------------------------------------------------------|
 | `-p &lt;port&gt;`         | 指定扫描的单一端口或端口范围                                 | `nmap -p 80 192.168.1.1` 扫描 80 端口                          |
@@ -1442,29 +1442,31 @@ docker run --privileged --restart=always -itd \&#13;
     -p 127.0.0.1:9091:9091 \&#13;
     monius/docker-warp-socks&#13;
 ```&#13;
-运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/4.html</guid><pubDate>Tue, 02 Jul 2024 07:39:07 +0000</pubDate></item><item><title>代理工具和SSH工具下载</title><link>https://blog.52013120.xyz/post/3.html</link><description>  &#13;
-| 类型 | 名称 | 下载地址 |&#13;
-| :--- | :----: | :---: |&#13;
-| 安卓代理  | v2rayNG  |https://github.com/2dust/v2rayNG/releases|&#13;
-| 安卓代理  | clash-meta  |https://github.com/MetaCubeX/ClashMetaForAndroid/releases|&#13;
-| Win代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|&#13;
-| Win代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|&#13;
-| ios代理  | 小火箭  |https://apps.apple.com/us/app/shadowrocket/id932747118|&#13;
-| ios代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|&#13;
-| mac代理  | v2rayU  |https://github.com/yanue/V2rayU/releases|&#13;
-| mac代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|&#13;
-| mac代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|&#13;
-| Liunx代理  | v2rayA  |https://v2raya.org/docs/prologue/introduction|&#13;
-| 安卓SSH  | Termius汉化  |https://github.com/alongw/Termius-zh_CN/releases|&#13;
-| 安卓SSH  | termux |https://github.com/termux/termux-app/releases|&#13;
-| 安卓SSH  | serverbox  |https://github.com/lollipopkit/flutter_server_box/releases|&#13;
-| 安卓code  | Acode |https://acode.app|&#13;
-| 电脑SSH  | tabby  |https://github.com/Eugeny/tabby/releases|&#13;
-| 电脑SSH  | hexhub  |https://www.hexhub.cn|&#13;
-| 电脑SSH  | WindTerm  |https://github.com/kingToolbox/WindTerm/releases|&#13;
-| 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|&#13;
-| 电脑code  | Visual Studio Code  |https://code.visualstudio.com|&#13;
-| ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|&#13;
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/4.html</guid><pubDate>Tue, 02 Jul 2024 07:39:07 +0000</pubDate></item><item><title>代理工具和SSH工具下载</title><link>https://blog.52013120.xyz/post/3.html</link><description>  
+| 类型 | 名称 | 下载地址 |
+| :--- | :----: | :---: |
+| 安卓代理  | v2rayNG  |https://github.com/2dust/v2rayNG/releases|
+| 安卓代理  | NekoBox  |https://github.com/MatsuriDayo/NekoBoxForAndroid/releases |
+| 安卓代理  | clash-meta  |https://github.com/MetaCubeX/ClashMetaForAndroid/releases|
+| Win代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|
+| Win代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|
+| ios代理  | 小火箭  |https://apps.apple.com/us/app/shadowrocket/id932747118|
+| ios代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|
+| mac代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|
+| mac代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|
+| mac代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|
+| Liunx代理  | v2rayA  |https://v2raya.org/docs/prologue/introduction|
+| Liunx桌面版代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|
+| 安卓SSH  | Termius汉化  |https://github.com/alongw/Termius-zh_CN/releases|
+| 安卓SSH  | termux |https://github.com/termux/termux-app/releases|
+| 安卓SSH  | serverbox  |https://github.com/lollipopkit/flutter_server_box/releases|
+| 安卓code  | Acode |https://acode.app|
+| 电脑SSH  | tabby  |https://github.com/Eugeny/tabby/releases|
+| 电脑SSH  | hexhub  |https://www.hexhub.cn|
+| 电脑SSH  | WindTerm  |https://github.com/kingToolbox/WindTerm/releases|
+| 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|
+| 电脑code  | Visual Studio Code  |https://code.visualstudio.com|
+| ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|
 | ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 安装node环境
 ```
 curl https://get.volta.sh | bash
