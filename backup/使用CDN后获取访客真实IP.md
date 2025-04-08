@@ -30,3 +30,11 @@ real_ip_header Ali-CDN-Real-IP;
 ```
 - **其他CDN**
 除CDN厂商有特殊说明外，一般情况下使用`X-Forwarded-For`请求头获取访客IP。
+
+
+
+- **Cloudflare IP段**
+ 
+https://www.cloudflare.com/ips-v4
+
+https://www.cloudflare.com/ips-v6
