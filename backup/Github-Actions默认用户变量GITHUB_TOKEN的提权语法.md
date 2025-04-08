@@ -11,8 +11,6 @@
 | **contents**        | 仓库内容（代码、文件）  | `read`     | 只读权限，允许读取仓库内容，如查看文件和提交历史。                                               | `contents: read`                                                                                 |
 |                    |                       | `write`    | 写权限，允许修改、推送、更改文件。                                                               | `contents: write`                                                                                |
 |                    |                       | `delete`   | 删除权限，允许删除仓库内容。                                                                     | `contents: delete`                                                                               |
-| **metadata**        | 仓库元数据（标签、Release）| `read`     | 只读权限，允许读取仓库的标签和 Release 信息。                                                    | `metadata: read`                                                                                 |
-|                    |                       | `write`    | 写权限，允许创建、更新或删除仓库的标签、Release 等元数据。                                      | `metadata: write`                                                                                |
 | **packages**        | GitHub 容器（GHCR）     | `read`     | 只读权限，允许读取容器镜像或包。                                                                  | `packages: read`                                                                                 |
 |                    |                       | `write`    | 写权限，允许推送容器镜像或其他包。                                                                | `packages: write`                                                                                |
 |                    |                       | `delete`   | 删除权限，允许删除 GitHub 容器中的镜像或包。                                                      | `packages: delete`                                                                               |
@@ -27,8 +25,6 @@
 |                    |                       | `write`    | 写权限，允许触发、管理、更新工作流。                                                             | `workflows: write`                                                                                |
 | **commit-status**   | 提交状态                | `read`     | 只读权限，允许查看提交的状态。                                                                   | `commit-status: read`                                                                             |
 |                    |                       | `write`    | 写权限，允许设置提交的状态。                                                                     | `commit-status: write`                                                                            |
-| **contents**        | 文件树和内容操作        | `read`     | 只读权限，允许查看文件、目录等内容。                                                             | `contents: read`                                                                                 |
-|                    |                       | `write`    | 写权限，允许修改、创建或删除文件。                                                               | `contents: write`                                                                                |
 | **deployments**     | 部署操作                | `read`     | 只读权限，允许查看部署的状态。                                                                   | `deployments: read`                                                                               |
 |                    |                       | `write`    | 写权限，允许触发部署操作。                                                                       | `deployments: write`                                                                              |
 
@@ -39,8 +35,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write    # 允许推送代码，修改仓库文件
-      metadata: write    # 允许操作仓库的 Release 和标签
+      contents: write    # 允许推送代码，修改仓库文件，也包括操作标签和Release
       packages: write    # 允许推送 Docker 镜像到 GitHub 容器注册表
       actions: read      # 允许查看工作流执行状态和日志
       workflows: write   # 允许触发和管理工作流

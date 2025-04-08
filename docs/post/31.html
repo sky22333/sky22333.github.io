@@ -123,20 +123,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td><code class="notranslate">contents: delete</code></td>
 </tr>
 <tr>
-<td><strong>metadata</strong></td>
-<td>仓库元数据（标签、Release）</td>
-<td><code class="notranslate">read</code></td>
-<td>只读权限，允许读取仓库的标签和 Release 信息。</td>
-<td><code class="notranslate">metadata: read</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="notranslate">write</code></td>
-<td>写权限，允许创建、更新或删除仓库的标签、Release 等元数据。</td>
-<td><code class="notranslate">metadata: write</code></td>
-</tr>
-<tr>
 <td><strong>packages</strong></td>
 <td>GitHub 容器（GHCR）</td>
 <td><code class="notranslate">read</code></td>
@@ -235,20 +221,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td><code class="notranslate">commit-status: write</code></td>
 </tr>
 <tr>
-<td><strong>contents</strong></td>
-<td>文件树和内容操作</td>
-<td><code class="notranslate">read</code></td>
-<td>只读权限，允许查看文件、目录等内容。</td>
-<td><code class="notranslate">contents: read</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><code class="notranslate">write</code></td>
-<td>写权限，允许修改、创建或删除文件。</td>
-<td><code class="notranslate">contents: write</code></td>
-</tr>
-<tr>
 <td><strong>deployments</strong></td>
 <td>部署操作</td>
 <td><code class="notranslate">read</code></td>
@@ -269,8 +241,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
   <span class="pl-ent">build</span>:
     <span class="pl-ent">runs-on</span>: <span class="pl-s">ubuntu-latest</span>
     <span class="pl-ent">permissions</span>:
-      <span class="pl-ent">contents</span>: <span class="pl-s">write    </span><span class="pl-c"><span class="pl-c">#</span> 允许推送代码，修改仓库文件</span>
-      <span class="pl-ent">metadata</span>: <span class="pl-s">write    </span><span class="pl-c"><span class="pl-c">#</span> 允许操作仓库的 Release 和标签</span>
+      <span class="pl-ent">contents</span>: <span class="pl-s">write    </span><span class="pl-c"><span class="pl-c">#</span> 允许推送代码，修改仓库文件，也包括操作标签和Release</span>
       <span class="pl-ent">packages</span>: <span class="pl-s">write    </span><span class="pl-c"><span class="pl-c">#</span> 允许推送 Docker 镜像到 GitHub 容器注册表</span>
       <span class="pl-ent">actions</span>: <span class="pl-s">read      </span><span class="pl-c"><span class="pl-c">#</span> 允许查看工作流执行状态和日志</span>
       <span class="pl-ent">workflows</span>: <span class="pl-s">write   </span><span class="pl-c"><span class="pl-c">#</span> 允许触发和管理工作流</span>
