@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 00:39:11 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/115192496?v=4</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 08 Apr 2025 00:41:05 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
 
 UI：
 
@@ -1297,152 +1297,332 @@ docker run --privileged --restart=always -itd \&#13;
 | 电脑SSH  | FinalShell  |https://www.hostbuf.com/t/988.html|&#13;
 | 电脑code  | Visual Studio Code  |https://code.visualstudio.com|&#13;
 | ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|&#13;
-| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 安装node环境&#13;
-```&#13;
-curl https://get.volta.sh | bash&#13;
-```&#13;
-```&#13;
-export VOLTA_HOME='$HOME/.volta'&#13;
-export PATH='$VOLTA_HOME/bin:$PATH'&#13;
-```&#13;
-```&#13;
-source ~/.bashrc&#13;
-```&#13;
-```&#13;
-volta install node@16.0.0&#13;
-```&#13;
-切换node版本只需再次安装需要的版本即可自动切换&#13;
-&#13;
-&#13;
-&#13;
-### 3xui&#13;
-&#13;
-```&#13;
-bash &lt;(curl -Ls https://raw.githubusercontent.com/admin8800/x-ui/main/install.sh)&#13;
-```&#13;
-&#13;
-&#13;
-###  一键wrap&#13;
-&#13;
-```&#13;
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]&#13;
-```&#13;
-&#13;
-```&#13;
-warp [option] [lisence]&#13;
-```&#13;
-&#13;
-###  一键安装docker&#13;
-&#13;
-```&#13;
-curl -fsSL https://get.docker.com | sh&#13;
-```&#13;
-&#13;
-###  查看系统内核&#13;
-```&#13;
-dpkg --print-architecture&#13;
-```&#13;
-&#13;
-&#13;
-&#13;
-```&#13;
-uname -a&#13;
-```&#13;
-&#13;
-####  查看系统版本&#13;
-```&#13;
-cat /etc/os-release&#13;
-```&#13;
-```&#13;
-lsb_release -a&#13;
-```&#13;
-&#13;
-###  VPS开启root登录并且修改密码：&#13;
-```&#13;
-bash &lt;(curl -L -s check.unlock.media)&#13;
-```&#13;
-&#13;
- &#13;
-```&#13;
-bash &lt;(curl -L -s check.unlock.media) -M 4&#13;
-```&#13;
-&#13;
- &#13;
-```&#13;
-bash &lt;(curl -L -s check.unlock.media) -M 6&#13;
-```&#13;
-&#13;
-###  查看端口占用：&#13;
-```&#13;
-sudo lsof -i -P -n&#13;
-```&#13;
-```&#13;
-ss -tuln&#13;
-```&#13;
-```&#13;
-lsof -i:端口号&#13;
-```&#13;
-#### 释放端口&#13;
-```&#13;
-kill PID数字&#13;
-```&#13;
-&#13;
-###  放行端口：&#13;
-&#13;
-`sudo ufw allow 端口号`&#13;
-&#13;
-`sudo ufw allow 起始端口:结束端口`&#13;
-&#13;
-`sudo ufw enable`   #  重启ufw防火墙&#13;
-&#13;
-###  关闭端口：&#13;
-`sudo ufw deny 端口号`&#13;
-&#13;
-###  只允许指定IP连接22端口：&#13;
-`sudo ufw allow from 192.168.1.100 to any port 22`      #  多IP用英文的逗号分开&#13;
-&#13;
-###  文件类型转换：&#13;
-&#13;
-`mv config.txt config.json`&#13;
-&#13;
-`mv shell.txt shell.sh`&#13;
-&#13;
-&#13;
-###  开启虚拟内存：&#13;
-&#13;
-```&#13;
-sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab&#13;
-```&#13;
-&#13;
-&#13;
-###  防火墙&#13;
-&#13;
-`firewall-cmd --state`                          # 查看防火墙状态    &#13;
-&#13;
-&#13;
-`systemctl stop firewalld.service`                # 停止防火墙    &#13;
-&#13;
-&#13;
-`systemctl disable firewalld.service`             # 禁止防火墙开机自启&#13;
-&#13;
-###  一键开启bbr加速&#13;
-&#13;
-```&#13;
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh&#13;
-```&#13;
-&#13;
-```&#13;
-sysctl net.ipv4.tcp_congestion_control&#13;
-```&#13;
-&#13;
-&#13;
-&#13;
-###  人型自走bot乌班图脚本&#13;
-&#13;
-&#13;
-```&#13;
-wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh&#13;
-```&#13;
-&#13;
-&#13;
-使用该脚本会将 `Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid` 目录下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/1.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
+| ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
+
+
+
+
+[3x-ui地址](https://github.com/MHSanaei/3x-ui)
+
+###  一键wrap
+
+```
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
+```
+
+```
+warp [option] [lisence]
+```
+
+### 稳定获取IP位置
+```
+curl https://www.visa.cn/cdn-cgi/trace
+```
+
+### 快速测试容器IP
+```
+docker run --rm alpine/curl curl ping0.cc/geo
+```
+
+### 安装Docker
+官方安装脚本：
+
+```
+curl -fsSL https://get.docker.com | sh
+```
+&gt;会以插件的形式自动安装`docker compose`    输入`docker compose version`查看版本
+
+国内安装脚本  [(说明)](https://linuxmirrors.cn/other/)
+
+```
+bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
+```
+
+或者使用阿里云安装源
+```
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+
+
+---
+
+### 清理bash缓存
+```
+hash -r
+```
+
+###  查看系统架构
+```
+dpkg --print-architecture
+```
+
+```
+uname -a
+```
+
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
+
+
+#### 文件搜索
+按目录名称查找
+```
+find / -type d -iname '目录名' 2&gt;/dev/null
+```
+
+按文件名称查找
+```
+find / -type f -name '*文件名*' 2&gt;/dev/null
+```
+
+按文件大小查找
+```
+find / -type f -size +20M -exec ls -lh {} \; 2&gt;/dev/null
+```
+
+全局搜索关键字，并输出它们的路径
+```
+sudo grep -r -l '关键字' /
+```
+
+当前目录开始
+```
+sudo find . -type f -exec grep -IHn '关键字' {} \;
+```
+
+根目录开始
+```
+sudo find / -type f -exec grep -IHn '关键字' {} \;
+```
+
+文件重命名命令：`mv`
+
+
+#### 网络连接相关
+显示所有与主机建立连接的IP
+
+TCP 连接：
+```
+ss -tnp
+```
+
+UDP 连接：
+```
+ss -unp
+```
+#### 切断除本机以外所有的SSH连接
+```
+sudo ss -tnp | grep ':22' | grep -v '自己的IP' | awk '{print $6}' | awk -F '[=,]' '{print $2}' | xargs -r sudo kill -9
+```
+
+#### 资源占用
+显示内存占用最大的10个进程
+```
+ps aux --sort=-%mem | head -n 10
+```
+`mem为内存，可改为cpu`
+
+
+
+###  VPS开启root登录并且修改密码：
+
+一键脚本
+
+```
+bash &lt;(wget -qO- https://github.com/sky22333/rootvps/raw/main/root.sh)
+```
+
+### 设置主机名
+```
+sudo hostnamectl set-hostname wovow
+sudo bash -c 'echo '127.0.0.1 wovow' &gt;&gt; /etc/hosts'
+```
+或者
+```
+hostnamectl set-hostname localhost
+```
+### 设置时区为上海
+```
+sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
+查看当前时间（注意你与服务器之间的延迟）
+```
+date
+```
+
+
+### 校准同步系统时间
+- 安装
+```
+sudo apt-get install ntpdate
+```
+
+- 配置时间服务器
+```
+sudo ntpdate -u time.cloudflare.com      // cloudflare时间服务器
+sudo ntpdate -u time.windows.com         // 微软时间服务器
+sudo ntpdate -u ntp.aliyun.com           // 阿里云时间服务器
+```
+
+- 查看
+```
+timedatectl status
+```
+
+### 禁用IPV6
+
+写入配置
+```
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
+```
+应用配置
+```
+sudo sysctl -p
+```
+
+
+
+### 更改系统语言
+```
+sudo nano /etc/locale.gen
+# zh_CN.UTF-8 UTF-8       // 取消这行注释
+sudo locale-gen
+sudo update-locale LANG=zh_CN.UTF-8
+sudo localectl set-locale LANG=zh_CN.UTF-8
+```
+
+
+
+###  安装依赖：
+ Debian/Ubuntu 命令：
+ 
+
+```
+apt update &amp;&amp; apt install -y curl wget git zip tar lsof vim sudo
+```
+&gt; 代码补全`bash_completion`
+
+ apk包更新
+```
+apk update
+```
+apk包安装
+
+```
+apk add curl wget vim zip
+```
+
+###  一键测试路由回程：
+
+```
+wget -qO- git.io/besttrace | bash
+```
+### 一键测速回程线路
+```
+curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
+```
+
+
+###  一键测试流媒体解锁：
+
+```
+bash &lt;(curl -L -s check.unlock.media)
+```
+
+ 
+```
+bash &lt;(curl -L -s check.unlock.media) -M 4
+```
+
+ 
+```
+bash &lt;(curl -L -s check.unlock.media) -M 6
+```
+
+###  查看端口占用：
+```
+sudo lsof -i -P -n
+```
+```
+ss -tuln
+```
+```
+ss -tunp
+```
+
+```
+lsof -i:端口号
+```
+#### 释放端口
+```
+kill PID数字
+```
+
+###  放行端口：
+
+```sudo ufw allow 端口号```
+
+```sudo ufw allow 起始端口:结束端口```
+
+```sudo ufw enable```   #  重启ufw防火墙
+
+###  关闭端口：
+```sudo ufw deny 端口号```
+
+###  只允许指定IP连接22端口：
+```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+
+###  防火墙
+
+```firewall-cmd --state```                             # 查看防火墙状态    
+
+
+```systemctl stop firewalld.service```                 # 停止防火墙    
+
+
+```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+
+###  一键开启bbr加速
+
+```
+bash &lt;(wget -qO- https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
+```
+查看
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+
+
+使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/1.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
