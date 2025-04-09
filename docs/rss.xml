@@ -1,5 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 09 Apr 2025 05:18:47 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>端口敲门教程</title><link>https://blog.52013120.xyz/post/45.html</link><description>简介：端口敲门通过关闭SSH端口，服务器监听预设的端口序列，当客户端按正确顺序`敲门`后，防火墙规则动态开放SSH端口，仅允许敲门成功的IP访问，阻止未授权访问。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/45.html</guid><pubDate>Wed, 09 Apr 2025 05:18:21 +0000</pubDate></item><item><title>3x-ui面板通过api管理示例</title><link>https://blog.52013120.xyz/post/44.html</link><description>### 3xui通过api登录并保存cookie（qwer为面板路径）
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 09 Apr 2025 06:56:26 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>低配机器使用alpine系统跑docker</title><link>https://blog.52013120.xyz/post/46.html</link><description>### alpine系统是一个超级轻量级系统，非常适合低配机器
+
+下面教搭建使用alpine系统跑docker
+
+首先将系统DD为alpine系统
+```
+curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
+```
+```
+chmod +x reinstall.sh &amp;&amp; ./reinstall.sh alpine
+```
+&gt; 设置一个新密码，然后重启系统开始安装
+```
+reboot
+```
+
+
+### 进入系统
+
+首先安装一些基础工具
+```
+apk update
+```
+```
+apk add curl wget bash
+```
+
+安装docker和docker-compose
+```
+apk add docker docker-compose
+```
+启动服务并且设置开机自启
+```
+rc-service docker start
+rc-update add docker
+```
+
+### 在 Alpine 中，系统服务是由 OpenRC 管理的
+
+命令参考
+
+| 命令                                | 说明                                    |
+|-------------------------------------|-----------------------------------------|
+| `rc-service &lt;service-name&gt; start`   | 启动指定服务                            |
+| `rc-service &lt;service-name&gt; stop`    | 停止指定服务                            |
+| `rc-service &lt;service-name&gt; restart` | 重启指定服务                            |
+| `rc-service &lt;service-name&gt; status`  | 查看服务的当前状态                      |
+| `rc-update add &lt;service-name&gt; default` | 将服务添加到开机自启列表                 |
+| `rc-update del &lt;service-name&gt; default` | 删除服务的开机自启设置                  |
+| `rc-update show`                    | 列出所有已启用的服务                    |
+| `rc-service &lt;service-name&gt; log`     | 查看服务日志（如果服务支持日志功能）    |
+| `rc-service all start`              | 启动所有服务                            |
+| `rc-service all stop`               | 停止所有服务                            |
+
+并且`rc-service`可以简化为`service`，例如`rc-service docker start`和`service docker start`效果是一样的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/46.html</guid><pubDate>Wed, 09 Apr 2025 06:47:26 +0000</pubDate></item><item><title>端口敲门教程</title><link>https://blog.52013120.xyz/post/45.html</link><description>简介：端口敲门通过关闭SSH端口，服务器监听预设的端口序列，当客户端按正确顺序`敲门`后，防火墙规则动态开放SSH端口，仅允许敲门成功的IP访问，阻止未授权访问。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/45.html</guid><pubDate>Wed, 09 Apr 2025 05:18:21 +0000</pubDate></item><item><title>3x-ui面板通过api管理示例</title><link>https://blog.52013120.xyz/post/44.html</link><description>### 3xui通过api登录并保存cookie（qwer为面板路径）
 &gt; 没有路径可去掉
 ```
 curl -X POST http://127.0.0.1:2053/qwer/login \
