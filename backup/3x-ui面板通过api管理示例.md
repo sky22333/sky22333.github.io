@@ -1,12 +1,14 @@
-### 3xui通过api登录并保存cookie
+### 3xui通过api登录并保存cookie（qwer为面板路径）
+> 没有路径可去掉
 ```
-curl -X POST http://127.0.0.1:2053/login \
+curl -X POST http://127.0.0.1:2053/qwer/login \
      -H "Content-Type: application/json" \
      -d '{"username": "admin", "password": "admin"}' \
      -c cookies.txt
 ```
 
 ### 获取所有入站信息（qwer为面板路径）
+> 没有路径可去掉
 ```
 curl -L -X GET http://127.0.0.1:2053/qwer/panel/api/inbounds/list -b cookies.txt
 ```
