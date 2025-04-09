@@ -7,7 +7,7 @@ curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
 ```
 chmod +x reinstall.sh && ./reinstall.sh alpine
 ```
-> 设置一个新密码，然后重启系统开始安装
+> 设置新密码，然后重启系统开始安装
 ```
 reboot
 ```
