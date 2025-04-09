@@ -9,7 +9,7 @@
 ```
 curl -fsSL https://get.docker.com | sh
 ```
->会以插件的形式自动安装`docker compose`    输入`docker compose version`查看版本
+
 
 国内安装脚本  [(说明)](https://linuxmirrors.cn/other/)
 
@@ -17,11 +17,10 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-或者使用阿里云源
+或者使用阿里云安装源
 ```
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+bash <(curl -fsSL https://get.docker.com) --mirror Aliyun
 ```
-
 
 <details>
   <summary>手动离线安装Docker</summary>
@@ -30,7 +29,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 [官方文件下载地址——下载后上传到root目录](https://download.docker.com/linux/static/stable/x86_64/)
 
-[清华大学下载地址](https://mirrors.tuna.tsinghua.edu.cn/docker-ce/)
+[清华大学下载地址](https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable/x86_64/)
 
 ```
 tar xzvf docker-26.1.3.tgz     # 替换版本号
@@ -104,6 +103,7 @@ chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
+
 ###  注意：
 由于是以二进制文件安装的`docker-compose`，所以运行命令有所变化，运行示例
 ```
@@ -112,13 +112,9 @@ docker-compose up -d
 
 区别在于中间的`-`，官方安装脚本是以插件形式安装的`docker-compose`，所以中间不需要`-`
 
-
-
 ---
 
 </details>
-
-
 
 
 ---
@@ -215,32 +211,38 @@ sudo systemctl restart docker
 ```
 sudo systemctl show --property=Environment docker
 ```
+#### 本地代理转发到服务器
+
+使用SSH反向转发把本地的10808端口的流量转发给远程服务器1080端口
+```
+ssh -R 1080:127.0.0.1:10808 root@服务器地址 -N
+```
+`-N` 代表仅连接但不打开对话框
+
+
 ---
-## 备用方法：直接传送镜像
-国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，`mysql`为例
-#### A服务器压缩保存Docker镜像
-```
-docker save mysql > mysql.tar
-```
-#### 传送到B服务器
-```
-scp mysql.tar root@192.168.12.23:/home
-```
-然后输入B服务器root密码
 
-#### B服务器加载Docker镜像
+## 备用方法：打包镜像到本地
+
+
+1：压缩保存镜像到本地
 
 ```
-cd /home
+docker save 镜像名 > 镜像名.tar
 ```
 
+2：手动上传到另一个服务器
+
+3：另一个服务器解压镜像
+
 ```
-docker load < mysql.tar
+docker load < 镜像名.tar
 ```
-查看镜像
+4：查看镜像
 ```
 docker images
 ```
+
 ---
 
 ## Docker Hub 镜像测速
@@ -248,6 +250,20 @@ docker images
 拉取镜像时，可使用 `time` 统计所花费的总时间。测速前记得移除本地的镜像。
 
 例如：`time docker pull node:latest`
+
+
+## 为Docker启用IPV6
+
+创建或修改`/etc/docker/daemon.json`文件
+
+增加如下配置：
+```
+{
+  "ipv6": true,
+  "fixed-cidr-v6": "2001:db8:1::/64"
+}
+```
+重启：`sudo systemctl restart docker`
 
 ## 卸载Docker
 ```
@@ -261,11 +277,15 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
-[耗子面板](https://hub.rat.dev/) | `https://hub.rat.dev` | 无限制 | Docker Hub
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
-[1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://proxy.1panel.live` | 无限制 | Docker Hub
-[毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 国内CDN & 有黑名单 | Docker Hub
+[毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 有黑名单&可选国内CDN | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
 [华为云](https://console.huaweicloud.com/swr/#/swr/dashboard) | `https://***.mirror.swr.myhuaweicloud.com` | 需登录分配 | Docker Hub
-[南京大学](https://doc.nju.edu.cn/) | `https://ghcr.nju.edu.cn` | 国内CDN & ghcr加速 | ghcr.io
+[腾讯云](https://cloud.tencent.com/document/product/1207/45596) | `https://mirror.ccs.tencentyun.com` | 仅限腾讯云机器 | Docker Hub
+[南京大学](https://doc.nju.edu.cn/books/e1654) | `https://ghcr.nju.edu.cn` | ghcr加速 | ghcr
+[南京大学](https://doc.nju.edu.cn/books/e1654) | `https://k8s.nju.edu.cn` | k8s加速 | k8s
 
+## 参考链接
+
++ https://docs.docker.com/registry/recipes/mirror/
++ https://status.1panel.top/status/docker

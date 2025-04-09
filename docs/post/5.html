@@ -87,20 +87,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>官方安装脚本：</p>
 <pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
 </code></pre>
-<blockquote>
-<p>会以插件的形式自动安装<code class="notranslate">docker compose</code>    输入<code class="notranslate">docker compose version</code>查看版本</p>
-</blockquote>
 <p>国内安装脚本  <a href="https://linuxmirrors.cn/other/" rel="nofollow">(说明)</a></p>
 <pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 </code></pre>
-<p>或者使用阿里云源</p>
-<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+<p>或者使用阿里云安装源</p>
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -fsSL https://get.docker.com) --mirror Aliyun
 </code></pre>
 <details>
   <summary>手动离线安装Docker</summary>
 <h4>下载 Docker:</h4>
 <p><a href="https://download.docker.com/linux/static/stable/x86_64/" rel="nofollow">官方文件下载地址——下载后上传到root目录</a></p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/docker-ce/" rel="nofollow">清华大学下载地址</a></p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable/x86_64/" rel="nofollow">清华大学下载地址</a></p>
 <pre class="notranslate"><code class="notranslate">tar xzvf docker-26.1.3.tgz     # 替换版本号
 sudo mv docker/* /usr/local/bin/
 </code></pre>
@@ -228,28 +225,36 @@ sudo systemctl restart docker
 <h4>查看环境变量</h4>
 <pre class="notranslate"><code class="notranslate">sudo systemctl show --property=Environment docker
 </code></pre>
+<h4>本地代理转发到服务器</h4>
+<p>使用SSH反向转发把本地的10808端口的流量转发给远程服务器1080端口</p>
+<pre class="notranslate"><code class="notranslate">ssh -R 1080:127.0.0.1:10808 root@服务器地址 -N
+</code></pre>
+<p><code class="notranslate">-N</code> 代表仅连接但不打开对话框</p>
 <hr>
-<h2>备用方法：直接传送镜像</h2>
-<p>国外服务器拉取镜像后打包压缩到本地，然后传输到国内服务器，<code class="notranslate">mysql</code>为例</p>
-<h4>A服务器压缩保存Docker镜像</h4>
-<pre class="notranslate"><code class="notranslate">docker save mysql &gt; mysql.tar
+<h2>备用方法：打包镜像到本地</h2>
+<p>1：压缩保存镜像到本地</p>
+<pre class="notranslate"><code class="notranslate">docker save 镜像名 &gt; 镜像名.tar
 </code></pre>
-<h4>传送到B服务器</h4>
-<pre class="notranslate"><code class="notranslate">scp mysql.tar root@192.168.12.23:/home
+<p>2：手动上传到另一个服务器</p>
+<p>3：另一个服务器解压镜像</p>
+<pre class="notranslate"><code class="notranslate">docker load &lt; 镜像名.tar
 </code></pre>
-<p>然后输入B服务器root密码</p>
-<h4>B服务器加载Docker镜像</h4>
-<pre class="notranslate"><code class="notranslate">cd /home
-</code></pre>
-<pre class="notranslate"><code class="notranslate">docker load &lt; mysql.tar
-</code></pre>
-<p>查看镜像</p>
+<p>4：查看镜像</p>
 <pre class="notranslate"><code class="notranslate">docker images
 </code></pre>
 <hr>
 <h2>Docker Hub 镜像测速</h2>
 <p>拉取镜像时，可使用 <code class="notranslate">time</code> 统计所花费的总时间。测速前记得移除本地的镜像。</p>
 <p>例如：<code class="notranslate">time docker pull node:latest</code></p>
+<h2>为Docker启用IPV6</h2>
+<p>创建或修改<code class="notranslate">/etc/docker/daemon.json</code>文件</p>
+<p>增加如下配置：</p>
+<pre class="notranslate"><code class="notranslate">{
+  "ipv6": true,
+  "fixed-cidr-v6": "2001:db8:1::/64"
+}
+</code></pre>
+<p>重启：<code class="notranslate">sudo systemctl restart docker</code></p>
 <h2>卸载Docker</h2>
 <pre class="notranslate"><code class="notranslate">sudo systemctl stop docker
 sudo apt-get purge docker-ce docker-ce-cli containerd.io
@@ -268,27 +273,15 @@ sudo rm -rf /etc/docker /var/lib/docker
 </thead>
 <tbody>
 <tr>
-<td><a href="https://hub.rat.dev/" rel="nofollow">耗子面板</a></td>
-<td><code class="notranslate">https://hub.rat.dev</code></td>
-<td>无限制</td>
-<td>Docker Hub</td>
-</tr>
-<tr>
 <td><a href="https://1panel.cn/docs/user_manual/containers/setting/" rel="nofollow">1panel</a></td>
 <td><code class="notranslate">https://docker.1panel.live</code></td>
 <td>无限制</td>
 <td>Docker Hub</td>
 </tr>
 <tr>
-<td><a href="https://1panel.cn/docs/user_manual/containers/setting/" rel="nofollow">1panel</a></td>
-<td><code class="notranslate">https://proxy.1panel.live</code></td>
-<td>无限制</td>
-<td>Docker Hub</td>
-</tr>
-<tr>
 <td><a href="https://docker.1ms.run" rel="nofollow">毫秒镜像</a></td>
 <td><code class="notranslate">https://docker.1ms.run</code></td>
-<td>国内CDN &amp; 有黑名单</td>
+<td>有黑名单&amp;可选国内CDN</td>
 <td>Docker Hub</td>
 </tr>
 <tr>
@@ -304,13 +297,30 @@ sudo rm -rf /etc/docker /var/lib/docker
 <td>Docker Hub</td>
 </tr>
 <tr>
-<td><a href="https://doc.nju.edu.cn/" rel="nofollow">南京大学</a></td>
+<td><a href="https://cloud.tencent.com/document/product/1207/45596" rel="nofollow">腾讯云</a></td>
+<td><code class="notranslate">https://mirror.ccs.tencentyun.com</code></td>
+<td>仅限腾讯云机器</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://doc.nju.edu.cn/books/e1654" rel="nofollow">南京大学</a></td>
 <td><code class="notranslate">https://ghcr.nju.edu.cn</code></td>
-<td>国内CDN &amp; ghcr加速</td>
-<td>ghcr.io</td>
+<td>ghcr加速</td>
+<td>ghcr</td>
+</tr>
+<tr>
+<td><a href="https://doc.nju.edu.cn/books/e1654" rel="nofollow">南京大学</a></td>
+<td><code class="notranslate">https://k8s.nju.edu.cn</code></td>
+<td>k8s加速</td>
+<td>k8s</td>
 </tr>
 </tbody>
-</table></markdown-accessiblity-table></div>
+</table></markdown-accessiblity-table>
+<h2>参考链接</h2>
+<ul>
+<li><a href="https://docs.docker.com/registry/recipes/mirror/" rel="nofollow">https://docs.docker.com/registry/recipes/mirror/</a></li>
+<li><a href="https://status.1panel.top/status/docker" rel="nofollow">https://status.1panel.top/status/docker</a></li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
