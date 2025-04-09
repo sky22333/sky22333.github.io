@@ -1,7 +1,5 @@
 ### alpine系统是一个超级轻量级系统，非常适合低配机器
 
-下面教搭建使用alpine系统跑docker
-
 首先将系统DD为alpine系统
 ```
 curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
