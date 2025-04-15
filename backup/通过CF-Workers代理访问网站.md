@@ -107,9 +107,11 @@ addEventListener("fetch", event => {
     const headers = new Headers();
     headers.set('Set-Cookie', 'authenticated=true; Path=/; Max-Age=21600'); // 6 小时过期
 
-    // 继续执行后续请求
     return event.respondWith(
-      handleRequest(event)
+      new Response("认证成功", {
+        status: 200,
+        headers: headers
+      })
     );
   } else {
     // 如果认证失败，返回 401 Unauthorized 并提示
@@ -168,17 +170,19 @@ addEventListener("fetch", event => {
     console.log(`请求: ${url}`);
 
     // 处理请求并返回响应
-    return fetch(request)
-      .then(response => {
-        // 返回原始响应，没有缓存控制
-        console.log(`响应状态: ${response.status}`);
-        return response;
-      })
-      .catch(err => {
-        // 处理请求失败的情况
-        console.error('请求失败:', err);
-        return new Response('请求失败', { status: 502 });
-      });
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          // 返回原始响应，没有缓存控制
+          console.log(`响应状态: ${response.status}`);
+          return response;
+        })
+        .catch(err => {
+          // 处理请求失败的情况
+          console.error('请求失败:', err);
+          return new Response('请求失败', { status: 502 });
+        })
+    );
   }
 });
 ```
