@@ -108,7 +108,7 @@ addEventListener("fetch", event => {
     headers.set('Set-Cookie', 'authenticated=true; Path=/; Max-Age=21600'); // 6 小时过期
 
     return event.respondWith(
-      new Response("认证成功", {
+      new Response("认证成功！请刷新此页面继续访问。", {
         status: 200,
         headers: headers
       })
