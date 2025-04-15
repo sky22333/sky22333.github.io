@@ -1,6 +1,6 @@
 ### 直接贴代码
 
-> 建议只自己使用，不要公开，否则可能被判断为涉嫌钓鱼
+> 建议只自己使用，不要公开，否则可能被判断为涉嫌违反CF规则
 
 ```
 addEventListener("fetch", event => {
@@ -66,7 +66,7 @@ addEventListener("fetch", event => {
 
 
 ### 增加访问限制密码认证
-> 可解决涉嫌钓鱼等问题
+> 可解决涉嫌违反CF规则等问题
 
 ```
 addEventListener("fetch", event => {
