@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Apr 2025 15:33:21 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Apr 2025 15:52:42 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
 
 &gt; 建议只自己使用，不要公开，否则可能被判断为涉嫌钓鱼
 
@@ -62,6 +62,129 @@ addEventListener('fetch', event =&gt; {
         return new Response('请求失败', { status: 502 });
       })
   );
+});
+```
+
+
+### 增加访问限制
+```
+addEventListener('fetch', event =&gt; {
+  // 设定一个简单的用户名和密码
+  const validUsername = 'admin123';
+  const validPassword = 'admin123';
+
+  // 获取请求头中的 Authorization
+  const authHeader = event.request.headers.get('Authorization');
+
+  // 检查 Cookie 是否存在认证标记
+  const cookie = event.request.headers.get('Cookie');
+  const isAuthenticated = cookie &amp;&amp; cookie.includes('authenticated=true');
+
+  // 如果没有 Cookie 标记，且没有 Authorization 头或者它不符合 Basic Authentication 格式
+  if (!isAuthenticated &amp;&amp; (!authHeader || !authHeader.startsWith('Basic '))) {
+    return event.respondWith(
+      new Response('需要认证才能访问', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': 'Basic realm='请输入用户名和密码'' // 触发浏览器认证对话框
+        }
+      })
+    );
+  }
+
+  // 如果用户已经认证过，跳过认证步骤
+  if (isAuthenticated) {
+    return handleRequest(event);
+  }
+
+  // 提取并解码用户名和密码
+  const base64Credentials = authHeader.split(' ')[1];
+  const credentials = atob(base64Credentials);
+  const [username, password] = credentials.split(':');
+
+  // 检查用户名和密码是否正确
+  if (username === validUsername &amp;&amp; password === validPassword) {
+    // 设置 Cookie，标记用户已认证，并设置 6 小时过期
+    const headers = new Headers();
+    headers.set('Set-Cookie', 'authenticated=true; Path=/; Max-Age=21600'); // 6 小时过期
+
+    return event.respondWith(
+      new Response('认证成功', {
+        status: 200,
+        headers: headers
+      })
+    );
+  } else {
+    // 如果认证失败，返回 401 Unauthorized 并提示
+    return event.respondWith(
+      new Response('认证失败', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': 'Basic realm='请输入用户名和密码'' // 触发浏览器认证对话框
+        }
+      })
+    );
+  }
+
+  function handleRequest(event) {
+    let url = new URL(event.request.url);
+    url.hostname = 'hub.docker.com'; // 修改成需要代理的网站
+
+    // 获取请求头中的 User-Agent
+    let userAgent = event.request.headers.get('User-Agent');
+
+    // 屏蔽爬虫和搜索引擎的列表
+    const blockedUserAgents = [
+      /googlebot/i,
+      /bingbot/i,
+      /baiduspider/i,
+      /slurp/i, // Yahoo
+      /duckduckbot/i,
+      /yandex/i,
+      /sogou/i,
+      /exabot/i,
+      /facebot/i, // Facebook bot
+      /facebookexternalhit/i
+    ];
+
+    const isBot = blockedUserAgents.some(pattern =&gt; pattern.test(userAgent));
+
+    // 如果是爬虫或搜索引擎，返回 403 Forbidden
+    if (isBot) {
+      return event.respondWith(
+        new Response('访问被拒绝', { status: 403 })
+      );
+    }
+
+    // 构建新的请求头，传递原请求头，并处理必要的字段
+    let headers = new Headers(event.request.headers);
+    headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown'); // 可以添加客户端 IP
+
+    // 创建新的请求对象
+    let request = new Request(url, {
+      method: event.request.method,           // 保留原请求方法
+      headers: headers,                       // 保留原请求头
+      body: event.request.method === 'GET' ? null : event.request.body, // 对于 GET 请求，Body 通常是空的
+      redirect: 'follow'                      // 自动跟随重定向
+    });
+
+    console.log(`请求: ${url}`);
+
+    // 处理请求并返回响应
+    event.respondWith(
+      fetch(request)
+        .then(response =&gt; {
+          // 返回原始响应，没有缓存控制
+          console.log(`响应状态: ${response.status}`);
+          return response;
+        })
+        .catch(err =&gt; {
+          // 处理请求失败的情况
+          console.error('请求失败:', err);
+          return new Response('请求失败', { status: 502 });
+        })
+    );
+  }
 });
 ```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/49.html</guid><pubDate>Tue, 15 Apr 2025 15:21:52 +0000</pubDate></item><item><title>纯CSS制作炫酷的文字轮播效果</title><link>https://blog.52013120.xyz/post/48.html</link><description>### 示例代码
 ```
