@@ -65,7 +65,9 @@ addEventListener("fetch", event => {
 ```
 
 
-### 增加访问限制
+### 增加访问限制密码认证
+> 可解决涉嫌钓鱼等问题
+
 ```
 addEventListener("fetch", event => {
   // 设定一个简单的用户名和密码

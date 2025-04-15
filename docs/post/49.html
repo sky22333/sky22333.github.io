@@ -77,7 +77,9 @@ addEventListener('fetch', event => {
 ```
 
 
-### 增加访问限制
+### 增加访问限制密码认证
+> 可解决涉嫌钓鱼等问题
+
 ```
 addEventListener('fetch', event => {
   // 设定一个简单的用户名和密码
@@ -189,7 +191,9 @@ addEventListener('fetch', event => {
 ```
 
 
-### 增加访问限制
+### 增加访问限制密码认证
+> 可解决涉嫌钓鱼等问题
+
 ```
 addEventListener('fetch', event => {
   // 设定一个简单的用户名和密码
@@ -361,7 +365,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
   );
 });
 </code></pre>
-<h3>增加访问限制</h3>
+<h3>增加访问限制密码认证</h3>
+<blockquote>
+<p>可解决涉嫌钓鱼等问题</p>
+</blockquote>
 <pre class="notranslate"><code class="notranslate">addEventListener("fetch", event =&gt; {
   // 设定一个简单的用户名和密码
   const validUsername = "user";
