@@ -335,7 +335,7 @@ addEventListener('fetch', event => {
 
 
 
-### 其他页面检查登录状态的js代码
+### 其他页面检查登录状态的`js`代码，这里应该由后端服务来检查状态
 ```
 // 替换你的workers域名，路径不要动
 async function checkSession() {
