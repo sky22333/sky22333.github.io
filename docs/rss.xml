@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Apr 2025 14:45:25 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>纯CSS制作炫酷的文字轮播效果</title><link>https://blog.52013120.xyz/post/48.html</link><description>### 示例代码
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Apr 2025 14:51:03 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>纯CSS制作炫酷的文字轮播效果</title><link>https://blog.52013120.xyz/post/48.html</link><description>### 示例代码
 ```
 &lt;!DOCTYPE html&gt;
 &lt;html lang='en'&gt;
 &lt;head&gt;
   &lt;meta charset='UTF-8'&gt;
   &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;
-  &lt;title&gt;Text Animation Effect&lt;/title&gt;
+  &lt;title&gt;文字动画示例&lt;/title&gt;
   &lt;style&gt;
     @import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&amp;display=swap');
 
@@ -15,9 +15,6 @@
       background: #333;
       filter: contrast(30);
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .text {
@@ -54,9 +51,9 @@
 &lt;/head&gt;
 &lt;body&gt;
   &lt;main&gt;
-    &lt;p class='text' style='--i:1'&gt;自由&lt;/p&gt;
-    &lt;p class='text' style='--i:2'&gt;平等&lt;/p&gt;
-    &lt;p class='text' style='--i:3'&gt;友善&lt;/p&gt;
+    &lt;p class='text' style='--i:1'&gt;Where&lt;/p&gt;
+    &lt;p class='text' style='--i:2'&gt;possible&lt;/p&gt;
+    &lt;p class='text' style='--i:3'&gt;begins&lt;/p&gt;
   &lt;/main&gt;
 &lt;/body&gt;
 &lt;/html&gt;

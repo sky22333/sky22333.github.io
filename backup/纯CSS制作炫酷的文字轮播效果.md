@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text Animation Effect</title>
+  <title>文字动画示例</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap");
 
@@ -14,9 +14,6 @@
       background: #333;
       filter: contrast(30);
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .text {
@@ -53,9 +50,9 @@
 </head>
 <body>
   <main>
-    <p class="text" style="--i:1">自由</p>
-    <p class="text" style="--i:2">平等</p>
-    <p class="text" style="--i:3">友善</p>
+    <p class="text" style="--i:1">Where</p>
+    <p class="text" style="--i:2">possible</p>
+    <p class="text" style="--i:3">begins</p>
   </main>
 </body>
 </html>
