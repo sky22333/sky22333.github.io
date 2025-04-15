@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Apr 2025 15:52:42 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Apr 2025 15:56:30 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
 
 &gt; 建议只自己使用，不要公开，否则可能被判断为涉嫌钓鱼
 
@@ -70,8 +70,8 @@ addEventListener('fetch', event =&gt; {
 ```
 addEventListener('fetch', event =&gt; {
   // 设定一个简单的用户名和密码
-  const validUsername = 'admin123';
-  const validPassword = 'admin123';
+  const validUsername = 'user';
+  const validPassword = 'mypassword';
 
   // 获取请求头中的 Authorization
   const authHeader = event.request.headers.get('Authorization');
@@ -108,11 +108,9 @@ addEventListener('fetch', event =&gt; {
     const headers = new Headers();
     headers.set('Set-Cookie', 'authenticated=true; Path=/; Max-Age=21600'); // 6 小时过期
 
+    // 继续执行后续请求
     return event.respondWith(
-      new Response('认证成功', {
-        status: 200,
-        headers: headers
-      })
+      handleRequest(event)
     );
   } else {
     // 如果认证失败，返回 401 Unauthorized 并提示
@@ -171,19 +169,17 @@ addEventListener('fetch', event =&gt; {
     console.log(`请求: ${url}`);
 
     // 处理请求并返回响应
-    event.respondWith(
-      fetch(request)
-        .then(response =&gt; {
-          // 返回原始响应，没有缓存控制
-          console.log(`响应状态: ${response.status}`);
-          return response;
-        })
-        .catch(err =&gt; {
-          // 处理请求失败的情况
-          console.error('请求失败:', err);
-          return new Response('请求失败', { status: 502 });
-        })
-    );
+    return fetch(request)
+      .then(response =&gt; {
+        // 返回原始响应，没有缓存控制
+        console.log(`响应状态: ${response.status}`);
+        return response;
+      })
+      .catch(err =&gt; {
+        // 处理请求失败的情况
+        console.error('请求失败:', err);
+        return new Response('请求失败', { status: 502 });
+      });
   }
 });
 ```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/49.html</guid><pubDate>Tue, 15 Apr 2025 15:21:52 +0000</pubDate></item><item><title>纯CSS制作炫酷的文字轮播效果</title><link>https://blog.52013120.xyz/post/48.html</link><description>### 示例代码

@@ -69,8 +69,8 @@ addEventListener("fetch", event => {
 ```
 addEventListener("fetch", event => {
   // 设定一个简单的用户名和密码
-  const validUsername = "admin123";
-  const validPassword = "admin123";
+  const validUsername = "user";
+  const validPassword = "mypassword";
 
   // 获取请求头中的 Authorization
   const authHeader = event.request.headers.get("Authorization");
@@ -107,11 +107,9 @@ addEventListener("fetch", event => {
     const headers = new Headers();
     headers.set('Set-Cookie', 'authenticated=true; Path=/; Max-Age=21600'); // 6 小时过期
 
+    // 继续执行后续请求
     return event.respondWith(
-      new Response("认证成功", {
-        status: 200,
-        headers: headers
-      })
+      handleRequest(event)
     );
   } else {
     // 如果认证失败，返回 401 Unauthorized 并提示
@@ -170,19 +168,17 @@ addEventListener("fetch", event => {
     console.log(`请求: ${url}`);
 
     // 处理请求并返回响应
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          // 返回原始响应，没有缓存控制
-          console.log(`响应状态: ${response.status}`);
-          return response;
-        })
-        .catch(err => {
-          // 处理请求失败的情况
-          console.error('请求失败:', err);
-          return new Response('请求失败', { status: 502 });
-        })
-    );
+    return fetch(request)
+      .then(response => {
+        // 返回原始响应，没有缓存控制
+        console.log(`响应状态: ${response.status}`);
+        return response;
+      })
+      .catch(err => {
+        // 处理请求失败的情况
+        console.error('请求失败:', err);
+        return new Response('请求失败', { status: 502 });
+      });
   }
 });
 ```
