@@ -125,3 +125,13 @@ git remote add origin https://github.com/your-username/your-repo.git  # 重新�
 git push --force origin main  # 强制推送覆盖远程历史
 ```
 
+## 🎈回滚
+回滚到前一次提交，也可以回滚到前面的更多次
+```
+git reset --hard HEAD~1
+```
+
+强制推送
+```
+git push origin main --force
+```
