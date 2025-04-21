@@ -119,7 +119,7 @@ git push origin main
 ```
 rm -rf .git  # 删除 Git 版本管理
 git init  # 重新初始化 Git
-git checkout -b main # 创建并且切换分支
+git checkout -b main # 创建并切换分支（可忽略）
 git add .  # 添加所有文件
 git commit -m "update"  # 提交所有文件
 git remote add origin https://github.com/your-username/your-repo.git  # 重新关联仓库
