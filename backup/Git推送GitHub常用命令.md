@@ -5,10 +5,6 @@
 ```
 git init
 ```
-### 连接远程仓库
-```
-git remote add origin git@github.com:用户名/仓库名.git
-```
 ### 创建并切换到`main`分支
 ```
 git checkout -b main
@@ -21,6 +17,10 @@ git checkout main
 ```
 git add .
 git commit -m "描述你的更改"
+```
+### 关联远程仓库
+```
+git remote add origin https://github.com/your-username/your-repo.git
 ```
 ### 推送到仓库
 ```

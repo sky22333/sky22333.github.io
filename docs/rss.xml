@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 17 Apr 2025 19:06:53 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CF-Worker实现简单的登录中间件</title><link>https://blog.52013120.xyz/post/50.html</link><description>### `CF-Worker`代码示例
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 21 Apr 2025 01:30:19 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用CF-Worker实现简单的登录中间件</title><link>https://blog.52013120.xyz/post/50.html</link><description>### `CF-Worker`代码示例
 ```
 // 配置用户名和密码
 const USERNAME = 'admin123';
@@ -934,10 +934,6 @@ nmap -T5 -Pn -p 1-65535 -sU 192.168.0.1
 ```
 git init
 ```
-### 连接远程仓库
-```
-git remote add origin git@github.com:用户名/仓库名.git
-```
 ### 创建并切换到`main`分支
 ```
 git checkout -b main
@@ -950,6 +946,10 @@ git checkout main
 ```
 git add .
 git commit -m '描述你的更改'
+```
+### 关联远程仓库
+```
+git remote add origin https://github.com/your-username/your-repo.git
 ```
 ### 推送到仓库
 ```

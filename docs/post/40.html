@@ -17,10 +17,6 @@
 ```
 git init
 ```
-### 连接远程仓库
-```
-git remote add origin git@github.com:用户名/仓库名.git
-```
 ### 创建并切换到`main`分支
 ```
 git checkout -b main
@@ -33,6 +29,10 @@ git checkout main
 ```
 git add .
 git commit -m '描述你的更改'
+```
+### 关联远程仓库
+```
+git remote add origin https://github.com/your-username/your-repo.git
 ```
 ### 推送到仓库
 ```
@@ -73,10 +73,6 @@ git cherry-pick -m 1 提交哈希
 ```
 git init
 ```
-### 连接远程仓库
-```
-git remote add origin git@github.com:用户名/仓库名.git
-```
 ### 创建并切换到`main`分支
 ```
 git checkout -b main
@@ -89,6 +85,10 @@ git checkout main
 ```
 git add .
 git commit -m '描述你的更改'
+```
+### 关联远程仓库
+```
+git remote add origin https://github.com/your-username/your-repo.git
 ```
 ### 推送到仓库
 ```
@@ -189,9 +189,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h3>初始化本地仓库</h3>
 <pre class="notranslate"><code class="notranslate">git init
 </code></pre>
-<h3>连接远程仓库</h3>
-<pre class="notranslate"><code class="notranslate">git remote add origin git@github.com:用户名/仓库名.git
-</code></pre>
 <h3>创建并切换到<code class="notranslate">main</code>分支</h3>
 <pre class="notranslate"><code class="notranslate">git checkout -b main
 </code></pre>
@@ -201,6 +198,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h3>添加并提交新的更改</h3>
 <pre class="notranslate"><code class="notranslate">git add .
 git commit -m "描述你的更改"
+</code></pre>
+<h3>关联远程仓库</h3>
+<pre class="notranslate"><code class="notranslate">git remote add origin https://github.com/your-username/your-repo.git
 </code></pre>
 <h3>推送到仓库</h3>
 <pre class="notranslate"><code class="notranslate">git push origin main
