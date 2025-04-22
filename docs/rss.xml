@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 22 Apr 2025 03:14:32 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>定时自动备份Github所有仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 22 Apr 2025 03:24:16 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>定时自动备份Github所有仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
 - 防止Github账号被封禁或者丢失访问权限等问题
 
 
@@ -1050,6 +1050,8 @@ git cherry-pick -m 1 提交哈希
 这里的`-m 1`表示选择合并的提交中的第一个父提交的更改。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
 
 UI：
+
+- [Tailwind CSS](https://www.tailwindcss.cn/docs/installation) + [shadcn/ui](https://www.shadcn-ui.cn/docs/installation)
 
 - astro：https://docs.astro.build/zh-cn/tutorial/0-introduction/
 
