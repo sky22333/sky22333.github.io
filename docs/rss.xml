@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 22 Apr 2025 03:12:43 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>定时自动备份Github所有仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 22 Apr 2025 03:14:32 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>定时自动备份Github所有仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
 - 防止Github账号被封禁或者丢失访问权限等问题
 
 
@@ -65,7 +65,7 @@ GITLAB_USER_EMAIL | 用于提交的Git邮箱 | 否
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'&gt;4. 将配置文件添加到GitLab项目&lt;/h3&gt;
-&lt;p class='whitespace-pre-wrap break-words'&gt;将上面的&lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;.gitlab-ci.yml&lt;/code&gt;文件添加到你的GitLab项目中。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/51.html</guid><pubDate>Tue, 22 Apr 2025 03:12:12 +0000</pubDate></item><item><title>使用CF-Worker实现简单的登录中间件</title><link>https://blog.52013120.xyz/post/50.html</link><description>### `CF-Worker`代码示例
+&lt;p class='whitespace-pre-wrap break-words'&gt;将以下&lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;.gitlab-ci.yml&lt;/code&gt;文件添加到你的GitLab项目中。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/51.html</guid><pubDate>Tue, 22 Apr 2025 03:12:12 +0000</pubDate></item><item><title>使用CF-Worker实现简单的登录中间件</title><link>https://blog.52013120.xyz/post/50.html</link><description>### `CF-Worker`代码示例
 ```
 // 配置用户名和密码
 const USERNAME = 'admin123';

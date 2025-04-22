@@ -64,7 +64,7 @@ GITLAB_USER_EMAIL | 用于提交的Git邮箱 | 否
 </li>
 </ol>
 <h3 class="text-lg font-bold text-text-100 mt-1 -mb-1.5" level="3">4. 将配置文件添加到GitLab项目</h3>
-<p class="whitespace-pre-wrap break-words">将上面的<code class="bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]">.gitlab-ci.yml</code>文件添加到你的GitLab项目中。你可以通过Web界面或者Git命令行来完成这一步。</p><!--EndFragment-->
+<p class="whitespace-pre-wrap break-words">将以下<code class="bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]">.gitlab-ci.yml</code>文件添加到你的GitLab项目中。你可以通过Web界面或者Git命令行来完成这一步。</p><!--EndFragment-->
 </body>
 </html>
 
