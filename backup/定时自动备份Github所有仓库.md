@@ -69,10 +69,9 @@ GITLAB_USER_EMAIL | 用于提交的Git邮箱 | 否
 </html>
 
 
-`gitlab`的CI CD配置示例：
+`.gitlab-ci.yml`的CI CD配置示例：
 ```
-# .gitlab-ci.yml
-# GitLab CI/CD 配置文件，用于每周一自动将 GitHub 仓库镜像到 GitLab
+# 每周一自动将 GitHub 仓库镜像到 GitLab
 
 stages:
   - mirror
