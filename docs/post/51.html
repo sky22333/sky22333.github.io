@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
+- 防止Github账号被封禁或者丢失访问权限等问题
+
+
+
+<html>
+<body>
+<!--StartFragment--><h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>1. 必要的准备工作</h3>
+<h4 class='text-base font-bold text-text-100 mt-1' level='4'>创建必要的访问令牌和SSH密钥</h4>
+<ol class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7' depth='0'>
+<li class='whitespace-normal break-words' index='0'><strong>GitHub Token</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个具有 <code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>repo</code> 权限的个人访问令牌（PAT）</li>
+<li class='whitespace-normal break-words' index='1'>访问：GitHub → Settings → Developer settings → Personal access tokens</li>
+</ul>
+</li>
+<li class='whitespace-normal break-words' index='1'><strong>GitHub SSH 密钥</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个SSH密钥对用于访问GitHub仓库</li>
+<li class='whitespace-normal break-words' index='1'>运行：<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>ssh-keygen -t rsa -b 4096 -f github_id_rsa</code></li>
+<li class='whitespace-normal break-words' index='2'>将公钥添加到GitHub账户</li>
+</ul>
+</li>
+<li class='whitespace-normal break-words' index='2'><strong>GitLab API Token</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个具有API访问权限的GitLab个人访问令牌</li>
+<li class='whitespace-normal break-words' index='1'>访问：GitLab → Preferences → Access Tokens</li>
+</ul>
+</li>
+<li class='whitespace-normal break-words' index='3'><strong>GitLab SSH 密钥</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个SSH密钥对用于访问GitLab仓库</li>
+<li class='whitespace-normal break-words' index='1'>运行：<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>ssh-keygen -t rsa -b 4096 -f gitlab_id_rsa</code></li>
+<li class='whitespace-normal break-words' index='2'>将公钥添加到GitLab账户</li>
+</ul>
+</li>
+</ol>
+<h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>2. 在GitLab中设置CI/CD变量</h3>
+<p class='whitespace-pre-wrap break-words'>在GitLab项目中，设置以下CI/CD变量：</p>
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='0'>
+<li class='whitespace-normal break-words' index='0'>访问 Settings → CI/CD → Variables，添加以下变量：</li>
+</ul>
+
+变量名 | 描述 | 是否受保护
+-- | -- | --
+GITHUB_TOKEN | GitHub个人访问令牌 | 是
+GITHUB_SSH_PRIVATE_KEY | GitHub SSH私钥内容 | 是
+GITLAB_API_TOKEN | GitLab API访问令牌 | 是
+GITLAB_SSH_PRIVATE_KEY | GitLab SSH私钥内容 | 是
+GITLAB_USER_NAME | 用于提交的Git用户名 | 否
+GITLAB_USER_EMAIL | 用于提交的Git邮箱 | 否
+</pre>
+<h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>3. 设置定时任务</h3>
+<ol class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7' depth='0'>
+<li class='whitespace-normal break-words' index='0'>在GitLab项目中，前往 CI/CD → Schedules</li>
+<li class='whitespace-normal break-words' index='1'>点击 'New schedule' 按钮</li>
+<li class='whitespace-normal break-words' index='2'>设置如下参数：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'><strong>描述</strong>：GitHub仓库每周镜像</li>
+<li class='whitespace-normal break-words' index='1'><strong>间隔模式</strong>：自定义，设置为 <code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>0 2 * * 1</code>（每周一凌晨2点）</li>
+<li class='whitespace-normal break-words' index='2'><strong>目标分支</strong>：<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>main</code> 或 <code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>master</code>（取决于你的默认分支）</li>
+<li class='whitespace-normal break-words' index='3'><strong>启用</strong>：确保勾选了这一选项</li>
+</ul>
+</li>
+</ol>
+<h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>4. 将配置文件添加到GitLab项目</h3>
+<p class='whitespace-pre-wrap break-words'>将上面的<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>.gitlab-ci.yml</code>文件添加到你的GitLab项目中。">
+<meta property="og:title" content="定时自动备份Github所有仓库">
+<meta property="og:description" content="- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
+- 防止Github账号被封禁或者丢失访问权限等问题
+
+
+
+<html>
+<body>
+<!--StartFragment--><h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>1. 必要的准备工作</h3>
+<h4 class='text-base font-bold text-text-100 mt-1' level='4'>创建必要的访问令牌和SSH密钥</h4>
+<ol class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7' depth='0'>
+<li class='whitespace-normal break-words' index='0'><strong>GitHub Token</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个具有 <code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>repo</code> 权限的个人访问令牌（PAT）</li>
+<li class='whitespace-normal break-words' index='1'>访问：GitHub → Settings → Developer settings → Personal access tokens</li>
+</ul>
+</li>
+<li class='whitespace-normal break-words' index='1'><strong>GitHub SSH 密钥</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个SSH密钥对用于访问GitHub仓库</li>
+<li class='whitespace-normal break-words' index='1'>运行：<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>ssh-keygen -t rsa -b 4096 -f github_id_rsa</code></li>
+<li class='whitespace-normal break-words' index='2'>将公钥添加到GitHub账户</li>
+</ul>
+</li>
+<li class='whitespace-normal break-words' index='2'><strong>GitLab API Token</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个具有API访问权限的GitLab个人访问令牌</li>
+<li class='whitespace-normal break-words' index='1'>访问：GitLab → Preferences → Access Tokens</li>
+</ul>
+</li>
+<li class='whitespace-normal break-words' index='3'><strong>GitLab SSH 密钥</strong>：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'>创建一个SSH密钥对用于访问GitLab仓库</li>
+<li class='whitespace-normal break-words' index='1'>运行：<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>ssh-keygen -t rsa -b 4096 -f gitlab_id_rsa</code></li>
+<li class='whitespace-normal break-words' index='2'>将公钥添加到GitLab账户</li>
+</ul>
+</li>
+</ol>
+<h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>2. 在GitLab中设置CI/CD变量</h3>
+<p class='whitespace-pre-wrap break-words'>在GitLab项目中，设置以下CI/CD变量：</p>
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='0'>
+<li class='whitespace-normal break-words' index='0'>访问 Settings → CI/CD → Variables，添加以下变量：</li>
+</ul>
+
+变量名 | 描述 | 是否受保护
+-- | -- | --
+GITHUB_TOKEN | GitHub个人访问令牌 | 是
+GITHUB_SSH_PRIVATE_KEY | GitHub SSH私钥内容 | 是
+GITLAB_API_TOKEN | GitLab API访问令牌 | 是
+GITLAB_SSH_PRIVATE_KEY | GitLab SSH私钥内容 | 是
+GITLAB_USER_NAME | 用于提交的Git用户名 | 否
+GITLAB_USER_EMAIL | 用于提交的Git邮箱 | 否
+</pre>
+<h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>3. 设置定时任务</h3>
+<ol class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7' depth='0'>
+<li class='whitespace-normal break-words' index='0'>在GitLab项目中，前往 CI/CD → Schedules</li>
+<li class='whitespace-normal break-words' index='1'>点击 'New schedule' 按钮</li>
+<li class='whitespace-normal break-words' index='2'>设置如下参数：
+<ul class='[&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'>
+<li class='whitespace-normal break-words' index='0'><strong>描述</strong>：GitHub仓库每周镜像</li>
+<li class='whitespace-normal break-words' index='1'><strong>间隔模式</strong>：自定义，设置为 <code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>0 2 * * 1</code>（每周一凌晨2点）</li>
+<li class='whitespace-normal break-words' index='2'><strong>目标分支</strong>：<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>main</code> 或 <code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>master</code>（取决于你的默认分支）</li>
+<li class='whitespace-normal break-words' index='3'><strong>启用</strong>：确保勾选了这一选项</li>
+</ul>
+</li>
+</ol>
+<h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'>4. 将配置文件添加到GitLab项目</h3>
+<p class='whitespace-pre-wrap break-words'>将上面的<code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'>.gitlab-ci.yml</code>文件添加到你的GitLab项目中。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.52013120.xyz/post/51.html">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
+<title>定时自动备份Github所有仓库</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">定时自动备份Github所有仓库</h1>
+<div class="title-right">
+    <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><ul>
+<li>利用<code class="notranslate">gitlab</code>的CI CD定时自动备份<code class="notranslate">Github</code>所有仓库到<code class="notranslate">gitlab</code></li>
+<li>防止Github账号被封禁或者丢失访问权限等问题</li>
+</ul>
+
+
+<h3>1. 必要的准备工作</h3>
+<h4>创建必要的访问令牌和SSH密钥</h4>
+<ol>
+<li><strong>GitHub Token</strong>：
+<ul>
+<li>创建一个具有 <code class="notranslate">repo</code> 权限的个人访问令牌（PAT）</li>
+<li>访问：GitHub → Settings → Developer settings → Personal access tokens</li>
+</ul>
+</li>
+<li><strong>GitHub SSH 密钥</strong>：
+<ul>
+<li>创建一个SSH密钥对用于访问GitHub仓库</li>
+<li>运行：<code class="notranslate">ssh-keygen -t rsa -b 4096 -f github_id_rsa</code></li>
+<li>将公钥添加到GitHub账户</li>
+</ul>
+</li>
+<li><strong>GitLab API Token</strong>：
+<ul>
+<li>创建一个具有API访问权限的GitLab个人访问令牌</li>
+<li>访问：GitLab → Preferences → Access Tokens</li>
+</ul>
+</li>
+<li><strong>GitLab SSH 密钥</strong>：
+<ul>
+<li>创建一个SSH密钥对用于访问GitLab仓库</li>
+<li>运行：<code class="notranslate">ssh-keygen -t rsa -b 4096 -f gitlab_id_rsa</code></li>
+<li>将公钥添加到GitLab账户</li>
+</ul>
+</li>
+</ol>
+<h3>2. 在GitLab中设置CI/CD变量</h3>
+<p>在GitLab项目中，设置以下CI/CD变量：</p>
+<ul>
+<li>访问 Settings → CI/CD → Variables，添加以下变量：</li>
+</ul>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+<th>是否受保护</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GITHUB_TOKEN</td>
+<td>GitHub个人访问令牌</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GITHUB_SSH_PRIVATE_KEY</td>
+<td>GitHub SSH私钥内容</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GITLAB_API_TOKEN</td>
+<td>GitLab API访问令牌</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GITLAB_SSH_PRIVATE_KEY</td>
+<td>GitLab SSH私钥内容</td>
+<td>是</td>
+</tr>
+<tr>
+<td>GITLAB_USER_NAME</td>
+<td>用于提交的Git用户名</td>
+<td>否</td>
+</tr>
+<tr>
+<td>GITLAB_USER_EMAIL</td>
+<td>用于提交的Git邮箱</td>
+<td>否</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+
+<h3>3. 设置定时任务</h3>
+<ol>
+<li>在GitLab项目中，前往 CI/CD → Schedules</li>
+<li>点击 "New schedule" 按钮</li>
+<li>设置如下参数：
+<ul>
+<li><strong>描述</strong>：GitHub仓库每周镜像</li>
+<li><strong>间隔模式</strong>：自定义，设置为 <code class="notranslate">0 2 * * 1</code>（每周一凌晨2点）</li>
+<li><strong>目标分支</strong>：<code class="notranslate">main</code> 或 <code class="notranslate">master</code>（取决于你的默认分支）</li>
+<li><strong>启用</strong>：确保勾选了这一选项</li>
+</ul>
+</li>
+</ol>
+<h3>4. 将配置文件添加到GitLab项目</h3>
+<p>将上面的<code class="notranslate">.gitlab-ci.yml</code>文件添加到你的GitLab项目中。你可以通过Web界面或者Git命令行来完成这一步。</p>
+
+
+<p><code class="notranslate">gitlab</code>的CI CD配置示例：</p>
+<pre class="notranslate"><code class="notranslate"># .gitlab-ci.yml
+# GitLab CI/CD 配置文件，用于每周一自动将 GitHub 仓库镜像到 GitLab
+
+stages:
+  - mirror
+
+variables:
+  # 设置时区为亚洲/上海
+  TZ: "Asia/Shanghai"
+  # 设置 Git 拉取深度，0表示完整克隆（包含所有历史记录）
+  GIT_DEPTH: 0
+  # 设置 Git 策略为克隆，确保每次作业都有一个干净的工作区
+  GIT_STRATEGY: clone
+  # 超时设置，避免长时间运行
+  MIRROR_TIMEOUT: 3600
+
+mirror_github_repos:
+  stage: mirror
+  image: alpine:latest
+  # 仅在每周一运行
+  only:
+    - schedules
+  # 设置最大运行时间为1小时
+  timeout: 1h
+  # 设置作业可重试次数和间隔
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+  
+  before_script:
+    # 安装所需的工具
+    - apk update
+    - apk add --no-cache git curl jq openssh-client bash
+    # 配置 Git
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    # 设置 SSH 配置
+    - mkdir -p ~/.ssh
+    - echo "${GITHUB_SSH_PRIVATE_KEY}" &gt; ~/.ssh/id_rsa_github
+    - echo "${GITLAB_SSH_PRIVATE_KEY}" &gt; ~/.ssh/id_rsa_gitlab
+    - chmod 600 ~/.ssh/id_rsa_github ~/.ssh/id_rsa_gitlab
+    - ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts
+    - ssh-keyscan ${CI_SERVER_HOST} &gt;&gt; ~/.ssh/known_hosts
+    # 创建SSH配置文件以区分不同主机的密钥
+    - |
+      cat &gt; ~/.ssh/config &lt;&lt; EOF
+      Host github.com
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_github
+        IdentitiesOnly yes
+        
+      Host ${CI_SERVER_HOST}
+        HostName ${CI_SERVER_HOST}
+        User git
+        IdentityFile ~/.ssh/id_rsa_gitlab
+        IdentitiesOnly yes
+      EOF
+    - chmod 600 ~/.ssh/config
+    # 创建工作目录
+    - mkdir -p /tmp/mirror_workspace
+    - cd /tmp/mirror_workspace
+
+  script:
+    - |
+      # 创建日志文件
+      LOG_FILE="/tmp/mirror_log_$(date +%Y%m%d).log"
+      echo "开始镜像任务: $(date)" &gt; $LOG_FILE
+      
+      # 获取所有GitHub仓库（包括私有仓库）
+      echo "正在获取GitHub仓库列表..." | tee -a $LOG_FILE
+      REPOS=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/user/repos?per_page=100" | jq -r '.[] | .ssh_url + "," + .name')
+      if [ -z "$REPOS" ]; then
+        echo "错误: 无法获取GitHub仓库列表，请检查TOKEN权限" | tee -a $LOG_FILE
+        exit 1
+      fi
+      
+      # 计数器
+      TOTAL_REPOS=$(echo "$REPOS" | wc -l)
+      SUCCESS_COUNT=0
+      FAILED_COUNT=0
+      
+      echo "发现 $TOTAL_REPOS 个仓库需要镜像" | tee -a $LOG_FILE
+      
+      # 处理每个仓库
+      echo "$REPOS" | while IFS="," read -r REPO_URL REPO_NAME; do
+        echo "============================================" | tee -a $LOG_FILE
+        echo "开始处理仓库: $REPO_NAME" | tee -a $LOG_FILE
+        
+        # 创建GitLab仓库URL
+        GITLAB_URL="git@${CI_SERVER_HOST}:${CI_PROJECT_NAMESPACE}/${REPO_NAME}.git"
+        
+        # 检查GitLab上是否已存在该仓库
+        REPO_EXISTS=$(curl -s -H "PRIVATE-TOKEN: ${GITLAB_API_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_NAMESPACE}%2F${REPO_NAME}" | jq -r '.id')
+        
+        # 如果仓库不存在，则创建
+        if [ "$REPO_EXISTS" == "null" ]; then
+          echo "GitLab上不存在该仓库，正在创建: $REPO_NAME" | tee -a $LOG_FILE
+          CREATE_RESPONSE=$(curl -s -H "PRIVATE-TOKEN: ${GITLAB_API_TOKEN}" \
+            -X POST "${CI_API_V4_URL}/projects" \
+            -d "name=${REPO_NAME}&amp;visibility=private")
+          
+          # 验证创建是否成功
+          NEW_REPO_ID=$(echo $CREATE_RESPONSE | jq -r '.id')
+          if [ "$NEW_REPO_ID" == "null" ]; then
+            echo "创建仓库失败: $REPO_NAME, 错误: $(echo $CREATE_RESPONSE | jq -r '.message')" | tee -a $LOG_FILE
+            FAILED_COUNT=$((FAILED_COUNT + 1))
+            continue
+          fi
+          echo "仓库创建成功，ID: $NEW_REPO_ID" | tee -a $LOG_FILE
+        else
+          echo "GitLab上已存在该仓库，将进行更新: $REPO_NAME" | tee -a $LOG_FILE
+        fi
+        
+        # 克隆GitHub仓库
+        echo "正在克隆GitHub仓库: $REPO_NAME..." | tee -a $LOG_FILE
+        if ! git clone --mirror "$REPO_URL" "/tmp/mirror_workspace/$REPO_NAME"; then
+          echo "克隆失败: $REPO_NAME" | tee -a $LOG_FILE
+          FAILED_COUNT=$((FAILED_COUNT + 1))
+          continue
+        fi
+        
+        # 进入仓库目录
+        cd "/tmp/mirror_workspace/$REPO_NAME"
+        
+        # 推送到GitLab
+        echo "正在推送到GitLab: $REPO_NAME..." | tee -a $LOG_FILE
+        git push --mirror "$GITLAB_URL" || {
+          # 处理冲突
+          echo "推送失败，可能存在冲突，尝试强制更新..." | tee -a $LOG_FILE
+          git fetch --prune origin
+          git update-ref -d refs/remotes/origin/HEAD 2&gt;/dev/null || true
+          
+          # 第二次尝试推送
+          if ! git push --force --mirror "$GITLAB_URL"; then
+            echo "推送失败: $REPO_NAME" | tee -a $LOG_FILE
+            FAILED_COUNT=$((FAILED_COUNT + 1))
+            cd ..
+            continue
+          fi
+        }
+        
+        # 确保仓库是私有的
+        echo "确保GitLab仓库是私有的..." | tee -a $LOG_FILE
+        curl -s -H "PRIVATE-TOKEN: ${GITLAB_API_TOKEN}" \
+          -X PUT "${CI_API_V4_URL}/projects/${CI_PROJECT_NAMESPACE}%2F${REPO_NAME}" \
+          -d "visibility=private" &gt; /dev/null
+        
+        echo "成功镜像仓库: $REPO_NAME" | tee -a $LOG_FILE
+        SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+        
+        # 清理
+        cd ..
+        rm -rf "/tmp/mirror_workspace/$REPO_NAME"
+      done
+      
+      # 统计并记录结果
+      echo "============================================" | tee -a $LOG_FILE
+      echo "镜像任务完成: $(date)" | tee -a $LOG_FILE
+      echo "总仓库数: $TOTAL_REPOS" | tee -a $LOG_FILE
+      echo "成功: $SUCCESS_COUNT" | tee -a $LOG_FILE
+      echo "失败: $FAILED_COUNT" | tee -a $LOG_FILE
+      
+      # 如果有失败的仓库，退出码不为0
+      if [ $FAILED_COUNT -gt 0 ]; then
+        echo "有 $FAILED_COUNT 个仓库镜像失败，请查看日志" | tee -a $LOG_FILE
+        exit 1
+      fi
+
+  after_script:
+    # 在任务完成后上传日志文件作为构建工件
+    - |
+      if [ -f "/tmp/mirror_log_$(date +%Y%m%d).log" ]; then
+        mkdir -p mirror_logs
+        cp "/tmp/mirror_log_$(date +%Y%m%d).log" mirror_logs/
+        echo "日志文件已保存，可在作业工件中查看"
+      fi
+
+  # 保存日志文件
+  artifacts:
+    paths:
+      - mirror_logs/
+    expire_in: 1 week
+    when: always
+</code></pre></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.52013120.xyz">繁星点点</a></div>
+<div id="footer2">
+    <span id="runday"></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
