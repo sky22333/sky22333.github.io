@@ -36,6 +36,10 @@ example.com {
 #### 重置密码
 > 数据库路径`/opt/nezha/dashboard/data/sqlite.db`
 
+安装数据库
+```
+apt update && apt install sqlite3 -y
+```
 先备份数据库
 ```
 cp /opt/nezha/dashboard/data/sqlite.db /opt/nezha/dashboard/data/sqlite.db.bak
