@@ -33,6 +33,18 @@ example.com {
 后台路径 `/dashboard`
 默认用户名密码 `admin` `admin`
 
+#### 重置密码
+> 数据库路径`/opt/nezha/dashboard/data/sqlite.db`
+
+先备份数据库
+```
+cp /opt/nezha/dashboard/data/sqlite.db /opt/nezha/dashboard/data/sqlite.db.bak
+```
+重置用户表
+```
+sqlite3 /opt/nezha/dashboard/data/sqlite.db "DELETE FROM users;"
+```
+然后重启面板，此时密码会重置为初始密码
 
 
 ### 配置多`oauth2`登录
