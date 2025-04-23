@@ -141,6 +141,7 @@ git push origin main --force
 ```
 
 或者回滚到指定提交
+> `6038e0a`是提交哈希值的前七位
 ```
 git reset --hard 6038e0a
 ```
