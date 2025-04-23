@@ -116,6 +116,16 @@ https://docker-cf.mrs.1ms.run
 <h4>清理DNS缓存</h4>
 <pre class="notranslate"><code class="notranslate">sudo systemctl restart systemd-resolved
 </code></pre>
+<h3>win系统</h3>
+<p>清理DNS缓存</p>
+<pre class="notranslate"><code class="notranslate">&amp; "$env:SystemRoot\System32\ipconfig.exe" /flushdns
+</code></pre>
+<p>查询DNS解析</p>
+<pre class="notranslate"><code class="notranslate">Resolve-DnsName -Name "example.com"
+</code></pre>
+<p>指定DNS查询</p>
+<pre class="notranslate"><code class="notranslate">Resolve-DnsName -Name "example.com" -Server 8.8.8.8
+</code></pre>
 <h1>下载速度测试</h1>
 <ul>
 <li><strong>使用<code class="notranslate">wget</code>测速的话部分链接需要加双引号</strong></li>
