@@ -18,7 +18,7 @@
 > 一键安装运行
 
 ```
-bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh)
+bash <(curl -sSL https://cdn.jsdelivr.net/gh/admin8800/sing-box@main/install.sh)
 ```
 
 **国内下载**
@@ -64,7 +64,72 @@ bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh) -p h
 - 还有更多...
 
 ---
-。">
+## 帮助
+**节点配置文件路径`/etc/sing-box/conf/`**
+
+
+- 快捷命令
+
+```
+
+基本:
+   v, version                                      显示当前版本
+   ip                                              返回当前主机的 IP
+   pbk                                             同等于 sing-box generate reality-keypair
+   get-port                                        返回一个可用的端口
+   ss2022                                          返回一个可用于 Shadowsocks 2022 的密码
+
+一般:
+   a, add [protocol] [args... | auto]              添加配置
+   c, change [name] [option] [args... | auto]      更改配置
+   d, del [name]                                   删除配置**
+   i, info [name]                                  查看配置
+   qr [name]                                       二维码信息
+   url [name]                                      URL 信息
+   log                                             查看日志
+更改:
+   full [name] [...]                               更改多个参数
+   id [name] [uuid | auto]                         更改 UUID
+   host [name] [domain]                            更改域名
+   port [name] [port | auto]                       更改端口
+   path [name] [path | auto]                       更改路径
+   passwd [name] [password | auto]                 更改密码
+   key [name] [Private key | atuo] [Public key]    更改密钥
+   method [name] [method | auto]                   更改加密方式
+   sni [name] [ ip | domain]                       更改 serverName
+   new [name] [...]                                更改协议
+   web [name] [domain]                             更改伪装网站
+
+进阶:
+   dns [...]                                       设置 DNS
+   dd, ddel [name...]                              删除多个配置**
+   fix [name]                                      修复一个配置
+   fix-all                                         修复全部配置
+   fix-caddyfile                                   修复 Caddyfile
+   fix-config.json                                 修复 config.json
+   import                                          导入 sing-box/v2ray 脚本配置
+
+管理:
+   un, uninstall                                   卸载
+   u, update [core | sh | caddy] [ver]             更新
+   U, update.sh                                    更新脚本
+   s, status                                       运行状态
+   start, stop, restart [caddy]                    启动, 停止, 重启
+   t, test                                         测试运行
+   reinstall                                       重装脚本
+
+测试:
+   debug [name]                                    显示一些 debug 信息, 仅供参考
+   gen [...]                                       同等于 add, 但只显示 JSON 内容, 不创建文件, 测试使用
+   no-auto-tls [...]                               同等于 add, 但禁止自动配置 TLS, 可用于 *TLS 相关协议
+其他:
+   bbr                                             启用 BBR, 如果支持
+   bin [...]                                       运行 sing-box 命令, 例如: sing-box bin help
+   [...] [...]                                     兼容绝大多数的 sing-box 命令, 例如: sing-box generate uuid
+   h, help                                         显示此帮助界面
+```
+
+---。">
 <meta property="og:title" content="最好用的 sing-box 一键搭建节点脚本">
 <meta property="og:description" content="### 最好用的 sing-box 一键安装脚本&管理脚本&多协议
 
@@ -74,7 +139,7 @@ bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh) -p h
 > 一键安装运行
 
 ```
-bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh)
+bash <(curl -sSL https://cdn.jsdelivr.net/gh/admin8800/sing-box@main/install.sh)
 ```
 
 **国内下载**
@@ -120,7 +185,72 @@ bash <(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh) -p h
 - 还有更多...
 
 ---
-。">
+## 帮助
+**节点配置文件路径`/etc/sing-box/conf/`**
+
+
+- 快捷命令
+
+```
+
+基本:
+   v, version                                      显示当前版本
+   ip                                              返回当前主机的 IP
+   pbk                                             同等于 sing-box generate reality-keypair
+   get-port                                        返回一个可用的端口
+   ss2022                                          返回一个可用于 Shadowsocks 2022 的密码
+
+一般:
+   a, add [protocol] [args... | auto]              添加配置
+   c, change [name] [option] [args... | auto]      更改配置
+   d, del [name]                                   删除配置**
+   i, info [name]                                  查看配置
+   qr [name]                                       二维码信息
+   url [name]                                      URL 信息
+   log                                             查看日志
+更改:
+   full [name] [...]                               更改多个参数
+   id [name] [uuid | auto]                         更改 UUID
+   host [name] [domain]                            更改域名
+   port [name] [port | auto]                       更改端口
+   path [name] [path | auto]                       更改路径
+   passwd [name] [password | auto]                 更改密码
+   key [name] [Private key | atuo] [Public key]    更改密钥
+   method [name] [method | auto]                   更改加密方式
+   sni [name] [ ip | domain]                       更改 serverName
+   new [name] [...]                                更改协议
+   web [name] [domain]                             更改伪装网站
+
+进阶:
+   dns [...]                                       设置 DNS
+   dd, ddel [name...]                              删除多个配置**
+   fix [name]                                      修复一个配置
+   fix-all                                         修复全部配置
+   fix-caddyfile                                   修复 Caddyfile
+   fix-config.json                                 修复 config.json
+   import                                          导入 sing-box/v2ray 脚本配置
+
+管理:
+   un, uninstall                                   卸载
+   u, update [core | sh | caddy] [ver]             更新
+   U, update.sh                                    更新脚本
+   s, status                                       运行状态
+   start, stop, restart [caddy]                    启动, 停止, 重启
+   t, test                                         测试运行
+   reinstall                                       重装脚本
+
+测试:
+   debug [name]                                    显示一些 debug 信息, 仅供参考
+   gen [...]                                       同等于 add, 但只显示 JSON 内容, 不创建文件, 测试使用
+   no-auto-tls [...]                               同等于 add, 但禁止自动配置 TLS, 可用于 *TLS 相关协议
+其他:
+   bbr                                             启用 BBR, 如果支持
+   bin [...]                                       运行 sing-box 命令, 例如: sing-box bin help
+   [...] [...]                                     兼容绝大多数的 sing-box 命令, 例如: sing-box generate uuid
+   h, help                                         显示此帮助界面
+```
+
+---。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/10.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
@@ -189,7 +319,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>基于233boy大佬的优化修改版</p>
 <div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>一键安装运行</p>
 </div>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://github.com/admin8800/sing-box/raw/main/install.sh)
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/admin8800/sing-box@main/install.sh)
 </code></pre>
 <p><strong>国内下载</strong></p>
 <blockquote>
@@ -226,6 +356,69 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>一键更改 (端口/UUID/密码/域名/路径/加密方式/SNI/等...)</li>
 <li>还有更多...</li>
 </ul>
+<hr>
+<h2>帮助</h2>
+<p><strong>节点配置文件路径<code class="notranslate">/etc/sing-box/conf/</code></strong></p>
+<ul>
+<li>快捷命令</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">
+基本:
+   v, version                                      显示当前版本
+   ip                                              返回当前主机的 IP
+   pbk                                             同等于 sing-box generate reality-keypair
+   get-port                                        返回一个可用的端口
+   ss2022                                          返回一个可用于 Shadowsocks 2022 的密码
+
+一般:
+   a, add [protocol] [args... | auto]              添加配置
+   c, change [name] [option] [args... | auto]      更改配置
+   d, del [name]                                   删除配置**
+   i, info [name]                                  查看配置
+   qr [name]                                       二维码信息
+   url [name]                                      URL 信息
+   log                                             查看日志
+更改:
+   full [name] [...]                               更改多个参数
+   id [name] [uuid | auto]                         更改 UUID
+   host [name] [domain]                            更改域名
+   port [name] [port | auto]                       更改端口
+   path [name] [path | auto]                       更改路径
+   passwd [name] [password | auto]                 更改密码
+   key [name] [Private key | atuo] [Public key]    更改密钥
+   method [name] [method | auto]                   更改加密方式
+   sni [name] [ ip | domain]                       更改 serverName
+   new [name] [...]                                更改协议
+   web [name] [domain]                             更改伪装网站
+
+进阶:
+   dns [...]                                       设置 DNS
+   dd, ddel [name...]                              删除多个配置**
+   fix [name]                                      修复一个配置
+   fix-all                                         修复全部配置
+   fix-caddyfile                                   修复 Caddyfile
+   fix-config.json                                 修复 config.json
+   import                                          导入 sing-box/v2ray 脚本配置
+
+管理:
+   un, uninstall                                   卸载
+   u, update [core | sh | caddy] [ver]             更新
+   U, update.sh                                    更新脚本
+   s, status                                       运行状态
+   start, stop, restart [caddy]                    启动, 停止, 重启
+   t, test                                         测试运行
+   reinstall                                       重装脚本
+
+测试:
+   debug [name]                                    显示一些 debug 信息, 仅供参考
+   gen [...]                                       同等于 add, 但只显示 JSON 内容, 不创建文件, 测试使用
+   no-auto-tls [...]                               同等于 add, 但禁止自动配置 TLS, 可用于 *TLS 相关协议
+其他:
+   bbr                                             启用 BBR, 如果支持
+   bin [...]                                       运行 sing-box 命令, 例如: sing-box bin help
+   [...] [...]                                     兼容绝大多数的 sing-box 命令, 例如: sing-box generate uuid
+   h, help                                         显示此帮助界面
+</code></pre>
 <hr></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
