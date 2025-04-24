@@ -55,6 +55,8 @@ sudo ./caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 
 并且`/root/.local/share/caddy`目录会生成一个锁文件，如果需要重新部署则需要删除这个目录
 
+CF里也会自动添加一个类型为`HTTPS`的解析记录
+
 ### 检查`ech`是否配置成功
 ```
 dig test.example.com TYPE65
