@@ -1,6 +1,6 @@
 `caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
 
-要使用`caddy`自动配置ech则需要借助`cloudflare dns`插件
+要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件
 
 ### 编译`caddy`并加入`cloudflare DNS`插件的支持
 1：安装`go`环境
