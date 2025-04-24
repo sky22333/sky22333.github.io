@@ -3,7 +3,7 @@
 要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件
 
 ### 编译`caddy`并加入`cloudflare DNS`插件的支持
-1：安装`go`环境
+1：一键安装`go`环境
 ```
 bash <(curl -sSL https://cdn.jsdelivr.net/gh/sky22333/shell@main/go.sh)
 ```
