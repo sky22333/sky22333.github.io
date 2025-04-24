@@ -51,7 +51,7 @@ test.example.com {
 }
 ```
 #### 配置说明
-`dns cloudflare`这个配置填`cf dns`的`api密钥`
+`dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
 `ech ech.example.com`这里的域名应该使用公共域名，要跟你域名无关的，所以可以无需修改
 
@@ -63,7 +63,7 @@ test.example.com {
 ```
 sudo ./caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 ```
-此时应该就配置成功了，可以访问你的域名看下是否能成功访问
+不出意外的话就启动成功了，然后可以访问你的域名看下是否能成功访问
 
 并且`/root/.local/share/caddy`目录会生成一个锁文件，如果需要重新部署则需要删除这个目录
 
@@ -180,7 +180,7 @@ test.example.com {
 }
 ```
 #### 配置说明
-`dns cloudflare`这个配置填`cf dns`的`api密钥`
+`dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
 `ech ech.example.com`这里的域名应该使用公共域名，要跟你域名无关的，所以可以无需修改
 
@@ -192,7 +192,7 @@ test.example.com {
 ```
 sudo ./caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 ```
-此时应该就配置成功了，可以访问你的域名看下是否能成功访问
+不出意外的话就启动成功了，然后可以访问你的域名看下是否能成功访问
 
 并且`/root/.local/share/caddy`目录会生成一个锁文件，如果需要重新部署则需要删除这个目录
 
@@ -365,14 +365,14 @@ test.example.com {
 }
 </code></pre>
 <h4>配置说明</h4>
-<p><code class="notranslate">dns cloudflare</code>这个配置填<code class="notranslate">cf dns</code>的<code class="notranslate">api密钥</code></p>
+<p><code class="notranslate">dns cloudflare</code>这个配置填CF的<code class="notranslate">区域 DNS API 令牌</code></p>
 <p><code class="notranslate">ech ech.example.com</code>这里的域名应该使用公共域名，要跟你域名无关的，所以可以无需修改</p>
 <p><code class="notranslate">test.example.com</code>替换你的域名，并且解析到你的IP，不用开小黄云</p>
 <p><code class="notranslate">root * /tmp</code>这个配置代表以网页浏览文件的形式，浏览你服务器的<code class="notranslate">/tmp</code>目录</p>
 <h3>启动<code class="notranslate">caddy</code></h3>
 <pre class="notranslate"><code class="notranslate">sudo ./caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 </code></pre>
-<p>此时应该就配置成功了，可以访问你的域名看下是否能成功访问</p>
+<p>不出意外的话就启动成功了，然后可以访问你的域名看下是否能成功访问</p>
 <p>并且<code class="notranslate">/root/.local/share/caddy</code>目录会生成一个锁文件，如果需要重新部署则需要删除这个目录</p>
 <p>CF里也会自动添加一个类型为<code class="notranslate">HTTPS</code>的解析记录</p>
 <h3>检查<code class="notranslate">ech</code>是否配置成功</h3>

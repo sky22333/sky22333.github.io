@@ -39,7 +39,7 @@ test.example.com {
 }
 ```
 #### 配置说明
-`dns cloudflare`这个配置填`cf dns`的`api密钥`
+`dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
 `ech ech.example.com`这里的域名应该使用公共域名，要跟你域名无关的，所以可以无需修改
 
@@ -51,7 +51,7 @@ test.example.com {
 ```
 sudo ./caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 ```
-此时应该就配置成功了，可以访问你的域名看下是否能成功访问
+不出意外的话就启动成功了，然后可以访问你的域名看下是否能成功访问
 
 并且`/root/.local/share/caddy`目录会生成一个锁文件，如果需要重新部署则需要删除这个目录
 
