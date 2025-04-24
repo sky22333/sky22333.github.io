@@ -137,7 +137,9 @@ sudo systemctl status caddy
 test.example.com {
 	reverse_proxy localhost:8080
 }
-```。">
+```
+
+重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录。">
 <meta property="og:title" content="caddy给域名用上ECH加密">
 <meta property="og:description" content="`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
 
@@ -266,7 +268,9 @@ sudo systemctl status caddy
 test.example.com {
 	reverse_proxy localhost:8080
 }
-```。">
+```
+
+重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/52.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
@@ -434,7 +438,8 @@ sudo systemctl status caddy
 test.example.com {
 	reverse_proxy localhost:8080
 }
-</code></pre></div>
+</code></pre>
+<p>重新部署记得删除：<code class="notranslate">/root/.local/share/caddy</code>锁文件，和CF里的<code class="notranslate">HTTPS</code>解析记录</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

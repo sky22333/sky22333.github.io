@@ -126,3 +126,5 @@ test.example.com {
 	reverse_proxy localhost:8080
 }
 ```
+
+重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录

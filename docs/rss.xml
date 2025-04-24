@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 24 Apr 2025 11:02:43 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>caddy给域名用上ECH加密</title><link>https://blog.52013120.xyz/post/52.html</link><description>`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 24 Apr 2025 11:04:30 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>caddy给域名用上ECH加密</title><link>https://blog.52013120.xyz/post/52.html</link><description>`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
 
 要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件
 
@@ -126,7 +126,9 @@ sudo systemctl status caddy
 test.example.com {
 	reverse_proxy localhost:8080
 }
-```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>定时自动备份Github所有仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
+```
+
+重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>定时自动备份Github所有仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
 - 防止Github账号被封禁或者丢失访问权限等问题
 
 
