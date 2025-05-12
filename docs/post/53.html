@@ -10,17 +10,19 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 使用`sing-box`手搓`anytls`协议
+<meta name="description" content="
+## 使用`sing-box`手搓`anytls`协议
 
 - 客户端和服务端的`sing-box`必须要`v1.12.0`版本以上
 
-- 该协议配合TLS使用才能发挥最大效果，所以需要一个域名解析到服务器地址。">
+- 需要一个域名解析到服务器地址。">
 <meta property="og:title" content="anytls协议部署教程">
-<meta property="og:description" content="## 使用`sing-box`手搓`anytls`协议
+<meta property="og:description" content="
+## 使用`sing-box`手搓`anytls`协议
 
 - 客户端和服务端的`sing-box`必须要`v1.12.0`版本以上
 
-- 该协议配合TLS使用才能发挥最大效果，所以需要一个域名解析到服务器地址。">
+- 需要一个域名解析到服务器地址。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/53.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
@@ -91,14 +93,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>客户端和服务端的<code class="notranslate">sing-box</code>必须要<code class="notranslate">v1.12.0</code>版本以上</p>
 </li>
 <li>
-<p>该协议配合TLS使用才能发挥最大效果，所以需要一个域名解析到服务器地址。</p>
+<p>需要一个域名解析到服务器地址。</p>
 </li>
 <li>
 <p>以下配置需要自行去掉注释</p>
 </li>
 </ul>
-<h3>服务端配置示例</h3>
-<p><code class="notranslate">/etc/sing-box/config.json</code></p>
+<h3>服务端（运行在服务器里）</h3>
+<p><code class="notranslate">sing-box</code>官方<code class="notranslate">beta</code>版安装脚本，因为目前正式版本暂不支持<code class="notranslate">anytls</code>，所以需要安装<code class="notranslate">beta</code>版</p>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
+</code></pre>
+<p>配置路径：<code class="notranslate">/etc/sing-box/config.json</code></p>
+<p>服务端节点配置：</p>
 <pre class="notranslate"><code class="notranslate">{
   "log": {
     "level": "info"
@@ -112,7 +118,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
       "users": [
         {
           "name": "sekai", // 名称随意填写
-          "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8="  // 协议认证的密码
+          "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8="  // 协议认证密码
         }
       ],
       "tls": {
@@ -139,8 +145,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
   }
 }
 </code></pre>
-<h3>客户端配置示例</h3>
-<p>可添加到<code class="notranslate">v2rayN</code>自定义配置，内核选<code class="notranslate">sing-box</code>，客户端和服务端的<code class="notranslate">sing-box</code>必须要<code class="notranslate">v1.12.0</code>版本以上</p>
+<h4>命令：</h4>
+<p>重启	             <code class="notranslate">systemctl restart sing-box</code></p>
+<p>停止	             <code class="notranslate">systemctl stop sing-box</code></p>
+<p>开启开机自启	             <code class="notranslate">systemctl enable sing-box</code></p>
+<p>查看运行状态              <code class="notranslate">systemctl status sing-box</code></p>
+<p>查看日志	             <code class="notranslate">journalctl -u sing-box --output cat -e</code></p>
+<hr>
+<h3>客户端（运行在本地设备）</h3>
+<p>1：下载<code class="notranslate">sing-box</code>内核<a href="https://github.com/SagerNet/sing-box/releases/download/v1.12.0-beta.13/sing-box-1.12.0-beta.13-windows-amd64.zip">最新<code class="notranslate">beta</code>版</a>，</p>
+<p>2：替换<code class="notranslate">v2rayN</code>的sing-box内核，路径在：<code class="notranslate">v2rayN-windows-64-desktop\v2rayN-windows-64\bin\sing_box</code></p>
+<p>3：将以下配置添加到<code class="notranslate">v2rayN</code>的自定义配置配置文件，内核选<code class="notranslate">sing-box</code>，确保已经替换了最新版内核。</p>
+<p>4：注意：由于<code class="notranslate">sing-box</code>内核最新版本的配置语法有很大变化，切换最新内核后，<code class="notranslate">v2rayN</code>的tun功能可能会失效。依赖<code class="notranslate">sing-box</code>内核的协议也可能会无法使用，例如<code class="notranslate">hy2</code>协议。可以使用<code class="notranslate">clash</code>系列的<code class="notranslate">gui</code>客户端。<code class="notranslate">v2rayN</code>已经有<code class="notranslate">anytls</code>协议的相关PR，但是目前暂未合并。<code class="notranslate">clash-verge-rev</code>可以直接使用。</p>
+<p><code class="notranslate">v2rayN</code>客户端节点配置示例：</p>
 <p><code class="notranslate">config.json</code></p>
 <pre class="notranslate"><code class="notranslate">{
   "log": {
@@ -161,7 +178,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
       "tag": "anytls-out",
       "server": "blog.52013120.xyz", // 服务端地址（你的域名）
       "server_port": 8443,  // 节点端口
-      "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=",  // 协议认证的密码
+      "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=",  // 协议认证密码
       "tls": {
         "enabled": true,
         "server_name": "blog.52013120.xyz"  // 你的域名
@@ -177,7 +194,30 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     ]
   }
 }
-</code></pre></div>
+</code></pre>
+<hr>
+<h3>客户端<code class="notranslate">clash-verge</code>配置文件</h3>
+<pre class="notranslate"><code class="notranslate">proxies:
+- name: anytls节点
+  type: anytls
+  server: blog.52013120.xyz  # 服务端地址（你的域名）
+  port: 8443 # 节点端口
+  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8="  # 协议认证密码
+  client-fingerprint: chrome
+  udp: true
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 0
+  sni: "blog.52013120.xyz"  # 你的域名
+  alpn:
+    - h2
+    - http/1.1
+  skip-cert-verify: true
+</code></pre>
+<p>1：<code class="notranslate">订阅</code>——<code class="notranslate">新建</code>——类型选<code class="notranslate">Local</code>——<code class="notranslate">名称</code>随便填——<code class="notranslate">确认</code>——右键<code class="notranslate">编辑文件</code>——替换以上全部文件</p>
+<p>2：此时<code class="notranslate">代理</code>菜单里就可以看到该节点：</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/30c8c491219e05b0a2793a7427eb395dbdcae804874d3d5a72aa600ef8a7442d/68747470733a2f2f696d672e6572707765622e65752e6f72672f696d67732f323032352f30352f646433656339616566366236343861372e706e67"><img src="https://camo.githubusercontent.com/30c8c491219e05b0a2793a7427eb395dbdcae804874d3d5a72aa600ef8a7442d/68747470733a2f2f696d672e6572707765622e65752e6f72672f696d67732f323032352f30352f646433656339616566366236343861372e706e67" alt="" data-canonical-src="https://img.erpweb.eu.org/imgs/2025/05/dd3ec9aef6b648a7.png" style="max-width: 100%;"></a></p>
+<h3>以上客户端配置为简化版本，更多分流信息可以自己研究下。</h3></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
