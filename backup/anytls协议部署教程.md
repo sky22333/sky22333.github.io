@@ -157,4 +157,4 @@ proxies:
 
 
 
-### 以上客户端配置为简化版本，更多分流信息可以自己研究下。
+### 以上客户端配置为简化版本，更多分流信息可以自己研究下。安卓手机可以直接使用[NekoBoxForAndroid](https://github.com/MatsuriDayo/NekoBoxForAndroid/releases)，苹果使用小火箭。
