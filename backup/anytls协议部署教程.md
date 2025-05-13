@@ -137,19 +137,15 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 proxies:
 - name: anytls节点
   type: anytls
-  server: blog.52013120.xyz  # 服务端地址（你的域名）
+  server: blog.52013120.xyz # 服务端地址（你的域名）
   port: 8443 # 节点端口
-  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8="  # 协议认证密码
-  client-fingerprint: chrome
+  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" # 协议认证密码
   udp: true
   idle-session-check-interval: 30
   idle-session-timeout: 30
   min-idle-session: 0
-  sni: "blog.52013120.xyz"  # 你的域名
-  alpn:
-    - h2
-    - http/1.1
-  skip-cert-verify: true
+  tls: true
+  servername: blog.52013120.xyz # 你的域名
 ```
 
 

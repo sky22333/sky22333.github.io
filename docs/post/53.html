@@ -200,19 +200,15 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">proxies:
 - name: anytls节点
   type: anytls
-  server: blog.52013120.xyz  # 服务端地址（你的域名）
+  server: blog.52013120.xyz # 服务端地址（你的域名）
   port: 8443 # 节点端口
-  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8="  # 协议认证密码
-  client-fingerprint: chrome
+  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" # 协议认证密码
   udp: true
   idle-session-check-interval: 30
   idle-session-timeout: 30
   min-idle-session: 0
-  sni: "blog.52013120.xyz"  # 你的域名
-  alpn:
-    - h2
-    - http/1.1
-  skip-cert-verify: true
+  tls: true
+  servername: blog.52013120.xyz # 你的域名
 </code></pre>
 <p>1：<code class="notranslate">订阅</code>——<code class="notranslate">新建</code>——类型选<code class="notranslate">Local</code>——<code class="notranslate">名称</code>随便填——<code class="notranslate">确认</code>——右键<code class="notranslate">编辑文件</code>——替换以上全部文件</p>
 <p>2：此时<code class="notranslate">代理</code>菜单里就可以看到该节点：</p>
