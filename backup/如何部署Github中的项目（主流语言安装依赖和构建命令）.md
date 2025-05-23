@@ -1,7 +1,7 @@
 ## 各个主流编程语言的安装依赖和构建运行命令
 
 > [!TIP]
-> ## JavaScript（Node.js）💻
+> ## 前端 💻
 
 #### 基本代码结构
 ```
@@ -16,16 +16,43 @@ my-nodejs-project/
 ├── package.json
 └── webpack.config.js
 ```
+#### 安装依赖（推荐使用pnpm）
+```
+npm i
+```
 
-#### 安装依赖
+
+#### 安装依赖包
+比如框架、工具库等
 ```
-npm install
+npm install 包名
 ```
+
+#### 安装开发依赖包
+比如测试框架、代码检查、构建工具等
+```
+npm install 包名 -D
+```
+
+#### 全局安装依赖包
+
+全局安装的包可以在命令行任何地方直接使用，一般是命令行工具类包
+`pnpm`则是`pnpm add -g 包名`
+```
+npm install -g 包名
+```
+
+
 #### 构建打包
 ```
 npm run build
 ```
-#### 运行
+
+#### 测试启动
+```
+npm run dev
+```
+#### 直接启动
 ```
 npm start
 ```
@@ -48,10 +75,14 @@ my-python-project/
 ├── templates/
 ├── tests/
 ├── utils/
-├── .dockerignore
 ├── .env.local
 ├── .gitignore
 └── LICENSE
+```
+
+#### 自动识别所有依赖并生成依赖清单
+```
+pip freeze > requirements.txt
 ```
 
 #### 安装依赖
@@ -61,8 +92,9 @@ pip install -r requirements.txt
 
 #### 运行
 ```
-python myapp.py
+python app.py
 ```
+
 
 > [!TIP]
 > ## Java (Spring Boot) 💻
@@ -140,41 +172,6 @@ GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o myapp
 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o myapp.exe
 ```
 
-
-
-> [!NOTE]
-> ## 前端项目（React、Vue，等等） 💻
-
-#### 基本代码结构
-```
-my-react-app/
-├── node_modules/
-├── public/
-│ └── index.html
-├── src/
-│ ├── App.js
-│ └── index.js
-├── .gitignore
-├── package.json
-└── README.md
-```
-
-
-#### 安装依赖
-```
-npm install
-```
-
-#### 构建打包
-```
-npm run build
-```
-
-`React`项目默认会将构建后的文件输出到 `build` 目录，使用 `nginx`  `caddy`等等工具运行构建出来的静态文件。
-
-`Vue`项目默认会将构建后的文件输出到 `dist` 目录，使用 `nginx`  `caddy`等等工具运行构建出来的静态文件。
-
-
 ## PHP 💻
 
 基本代码机构
@@ -212,44 +209,3 @@ composer install
 
 安装`PHP`和`PHP-FPM` 并配置配置`nginx`，确保你的`public/index.php`是项目的入口文件，`nginx`运行目录一般都是这个目录。
 
-
-> [!NOTE]
-> ## Docker 💻
-
-### 万物皆可`docker`，一般项目中有`Dockerfile`文件即可一键部署
-
- `Dockerfile`文件示例
-
-```
-# 使用官方的 Python 镜像作为基础镜像
-FROM python:3.9-slim
-
-# 设置工作目录
-WORKDIR /app
-
-# 复制 requirements.txt 文件并安装依赖
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 复制应用源代码到工作目录
-COPY src/ .
-
-# 暴露应用运行的端口
-EXPOSE 5000
-
-# 运行应用
-CMD ["python", "app.py"]
-```
-
-
-### 构建 Docker 镜像
-
-```
-docker build -t myimgname .
-```
-
-### 运行镜像
-
-```
-docker run -d -p 5000:5000 myimgname
-```
