@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 12 May 2025 23:25:12 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 23 May 2025 11:16:56 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
 ## 使用`sing-box`手搓`anytls`协议
 
 - 客户端和服务端的`sing-box`必须要`v1.12.0`版本以上
@@ -1978,163 +1978,178 @@ docker compose restart&#13;
 &#13;
 ### 知识库&#13;
 &#13;
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>如何部署Github中的项目（主流语言安装依赖和构建命令）</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令&#13;
-&#13;
-&gt; [!TIP]&#13;
-&gt; ## JavaScript（Node.js）💻&#13;
-&#13;
-#### 基本代码结构&#13;
-```&#13;
-my-nodejs-project/&#13;
-├── node_modules/&#13;
-├── public/&#13;
-│ └── index.html&#13;
-├── src/&#13;
-│ ├── index.js&#13;
-│ └── App.js&#13;
-├── .gitignore&#13;
-├── package.json&#13;
-└── webpack.config.js&#13;
-```&#13;
-&#13;
-#### 安装依赖&#13;
-```&#13;
-npm install&#13;
-```&#13;
-#### 构建打包&#13;
-```&#13;
-npm run build&#13;
-```&#13;
-#### 运行&#13;
-```&#13;
-npm start&#13;
-```&#13;
-&#13;
-&gt; [!TIP]&#13;
-&gt; ## Python 💻&#13;
-&#13;
-#### 基本代码结构&#13;
-```&#13;
-my-python-project/&#13;
-├── .github/&#13;
-├── myapp.py&#13;
-├── config.py&#13;
-├── requirements.txt&#13;
-├── scripts/&#13;
-│   └── run.sh&#13;
-├── logs/&#13;
-├── models/&#13;
-├── services/&#13;
-├── templates/&#13;
-├── tests/&#13;
-├── utils/&#13;
-├── .dockerignore&#13;
-├── .env.local&#13;
-├── .gitignore&#13;
-└── LICENSE&#13;
-```&#13;
-&#13;
-#### 安装依赖&#13;
-```&#13;
-pip install -r requirements.txt&#13;
-```&#13;
-&#13;
-#### 运行&#13;
-```&#13;
-python myapp.py&#13;
-```&#13;
-&#13;
-&gt; [!TIP]&#13;
-&gt; ## Java (Spring Boot) 💻&#13;
-&#13;
-#### 基本代码结构&#13;
-```&#13;
-my-springboot-project/&#13;
-├── src/&#13;
-│ ├── main/&#13;
-│ │ ├── java/&#13;
-│ │ │ └── com/&#13;
-│ │ │ └── example/&#13;
-│ │ │ └── MySpringBootApplication.java&#13;
-│ │ └── resources/&#13;
-│ │ ├── application.properties&#13;
-│ │ └── static/&#13;
-│ └── test/&#13;
-│ └── java/&#13;
-│ └── com/&#13;
-│ └── example/&#13;
-│ └── MySpringBootApplicationTests.java&#13;
-├── .gitignore&#13;
-├── build.gradle&#13;
-└── pom.xml&#13;
-```&#13;
-&#13;
-#### 安装依赖和构建&#13;
-&#13;
-#### Maven&#13;
-```&#13;
-mvn clean package&#13;
-```&#13;
-#### Gradle&#13;
-```&#13;
-./gradlew build&#13;
-```&#13;
-#### 运行构建出来的`jar`包（一般在项目的`target/you.jar`目录中）&#13;
-```&#13;
-java -jar target/you.jar&#13;
-```&#13;
-&#13;
-&gt; [!TIP]&#13;
-&gt; ## Go 💻&#13;
-&#13;
-&#13;
-#### 基本代码结构&#13;
-```&#13;
-my-go-project/&#13;
-├── main.go&#13;
-└── README.md&#13;
-```&#13;
-&#13;
-#### 无依赖管理工具的默认方式&#13;
-&#13;
-#### 构建&#13;
-&#13;
-```&#13;
-go build -o app myapp&#13;
-```&#13;
-#### 运行构建出来的二进制文件（一般在当前目录下）&#13;
-```&#13;
-./myapp&#13;
-```&#13;
-&#13;
-&gt; [!NOTE]&#13;
-&gt; ## 前端项目（React、Vue，等等） 💻&#13;
-&#13;
-#### 基本代码结构&#13;
-```&#13;
-my-react-app/&#13;
-├── node_modules/&#13;
-├── public/&#13;
-│ └── index.html&#13;
-├── src/&#13;
-│ ├── App.js&#13;
-│ └── index.js&#13;
-├── .gitignore&#13;
-├── package.json&#13;
-└── README.md&#13;
-```&#13;
-&#13;
-&#13;
-#### 安装依赖&#13;
-```&#13;
-npm install&#13;
-```&#13;
-&#13;
-#### 构建打包&#13;
-```&#13;
-npm run build&#13;
-```&#13;
-&#13;
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>如何部署Github中的项目（主流语言安装依赖和构建命令）</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令
+
+&gt; [!TIP]
+&gt; ## JavaScript（Node.js）💻
+
+#### 基本代码结构
+```
+my-nodejs-project/
+├── node_modules/
+├── public/
+│ └── index.html
+├── src/
+│ ├── index.js
+│ └── App.js
+├── .gitignore
+├── package.json
+└── webpack.config.js
+```
+
+#### 安装依赖
+```
+npm install
+```
+#### 构建打包
+```
+npm run build
+```
+#### 运行
+```
+npm start
+```
+
+&gt; [!TIP]
+&gt; ## Python 💻
+
+#### 基本代码结构
+```
+my-python-project/
+├── .github/
+├── myapp.py
+├── config.py
+├── requirements.txt
+├── scripts/
+│   └── run.sh
+├── logs/
+├── models/
+├── services/
+├── templates/
+├── tests/
+├── utils/
+├── .dockerignore
+├── .env.local
+├── .gitignore
+└── LICENSE
+```
+
+#### 安装依赖
+```
+pip install -r requirements.txt
+```
+
+#### 运行
+```
+python myapp.py
+```
+
+&gt; [!TIP]
+&gt; ## Java (Spring Boot) 💻
+
+#### 基本代码结构
+```
+my-springboot-project/
+├── src/
+│ ├── main/
+│ │ ├── java/
+│ │ │ └── com/
+│ │ │ └── example/
+│ │ │ └── MySpringBootApplication.java
+│ │ └── resources/
+│ │ ├── application.properties
+│ │ └── static/
+│ └── test/
+│ └── java/
+│ └── com/
+│ └── example/
+│ └── MySpringBootApplicationTests.java
+├── .gitignore
+├── build.gradle
+└── pom.xml
+```
+
+#### 安装依赖和构建
+
+#### Maven
+```
+mvn clean package
+```
+#### Gradle
+```
+./gradlew build
+```
+#### 运行构建出来的`jar`包（一般在项目的`target/you.jar`目录中）
+```
+java -jar target/you.jar
+```
+
+&gt; [!TIP]
+&gt; ## Go 💻
+
+
+#### 基本代码结构
+```
+my-go-project/
+├── main.go
+└── README.md
+```
+
+#### 初始化模块
+```
+go mod init myapp
+```
+#### 自动识别并安装依赖
+```
+go mod tidy
+```
+#### 在线运行
+```
+go run main.go
+```
+#### 构建并优化包大小
+```
+go build -ldflags='-s -w' -o myapp
+```
+#### 构建linux平台
+```
+GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o myapp
+```
+#### 构建Windows平台
+```
+GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o myapp.exe
+```
+
+
+
+&gt; [!NOTE]
+&gt; ## 前端项目（React、Vue，等等） 💻
+
+#### 基本代码结构
+```
+my-react-app/
+├── node_modules/
+├── public/
+│ └── index.html
+├── src/
+│ ├── App.js
+│ └── index.js
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+
+#### 安装依赖
+```
+npm install
+```
+
+#### 构建打包
+```
+npm run build
+```
+
 `React`项目默认会将构建后的文件输出到 `build` 目录，使用 `nginx`  `caddy`等等工具运行构建出来的静态文件。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>最好用的 sing-box 一键搭建节点脚本</title><link>https://blog.52013120.xyz/post/10.html</link><description>### 最好用的 sing-box 一键安装脚本&amp;管理脚本&amp;多协议
 
 基于233boy大佬的优化修改版

@@ -115,17 +115,32 @@ my-go-project/
 └── README.md
 ```
 
-#### 无依赖管理工具的默认方式
+#### 初始化模块
+```
+go mod init myapp
+```
+#### 自动识别并安装依赖
+```
+go mod tidy
+```
+#### 在线运行
+```
+go run main.go
+```
+#### 构建并优化包大小
+```
+go build -ldflags="-s -w" -o myapp
+```
+#### 构建linux平台
+```
+GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o myapp
+```
+#### 构建Windows平台
+```
+GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o myapp.exe
+```
 
-#### 构建
 
-```
-go build -o app myapp
-```
-#### 运行构建出来的二进制文件（一般在当前目录下）
-```
-./myapp
-```
 
 > [!NOTE]
 > ## 前端项目（React、Vue，等等） 💻

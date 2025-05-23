@@ -127,17 +127,32 @@ my-go-project/
 └── README.md
 ```
 
-#### 无依赖管理工具的默认方式
+#### 初始化模块
+```
+go mod init myapp
+```
+#### 自动识别并安装依赖
+```
+go mod tidy
+```
+#### 在线运行
+```
+go run main.go
+```
+#### 构建并优化包大小
+```
+go build -ldflags='-s -w' -o myapp
+```
+#### 构建linux平台
+```
+GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o myapp
+```
+#### 构建Windows平台
+```
+GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o myapp.exe
+```
 
-#### 构建
 
-```
-go build -o app myapp
-```
-#### 运行构建出来的二进制文件（一般在当前目录下）
-```
-./myapp
-```
 
 > [!NOTE]
 > ## 前端项目（React、Vue，等等） 💻
@@ -286,17 +301,32 @@ my-go-project/
 └── README.md
 ```
 
-#### 无依赖管理工具的默认方式
+#### 初始化模块
+```
+go mod init myapp
+```
+#### 自动识别并安装依赖
+```
+go mod tidy
+```
+#### 在线运行
+```
+go run main.go
+```
+#### 构建并优化包大小
+```
+go build -ldflags='-s -w' -o myapp
+```
+#### 构建linux平台
+```
+GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o myapp
+```
+#### 构建Windows平台
+```
+GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o myapp.exe
+```
 
-#### 构建
 
-```
-go build -o app myapp
-```
-#### 运行构建出来的二进制文件（一般在当前目录下）
-```
-./myapp
-```
 
 > [!NOTE]
 > ## 前端项目（React、Vue，等等） 💻
@@ -485,12 +515,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 ├── main.go
 └── README.md
 </code></pre>
-<h4>无依赖管理工具的默认方式</h4>
-<h4>构建</h4>
-<pre class="notranslate"><code class="notranslate">go build -o app myapp
+<h4>初始化模块</h4>
+<pre class="notranslate"><code class="notranslate">go mod init myapp
 </code></pre>
-<h4>运行构建出来的二进制文件（一般在当前目录下）</h4>
-<pre class="notranslate"><code class="notranslate">./myapp
+<h4>自动识别并安装依赖</h4>
+<pre class="notranslate"><code class="notranslate">go mod tidy
+</code></pre>
+<h4>在线运行</h4>
+<pre class="notranslate"><code class="notranslate">go run main.go
+</code></pre>
+<h4>构建并优化包大小</h4>
+<pre class="notranslate"><code class="notranslate">go build -ldflags="-s -w" -o myapp
+</code></pre>
+<h4>构建linux平台</h4>
+<pre class="notranslate"><code class="notranslate">GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o myapp
+</code></pre>
+<h4>构建Windows平台</h4>
+<pre class="notranslate"><code class="notranslate">GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o myapp.exe
 </code></pre>
 <div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
 <h2>前端项目（React、Vue，等等） 💻</h2>
