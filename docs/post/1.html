@@ -161,7 +161,7 @@ ps aux --sort=-%mem | head -n 10
 一键脚本
 
 ```
-bash <(wget -qO- https://github.com/sky22333/rootvps/raw/main/root.sh)
+bash <(curl -sSL https://cdn.jsdelivr.net/gh/sky22333/rootvps@main/root.sh)
 ```
 
 ### 设置主机名
@@ -329,7 +329,7 @@ sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapf
 ###  一键开启bbr加速
 
 ```
-bash <(wget -qO- https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
+bash <(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
 ```
 查看
 ```
@@ -491,7 +491,7 @@ ps aux --sort=-%mem | head -n 10
 一键脚本
 
 ```
-bash <(wget -qO- https://github.com/sky22333/rootvps/raw/main/root.sh)
+bash <(curl -sSL https://cdn.jsdelivr.net/gh/sky22333/rootvps@main/root.sh)
 ```
 
 ### 设置主机名
@@ -659,7 +659,7 @@ sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapf
 ###  一键开启bbr加速
 
 ```
-bash <(wget -qO- https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
+bash <(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
 ```
 查看
 ```
@@ -821,7 +821,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 <p><code class="notranslate">mem为内存，可改为cpu</code></p>
 <h3>VPS开启root登录并且修改密码：</h3>
 <p>一键脚本</p>
-<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://github.com/sky22333/rootvps/raw/main/root.sh)
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/sky22333/rootvps@main/root.sh)
 </code></pre>
 <h3>设置主机名</h3>
 <pre class="notranslate"><code class="notranslate">sudo hostnamectl set-hostname wovow
@@ -924,7 +924,7 @@ sudo localectl set-locale LANG=zh_CN.UTF-8
 <p><code class="notranslate">systemctl stop firewalld.service</code>                 # 停止防火墙</p>
 <p><code class="notranslate">systemctl disable firewalld.service</code>              # 禁止防火墙开机自启</p>
 <h3>一键开启bbr加速</h3>
-<pre class="notranslate"><code class="notranslate">bash &lt;(wget -qO- https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
+<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
 </code></pre>
 <p>查看</p>
 <pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
