@@ -128,7 +128,7 @@ KillMode=process
 WantedBy=multi-user.target
 </code></pre>
 <h4>启动并启用 Docker 服务</h4>
-<pre class="notranslate"><code class="notranslate">sudo chmod +x /etc/systemd/system/docker.service
+<pre class="notranslate"><code class="notranslate">sudo chmod +x /usr/local/bin/dockerd
 sudo systemctl daemon-reload
 sudo systemctl start docker
 sudo systemctl enable docker.service
