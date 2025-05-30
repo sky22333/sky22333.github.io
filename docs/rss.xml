@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 28 May 2025 14:52:30 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>关于github提交记录泄露真实邮箱的处理办法</title><link>https://blog.52013120.xyz/post/54.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 30 May 2025 09:32:36 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>关于github提交记录泄露真实邮箱的处理办法</title><link>https://blog.52013120.xyz/post/54.html</link><description>
 众所周知，很多人刚开始接触github的时候，可能都是新手，可能会用自己的实名邮箱或者直接用QQ邮箱注册，此时你的这些实名邮箱就会泄露，即使你后面改了邮箱后，之前的提交记录里也是公开能看到的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/54.html</guid><pubDate>Wed, 28 May 2025 14:52:02 +0000</pubDate></item><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
 ## 使用`sing-box`手搓`anytls`协议
 
@@ -1885,14 +1885,14 @@ bash &lt;(wget -qO- https://gitlab.com/yishijie/3xui/raw/main/3xui.sh)
 &#13;
 &#13;
 ## 1xx – 提供某种附加信息&#13;
-1xx 状态码表示服务器已收到请求，处理将继续。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/14.html</guid><pubDate>Fri, 19 Jul 2024 04:12:54 +0000</pubDate></item><item><title>关于xui面板报错无法监听127.0.0.1:62789的问题</title><link>https://blog.52013120.xyz/post/13.html</link><description>## 关于xui面板报错`无法监听127.0.0.1:62789`&#13;
-&#13;
-&#13;
- 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`&#13;
-#### 表现如图：&#13;
-![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)&#13;
-&#13;
-&#13;
+1xx 状态码表示服务器已收到请求，处理将继续。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/14.html</guid><pubDate>Fri, 19 Jul 2024 04:12:54 +0000</pubDate></item><item><title>关于xui面板报错无法监听127.0.0.1:62789的问题</title><link>https://blog.52013120.xyz/post/13.html</link><description>## 关于xui面板报错`无法监听127.0.0.1:62789`
+
+
+ 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`
+#### 表现如图：
+![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)
+
+
 这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/13.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>https://blog.52013120.xyz/post/12.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
 &#13;
 &#13;
