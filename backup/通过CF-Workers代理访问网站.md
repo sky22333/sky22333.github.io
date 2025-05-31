@@ -15,7 +15,7 @@ addEventListener("fetch", event => {
     /googlebot/i,
     /bingbot/i,
     /baiduspider/i,
-    /slurp/i, // Yahoo
+    /slurp/i,
     /duckduckbot/i,
     /yandex/i,
     /sogou/i,
@@ -138,12 +138,12 @@ addEventListener("fetch", event => {
       /googlebot/i,
       /bingbot/i,
       /baiduspider/i,
-      /slurp/i, // Yahoo
+      /slurp/i,
       /duckduckbot/i,
       /yandex/i,
       /sogou/i,
       /exabot/i,
-      /facebot/i, // Facebook bot
+      /facebot/i,
       /facebookexternalhit/i
     ];
 
