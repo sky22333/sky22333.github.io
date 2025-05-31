@@ -188,3 +188,88 @@ addEventListener("fetch", event => {
   }
 });
 ```
+
+
+### 代理访问所有直链
+```
+addEventListener("fetch", event => {
+  event.respondWith(handleRequest(event.request));
+});
+
+async function handleRequest(request) {
+  const originalUrl = new URL(request.url);
+  const path = originalUrl.pathname;
+
+  // 检查是否是代理模式，例如：/https://github.com/...
+  if (!path.startsWith("/http://") && !path.startsWith("/https://")) {
+    return new Response("请正确传入目标地址，需要带协议头。", { status: 400 });
+  }
+
+  const targetUrl = path.slice(1) + originalUrl.search; // 构造完整目标 URL
+  let url;
+  try {
+    url = new URL(targetUrl);
+  } catch (e) {
+    return new Response("无效的目标 URL", { status: 400 });
+  }
+
+  // 防爬虫：拦截常见 User-Agent
+  const userAgent = request.headers.get("User-Agent") || "";
+  const blockedAgents = [
+    /googlebot/i, /bingbot/i, /baiduspider/i, /slurp/i,
+    /duckduckbot/i, /yandex/i, /sogou/i, /exabot/i,
+    /facebot/i, /facebookexternalhit/i
+  ];
+  if (blockedAgents.some(re => re.test(userAgent))) {
+    return new Response("访问被拒绝", { status: 403 });
+  }
+
+  // 构造代理请求
+  const proxyRequest = new Request(url.toString(), {
+    method: request.method,
+    headers: cleanHeaders(request.headers),
+    body: request.method === "GET" || request.method === "HEAD" ? null : request.body,
+    redirect: "follow"
+  });
+
+  try {
+    const response = await fetch(proxyRequest);
+
+    // 克隆响应头并清理 CSP、X-Frame-Options 等阻止代理的问题
+    const newHeaders = new Headers(response.headers);
+    newHeaders.delete("content-security-policy");
+    newHeaders.delete("content-security-policy-report-only");
+    newHeaders.delete("x-frame-options");
+    newHeaders.set("Access-Control-Allow-Origin", "*");
+    newHeaders.set("Access-Control-Allow-Headers", "*");
+    newHeaders.set("Access-Control-Allow-Methods", "*");
+
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: newHeaders
+    });
+  } catch (err) {
+    return new Response("代理请求失败: " + err.message, { status: 502 });
+  }
+}
+
+// 清理 headers（避免 host、encoding 等引发问题）
+function cleanHeaders(headers) {
+  const newHeaders = new Headers();
+  for (const [key, value] of headers.entries()) {
+    const lower = key.toLowerCase();
+    if (
+      lower === "host" ||
+      lower === "cf-connecting-ip" ||
+      lower === "x-forwarded-for" ||
+      lower === "x-real-ip" ||
+      lower === "content-length"
+    ) {
+      continue;
+    }
+    newHeaders.set(key, value);
+  }
+  return newHeaders;
+}
+```
