@@ -7,6 +7,8 @@
 | Win代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|
 | Win代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|
 | ios代理  | 小火箭（付费）  |https://apps.apple.com/us/app/shadowrocket/id932747118|
+| ios代理  | sing-box  |https://apps.apple.com/us/app/sing-box-vt/id6673731168|
+| ios代理  | Clash Mi |https://apps.apple.com/us/app/clash-mi/id6744321968|
 | ios代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|
 | mac代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|
 | mac代理  | V2Box  |https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690|
