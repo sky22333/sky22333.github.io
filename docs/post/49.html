@@ -32,7 +32,7 @@ addEventListener('fetch', event => {
     /yandex/i,
     /sogou/i,
     /exabot/i,
-    /facebot/i, // Facebook bot
+    /facebot/i,
     /facebookexternalhit/i
   ];
 
@@ -47,7 +47,7 @@ addEventListener('fetch', event => {
 
   // 构建新的请求头，传递原请求头，并处理必要的字段
   let headers = new Headers(event.request.headers);
-  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown'); // 可以添加客户端 IP
+  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown');
 
   // 创建新的请求对象
   let request = new Request(url, {
@@ -78,7 +78,6 @@ addEventListener('fetch', event => {
 
 
 ### 增加访问限制密码认证
-> 可解决涉嫌违反CF规则等问题
 
 ```
 addEventListener('fetch', event => {
@@ -146,7 +145,7 @@ addEventListener('fetch', event => {
     /yandex/i,
     /sogou/i,
     /exabot/i,
-    /facebot/i, // Facebook bot
+    /facebot/i,
     /facebookexternalhit/i
   ];
 
@@ -161,7 +160,7 @@ addEventListener('fetch', event => {
 
   // 构建新的请求头，传递原请求头，并处理必要的字段
   let headers = new Headers(event.request.headers);
-  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown'); // 可以添加客户端 IP
+  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown');
 
   // 创建新的请求对象
   let request = new Request(url, {
@@ -192,7 +191,6 @@ addEventListener('fetch', event => {
 
 
 ### 增加访问限制密码认证
-> 可解决涉嫌违反CF规则等问题
 
 ```
 addEventListener('fetch', event => {
@@ -322,7 +320,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     /yandex/i,
     /sogou/i,
     /exabot/i,
-    /facebot/i, // Facebook bot
+    /facebot/i,
     /facebookexternalhit/i
   ];
 
@@ -337,7 +335,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
   // 构建新的请求头，传递原请求头，并处理必要的字段
   let headers = new Headers(event.request.headers);
-  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown'); // 可以添加客户端 IP
+  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown');
 
   // 创建新的请求对象
   let request = new Request(url, {
@@ -366,9 +364,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 });
 </code></pre>
 <h3>增加访问限制密码认证</h3>
-<blockquote>
-<p>可解决涉嫌违反CF规则等问题</p>
-</blockquote>
 <pre class="notranslate"><code class="notranslate">addEventListener("fetch", event =&gt; {
   // 设定一个简单的用户名和密码
   const validUsername = "user";
@@ -498,7 +493,7 @@ async function handleRequest(request) {
   const originalUrl = new URL(request.url);
   const path = originalUrl.pathname;
 
-  // 检查是否是代理模式，例如：/https://github.com/...
+  // 检查是否正确传入目标地址
   if (!path.startsWith("/http://") &amp;&amp; !path.startsWith("/https://")) {
     return new Response("请正确传入目标地址，需要带协议头。", { status: 400 });
   }

@@ -20,7 +20,7 @@ addEventListener("fetch", event => {
     /yandex/i,
     /sogou/i,
     /exabot/i,
-    /facebot/i, // Facebook bot
+    /facebot/i,
     /facebookexternalhit/i
   ];
 
@@ -35,7 +35,7 @@ addEventListener("fetch", event => {
 
   // 构建新的请求头，传递原请求头，并处理必要的字段
   let headers = new Headers(event.request.headers);
-  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown'); // 可以添加客户端 IP
+  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown');
 
   // 创建新的请求对象
   let request = new Request(url, {
@@ -66,7 +66,6 @@ addEventListener("fetch", event => {
 
 
 ### 增加访问限制密码认证
-> 可解决涉嫌违反CF规则等问题
 
 ```
 addEventListener("fetch", event => {
@@ -203,7 +202,7 @@ async function handleRequest(request) {
   const originalUrl = new URL(request.url);
   const path = originalUrl.pathname;
 
-  // 检查是否是代理模式，例如：/https://github.com/...
+  // 检查是否正确传入目标地址
   if (!path.startsWith("/http://") && !path.startsWith("/https://")) {
     return new Response("请正确传入目标地址，需要带协议头。", { status: 400 });
   }
