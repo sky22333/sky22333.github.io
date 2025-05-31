@@ -191,6 +191,9 @@ addEventListener("fetch", event => {
 
 
 ### 代理访问所有直链
+
+通过动态传入域名的方式，例如：`https://test.workers.dev/https://api.github.com`
+
 ```
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));

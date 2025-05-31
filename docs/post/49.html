@@ -489,6 +489,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 });
 </code></pre>
 <h3>代理访问所有直链</h3>
+<p>通过动态传入域名的方式，例如：<code class="notranslate">https://test.workers.dev/https://api.github.com</code></p>
 <pre class="notranslate"><code class="notranslate">addEventListener("fetch", event =&gt; {
   event.respondWith(handleRequest(event.request));
 });
