@@ -75,14 +75,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <ul>
 <li>众所周知，做电商业务需要的IP质量非常高，家宽一般都特别贵，所以最近尝试用手机流量做代理，手机<code class="notranslate">sim</code>卡的<code class="notranslate">IP</code>应该是顶级的不能再顶级了。</li>
 <li>对于海外留学有回国需求的也可以使用此方法。</li>
-<li>经过我的调研，有很多地区的基站的公网<code class="notranslate">IPV6</code>是支持入站的，当然不支持入站的话也没关系，使用内网穿透也能解决，使用<a href="https://github.com/AceDroidX/frp-Android">安卓版<code class="notranslate">frpc</code></a>即可。ios应该可以使用<code class="notranslate">Tailscale</code>实现，不过我还没实测过。</li>
+<li>经过我的调研，有很多地区的基站的公网<code class="notranslate">IPV6</code>是支持入站的，当然不支持入站的话也没关系，使用内网穿透也能解决，使用<a href="https://github.com/AceDroidX/frp-Android">安卓版<code class="notranslate">frpc</code></a>即可。ios可以使用<code class="notranslate">Tailscale</code>实现。</li>
 </ul>
 <h3>准备工作</h3>
 <p>一台手机即可，无需root，无需命令行环境。</p>
 <h3>首先上clash教程</h3>
-<p>1：下载<a href="https://github.com/MetaCubeX/ClashMetaForAndroid">ClashMetaForAndroid</a></p>
+<p>1：下载<a href="https://github.com/chen08209/FlClash/releases">FlClash</a></p>
 <blockquote>
-<p>ios：<a href="https://apps.apple.com/us/app/clash-mi/id6744321968" rel="nofollow">https://apps.apple.com/us/app/clash-mi/id6744321968</a></p>
+<p><code class="notranslate">工具</code> &gt; <code class="notranslate">基本配置</code> &gt; <code class="notranslate">网络</code> &gt; 关闭<code class="notranslate">系统代理</code>和<code class="notranslate">VPN</code></p>
 </blockquote>
 <p>2：然后导入服务端配置文件，直接拉取远程配置即可：<a href="https://gitlab.com/yishijie/sub/raw/main/config.yaml" rel="nofollow">https://gitlab.com/yishijie/sub/raw/main/config.yaml</a></p>
 <blockquote>
@@ -92,12 +92,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>4：此配置是一个ss协议的节点配置示例，你可以访问这个链接查看节点配置参数，也可以将这个配置复制下载，保存到本地，通过本地文件的方式导入。节点参数自行修改。</p>
 <p>5：手机访问 <a href="https://ipw.cn" rel="nofollow">https://ipw.cn</a> 查看你手机的IPV6，客户端节点地址填这个IPV6即可，但是大部分地区的基站的IP是不支持入站的，但是可以通过内网穿透到节点的入站端口即可。可借助<a href="https://github.com/AceDroidX/frp-Android">安卓版<code class="notranslate">frpc</code></a>实现。内网穿透网上教程一大把，本文就不细讲了。</p>
 <h3>sing-box教程</h3>
-<p>sing-box安卓版更是完美支持入站。</p>
+<p><code class="notranslate">sing-box</code>更是完美支持入站。</p>
 <p>1：下载<a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa&amp;hl=zh-CN" rel="nofollow">sing-box安卓版</a></p>
 <blockquote>
 <p>ios：<a href="https://apps.apple.com/us/app/sing-box-vt/id6673731168" rel="nofollow">https://apps.apple.com/us/app/sing-box-vt/id6673731168</a></p>
 </blockquote>
-<p>2：然后导入服务端配置文件，直接拉取远程配置即可：<a href="https://gitlab.com/yishijie/sub/raw/main/ss.json" rel="nofollow">https://gitlab.com/yishijie/sub/raw/main/ss.json</a></p>
+<p>2：然后导入服务端配置文件，直接拉取远程配置即可：<a href="https://gitlab.com/yishijie/sub/raw/main/config.json" rel="nofollow">https://gitlab.com/yishijie/sub/raw/main/config.json</a></p>
 <p>3：同样的你也可以将这个配置复制下载，保存到本地，通过本地文件的方式导入。节点参数自行修改。</p>
 <p>4：然后开启代理，客户端使用方法跟上面一样。</p>
 <h3>下面是我实际测试的截图</h3>
