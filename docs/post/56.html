@@ -278,23 +278,7 @@ Path += %JAVA_HOME%\bin
 Path += %JAVA_HOME%\bin
 </code></pre>
 <hr>
-<h2>✅ 三、安装 Kotlin 编译器（可选）</h2>
-<h3>1. 下载 Kotlin Compiler</h3>
-<ul>
-<li>地址：<a href="https://github.com/JetBrains/kotlin/releases">https://github.com/JetBrains/kotlin/releases</a></li>
-<li>下载 <code class="notranslate">kotlin-compiler-X.X.X.zip</code>（如 <code class="notranslate">kotlin-compiler-1.9.0.zip</code>）</li>
-</ul>
-<h3>2. 解压并配置环境变量</h3>
-<p>假设你解压到了：</p>
-<pre class="notranslate"><code class="notranslate">C:\kotlin
-</code></pre>
-<p>添加到系统环境变量：</p>
-<pre class="notranslate"><code class="notranslate">Path += C:\kotlin\bin
-</code></pre>
-<h3>3. 验证</h3>
-<div class="highlight highlight-source-shell"><pre class="notranslate">kotlinc -version</pre></div>
-<hr>
-<h2>✅ 四、安装 Gradle</h2>
+<h2>✅ 三、安装 Gradle</h2>
 <h3>1. 下载 Gradle</h3>
 <ul>
 <li>地址：<a href="https://gradle.org/releases/" rel="nofollow">https://gradle.org/releases/</a></li>
@@ -311,7 +295,7 @@ Path += %GRADLE_HOME%\bin
 <h3>3. 验证</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">gradle -v</pre></div>
 <hr>
-<h2>✅ 五、创建 Kotlin + Gradle 项目</h2>
+<h2>✅ 四、创建 Kotlin + Gradle 项目</h2>
 <h3>1. 创建项目结构</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">mkdir kotlin-app
 <span class="pl-c1">cd</span> kotlin-app
@@ -337,7 +321,7 @@ gradle init</pre></div>
     <span class="pl-c1">println</span>(<span class="pl-s"><span class="pl-pds">"</span>你好，Kotlin！<span class="pl-pds">"</span></span>)
 }</pre></div>
 <hr>
-<h2>✅ 六、构建和运行项目</h2>
+<h2>✅ 五、构建和运行项目</h2>
 <h3>构建项目</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">gradle build</pre></div>
 <h3>运行程序</h3>
@@ -347,7 +331,7 @@ gradle init</pre></div>
 gradle --refresh-dependencies  # 强制刷新依赖
 </code></pre>
 <hr>
-<h2>✅ 七、常见问题建议</h2>
+<h2>✅ 六、常见问题建议</h2>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
