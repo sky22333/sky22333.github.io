@@ -16,7 +16,8 @@
 
 1. 操作系统：Windows 10/11（推荐 64 位）
 2. 安装要求：
-   - Git（Flutter 安装依赖）
+
+### Git（Flutter 安装依赖）
 ```
 # 查看
 git --version
@@ -24,7 +25,7 @@ git --version
 # 默认安装路径
 C:\Program Files\Git
 ```   
-   - Android SDK（用于构建 APK）
+### Android SDK（用于构建 APK）
 ```
 # 查看
 sdkmanager --list
@@ -32,7 +33,7 @@ sdkmanager --list
 # 默认安装路径
 C:\Users\<你的用户名>\AppData\Local\Android\Sdk
 ```  
-   - JDK（建议 JDK 17）
+### JDK（建议 JDK 17）
 ```
 # 查看
 java -version
@@ -75,7 +76,8 @@ C:\flutter\bin
 
 1. 操作系统：Windows 10/11（推荐 64 位）
 2. 安装要求：
-   - Git（Flutter 安装依赖）
+
+### Git（Flutter 安装依赖）
 ```
 # 查看
 git --version
@@ -83,7 +85,7 @@ git --version
 # 默认安装路径
 C:\Program Files\Git
 ```   
-   - Android SDK（用于构建 APK）
+### Android SDK（用于构建 APK）
 ```
 # 查看
 sdkmanager --list
@@ -91,7 +93,7 @@ sdkmanager --list
 # 默认安装路径
 C:\Users\<你的用户名>\AppData\Local\Android\Sdk
 ```  
-   - JDK（建议 JDK 17）
+### JDK（建议 JDK 17）
 ```
 # 查看
 java -version
@@ -195,30 +197,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h2>✅ 一、准备条件</h2>
 <ol>
 <li>操作系统：Windows 10/11（推荐 64 位）</li>
-<li>安装要求：
-<ul>
-<li>Git（Flutter 安装依赖）</li>
-</ul>
-</li>
+<li>安装要求：</li>
 </ol>
+<h3>Git（Flutter 安装依赖）</h3>
 <pre class="notranslate"><code class="notranslate"># 查看
 git --version
 
 # 默认安装路径
 C:\Program Files\Git
 </code></pre>
-<ul>
-<li>Android SDK（用于构建 APK）</li>
-</ul>
+<h3>Android SDK（用于构建 APK）</h3>
 <pre class="notranslate"><code class="notranslate"># 查看
 sdkmanager --list
 
 # 默认安装路径
 C:\Users\&lt;你的用户名&gt;\AppData\Local\Android\Sdk
 </code></pre>
-<ul>
-<li>JDK（建议 JDK 17）</li>
-</ul>
+<h3>JDK（建议 JDK 17）</h3>
 <pre class="notranslate"><code class="notranslate"># 查看
 java -version
 
@@ -320,12 +315,29 @@ Path += %JAVA_HOME%\bin
 <hr>
 <h1>Windows 下手动安装 Kotlin + Gradle 开发环境</h1>
 <h2>✅ 一、准备条件</h2>
-<ul>
-<li>操作系统：Windows 10/11（64 位）</li>
-<li>Java 开发工具包（JDK 8+，推荐使用 JDK 17）</li>
-<li>Gradle 构建工具</li>
-<li>Kotlin 编译器（可选）</li>
-</ul>
+<h3>JDK（建议 JDK 17）</h3>
+<pre class="notranslate"><code class="notranslate"># 查看
+java -version
+
+# 默认安装路径
+C:\Program Files\Java\jdk-17
+</code></pre>
+<h3>Android SDK（用于构建 APK）</h3>
+<pre class="notranslate"><code class="notranslate"># 查看
+sdkmanager --list
+
+# 默认安装路径
+C:\Users\&lt;你的用户名&gt;\AppData\Local\Android\Sdk
+</code></pre>
+<h3>Gradle 构建工具</h3>
+<pre class="notranslate"><code class="notranslate"># 查看
+gradle -v
+
+# 默认安装路径
+C:\Gradle\gradle-8.0
+</code></pre>
+<p>你下载并解压 Gradle 后，一般会放在一个目录，比如上面路径。</p>
+<p>这个目录下有<code class="notranslate">bin</code>文件夹，里面有<code class="notranslate">gradle.bat</code>，需要把这个<code class="notranslate">bin</code>路径加到系统环境变量 PATH 中，才能全局使用<code class="notranslate">gradle</code>命令。</p>
 <hr>
 <h2>✅ 二、安装 JDK</h2>
 <h3>1. 下载 JDK</h3>
@@ -358,8 +370,28 @@ Path += %GRADLE_HOME%\bin
 </code></pre>
 <h3>3. 验证</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">gradle -v</pre></div>
+<h2>✅ 四、安装 Android SDK（命令行方式）</h2>
+<h3>1. 下载 Android 命令行工具</h3>
+<ul>
+<li>官方地址：<a href="https://developer.android.com/studio#command-tools" rel="nofollow">https://developer.android.com/studio#command-tools</a></li>
+<li>下载 zip 并解压到：
+<pre class="notranslate"><code class="notranslate">C:\Android\cmdline-tools\latest\
+</code></pre>
+</li>
+</ul>
+<p>注意：解压后的目录结构必须是：</p>
+<pre class="notranslate"><code class="notranslate">C:\Android\cmdline-tools\latest\bin
+</code></pre>
+<h3>2. 配置环境变量</h3>
+<p>添加以下环境变量：</p>
+<pre class="notranslate"><code class="notranslate">ANDROID_HOME=C:\Android
+Path += C:\Android\platform-tools
+Path += C:\Android\cmdline-tools\latest\bin
+</code></pre>
+<h3>3. 安装必要组件</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sdkmanager --sdk_root=C:<span class="pl-cce">\A</span>ndroid <span class="pl-s"><span class="pl-pds">"</span>platform-tools<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>platforms;android-34<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>build-tools;34.0.0<span class="pl-pds">"</span></span></pre></div>
 <hr>
-<h2>✅ 四、创建 Kotlin + Gradle 项目</h2>
+<h2>✅ 五、创建 Kotlin + Gradle 项目</h2>
 <h3>1. 创建项目结构</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">mkdir kotlin-app
 <span class="pl-c1">cd</span> kotlin-app
@@ -385,7 +417,7 @@ gradle init</pre></div>
     <span class="pl-c1">println</span>(<span class="pl-s"><span class="pl-pds">"</span>你好，Kotlin！<span class="pl-pds">"</span></span>)
 }</pre></div>
 <hr>
-<h2>✅ 五、构建和运行项目</h2>
+<h2>✅ 六、构建和运行项目</h2>
 <h3>构建项目</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">gradle build</pre></div>
 <h3>运行程序</h3>
@@ -395,7 +427,7 @@ gradle init</pre></div>
 gradle --refresh-dependencies  # 强制刷新依赖
 </code></pre>
 <hr>
-<h2>✅ 六、常见问题建议</h2>
+<h2>✅ 七、常见问题建议</h2>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
