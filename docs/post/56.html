@@ -10,7 +10,9 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# Windows 系统手动安装 Flutter 环境
+<meta name="description" content="# 安卓开发学习笔记
+
+# Windows 系统手动安装 Flutter 环境
 
 ## ✅ 一、准备条件
 
@@ -69,8 +71,10 @@ C:\flutter\bin
 ```
 
 然后重启终端（cmd/powershell）。">
-<meta property="og:title" content="安卓开发环境安装">
-<meta property="og:description" content="# Windows 系统手动安装 Flutter 环境
+<meta property="og:title" content="安卓开发学习笔记">
+<meta property="og:description" content="# 安卓开发学习笔记
+
+# Windows 系统手动安装 Flutter 环境
 
 ## ✅ 一、准备条件
 
@@ -132,7 +136,7 @@ C:\flutter\bin
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/56.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
-<title>安卓开发环境安装</title>
+<title>安卓开发学习笔记</title>
 <link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
@@ -175,7 +179,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">安卓开发环境安装</h1>
+<h1 class="postTitle">安卓开发学习笔记</h1>
 <div class="title-right">
     <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -193,7 +197,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>Windows 系统手动安装 Flutter 环境</h1>
+<div class="markdown-body" id="postBody"><h1>安卓开发学习笔记</h1>
+<h1>Windows 系统手动安装 Flutter 环境</h1>
 <h2>✅ 一、准备条件</h2>
 <ol>
 <li>操作系统：Windows 10/11（推荐 64 位）</li>
@@ -311,6 +316,66 @@ Path += %JAVA_HOME%\bin
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<hr>
+<h2>Flutter 现代化项目目录结构</h2>
+<pre class="notranslate"><code class="notranslate">my_flutter_app/                    # 项目根目录
+├── android/                      # Android 平台相关代码（自动生成）
+├── ios/                          # iOS 平台相关代码（自动生成）
+├── lib/                          # Flutter 应用主代码目录
+│   ├── main.dart                 # 入口文件，应用启动点
+│   ├── src/                     # 业务代码目录（可按需自定义）
+│   │   ├── widgets/             # 复用 Widget 组件
+│   │   ├── pages/               # 页面级 Widget（Screen）
+│   │   ├── models/              # 数据模型
+│   │   ├── services/            # 业务逻辑或 API 请求
+│   │   ├── utils/               # 工具类函数
+│   │   └── providers/           # 状态管理（如 Provider、Riverpod）
+├── assets/                       # 静态资源目录（图片、字体等）
+│   ├── images/                   # 图片资源
+│   ├── fonts/                    # 字体资源
+│   └── translations/             # 国际化资源（如 ARB 文件）
+├── test/                        # 单元测试代码
+├── pubspec.yaml                 # Flutter 项目配置文件，管理依赖、资源
+├── analysis_options.yaml        # Dart 分析规则配置（lint 规则）
+├── .gitignore                   # Git 忽略文件
+├── README.md                    # 项目说明文档
+└── build/                       # 构建输出目录（自动生成）
+</code></pre>
+<hr>
+<h2>关键说明</h2>
+<ul>
+<li>
+<p><code class="notranslate">lib/main.dart</code><br>
+应用程序入口，通常调用 <code class="notranslate">runApp()</code> 启动根组件。</p>
+</li>
+<li>
+<p><code class="notranslate">lib/src/</code><br>
+按功能模块划分代码，方便维护和扩展。现代项目推荐做清晰分层。</p>
+</li>
+<li>
+<p><code class="notranslate">assets/</code><br>
+存放静态资源，需在 <code class="notranslate">pubspec.yaml</code> 中声明才能使用。</p>
+</li>
+<li>
+<p><code class="notranslate">pubspec.yaml</code><br>
+核心配置文件，声明Flutter SDK版本、依赖包、资源路径、国际化等。</p>
+</li>
+<li>
+<p><code class="notranslate">analysis_options.yaml</code><br>
+代码风格和静态检查配置，确保代码质量。</p>
+</li>
+</ul>
+<hr>
+<h2>现代 Flutter 项目技术栈示例</h2>
+<ul>
+<li>状态管理：Provider / Riverpod / Bloc / GetX</li>
+<li>网络请求：Dio / http</li>
+<li>国际化：Flutter Intl（ARB 文件）</li>
+<li>路由管理：GoRouter / AutoRoute</li>
+<li>代码生成：Freezed（数据模型），JsonSerializable（序列化）</li>
+<li>UI 框架：Material 3 / Cupertino Widgets</li>
+<li>持续集成：GitHub Actions / Codemagic</li>
+</ul>
 <hr>
 <hr>
 <h1>Windows 下手动安装 Kotlin + Gradle 开发环境</h1>
@@ -467,7 +532,7 @@ gradle --refresh-dependencies  # 强制刷新依赖
 <li>腾讯：<code class="notranslate">https://mirrors.cloud.tencent.com/gradle/gradle-8.4-all.zip</code></li>
 <li>阿里：<code class="notranslate">https://mirrors.aliyun.com/gradle/gradle-8.4-all.zip</code></li>
 </ul>
-<h1>Android 项目常见目录结构</h1>
+<h2>Kotlin项目常见目录结构</h2>
 <pre class="notranslate"><code class="notranslate">MyAndroidProject/               # 项目根目录
 ├── app/                       # 应用模块（主程序）
 │   ├── src/
