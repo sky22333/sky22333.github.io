@@ -43,7 +43,10 @@ warp [option] [lisence]
 
 ### 稳定获取IP位置
 ```
-curl https://www.visa.cn/cdn-cgi/trace
+curl -s www.visa.cn/cdn-cgi/trace
+```
+```
+curl -s www.cloudflare.com/cdn-cgi/trace
 ```
 
 ### 快速测试容器IP
@@ -373,7 +376,10 @@ warp [option] [lisence]
 
 ### 稳定获取IP位置
 ```
-curl https://www.visa.cn/cdn-cgi/trace
+curl -s www.visa.cn/cdn-cgi/trace
+```
+```
+curl -s www.cloudflare.com/cdn-cgi/trace
 ```
 
 ### 快速测试容器IP
@@ -751,7 +757,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 <pre class="notranslate"><code class="notranslate">warp [option] [lisence]
 </code></pre>
 <h3>稳定获取IP位置</h3>
-<pre class="notranslate"><code class="notranslate">curl https://www.visa.cn/cdn-cgi/trace
+<pre class="notranslate"><code class="notranslate">curl -s www.visa.cn/cdn-cgi/trace
+</code></pre>
+<pre class="notranslate"><code class="notranslate">curl -s www.cloudflare.com/cdn-cgi/trace
 </code></pre>
 <h3>快速测试容器IP</h3>
 <pre class="notranslate"><code class="notranslate">docker run --rm alpine/curl curl ping0.cc/geo
