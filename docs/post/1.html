@@ -51,6 +51,12 @@ curl -s www.visa.cn/cdn-cgi/trace
 curl -s www.cloudflare.com/cdn-cgi/trace
 ```
 
+仅限国外
+```
+curl -s https://one.one.one.one/cdn-cgi/trace
+```
+
+
 ### 快速测试容器IP
 ```
 docker run --rm alpine/curl curl ping0.cc/geo
@@ -385,6 +391,12 @@ curl -s www.visa.cn/cdn-cgi/trace
 ```
 curl -s www.cloudflare.com/cdn-cgi/trace
 ```
+
+仅限国外
+```
+curl -s https://one.one.one.one/cdn-cgi/trace
+```
+
 
 ### 快速测试容器IP
 ```
@@ -765,6 +777,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 </code></pre>
 <p>兼容IPV6</p>
 <pre class="notranslate"><code class="notranslate">curl -s www.cloudflare.com/cdn-cgi/trace
+</code></pre>
+<p>仅限国外</p>
+<pre class="notranslate"><code class="notranslate">curl -s https://one.one.one.one/cdn-cgi/trace
 </code></pre>
 <h3>快速测试容器IP</h3>
 <pre class="notranslate"><code class="notranslate">docker run --rm alpine/curl curl ping0.cc/geo
