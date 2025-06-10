@@ -62,10 +62,13 @@ curl -4 -s www.cloudflare.com/cdn-cgi/trace
 curl -s https://one.one.one.one/cdn-cgi/trace
 ```
 
-
-### 快速测试容器IP
+> 中文友好
 ```
-docker run --rm alpine/curl curl ping0.cc/geo
+curl -s ping0.cc/geo
+```
+### 快速测试容器出站IP
+```
+docker run --rm alpine/curl curl -s www.cloudflare.com/cdn-cgi/trace
 ```
 
 ### 安装Docker
@@ -409,10 +412,13 @@ curl -4 -s www.cloudflare.com/cdn-cgi/trace
 curl -s https://one.one.one.one/cdn-cgi/trace
 ```
 
-
-### 快速测试容器IP
+> 中文友好
 ```
-docker run --rm alpine/curl curl ping0.cc/geo
+curl -s ping0.cc/geo
+```
+### 快速测试容器出站IP
+```
+docker run --rm alpine/curl curl -s www.cloudflare.com/cdn-cgi/trace
 ```
 
 ### 安装Docker
@@ -805,8 +811,13 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 </blockquote>
 <pre class="notranslate"><code class="notranslate">curl -s https://one.one.one.one/cdn-cgi/trace
 </code></pre>
-<h3>快速测试容器IP</h3>
-<pre class="notranslate"><code class="notranslate">docker run --rm alpine/curl curl ping0.cc/geo
+<blockquote>
+<p>中文友好</p>
+</blockquote>
+<pre class="notranslate"><code class="notranslate">curl -s ping0.cc/geo
+</code></pre>
+<h3>快速测试容器出站IP</h3>
+<pre class="notranslate"><code class="notranslate">docker run --rm alpine/curl curl -s www.cloudflare.com/cdn-cgi/trace
 </code></pre>
 <h3>安装Docker</h3>
 <p>官方安装脚本：</p>
