@@ -147,6 +147,10 @@ my-go-project/
 └── README.md
 ```
 
+#### 清理缓存
+```
+go clean -cache
+```
 #### 初始化模块
 ```
 go mod init myapp
