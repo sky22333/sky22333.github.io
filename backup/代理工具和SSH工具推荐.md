@@ -1,3 +1,4 @@
+### SSH和代理
   
 | 类型 | 名称 | 下载地址 |
 | :--- | :----: | :---: |
@@ -25,3 +26,11 @@
 | 电脑code  | Visual Studio Code  |https://code.visualstudio.com|
 | ios SSH  | ServerBox  |https://apps.apple.com/us/app/serverbox-status-tools/id1586449703|
 | ios SSH  | Termius |https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908|
+
+
+
+### 工具类
+
+| 类型 | 名称 | 下载地址 |
+| :--- | :----: | :---: |
+| 安卓局域网扫描  | DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools&pcampaignid=web_share |
