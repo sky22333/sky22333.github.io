@@ -16,7 +16,6 @@
 | mac代理  | clash-verge-rev  |https://github.com/clash-verge-rev/clash-verge-rev/releases|
 | Liunx代理  | v2rayA  |https://v2raya.org/docs/prologue/introduction|
 | Liunx桌面版代理  | v2rayN  |https://github.com/2dust/v2rayN/releases|
-| 安卓SSH  | termux |https://github.com/termux/termux-app/releases|
 | 安卓SSH  | serverbox  |https://github.com/lollipopkit/flutter_server_box/releases|
 | 安卓code  | Acode |https://acode.app|
 | 电脑SSH  | tabby  |https://github.com/Eugeny/tabby/releases|
@@ -34,3 +33,4 @@
 | 类型 | 名称 | 下载地址 |
 | :--- | :----: | :---: |
 | 安卓局域网扫描  | DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools&pcampaignid=web_share |
+| 安卓终端  | termux  | https://github.com/termux/termux-app/releases |
