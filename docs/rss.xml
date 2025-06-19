@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 19 Jun 2025 18:18:04 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 19 Jun 2025 18:23:38 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
 
 # Windows 系统手动安装 Flutter 环境
 
@@ -1177,75 +1177,7 @@ nmap -T5 -Pn -p 1-65535 -sU 192.168.0.1
 | **查看连接信息** | `SHOW PROCESSLIST;`                                        | 显示当前 MySQL 的所有连接信息                             |
 
 
-- 大多数 SQL 语句都以分号 `;` 结尾。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/42.html</guid><pubDate>Tue, 08 Apr 2025 00:44:50 +0000</pubDate></item><item><title>Homebrew和snap和winget包管理器</title><link>https://blog.52013120.xyz/post/41.html</link><description>## 常用liunx系统Homebrew包管理器文档
-
-```
-# 1. 官方安装脚本
-/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
-
-# 2. 配置环境变量（bash shell）
-echo 'eval '$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'' &gt;&gt; ~/.bashrc
-eval '$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'
-
-# 3. 验证安装
-brew --version
-```
-
-### 管理命令
-```
-# 搜索软件包
-brew search 软件名
-
-# 安装软件包
-brew install 软件名
-
-# 更新软件源
-brew update
-
-# 升级所有已安装的包
-brew upgrade
-
-# 查看已安装的软件包列表
-brew list
-
-# 卸载软件包
-brew uninstall 软件名
-
-# 清理无用文件和旧版本
-brew cleanup
-
-# 查看软件包信息
-brew info 软件名
-```
-
-### 清华镜像源安装
-```
-# 安装前确保系统安装了git和curl
-sudo apt install -y git curl
-
-# 克隆清华镜像安装脚本并执行安装
-git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
-/bin/bash brew-install/install.sh
-rm -rf brew-install
-
-# 配置环境变量，写入 ~/.bashrc，方便每次shell启动自动生效
-echo 'eval '$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'' &gt;&gt; ~/.bashrc
-
-# 设置 Homebrew 镜像环境变量，写入 ~/.bashrc
-echo 'export HOMEBREW_BREW_GIT_REMOTE='https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git'' &gt;&gt; ~/.bashrc
-echo 'export HOMEBREW_CORE_GIT_REMOTE='https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git'' &gt;&gt; ~/.bashrc
-echo 'export HOMEBREW_INSTALL_FROM_API=1' &gt;&gt; ~/.bashrc
-
-# 立刻生效 ~/.bashrc 配置
-source ~/.bashrc
-
-# 验证安装
-brew --version
-```
-
-
-
-
+- 大多数 SQL 语句都以分号 `;` 结尾。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/42.html</guid><pubDate>Tue, 08 Apr 2025 00:44:50 +0000</pubDate></item><item><title>Homebrew和snap和winget包管理器</title><link>https://blog.52013120.xyz/post/41.html</link><description>
 ## 常用liunx系统Snap包管理器文档
 
 

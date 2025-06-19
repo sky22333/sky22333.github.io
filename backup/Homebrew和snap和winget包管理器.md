@@ -1,71 +1,3 @@
-## 常用liunx系统Homebrew包管理器文档
-
-```
-# 1. 官方安装脚本
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# 2. 配置环境变量（bash shell）
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# 3. 验证安装
-brew --version
-```
-
-### 管理命令
-```
-# 搜索软件包
-brew search 软件名
-
-# 安装软件包
-brew install 软件名
-
-# 更新软件源
-brew update
-
-# 升级所有已安装的包
-brew upgrade
-
-# 查看已安装的软件包列表
-brew list
-
-# 卸载软件包
-brew uninstall 软件名
-
-# 清理无用文件和旧版本
-brew cleanup
-
-# 查看软件包信息
-brew info 软件名
-```
-
-### 清华镜像源安装
-```
-# 安装前确保系统安装了git和curl
-sudo apt install -y git curl
-
-# 克隆清华镜像安装脚本并执行安装
-git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
-/bin/bash brew-install/install.sh
-rm -rf brew-install
-
-# 配置环境变量，写入 ~/.bashrc，方便每次shell启动自动生效
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
-
-# 设置 Homebrew 镜像环境变量，写入 ~/.bashrc
-echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"' >> ~/.bashrc
-echo 'export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"' >> ~/.bashrc
-echo 'export HOMEBREW_INSTALL_FROM_API=1' >> ~/.bashrc
-
-# 立刻生效 ~/.bashrc 配置
-source ~/.bashrc
-
-# 验证安装
-brew --version
-```
-
-
-
 
 ## 常用liunx系统Snap包管理器文档
 
@@ -169,3 +101,72 @@ sudo snap refresh
 
 注意：某些软件可能不在 winget 的默认源中。在这种情况下，可能需要添加额外的源或使用其他安装方法。
 
+
+
+
+
+## 常用liunx系统Homebrew包管理器文档（不支持root用户）
+
+```
+# 1. 官方安装脚本
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 2. 配置环境变量（bash shell）
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# 3. 验证安装
+brew --version
+```
+
+### 管理命令
+```
+# 搜索软件包
+brew search 软件名
+
+# 安装软件包
+brew install 软件名
+
+# 更新软件源
+brew update
+
+# 升级所有已安装的包
+brew upgrade
+
+# 查看已安装的软件包列表
+brew list
+
+# 卸载软件包
+brew uninstall 软件名
+
+# 清理无用文件和旧版本
+brew cleanup
+
+# 查看软件包信息
+brew info 软件名
+```
+
+### 清华镜像源安装
+```
+# 安装前确保系统安装了git和curl
+sudo apt install -y git curl
+
+# 克隆清华镜像安装脚本并执行安装
+git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
+/bin/bash brew-install/install.sh
+rm -rf brew-install
+
+# 配置环境变量，写入 ~/.bashrc，方便每次shell启动自动生效
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+
+# 设置 Homebrew 镜像环境变量，写入 ~/.bashrc
+echo 'export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"' >> ~/.bashrc
+echo 'export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"' >> ~/.bashrc
+echo 'export HOMEBREW_INSTALL_FROM_API=1' >> ~/.bashrc
+
+# 立刻生效 ~/.bashrc 配置
+source ~/.bashrc
+
+# 验证安装
+brew --version
+```
