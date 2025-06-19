@@ -47,6 +47,33 @@ sudo snap refresh
  sudo snap remove 包名
  ```
  
+### 管理snap安装的包(以caddy为例)
+```
+# 查看 caddy Snap 服务状态
+sudo systemctl status snap.caddy.caddy.service
+
+# 启动 caddy Snap 服务
+sudo systemctl start snap.caddy.caddy.service
+
+# 停止 caddy Snap 服务
+sudo systemctl stop snap.caddy.caddy.service
+
+# 重启 caddy Snap 服务
+sudo systemctl restart snap.caddy.caddy.service
+
+# 设置 caddy Snap 服务开机自启
+sudo systemctl enable snap.caddy.caddy.service
+
+# 实时查看 caddy Snap 服务日志（systemd 日志）
+sudo journalctl -u snap.caddy.caddy.service -f
+
+# 使用 snap 命令查看 caddy 日志（部分 snap 支持）
+snap logs caddy
+
+# 查看所有 snap 管理的服务及状态
+snap services
+```
+
  
 ---
 ## win系统的winget软件管理器文档
