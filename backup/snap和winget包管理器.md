@@ -1,3 +1,4 @@
+> [debian系统apt包搜索页面](https://www.debian.org/distrib/packages.zh-cn.html)
 
 ## Snap包管理器文档
 
