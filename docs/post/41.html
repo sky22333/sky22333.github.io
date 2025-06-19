@@ -11,38 +11,144 @@
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
 <meta name="description" content="
-## 常用liunx系统Snap包管理器文档
+## Snap包管理器文档
 
+```
+# 更新软件包索引，安装 snapd
+sudo apt update && sudo apt install snapd -y
 
-| 发行版 | 安装Snap | 启动Snap服务 | 安装Docker示例 | 安装Caddy示例 |
-|--------|----------|--------------|------------|-----------|
-| Debian<br>Uubuntu | `sudo apt update && sudo apt install snapd` | `sudo systemctl enable snapd && sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
-| CentOS | `sudo yum install epel-release && sudo yum install snapd && sudo systemctl enable --now snapd.socket` | `sudo systemctl enable snapd && sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
-| Alpine<br>Linux | `apk add snapd && rc-update add snapd` | `service snapd start` | `snap install docker` | `snap install caddy` |
-| Kali<br>Linux | `sudo apt update && sudo apt install snapd` | `sudo systemctl enable snapd && sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
+# 设置 snapd 服务开机自启并启动服务
+sudo systemctl enable snapd && sudo systemctl start snapd
+```
 
 ### 说明：
 
-1. **重启系统**：安装snap后，建议重新启动系统或重新登录，以确保snap的路径正确添加到系统环境中。">
-<meta property="og:title" content="Homebrew和snap和winget包管理器">
+1. **安装核心组件**：在安装其他软件包之前，建议先安装核心snap组件：
+
+```
+sudo snap install core
+```
+
+2. **在线搜索包**（搜索结果右上角可以选择版本）：https://snapcraft.io/store
+
+3. **安装特定版本示例**
+> `--classic`代表赋予最高权限
+```
+# 特定的版本的go
+sudo snap install go --classic --channel=1.24/stable
+
+# 最新版本的docker
+sudo snap install docker --classic
+
+# 最新版本的caddy
+sudo snap install caddy --classic
+```
+4. **查看已安装的snap**：使用以下命令查看已安装的snap：
+```
+snap list
+```
+
+5. **更新snap**：更新所有已安装的snap：
+```
+sudo snap refresh
+```
+
+6. **删除snap**：删除某个snap：
+ ```
+ sudo snap remove 包名
+ ```
+ 
+ 
+---
+## win系统的winget软件管理器文档
+
+| 操作 | 命令 | 说明 |
+|------|------|------|
+| 安装 winget | 无需单独安装 | winget 已预装在 Windows 10 1709 及更高版本 |
+| 更新 winget | `winget upgrade winget` | 更新 winget 自身 |
+| 搜索软件 | `winget search <软件名>` | 搜索可用的软件包 |
+| 安装软件 | `winget install <软件名>` | 安装指定的软件包 |
+| 卸载软件 | `winget uninstall <软件名>` | 卸载指定的软件包 |
+| 更新软件 | `winget upgrade <软件名>` | 更新指定的软件包 |
+| 更新所有软件 | `winget upgrade --all` | 更新所有已安装的软件包 |
+| 列出已安装软件 | `winget list` | 显示所有已安装的软件包 |
+
+### 说明：
+
+1. **安装 winget**：
+   - 在较新的 Windows 10 和 Windows 11 系统中，winget 已经预装。">
+<meta property="og:title" content="snap和winget包管理器">
 <meta property="og:description" content="
-## 常用liunx系统Snap包管理器文档
+## Snap包管理器文档
 
+```
+# 更新软件包索引，安装 snapd
+sudo apt update && sudo apt install snapd -y
 
-| 发行版 | 安装Snap | 启动Snap服务 | 安装Docker示例 | 安装Caddy示例 |
-|--------|----------|--------------|------------|-----------|
-| Debian<br>Uubuntu | `sudo apt update && sudo apt install snapd` | `sudo systemctl enable snapd && sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
-| CentOS | `sudo yum install epel-release && sudo yum install snapd && sudo systemctl enable --now snapd.socket` | `sudo systemctl enable snapd && sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
-| Alpine<br>Linux | `apk add snapd && rc-update add snapd` | `service snapd start` | `snap install docker` | `snap install caddy` |
-| Kali<br>Linux | `sudo apt update && sudo apt install snapd` | `sudo systemctl enable snapd && sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
+# 设置 snapd 服务开机自启并启动服务
+sudo systemctl enable snapd && sudo systemctl start snapd
+```
 
 ### 说明：
 
-1. **重启系统**：安装snap后，建议重新启动系统或重新登录，以确保snap的路径正确添加到系统环境中。">
+1. **安装核心组件**：在安装其他软件包之前，建议先安装核心snap组件：
+
+```
+sudo snap install core
+```
+
+2. **在线搜索包**（搜索结果右上角可以选择版本）：https://snapcraft.io/store
+
+3. **安装特定版本示例**
+> `--classic`代表赋予最高权限
+```
+# 特定的版本的go
+sudo snap install go --classic --channel=1.24/stable
+
+# 最新版本的docker
+sudo snap install docker --classic
+
+# 最新版本的caddy
+sudo snap install caddy --classic
+```
+4. **查看已安装的snap**：使用以下命令查看已安装的snap：
+```
+snap list
+```
+
+5. **更新snap**：更新所有已安装的snap：
+```
+sudo snap refresh
+```
+
+6. **删除snap**：删除某个snap：
+ ```
+ sudo snap remove 包名
+ ```
+ 
+ 
+---
+## win系统的winget软件管理器文档
+
+| 操作 | 命令 | 说明 |
+|------|------|------|
+| 安装 winget | 无需单独安装 | winget 已预装在 Windows 10 1709 及更高版本 |
+| 更新 winget | `winget upgrade winget` | 更新 winget 自身 |
+| 搜索软件 | `winget search <软件名>` | 搜索可用的软件包 |
+| 安装软件 | `winget install <软件名>` | 安装指定的软件包 |
+| 卸载软件 | `winget uninstall <软件名>` | 卸载指定的软件包 |
+| 更新软件 | `winget upgrade <软件名>` | 更新指定的软件包 |
+| 更新所有软件 | `winget upgrade --all` | 更新所有已安装的软件包 |
+| 列出已安装软件 | `winget list` | 显示所有已安装的软件包 |
+
+### 说明：
+
+1. **安装 winget**：
+   - 在较新的 Windows 10 和 Windows 11 系统中，winget 已经预装。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/41.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
-<title>Homebrew和snap和winget包管理器</title>
+<title>snap和winget包管理器</title>
 
 
 
@@ -85,7 +191,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">Homebrew和snap和winget包管理器</h1>
+<h1 class="postTitle">snap和winget包管理器</h1>
 <div class="title-right">
     <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -103,94 +209,53 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>常用liunx系统Snap包管理器文档</h2>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>发行版</th>
-<th>安装Snap</th>
-<th>启动Snap服务</th>
-<th>安装Docker示例</th>
-<th>安装Caddy示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Debian<br>Uubuntu</td>
-<td><code class="notranslate">sudo apt update &amp;&amp; sudo apt install snapd</code></td>
-<td><code class="notranslate">sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd</code></td>
-<td><code class="notranslate">sudo snap install docker</code></td>
-<td><code class="notranslate">sudo snap install caddy</code></td>
-</tr>
-<tr>
-<td>CentOS</td>
-<td><code class="notranslate">sudo yum install epel-release &amp;&amp; sudo yum install snapd &amp;&amp; sudo systemctl enable --now snapd.socket</code></td>
-<td><code class="notranslate">sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd</code></td>
-<td><code class="notranslate">sudo snap install docker</code></td>
-<td><code class="notranslate">sudo snap install caddy</code></td>
-</tr>
-<tr>
-<td>Alpine<br>Linux</td>
-<td><code class="notranslate">apk add snapd &amp;&amp; rc-update add snapd</code></td>
-<td><code class="notranslate">service snapd start</code></td>
-<td><code class="notranslate">snap install docker</code></td>
-<td><code class="notranslate">snap install caddy</code></td>
-</tr>
-<tr>
-<td>Kali<br>Linux</td>
-<td><code class="notranslate">sudo apt update &amp;&amp; sudo apt install snapd</code></td>
-<td><code class="notranslate">sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd</code></td>
-<td><code class="notranslate">sudo snap install docker</code></td>
-<td><code class="notranslate">sudo snap install caddy</code></td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
+<div class="markdown-body" id="postBody"><h2>Snap包管理器文档</h2>
+<pre class="notranslate"><code class="notranslate"># 更新软件包索引，安装 snapd
+sudo apt update &amp;&amp; sudo apt install snapd -y
+
+# 设置 snapd 服务开机自启并启动服务
+sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd
+</code></pre>
 <h3>说明：</h3>
 <ol>
-<li>
-<p><strong>重启系统</strong>：安装snap后，建议重新启动系统或重新登录，以确保snap的路径正确添加到系统环境中。</p>
-</li>
-<li>
-<p><strong>创建符号链接</strong>：某些系统（如CentOS）可能需要创建符号链接：</p>
-</li>
-</ol>
-<pre class="notranslate"><code class="notranslate">sudo ln -s /var/lib/snapd/snap /snap
-</code></pre>
-<ol start="3">
 <li><strong>安装核心组件</strong>：在安装其他软件包之前，建议先安装核心snap组件：</li>
 </ol>
 <pre class="notranslate"><code class="notranslate">sudo snap install core
 </code></pre>
-<ol start="4">
+<ol start="2">
 <li>
-<p><strong>Alpine Linux注意事项</strong>：Alpine Linux对snap的支持可能不如其他发行版完善，使用时可能会遇到兼容性问题。</p>
+<p><strong>在线搜索包</strong>（搜索结果右上角可以选择版本）：<a href="https://snapcraft.io/store" rel="nofollow">https://snapcraft.io/store</a></p>
 </li>
 <li>
-<p><strong>权限问题</strong>：如遇权限错误，请使用<code class="notranslate">sudo</code>运行snap命令。</p>
-</li>
-<li>
-<p><strong>网络连接</strong>：确保系统有稳定的网络连接，snap需要从在线存储库下载软件包。</p>
-</li>
-<li>
-<p><strong>版本选择</strong>：安装软件时可以指定版本，例如：</p>
+<p><strong>安装特定版本示例</strong></p>
 </li>
 </ol>
-<pre class="notranslate"><code class="notranslate">sudo snap install docker --channel=latest/stable
+<blockquote>
+<p><code class="notranslate">--classic</code>代表赋予最高权限</p>
+</blockquote>
+<pre class="notranslate"><code class="notranslate"># 特定的版本的go
+sudo snap install go --classic --channel=1.24/stable
+
+# 最新版本的docker
+sudo snap install docker --classic
+
+# 最新版本的caddy
+sudo snap install caddy --classic
 </code></pre>
-<ol start="8">
+<ol start="4">
 <li><strong>查看已安装的snap</strong>：使用以下命令查看已安装的snap：</li>
 </ol>
 <pre class="notranslate"><code class="notranslate">snap list
 </code></pre>
-<ol start="9">
+<ol start="5">
 <li><strong>更新snap</strong>：更新所有已安装的snap：</li>
 </ol>
 <pre class="notranslate"><code class="notranslate">sudo snap refresh
 </code></pre>
-<ol start="10">
+<ol start="6">
 <li><strong>删除snap</strong>：删除某个snap：</li>
 </ol>
-<pre class="notranslate"><code class="notranslate">sudo snap remove [包名]
+<pre class="notranslate"><code class="notranslate">sudo snap remove 包名
 </code></pre>
 <hr>
 <h2>win系统的winget软件管理器文档</h2>

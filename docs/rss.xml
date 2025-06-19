@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 19 Jun 2025 18:23:38 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 19 Jun 2025 18:51:47 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
 
 # Windows 系统手动安装 Flutter 环境
 
@@ -1177,20 +1177,73 @@ nmap -T5 -Pn -p 1-65535 -sU 192.168.0.1
 | **查看连接信息** | `SHOW PROCESSLIST;`                                        | 显示当前 MySQL 的所有连接信息                             |
 
 
-- 大多数 SQL 语句都以分号 `;` 结尾。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/42.html</guid><pubDate>Tue, 08 Apr 2025 00:44:50 +0000</pubDate></item><item><title>Homebrew和snap和winget包管理器</title><link>https://blog.52013120.xyz/post/41.html</link><description>
-## 常用liunx系统Snap包管理器文档
+- 大多数 SQL 语句都以分号 `;` 结尾。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/42.html</guid><pubDate>Tue, 08 Apr 2025 00:44:50 +0000</pubDate></item><item><title>snap和winget包管理器</title><link>https://blog.52013120.xyz/post/41.html</link><description>
+## Snap包管理器文档
 
+```
+# 更新软件包索引，安装 snapd
+sudo apt update &amp;&amp; sudo apt install snapd -y
 
-| 发行版 | 安装Snap | 启动Snap服务 | 安装Docker示例 | 安装Caddy示例 |
-|--------|----------|--------------|------------|-----------|
-| Debian&lt;br&gt;Uubuntu | `sudo apt update &amp;&amp; sudo apt install snapd` | `sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
-| CentOS | `sudo yum install epel-release &amp;&amp; sudo yum install snapd &amp;&amp; sudo systemctl enable --now snapd.socket` | `sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
-| Alpine&lt;br&gt;Linux | `apk add snapd &amp;&amp; rc-update add snapd` | `service snapd start` | `snap install docker` | `snap install caddy` |
-| Kali&lt;br&gt;Linux | `sudo apt update &amp;&amp; sudo apt install snapd` | `sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd` | `sudo snap install docker` | `sudo snap install caddy` |
+# 设置 snapd 服务开机自启并启动服务
+sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd
+```
 
 ### 说明：
 
-1. **重启系统**：安装snap后，建议重新启动系统或重新登录，以确保snap的路径正确添加到系统环境中。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/41.html</guid><pubDate>Tue, 08 Apr 2025 00:44:06 +0000</pubDate></item><item><title>Git推送GitHub常用命令</title><link>https://blog.52013120.xyz/post/40.html</link><description>### 先在github创建一个仓库，然后本地CD到项目目录
+1. **安装核心组件**：在安装其他软件包之前，建议先安装核心snap组件：
+
+```
+sudo snap install core
+```
+
+2. **在线搜索包**（搜索结果右上角可以选择版本）：https://snapcraft.io/store
+
+3. **安装特定版本示例**
+&gt; `--classic`代表赋予最高权限
+```
+# 特定的版本的go
+sudo snap install go --classic --channel=1.24/stable
+
+# 最新版本的docker
+sudo snap install docker --classic
+
+# 最新版本的caddy
+sudo snap install caddy --classic
+```
+4. **查看已安装的snap**：使用以下命令查看已安装的snap：
+```
+snap list
+```
+
+5. **更新snap**：更新所有已安装的snap：
+```
+sudo snap refresh
+```
+
+6. **删除snap**：删除某个snap：
+ ```
+ sudo snap remove 包名
+ ```
+ 
+ 
+---
+## win系统的winget软件管理器文档
+
+| 操作 | 命令 | 说明 |
+|------|------|------|
+| 安装 winget | 无需单独安装 | winget 已预装在 Windows 10 1709 及更高版本 |
+| 更新 winget | `winget upgrade winget` | 更新 winget 自身 |
+| 搜索软件 | `winget search &lt;软件名&gt;` | 搜索可用的软件包 |
+| 安装软件 | `winget install &lt;软件名&gt;` | 安装指定的软件包 |
+| 卸载软件 | `winget uninstall &lt;软件名&gt;` | 卸载指定的软件包 |
+| 更新软件 | `winget upgrade &lt;软件名&gt;` | 更新指定的软件包 |
+| 更新所有软件 | `winget upgrade --all` | 更新所有已安装的软件包 |
+| 列出已安装软件 | `winget list` | 显示所有已安装的软件包 |
+
+### 说明：
+
+1. **安装 winget**：
+   - 在较新的 Windows 10 和 Windows 11 系统中，winget 已经预装。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/41.html</guid><pubDate>Tue, 08 Apr 2025 00:44:06 +0000</pubDate></item><item><title>Git推送GitHub常用命令</title><link>https://blog.52013120.xyz/post/40.html</link><description>### 先在github创建一个仓库，然后本地CD到项目目录
 
 
 ### 初始化本地仓库
