@@ -114,14 +114,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>如果显示 Scoop 的帮助信息，则表示安装成功。</p>
 </li>
 </ol>
-<h2>步骤 5：添加常用 bucket (可选)</h2>
+<h2>步骤 5：添加常用 bucket</h2>
 <p>为了能够安装更多软件，您可以添加一些常用的 bucket。</p>
-<ol>
-<li>
-<p>执行以下命令添加 <code class="notranslate">extras</code> bucket：</p>
-<div class="highlight highlight-source-powershell"><pre class="notranslate">scoop bucket add extras</pre></div>
-</li>
-</ol>
 <h2>Scoop 常用 Bucket 列表</h2>
 <p>也就是Github仓库上的软件清单列表</p>
 <ul>
@@ -147,7 +141,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
 </code></pre>
-<p>删除</p>
+<p>如果源已经存在则需要删除</p>
 <pre class="notranslate"><code class="notranslate">scoop bucket rm main
 
 scoop bucket rm versions

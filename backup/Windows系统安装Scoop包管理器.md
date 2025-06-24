@@ -39,15 +39,9 @@
 
     如果显示 Scoop 的帮助信息，则表示安装成功。
 
-## 步骤 5：添加常用 bucket (可选)
+## 步骤 5：添加常用 bucket
 
 为了能够安装更多软件，您可以添加一些常用的 bucket。
-
-1.  执行以下命令添加 `extras` bucket：
-
-    ```powershell
-    scoop bucket add extras
-    ```
 
 ## Scoop 常用 Bucket 列表
 
@@ -74,7 +68,7 @@ scoop bucket add main https://gh-proxy.com/https://github.com/ScoopInstaller/Mai
 
 scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
 ```
-删除
+如果源已经存在则需要删除
 ```
 scoop bucket rm main
 
