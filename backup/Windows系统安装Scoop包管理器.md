@@ -6,8 +6,7 @@
 
 在安装 Scoop 之前，您需要允许 PowerShell 执行本地脚本。
 
-1.  打开 PowerShell（以管理员身份运行）。
-2.  执行以下命令：
+1.  PowerShell 执行以下命令：
 
     ```powershell
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -15,7 +14,7 @@
 
     当提示时，输入 `A` 并按回车键确认。
 
-## 步骤 3：安装 Scoop
+## 步骤 2：安装 Scoop
 
 现在您可以安装 Scoop 了。
 
@@ -24,22 +23,15 @@
     ```powershell
     irm get.scoop.sh | iex
     ```
+这将下载并执行 Scoop 的安装脚本。
 
-    这将下载并执行 Scoop 的安装脚本。
+2. 验证安装成功
+```
+scoop help
+```
 
-## 步骤 4：验证安装
 
-安装完成后，您可以验证 Scoop 是否已成功安装。
-
-1.  执行以下命令：
-
-    ```powersorshell
-    scoop help
-    ```
-
-    如果显示 Scoop 的帮助信息，则表示安装成功。
-
-## 步骤 5：添加常用 bucket
+## 步骤 3：添加常用 bucket
 
 为了能够安装更多软件，您可以添加一些常用的 bucket。
 
@@ -59,7 +51,8 @@
   地址：https://github.com/ScoopInstaller/Versions  
   说明：多版本软件（Node.js、Python、JDK 等）
 
-更多包：https://scoop.sh/
+
+更多包搜索：https://scoop.sh/
 
 
 ## 添加Github加速
@@ -67,18 +60,24 @@
 scoop bucket add main https://gh-proxy.com/https://github.com/ScoopInstaller/Main.git
 
 scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
+
+scoop bucket add extras https://gh-proxy.com/https://github.com/ScoopInstaller/Extras.git
 ```
 如果源已经存在则需要删除
 ```
 scoop bucket rm main
-
-scoop bucket rm versions
 ```
 
 查看所有bucket仓库
 ```
 scoop bucket list
 ```
+
+安装的软件存放目录
+```
+C:\Users\<你的用户名>\scoop\
+```
+
 
 ## 常用命令示例
 
