@@ -95,19 +95,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>当提示时，输入 <code class="notranslate">A</code> 并按回车键确认。</p>
 </li>
 </ol>
-<h2>步骤 2：配置清华镜像源 (可选，推荐)</h2>
-<p>在安装 Scoop 之前配置镜像源，可以加速后续的下载。</p>
-<ol>
-<li>
-<p>在 PowerShell 中执行以下命令，设置 Scoop 的下载源为清华大学镜像：</p>
-<div class="highlight highlight-source-powershell"><pre class="notranslate"><span class="pl-smi">$<span class="pl-c1">env:</span>SCOOP_REPO</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>https://mirrors.tuna.tsinghua.edu.cn/git/scoop/scoop.git<span class="pl-pds">'</span></span>
-[<span class="pl-k">Environment</span>]::SetEnvironmentVariable(<span class="pl-s"><span class="pl-pds">'</span>SCOOP_REPO<span class="pl-pds">'</span></span><span class="pl-k">,</span> <span class="pl-smi">$<span class="pl-c1">env:</span>SCOOP_REPO</span><span class="pl-k">,</span> <span class="pl-s"><span class="pl-pds">'</span>User<span class="pl-pds">'</span></span> )</pre></div>
-<p>同时，为了加速软件下载，您也可以设置 <code class="notranslate">SCOOP_MIRRORS</code> 环境变量：</p>
-<div class="highlight highlight-source-powershell"><pre class="notranslate"><span class="pl-smi">$<span class="pl-c1">env:</span>SCOOP_MIRRORS</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>https://mirrors.tuna.tsinghua.edu.cn/scoop/<span class="pl-pds">'</span></span>
-[<span class="pl-k">Environment</span>]::SetEnvironmentVariable(<span class="pl-s"><span class="pl-pds">'</span>SCOOP_MIRRORS<span class="pl-pds">'</span></span><span class="pl-k">,</span> <span class="pl-smi">$<span class="pl-c1">env:</span>SCOOP_MIRRORS</span><span class="pl-k">,</span> <span class="pl-s"><span class="pl-pds">'</span>User<span class="pl-pds">'</span></span> )</pre></div>
-<p><strong>注意：</strong> 如果您已经安装了 Scoop，需要先卸载再重新安装，或者手动修改 Scoop 的配置文件来更改源。</p>
-</li>
-</ol>
 <h2>步骤 3：安装 Scoop</h2>
 <p>现在您可以安装 Scoop 了。</p>
 <ol>
@@ -135,6 +122,34 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-powershell"><pre class="notranslate">scoop bucket add extras</pre></div>
 </li>
 </ol>
+<h1>Scoop 常用 Bucket 列表</h1>
+<ul>
+<li>
+<p>main<br>
+地址：<a href="https://github.com/ScoopInstaller/Main">https://github.com/ScoopInstaller/Main</a><br>
+说明：官方主仓库，常用软件和基础工具，默认存在，无需配置。</p>
+</li>
+<li>
+<p>extras<br>
+地址：<a href="https://github.com/ScoopInstaller/Extras">https://github.com/ScoopInstaller/Extras</a><br>
+说明：较多 GUI 软件、实用工具</p>
+</li>
+<li>
+<p>versions<br>
+地址：<a href="https://github.com/ScoopInstaller/Versions">https://github.com/ScoopInstaller/Versions</a><br>
+说明：多版本软件（Node.js、Python、JDK 等）</p>
+</li>
+</ul>
+<p>更多包：<a href="https://scoop.sh/" rel="nofollow">https://scoop.sh/</a></p>
+<h2>添加Github加速</h2>
+<pre class="notranslate"><code class="notranslate">scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
+</code></pre>
+<p>删除</p>
+<pre class="notranslate"><code class="notranslate">scoop bucket rm versions
+</code></pre>
+<p>查看所有bucket仓库</p>
+<pre class="notranslate"><code class="notranslate">scoop bucket list
+</code></pre>
 <h2>常用命令示例</h2>
 <ul>
 <li><strong>搜索软件：</strong> <code class="notranslate">scoop search &lt;软件名&gt;</code></li>

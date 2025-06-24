@@ -15,26 +15,6 @@
 
     当提示时，输入 `A` 并按回车键确认。
 
-## 步骤 2：配置清华镜像源 (可选，推荐)
-
-在安装 Scoop 之前配置镜像源，可以加速后续的下载。
-
-1.  在 PowerShell 中执行以下命令，设置 Scoop 的下载源为清华大学镜像：
-
-    ```powershell
-    $env:SCOOP_REPO='https://mirrors.tuna.tsinghua.edu.cn/git/scoop/scoop.git'
-    [Environment]::SetEnvironmentVariable('SCOOP_REPO', $env:SCOOP_REPO, 'User' )
-    ```
-
-    同时，为了加速软件下载，您也可以设置 `SCOOP_MIRRORS` 环境变量：
-
-    ```powershell
-    $env:SCOOP_MIRRORS='https://mirrors.tuna.tsinghua.edu.cn/scoop/'
-    [Environment]::SetEnvironmentVariable('SCOOP_MIRRORS', $env:SCOOP_MIRRORS, 'User' )
-    ```
-
-    **注意：** 如果您已经安装了 Scoop，需要先卸载再重新安装，或者手动修改 Scoop 的配置文件来更改源。
-
 ## 步骤 3：安装 Scoop
 
 现在您可以安装 Scoop 了。
@@ -68,6 +48,37 @@
     ```powershell
     scoop bucket add extras
     ```
+
+# Scoop 常用 Bucket 列表
+
+- main  
+  地址：https://github.com/ScoopInstaller/Main  
+  说明：官方主仓库，常用软件和基础工具，默认存在，无需配置。
+
+- extras  
+  地址：https://github.com/ScoopInstaller/Extras  
+  说明：较多 GUI 软件、实用工具
+
+- versions  
+  地址：https://github.com/ScoopInstaller/Versions  
+  说明：多版本软件（Node.js、Python、JDK 等）
+
+更多包：https://scoop.sh/
+
+
+## 添加Github加速
+```
+scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
+```
+删除
+```
+scoop bucket rm versions
+```
+
+查看所有bucket仓库
+```
+scoop bucket list
+```
 
 ## 常用命令示例
 
