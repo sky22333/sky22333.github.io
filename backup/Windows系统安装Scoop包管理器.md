@@ -43,7 +43,7 @@
 
 为了能够安装更多软件，您可以添加一些常用的 bucket。
 
-## Scoop 常用 Bucket 列表
+### Scoop 常用 Bucket 列表
 
 也就是Github仓库上的软件清单列表
 
