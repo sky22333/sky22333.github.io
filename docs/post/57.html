@@ -144,9 +144,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>更多包：<a href="https://scoop.sh/" rel="nofollow">https://scoop.sh/</a></p>
 <h2>添加Github加速</h2>
 <pre class="notranslate"><code class="notranslate">scoop bucket add main https://gh-proxy.com/https://github.com/ScoopInstaller/Main.git
+
+scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
 </code></pre>
 <p>删除</p>
 <pre class="notranslate"><code class="notranslate">scoop bucket rm main
+
+scoop bucket rm versions
 </code></pre>
 <p>查看所有bucket仓库</p>
 <pre class="notranslate"><code class="notranslate">scoop bucket list

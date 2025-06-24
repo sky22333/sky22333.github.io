@@ -71,10 +71,14 @@
 ## 添加Github加速
 ```
 scoop bucket add main https://gh-proxy.com/https://github.com/ScoopInstaller/Main.git
+
+scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
 ```
 删除
 ```
 scoop bucket rm main
+
+scoop bucket rm versions
 ```
 
 查看所有bucket仓库
