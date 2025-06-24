@@ -8,11 +8,11 @@
 
 1.  PowerShell 执行以下命令：
 
-    ```powershell
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-    ```
+```
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
-    当提示时，输入 `A` 并按回车键确认。
+当提示时，输入 `A` 并按回车键确认。
 
 ## 步骤 2：安装 Scoop
 
@@ -20,9 +20,9 @@
 
 1.  在同一个 PowerShell 窗口中，执行以下命令：
 
-    ```powershell
-    irm get.scoop.sh | iex
-    ```
+```
+irm get.scoop.sh | iex
+```
 这将下载并执行 Scoop 的安装脚本。
 
 2. 验证安装成功

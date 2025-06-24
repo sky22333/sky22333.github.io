@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://blog.52013120.xyz/post/57.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
 <title>Windows系统安装Scoop包管理器</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -86,20 +86,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h2>步骤 1：启用 PowerShell 执行策略</h2>
 <p>在安装 Scoop 之前，您需要允许 PowerShell 执行本地脚本。</p>
 <ol>
-<li>
-<p>PowerShell 执行以下命令：</p>
-<div class="highlight highlight-source-powershell"><pre class="notranslate"><span class="pl-c1">Set-ExecutionPolicy</span> RemoteSigned <span class="pl-k">-</span>Scope CurrentUser</pre></div>
-<p>当提示时，输入 <code class="notranslate">A</code> 并按回车键确认。</p>
-</li>
+<li>PowerShell 执行以下命令：</li>
 </ol>
+<pre class="notranslate"><code class="notranslate">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+</code></pre>
+<p>当提示时，输入 <code class="notranslate">A</code> 并按回车键确认。</p>
 <h2>步骤 2：安装 Scoop</h2>
 <p>现在您可以安装 Scoop 了。</p>
 <ol>
-<li>
-<p>在同一个 PowerShell 窗口中，执行以下命令：</p>
-<div class="highlight highlight-source-powershell"><pre class="notranslate">irm get.scoop.sh <span class="pl-k">|</span> iex</pre></div>
-</li>
+<li>在同一个 PowerShell 窗口中，执行以下命令：</li>
 </ol>
+<pre class="notranslate"><code class="notranslate">irm get.scoop.sh | iex
+</code></pre>
 <p>这将下载并执行 Scoop 的安装脚本。</p>
 <ol start="2">
 <li>验证安装成功</li>
