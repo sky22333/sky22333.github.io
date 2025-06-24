@@ -122,7 +122,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-powershell"><pre class="notranslate">scoop bucket add extras</pre></div>
 </li>
 </ol>
-<h1>Scoop 常用 Bucket 列表</h1>
+<h2>Scoop 常用 Bucket 列表</h2>
+<p>也就是Github仓库上的软件清单列表</p>
 <ul>
 <li>
 <p>main<br>
@@ -142,10 +143,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <p>更多包：<a href="https://scoop.sh/" rel="nofollow">https://scoop.sh/</a></p>
 <h2>添加Github加速</h2>
-<pre class="notranslate"><code class="notranslate">scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
+<pre class="notranslate"><code class="notranslate">scoop bucket add main https://gh-proxy.com/https://github.com/ScoopInstaller/Main.git
 </code></pre>
 <p>删除</p>
-<pre class="notranslate"><code class="notranslate">scoop bucket rm versions
+<pre class="notranslate"><code class="notranslate">scoop bucket rm main
 </code></pre>
 <p>查看所有bucket仓库</p>
 <pre class="notranslate"><code class="notranslate">scoop bucket list

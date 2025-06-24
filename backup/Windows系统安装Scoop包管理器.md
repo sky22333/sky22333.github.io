@@ -49,7 +49,9 @@
     scoop bucket add extras
     ```
 
-# Scoop 常用 Bucket 列表
+## Scoop 常用 Bucket 列表
+
+也就是Github仓库上的软件清单列表
 
 - main  
   地址：https://github.com/ScoopInstaller/Main  
@@ -68,11 +70,11 @@
 
 ## 添加Github加速
 ```
-scoop bucket add versions https://gh-proxy.com/https://github.com/ScoopInstaller/Versions.git
+scoop bucket add main https://gh-proxy.com/https://github.com/ScoopInstaller/Main.git
 ```
 删除
 ```
-scoop bucket rm versions
+scoop bucket rm main
 ```
 
 查看所有bucket仓库
