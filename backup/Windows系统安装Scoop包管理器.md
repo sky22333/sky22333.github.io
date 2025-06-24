@@ -76,3 +76,26 @@
 *   **更新软件：** `scoop update <软件名>`
 *   **更新所有软件：** `scoop update *`
 *   **卸载软件：** `scoop uninstall <软件名>`
+
+
+
+1. 安装多个版本（示例）
+```
+scoop install nodejs   # 最新稳定版
+scoop install nodejs20 # 20.x 版本
+scoop install nodejs18 # 18.x 版本
+```
+2. 查看已安装版本
+```
+scoop list nodejs*
+```
+3. 使用 scoop reset 切换版本
+```
+scoop reset nodejs18
+```
+这条命令会把 node 命令指向 nodejs18 版本。
+
+4. 验证当前版本
+```
+node -v
+```
