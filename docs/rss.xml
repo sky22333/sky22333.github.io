@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 24 Jun 2025 21:03:06 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 25 Jun 2025 22:35:35 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
 
  Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
 
@@ -2126,7 +2126,7 @@ docker compose restart&#13;
 &#13;
 ### 知识库&#13;
 &#13;
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>如何部署Github中的项目（主流语言安装依赖和构建命令）</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>各语言编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令
 
 &gt; [!TIP]
 &gt; ## 前端 💻
@@ -2291,17 +2291,15 @@ go mod tidy
 ```
 go run main.go
 ```
-#### 构建并优化包大小
+
+#### 将所有依赖和静态链接一起打包，并优化包大小
 ```
-go build -ldflags='-s -w' -o myapp
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
 ```
-#### 构建linux平台
+
+#### Windows平台
 ```
-GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o myapp
-```
-#### 构建Windows平台
-```
-GOOS=windows GOARCH=amd64 go build -ldflags='-s -w' -o myapp.exe
+GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp.exe
 ```
 
 ## PHP 💻
