@@ -100,12 +100,6 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-或者使用阿里云安装源
-```
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-```
-
-
 ---
 
 ### 清理bash缓存
@@ -372,19 +366,32 @@ kill PID数字
 
 ```systemctl disable firewalld.service```              # 禁止防火墙开机自启
 
-###  一键开启bbr加速
+
+###  查看电脑wifi密码CMD命令
+
+查看已连接过的wifi：
 
 ```
-bash <(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
-```
-查看
-```
-sysctl net.ipv4.tcp_congestion_control
+netsh wlan show profile
 ```
 
+查看密码：
 
+```
+netsh wlan show profile name='WiFi名称' key=clear
+```
 
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
+打印到C盘：
+
+```
+netsh wlan export profile folder=C:\ key=clear
+```
+
+- win系统网络故障常用命令，`win+x`打开终端管理员执行
+
+| 命令                   | 作用                                                         |
+|------------------------|--------------------------------------------------------------|
+| `netsh winsock reset`   | 重置 Windows 套接字（Winsock）目录，解决网络连接问题。">
 <meta property="og:title" content="常用代码记录">
 <meta property="og:description" content="### 一键换源
 海外
@@ -476,12 +483,6 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-或者使用阿里云安装源
-```
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-```
-
-
 ---
 
 ### 清理bash缓存
@@ -748,19 +749,32 @@ kill PID数字
 
 ```systemctl disable firewalld.service```              # 禁止防火墙开机自启
 
-###  一键开启bbr加速
+
+###  查看电脑wifi密码CMD命令
+
+查看已连接过的wifi：
 
 ```
-bash <(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
-```
-查看
-```
-sysctl net.ipv4.tcp_congestion_control
+netsh wlan show profile
 ```
 
+查看密码：
 
+```
+netsh wlan show profile name='WiFi名称' key=clear
+```
 
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
+打印到C盘：
+
+```
+netsh wlan export profile folder=C:\ key=clear
+```
+
+- win系统网络故障常用命令，`win+x`打开终端管理员执行
+
+| 命令                   | 作用                                                         |
+|------------------------|--------------------------------------------------------------|
+| `netsh winsock reset`   | 重置 Windows 套接字（Winsock）目录，解决网络连接问题。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/1.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
@@ -894,9 +908,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <p>国内安装脚本  <a href="https://linuxmirrors.cn/other/" rel="nofollow">(说明)</a></p>
 <pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
-</code></pre>
-<p>或者使用阿里云安装源</p>
-<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 </code></pre>
 <hr>
 <h3>清理bash缓存</h3>
@@ -1060,18 +1071,6 @@ sudo localectl set-locale LANG=zh_CN.UTF-8
 <p><code class="notranslate">firewall-cmd --state</code>                             # 查看防火墙状态</p>
 <p><code class="notranslate">systemctl stop firewalld.service</code>                 # 停止防火墙</p>
 <p><code class="notranslate">systemctl disable firewalld.service</code>              # 禁止防火墙开机自启</p>
-<h3>一键开启bbr加速</h3>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
-</code></pre>
-<p>查看</p>
-<pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
-</code></pre>
-<p>使用该脚本会将 <code class="notranslate">Pagermaid-Pyro</code> 安装至 <code class="notranslate">/var/lib/pagermaid</code> 目录下。</p>
-<h3>永久激活 Windows 系统和 Office 软件</h3>
-<p>在 Windows 8.1/10/11 上，右键单击 Windows 开始菜单并 选择 PowerShell 或终端（非 CMD）</p>
-<pre class="notranslate"><code class="notranslate">irm https://massgrave.dev/get | iex
-</code></pre>
-<p>稍微等待一下，他会自动适配，并激活您的系统，当出现 Successful 的时候说明系统已经激活成功了</p>
 <h3>查看电脑wifi密码CMD命令</h3>
 <p>查看已连接过的wifi：</p>
 <pre class="notranslate"><code class="notranslate">netsh wlan show profile

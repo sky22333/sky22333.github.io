@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 26 Jun 2025 02:51:44 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 26 Jun 2025 02:58:01 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
 
  Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
 
@@ -2760,12 +2760,6 @@ curl -fsSL https://get.docker.com | sh
 bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-或者使用阿里云安装源
-```
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-```
-
-
 ---
 
 ### 清理bash缓存
@@ -3032,16 +3026,29 @@ kill PID数字
 
 ```systemctl disable firewalld.service```              # 禁止防火墙开机自启
 
-###  一键开启bbr加速
+
+###  查看电脑wifi密码CMD命令
+
+查看已连接过的wifi：
 
 ```
-bash &lt;(curl -sSL https://gitlab.com/yishijie/shell/raw/main/bbr.sh)
-```
-查看
-```
-sysctl net.ipv4.tcp_congestion_control
+netsh wlan show profile
 ```
 
+查看密码：
 
+```
+netsh wlan show profile name='WiFi名称' key=clear
+```
 
-使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/1.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
+打印到C盘：
+
+```
+netsh wlan export profile folder=C:\ key=clear
+```
+
+- win系统网络故障常用命令，`win+x`打开终端管理员执行
+
+| 命令                   | 作用                                                         |
+|------------------------|--------------------------------------------------------------|
+| `netsh winsock reset`   | 重置 Windows 套接字（Winsock）目录，解决网络连接问题。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/1.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
