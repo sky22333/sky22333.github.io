@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 25 Jun 2025 22:35:35 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 26 Jun 2025 02:46:34 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
 
  Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
 
@@ -2670,36 +2670,43 @@ docker run --privileged --restart=always -itd \&#13;
 | :--- | :----: | :---: |
 | 安卓局域网扫描  | DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools&amp;pcampaignid=web_share |
 | 安卓终端  | termux  | https://github.com/termux/termux-app/releases |
-。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 安装node环境
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 一键换源
 ```
-curl https://get.volta.sh | bash
-```
-```
-export VOLTA_HOME='$HOME/.volta'
-export PATH='$VOLTA_HOME/bin:$PATH'
-```
-```
-source ~/.bashrc
-```
-```
-volta install node@16.0.0
-```
-切换node版本只需再次安装需要的版本即可自动切换
+# 海外
+bash &lt;(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
 
-
-
-
-[3x-ui地址](https://github.com/MHSanaei/3x-ui)
-
-###  一键wrap
-
+# 国内
+bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 ```
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
+### 更新系统包
+```
+apt update &amp;&amp; apt install -y curl wget git zip tar lsof vim sudo
+```
+```
+hostnamectl set-hostname localhost
 ```
 
+### 一键启用BBR
 ```
-warp [option] [lisence]
+sudo modprobe tcp_bbr &amp;&amp; echo 'net.ipv4.tcp_congestion_control = bbr' | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
 ```
+查看
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+### 一键安装Docker
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
 
 ### 稳定获取IP位置
 
@@ -2772,6 +2779,24 @@ dpkg --print-architecture
 ```
 uname -a
 ```
+
+
+
+### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
 
 ####  查看系统版本
 ```
@@ -2993,13 +3018,6 @@ kill PID数字
 ###  只允许指定IP连接22端口：
 ```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
 
-
-
-###  开启虚拟内存：
-
-```
-sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
 
 
 ###  防火墙

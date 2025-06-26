@@ -10,36 +10,43 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 安装node环境
+<meta name="description" content="### 一键换源
 ```
-curl https://get.volta.sh | bash
-```
-```
-export VOLTA_HOME='$HOME/.volta'
-export PATH='$VOLTA_HOME/bin:$PATH'
-```
-```
-source ~/.bashrc
-```
-```
-volta install node@16.0.0
-```
-切换node版本只需再次安装需要的版本即可自动切换
+# 海外
+bash <(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
 
-
-
-
-[3x-ui地址](https://github.com/MHSanaei/3x-ui)
-
-###  一键wrap
-
+# 国内
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 ```
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+### 更新系统包
+```
+apt update && apt install -y curl wget git zip tar lsof vim sudo
+```
+```
+hostnamectl set-hostname localhost
 ```
 
+### 一键启用BBR
 ```
-warp [option] [lisence]
+sudo modprobe tcp_bbr && echo 'net.ipv4.tcp_congestion_control = bbr' | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
+查看
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+### 一键安装Docker
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
 
 ### 稳定获取IP位置
 
@@ -112,6 +119,24 @@ dpkg --print-architecture
 ```
 uname -a
 ```
+
+
+
+### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
 
 ####  查看系统版本
 ```
@@ -333,13 +358,6 @@ kill PID数字
 ###  只允许指定IP连接22端口：
 ```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
 
-
-
-###  开启虚拟内存：
-
-```
-sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
 
 
 ###  防火墙
@@ -366,36 +384,43 @@ sysctl net.ipv4.tcp_congestion_control
 
 使用该脚本会将 ```Pagermaid-Pyro``` 安装至 ```/var/lib/pagermaid``` 目录下。">
 <meta property="og:title" content="常用代码记录">
-<meta property="og:description" content="### 安装node环境
+<meta property="og:description" content="### 一键换源
 ```
-curl https://get.volta.sh | bash
-```
-```
-export VOLTA_HOME='$HOME/.volta'
-export PATH='$VOLTA_HOME/bin:$PATH'
-```
-```
-source ~/.bashrc
-```
-```
-volta install node@16.0.0
-```
-切换node版本只需再次安装需要的版本即可自动切换
+# 海外
+bash <(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
 
-
-
-
-[3x-ui地址](https://github.com/MHSanaei/3x-ui)
-
-###  一键wrap
-
+# 国内
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 ```
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+### 更新系统包
+```
+apt update && apt install -y curl wget git zip tar lsof vim sudo
+```
+```
+hostnamectl set-hostname localhost
 ```
 
+### 一键启用BBR
 ```
-warp [option] [lisence]
+sudo modprobe tcp_bbr && echo 'net.ipv4.tcp_congestion_control = bbr' | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
+查看
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+### 一键安装Docker
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
 
 ### 稳定获取IP位置
 
@@ -468,6 +493,24 @@ dpkg --print-architecture
 ```
 uname -a
 ```
+
+
+
+### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@16.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
 
 ####  查看系统版本
 ```
@@ -689,13 +732,6 @@ kill PID数字
 ###  只允许指定IP连接22端口：
 ```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
 
-
-
-###  开启虚拟内存：
-
-```
-sudo fallocate -l 3G /swapfile && sudo chmod 700 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
 
 
 ###  防火墙
@@ -785,22 +821,29 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>安装node环境</h3>
-<pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
+<div class="markdown-body" id="postBody"><h3>一键换源</h3>
+<pre class="notranslate"><code class="notranslate"># 海外
+bash &lt;(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
+
+# 国内
+bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 </code></pre>
-<pre class="notranslate"><code class="notranslate">export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+<h3>更新系统包</h3>
+<pre class="notranslate"><code class="notranslate">apt update &amp;&amp; apt install -y curl wget git zip tar lsof vim sudo
 </code></pre>
-<pre class="notranslate"><code class="notranslate">source ~/.bashrc
+<pre class="notranslate"><code class="notranslate">hostnamectl set-hostname localhost
 </code></pre>
-<pre class="notranslate"><code class="notranslate">volta install node@16.0.0
+<h3>一键启用BBR</h3>
+<pre class="notranslate"><code class="notranslate">sudo modprobe tcp_bbr &amp;&amp; echo "net.ipv4.tcp_congestion_control = bbr" | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
 </code></pre>
-<p>切换node版本只需再次安装需要的版本即可自动切换</p>
-<p><a href="https://github.com/MHSanaei/3x-ui">3x-ui地址</a></p>
-<h3>一键wrap</h3>
-<pre class="notranslate"><code class="notranslate">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh [option] [lisence/url/token]
+<p>查看</p>
+<pre class="notranslate"><code class="notranslate">sysctl net.ipv4.tcp_congestion_control
 </code></pre>
-<pre class="notranslate"><code class="notranslate">warp [option] [lisence]
+<h3>一键安装Docker</h3>
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://get.docker.com | sh
+</code></pre>
+<h3>开启虚拟内存：</h3>
+<pre class="notranslate"><code class="notranslate">sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 </code></pre>
 <h3>稳定获取IP位置</h3>
 <blockquote>
@@ -859,6 +902,17 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 </code></pre>
 <pre class="notranslate"><code class="notranslate">uname -a
 </code></pre>
+<h3>安装node环境</h3>
+<pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
+</code></pre>
+<pre class="notranslate"><code class="notranslate">export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+</code></pre>
+<pre class="notranslate"><code class="notranslate">source ~/.bashrc
+</code></pre>
+<pre class="notranslate"><code class="notranslate">volta install node@16.0.0
+</code></pre>
+<p>切换node版本只需再次安装需要的版本即可自动切换</p>
 <h4>查看系统版本</h4>
 <pre class="notranslate"><code class="notranslate">cat /etc/os-release
 </code></pre>
@@ -997,9 +1051,6 @@ sudo localectl set-locale LANG=zh_CN.UTF-8
 <p><code class="notranslate">sudo ufw deny 端口号</code></p>
 <h3>只允许指定IP连接22端口：</h3>
 <p><code class="notranslate">sudo ufw allow from 192.168.1.100 to any port 22</code>      #  多IP用英文的逗号分开</p>
-<h3>开启虚拟内存：</h3>
-<pre class="notranslate"><code class="notranslate">sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-</code></pre>
 <h3>防火墙</h3>
 <p><code class="notranslate">firewall-cmd --state</code>                             # 查看防火墙状态</p>
 <p><code class="notranslate">systemctl stop firewalld.service</code>                 # 停止防火墙</p>
