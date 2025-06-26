@@ -81,11 +81,13 @@ C:\Users\<你的用户名>\scoop\
 
 ## 常用命令示例
 
-*   **搜索软件：** `scoop search <软件名>`
-*   **安装软件：** `scoop install <软件名>`
-*   **更新软件：** `scoop update <软件名>`
+*   **搜索软件：** `scoop search 软件名`
+*   **安装软件：** `scoop install 软件名`
+*   **更新软件：** `scoop update 软件名`
 *   **更新所有软件：** `scoop update *`
-*   **卸载软件：** `scoop uninstall <软件名>`
+*   **卸载软件：** `scoop uninstall 软件名`
+*   **查看安装缓存：** `scoop cache`
+*   **清理所有缓存：** `scoop cache rm *`
 
 
 
