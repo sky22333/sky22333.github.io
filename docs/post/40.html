@@ -47,6 +47,18 @@ git config --global --unset credential.helper
 ```
 
 
+### 配置提交用户
+```
+# 全局配置
+git config --global user.name 'admin123'
+git config --global user.email 'admin123@admin.com'
+
+# 查看
+git config --list
+```
+
+
+
 ## 🎈同步上游仓库某一个提交
 
 #### 1：获取上游更新
@@ -101,6 +113,18 @@ git push origin main
 ```
 git config --global --unset credential.helper
 ```
+
+
+### 配置提交用户
+```
+# 全局配置
+git config --global user.name 'admin123'
+git config --global user.email 'admin123@admin.com'
+
+# 查看
+git config --list
+```
+
 
 
 ## 🎈同步上游仓库某一个提交
@@ -210,6 +234,14 @@ git commit -m "描述你的更改"
 <h4>操作完成后清除Git存储凭据</h4>
 <pre class="notranslate"><code class="notranslate">git config --global --unset credential.helper
 </code></pre>
+<h3>配置提交用户</h3>
+<pre class="notranslate"><code class="notranslate"># 全局配置
+git config --global user.name "admin123"
+git config --global user.email "admin123@admin.com"
+
+# 查看
+git config --list
+</code></pre>
 <h2>🎈同步上游仓库某一个提交</h2>
 <h4>1：获取上游更新</h4>
 <pre class="notranslate"><code class="notranslate">git fetch upstream
@@ -266,13 +298,26 @@ git commit -m "描述你的更改"
 <pre class="notranslate"><code class="notranslate">git push origin main
 </code></pre>
 <h2>🎈清除所有提交历史</h2>
-<pre class="notranslate"><code class="notranslate">rm -rf .git  # 删除 Git 版本管理
-git init  # 重新初始化 Git
-git checkout -b main # 创建并切换分支（可忽略）
-git add .  # 添加所有文件
-git commit -m "update"  # 提交所有文件
-git remote add origin https://github.com/your-username/your-repo.git  # 重新关联仓库
-git push --force origin main  # 强制推送覆盖远程历史
+<pre class="notranslate"><code class="notranslate"># 删除 Git 版本管理
+rm -rf .git
+
+# 重新初始化 Git
+git init
+
+# 创建并切换分支（可忽略）
+git checkout -b main
+
+# 添加所有文件
+git add .
+
+# 提交所有文件
+git commit -m "update"
+
+# 重新关联仓库
+git remote add origin https://github.com/your-username/your-repo.git
+
+# 强制推送覆盖远程历史
+git push --force origin main
 </code></pre>
 <h2>🎈回滚</h2>
 <p>执行回滚操作后无法恢复</p>

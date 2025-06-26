@@ -35,6 +35,18 @@ git config --global --unset credential.helper
 ```
 
 
+### 配置提交用户
+```
+# 全局配置
+git config --global user.name "admin123"
+git config --global user.email "admin123@admin.com"
+
+# 查看
+git config --list
+```
+
+
+
 ## 🎈同步上游仓库某一个提交
 
 #### 1：获取上游更新
@@ -117,13 +129,26 @@ git push origin main
 
 ## 🎈清除所有提交历史
 ```
-rm -rf .git  # 删除 Git 版本管理
-git init  # 重新初始化 Git
-git checkout -b main # 创建并切换分支（可忽略）
-git add .  # 添加所有文件
-git commit -m "update"  # 提交所有文件
-git remote add origin https://github.com/your-username/your-repo.git  # 重新关联仓库
-git push --force origin main  # 强制推送覆盖远程历史
+# 删除 Git 版本管理
+rm -rf .git
+
+# 重新初始化 Git
+git init
+
+# 创建并切换分支（可忽略）
+git checkout -b main
+
+# 添加所有文件
+git add .
+
+# 提交所有文件
+git commit -m "update"
+
+# 重新关联仓库
+git remote add origin https://github.com/your-username/your-repo.git
+
+# 强制推送覆盖远程历史
+git push --force origin main
 ```
 
 ## 🎈回滚
