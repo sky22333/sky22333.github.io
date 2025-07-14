@@ -176,6 +176,16 @@ go mod tidy
 go run main.go
 ```
 
+#### 检查代码
+```
+go vet ./...      # 检查所有包
+go vet main.go    # 检查单个文件
+```
+#### 格式化代码
+```
+gofmt -w ./...
+```
+
 #### 将所有依赖和静态链接一起打包，并优化包大小
 ```
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
@@ -387,6 +397,16 @@ go mod tidy
 #### 在线运行
 ```
 go run main.go
+```
+
+#### 检查代码
+```
+go vet ./...      # 检查所有包
+go vet main.go    # 检查单个文件
+```
+#### 格式化代码
+```
+gofmt -w ./...
 ```
 
 #### 将所有依赖和静态链接一起打包，并优化包大小
@@ -622,6 +642,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </code></pre>
 <h4>在线运行</h4>
 <pre class="notranslate"><code class="notranslate">go run main.go
+</code></pre>
+<h4>检查代码</h4>
+<pre class="notranslate"><code class="notranslate">go vet ./...      # 检查所有包
+go vet main.go    # 检查单个文件
+</code></pre>
+<h4>格式化代码</h4>
+<pre class="notranslate"><code class="notranslate">gofmt -w ./...
 </code></pre>
 <h4>将所有依赖和静态链接一起打包，并优化包大小</h4>
 <pre class="notranslate"><code class="notranslate">GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w" -o myapp
