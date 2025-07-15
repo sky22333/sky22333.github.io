@@ -57,26 +57,8 @@ git config --global user.email 'admin123@admin.com'
 git config --list
 ```
 
-
-
-## 🎈同步上游仓库某一个提交
-
-#### 1：获取上游更新
-```
-git fetch upstream
-```
-> 合并上游所有更新`git merge upstream/main` main为本地分支
-
-#### 2：确认上游仓库中是否包含目标提交
-```
-git branch -r --contains 提交哈希
-```
-
-#### 3：使用 -m 选项进行同步指定的提交
-```
-git cherry-pick -m 1 提交哈希
-```
-这里的`-m 1`表示选择合并的提交中的第一个父提交的更改。">
+## 项目添加子模块
+`ddns-go` 为例，项目根目录执行。">
 <meta property="og:title" content="Git推送GitHub常用命令">
 <meta property="og:description" content="### 先在github创建一个仓库，然后本地CD到项目目录
 
@@ -125,26 +107,8 @@ git config --global user.email 'admin123@admin.com'
 git config --list
 ```
 
-
-
-## 🎈同步上游仓库某一个提交
-
-#### 1：获取上游更新
-```
-git fetch upstream
-```
-> 合并上游所有更新`git merge upstream/main` main为本地分支
-
-#### 2：确认上游仓库中是否包含目标提交
-```
-git branch -r --contains 提交哈希
-```
-
-#### 3：使用 -m 选项进行同步指定的提交
-```
-git cherry-pick -m 1 提交哈希
-```
-这里的`-m 1`表示选择合并的提交中的第一个父提交的更改。">
+## 项目添加子模块
+`ddns-go` 为例，项目根目录执行。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/40.html">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png">
@@ -241,6 +205,30 @@ git config --global user.email "admin123@admin.com"
 
 # 查看
 git config --list
+</code></pre>
+<h2>项目添加子模块</h2>
+<p><code class="notranslate">ddns-go</code> 为例，项目根目录执行。</p>
+<pre class="notranslate"><code class="notranslate">git submodule add https://github.com/jeessy2/ddns-go.git
+git commit -m "添加子模块"
+</code></pre>
+<p>然后提交并推送即可</p>
+<h4>更新所有子模块</h4>
+<p>项目根目录执行</p>
+<pre class="notranslate"><code class="notranslate">git submodule update --remote --merge
+</code></pre>
+<h4>删除子模块</h4>
+<pre class="notranslate"><code class="notranslate">git submodule deinit -f ddns-go
+git rm -f ddns-go
+rm -rf .git/modules/ddns-go
+rm -rf ddns-go
+git commit -m "删除子模块"
+</code></pre>
+<h4>锁定子模块到某个提交</h4>
+<pre class="notranslate"><code class="notranslate">cd ddns-go
+git checkout &lt;commit-hash&gt;
+cd ..
+git add ddns-go
+git commit -m "锁定子模块版本"
 </code></pre>
 <h2>🎈同步上游仓库某一个提交</h2>
 <h4>1：获取上游更新</h4>

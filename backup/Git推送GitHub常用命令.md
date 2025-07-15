@@ -45,6 +45,36 @@ git config --global user.email "admin123@admin.com"
 git config --list
 ```
 
+## 项目添加子模块
+`ddns-go` 为例，项目根目录执行。
+```
+git submodule add https://github.com/jeessy2/ddns-go.git
+git commit -m "添加子模块"
+```
+然后提交并推送即可
+
+#### 更新所有子模块
+项目根目录执行
+```
+git submodule update --remote --merge
+```
+
+#### 删除子模块
+```
+git submodule deinit -f ddns-go
+git rm -f ddns-go
+rm -rf .git/modules/ddns-go
+rm -rf ddns-go
+git commit -m "删除子模块"
+```
+#### 锁定子模块到某个提交
+```
+cd ddns-go
+git checkout <commit-hash>
+cd ..
+git add ddns-go
+git commit -m "锁定子模块版本"
+```
 
 
 ## 🎈同步上游仓库某一个提交

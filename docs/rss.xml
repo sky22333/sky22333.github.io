@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 14 Jul 2025 02:45:59 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 15 Jul 2025 07:07:43 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
 
  Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
 
@@ -1320,26 +1320,8 @@ git config --global user.email 'admin123@admin.com'
 git config --list
 ```
 
-
-
-## 🎈同步上游仓库某一个提交
-
-#### 1：获取上游更新
-```
-git fetch upstream
-```
-&gt; 合并上游所有更新`git merge upstream/main` main为本地分支
-
-#### 2：确认上游仓库中是否包含目标提交
-```
-git branch -r --contains 提交哈希
-```
-
-#### 3：使用 -m 选项进行同步指定的提交
-```
-git cherry-pick -m 1 提交哈希
-```
-这里的`-m 1`表示选择合并的提交中的第一个父提交的更改。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
+## 项目添加子模块
+`ddns-go` 为例，项目根目录执行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
 
 常见的必学框架：
 
