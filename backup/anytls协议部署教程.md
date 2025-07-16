@@ -140,12 +140,29 @@ proxies:
   server: blog.52013120.xyz # 服务端地址（你的域名）
   port: 8443 # 节点端口
   password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" # 协议认证密码
-  udp: true
   idle-session-check-interval: 30
   idle-session-timeout: 30
   min-idle-session: 0
   tls: true
   servername: blog.52013120.xyz # 你的域名
+```
+
+
+#### 自签证书
+```
+proxies:
+- name: anytls节点
+  type: anytls
+  server: 127.0.0.1 # 服务端地址
+  port: 8443 # 节点端口
+  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" # 协议认证密码
+  udp: true
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 0
+  tls: true
+  skip-cert-verify: true
+  servername: www.bing.com # 自签域名
 ```
 
 
