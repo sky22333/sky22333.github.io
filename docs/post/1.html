@@ -294,6 +294,36 @@ apk包安装
 apk add curl wget vim zip
 ```
 
+
+#### 有网络的环境下载安装包
+```
+# 1. 创建用于保存 .deb 包的目录
+mkdir -p /home/deb-pack
+
+# 2. 下载指定软件及其依赖，只下载不安装
+sudo apt-get -o=dir::cache::archives='/home/deb-pack' --download-only install nginx
+
+# 3. 将所有 .deb 文件打包为一个压缩包，方便复制到内网机器
+tar czvf curl-pack.tar.gz -C /home deb-pack
+```
+
+然后手动传到内网
+#### 内网安装
+```
+# 1. 解压
+tar xzvf curl-pack.tar.gz
+
+# 2. 进入目录
+cd deb-pack
+
+# 3. 安装所有 deb 包
+sudo dpkg -i *.deb
+
+# 4. 自动修复（如需要）
+sudo apt install -f
+```
+
+
 ###  一键测试路由回程：
 
 ```
@@ -677,6 +707,36 @@ apk包安装
 apk add curl wget vim zip
 ```
 
+
+#### 有网络的环境下载安装包
+```
+# 1. 创建用于保存 .deb 包的目录
+mkdir -p /home/deb-pack
+
+# 2. 下载指定软件及其依赖，只下载不安装
+sudo apt-get -o=dir::cache::archives='/home/deb-pack' --download-only install nginx
+
+# 3. 将所有 .deb 文件打包为一个压缩包，方便复制到内网机器
+tar czvf curl-pack.tar.gz -C /home deb-pack
+```
+
+然后手动传到内网
+#### 内网安装
+```
+# 1. 解压
+tar xzvf curl-pack.tar.gz
+
+# 2. 进入目录
+cd deb-pack
+
+# 3. 安装所有 deb 包
+sudo dpkg -i *.deb
+
+# 4. 自动修复（如需要）
+sudo apt install -f
+```
+
+
 ###  一键测试路由回程：
 
 ```
@@ -1033,6 +1093,30 @@ sudo localectl set-locale LANG=zh_CN.UTF-8
 </code></pre>
 <p>apk包安装</p>
 <pre class="notranslate"><code class="notranslate">apk add curl wget vim zip
+</code></pre>
+<h4>有网络的环境下载安装包</h4>
+<pre class="notranslate"><code class="notranslate"># 1. 创建用于保存 .deb 包的目录
+mkdir -p /home/deb-pack
+
+# 2. 下载指定软件及其依赖，只下载不安装
+sudo apt-get -o=dir::cache::archives="/home/deb-pack" --download-only install nginx
+
+# 3. 将所有 .deb 文件打包为一个压缩包，方便复制到内网机器
+tar czvf curl-pack.tar.gz -C /home deb-pack
+</code></pre>
+<p>然后手动传到内网</p>
+<h4>内网安装</h4>
+<pre class="notranslate"><code class="notranslate"># 1. 解压
+tar xzvf curl-pack.tar.gz
+
+# 2. 进入目录
+cd deb-pack
+
+# 3. 安装所有 deb 包
+sudo dpkg -i *.deb
+
+# 4. 自动修复（如需要）
+sudo apt install -f
 </code></pre>
 <h3>一键测试路由回程：</h3>
 <pre class="notranslate"><code class="notranslate">wget -qO- git.io/besttrace | bash

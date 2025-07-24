@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 18 Jul 2025 09:03:33 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 24 Jul 2025 14:00:12 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
 &gt; ---
 &gt; ### **初始配置解析**
 &gt; 
@@ -2961,6 +2961,36 @@ apk包安装
 ```
 apk add curl wget vim zip
 ```
+
+
+#### 有网络的环境下载安装包
+```
+# 1. 创建用于保存 .deb 包的目录
+mkdir -p /home/deb-pack
+
+# 2. 下载指定软件及其依赖，只下载不安装
+sudo apt-get -o=dir::cache::archives='/home/deb-pack' --download-only install nginx
+
+# 3. 将所有 .deb 文件打包为一个压缩包，方便复制到内网机器
+tar czvf curl-pack.tar.gz -C /home deb-pack
+```
+
+然后手动传到内网
+#### 内网安装
+```
+# 1. 解压
+tar xzvf curl-pack.tar.gz
+
+# 2. 进入目录
+cd deb-pack
+
+# 3. 安装所有 deb 包
+sudo dpkg -i *.deb
+
+# 4. 自动修复（如需要）
+sudo apt install -f
+```
+
 
 ###  一键测试路由回程：
 
