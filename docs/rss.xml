@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 30 Jul 2025 14:44:31 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 30 Jul 2025 14:48:44 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
 &gt; ---
 &gt; ### **初始配置解析**
 &gt; 
@@ -202,73 +202,15 @@ test.example.com {
 }
 ```
 
-重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过gitlab流水线自动备份仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>- 利用`gitlab`的CI CD定时自动备份`Github`所有仓库到`gitlab`
-- 防止Github账号被封禁或者丢失访问权限等问题
+重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过gitlab流水线自动备份仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>### 通过gitlab流水线自动备份仓库
 
+会自动对比提交，如果没有新的提交，则不会备份，避免空提交导致意外错误
 
+gitlab仓库根目录新建`.gitlab-ci.yml`文件，复制粘贴以下配置，使用方法见文件注释
 
-&lt;html&gt;
-&lt;body&gt;
-&lt;!--StartFragment--&gt;&lt;h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'&gt;1. 必要的准备工作&lt;/h3&gt;
-&lt;h4 class='text-base font-bold text-text-100 mt-1' level='4'&gt;创建必要的访问令牌和SSH密钥&lt;/h4&gt;
-&lt;ol class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7' depth='0'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;&lt;strong&gt;GitHub Token&lt;/strong&gt;：
-&lt;ul class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;创建一个具有 &lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;repo&lt;/code&gt; 权限的个人访问令牌（PAT）&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;访问：GitHub → Settings → Developer settings → Personal access tokens&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;&lt;strong&gt;GitHub SSH 密钥&lt;/strong&gt;：
-&lt;ul class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;创建一个SSH密钥对用于访问GitHub仓库&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;运行：&lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;ssh-keygen -t rsa -b 4096 -f github_id_rsa&lt;/code&gt;&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='2'&gt;将公钥添加到GitHub账户&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='2'&gt;&lt;strong&gt;GitLab API Token&lt;/strong&gt;：
-&lt;ul class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;创建一个具有API访问权限的GitLab个人访问令牌&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;访问：GitLab → Preferences → Access Tokens&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='3'&gt;&lt;strong&gt;GitLab SSH 密钥&lt;/strong&gt;：
-&lt;ul class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;创建一个SSH密钥对用于访问GitLab仓库&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;运行：&lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;ssh-keygen -t rsa -b 4096 -f gitlab_id_rsa&lt;/code&gt;&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='2'&gt;将公钥添加到GitLab账户&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'&gt;2. 在GitLab中设置CI/CD变量&lt;/h3&gt;
-&lt;p class='whitespace-pre-wrap break-words'&gt;在GitLab项目中，设置以下CI/CD变量：&lt;/p&gt;
-&lt;ul class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='0'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;访问 Settings → CI/CD → Variables，添加以下变量：&lt;/li&gt;
-&lt;/ul&gt;
-
-变量名 | 描述 | 是否受保护
--- | -- | --
-GITHUB_TOKEN | GitHub个人访问令牌 | 是
-GITHUB_SSH_PRIVATE_KEY | GitHub SSH私钥内容 | 是
-GITLAB_API_TOKEN | GitLab API访问令牌 | 是
-GITLAB_SSH_PRIVATE_KEY | GitLab SSH私钥内容 | 是
-GITLAB_USER_NAME | 用于提交的Git用户名 | 否
-GITLAB_USER_EMAIL | 用于提交的Git邮箱 | 否
-&lt;/pre&gt;
-&lt;h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'&gt;3. 设置定时任务&lt;/h3&gt;
-&lt;ol class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-decimal space-y-1.5 pl-7' depth='0'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;在GitLab项目中，前往 CI/CD → Schedules&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;点击 'New schedule' 按钮&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='2'&gt;设置如下参数：
-&lt;ul class='[&amp;amp;:not(:last-child)_ul]:pb-1 [&amp;amp;:not(:last-child)_ol]:pb-1 list-disc space-y-1.5 pl-7' depth='1'&gt;
-&lt;li class='whitespace-normal break-words' index='0'&gt;&lt;strong&gt;描述&lt;/strong&gt;：GitHub仓库每周镜像&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='1'&gt;&lt;strong&gt;间隔模式&lt;/strong&gt;：自定义，设置为 &lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;0 2 * * 1&lt;/code&gt;（每周一凌晨2点）&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='2'&gt;&lt;strong&gt;目标分支&lt;/strong&gt;：&lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;main&lt;/code&gt; 或 &lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;master&lt;/code&gt;（取决于你的默认分支）&lt;/li&gt;
-&lt;li class='whitespace-normal break-words' index='3'&gt;&lt;strong&gt;启用&lt;/strong&gt;：确保勾选了这一选项&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 class='text-lg font-bold text-text-100 mt-1 -mb-1.5' level='3'&gt;4. 将配置文件添加到GitLab项目&lt;/h3&gt;
-&lt;p class='whitespace-pre-wrap break-words'&gt;将以下&lt;code class='bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]'&gt;.gitlab-ci.yml&lt;/code&gt;文件添加到你的GitLab项目中。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/51.html</guid><pubDate>Tue, 22 Apr 2025 03:12:12 +0000</pubDate></item><item><title>使用CF-Worker实现简单的登录中间件</title><link>https://blog.52013120.xyz/post/50.html</link><description>### `CF-Worker`代码示例
+```
+# gitlab流水线 自动备份仓库配置
+# 将配置保存为 .gitlab-ci.yml 文件，放在 GitLab 仓库根目录下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/51.html</guid><pubDate>Tue, 22 Apr 2025 03:12:12 +0000</pubDate></item><item><title>使用CF-Worker实现简单的登录中间件</title><link>https://blog.52013120.xyz/post/50.html</link><description>### `CF-Worker`代码示例
 ```
 // 配置用户名和密码
 const USERNAME = 'admin123';
