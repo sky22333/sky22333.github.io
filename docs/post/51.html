@@ -136,7 +136,7 @@ backup_github_repo:
   timeout: 1h
   
   before_script:
-    - echo "开始备份 GitHub 仓库..."
+    - echo "开始备份上游仓库..."
     - apk add --no-cache git curl jq bash
     - git config --global user.name "$GITLAB_USER_NAME"
     - git config --global user.email "$GITLAB_USER_EMAIL"
@@ -148,7 +148,7 @@ backup_github_repo:
     - cd "$WORK_DIR"
     - echo "工作目录：$WORK_DIR"
     
-    - echo "正在克隆 GitHub 仓库..."
+    - echo "正在克隆上游仓库..."
     - |
       if [ -n "$GITHUB_TOKEN" ]; then
         GITHUB_CLONE_URL=$(echo "$GITHUB_REPO_URL" | sed "s|https://|https://$GITHUB_TOKEN@|")
@@ -161,7 +161,7 @@ backup_github_repo:
     
     - |
       if [ ! -d ".git" ]; then
-        echo "错误：GitHub 仓库克隆失败！"
+        echo "错误：上游仓库克隆失败！"
         exit 1
       fi
     
@@ -202,19 +202,19 @@ backup_github_repo:
     - git add .
     - |
       if git diff --staged --quiet; then
-        echo "没有检测到变更，GitHub 仓库无新更新，跳过提交"
-        echo "最后检查的 GitHub 提交：$LATEST_COMMIT"
+        echo "没有检测到变更，上游仓库没有新的更新，跳过提交"
+        echo "最后检查的上游仓库提交：$LATEST_COMMIT"
         exit 0
       fi
     
     - echo "检测到文件变更，准备同步到 GitLab"
     
     - |
-      BACKUP_MESSAGE="同步 GitHub 仓库更新 $(date '+%Y-%m-%d %H:%M:%S')"
+      BACKUP_MESSAGE="同步时间 $(date '+%Y-%m-%d %H:%M:%S')"
       BACKUP_MESSAGE="$BACKUP_MESSAGE
 
       同步信息：
-      - GitHub 提交：$LATEST_COMMIT
+      - 上游提交哈希：$LATEST_COMMIT
       - 提交信息：$COMMIT_MESSAGE  
       - 提交时间：$COMMIT_DATE
       - 同步时间：$(date -Iseconds)
