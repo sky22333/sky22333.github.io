@@ -16,7 +16,6 @@ gitlab仓库根目录新建`.gitlab-ci.yml`文件，复制粘贴以下配置，�
 # GITLAB_USER_NAME: Git提交的用户名
 # GITLAB_USER_EMAIL: Git提交的邮箱
 # PROJECT_TOKEN：gitlab访问令牌（进入项目 → 设置 → CI/CD → 变量）
-
 # 可选变量：
 # GITHUB_TOKEN: GitHub 个人访问令牌（用于私有仓库或提高 API 限制）
 
