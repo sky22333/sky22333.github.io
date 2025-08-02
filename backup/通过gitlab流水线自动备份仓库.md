@@ -126,7 +126,7 @@ backup_github_repo:
       - 提交信息：$COMMIT_MESSAGE  
       - 提交时间：$COMMIT_DATE
       - 同步时间：$(date -Iseconds)
-      - 文件数量：$FILE_COUNT"
+      - 文件总数：$FILE_COUNT"
       git commit -m "$BACKUP_MESSAGE"
       git push "https://gitlab-ci-token:${PROJECT_TOKEN}@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" main
     
