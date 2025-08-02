@@ -115,7 +115,7 @@ backup_github_repo:
         exit 0
       fi
     
-    - echo "检测到文件变更，准备同步到 GitLab"
+    - echo "检测到文件变更，开始同步到 GitLab"
     
     - |
       BACKUP_MESSAGE="同步时间 $(date '+%Y-%m-%d %H:%M:%S')"
