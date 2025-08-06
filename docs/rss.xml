@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 30 Jul 2025 14:48:44 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 06 Aug 2025 05:07:03 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
 &gt; ---
 &gt; ### **初始配置解析**
 &gt; 
@@ -1776,12 +1776,9 @@ https://example.com/clash.yaml&#13;
 &gt; [!TIP]
 &gt; #### 加速项目是白嫖的Workers，有请求限制，建议自己部署 💻
 
-- Github加速：https://blog.52013120.xyz/Docker-Hub
+- Github脚本加速：https://blog.52013120.xyz/Docker-Hub
 - Github文件加速：https://yishijie.gitlab.io/ziyuan
-- Docker-Hub加速：https://hub.52013120.xyz
-- 代理加速直链：https://docker.52013120.xyz
 - 在线代码编辑器：https://blog.52013120.xyz/caddy
-- 观影自由：https://blog.52013120.xyz/tv
 - 在线m3u8播放器：https://blog.52013120.xyz/zhibo
 - VIP视频在线播放：https://blog.52013120.xyz/video
 - 添加多IP命令生成器：https://blog.52013120.xyz/shell
