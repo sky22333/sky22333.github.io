@@ -269,7 +269,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">2</span><span class="pl-s">]</span>: HyperText Markup Language 超文本标记语言
 
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">Le</span><span class="pl-s">]</span>: 开源笔记平台，支持Markdown和笔记直接发为博文</pre></div>
-<p>使用 Markdown<sup><a href="#user-content-fn-1-6cf97ab3c21fc8615162dc0f7f7b02f2" id="user-content-fnref-1-6cf97ab3c21fc8615162dc0f7f7b02f2" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-6cf97ab3c21fc8615162dc0f7f7b02f2" id="user-content-fnref-2-6cf97ab3c21fc8615162dc0f7f7b02f2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-6cf97ab3c21fc8615162dc0f7f7b02f2" id="user-content-fnref-le-6cf97ab3c21fc8615162dc0f7f7b02f2" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
+<p>使用 Markdown<sup><a href="#user-content-fn-1-e45e15f27b94a48f0c80a691e73e63c3" id="user-content-fnref-1-e45e15f27b94a48f0c80a691e73e63c3" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-e45e15f27b94a48f0c80a691e73e63c3" id="user-content-fnref-2-e45e15f27b94a48f0c80a691e73e63c3" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-e45e15f27b94a48f0c80a691e73e63c3" id="user-content-fnref-le-e45e15f27b94a48f0c80a691e73e63c3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
 <h1>列表</h1>
 <p>支持使用有序列表和无序列表，有序列表用数字序号+英文句号+空格+列表内容来标记，无序列表由*/+/-+空格+列表内容来标记。</p>
 <h2>有序列表</h2>
@@ -346,20 +346,20 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-v">-</span> <span class="pl-k">[x]</span> 睡</pre></div>
 <p>今日工作：</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 吃</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 喝</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 玩</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> 吃</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> 喝</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 玩</li>
 </ul>
 <p>明日计划：</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 吃
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 吃
 <ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 吃鱼</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 吃瓜</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> 吃鱼</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 吃瓜</li>
 </ul>
 </li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> 玩</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> 睡</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 玩</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> 睡</li>
 </ul>
 <h1>引用</h1>
 <p>引用由&gt; 引用内容来标记</p>
@@ -910,14 +910,14 @@ Note right of C: 没人陪我玩
     <span class="pl-ent">李四</span><span class="pl-k">--&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">很好!</span></pre></div>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-6cf97ab3c21fc8615162dc0f7f7b02f2">
-<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-6cf97ab3c21fc8615162dc0f7f7b02f2" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-e45e15f27b94a48f0c80a691e73e63c3">
+<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-e45e15f27b94a48f0c80a691e73e63c3" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-6cf97ab3c21fc8615162dc0f7f7b02f2">
-<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-6cf97ab3c21fc8615162dc0f7f7b02f2" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-e45e15f27b94a48f0c80a691e73e63c3">
+<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-e45e15f27b94a48f0c80a691e73e63c3" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-Le-6cf97ab3c21fc8615162dc0f7f7b02f2">
-<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-6cf97ab3c21fc8615162dc0f7f7b02f2" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-Le-e45e15f27b94a48f0c80a691e73e63c3">
+<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-e45e15f27b94a48f0c80a691e73e63c3" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section></div>
