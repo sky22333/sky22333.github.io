@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 09 Aug 2025 03:47:39 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 09 Aug 2025 03:53:20 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
 &gt; ---
 &gt; ### **初始配置解析**
 &gt; 
@@ -2148,7 +2148,7 @@ docker run --privileged --restart=always -itd \&#13;
 | NekoBox  | https://github.com/MatsuriDayo/NekoBoxForAndroid/releases | sing-box内核，全协议支持 | 安卓 |
 | FlClash | https://github.com/chen08209/FlClash/releases | mihomo内核，界面简洁美观 | Win / Mac / Linux / Android |
 | sing-box | https://github.com/SagerNet/sing-box/releases&lt;br&gt;https://apps.apple.com/us/app/sing-box-vt/id6673731168 | sing-box官方客户端，轻量高性能 | 安卓 / iOS |
-| clash-verge-rev  | https://github.com/clash-verge-rev/clash-verge-rev/releases | 基于mihomo内核，界面现代化美观，全协议支持 | Windows / macOS |
+| clash-verge-rev  | https://github.com/clash-verge-rev/clash-verge-rev/releases | 基于mihomo内核，界面现代化美观，全协议支持 | Windows / macOS / Linux  |
 | v2rayN  | https://github.com/2dust/v2rayN/releases | 经典客户端，全协议支持，跨平台 | Windows / macOS / Linux |
 | 小火箭（付费）  | https://apps.apple.com/us/app/shadowrocket/id932747118 | 全协议支持，功能全面，3美金买断 | iOS |
 | Clash Mi | https://apps.apple.com/us/app/clash-mi/id6744321968 | mihomo内核，界面简洁 | iOS |
