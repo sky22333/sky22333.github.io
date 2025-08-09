@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 09 Aug 2025 03:57:52 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 09 Aug 2025 03:58:27 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
 &gt; ---
 &gt; ### **初始配置解析**
 &gt; 
@@ -2161,7 +2161,7 @@ docker run --privileged --restart=always -itd \&#13;
 
 | 名称 | 下载地址 | 特点 | 支持平台 |
 | :--- | :---: | :--- | :--- |
-| DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools&amp;pcampaignid=web_share | 局域网扫描，网络工具集合 | 安卓 |
+| DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools&amp;pcampaignid=web_share | 局域网扫描，网络工具集合 | Android |
 | termux  | https://github.com/termux/termux-app/releases | 安卓终端模拟器，可运行Linux工具 | Android |
 | serverbox  | https://github.com/lollipopkit/flutter_server_box/releases | 简洁美观的SSH工具 | Android |
 | Acode | https://acode.app | 安卓代码编辑器，支持多语言 | Android |
