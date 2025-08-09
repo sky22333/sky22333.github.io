@@ -2,7 +2,7 @@
     "title":"繁星点点",
     "subTitle":"记录点点滴滴",
     "homeUrl":"https://blog.52013120.xyz",
-    "avatarUrl":"https://cdn.jsdelivr.net/gh/sky22333/sky22333.github.io@main/static/assets/blog.png",
+    "avatarUrl":"https://blog.52013120.xyz/assets/blog.png",
     "bottomText":"❤️转载请注明出处❤️",
     "showPostSource":0,
     "needComment":0,
@@ -18,6 +18,6 @@
     "startSite":"07/01/2024",
     "GMEEK_VERSION":"last",
     "indexScript":"<script src='/assets/main.js'></script>",
-    "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>",
+    "allHead":"<script src='/assets/GmeekVercount.js'></script>",
     "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>"
 }
