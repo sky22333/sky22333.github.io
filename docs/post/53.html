@@ -100,8 +100,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </li>
 </ul>
 <h3>服务端（运行在服务器里）</h3>
-<p><code class="notranslate">sing-box</code>官方<code class="notranslate">beta</code>版安装脚本，因为目前正式版本暂不支持<code class="notranslate">anytls</code>，所以需要安装<code class="notranslate">beta</code>版</p>
-<pre class="notranslate"><code class="notranslate">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
+<pre class="notranslate"><code class="notranslate">curl -fsSL https://sing-box.app/install.sh | sh
 </code></pre>
 <p>配置路径：<code class="notranslate">/etc/sing-box/config.json</code></p>
 <p>服务端节点配置：</p>
@@ -153,11 +152,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>查看日志	             <code class="notranslate">journalctl -u sing-box --output cat -e</code></p>
 <hr>
 <h3>客户端（运行在本地设备）</h3>
-<p>1：下载<code class="notranslate">sing-box</code>内核<a href="https://github.com/SagerNet/sing-box/releases/download/v1.12.0-beta.13/sing-box-1.12.0-beta.13-windows-amd64.zip">最新<code class="notranslate">beta</code>版</a>，</p>
-<p>2：替换<code class="notranslate">v2rayN</code>的sing-box内核，路径在：<code class="notranslate">v2rayN-windows-64-desktop\v2rayN-windows-64\bin\sing_box</code></p>
-<p>3：将以下配置添加到<code class="notranslate">v2rayN</code>的自定义配置配置文件，内核选<code class="notranslate">sing-box</code>，确保已经替换了最新版内核。</p>
-<p>4：注意：由于<code class="notranslate">sing-box</code>内核最新版本的配置语法有很大变化，切换最新内核后，<code class="notranslate">v2rayN</code>的tun功能可能会失效。依赖<code class="notranslate">sing-box</code>内核的协议也可能会无法使用，例如<code class="notranslate">hy2</code>协议。可以使用<code class="notranslate">clash</code>系列的<code class="notranslate">gui</code>客户端。<code class="notranslate">v2rayN</code>已经有<code class="notranslate">anytls</code>协议的相关PR，但是目前暂未合并。<code class="notranslate">clash-verge-rev</code>可以直接使用。</p>
-<p><code class="notranslate">v2rayN</code>客户端节点配置示例：</p>
+<p>客户端配置示例：</p>
 <p><code class="notranslate">config.json</code></p>
 <pre class="notranslate"><code class="notranslate">{
   "log": {

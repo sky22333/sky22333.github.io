@@ -9,9 +9,8 @@
 
 ### 服务端（运行在服务器里）
 
-`sing-box`官方`beta`版安装脚本，因为目前正式版本暂不支持`anytls`，所以需要安装`beta`版
 ```
-curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
+curl -fsSL https://sing-box.app/install.sh | sh
 ```
 
 配置路径：`/etc/sing-box/config.json`
@@ -77,16 +76,7 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 
 ###   客户端（运行在本地设备）
 
-
-1：下载`sing-box`内核[最新`beta`版](https://github.com/SagerNet/sing-box/releases/download/v1.12.0-beta.13/sing-box-1.12.0-beta.13-windows-amd64.zip)，
-
-2：替换`v2rayN`的sing-box内核，路径在：`v2rayN-windows-64-desktop\v2rayN-windows-64\bin\sing_box`
-
-3：将以下配置添加到`v2rayN`的自定义配置配置文件，内核选`sing-box`，确保已经替换了最新版内核。
-
-4：注意：由于`sing-box`内核最新版本的配置语法有很大变化，切换最新内核后，`v2rayN`的tun功能可能会失效。依赖`sing-box`内核的协议也可能会无法使用，例如`hy2`协议。可以使用`clash`系列的`gui`客户端。`v2rayN`已经有`anytls`协议的相关PR，但是目前暂未合并。`clash-verge-rev`可以直接使用。
-
-`v2rayN`客户端节点配置示例：
+客户端配置示例：
 
 `config.json`
 
