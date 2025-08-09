@@ -200,6 +200,11 @@ https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 ```
 其他参数不变，然后去被控机安装即可。
 
+国内服务器：
+```
+bash <(curl -sSL https://blog.52013120.xyz/assets/agent.sh)
+```
+
 ---
 
 [官方项目地址](https://github.com/nezhahq/nezha)
