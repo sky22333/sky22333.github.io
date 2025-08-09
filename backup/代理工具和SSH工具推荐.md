@@ -11,7 +11,6 @@
 | 小火箭（付费）  | https://apps.apple.com/us/app/shadowrocket/id932747118 | 全协议支持，功能全面，3美金买断 | iOS |
 | Clash Mi | https://apps.apple.com/us/app/clash-mi/id6744321968 | mihomo内核，界面简洁 | iOS |
 | Karing | https://github.com/KaringX/karing/releases | sing-box和mihomo双内核，全协议支持，功能强大 | Win / Mac / IOS / Android |
-| V2Box  | https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690 | xray内核，使用简单 | iOS / macOS |
 | v2rayA  | https://v2raya.org/docs/prologue/introduction | 基于xray的Web管理界面 | Linux |
 | mihomo  | https://github.com/MetaCubeX/mihomo/releases | mihomo内核本体（原clash-meta），轻量强大，yaml配置友好 | 全平台支持 |
 
