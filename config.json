@@ -18,6 +18,5 @@
     "startSite":"07/01/2024",
     "GMEEK_VERSION":"last",
     "indexScript":"<script src='/assets/main.js'></script>",
-    "allHead":"<script src='/assets/GmeekVercount.js'></script>",
     "script":"<script src='/assets/GmeekTOC.js'></script><script src='/assets/lightbox.js'></script>"
 }
