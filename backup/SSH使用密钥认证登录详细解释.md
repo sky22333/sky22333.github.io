@@ -53,3 +53,11 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 2233 root@192.168.2.1
 这条命令会自动把`id_ed25519.pub`的内容追加到目标主机的`~/.ssh/authorized_keys`中
 
 多个主机可以使用脚本for循环批量执行
+
+## 5：注意事项
+
+目标主机上需要正确的权限设置，一般默认的权限就是正确的。无需改动。
+```
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
