@@ -14,7 +14,7 @@ docker run --restart=always -itd \
 ```
 此时你的9091端口的所有流量将通过WARP出站
 
-查看你的warp的IP：`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ip.sb"`
+查看你的warp的IP：`curl -x "socks5h://127.0.0.1:9091" -fsSL "ip.sb"`
 
 
 #### 2：WARP Plus 账户
@@ -49,7 +49,7 @@ docker run --privileged --restart=always -itd \
     -p 9091:9091 \
     monius/docker-warp-socks
 ```
-验证是否成功`curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ip.sb"`
+验证是否成功`curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "ip.sb"`
 
 
 #### 4：自定义wireguard配置
