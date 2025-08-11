@@ -30,7 +30,9 @@ docker run --privileged --restart=always -itd \
     -p 127.0.0.1:9091:9091 \
     monius/docker-warp-socks
 ```
-运行`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"` 看到`plus`则表示WARP Plus密钥应用成功。
+运行`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"` 
+
+看到`plus`则表示WARP Plus密钥应用成功。
 
 #### 3：sk5增加密码
 
@@ -47,7 +49,7 @@ docker run --privileged --restart=always -itd \
     -p 9091:9091 \
     monius/docker-warp-socks
 ```
-验证是否成功`curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"`
+验证是否成功`curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ip.sb"`
 
 
 #### 4：自定义wireguard配置

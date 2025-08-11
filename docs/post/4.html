@@ -42,7 +42,9 @@ docker run --privileged --restart=always -itd \
     -p 127.0.0.1:9091:9091 \
     monius/docker-warp-socks
 ```
-运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 
+
+看到`plus`则表示WARP Plus密钥应用成功。">
 <meta property="og:title" content="Liunx配置wrap">
 <meta property="og:description" content="[其他系统安装](https://pkg.cloudflareclient.com/)
 
@@ -76,7 +78,9 @@ docker run --privileged --restart=always -itd \
     -p 127.0.0.1:9091:9091 \
     monius/docker-warp-socks
 ```
-运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 看到`plus`则表示WARP Plus密钥应用成功。">
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 
+
+看到`plus`则表示WARP Plus密钥应用成功。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/4.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -164,7 +168,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     -p 127.0.0.1:9091:9091 \
     monius/docker-warp-socks
 </code></pre>
-<p>运行<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"</code> 看到<code class="notranslate">plus</code>则表示WARP Plus密钥应用成功。</p>
+<p>运行<code class="notranslate">curl -x "socks5h://127.0.0.1:9091" -fsSL "https://www.cloudflare.com/cdn-cgi/trace"</code></p>
+<p>看到<code class="notranslate">plus</code>则表示WARP Plus密钥应用成功。</p>
 <h4>3：sk5增加密码</h4>
 <pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
     --name warp_socks_passwd \
@@ -178,7 +183,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     -p 9091:9091 \
     monius/docker-warp-socks
 </code></pre>
-<p>验证是否成功<code class="notranslate">curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"</code></p>
+<p>验证是否成功<code class="notranslate">curl -U "用户名:密码" -x "socks5h://127.0.0.1:9091" -fsSL "https://ip.sb"</code></p>
 <h4>4：自定义wireguard配置</h4>
 <pre class="notranslate"><code class="notranslate">docker run --privileged --restart=always -itd \
     --name warp_socks \
