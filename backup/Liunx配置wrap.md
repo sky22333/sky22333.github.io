@@ -6,22 +6,15 @@
 [项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
 
 #### 1：普通部署 
-
 ```
-docker run --privileged --restart=always -itd \
-    --name warp_socks \
-    --cap-add NET_ADMIN \
-    --cap-add SYS_MODULE \
-    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
-    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    -v /lib/modules:/lib/modules \
+docker run --restart=always -itd \
+    --name warp_socks_v5 \
     -p 127.0.0.1:9091:9091 \
-    monius/docker-warp-socks
+    ghcr.io/mon-ius/docker-warp-socks:v5
 ```
-
 此时你的9091端口的所有流量将通过WARP出站
 
-查看你的warp的IP：`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ifconfig.co"`
+查看你的warp的IP：`curl -x "socks5h://127.0.0.1:9091" -fsSL "https://ip.sb"`
 
 
 #### 2：WARP Plus 账户
@@ -74,7 +67,7 @@ docker run --privileged --restart=always -itd \
 
 
 
-## debian系统安装：
+## apt包安装：
 
 ```
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
@@ -133,4 +126,9 @@ unset ALL_PROXY
 关闭wrap：
 ```
 warp-cli disconnect
+```
+
+###  一键脚本
+```
+bash <(wget -qO- https://gitlab.com/yishijie/warp-sh/raw/main/warp.sh) menu
 ```
