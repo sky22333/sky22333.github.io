@@ -115,7 +115,13 @@ dpkg --print-architecture
 ```
 uname -a
 ```
-
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
 
 
 ### 安装node环境
@@ -134,13 +140,7 @@ volta install node@16.0.0
 ```
 切换node版本只需再次安装需要的版本即可自动切换
 
-####  查看系统版本
-```
-cat /etc/os-release
-```
-```
-lsb_release -a
-```
+
 
 
 #### 文件搜索
@@ -528,7 +528,13 @@ dpkg --print-architecture
 ```
 uname -a
 ```
-
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
 
 
 ### 安装node环境
@@ -547,13 +553,7 @@ volta install node@16.0.0
 ```
 切换node版本只需再次安装需要的版本即可自动切换
 
-####  查看系统版本
-```
-cat /etc/os-release
-```
-```
-lsb_release -a
-```
+
 
 
 #### 文件搜索
@@ -978,6 +978,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </code></pre>
 <pre class="notranslate"><code class="notranslate">uname -a
 </code></pre>
+<h4>查看系统版本</h4>
+<pre class="notranslate"><code class="notranslate">cat /etc/os-release
+</code></pre>
+<pre class="notranslate"><code class="notranslate">lsb_release -a
+</code></pre>
 <h3>安装node环境</h3>
 <pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
 </code></pre>
@@ -989,11 +994,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 <pre class="notranslate"><code class="notranslate">volta install node@16.0.0
 </code></pre>
 <p>切换node版本只需再次安装需要的版本即可自动切换</p>
-<h4>查看系统版本</h4>
-<pre class="notranslate"><code class="notranslate">cat /etc/os-release
-</code></pre>
-<pre class="notranslate"><code class="notranslate">lsb_release -a
-</code></pre>
 <h4>文件搜索</h4>
 <p>按目录名称查找</p>
 <pre class="notranslate"><code class="notranslate">find / -type d -iname "目录名" 2&gt;/dev/null
@@ -1201,7 +1201,206 @@ sudo apt install -f
 <td>查看网址用的什么dns进行解析。</td>
 </tr>
 </tbody>
-</table></markdown-accessiblity-table></div>
+</table></markdown-accessiblity-table>
+<hr>
+<h3>vim编辑器</h3>
+<p>安装：<code class="notranslate">apt update</code> <code class="notranslate">apt install curl wget git zip vim -y</code>或者<code class="notranslate">apk add vim</code></p>
+<p>常用命令：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>功能</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>退出并保存</td>
+<td><code class="notranslate">:wq</code></td>
+<td>命令模式中执行</td>
+</tr>
+<tr>
+<td>只退出不保存</td>
+<td><code class="notranslate">:q!</code></td>
+<td>命令模式中执行</td>
+</tr>
+<tr>
+<td>清空所有内容</td>
+<td><code class="notranslate">:%d</code></td>
+<td>命令模式中执行</td>
+</tr>
+<tr>
+<td>粘贴时保持代码格式</td>
+<td><code class="notranslate">:set paste</code></td>
+<td>执行后按<code class="notranslate">i</code>进入编辑模式</td>
+</tr>
+<tr>
+<td>进入编辑模式</td>
+<td><code class="notranslate">i</code></td>
+<td>命令模式中执行</td>
+</tr>
+<tr>
+<td>退出编辑模式</td>
+<td><code class="notranslate">esc</code></td>
+<td>编辑模式中执行</td>
+</tr>
+<tr>
+<td>更改编码适配中文</td>
+<td><code class="notranslate">:set encoding=utf-8</code></td>
+<td>执行后按<code class="notranslate">i</code>进入编辑模式</td>
+</tr>
+<tr>
+<td>跳转到指定行号</td>
+<td><code class="notranslate">:行号</code></td>
+<td>在命令模式中执行</td>
+</tr>
+<tr>
+<td>撤销上一次修改</td>
+<td><code class="notranslate">u</code></td>
+<td>命令模式中执行</td>
+</tr>
+<tr>
+<td>搜索关键词</td>
+<td><code class="notranslate">/user</code></td>
+<td><code class="notranslate">n</code>匹配下一个，<code class="notranslate">N</code>匹配上一个</td>
+</tr>
+<tr>
+<td>选择整行</td>
+<td><code class="notranslate">v</code></td>
+<td>上下键选择多行</td>
+</tr>
+<tr>
+<td>删除</td>
+<td><code class="notranslate">d</code></td>
+<td>删除所选</td>
+</tr>
+<tr>
+<td>光标删除</td>
+<td><code class="notranslate">x</code></td>
+<td>删除光标覆盖的内容（向后）</td>
+</tr>
+<tr>
+<td>全局替换文本</td>
+<td><code class="notranslate">:%s/旧内容/新内容/g</code></td>
+<td>命令模式中执行</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h3>nano编辑器</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th><strong>功能</strong></th>
+<th><strong>快捷键</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>移动光标</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>行首</td>
+<td><code class="notranslate">Ctrl + A</code></td>
+<td>移动到行首</td>
+</tr>
+<tr>
+<td>行尾</td>
+<td><code class="notranslate">Ctrl + E</code></td>
+<td>移动到行尾</td>
+</tr>
+<tr>
+<td>指定行列</td>
+<td><code class="notranslate">Ctrl + _</code></td>
+<td>移动到指定行和列</td>
+</tr>
+<tr>
+<td><strong>文件操作</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>保存文件</td>
+<td><code class="notranslate">Ctrl + O</code></td>
+<td>保存文件，按 Enter 确认</td>
+</tr>
+<tr>
+<td>退出 <code class="notranslate">nano</code></td>
+<td><code class="notranslate">Ctrl + X</code></td>
+<td>退出编辑器，<code class="notranslate">y</code>为保存，<code class="notranslate">n</code>为不保存</td>
+</tr>
+<tr>
+<td>另存为</td>
+<td><code class="notranslate">Ctrl + O</code></td>
+<td>输入新文件名保存</td>
+</tr>
+<tr>
+<td><strong>编辑操作</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>剪切所选</td>
+<td><code class="notranslate">Ctrl + K</code></td>
+<td>剪切（删除）所选</td>
+</tr>
+<tr>
+<td>快速选中</td>
+<td><code class="notranslate">Ctrl + Shift + ↓</code></td>
+<td>按一次为一行，按住不动快速多行</td>
+</tr>
+<tr>
+<td>删除当前行</td>
+<td><code class="notranslate">Ctrl + K</code></td>
+<td>删除当前行</td>
+</tr>
+<tr>
+<td>撤销操作</td>
+<td><code class="notranslate">Ctrl + _</code></td>
+<td>撤销上一步操作</td>
+</tr>
+<tr>
+<td>重做操作</td>
+<td><code class="notranslate">Ctrl + E</code></td>
+<td>重做上一步操作</td>
+</tr>
+<tr>
+<td><strong>搜索与替换</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>搜索</td>
+<td><code class="notranslate">Ctrl + W</code></td>
+<td>搜索指定文本</td>
+</tr>
+<tr>
+<td>反向搜索</td>
+<td><code class="notranslate">Ctrl + W</code> + <code class="notranslate">Ctrl + R</code></td>
+<td>进行反向搜索</td>
+</tr>
+<tr>
+<td>搜索并替换</td>
+<td><code class="notranslate">Ctrl + \</code></td>
+<td>搜索并替换文本</td>
+</tr>
+<tr>
+<td><strong>行操作</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>显示行号</td>
+<td><code class="notranslate">Ctrl + C</code></td>
+<td>显示当前光标位置</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
