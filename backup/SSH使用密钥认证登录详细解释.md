@@ -61,3 +61,5 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 2233 root@192.168.2.1
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 ```
+
+如果你是在目标主机上生成SSH密钥对的话，则把私钥下载到本地即可。
