@@ -607,7 +607,49 @@ gradle --refresh-dependencies  # 强制刷新依赖
 <td><code class="notranslate">implementation 'androidx.core:core-ktx:1.15.0'</code></td>
 </tr>
 </tbody>
-</table></markdown-accessiblity-table></div>
+</table></markdown-accessiblity-table>
+<pre class="notranslate"><code class="notranslate">services:
+  android-build:
+    image: thyrlian/android-sdk
+    volumes:
+      - ./:/app
+      - ./gradle-cache:/root/.gradle
+    working_dir: /app
+    environment:
+      - GRADLE_OPTS=-Dorg.gradle.daemon=false
+      - JAVA_OPTS=-Xmx4g
+    command: &gt;
+      sh -c "
+        chmod +x gradlew &amp;&amp;
+        ./gradlew clean assembleDebug
+      "
+    # 构建发布版本需要签名
+  android-release:
+    image: thyrlian/android-sdk
+    volumes:
+      - ./:/app
+      - ./gradle-cache:/root/.gradle
+    working_dir: /app
+    environment:
+      - GRADLE_OPTS=-Dorg.gradle.daemon=false
+      - JAVA_OPTS=-Xmx4g
+      # 签名相关环境变量
+      - KEYSTORE_FILE=/app/keystore/release.jks
+      - KEYSTORE_PASSWORD=${KEYSTORE_PASSWORD}
+      - KEY_ALIAS=${KEY_ALIAS}
+      - KEY_PASSWORD=${KEY_PASSWORD}
+    command: &gt;
+      sh -c "
+        chmod +x gradlew &amp;&amp;
+        ./gradlew clean assembleRelease
+      "
+</code></pre>
+<pre class="notranslate"><code class="notranslate"># 构建调试版本
+docker compose up android-build
+
+# 构建发布版本（需要配置签名）
+docker compose up android-release
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
