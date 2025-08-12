@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 12 Aug 2025 15:36:45 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>SSH使用密钥认证登录详细解释</title><link>https://blog.52013120.xyz/post/59.html</link><description>## 1：电脑本地生成SSH密钥对
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 12 Aug 2025 15:37:55 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>SSH使用密钥认证登录详细解释</title><link>https://blog.52013120.xyz/post/59.html</link><description>## 1：电脑本地生成SSH密钥对
 ```
 ssh-keygen -t ed25519
 ```
@@ -857,7 +857,7 @@ git config --list
 ## 项目添加子模块
 `ddns-go` 为例，项目根目录执行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>学不完，根本学不完😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
 
-常见的必学框架：
+热门框架收藏：
 
 - [Tailwind CSS](https://www.tailwindcss.cn/docs/installation) + [shadcn/ui](https://www.shadcn-ui.cn/docs/installation)
 
