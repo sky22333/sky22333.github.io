@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 12 Aug 2025 12:24:30 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>SSH使用密钥认证登录详细解释</title><link>https://blog.52013120.xyz/post/59.html</link><description>## 1：电脑本地生成SSH密钥对
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 12 Aug 2025 15:36:45 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>SSH使用密钥认证登录详细解释</title><link>https://blog.52013120.xyz/post/59.html</link><description>## 1：电脑本地生成SSH密钥对
 ```
 ssh-keygen -t ed25519
 ```
@@ -879,6 +879,13 @@ git config --list
 
 - daisyUI原生UI库：https://daisyui.com/docs/cdn/?lang=zh_hans
 
+- Github风格UI库：https://primer.style/product/
+
+- 微软风格UI库：https://react.fluentui.dev/
+
+- 谷歌风格UI库：https://material-web.dev/
+
+- 谷歌UI库：https://mui.com/material-ui/getting-started/
 
 | **原生前端库**             | **推荐库**       | **官方地址** |
 |---------------------|----------------|-------------|
