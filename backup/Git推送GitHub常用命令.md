@@ -200,3 +200,9 @@ git push origin main --force
 ```
 git reset --hard 6038e0a
 ```
+
+## win系统更改已登录的账户
+```
+控制面板 \ 用户帐户 \ 凭据管理器
+```
+选择`Windows凭据`，找到`github.com`域名相关的凭据，然后编辑或者删除。
