@@ -191,9 +191,12 @@ go fmt ./...
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
 ```
 
-#### Windows平台
+#### Windows系统构建
 ```
-GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp.exe
+$env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp.exe
+```
+```
+$env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
 ```
 
 ## PHP 💻
@@ -414,9 +417,12 @@ go fmt ./...
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
 ```
 
-#### Windows平台
+#### Windows系统构建
 ```
-GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp.exe
+$env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp.exe
+```
+```
+$env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
 ```
 
 ## PHP 💻
@@ -653,8 +659,10 @@ go vet main.go    # 检查单个文件
 <h4>将所有依赖和静态链接一起打包，并优化包大小</h4>
 <pre class="notranslate"><code class="notranslate">GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w" -o myapp
 </code></pre>
-<h4>Windows平台</h4>
-<pre class="notranslate"><code class="notranslate">GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-s -w" -o myapp.exe
+<h4>Windows系统构建</h4>
+<pre class="notranslate"><code class="notranslate">$env:GOOS="windows"; $env:GOARCH="amd64"; $env:CGO_ENABLED="0"; go build -ldflags="-s -w" -o myapp.exe
+</code></pre>
+<pre class="notranslate"><code class="notranslate">$env:GOOS="linux"; $env:GOARCH="amd64"; $env:CGO_ENABLED="0"; go build -ldflags="-s -w" -o myapp-amd64
 </code></pre>
 <h2>PHP 💻</h2>
 <p>基本代码机构</p>

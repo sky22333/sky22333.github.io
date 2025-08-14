@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 13 Aug 2025 10:55:15 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>【IP信息查询 / 地理定位】
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 14 Aug 2025 17:27:57 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>【IP信息查询 / 地理定位】
 [https://ip.sb](https://www.nodeseek.com/jump?to=https%3A%2F%2Fip.sb) 公网IP及ISP、ASN、地理位置查询
 [https://ipapi.co](https://www.nodeseek.com/jump?to=https%3A%2F%2Fipapi.co) IP地理位置、运营商及时区信息
 [https://whatismyipaddress.com](https://www.nodeseek.com/jump?to=https%3A%2F%2Fwhatismyipaddress.com) IP定位、ISP信息及反查
@@ -2042,9 +2042,12 @@ go fmt ./...
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
 ```
 
-#### Windows平台
+#### Windows系统构建
 ```
-GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp.exe
+$env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp.exe
+```
+```
+$env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
 ```
 
 ## PHP 💻
