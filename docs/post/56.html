@@ -650,6 +650,177 @@ docker compose up android-build
 
 # 构建发布版本（需要配置签名）
 docker compose up android-release
+</code></pre>
+<h2>Go 项目生成 Android SDK (AAR) 并在 Kotlin 调用</h2>
+<ol>
+<li>安装 gomobile</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">go install golang.org/x/mobile/cmd/gomobile@latest
+go install golang.org/x/mobile/cmd/gobind@latest
+gomobile init
+</code></pre>
+<ol start="2">
+<li>编写 Go 库</li>
+</ol>
+<ul>
+<li>导出函数首字母必须大写</li>
+<li>一般只需编写go项目的<code class="notranslate">启动 停止 重启 日志</code>等等接口即可。</li>
+</ul>
+<ol start="3">
+<li>生成 AAR 库</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">gomobile bind -target=android ./mylib
+</code></pre>
+<p>输出文件：</p>
+<pre class="notranslate"><code class="notranslate">mylib.aar ← Android 依赖库
+
+mylib-sources.jar ← 源码 (可选)
+</code></pre>
+<ol start="4">
+<li>导入到安卓项目</li>
+</ol>
+<p>将<code class="notranslate">mylib.aar</code>放到<code class="notranslate">app/libs/</code>目录</p>
+<p>修改<code class="notranslate">app/build.gradle</code></p>
+<pre class="notranslate"><code class="notranslate">dependencies {
+    implementation files('libs/mylib.aar')
+}
+</code></pre>
+<ol start="5">
+<li>Kotlin 调用 Go 库</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">import mylib.Mylib
+
+val result = Mylib.hello("World")
+Log.d("GoLib", result)  // 输出: Hello, World!
+</code></pre>
+<h2>最新主流技术栈</h2>
+<pre class="notranslate"><code class="notranslate">🔹核心技术栈
+
+Kotlin → 谷歌官方推荐的 Android 主语言，现代化、空安全、协程支持。
+
+Jetpack Compose → 取代 XML 布局的 声明式 UI 框架，已经是新项目的主流。
+
+Material Design 3 (Material You) → 最新的 UI 设计规范，支持动态配色（跟随系统主题）。
+
+Android Architecture Components (AAC) → ViewModel、LiveData、Lifecycle、Navigation 等，配合 Compose/Flow 用来管理状态和架构。
+
+🔹主要依赖
+
+Compose BOM 自动管理 Compose UI框架版本，保持依赖一致。
+
+Material3 → Material Design 3 的 UI 组件库。
+
+Lifecycle Runtime → 生命周期感知（lifecycle-runtime-ktx 常配合协程使用）。
+
+Activity Compose → 连接 ComponentActivity 和 Compose。
+
+Material Icons Extended → Google 提供的扩展图标集，UI 常用。
+
+Hilt/Dagger 或 Koin → 依赖注入
+
+Room/Datastore → 数据存储
+
+Navigation-Compose → 页面路由
+
+Coroutines + Flow → 异步 &amp; 响应式编程
+
+🔹系统要求
+
+最低 SDK 23 (Android 6.0) → 普遍选择，保证兼容大部分机型。
+
+目标 SDK 35 (Android 15) → 跟随 Play 商店要求。
+
+编译 SDK 35 → 保持最新 API 能力。
+</code></pre>
+<h2>gradle构建工具</h2>
+<pre class="notranslate"><code class="notranslate">https://github.com/gradle/gradle/raw/v8.14.3/gradle/wrapper/gradle-wrapper.jar
+</code></pre>
+<pre class="notranslate"><code class="notranslate">https://services.gradle.org/distributions/gradle-8.14.3-wrapper.jar
+
+https://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+</code></pre>
+<h2>Github流水线构建示例</h2>
+<p>提交新tag标签触发</p>
+<pre class="notranslate"><code class="notranslate">name: Android Build APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # 检出代码
+      - uses: actions/checkout@v4
+
+      # 安装 JDK 17 并缓存 Gradle
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      # 自动生成 keystore
+      - name: Generate keystore for CI
+        run: |
+          keytool -genkeypair \
+            -alias ci-key \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -keystore keystore.jks \
+            -storepass 123456 \
+            -keypass 123456 \
+            -dname "CN=CI, OU=Dev, O=Company, L=City, S=State, C=CN"
+
+      # 生成 keystore.properties
+      - name: Generate keystore.properties
+        run: |
+          echo "storeFile=keystore.jks" &gt; keystore.properties
+          echo "storePassword=123456" &gt;&gt; keystore.properties
+          echo "keyAlias=ci-key" &gt;&gt; keystore.properties
+          echo "keyPassword=123456" &gt;&gt; keystore.properties
+
+      # 授权 gradlew 可执行
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      # 构建 release APK
+      - name: Build release APK
+        run: ./gradlew assembleRelease
+        env:
+          KEY_ALIAS: ci-key
+          KEY_PASSWORD: 123456
+          STORE_FILE: keystore.jks
+          STORE_PASSWORD: 123456
+
+      # 上传 APK artifact
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frp-Android
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 7
+
+      # 创建 GitHub Release
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: frp-Android ${{ github.ref_name }}
+          files: app/build/outputs/apk/release/*.apk
+          draft: false
+          prerelease: false
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 </code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
