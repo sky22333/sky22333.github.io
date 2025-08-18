@@ -1,5 +1,5 @@
 ### 【IP信息查询 / 地理定位】  
-- [https://www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace) cf的IP快速查询
+- [https://www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace) 基于CF的IP快速查询
 - [https://ip.skk.moe/](https://ip.skk.moe) 国内外IP分流查询、DNS出口查询、CDN命中查询
 - [https://ip.cn](https://ip.cn) 国内IP和位置查询
 - [https://api.ipify.org](https://api.ipify.org) 纯文本IP返回API  
