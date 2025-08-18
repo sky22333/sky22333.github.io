@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 18 Aug 2025 11:12:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 18 Aug 2025 11:19:55 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
 
 | 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
 |----------------------|------------------|--------------|------------|------|
@@ -7,6 +7,17 @@
 | 危险权限             | 是               | 是           | 是         | 系统自动弹窗引导/需处理拒绝逻辑 |
 | 前台服务权限          | 否               | 否           | 否         | 系统自动管理 |
 | 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
+
+
+特性 | 静态申请（Manifest） | 动态申请（Runtime）
+-- | -- | --
+是否必须 | 必须声明，否则系统拒绝使用功能 | 仅危险权限需要，否则静态申请即可
+用户交互 | 无交互（普通权限） | 弹出对话框，由用户同意或拒绝
+时机 | 安装时系统识别 | App 运行时，根据需求请求
+灵活性 | 低 | 高，可按需请求
+易用性 | 高，写一次即可 | 低，需要代码判断、回调处理
+典型用途 | 普通权限、声明功能依赖 | 危险权限，如 CAMERA、LOCATION、MICROPHONE
+
 
 
 # Android 6-15 权限完整列表

@@ -20,6 +20,17 @@
 | 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
 
 
+特性 | 静态申请（Manifest） | 动态申请（Runtime）
+-- | -- | --
+是否必须 | 必须声明，否则系统拒绝使用功能 | 仅危险权限需要，否则静态申请即可
+用户交互 | 无交互（普通权限） | 弹出对话框，由用户同意或拒绝
+时机 | 安装时系统识别 | App 运行时，根据需求请求
+灵活性 | 低 | 高，可按需请求
+易用性 | 高，写一次即可 | 低，需要代码判断、回调处理
+典型用途 | 普通权限、声明功能依赖 | 危险权限，如 CAMERA、LOCATION、MICROPHONE
+
+
+
 # Android 6-15 权限完整列表
 
 ## 普通权限 (Normal Permissions)
@@ -196,6 +207,17 @@
 | 危险权限             | 是               | 是           | 是         | 系统自动弹窗引导/需处理拒绝逻辑 |
 | 前台服务权限          | 否               | 否           | 否         | 系统自动管理 |
 | 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
+
+
+特性 | 静态申请（Manifest） | 动态申请（Runtime）
+-- | -- | --
+是否必须 | 必须声明，否则系统拒绝使用功能 | 仅危险权限需要，否则静态申请即可
+用户交互 | 无交互（普通权限） | 弹出对话框，由用户同意或拒绝
+时机 | 安装时系统识别 | App 运行时，根据需求请求
+灵活性 | 低 | 高，可按需请求
+易用性 | 高，写一次即可 | 低，需要代码判断、回调处理
+典型用途 | 普通权限、声明功能依赖 | 危险权限，如 CAMERA、LOCATION、MICROPHONE
+
 
 
 # Android 6-15 权限完整列表
@@ -458,6 +480,47 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td>是</td>
 <td>是</td>
 <td>系统自动弹窗引导/需处理拒绝逻辑</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>特性</th>
+<th>静态申请（Manifest）</th>
+<th>动态申请（Runtime）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是否必须</td>
+<td>必须声明，否则系统拒绝使用功能</td>
+<td>仅危险权限需要，否则静态申请即可</td>
+</tr>
+<tr>
+<td>用户交互</td>
+<td>无交互（普通权限）</td>
+<td>弹出对话框，由用户同意或拒绝</td>
+</tr>
+<tr>
+<td>时机</td>
+<td>安装时系统识别</td>
+<td>App 运行时，根据需求请求</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>低</td>
+<td>高，可按需请求</td>
+</tr>
+<tr>
+<td>易用性</td>
+<td>高，写一次即可</td>
+<td>低，需要代码判断、回调处理</td>
+</tr>
+<tr>
+<td>典型用途</td>
+<td>普通权限、声明功能依赖</td>
+<td>危险权限，如 CAMERA、LOCATION、MICROPHONE</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
