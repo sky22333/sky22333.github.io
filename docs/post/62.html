@@ -10,7 +10,17 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# Android 6-15 权限完整列表
+<meta name="description" content="## 权限处理
+
+| 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
+|----------------------|------------------|--------------|------------|------|
+| 普通权限             | 否               | 否           | 否         | 系统自动授予 |
+| 危险权限             | 是               | 是           | 是         | 系统自动弹窗引导/需处理拒绝逻辑 |
+| 前台服务权限          | 否               | 否           | 否         | 系统自动管理 |
+| 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
+
+
+# Android 6-15 权限完整列表
 
 ## 普通权限 (Normal Permissions)
 
@@ -97,6 +107,11 @@
 | 通知监听 | `android.permission.BIND_NOTIFICATION_LISTENER_SERVICE` | 监听通知 | 通知管理、智能回复、通知分类、免打扰管理、通知统计 | Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS | API 18+ |
 | 修改安全设置 | `android.permission.WRITE_SECURE_SETTINGS` | 修改安全设置 | 系统调试、开发者工具、系统定制、ROOT工具、系统优化 | 系统签名或root | API 1+ |
 | 显示系统对话框 | `android.permission.SYSTEM_OVERLAY_WINDOW` | 显示系统级对话框 | 系统提示、权限请求、系统级弹窗、紧急通知 | Settings.ACTION_MANAGE_OVERLAY_PERMISSION | API 23+ |
+
+
+---
+---
+
 
 ## 系统级权限 (System/Signature)
 
@@ -173,7 +188,17 @@
 | 系统权限管理           | `android.permission.MANAGE_SYSTEM_PERMISSIONS` | 管理系统权限         | OEM厂商、系统级应用、设备管理           | SYSTEM  | API 35+ |
 。">
 <meta property="og:title" content="安卓开发权限列表">
-<meta property="og:description" content="# Android 6-15 权限完整列表
+<meta property="og:description" content="## 权限处理
+
+| 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
+|----------------------|------------------|--------------|------------|------|
+| 普通权限             | 否               | 否           | 否         | 系统自动授予 |
+| 危险权限             | 是               | 是           | 是         | 系统自动弹窗引导/需处理拒绝逻辑 |
+| 前台服务权限          | 否               | 否           | 否         | 系统自动管理 |
+| 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
+
+
+# Android 6-15 权限完整列表
 
 ## 普通权限 (Normal Permissions)
 
@@ -260,6 +285,11 @@
 | 通知监听 | `android.permission.BIND_NOTIFICATION_LISTENER_SERVICE` | 监听通知 | 通知管理、智能回复、通知分类、免打扰管理、通知统计 | Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS | API 18+ |
 | 修改安全设置 | `android.permission.WRITE_SECURE_SETTINGS` | 修改安全设置 | 系统调试、开发者工具、系统定制、ROOT工具、系统优化 | 系统签名或root | API 1+ |
 | 显示系统对话框 | `android.permission.SYSTEM_OVERLAY_WINDOW` | 显示系统级对话框 | 系统提示、权限请求、系统级弹窗、紧急通知 | Settings.ACTION_MANAGE_OVERLAY_PERMISSION | API 23+ |
+
+
+---
+---
+
 
 ## 系统级权限 (System/Signature)
 
@@ -389,7 +419,49 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>Android 6-15 权限完整列表</h1>
+<div class="markdown-body" id="postBody"><h2>权限处理</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>权限类型</th>
+<th>是否需要代码中申请</th>
+<th>系统是否弹窗</th>
+<th>用户可拒绝</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通权限</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>系统自动授予</td>
+</tr>
+<tr>
+<td>危险权限</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>系统自动弹窗引导/需处理拒绝逻辑</td>
+</tr>
+<tr>
+<td>前台服务权限</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>系统自动管理</td>
+</tr>
+<tr>
+<td>特殊权限（例如VPN）</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>系统自动弹窗引导/需处理拒绝逻辑</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h1>Android 6-15 权限完整列表</h1>
 <h2>普通权限 (Normal Permissions)</h2>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -976,6 +1048,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<hr>
+<hr>
 <h2>系统级权限 (System/Signature)</h2>
 <markdown-accessiblity-table><table role="table">
 <thead>

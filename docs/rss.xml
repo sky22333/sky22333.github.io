@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 18 Aug 2025 11:02:08 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description># Android 6-15 权限完整列表
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 18 Aug 2025 11:12:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
+
+| 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
+|----------------------|------------------|--------------|------------|------|
+| 普通权限             | 否               | 否           | 否         | 系统自动授予 |
+| 危险权限             | 是               | 是           | 是         | 系统自动弹窗引导/需处理拒绝逻辑 |
+| 前台服务权限          | 否               | 否           | 否         | 系统自动管理 |
+| 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
+
+
+# Android 6-15 权限完整列表
 
 ## 普通权限 (Normal Permissions)
 
@@ -86,6 +96,11 @@
 | 通知监听 | `android.permission.BIND_NOTIFICATION_LISTENER_SERVICE` | 监听通知 | 通知管理、智能回复、通知分类、免打扰管理、通知统计 | Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS | API 18+ |
 | 修改安全设置 | `android.permission.WRITE_SECURE_SETTINGS` | 修改安全设置 | 系统调试、开发者工具、系统定制、ROOT工具、系统优化 | 系统签名或root | API 1+ |
 | 显示系统对话框 | `android.permission.SYSTEM_OVERLAY_WINDOW` | 显示系统级对话框 | 系统提示、权限请求、系统级弹窗、紧急通知 | Settings.ACTION_MANAGE_OVERLAY_PERMISSION | API 23+ |
+
+
+---
+---
+
 
 ## 系统级权限 (System/Signature)
 
