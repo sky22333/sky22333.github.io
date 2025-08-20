@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 18 Aug 2025 11:24:49 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 20 Aug 2025 06:30:11 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
 
 | 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
 |----------------------|------------------|--------------|------------|------|
@@ -2422,7 +2422,12 @@ docker run --privileged --restart=always -itd \
 | Termix  | https://github.com/LukeGus/Termix | 浏览器版SSH工具 | Web-SSH |
 | ServerBox  | https://apps.apple.com/us/app/serverbox-status-tools/id1586449703 | 简洁美观的SSH工具 | iOS |
 | Termius | https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908 | 跨平台SSH客户端 | iOS / Android / Windows / macOS / Linux |
-。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 一键换源
+
+
+### 抓包工具
+
+- Reqable：https://reqable.com/zh-CN
+- Wireshark：https://www.wireshark.org。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 一键换源
 海外
 ```
 bash &lt;(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
