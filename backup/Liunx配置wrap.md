@@ -123,7 +123,10 @@ export ALL_PROXY=socks5://127.0.0.1:40000
 unset ALL_PROXY
 ```
 
-
+查看wrap配置
+```
+warp-cli settings
+```
 
 关闭wrap：
 ```
