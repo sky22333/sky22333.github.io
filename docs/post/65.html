@@ -92,24 +92,15 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>建议把路径加入系统环境变量，这样命令行直接使用 <code class="notranslate">nssm</code>。</p>
 </blockquote>
 <hr>
-<h2>2️⃣ 安装服务</h2>
+<h2>2️⃣ 快速使用</h2>
 <p>假设你的 exe 为 <code class="notranslate">D:\main\main.exe</code>，服务名为 <code class="notranslate">MyService</code>：</p>
-<h3>方法 A：GUI 配置方式</h3>
+<p>注册服务</p>
 <pre class="notranslate"><code class="notranslate">nssm install MyService "D:\main\main.exe"
 </code></pre>
-<ul>
-<li>会弹出 GUI 配置窗口，可设置：
-<ul>
-<li>服务名称</li>
-<li>启动参数（Arguments）</li>
-<li>启动目录（Startup directory）</li>
-<li>日志文件路径</li>
-<li>自动重启策略</li>
-</ul>
-</li>
-<li>点击 <strong>Install service</strong> 即可完成注册。</li>
-</ul>
-<h3>方法 B：命令行方式（直接注册参数）</h3>
+<p>启动服务</p>
+<pre class="notranslate"><code class="notranslate">nssm start MyService
+</code></pre>
+<h3>命令行帮助</h3>
 <pre class="notranslate"><code class="notranslate">:: 安装服务，服务名为 MyService，启动程序是 D:\main\main.exe
 nssm install MyService "D:\main\main.exe"
 

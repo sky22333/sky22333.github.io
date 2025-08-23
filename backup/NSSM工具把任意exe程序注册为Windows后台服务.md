@@ -12,25 +12,21 @@
 
 ---
 
-## 2️⃣ 安装服务
+## 2️⃣ 快速使用
 
 假设你的 exe 为 `D:\main\main.exe`，服务名为 `MyService`：
 
-### 方法 A：GUI 配置方式
+注册服务
 
 ```
 nssm install MyService "D:\main\main.exe"
 ```
+启动服务
+```
+nssm start MyService
+```
 
-- 会弹出 GUI 配置窗口，可设置：
-  - 服务名称
-  - 启动参数（Arguments）
-  - 启动目录（Startup directory）
-  - 日志文件路径
-  - 自动重启策略
-- 点击 **Install service** 即可完成注册。
-
-### 方法 B：命令行方式（直接注册参数）
+### 命令行帮助
 
 ```
 :: 安装服务，服务名为 MyService，启动程序是 D:\main\main.exe
