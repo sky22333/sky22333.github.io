@@ -14,10 +14,9 @@
 
 ##  快速使用
 
-假设你的 exe 为 `D:\main\main.exe`，服务名为 `MyService`：
+假设你的 exe 为 `D:\main\main.exe`，服务名为 `MyService`，启动后可以在`任务管理器`里面的`服务`查看
 
 注册服务
-
 ```
 nssm install MyService "D:\main\main.exe"
 ```
