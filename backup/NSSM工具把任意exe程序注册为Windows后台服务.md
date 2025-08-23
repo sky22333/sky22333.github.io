@@ -4,7 +4,7 @@
 
 ---
 
-## 1️⃣ 下载 NSSM
+## 下载 NSSM
 
 1. 官方下载地址：https://nssm.cc/release/nssm-2.24.zip
 
@@ -12,7 +12,7 @@
 
 ---
 
-## 2️⃣ 快速使用
+##  快速使用
 
 假设你的 exe 为 `D:\main\main.exe`，服务名为 `MyService`：
 
@@ -25,6 +25,15 @@ nssm install MyService "D:\main\main.exe"
 ```
 nssm start MyService
 ```
+停止服务
+```
+nssm stop MyService
+```
+卸载服务
+```
+nssm remove MyService confirm
+```
+- `confirm` 表示不弹窗确认，直接卸载
 
 ### 命令行帮助
 
@@ -50,36 +59,7 @@ nssm set MyService Restart "yes"
 
 ---
 
-## 3️⃣ 启动服务（以服务名称管理）
-
-```
-nssm start MyService
-```
-
-- 程序会以后台服务运行，不弹出窗口
-- 可在 **服务管理器（services.msc）** 查看
-
----
-
-## 4️⃣ 停止服务（以服务名称管理）
-
-```
-nssm stop MyService
-```
-
----
-
-## 5️⃣ 卸载服务（以服务名称管理）
-
-```
-nssm remove MyService confirm
-```
-
-- `confirm` 表示不弹窗确认，直接卸载
-
----
-
-## 6️⃣ 常用配置说明
+## 常用配置说明
 
 | 配置项           | 使用方式 | 说明 |
 |-----------------|---------|------|
@@ -90,7 +70,7 @@ nssm remove MyService confirm
 
 ---
 
-## 7️⃣ 小提示
+## 小提示
 
 - **管理员权限**：安装/启动服务必须使用管理员权限
 - **多参数**：用空格分开，多参数带空格的要用双引号
