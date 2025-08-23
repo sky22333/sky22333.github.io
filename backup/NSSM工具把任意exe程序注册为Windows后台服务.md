@@ -20,6 +20,10 @@
 ```
 nssm install 123service "D:\main\main.exe"
 ```
+设置开机自启
+```
+nssm set 123service Start SERVICE_AUTO_START
+```
 启动服务
 ```
 nssm start 123service
@@ -32,7 +36,6 @@ nssm stop 123service
 ```
 nssm remove 123service confirm
 ```
-- `confirm` 表示不弹窗确认，直接卸载
 
 ### 命令行帮助
 

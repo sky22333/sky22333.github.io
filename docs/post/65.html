@@ -97,6 +97,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>注册服务</p>
 <pre class="notranslate"><code class="notranslate">nssm install 123service "D:\main\main.exe"
 </code></pre>
+<p>设置开机自启</p>
+<pre class="notranslate"><code class="notranslate">nssm set 123service Start SERVICE_AUTO_START
+</code></pre>
 <p>启动服务</p>
 <pre class="notranslate"><code class="notranslate">nssm start 123service
 </code></pre>
@@ -106,9 +109,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>卸载服务</p>
 <pre class="notranslate"><code class="notranslate">nssm remove 123service confirm
 </code></pre>
-<ul>
-<li><code class="notranslate">confirm</code> 表示不弹窗确认，直接卸载</li>
-</ul>
 <h3>命令行帮助</h3>
 <pre class="notranslate"><code class="notranslate">:: 安装服务，服务名为 123service，启动程序是 D:\main\main.exe
 nssm install 123service "D:\main\main.exe"
