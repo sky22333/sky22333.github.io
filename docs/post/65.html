@@ -120,10 +120,10 @@ nssm set 123service AppParameters "--port=8080"
 nssm set 123service AppDirectory "D:\main"
 
 :: 设置标准输出日志文件路径
-nssm set 123service AppStdout "D:\main\myservice.log"
+nssm set 123service AppStdout "D:\main\123service.log"
 
 :: 设置错误输出日志文件路径
-nssm set 123service AppStderr "D:\main\myservice_error.log"
+nssm set 123service AppStderr "D:\main\123service_error.log"
 
 :: 设置服务异常退出时自动重启
 nssm set 123service Restart "yes"
@@ -151,7 +151,7 @@ nssm set 123service Restart "yes"
 </tr>
 <tr>
 <td>AppStdout / AppStderr</td>
-<td>命令行 <code class="notranslate">nssm set 123service AppStdout "D:\main\myservice.log"</code> 或 GUI <code class="notranslate">I/O</code></td>
+<td>命令行 <code class="notranslate">nssm set 123service AppStdout "D:\main\123service.log"</code> 或 GUI <code class="notranslate">I/O</code></td>
 <td>标准输出/错误输出日志文件路径</td>
 </tr>
 <tr>
