@@ -93,7 +93,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <hr>
 <h2>快速使用</h2>
-<p>假设你的 exe 为 <code class="notranslate">D:\main\main.exe</code>，服务名为 <code class="notranslate">123service</code>，启动后可以在<code class="notranslate">任务管理器</code>里面的<code class="notranslate">服务</code>查看</p>
+<ul>
+<li>
+<p>需要管理员权限运行，假设你的 exe 为 <code class="notranslate">D:\main\main.exe</code>，服务名为 <code class="notranslate">123service</code></p>
+</li>
+<li>
+<p>启动后可以在<code class="notranslate">任务管理器</code>里面的<code class="notranslate">服务</code>查看</p>
+</li>
+</ul>
 <p>注册服务</p>
 <pre class="notranslate"><code class="notranslate">nssm install 123service "D:\main\main.exe"
 </code></pre>
@@ -127,46 +134,7 @@ nssm set 123service AppStderr "D:\main\123service_error.log"
 
 :: 设置服务异常退出时自动重启
 nssm set 123service Restart "yes"
-</code></pre>
-<hr>
-<h2>常用配置说明</h2>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>配置项</th>
-<th>使用方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AppParameters</td>
-<td>命令行 <code class="notranslate">nssm set 123service AppParameters "--port=8080"</code> 或 GUI <code class="notranslate">Arguments</code></td>
-<td>启动程序的命令行参数</td>
-</tr>
-<tr>
-<td>AppDirectory</td>
-<td>命令行 <code class="notranslate">nssm set 123service AppDirectory "D:\main"</code> 或 GUI <code class="notranslate">Startup directory</code></td>
-<td>程序工作目录</td>
-</tr>
-<tr>
-<td>AppStdout / AppStderr</td>
-<td>命令行 <code class="notranslate">nssm set 123service AppStdout "D:\main\123service.log"</code> 或 GUI <code class="notranslate">I/O</code></td>
-<td>标准输出/错误输出日志文件路径</td>
-</tr>
-<tr>
-<td>Restart</td>
-<td>命令行 <code class="notranslate">nssm set 123service Restart yes</code> 或 GUI <code class="notranslate">Shutdown</code> / <code class="notranslate">Restart</code></td>
-<td>服务异常退出后是否自动重启</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<hr>
-<h2>小提示</h2>
-<ul>
-<li><strong>管理员权限</strong>：安装/启动服务必须使用管理员权限</li>
-<li><strong>多参数</strong>：用空格分开，多参数带空格的要用双引号</li>
-</ul></div>
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
