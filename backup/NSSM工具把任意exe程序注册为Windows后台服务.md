@@ -14,7 +14,7 @@
 
 ##  快速使用
 
-- 需要管理员权限运行，假设你的 exe 程序 `D:\main\main.exe`，服务名为 `123service`
+- 需要`powershell`管理员权限运行，假设你的 exe 程序 `D:\main\main.exe`，服务名为 `123service`
 
 - 启动后可以在`任务管理器`里面的`服务`查看
 
