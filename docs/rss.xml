@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 23 Aug 2025 05:59:39 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 24 Aug 2025 05:33:19 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
 **NSSM**（Non-Sucking Service Manager）用于把任意 exe 程序注册为 Windows 服务，后台运行，支持日志和自动重启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/65.html</guid><pubDate>Sat, 23 Aug 2025 05:59:08 +0000</pubDate></item><item><title>轻量级简约端口转发rinetd</title><link>https://blog.52013120.xyz/post/64.html</link><description>### 轻量级简约端口转发`rinetd`适合家庭网络
 
@@ -36,8 +36,7 @@ systemctl restart rinetd
 
 # 实时日志
 journalctl -u rinetd -f
-```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>一个脚本小子的互联网冲浪史记</title><link>https://blog.52013120.xyz/post/63.html</link><description>### 2020年9月16日第一次接触国际互联网但失败
-2020年9月16日，LOL手游国际服开始公测。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/63.html</guid><pubDate>Thu, 21 Aug 2025 01:29:05 +0000</pubDate></item><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
+```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
 
 | 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
 |----------------------|------------------|--------------|------------|------|
