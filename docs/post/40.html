@@ -327,7 +327,12 @@ git push --force origin main
 <h2>win系统更改已登录的账户</h2>
 <pre class="notranslate"><code class="notranslate">控制面板 \ 用户帐户 \ 凭据管理器
 </code></pre>
-<p>选择<code class="notranslate">Windows凭据</code>，找到<code class="notranslate">github.com</code>域名相关的凭据，然后编辑或者删除。</p></div>
+<p>选择<code class="notranslate">Windows凭据</code>，找到<code class="notranslate">github.com</code>域名相关的凭据，然后编辑或者删除。</p>
+<h2>Git走代理</h2>
+<pre class="notranslate"><code class="notranslate">git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
+</code></pre>
+<p>默认会配置在<code class="notranslate">C:\Users\用户名\.gitconfig</code>文件里</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

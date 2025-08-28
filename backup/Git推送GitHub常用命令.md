@@ -206,3 +206,12 @@ git reset --hard 6038e0a
 控制面板 \ 用户帐户 \ 凭据管理器
 ```
 选择`Windows凭据`，找到`github.com`域名相关的凭据，然后编辑或者删除。
+
+
+## Git走代理
+```
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
+```
+
+默认会配置在`C:\Users\用户名\.gitconfig`文件里
