@@ -284,16 +284,19 @@ apt update && apt install -y curl wget git zip tar lsof vim sudo
 ```
 > 代码补全`bash_completion`
 
- apk包更新
+apk包更新索引
 ```
 apk update
 ```
 apk包安装
 
 ```
-apk add curl wget vim zip
+apk add curl wget vim zip bash lsof
 ```
-
+apk包卸载
+```
+apk del --purge nginx
+```
 
 #### 有网络的环境下载安装包
 ```
@@ -697,16 +700,19 @@ apt update && apt install -y curl wget git zip tar lsof vim sudo
 ```
 > 代码补全`bash_completion`
 
- apk包更新
+apk包更新索引
 ```
 apk update
 ```
 apk包安装
 
 ```
-apk add curl wget vim zip
+apk add curl wget vim zip bash lsof
 ```
-
+apk包卸载
+```
+apk del --purge nginx
+```
 
 #### 有网络的环境下载安装包
 ```
@@ -1088,11 +1094,14 @@ sudo localectl set-locale LANG=zh_CN.UTF-8
 <blockquote>
 <p>代码补全<code class="notranslate">bash_completion</code></p>
 </blockquote>
-<p>apk包更新</p>
+<p>apk包更新索引</p>
 <pre class="notranslate"><code class="notranslate">apk update
 </code></pre>
 <p>apk包安装</p>
-<pre class="notranslate"><code class="notranslate">apk add curl wget vim zip
+<pre class="notranslate"><code class="notranslate">apk add curl wget vim zip bash lsof
+</code></pre>
+<p>apk包卸载</p>
+<pre class="notranslate"><code class="notranslate">apk del --purge nginx
 </code></pre>
 <h4>有网络的环境下载安装包</h4>
 <pre class="notranslate"><code class="notranslate"># 1. 创建用于保存 .deb 包的目录
