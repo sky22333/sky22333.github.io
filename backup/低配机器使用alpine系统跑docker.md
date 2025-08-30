@@ -39,14 +39,14 @@ rc-update add docker
 
 | 命令                                | 说明                                    |
 |-------------------------------------|-----------------------------------------|
-| `rc-service <service-name> start`   | 启动指定服务                            |
-| `rc-service <service-name> stop`    | 停止指定服务                            |
-| `rc-service <service-name> restart` | 重启指定服务                            |
-| `rc-service <service-name> status`  | 查看服务的当前状态                      |
-| `rc-update add <service-name> default` | 将服务添加到开机自启列表                 |
-| `rc-update del <service-name> default` | 删除服务的开机自启设置                  |
+| `rc-service docker start`   | 启动指定服务                            |
+| `rc-service docker stop`    | 停止指定服务                            |
+| `rc-service docker restart` | 重启指定服务                            |
+| `rc-service docker status`  | 查看服务的当前状态                      |
+| `rc-update add docker` | 将服务添加到开机自启列表                 |
+| `rc-update del docker` | 删除服务的开机自启设置                  |
 | `rc-update show`                    | 列出所有已启用的服务                    |
-| `rc-service <service-name> log`     | 查看服务日志（如果服务支持日志功能）    |
+| `rc-service docker log`     | 查看服务日志（如果服务支持日志功能）    |
 | `rc-service all start`              | 启动所有服务                            |
 | `rc-service all stop`               | 停止所有服务                            |
 

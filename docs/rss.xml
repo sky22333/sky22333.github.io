@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 30 Aug 2025 22:55:02 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 30 Aug 2025 23:03:46 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
 **NSSM**（Non-Sucking Service Manager）用于把任意 exe 程序注册为 Windows 服务，后台运行，支持日志和自动重启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/65.html</guid><pubDate>Sat, 23 Aug 2025 05:59:08 +0000</pubDate></item><item><title>轻量级简约端口转发rinetd</title><link>https://blog.52013120.xyz/post/64.html</link><description>### 轻量级简约端口转发`rinetd`适合家庭网络
 
@@ -641,14 +641,14 @@ rc-update add docker
 
 | 命令                                | 说明                                    |
 |-------------------------------------|-----------------------------------------|
-| `rc-service &lt;service-name&gt; start`   | 启动指定服务                            |
-| `rc-service &lt;service-name&gt; stop`    | 停止指定服务                            |
-| `rc-service &lt;service-name&gt; restart` | 重启指定服务                            |
-| `rc-service &lt;service-name&gt; status`  | 查看服务的当前状态                      |
-| `rc-update add &lt;service-name&gt; default` | 将服务添加到开机自启列表                 |
-| `rc-update del &lt;service-name&gt; default` | 删除服务的开机自启设置                  |
+| `rc-service docker start`   | 启动指定服务                            |
+| `rc-service docker stop`    | 停止指定服务                            |
+| `rc-service docker restart` | 重启指定服务                            |
+| `rc-service docker status`  | 查看服务的当前状态                      |
+| `rc-update add docker` | 将服务添加到开机自启列表                 |
+| `rc-update del docker` | 删除服务的开机自启设置                  |
 | `rc-update show`                    | 列出所有已启用的服务                    |
-| `rc-service &lt;service-name&gt; log`     | 查看服务日志（如果服务支持日志功能）    |
+| `rc-service docker log`     | 查看服务日志（如果服务支持日志功能）    |
 | `rc-service all start`              | 启动所有服务                            |
 | `rc-service all stop`               | 停止所有服务                            |
 
