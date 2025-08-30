@@ -260,7 +260,55 @@ rc-update add docker
 <p>并且<code class="notranslate">rc-service</code>可以简化为<code class="notranslate">service</code>，例如<code class="notranslate">rc-service docker start</code>和<code class="notranslate">service docker start</code>效果是一样的。</p>
 <p>如果需要使用web服务，我推荐使用<code class="notranslate">caddy</code>，并且<code class="notranslate">caddy</code>已经添加到官方apk仓库里了，可以直接安装</p>
 <pre class="notranslate"><code class="notranslate">apk add caddy
-</code></pre></div>
+</code></pre>
+<h3>OpenRC 服务启动x-ui示例</h3>
+<p>路径<code class="notranslate">/etc/init.d/x-ui</code></p>
+<p><code class="notranslate">x-ui</code>就是配置文件，写入以下内容</p>
+<pre class="notranslate"><code class="notranslate">#!/sbin/openrc-run
+
+name="x-ui"
+description="x-ui service managed by OpenRC"
+
+# 二进制路径
+command="/usr/local/bin/x-ui"
+# 没有启动参数
+command_args=""
+
+# 守护进程模式
+command_background=true
+
+# PID 文件
+pidfile="/run/x-ui.pid"
+
+# 自动重启设置
+respawn_delay=5  # 出错后等待 5 秒重启
+respawn_max=0    # 无限次重启
+
+# 服务依赖
+depend() {
+    need net
+    use logger
+}
+
+# 启动前检查
+start_pre() {
+    :
+}
+
+# 停止服务
+stop() {
+    ebegin "Stopping $RC_SVCNAME"
+    start-stop-daemon --stop --pidfile $pidfile || eend $?
+}
+
+# 重启服务
+restart() {
+    stop
+    start
+}
+</code></pre>
+<p>增加执行权限</p>
+<pre class="notranslate"><code class="notranslate"></code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

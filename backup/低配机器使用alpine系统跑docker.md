@@ -56,3 +56,56 @@ rc-update add docker
 ```
 apk add caddy
 ```
+
+### OpenRC 服务启动x-ui示例
+
+路径`/etc/init.d/x-ui`
+
+`x-ui`就是配置文件，写入以下内容
+```
+#!/sbin/openrc-run
+
+name="x-ui"
+description="x-ui service managed by OpenRC"
+
+# 二进制路径
+command="/usr/local/bin/x-ui"
+# 没有启动参数
+command_args=""
+
+# 守护进程模式
+command_background=true
+
+# PID 文件
+pidfile="/run/x-ui.pid"
+
+# 自动重启设置
+respawn_delay=5  # 出错后等待 5 秒重启
+respawn_max=0    # 无限次重启
+
+# 服务依赖
+depend() {
+    need net
+    use logger
+}
+
+# 启动前检查
+start_pre() {
+    :
+}
+
+# 停止服务
+stop() {
+    ebegin "Stopping $RC_SVCNAME"
+    start-stop-daemon --stop --pidfile $pidfile || eend $?
+}
+
+# 重启服务
+restart() {
+    stop
+    start
+}
+```
+增加执行权限
+```
+```
