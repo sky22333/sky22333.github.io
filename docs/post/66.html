@@ -148,7 +148,7 @@ gpg --list-secret-keys</pre></div>
 <hr>
 <h2>4. 文件加密与解密</h2>
 <p>pgp是对整个文件字节流加密，支持所有文件类型，例如文档，二进制文件，音频视频等，不会破环原始文件。</p>
-<p>这里以<code class="notranslate">demo.md</code>文件示例</p>
+<p>这里以<code class="notranslate">demo.md</code>文件示例，对于文本可以添加<code class="notranslate">--armor</code>参数以文本的形式加密，生成<code class="notranslate">.asc</code>文件。本文忽略。</p>
 <h3>加密文件（使用公钥）</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">gpg --encrypt --recipient <span class="pl-s"><span class="pl-pds">"</span>localuser<span class="pl-pds">"</span></span> demo.md</pre></div>
 <p>生成 <code class="notranslate">demo.md.gpg</code>，只有对应私钥持有者能解密。</p>

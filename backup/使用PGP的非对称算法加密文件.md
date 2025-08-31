@@ -78,7 +78,7 @@ gpg --armor --export-secret-keys "localuser" > private.asc
 
 pgp是对整个文件字节流加密，支持所有文件类型，例如文档，二进制文件，音频视频等，不会破环原始文件。
 
-这里以`demo.md`文件示例
+这里以`demo.md`文件示例，对于文本可以添加`--armor`参数以文本的形式加密，生成`.asc`文件。本文忽略。
 
 ### 加密文件（使用公钥）
 ```bash
