@@ -26,13 +26,13 @@
 | serverbox  | https://github.com/lollipopkit/flutter_server_box/releases | 简洁美观的SSH工具 | Android |
 | Acode | https://acode.app | 安卓代码编辑器，支持多语言 | Android |
 | termora  | https://github.com/TermoraDev/termora/releases | 轻量跨平台SSH工具 | Windows / macOS / Linux |
-| hexhub  | https://www.hexhub.cn | 国内开发的SSH工具，UI现代 | Windows / macOS |
+| hexhub  | https://www.hexhub.cn | 国产SSH，UI现代美观 | Windows / macOS |
+| ishell  | https://ishell.cc/zh-CN | 国产SSH，方便简洁美观 | 全平台 |
 | FinalShell  | https://www.hostbuf.com/t/988.html | 集成SSH+SFTP，支持远程监控 | Windows / macOS |
 | MobaXterm汉化版  | https://github.com/RipplePiam/MobaXterm-Chinese-Simplified/releases | 功能全面，汉化版 | Windows |
 | Visual Studio Code  | https://code.visualstudio.com | 流行代码编辑器，插件丰富 | Windows / macOS / Linux |
 | Termix  | https://github.com/LukeGus/Termix | 浏览器版SSH工具 | Web-SSH |
 | ServerBox  | https://apps.apple.com/us/app/serverbox-status-tools/id1586449703 | 简洁美观的SSH工具 | iOS |
-| Termius | https://apps.apple.com/us/app/termius-terminal-ssh-client/id549039908 | 跨平台SSH客户端 | iOS / Android / Windows / macOS / Linux |
 
 
 ### 抓包工具
