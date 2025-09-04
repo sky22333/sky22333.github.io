@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 04 Sep 2025 10:01:26 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 04 Sep 2025 10:30:02 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
@@ -1648,9 +1648,11 @@ https://example.com/clash.yaml&#13;
 - 直播工具：https://hao.yuenos.com/
 - 在线制作好看的文字卡片：https://geekcard.app/
 - 在线制作流光卡片：https://fireflycard.shushiai.com/
-- 免费视频图床：https://streamable.com/
+- 免登录分享视频：https://streamable.com （250MB / 10分钟限制 / 保留90天）
+- 免登录分享视频：https://vidplay.io （100MB）
+- 匿名文件快传：https://www.file.io/ （支持视频预览）
 - 匿名文件快传：https://wormhole.app/
-- 国内文件快传：https://wkkc.vip/
+- 匿名文件快传：https://filebin.net
 - 文件临时分享（支持命令行下载）：https://www.tmp.link/
 - 在线临时记事本：https://cn.anotepad.com/
 - 互联网存档：https://archive.org/
@@ -1669,7 +1671,6 @@ https://example.com/clash.yaml&#13;
 - 免费短链：https://is.gd  (支持脚本)
 - 免费开源短链：https://sink.cool/dashboard/links （支持脚本和时限）
 - 软件搜索和替代推荐：https://alternativeto.net
-- 免登录分享视频：https://streamable.com （250MB / 10分钟限制 / 保留90天）
 
 ---
 
