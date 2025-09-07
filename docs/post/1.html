@@ -124,6 +124,19 @@ lsb_release -a
 ```
 
 
+#### 关闭ubuntu自动更新
+```
+# 关闭 apt 定时更新和 unattended-upgrades
+sudo systemctl mask apt-daily.service apt-daily.timer apt-daily-upgrade.service apt-daily-upgrade.timer unattended-upgrades.service
+
+# 禁用 apt 周期性任务
+echo -e 'APT::Periodic::Enable '0';\nAPT::Periodic::Update-Package-Lists '0';\nAPT::Periodic::Download-Upgradeable-Packages '0';\nAPT::Periodic::Unattended-Upgrade '0';' | sudo tee /etc/apt/apt.conf.d/99disable-auto-upgrades
+
+# 如果有 snap，阻止它自动刷新
+sudo snap refresh --hold
+```
+
+
 ### 安装node环境
 ```
 curl https://get.volta.sh | bash
@@ -537,6 +550,19 @@ cat /etc/os-release
 ```
 ```
 lsb_release -a
+```
+
+
+#### 关闭ubuntu自动更新
+```
+# 关闭 apt 定时更新和 unattended-upgrades
+sudo systemctl mask apt-daily.service apt-daily.timer apt-daily-upgrade.service apt-daily-upgrade.timer unattended-upgrades.service
+
+# 禁用 apt 周期性任务
+echo -e 'APT::Periodic::Enable '0';\nAPT::Periodic::Update-Package-Lists '0';\nAPT::Periodic::Download-Upgradeable-Packages '0';\nAPT::Periodic::Unattended-Upgrade '0';' | sudo tee /etc/apt/apt.conf.d/99disable-auto-upgrades
+
+# 如果有 snap，阻止它自动刷新
+sudo snap refresh --hold
 ```
 
 
@@ -988,6 +1014,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">cat /etc/os-release
 </code></pre>
 <pre class="notranslate"><code class="notranslate">lsb_release -a
+</code></pre>
+<h4>关闭ubuntu自动更新</h4>
+<pre class="notranslate"><code class="notranslate"># 关闭 apt 定时更新和 unattended-upgrades
+sudo systemctl mask apt-daily.service apt-daily.timer apt-daily-upgrade.service apt-daily-upgrade.timer unattended-upgrades.service
+
+# 禁用 apt 周期性任务
+echo -e 'APT::Periodic::Enable "0";\nAPT::Periodic::Update-Package-Lists "0";\nAPT::Periodic::Download-Upgradeable-Packages "0";\nAPT::Periodic::Unattended-Upgrade "0";' | sudo tee /etc/apt/apt.conf.d/99disable-auto-upgrades
+
+# 如果有 snap，阻止它自动刷新
+sudo snap refresh --hold
 </code></pre>
 <h3>安装node环境</h3>
 <pre class="notranslate"><code class="notranslate">curl https://get.volta.sh | bash
