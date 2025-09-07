@@ -16,7 +16,7 @@ git checkout main
 ### 添加并提交新的更改
 ```
 git add .
-git commit -m "描述你的更改"
+git commit -m "add"
 ```
 ### 关联远程仓库
 ```
