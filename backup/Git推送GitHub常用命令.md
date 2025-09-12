@@ -58,6 +58,13 @@ git commit -m "添加子模块"
 ```
 git submodule update --remote --merge
 ```
+然后正常提交
+```
+git add .
+git commit -m "更新子模块"
+git push
+```
+
 
 #### 删除子模块
 ```

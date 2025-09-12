@@ -216,6 +216,11 @@ git commit -m "添加子模块"
 <p>项目根目录执行</p>
 <pre class="notranslate"><code class="notranslate">git submodule update --remote --merge
 </code></pre>
+<p>然后正常提交</p>
+<pre class="notranslate"><code class="notranslate">git add .
+git commit -m "更新子模块"
+git push
+</code></pre>
 <h4>删除子模块</h4>
 <pre class="notranslate"><code class="notranslate">git submodule deinit -f ddns-go
 git rm -f ddns-go
