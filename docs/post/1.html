@@ -344,11 +344,17 @@ sudo apt install -f
 ```
 
 
-###  一键测试路由回程：
+###  路由追踪：
+Linux
+```
+traceroute 1.1.1.1
+```
+Windows
+```
+tracert 8.8.8.8
+```
 
-```
-wget -qO- git.io/besttrace | bash
-```
+
 ### 一键测速回程线路
 ```
 curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
@@ -777,11 +783,17 @@ sudo apt install -f
 ```
 
 
-###  一键测试路由回程：
+###  路由追踪：
+Linux
+```
+traceroute 1.1.1.1
+```
+Windows
+```
+tracert 8.8.8.8
+```
 
-```
-wget -qO- git.io/besttrace | bash
-```
+
 ### 一键测速回程线路
 ```
 curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
@@ -1174,8 +1186,12 @@ sudo dpkg -i *.deb
 # 4. 自动修复（如需要）
 sudo apt install -f
 </code></pre>
-<h3>一键测试路由回程：</h3>
-<pre class="notranslate"><code class="notranslate">wget -qO- git.io/besttrace | bash
+<h3>路由追踪：</h3>
+<p>Linux</p>
+<pre class="notranslate"><code class="notranslate">traceroute 1.1.1.1
+</code></pre>
+<p>Windows</p>
+<pre class="notranslate"><code class="notranslate">tracert 8.8.8.8
 </code></pre>
 <h3>一键测速回程线路</h3>
 <pre class="notranslate"><code class="notranslate">curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
