@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 16 Sep 2025 02:46:27 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 16 Sep 2025 02:48:53 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
@@ -41,36 +41,52 @@ journalctl -u rinetd -f
 ```
 
 ### win系统内置的TCP端口转发
+
+- 查看是否开启 IPv4 转发（0代表关闭，1代表开启）
 ```
-# 查看是否开启 IPv4 转发（0代表关闭，1代表开启）
 reg query HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v IPEnableRouter
+```
 
-# 开启 IPv4 转发（需要重启生效）
+- 开启 IPv4 转发（需要重启生效）
+```
 reg add HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v IPEnableRouter /t REG_DWORD /d 1 /f
+```
 
 
-# 将本机所有网卡 54321 端口的请求转发到 192.168.1.101:54321
+- 将本机所有网卡 54321 端口的请求转发到 192.168.1.101:54321
+```
 netsh interface portproxy add v4tov4  listenaddress=0.0.0.0 listenport=54321 connectaddress=192.168.1.101 connectport=54321
+```
 
-# 删除本机上监听 172.16.0.4:8080 转发的规则
+- 删除本机上监听 172.16.0.4:8080 转发的规则
+```
 netsh interface  portproxy delete v4tov4 listenaddress=172.16.0.4 listenport=8080
-
-#  查看端口监听状态
+```
+- 查看端口监听状态
+```
 netstat -ano | find '54321'
+```
 
-# 显示系统中的转发规则列表
+- 显示系统中的转发规则列表
+```
 netsh interface portproxy show all
+```
 
-# 查看portproxy设置
+- 查看portproxy设置
+```
 netsh interface portproxy dump
+```
 
-# 删除指定的转发规则
+- 删除指定的转发规则
+```
 netsh interface portproxy delete v4tov4 listenport=54321 listenaddress=0.0.0.0
-
-# 清除所有端口转发规则
+```
+- 清除所有端口转发规则
+```
 netsh interface portproxy reset
-
-# 展示系统中的所有转发规则
+```
+- 展示系统中的所有转发规则
+```
 netsh interface  portproxy show  v4tov4
 ```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓开发权限列表</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
 
