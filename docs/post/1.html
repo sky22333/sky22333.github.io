@@ -281,6 +281,10 @@ echo 'net.ipv6.conf.lo.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 
+### 设置IPV4优先
+```
+ping -c1 8.8.8.8 >/dev/null && echo 'precedence ::ffff:0:0/96  100'|sudo tee -a /etc/gai.conf >/dev/null
+```
 
 
 ### 更改系统语言为中文
@@ -726,6 +730,10 @@ echo 'net.ipv6.conf.lo.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 
+### 设置IPV4优先
+```
+ping -c1 8.8.8.8 >/dev/null && echo 'precedence ::ffff:0:0/96  100'|sudo tee -a /etc/gai.conf >/dev/null
+```
 
 
 ### 更改系统语言为中文
@@ -1150,6 +1158,9 @@ echo "net.ipv6.conf.lo.disable_ipv6 = 1" | sudo tee -a /etc/sysctl.conf
 </code></pre>
 <p>应用配置</p>
 <pre class="notranslate"><code class="notranslate">sudo sysctl -p
+</code></pre>
+<h3>设置IPV4优先</h3>
+<pre class="notranslate"><code class="notranslate">ping -c1 8.8.8.8 &gt;/dev/null &amp;&amp; echo 'precedence ::ffff:0:0/96  100'|sudo tee -a /etc/gai.conf &gt;/dev/null
 </code></pre>
 <h3>更改系统语言为中文</h3>
 <pre class="notranslate"><code class="notranslate">sudo apt update &amp;&amp; sudo apt install locales
