@@ -270,7 +270,7 @@ timedatectl status
 
 ### 设置IPV4优先
 ```
-ping -c1 8.8.8.8 >/dev/null && echo 'precedence ::ffff:0:0/96  100'|sudo tee -a /etc/gai.conf
+ping -c1 8.8.8.8 >/dev/null && echo 'precedence ::ffff:0:0/96  100'|tee -a /etc/gai.conf
 ```
 
 ### 禁用IPV6
@@ -718,7 +718,7 @@ timedatectl status
 
 ### 设置IPV4优先
 ```
-ping -c1 8.8.8.8 >/dev/null && echo 'precedence ::ffff:0:0/96  100'|sudo tee -a /etc/gai.conf
+ping -c1 8.8.8.8 >/dev/null && echo 'precedence ::ffff:0:0/96  100'|tee -a /etc/gai.conf
 ```
 
 ### 禁用IPV6
@@ -1149,7 +1149,7 @@ sudo ntpdate -u ntp.aliyun.com           // 阿里云时间服务器
 <pre class="notranslate"><code class="notranslate">timedatectl status
 </code></pre>
 <h3>设置IPV4优先</h3>
-<pre class="notranslate"><code class="notranslate">ping -c1 8.8.8.8 &gt;/dev/null &amp;&amp; echo 'precedence ::ffff:0:0/96  100'|sudo tee -a /etc/gai.conf
+<pre class="notranslate"><code class="notranslate">ping -c1 8.8.8.8 &gt;/dev/null &amp;&amp; echo 'precedence ::ffff:0:0/96  100'|tee -a /etc/gai.conf
 </code></pre>
 <h3>禁用IPV6</h3>
 <p>写入配置</p>
