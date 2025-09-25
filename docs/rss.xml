@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 25 Sep 2025 06:54:23 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 25 Sep 2025 07:13:46 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
@@ -1592,6 +1592,7 @@ https://example.com/clash.yaml&#13;
 - 在线m3u8播放器：https://blog.52013120.xyz/zhibo
 - VIP视频在线播放：https://blog.52013120.xyz/video
 - 添加多IP命令生成器：https://blog.52013120.xyz/shell
+- 在线MD编辑器：https://blog.52013120.xyz/shell/md
 
 ---
 
@@ -1601,7 +1602,6 @@ https://example.com/clash.yaml&#13;
 
 - 前端在线工具：https://www.strerr.com/cn/tools.html
 - 在线vscode：https://vscode.dev/?vscode-lang=zh-cn
-- 在线MD编辑器：https://markdown-editor.org/
 - 在线绘图：https://excalidraw.com/
 - 临时匿名邮箱：https://vmail.dev/
 - 临时匿名邮箱：https://temp-mail.org/zh/
@@ -1618,7 +1618,7 @@ https://example.com/clash.yaml&#13;
 - 匿名文件快传：https://wormhole.app/
 - 匿名文件快传：https://filebin.net
 - 匿名文件快传：https://send.skylerszijjarto.com/ （最大250GB）
-- 文件分享：https://www.tmp.link/ （支持cli）
+- 文件分享：https://www.tmp.link/ （支持终端）
 - 在线临时记事本：https://cn.anotepad.com/
 - 互联网存档：https://archive.org/
 - js代码混淆：https://obfuscator.io/
@@ -1628,29 +1628,29 @@ https://example.com/clash.yaml&#13;
 - 代码分享（支持阅后即焚）：https://dpaste.org
 - 代码分享（国内阅后即焚）：https://paste.org.cn
 - 代码片段分享：https://pastebin.com
-- 终端脚本托管：`cat your.sh | nc termbin.com 9999`
-- 终端脚本托管：`curl -H 'User-Agent: upload' -F 'file=@your.sh' https://0x0.st`
+- 匿名托管脚本：`cat your.sh | nc termbin.com 9999`
+- 匿名托管脚本：`curl -H 'User-Agent: upload' -F 'file=@your.sh' https://0x0.st`
 - 免费短链（国内）：https://pbs.ink
 - 免费短链：https://goo.su  (支持终端)
 - 免费短链：https://db.onl
 - 免费短链：https://is.gd  (支持终端)
-- 免费开源短链：https://sink.cool/dashboard/links （支持脚本和时限）
+- 开源短链：https://sink.cool/dashboard/links （支持终端和限时）
 - 软件搜索和替代推荐：https://alternativeto.net
 
 ---
 
-### 开发
-
-短信API：https://unisms.apistd.com
-
-
 ### 网络工具
 
+
+- 快速查看位置和时间戳：https://www.cloudflare.com/cdn-cgi/trace
+- 快速查看位置和时间戳：https://www.visa.cn/cdn-cgi/trace
+- IP质量和位置查询：https://ipip.la
+- IP位置查询：https://ping0.cc/geo
 - 查询IPV6：https://ipw.cn
 - 扫描UDP端口：https://www.ipvoid.com/udp-port-scan
-- IP归属地：https://ping0.cc
 - 在线ping：https://www.itdog.cn/tcping
-- 本机IP查询：https://ip.skk.moe
+- IP分流查询：https://ip.skk.moe
+- 国内IP速查：https://ip.cn
 
 #### 域名购买
 
@@ -1671,7 +1671,9 @@ https://example.com/clash.yaml&#13;
 - Youtube视频解析下载：https://ytshorts.savetube.me/
 - 全平台视频下载：https://www.datatool.vip/
 - 一键AI抠图：https://www.remove.bg/zh
+- 在线编辑图片：https://photokit.com/?lang=zh
 - 在线图片压缩：https://www.iloveimg.com/zh-cn/compress-image/compress-png
+- 图片工具箱：https://www.iloveimg.com/zh-cn
 - emo表情：https://www.emojiall.com/zh-hans/sub-categories/J2
 - 免费图床：https://lvse.eu.org/
 - 免费云资源汇总：https://gist.github.com/imba-tjd/d73258f0817255dbe77d64d40d985e76
