@@ -1,6 +1,6 @@
 `caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
 
-要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件
+要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件，用于caddy自动添加`DNS`记录
 
 ### 编译`caddy`并加入`cloudflare DNS`插件的支持
 1：一键安装`go`环境
@@ -41,11 +41,11 @@ test.example.com {
 #### 配置说明
 `dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
-`ech ech.example.com`这里的域名应该使用公共域名，要跟你域名无关的，所以可以无需修改
+`ech ech.example.com`你自己的域名，或者第三方提供的 ECH 配置服务域名，用于发布`ECH`公钥，这些域名都需要托管在cf上。
 
-`test.example.com`替换你的域名，并且解析到你的IP，不用开小黄云
+`test.example.com`替换你的域名，并且解析到你的IP，不要开小黄云
 
-`root * /tmp`这个配置代表以网页浏览文件的形式，浏览你服务器的`/tmp`目录
+`root * /tmp`这个配置代表以网页浏览文件的形式，浏览你服务器的`/tmp`目录，这里只是测试为了方便起服务
 
 ### 启动`caddy`
 ```

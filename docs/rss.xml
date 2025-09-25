@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 21 Sep 2025 06:05:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 25 Sep 2025 04:44:24 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
@@ -406,7 +406,7 @@ C:\flutter\bin
 
 - 需要一个域名解析到服务器地址。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/53.html</guid><pubDate>Mon, 12 May 2025 21:57:34 +0000</pubDate></item><item><title>caddy给域名用上ECH加密</title><link>https://blog.52013120.xyz/post/52.html</link><description>`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
 
-要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件
+要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件，用于caddy自动添加`DNS`记录
 
 ### 编译`caddy`并加入`cloudflare DNS`插件的支持
 1：一键安装`go`环境
@@ -447,93 +447,7 @@ test.example.com {
 #### 配置说明
 `dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
-`ech ech.example.com`这里的域名应该使用公共域名，要跟你域名无关的，所以可以无需修改
-
-`test.example.com`替换你的域名，并且解析到你的IP，不用开小黄云
-
-`root * /tmp`这个配置代表以网页浏览文件的形式，浏览你服务器的`/tmp`目录
-
-### 启动`caddy`
-```
-sudo ./caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
-```
-不出意外的话就启动成功了，然后可以访问你的域名看下是否能成功访问
-
-并且`/root/.local/share/caddy`目录会生成一个锁文件，如果需要重新部署则需要删除这个目录
-
-CF里也会自动添加一个类型为`HTTPS`的解析记录
-
-### 检查`ech`是否配置成功
-```
-dig test.example.com TYPE65
-```
-执行这个命令后，在输出的信息里可以看到有如下类似的信息就代表启用成功
-```
-ech=AEr+DQBGlwAgACBVSsnixVAfd/Ca9HP9JTf2O+B1kynOkZIwAMASDASDQABAAIASDASDADHw9lY2guZXhhbXBsZS5jb20AAA==
-```
-
-### 生产环境
-移动二进制文件
-```
-mv ~/caddy /usr/bin/caddy
-```
-创建系统服务配置
-```
-touch /etc/systemd/system/caddy.service
-```
-写入配置
-```
-[Unit]
-Description=Caddy Web Server
-Documentation=https://caddyserver.com/docs/
-After=network.target network-online.target
-Wants=network-online.target
-
-[Service]
-User=root
-Group=root
-ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
-ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
-TimeoutStopSec=5s
-LimitNOFILE=1048576
-LimitNPROC=512
-PrivateTmp=true
-ProtectSystem=full
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-
-[Install]
-WantedBy=multi-user.target
-```
-管理命令
-```
-# 重新加载 systemd 配置
-sudo systemctl daemon-reexec
-sudo systemctl daemon-reload
-
-# 启动 Caddy
-sudo systemctl start caddy
-
-# 设置开机启动
-sudo systemctl enable caddy
-
-# 查看运行状态
-sudo systemctl status caddy
-```
-
-### 生产环境反代配置示例
-```
-{
-	dns cloudflare xxxxxxxxxxxxxxxxxxxxx
-	ech ech.example.com
-}
-
-test.example.com {
-	reverse_proxy localhost:8080
-}
-```
-
-重新部署记得删除：`/root/.local/share/caddy`锁文件，和CF里的`HTTPS`解析记录。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过gitlab流水线自动备份仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>### 通过gitlab流水线自动备份仓库
+`ech ech.example.com`你自己的域名，或者第三方提供的 ECH 配置服务域名，用于发布`ECH`公钥，这些域名都需要托管在cf上。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过gitlab流水线自动备份仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>### 通过gitlab流水线自动备份仓库
 
 会自动对比提交，如果没有新的提交，则不会备份，避免空提交导致意外错误
 
