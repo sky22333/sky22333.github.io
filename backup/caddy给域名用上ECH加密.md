@@ -41,7 +41,7 @@ test.example.com {
 #### 配置说明
 `dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
-`ech ech.example.com`替换你的任意二级域名，或者第三方提供的ECH配置服务域名，用于发布`ECH`公钥
+`ech ech.example.com`替换你的任意二级域名，并且解析到你的IP，用于发布`ECH`公钥，或者第三方提供的ECH配置服务域名也行。
 
 `test.example.com`替换你的域名，并且解析到你的IP，不要开小黄云
 
