@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 27 Sep 2025 06:15:03 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 27 Sep 2025 06:27:36 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
@@ -2268,102 +2268,80 @@ window.config={&#13;
 ```&#13;
 &#13;
 ### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/8.html</guid><pubDate>Tue, 02 Jul 2024 08:46:39 +0000</pubDate></item><item><title>Markdown语法教程</title><link>https://blog.52013120.xyz/post/7.html</link><description>&#13;
-Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/7.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Github加速</title><link>https://blog.52013120.xyz/post/6.html</link><description>#  GitHub加速方法&#13;
-&#13;
-&#13;
-### GitHub加速站&#13;
-- https://www.jsdelivr.com/github&#13;
-- https://github.moeyy.xyz&#13;
-- https://tool.mintimate.cn/gh&#13;
-- https://github.akams.cn&#13;
-- https://toolwa.com/github&#13;
-- https://gh.api.99988866.xyz&#13;
-- https://mirror.ghproxy.com&#13;
-- https://gitclone.com&#13;
-- https://github.welab.eu.org&#13;
-- https://ghps.cc&#13;
-- https://github.hscsec.cn&#13;
-- https://ghproxy.wujiyan.cc&#13;
-- https://ghproxy.homeboyc.cn&#13;
-- https://down.npee.cn&#13;
-- https://github.welab.eu.org&#13;
-- https://ghproxy.imciel.com&#13;
-&#13;
-&#13;
-&#13;
-#  方法一：&#13;
-&#13;
-首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建&#13;
-```&#13;
-sudo vim ~/.bashrc&#13;
-```&#13;
-```&#13;
-export all_proxy='socks5://user:pass@127.0.0.1:20170'&#13;
-export HTTP_PROXY='socks5://user:pass@127.0.0.1:20170'&#13;
-export HTTPS_PROXY='socks5://user:pass@127.0.0.1:20170'&#13;
-```&#13;
-```&#13;
-source ~/.bashrc&#13;
-```&#13;
-&#13;
-此时输入```curl ip.sb```查看本机IP判断是否配置成功&#13;
-&#13;
-如需删除并停止，只需清空文件并重新加载即可&#13;
-&#13;
-注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效&#13;
-&#13;
-&#13;
-&#13;
-&#13;
----&#13;
-&#13;
-# 方法二：v2rayA代理&#13;
-&#13;
-#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)&#13;
-&#13;
-#### 手动使用软件源安装&#13;
-[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器&#13;
-&#13;
-[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器&#13;
-&#13;
-安装&#13;
-```&#13;
-sudo apt install xray.deb路径 v2rayA.deb路径&#13;
-```&#13;
-替换两个deb包所在的实际路径&#13;
-&#13;
-启动&#13;
-```&#13;
-sudo systemctl start v2raya.service&#13;
-```&#13;
-```&#13;
-默认端口：&#13;
-2017: v2rayA面板端口&#13;
-20170: SOCKS协议&#13;
-20171: HTTP协议&#13;
-20172: 带分流规则的HTTP协议&#13;
-32345: tproxy透明代理所需&#13;
-```&#13;
-&#13;
-卸载&#13;
-```&#13;
-sudo apt-get remove v2raya xray&#13;
-```&#13;
-&#13;
-&#13;
-&#13;
-### 快捷安装方式&#13;
-v2ray内核&#13;
-```&#13;
-sudo apt install snapd&#13;
-```&#13;
-```&#13;
-sudo snap install v2raya&#13;
-```&#13;
-需要修改配置文件&#13;
-```&#13;
-sudo vim /etc/systemd/system/snap.v2raya.v2raya.service&#13;
-```&#13;
+Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/7.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Github加速</title><link>https://blog.52013120.xyz/post/6.html</link><description>#  GitHub加速
+
+### GitHub加速站
+- https://yishijie.gitlab.io/ziyuan/
+
+##  本地代理：
+```
+sudo vim ~/.bashrc
+```
+```
+export all_proxy='socks5://127.0.0.1:10808'
+export HTTP_PROXY='socks5://127.0.0.1:10808'
+export HTTPS_PROXY='socks5://127.0.0.1:10808'
+```
+```
+source ~/.bashrc
+```
+
+此时输入```curl ip.sb```查看本机IP判断是否配置成功
+
+如需删除并停止，只需清空文件并重新加载即可
+
+注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
+
+
+---
+
+## v2rayA代理
+
+#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
+
+#### 手动使用软件源安装
+[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
+
+[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
+
+安装
+```
+sudo apt install xray.deb路径 v2rayA.deb路径
+```
+替换两个deb包所在的实际路径
+
+启动
+```
+sudo systemctl start v2raya.service
+```
+```
+默认端口：
+2017: v2rayA面板端口
+20170: SOCKS协议
+20171: HTTP协议
+20172: 带分流规则的HTTP协议
+32345: tproxy透明代理所需
+```
+
+卸载
+```
+sudo apt-get remove v2raya xray
+```
+
+
+
+### 快捷安装方式
+v2ray内核
+```
+sudo apt install snapd
+```
+```
+sudo snap install v2raya
+```
+需要修改配置文件
+```
+sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
+```
 `ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/6.html</guid><pubDate>Tue, 02 Jul 2024 07:44:08 +0000</pubDate></item><item><title>Docker镜像加速和离线安装</title><link>https://blog.52013120.xyz/post/5.html</link><description># Docker Hub 镜像加速
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/5.html</guid><pubDate>Tue, 02 Jul 2024 07:42:16 +0000</pubDate></item><item><title>Liunx配置wrap</title><link>https://blog.52013120.xyz/post/4.html</link><description>[其他系统安装](https://pkg.cloudflareclient.com/)

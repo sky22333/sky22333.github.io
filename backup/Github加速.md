@@ -1,36 +1,16 @@
-#  GitHub加速方法
-
+#  GitHub加速
 
 ### GitHub加速站
-- https://www.jsdelivr.com/github
-- https://github.moeyy.xyz
-- https://tool.mintimate.cn/gh
-- https://github.akams.cn
-- https://toolwa.com/github
-- https://gh.api.99988866.xyz
-- https://mirror.ghproxy.com
-- https://gitclone.com
-- https://github.welab.eu.org
-- https://ghps.cc
-- https://github.hscsec.cn
-- https://ghproxy.wujiyan.cc
-- https://ghproxy.homeboyc.cn
-- https://down.npee.cn
-- https://github.welab.eu.org
-- https://ghproxy.imciel.com
+- https://yishijie.gitlab.io/ziyuan/
 
-
-
-#  方法一：
-
-首先你需要有一个可以直连的sk5代理，建议用外国服务器安装xui面板自建
+##  本地代理：
 ```
 sudo vim ~/.bashrc
 ```
 ```
-export all_proxy="socks5://user:pass@127.0.0.1:20170"
-export HTTP_PROXY="socks5://user:pass@127.0.0.1:20170"
-export HTTPS_PROXY="socks5://user:pass@127.0.0.1:20170"
+export all_proxy="socks5://127.0.0.1:10808"
+export HTTP_PROXY="socks5://127.0.0.1:10808"
+export HTTPS_PROXY="socks5://127.0.0.1:10808"
 ```
 ```
 source ~/.bashrc
@@ -43,11 +23,9 @@ source ~/.bashrc
 注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
 
 
-
-
 ---
 
-# 方法二：v2rayA代理
+## v2rayA代理
 
 #### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
 
@@ -143,10 +121,10 @@ Copy-Item -Path '~\scoop\shims\start-v2raya.cmd' -Destination '~\AppData\Roaming
 
 ---
 
-## 国内Debian / Ubuntu切换apt源教程
+## 国内Debian / Ubuntu切换apt源
 
 
-国内Gitee一键换源脚本
+国内一键换源脚本
 ```
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
 ```
