@@ -90,9 +90,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>国内安装脚本  <a href="https://linuxmirrors.cn/other/" rel="nofollow">(说明)</a></p>
 <pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 </code></pre>
-<p>或者使用阿里云安装源</p>
-<pre class="notranslate"><code class="notranslate">bash &lt;(curl -fsSL https://get.docker.com) --mirror Aliyun
-</code></pre>
 <details>
   <summary>手动离线安装Docker</summary>
 <h4>下载 Docker:</h4>
@@ -169,7 +166,6 @@ sudo systemctl enable docker.service
 {
     "registry-mirrors": [
         "https://docker.1ms.run",
-        "https://hub.rat.dev",
         "https://docker.1panel.live"
     ]
 }
@@ -195,7 +191,6 @@ EOF
   "experimental": false,
   "registry-mirrors": [
     "https://docker.1ms.run",
-    "https://hub.rat.dev",
     "https://docker.1panel.live"
   ]
 }
