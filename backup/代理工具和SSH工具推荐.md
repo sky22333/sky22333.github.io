@@ -22,7 +22,7 @@
 | 名称 | 下载地址 | 特点 | 支持平台 |
 | :--- | :---: | :--- | :--- |
 | DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools | 局域网扫描，网络工具集合 | Android |
-| iNetTools  | https://apps.apple.com/cn/app/inettools-ping-dns-portscan/id561659975 | 局域网扫描，网络工具集合 | ios |
+| Network Analyzer  | https://apps.apple.com/cn/app/network-analyzer-net-tools/id562315041 | 局域网扫描，网络工具集合 | ios |
 | termux  | https://github.com/termux/termux-app/releases | 安卓终端模拟器，可运行Linux工具 | Android |
 | serverbox  | https://github.com/lollipopkit/flutter_server_box/releases | 简洁美观的SSH工具 | Android |
 | Acode | https://acode.app | 安卓代码编辑器，支持多语言 | Android |
