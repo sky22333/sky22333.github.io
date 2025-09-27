@@ -208,9 +208,9 @@ sudo apt update
 编辑`/etc/apt/apt.conf.d/proxy.conf`
 
 ```
-Acquire::http::Proxy "socks5h://username:password@127.0.0.1:1080";
-Acquire::https::Proxy "socks5h://username:password@127.0.0.1:1080";
-Acquire::socks::Proxy "socks5h://username:password@127.0.0.1:1080";
+Acquire::http::Proxy "socks5h://127.0.0.1:1080";
+Acquire::https::Proxy "socks5h://127.0.0.1:1080";
+Acquire::socks::Proxy "socks5h://127.0.0.1:1080";
 ```
 ```
 sudo apt update

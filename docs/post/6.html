@@ -365,9 +365,9 @@ deb-src http://deb.debian.org/debian bookworm-updates main contrib non-free non-
 <hr>
 <h3>配置 APT 包管理器的代理服务器设置</h3>
 <p>编辑<code class="notranslate">/etc/apt/apt.conf.d/proxy.conf</code></p>
-<pre class="notranslate"><code class="notranslate">Acquire::http::Proxy "socks5h://username:password@127.0.0.1:1080";
-Acquire::https::Proxy "socks5h://username:password@127.0.0.1:1080";
-Acquire::socks::Proxy "socks5h://username:password@127.0.0.1:1080";
+<pre class="notranslate"><code class="notranslate">Acquire::http::Proxy "socks5h://127.0.0.1:1080";
+Acquire::https::Proxy "socks5h://127.0.0.1:1080";
+Acquire::socks::Proxy "socks5h://127.0.0.1:1080";
 </code></pre>
 <pre class="notranslate"><code class="notranslate">sudo apt update
 </code></pre>
