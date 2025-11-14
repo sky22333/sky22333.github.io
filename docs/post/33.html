@@ -18,11 +18,9 @@
 
 2：开机重复按`F2`或者`F12`或者`DELETE`键 进入BIOS界面
 
-3：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式
+3：将U盘改为第一启动项，然后保存并重启
 
-4：将U盘改为第一启动项，然后保存并重启
-
-5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的全给第二个分区，记得给盘符命名。">
+4：第一个分区默认就是C盘，建议分区300G：填`307200`MB，剩下的全给第二个分区，记得给盘符命名。">
 <meta property="og:title" content="windows重装系统教程">
 <meta property="og:description" content="### windows重装系统之U盘引导
 
@@ -32,11 +30,9 @@
 
 2：开机重复按`F2`或者`F12`或者`DELETE`键 进入BIOS界面
 
-3：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式
+3：将U盘改为第一启动项，然后保存并重启
 
-4：将U盘改为第一启动项，然后保存并重启
-
-5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的全给第二个分区，记得给盘符命名。">
+4：第一个分区默认就是C盘，建议分区300G：填`307200`MB，剩下的全给第二个分区，记得给盘符命名。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/33.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -105,9 +101,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>微软官网系统镜像下载：<a href="https://www.microsoft.com/zh-cn/software-download/windows11" rel="nofollow">https://www.microsoft.com/zh-cn/software-download/windows11</a></p>
 <p>1：下载<code class="notranslate">Windows 11 安装媒体</code>并执行程序写入到U盘</p>
 <p>2：开机重复按<code class="notranslate">F2</code>或者<code class="notranslate">F12</code>或者<code class="notranslate">DELETE</code>键 进入BIOS界面</p>
-<p>3：U盘引导，<code class="notranslate">UEFI</code> ——&gt; 对应<code class="notranslate">GPT</code>磁盘分区格式</p>
-<p>4：将U盘改为第一启动项，然后保存并重启</p>
-<p>5：第一个分区默认就是C盘，建议分区200G：填<code class="notranslate">204806</code>MB，剩下的全给第二个分区，记得给盘符命名。</p>
+<p>3：将U盘改为第一启动项，然后保存并重启</p>
+<p>4：第一个分区默认就是C盘，建议分区300G：填<code class="notranslate">307200</code>MB，剩下的全给第二个分区，记得给盘符命名。</p>
 <blockquote>
 <p>现在的大部分电脑都是<code class="notranslate">UEFI</code>引导，和<code class="notranslate">GPT</code>磁盘分区格式。部分情况需要关闭安全启动<code class="notranslate">Secure Boot</code>选项，才能正常进入安装系统的界面。比较旧的电脑或者主板是<code class="notranslate">Legacy BIOS</code>引导，和<code class="notranslate">MBR</code>磁盘分区格式。Linux 系统默认的磁盘分区格式主要是<code class="notranslate">ext4</code>。</p>
 </blockquote>
@@ -124,10 +119,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>4：选择<code class="notranslate">LabConfig</code>右键–新建–DWORD（32 位）值，需要创建5个，分别命名为：<code class="notranslate">BypassCPUCheck</code>、<code class="notranslate">BypassRAMCheck</code>、<code class="notranslate">BypassSecureBootCheck</code>、<code class="notranslate">BypassStorageCheck</code>、<code class="notranslate">BypassTPMCheck</code></p>
 <p>5：将这些十进制的值都改成<code class="notranslate">1</code>确定后即可绕过硬件检测，继续安装</p>
 <h3>安装界面绕过联网</h3>
-<p>1：安装界面按<code class="notranslate">Shift + F10</code>，打开命令窗口</p>
-<p>2：执行<code class="notranslate">oobe\bypassnro</code>命令</p>
-<p>3：执行命令后，系统会自动重启并跳过联网步骤，你可以继续安装并创建本地账户</p>
-<p>4：回到安装页面后选择<code class="notranslate">继续执行受限设备</code>，创建账户时可以创建本地账户，名称最好用纯英文。</p>
+<p>1：打开命令窗口：<code class="notranslate">Shift + F10</code></p>
+<p>2：修改注册表跳过联网</p>
+<pre class="notranslate"><code class="notranslate">reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v BypassNRO /t REG_DWORD /d 1 /f
+
+shutdown /r /t 0
+</code></pre>
+<p>执行完成后会自动重启，然后就可以直接创建本地账户，而无需使用联网账户。</p>
+<p><strong>或者直接通过命令创建本地账户来跳过联网</strong></p>
+<pre class="notranslate"><code class="notranslate">net user 你的用户名 /add
+
+net localgroup Administrators 你的用户名 /add
+
+cd OOBE
+
+msoobe &amp;&amp; shutdown -r
+</code></pre>
+<p>执行完成后会自动重启，然后就可以直接登录本地账户了</p>
 <h3>磁盘分区格式</h3>
 <p>如果磁盘分区格式不对，可以按<code class="notranslate">Shift + F10</code>，打开命令窗口，更改磁盘存储格式：</p>
 <pre class="notranslate"><code class="notranslate">diskpart                     # 进入磁盘管理
@@ -148,50 +156,14 @@ exit                         # 退出
 <p><code class="notranslate">PowerShell</code>脚本命令：</p>
 <pre class="notranslate"><code class="notranslate">irm https://get.activated.win | iex
 </code></pre>
-<p>旧命令：<code class="notranslate">irm https://massgrave.dev/get | iex</code></p>
 <p>执行命令可以看到激活选项。选择 <code class="notranslate">[1] HWID</code> 用于 <code class="notranslate">Windows</code> 激活。选择 <code class="notranslate">[2] Ohook</code> 用于 <code class="notranslate">Office</code> 激活。</p>
 <p><a href="https://github.com/massgravel/Microsoft-Activation-Scripts">开源地址</a></p>
-<h3>新机软件安装</h3>
+<h3>系统安装工具</h3>
 <ul>
-<li>
-<p>v2rayN：<a href="https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-SelfContained-With-Core.7z">https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-SelfContained-With-Core.7z</a></p>
-</li>
-<li>
-<p>chorme浏览器：<a href="https://www.google.com/chrome/" rel="nofollow">https://www.google.com/chrome/</a></p>
-</li>
-<li>
-<p>7z解压工具：<a href="https://www.7-zip.org/" rel="nofollow">https://www.7-zip.org/</a></p>
-</li>
-<li>
-<p>驱动总裁：<a href="https://www.sysceo.com/dc" rel="nofollow">https://www.sysceo.com/dc</a></p>
-</li>
-<li>
-<p>图吧工具箱：<a href="https://www.tbtool.cn/" rel="nofollow">https://www.tbtool.cn/</a></p>
-</li>
-<li>
-<p>文件搜索：<a href="https://www.listary.net/" rel="nofollow">https://www.listary.net/</a></p>
-</li>
-<li>
-<p>文件备份和同步：<a href="https://freefilesync.org/" rel="nofollow">https://freefilesync.org/</a></p>
-</li>
-<li>
-<p>host管理工具：<a href="https://github.com/oldj/SwitchHosts">https://github.com/oldj/SwitchHosts</a></p>
-</li>
-<li>
-<p>火绒安全软件：<a href="https://www.huorong.cn/" rel="nofollow">https://www.huorong.cn/</a></p>
-</li>
-</ul>
-<h3>装机启动盘</h3>
-<ul>
-<li>
-<p>微PE：<a href="https://www.wepe.com.cn/" rel="nofollow">https://www.wepe.com.cn/</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ventoy/Ventoy">ventoy</a>：<a href="https://www.ventoy.net/" rel="nofollow">https://www.ventoy.net/</a> 支持存放多个系统</p>
-</li>
-<li>
-<p><a href="https://github.com/pbatard/rufus">rufus</a>：<a href="https://rufus.ie/zh/" rel="nofollow">https://rufus.ie/zh/</a> 支持openwrt</p>
-</li>
+<li>微PE：<a href="https://www.wepe.com.cn/" rel="nofollow">https://www.wepe.com.cn/</a> PE系统</li>
+<li><a href="https://www.ventoy.net/" rel="nofollow">https://www.ventoy.net/</a> 支持多系统</li>
+<li><a href="https://rufus.ie/zh/" rel="nofollow">https://rufus.ie/zh/</a> 支持嵌入式烧录</li>
+<li><a href="https://etcher.balena.io/" rel="nofollow">https://etcher.balena.io/</a>  跨平台嵌入式烧录工具</li>
 </ul>
 <h3>官方Windows启动盘文件结构</h3>
 <pre class="notranslate"><code class="notranslate">/

@@ -6,11 +6,9 @@
 
 2：开机重复按`F2`或者`F12`或者`DELETE`键 进入BIOS界面
 
-3：U盘引导，`UEFI` ——> 对应`GPT`磁盘分区格式
+3：将U盘改为第一启动项，然后保存并重启
 
-4：将U盘改为第一启动项，然后保存并重启
-
-5：第一个分区默认就是C盘，建议分区200G：填`204806`MB，剩下的全给第二个分区，记得给盘符命名。
+4：第一个分区默认就是C盘，建议分区300G：填`307200`MB，剩下的全给第二个分区，记得给盘符命名。
 
 > 现在的大部分电脑都是`UEFI`引导，和`GPT`磁盘分区格式。部分情况需要关闭安全启动`Secure Boot`选项，才能正常进入安装系统的界面。比较旧的电脑或者主板是`Legacy BIOS`引导，和`MBR`磁盘分区格式。Linux 系统默认的磁盘分区格式主要是`ext4`。
 ---
@@ -39,14 +37,27 @@
 
 ### 安装界面绕过联网
 
-1：安装界面按`Shift + F10`，打开命令窗口
+1：打开命令窗口：`Shift + F10`
 
-2：执行`oobe\bypassnro`命令
+2：修改注册表跳过联网
+```
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v BypassNRO /t REG_DWORD /d 1 /f
 
-3：执行命令后，系统会自动重启并跳过联网步骤，你可以继续安装并创建本地账户
+shutdown /r /t 0
+```
+执行完成后会自动重启，然后就可以直接创建本地账户，而无需使用联网账户。
 
-4：回到安装页面后选择`继续执行受限设备`，创建账户时可以创建本地账户，名称最好用纯英文。
+**或者直接通过命令创建本地账户来跳过联网**
+```
+net user 你的用户名 /add
 
+net localgroup Administrators 你的用户名 /add
+
+cd OOBE
+
+msoobe && shutdown -r
+```
+执行完成后会自动重启，然后就可以直接登录本地账户了
 
 ### 磁盘分区格式
 
@@ -84,41 +95,19 @@ exit                         # 退出
 irm https://get.activated.win | iex
 ```
 
-旧命令：`irm https://massgrave.dev/get | iex`
-
 执行命令可以看到激活选项。选择 `[1] HWID` 用于 `Windows` 激活。选择 `[2] Ohook` 用于 `Office` 激活。
 
 
 [开源地址](https://github.com/massgravel/Microsoft-Activation-Scripts)
 
 
-### 新机软件安装
 
-- v2rayN：https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-SelfContained-With-Core.7z
+###  系统安装工具
 
-- chorme浏览器：https://www.google.com/chrome/
-
-- 7z解压工具：https://www.7-zip.org/
-
-- 驱动总裁：https://www.sysceo.com/dc
-
-- 图吧工具箱：https://www.tbtool.cn/
-
-- 文件搜索：https://www.listary.net/
-
-- 文件备份和同步：https://freefilesync.org/
-
-- host管理工具：https://github.com/oldj/SwitchHosts
-
-- 火绒安全软件：https://www.huorong.cn/
-
-###  装机启动盘
-
-- 微PE：https://www.wepe.com.cn/
-
-- [ventoy](https://github.com/ventoy/Ventoy)：https://www.ventoy.net/ 支持存放多个系统
-
-- [rufus](https://github.com/pbatard/rufus)：https://rufus.ie/zh/ 支持openwrt
+- 微PE：https://www.wepe.com.cn/ PE系统
+- https://www.ventoy.net/ 支持多系统
+- https://rufus.ie/zh/ 支持嵌入式烧录
+- https://etcher.balena.io/  跨平台嵌入式烧录工具
 
 
 
