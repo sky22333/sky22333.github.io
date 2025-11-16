@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://blog.52013120.xyz/assets/blog.png"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## immortalwrt
+
+在线编译地址：https://firmware-selector.immortalwrt.org
+
+## 必备软件
+```
+luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn luci-app-ttyd luci-i18n-ttyd-zh-cn
+```
+ImmortalWrt软件包查询（替换版本号）：https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
+
+## 初始化构建脚本
+```
+#!/bin/sh
+exec >/tmp/setup.log 2>&1
+
+###########################################################
+#                  自 定 义 配 置 区 域
+###########################################################
+
+### LuCI 默认主题（需要固件中已下载该主题）
+luci_theme='argon'
+
+### 系统后台密码（为空则不修改）
+root_password='root'
+
+### LAN 的 IPv4 地址（也是后台地址，例如 192.168.2.1）
+lan_ip_address='192.168.2.1'
+
+### LAN 的子网掩码（例如 255.255.255.0）
+# lan_netmask='255.255.255.0'
+
+### LAN 的 IPv4 网关（可为空）
+# lan_gateway='192.168.1.1'
+
+### LAN 的 DNS（多个 DNS 可空格分隔，如 '8.8.8.8 1.1.1.1'）
+# lan_dns='8.8.8.8 223.5.5.5'
+
+### DHCP 是否开启（1=开启，0=关闭）
+# lan_dhcp_enable='1'
+
+### DHCP 起始地址
+# lan_dhcp_start='100'
+
+### DHCP 地址池数量
+# lan_dhcp_limit='150'
+
+### DHCP 租约时间
+# lan_dhcp_leasetime='12h'
+
+### WiFi 名称 SSID（为空则不修改）
+# wlan_name='ImmortalWrt'
+
+### WiFi 密码（≥ 8 位才生效）
+# wlan_password='12345678'
+
+### PPPoE 宽带账号（为空则跳过）
+# pppoe_username=''
+
+### PPPoE 宽带密码
+# pppoe_password=''
+
+###########################################################
+#                  正 式 配 置 流 程
+###########################################################
+
+# ------------ root 密码 ------------
+if [ -n '$root_password' ]; then
+  (echo '$root_password'; sleep 1; echo '$root_password') | passwd >/dev/null
+fi
+
+# ------------ LAN 基础配置 ------------
+if [ -n '$lan_ip_address' ]; then
+  uci set network.lan.ipaddr='$lan_ip_address'
+fi
+
+if [ -n '$lan_netmask' ]; then
+  uci set network.lan.netmask='$lan_netmask'
+fi
+
+if [ -n '$lan_gateway' ]; then
+  uci set network.lan.gateway='$lan_gateway'
+fi
+
+# DNS
+if [ -n '$lan_dns' ]; then
+  uci delete network.lan.dns 2>/dev/null
+  for d in $lan_dns; do
+    uci add_list network.lan.dns='$d'
+  done
+fi
+
+uci commit network
+
+# ------------ DHCP 设置 ------------
+if [ -n '$lan_dhcp_enable' ]; then
+  uci set dhcp.lan.ignore=$([ '$lan_dhcp_enable' = '1' ] && echo 0 || echo 1)
+fi
+
+[ -n '$lan_dhcp_start' ] && uci set dhcp.lan.start='$lan_dhcp_start'
+[ -n '$lan_dhcp_limit' ] && uci set dhcp.lan.limit='$lan_dhcp_limit'
+[ -n '$lan_dhcp_leasetime' ] && uci set dhcp.lan.leasetime='$lan_dhcp_leasetime'
+
+uci commit dhcp
+
+# ------------ WIFI 配置 ------------
+if [ -n '$wlan_name' ] && [ -n '$wlan_password' ] && [ ${#wlan_password} -ge 8 ]; then
+  uci set wireless.@wifi-device[0].disabled='0'
+  uci set wireless.@wifi-iface[0].disabled='0'
+  uci set wireless.@wifi-iface[0].encryption='psk2'
+  uci set wireless.@wifi-iface[0].ssid='$wlan_name'
+  uci set wireless.@wifi-iface[0].key='$wlan_password'
+  uci commit wireless
+fi
+
+# ------------ PPPoE 宽带拨号 ------------
+if [ -n '$pppoe_username' ] && [ -n '$pppoe_password' ]; then
+  uci set network.wan.proto=pppoe
+  uci set network.wan.username='$pppoe_username'
+  uci set network.wan.password='$pppoe_password'
+  uci commit network
+fi
+
+# ------------ LuCI 主题设置 ------------
+if [ -n '$luci_theme' ]; then
+  # 设置默认主题
+  uci set luci.main.mediaurlbase='/luci-static/$luci_theme'
+  uci commit luci
+fi
+
+echo 'All done!'
+```
+
+## VirtualBox虚拟机运行immortalwrt文档
+
+1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
+
+LAN口 IP地址记得改成`192.168.56.2`
+
+2：打开CMD终端
+
+- 进入镜像文件目录
+```
+cd C:\Users\admin\Downloads
+```
+- 将镜像转换成VDI格式
+```
+'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' convertfromraw immortalwrt-24.10.4-f726c678216d-x86-64-generic-ext4-combined.img immortalwrt.vdi --format VDI
+```
+
+3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`Host-Only`网络启动，勾选`Virtual Cable Connected`
+
+> 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
+
+4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`。">
+<meta property="og:title" content="openwrt固件编译和安装测试">
+<meta property="og:description" content="## immortalwrt
+
+在线编译地址：https://firmware-selector.immortalwrt.org
+
+## 必备软件
+```
+luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn luci-app-ttyd luci-i18n-ttyd-zh-cn
+```
+ImmortalWrt软件包查询（替换版本号）：https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
+
+## 初始化构建脚本
+```
+#!/bin/sh
+exec >/tmp/setup.log 2>&1
+
+###########################################################
+#                  自 定 义 配 置 区 域
+###########################################################
+
+### LuCI 默认主题（需要固件中已下载该主题）
+luci_theme='argon'
+
+### 系统后台密码（为空则不修改）
+root_password='root'
+
+### LAN 的 IPv4 地址（也是后台地址，例如 192.168.2.1）
+lan_ip_address='192.168.2.1'
+
+### LAN 的子网掩码（例如 255.255.255.0）
+# lan_netmask='255.255.255.0'
+
+### LAN 的 IPv4 网关（可为空）
+# lan_gateway='192.168.1.1'
+
+### LAN 的 DNS（多个 DNS 可空格分隔，如 '8.8.8.8 1.1.1.1'）
+# lan_dns='8.8.8.8 223.5.5.5'
+
+### DHCP 是否开启（1=开启，0=关闭）
+# lan_dhcp_enable='1'
+
+### DHCP 起始地址
+# lan_dhcp_start='100'
+
+### DHCP 地址池数量
+# lan_dhcp_limit='150'
+
+### DHCP 租约时间
+# lan_dhcp_leasetime='12h'
+
+### WiFi 名称 SSID（为空则不修改）
+# wlan_name='ImmortalWrt'
+
+### WiFi 密码（≥ 8 位才生效）
+# wlan_password='12345678'
+
+### PPPoE 宽带账号（为空则跳过）
+# pppoe_username=''
+
+### PPPoE 宽带密码
+# pppoe_password=''
+
+###########################################################
+#                  正 式 配 置 流 程
+###########################################################
+
+# ------------ root 密码 ------------
+if [ -n '$root_password' ]; then
+  (echo '$root_password'; sleep 1; echo '$root_password') | passwd >/dev/null
+fi
+
+# ------------ LAN 基础配置 ------------
+if [ -n '$lan_ip_address' ]; then
+  uci set network.lan.ipaddr='$lan_ip_address'
+fi
+
+if [ -n '$lan_netmask' ]; then
+  uci set network.lan.netmask='$lan_netmask'
+fi
+
+if [ -n '$lan_gateway' ]; then
+  uci set network.lan.gateway='$lan_gateway'
+fi
+
+# DNS
+if [ -n '$lan_dns' ]; then
+  uci delete network.lan.dns 2>/dev/null
+  for d in $lan_dns; do
+    uci add_list network.lan.dns='$d'
+  done
+fi
+
+uci commit network
+
+# ------------ DHCP 设置 ------------
+if [ -n '$lan_dhcp_enable' ]; then
+  uci set dhcp.lan.ignore=$([ '$lan_dhcp_enable' = '1' ] && echo 0 || echo 1)
+fi
+
+[ -n '$lan_dhcp_start' ] && uci set dhcp.lan.start='$lan_dhcp_start'
+[ -n '$lan_dhcp_limit' ] && uci set dhcp.lan.limit='$lan_dhcp_limit'
+[ -n '$lan_dhcp_leasetime' ] && uci set dhcp.lan.leasetime='$lan_dhcp_leasetime'
+
+uci commit dhcp
+
+# ------------ WIFI 配置 ------------
+if [ -n '$wlan_name' ] && [ -n '$wlan_password' ] && [ ${#wlan_password} -ge 8 ]; then
+  uci set wireless.@wifi-device[0].disabled='0'
+  uci set wireless.@wifi-iface[0].disabled='0'
+  uci set wireless.@wifi-iface[0].encryption='psk2'
+  uci set wireless.@wifi-iface[0].ssid='$wlan_name'
+  uci set wireless.@wifi-iface[0].key='$wlan_password'
+  uci commit wireless
+fi
+
+# ------------ PPPoE 宽带拨号 ------------
+if [ -n '$pppoe_username' ] && [ -n '$pppoe_password' ]; then
+  uci set network.wan.proto=pppoe
+  uci set network.wan.username='$pppoe_username'
+  uci set network.wan.password='$pppoe_password'
+  uci commit network
+fi
+
+# ------------ LuCI 主题设置 ------------
+if [ -n '$luci_theme' ]; then
+  # 设置默认主题
+  uci set luci.main.mediaurlbase='/luci-static/$luci_theme'
+  uci commit luci
+fi
+
+echo 'All done!'
+```
+
+## VirtualBox虚拟机运行immortalwrt文档
+
+1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
+
+LAN口 IP地址记得改成`192.168.56.2`
+
+2：打开CMD终端
+
+- 进入镜像文件目录
+```
+cd C:\Users\admin\Downloads
+```
+- 将镜像转换成VDI格式
+```
+'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' convertfromraw immortalwrt-24.10.4-f726c678216d-x86-64-generic-ext4-combined.img immortalwrt.vdi --format VDI
+```
+
+3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`Host-Only`网络启动，勾选`Virtual Cable Connected`
+
+> 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
+
+4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.52013120.xyz/post/68.html">
+<meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
+<title>openwrt固件编译和安装测试</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">openwrt固件编译和安装测试</h1>
+<div class="title-right">
+    <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>immortalwrt</h2>
+<p>在线编译地址：<a href="https://firmware-selector.immortalwrt.org" rel="nofollow">https://firmware-selector.immortalwrt.org</a></p>
+<h2>必备软件</h2>
+<pre class="notranslate"><code class="notranslate">luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn luci-app-ttyd luci-i18n-ttyd-zh-cn
+</code></pre>
+<p>ImmortalWrt软件包查询（替换版本号）：<a href="https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json" rel="nofollow">https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json</a></p>
+<h2>初始化构建脚本</h2>
+<pre class="notranslate"><code class="notranslate">#!/bin/sh
+exec &gt;/tmp/setup.log 2&gt;&amp;1
+
+###########################################################
+#                  自 定 义 配 置 区 域
+###########################################################
+
+### LuCI 默认主题（需要固件中已下载该主题）
+luci_theme="argon"
+
+### 系统后台密码（为空则不修改）
+root_password="root"
+
+### LAN 的 IPv4 地址（也是后台地址，例如 192.168.2.1）
+lan_ip_address="192.168.2.1"
+
+### LAN 的子网掩码（例如 255.255.255.0）
+# lan_netmask="255.255.255.0"
+
+### LAN 的 IPv4 网关（可为空）
+# lan_gateway="192.168.1.1"
+
+### LAN 的 DNS（多个 DNS 可空格分隔，如 "8.8.8.8 1.1.1.1"）
+# lan_dns="8.8.8.8 223.5.5.5"
+
+### DHCP 是否开启（1=开启，0=关闭）
+# lan_dhcp_enable="1"
+
+### DHCP 起始地址
+# lan_dhcp_start="100"
+
+### DHCP 地址池数量
+# lan_dhcp_limit="150"
+
+### DHCP 租约时间
+# lan_dhcp_leasetime="12h"
+
+### WiFi 名称 SSID（为空则不修改）
+# wlan_name="ImmortalWrt"
+
+### WiFi 密码（≥ 8 位才生效）
+# wlan_password="12345678"
+
+### PPPoE 宽带账号（为空则跳过）
+# pppoe_username=""
+
+### PPPoE 宽带密码
+# pppoe_password=""
+
+###########################################################
+#                  正 式 配 置 流 程
+###########################################################
+
+# ------------ root 密码 ------------
+if [ -n "$root_password" ]; then
+  (echo "$root_password"; sleep 1; echo "$root_password") | passwd &gt;/dev/null
+fi
+
+# ------------ LAN 基础配置 ------------
+if [ -n "$lan_ip_address" ]; then
+  uci set network.lan.ipaddr="$lan_ip_address"
+fi
+
+if [ -n "$lan_netmask" ]; then
+  uci set network.lan.netmask="$lan_netmask"
+fi
+
+if [ -n "$lan_gateway" ]; then
+  uci set network.lan.gateway="$lan_gateway"
+fi
+
+# DNS
+if [ -n "$lan_dns" ]; then
+  uci delete network.lan.dns 2&gt;/dev/null
+  for d in $lan_dns; do
+    uci add_list network.lan.dns="$d"
+  done
+fi
+
+uci commit network
+
+# ------------ DHCP 设置 ------------
+if [ -n "$lan_dhcp_enable" ]; then
+  uci set dhcp.lan.ignore=$([ "$lan_dhcp_enable" = "1" ] &amp;&amp; echo 0 || echo 1)
+fi
+
+[ -n "$lan_dhcp_start" ] &amp;&amp; uci set dhcp.lan.start="$lan_dhcp_start"
+[ -n "$lan_dhcp_limit" ] &amp;&amp; uci set dhcp.lan.limit="$lan_dhcp_limit"
+[ -n "$lan_dhcp_leasetime" ] &amp;&amp; uci set dhcp.lan.leasetime="$lan_dhcp_leasetime"
+
+uci commit dhcp
+
+# ------------ WIFI 配置 ------------
+if [ -n "$wlan_name" ] &amp;&amp; [ -n "$wlan_password" ] &amp;&amp; [ ${#wlan_password} -ge 8 ]; then
+  uci set wireless.@wifi-device[0].disabled='0'
+  uci set wireless.@wifi-iface[0].disabled='0'
+  uci set wireless.@wifi-iface[0].encryption='psk2'
+  uci set wireless.@wifi-iface[0].ssid="$wlan_name"
+  uci set wireless.@wifi-iface[0].key="$wlan_password"
+  uci commit wireless
+fi
+
+# ------------ PPPoE 宽带拨号 ------------
+if [ -n "$pppoe_username" ] &amp;&amp; [ -n "$pppoe_password" ]; then
+  uci set network.wan.proto=pppoe
+  uci set network.wan.username="$pppoe_username"
+  uci set network.wan.password="$pppoe_password"
+  uci commit network
+fi
+
+# ------------ LuCI 主题设置 ------------
+if [ -n "$luci_theme" ]; then
+  # 设置默认主题
+  uci set luci.main.mediaurlbase="/luci-static/$luci_theme"
+  uci commit luci
+fi
+
+echo "All done!"
+</code></pre>
+<h2>VirtualBox虚拟机运行immortalwrt文档</h2>
+<p>1：选择<code class="notranslate">x86/64</code>型号，编译后，下载<code class="notranslate">COMBINED (EXT4)</code>格式的镜像，并解压到下载目录</p>
+<p>LAN口 IP地址记得改成<code class="notranslate">192.168.56.2</code></p>
+<p>2：打开CMD终端</p>
+<ul>
+<li>进入镜像文件目录</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">cd C:\Users\admin\Downloads
+</code></pre>
+<ul>
+<li>将镜像转换成VDI格式</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" convertfromraw immortalwrt-24.10.4-f726c678216d-x86-64-generic-ext4-combined.img immortalwrt.vdi --format VDI
+</code></pre>
+<p>3：打开VirtualBox，新建虚拟机，OS选择<code class="notranslate">Linux</code>，然后选择<code class="notranslate">Other Linux</code>，然后指定虚拟硬盘，选择<code class="notranslate">使用已有的虚拟硬盘文件</code>，选择<code class="notranslate">immortalwrt.vdi</code>文件，然后点击完成，然后设置里找到网络，选择<code class="notranslate">Host-Only</code>网络启动，勾选<code class="notranslate">Virtual Cable Connected</code></p>
+<blockquote>
+<p>如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行</p>
+</blockquote>
+<p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是下面脚本中设置的<code class="notranslate">root</code></p></div>
+<div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.52013120.xyz">繁星点点</a></div>
+<div id="footer2">
+    <span id="runday"></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n Gmeek last https://github.com/Meekdai/Gmeek \n");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">ok</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='/assets/GmeekTOC.js'></script><script src='/assets/lightbox.js'></script>
+
+</html>
