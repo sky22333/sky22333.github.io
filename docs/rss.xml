@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 16 Nov 2025 12:09:07 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>openwrt固件编译和安装测试</title><link>https://blog.52013120.xyz/post/68.html</link><description>## immortalwrt
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 16 Nov 2025 12:10:23 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>openwrt固件编译和安装测试</title><link>https://blog.52013120.xyz/post/68.html</link><description>## immortalwrt
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -10,6 +10,8 @@ luci-app-openclash luci-theme-argon luci-app-homeproxy luci-i18n-homeproxy-zh-cn
 ImmortalWrt软件包查询（替换版本号）：https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
 
 ## 初始化构建脚本
+
+要修改的地方请去掉注释
 ```
 #!/bin/sh
 exec &gt;/tmp/setup.log 2&gt;&amp;1
