@@ -183,6 +183,8 @@ make menuconfig
 来自某大佬的详细说明：https://youtu.be/czUW52M62Sw?t=2432
 
 ### 7：修改LAN口IP地址等等信息
+
+可以在这里查看默认值：https://github.com/immortalwrt/immortalwrt/blob/master/package/base-files/files/bin/config_generate
 ```
 nano package/base-files/files/bin/config_generate
 ```
