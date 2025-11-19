@@ -4,7 +4,7 @@
 
 ## 必备软件
 ```
-luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn luci-app-openclash
+curl luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn luci-app-openclash
 ```
 
 ImmortalWrt软件包查询（替换版本号）：https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
