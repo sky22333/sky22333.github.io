@@ -10,7 +10,7 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## immortalwrt
+<meta name="description" content="# immortalwrt云编译
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -135,7 +135,7 @@ echo 'All done!'
 
 ---
 
-## VirtualBox虚拟机运行immortalwrt文档
+# VirtualBox虚拟机运行immortalwrt文档
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
@@ -155,9 +155,32 @@ LAN口 IP地址记得改成`192.168.56.2`
 
 > 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
 
-4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`。">
+4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
+
+
+# 基于源码编译
+
+使用Debian或者ubuntu系统
+
+### 1：安装依赖
+```
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+  bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
+  g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
+  libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libpython3-dev \
+  libreadline-dev libssl-dev libtool libyaml-dev libz-dev lld llvm lrzsz mkisofs msmtp nano \
+  ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
+  python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
+  upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+```
+
+### 2：下载对应tags的源码（以`v24.10.4`为例）
+
+这里建议切换为普通用户，不要用root用户编译。">
 <meta property="og:title" content="openwrt固件编译和安装测试">
-<meta property="og:description" content="## immortalwrt
+<meta property="og:description" content="# immortalwrt云编译
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -282,7 +305,7 @@ echo 'All done!'
 
 ---
 
-## VirtualBox虚拟机运行immortalwrt文档
+# VirtualBox虚拟机运行immortalwrt文档
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
@@ -302,7 +325,30 @@ LAN口 IP地址记得改成`192.168.56.2`
 
 > 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
 
-4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`。">
+4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
+
+
+# 基于源码编译
+
+使用Debian或者ubuntu系统
+
+### 1：安装依赖
+```
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+  bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
+  g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
+  libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libpython3-dev \
+  libreadline-dev libssl-dev libtool libyaml-dev libz-dev lld llvm lrzsz mkisofs msmtp nano \
+  ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
+  python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
+  upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+```
+
+### 2：下载对应tags的源码（以`v24.10.4`为例）
+
+这里建议切换为普通用户，不要用root用户编译。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/68.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -367,7 +413,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>immortalwrt</h2>
+<div class="markdown-body" id="postBody"><h1>immortalwrt云编译</h1>
 <p>在线编译地址：<a href="https://firmware-selector.immortalwrt.org" rel="nofollow">https://firmware-selector.immortalwrt.org</a></p>
 <h2>必备软件</h2>
 <pre class="notranslate"><code class="notranslate">curl luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn
@@ -483,7 +529,7 @@ fi
 echo "All done!"
 </code></pre>
 <hr>
-<h2>VirtualBox虚拟机运行immortalwrt文档</h2>
+<h1>VirtualBox虚拟机运行immortalwrt文档</h1>
 <p>1：选择<code class="notranslate">x86/64</code>型号，编译后，下载<code class="notranslate">COMBINED (EXT4)</code>格式的镜像，并解压到下载目录</p>
 <p>LAN口 IP地址记得改成<code class="notranslate">192.168.56.2</code></p>
 <p>2：在文件目录下打开 PowerShell</p>
@@ -499,7 +545,48 @@ echo "All done!"
 <blockquote>
 <p>如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行</p>
 </blockquote>
-<p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是下面脚本中设置的<code class="notranslate">root</code></p></div>
+<p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是下面脚本中设置的<code class="notranslate">root</code></p>
+<h1>基于源码编译</h1>
+<p>使用Debian或者ubuntu系统</p>
+<h3>1：安装依赖</h3>
+<pre class="notranslate"><code class="notranslate">sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+  bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
+  g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
+  libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libpython3-dev \
+  libreadline-dev libssl-dev libtool libyaml-dev libz-dev lld llvm lrzsz mkisofs msmtp nano \
+  ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
+  python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
+  upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+</code></pre>
+<h3>2：下载对应tags的源码（以<code class="notranslate">v24.10.4</code>为例）</h3>
+<p>这里建议切换为普通用户，不要用root用户编译。</p>
+<pre class="notranslate"><code class="notranslate">git clone -b v24.10.4 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
+</code></pre>
+<h3>3：进入项目目录</h3>
+<pre class="notranslate"><code class="notranslate">cd immortalwrt
+</code></pre>
+<h3>4：获取最新软件包清单</h3>
+<pre class="notranslate"><code class="notranslate">./scripts/feeds update -a
+</code></pre>
+<h3>5：安装软件包符号链接</h3>
+<pre class="notranslate"><code class="notranslate">./scripts/feeds install -a
+</code></pre>
+<h3>6：配置固件信息</h3>
+<pre class="notranslate"><code class="notranslate">make menuconfig
+</code></pre>
+<p>如何配置可以观看视频说明：<a href="https://youtu.be/czUW52M62Sw?t=2430" rel="nofollow">https://youtu.be/czUW52M62Sw?t=2430</a></p>
+<h3>7：修改LAN口IP地址等等信息</h3>
+<pre class="notranslate"><code class="notranslate">nano package/base-files/files/bin/config_generate
+</code></pre>
+<h3>8：编译固件</h3>
+<p>使用6线程加快编译，你的机器几核心就选择几线程</p>
+<pre class="notranslate"><code class="notranslate">make -j 6
+</code></pre>
+<p>编译出来的固件在<code class="notranslate">bin</code>目录下</p>
+<h3>9：重新编译说明</h3>
+<p>重新编译需要执行<code class="notranslate">make distclean</code>清理工具链等等信息，然后再从第四步重新开始。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

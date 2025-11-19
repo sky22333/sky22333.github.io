@@ -1,4 +1,4 @@
-## immortalwrt
+# immortalwrt云编译
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -123,7 +123,7 @@ echo "All done!"
 
 ---
 
-## VirtualBox虚拟机运行immortalwrt文档
+# VirtualBox虚拟机运行immortalwrt文档
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
@@ -144,3 +144,62 @@ LAN口 IP地址记得改成`192.168.56.2`
 > 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
 
 4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
+
+
+# 基于源码编译
+
+使用Debian或者ubuntu系统
+
+### 1：安装依赖
+```
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+  bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
+  g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
+  libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libpython3-dev \
+  libreadline-dev libssl-dev libtool libyaml-dev libz-dev lld llvm lrzsz mkisofs msmtp nano \
+  ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
+  python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
+  upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+```
+
+### 2：下载对应tags的源码（以`v24.10.4`为例）
+
+这里建议切换为普通用户，不要用root用户编译。
+```
+git clone -b v24.10.4 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
+```
+### 3：进入项目目录
+```
+cd immortalwrt
+```
+### 4：获取最新软件包清单
+```
+./scripts/feeds update -a
+```
+### 5：安装软件包符号链接
+```
+./scripts/feeds install -a
+```
+### 6：配置固件信息
+```
+make menuconfig
+```
+如何配置可以观看视频说明：https://youtu.be/czUW52M62Sw?t=2430
+
+### 7：修改LAN口IP地址等等信息
+```
+nano package/base-files/files/bin/config_generate
+```
+### 8：编译固件
+
+使用6线程加快编译，你的机器几核心就选择几线程
+```
+make -j 6
+```
+编译出来的固件在`bin`目录下
+
+### 9：重新编译说明
+
+重新编译需要执行`make distclean`清理工具链等等信息，然后再从第四步重新开始。

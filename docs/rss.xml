@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 19 Nov 2025 03:48:29 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>openwrt固件编译和安装测试</title><link>https://blog.52013120.xyz/post/68.html</link><description>## immortalwrt
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 19 Nov 2025 09:51:16 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>openwrt固件编译和安装测试</title><link>https://blog.52013120.xyz/post/68.html</link><description># immortalwrt云编译
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -124,7 +124,7 @@ echo 'All done!'
 
 ---
 
-## VirtualBox虚拟机运行immortalwrt文档
+# VirtualBox虚拟机运行immortalwrt文档
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
@@ -144,7 +144,30 @@ LAN口 IP地址记得改成`192.168.56.2`
 
 &gt; 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
 
-4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/68.html</guid><pubDate>Sun, 16 Nov 2025 12:08:39 +0000</pubDate></item><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
+
+
+# 基于源码编译
+
+使用Debian或者ubuntu系统
+
+### 1：安装依赖
+```
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+  bzip2 ccache clang cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib \
+  g++-multilib git gnutls-dev gperf haveged help2man intltool lib32gcc-s1 libc6-dev-i386 libelf-dev \
+  libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libpython3-dev \
+  libreadline-dev libssl-dev libtool libyaml-dev libz-dev lld llvm lrzsz mkisofs msmtp nano \
+  ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
+  python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
+  upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+```
+
+### 2：下载对应tags的源码（以`v24.10.4`为例）
+
+这里建议切换为普通用户，不要用root用户编译。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/68.html</guid><pubDate>Sun, 16 Nov 2025 12:08:39 +0000</pubDate></item><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
 
