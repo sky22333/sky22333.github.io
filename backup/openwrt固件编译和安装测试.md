@@ -1,4 +1,4 @@
-# immortalwrt云编译
+# immortalwrt 云编译
 
 在线编译地址：https://firmware-selector.immortalwrt.org
 
@@ -146,7 +146,7 @@ LAN口 IP地址记得改成`192.168.56.2`
 4：浏览器进入`192.168.56.2`，密码是下面脚本中设置的`root`
 
 
-# 基于源码编译
+# immortalwrt 基于源码编译
 
 使用Debian或者ubuntu系统
 
