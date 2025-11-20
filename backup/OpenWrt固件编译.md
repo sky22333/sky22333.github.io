@@ -138,7 +138,7 @@ echo "All done!"
 
 # immortalwrt 基于源码编译
 
-使用干净的Debian或者ubuntu系统，最好使用国外网络。
+使用干净的Debian或者ubuntu系统，国外网络通畅，有50G以上的空闲存储空间。
 
 ### 1：安装依赖
 ```
