@@ -206,7 +206,7 @@ make -j 6
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
-LAN口 IP地址记得改成`192.168.56.2`，因为这是VirtualBox虚拟机`Host-Only`网络的默认网段。
+编译的固件 LAN口 IP地址记得改成`192.168.56.2`，因为这是VirtualBox虚拟机`Host-Only`网络的默认网段。
 
 2：在文件目录下打开 PowerShell
 
