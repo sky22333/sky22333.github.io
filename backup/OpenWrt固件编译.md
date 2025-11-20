@@ -16,6 +16,8 @@ OpenWrt 是一个 基于 Linux 的路由器操作系统，专门为嵌入式设�
 curl luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn
 ```
 
+当你安装一个插件包时，他会自动下载所需的软件和依赖，所以只需添加对应插件的汉化包即可。
+
 ImmortalWrt软件包查询（注意替换实际的版本和设备架构）：
 
 https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
@@ -132,7 +134,7 @@ fi
 echo "All done!"
 ```
 
-构建完成后选择对应的固件包刷入系统即可。
+构建完成后下载对应的固件包刷入系统即可。
 
 # immortalwrt 基于源码编译
 

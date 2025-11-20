@@ -89,6 +89,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h2>必备软件</h2>
 <pre class="notranslate"><code class="notranslate">curl luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn
 </code></pre>
+<p>当你安装一个插件包时，他会自动下载所需的软件和依赖，所以只需添加对应插件的汉化包即可。</p>
 <p>ImmortalWrt软件包查询（注意替换实际的版本和设备架构）：</p>
 <p><a href="https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json" rel="nofollow">https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json</a></p>
 <h2>初始化构建脚本</h2>
@@ -200,7 +201,7 @@ fi
 
 echo "All done!"
 </code></pre>
-<p>构建完成后选择对应的固件包刷入系统即可。</p>
+<p>构建完成后下载对应的固件包刷入系统即可。</p>
 <h1>immortalwrt 基于源码编译</h1>
 <p>使用干净的Debian或者ubuntu系统，最好使用国外网络。</p>
 <h3>1：安装依赖</h3>
