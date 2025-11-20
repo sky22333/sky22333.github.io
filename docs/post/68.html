@@ -241,8 +241,7 @@ sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bis
 <pre class="notranslate"><code class="notranslate">nano package/base-files/files/bin/config_generate
 </code></pre>
 <h3>8：编译固件</h3>
-<p>使用6线程加快编译，你的机器几核心就选择几线程</p>
-<pre class="notranslate"><code class="notranslate">make -j 6
+<pre class="notranslate"><code class="notranslate">make -j1 V=s
 </code></pre>
 <p>编译出来的固件在<code class="notranslate">bin</code>目录下</p>
 <h3>9：重新编译说明</h3>

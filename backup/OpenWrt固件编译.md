@@ -192,9 +192,8 @@ nano package/base-files/files/bin/config_generate
 ```
 ### 8：编译固件
 
-使用6线程加快编译，你的机器几核心就选择几线程
 ```
-make -j 6
+make -j1 V=s
 ```
 编译出来的固件在`bin`目录下
 
