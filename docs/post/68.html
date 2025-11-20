@@ -245,10 +245,11 @@ sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bis
 </code></pre>
 <p>编译出来的固件在<code class="notranslate">bin</code>目录下</p>
 <h3>9：重新编译说明</h3>
-<h2>如果需要重新编译 则执行<code class="notranslate">make distclean</code>清理一些残留和工具链等等，然后再从第四步重新开始。</h2>
+<p>如果需要重新编译 则执行<code class="notranslate">make distclean</code>清理一些残留和工具链等等，然后再从第四步重新开始。</p>
+<hr>
 <h1>VirtualBox虚拟机运行immortalwrt文档</h1>
 <p>1：选择<code class="notranslate">x86/64</code>型号，编译后，下载<code class="notranslate">COMBINED (EXT4)</code>格式的镜像，并解压到下载目录</p>
-<p>LAN口 IP地址记得改成<code class="notranslate">192.168.56.2</code></p>
+<p>LAN口 IP地址记得改成<code class="notranslate">192.168.56.2</code>，因为这是VirtualBox虚拟机<code class="notranslate">Host-Only</code>网络的默认网段。</p>
 <p>2：在文件目录下打开 PowerShell</p>
 <ul>
 <li>将镜像转换成VDI格式</li>

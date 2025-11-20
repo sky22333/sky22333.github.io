@@ -199,13 +199,14 @@ make -j 6
 ### 9：重新编译说明
 
 如果需要重新编译 则执行`make distclean`清理一些残留和工具链等等，然后再从第四步重新开始。
+
 ---
 
 # VirtualBox虚拟机运行immortalwrt文档
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
-LAN口 IP地址记得改成`192.168.56.2`
+LAN口 IP地址记得改成`192.168.56.2`，因为这是VirtualBox虚拟机`Host-Only`网络的默认网段。
 
 2：在文件目录下打开 PowerShell
 
