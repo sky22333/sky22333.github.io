@@ -242,7 +242,11 @@ sudo apt install -y \
 <pre class="notranslate"><code class="notranslate">nano package/base-files/files/bin/config_generate
 </code></pre>
 <h3>8：编译固件</h3>
+<p>单线程编译</p>
 <pre class="notranslate"><code class="notranslate">make -j1 V=s
+</code></pre>
+<p>或者多线程编译</p>
+<pre class="notranslate"><code class="notranslate">make -j$(nproc --ignore=1)
 </code></pre>
 <p>编译出来的固件在<code class="notranslate">bin</code>目录下</p>
 <h3>9：重新编译说明</h3>

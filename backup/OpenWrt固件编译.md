@@ -193,10 +193,17 @@ nano package/base-files/files/bin/config_generate
 ```
 ### 8：编译固件
 
+单线程编译
 ```
 make -j1 V=s
 ```
+或者多线程编译
+```
+make -j$(nproc --ignore=1)
+```
+
 编译出来的固件在`bin`目录下
+
 
 ### 9：重新编译说明
 
