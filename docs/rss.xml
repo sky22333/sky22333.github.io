@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 29 Nov 2025 11:04:07 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>OpenWrt固件编译</title><link>https://blog.52013120.xyz/post/68.html</link><description># 介绍
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 01 Dec 2025 15:44:36 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+
+`192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
+
+开启子网路由：
+```
+tailscale up --advertise-routes=192.168.3.0/24 --accept-routes --reset
+```
+开启后，在`tailscale`后台找到你路由器设备，点击右侧菜单(三个点)，选择`Edit route settings...`，勾选`192.168.3.0/24`，点击`Save`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/69.html</guid><pubDate>Mon, 01 Dec 2025 15:44:06 +0000</pubDate></item><item><title>OpenWrt固件编译</title><link>https://blog.52013120.xyz/post/68.html</link><description># 介绍
 OpenWrt 是一个 基于 Linux 的路由器操作系统，专门为嵌入式设备（路由器、NAS、小型网关设备等）设计。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/68.html</guid><pubDate>Sun, 16 Nov 2025 12:08:39 +0000</pubDate></item><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
 使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
