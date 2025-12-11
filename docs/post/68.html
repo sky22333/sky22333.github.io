@@ -252,7 +252,7 @@ sudo apt install -y \
 <h3>9：重新编译说明</h3>
 <p>如果需要重新编译 则执行<code class="notranslate">make distclean</code>清理一些残留和工具链等等，然后再从第四步重新开始。</p>
 <hr>
-<h1>VirtualBox虚拟机运行immortalwrt文档</h1>
+<h1>VirtualBox虚拟机运行immortalwrt</h1>
 <p>1：选择<code class="notranslate">x86/64</code>型号，编译后，下载<code class="notranslate">COMBINED (EXT4)</code>格式的镜像，并解压到下载目录</p>
 <p>编译的固件 LAN口 IP地址记得改成<code class="notranslate">192.168.56.2</code>，因为这是VirtualBox虚拟机<code class="notranslate">Host-Only</code>网络的默认网段。</p>
 <p>2：在文件目录下打开 PowerShell</p>
@@ -268,7 +268,30 @@ sudo apt install -y \
 <blockquote>
 <p>如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行</p>
 </blockquote>
-<p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是初始化脚本中设置的密码。</p></div>
+<p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是初始化脚本中设置的密码。</p>
+<h1>X86主机之类设备将镜像写入到硬盘</h1>
+<p>先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像</p>
+<h3>1. 查看U盘和目标硬盘</h3>
+<pre class="notranslate"><code class="notranslate">lsblk -f
+</code></pre>
+<p>例如 U 盘是 <code class="notranslate">/dev/sdb</code>  硬盘是 <code class="notranslate">/dev/sda</code></p>
+<h3>2. 写入镜像（注意替换实际的U盘和硬盘）</h3>
+<p>如果目标硬盘有被挂载则需要卸载</p>
+<pre class="notranslate"><code class="notranslate">umount /dev/sda*
+</code></pre>
+<p>写入镜像</p>
+<pre class="notranslate"><code class="notranslate">dd if=/dev/sdb of=/dev/sda bs=4M status=progress conv=fsync
+</code></pre>
+<h3>3. 强制刷新缓存</h3>
+<pre class="notranslate"><code class="notranslate">sync
+</code></pre>
+<h3>命令解释：</h3>
+<p><code class="notranslate">if=/dev/sdb</code> ：输入源，U 盘设备</p>
+<p><code class="notranslate">of=/dev/sda</code> ：输出目标，硬盘/闪存设备</p>
+<p><code class="notranslate">bs=4M</code> ：每次写入 4M，提高速度</p>
+<p><code class="notranslate">status=progress</code> ：显示进度</p>
+<p><code class="notranslate">conv=fsync</code> ：写完后刷新缓存，确保数据落盘</p>
+<p><code class="notranslate">sync</code> ：再次确保所有数据写入完成</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

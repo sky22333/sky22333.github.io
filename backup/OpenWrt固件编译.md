@@ -211,7 +211,7 @@ make -j$(nproc --ignore=1)
 
 ---
 
-# VirtualBox虚拟机运行immortalwrt文档
+# VirtualBox虚拟机运行immortalwrt
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
@@ -232,3 +232,43 @@ make -j$(nproc --ignore=1)
 > 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
 
 4：浏览器进入`192.168.56.2`，密码是初始化脚本中设置的密码。
+
+
+# X86主机之类设备将镜像写入到硬盘
+
+先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像
+
+### 1. 查看U盘和目标硬盘
+```
+lsblk -f
+```
+例如 U 盘是 `/dev/sdb`  硬盘是 `/dev/sda` 
+
+### 2. 写入镜像（注意替换实际的U盘和硬盘）
+
+如果目标硬盘有被挂载则需要卸载
+```
+umount /dev/sda*
+```
+写入镜像
+```
+dd if=/dev/sdb of=/dev/sda bs=4M status=progress conv=fsync
+```
+### 3. 强制刷新缓存
+```
+sync
+```
+
+### 命令解释：
+
+`if=/dev/sdb` ：输入源，U 盘设备
+
+`of=/dev/sda` ：输出目标，硬盘/闪存设备
+
+`bs=4M` ：每次写入 4M，提高速度
+
+`status=progress` ：显示进度
+
+`conv=fsync` ：写完后刷新缓存，确保数据落盘
+
+`sync` ：再次确保所有数据写入完成
