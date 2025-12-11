@@ -269,14 +269,14 @@ sudo apt install -y \
 <p>如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行</p>
 </blockquote>
 <p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是初始化脚本中设置的密码。</p>
-<h1>X86主机之类设备将镜像写入到硬盘</h1>
-<p>先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像</p>
+<h1>X86主机设备将镜像写入到硬盘</h1>
+<p>先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像，就可以拔掉U盘运行openwrt系统了。</p>
 <h3>1. 查看U盘和目标硬盘</h3>
 <pre class="notranslate"><code class="notranslate">lsblk -f
 </code></pre>
 <p>例如 U 盘是 <code class="notranslate">/dev/sdb</code>  硬盘是 <code class="notranslate">/dev/sda</code></p>
 <h3>2. 写入镜像（注意替换实际的U盘和硬盘）</h3>
-<p>如果目标硬盘有被挂载则需要卸载</p>
+<p>如果目标硬盘有被挂载则需要卸载，例如之前装了系统之类的</p>
 <pre class="notranslate"><code class="notranslate">umount /dev/sda*
 </code></pre>
 <p>写入镜像</p>
