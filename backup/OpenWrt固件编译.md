@@ -238,22 +238,28 @@ make -j$(nproc --ignore=1)
 
 先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像，就可以拔掉U盘运行openwrt系统了。
 
-### 1. 查看U盘和目标硬盘
+### 查看U盘和目标硬盘
 ```
 lsblk -f
 ```
-例如 U 盘是 `/dev/sdb`  硬盘是 `/dev/sda` 
+> 例如 U 盘是 `/dev/sdb`  硬盘是 `/dev/sda` 
+### 如果目标硬盘有被挂载则需要卸载，例如之前装了系统之类的
+```
+umount /dev/sda1
+umount /dev/sda2
+umount /dev/sda3
+```
+### 检查是否卸载成功
+```
+mount | grep sda
+```
+> 如果返回为空就代表卸载成功了
+### 写入镜像（注意替换实际的U盘和硬盘）
+```
+dd if=/dev/sdb of=/dev/sda bs=4M conv=fsync
+```
+> 如果没报错，并且看到了两行数字就代表成功了
 
-### 2. 写入镜像（注意替换实际的U盘和硬盘）
-
-如果目标硬盘有被挂载则需要卸载，例如之前装了系统之类的
-```
-umount /dev/sda*
-```
-写入镜像
-```
-dd if=/dev/sdb of=/dev/sda bs=4M status=progress conv=fsync
-```
 ### 3. 强制刷新缓存
 ```
 sync
@@ -266,8 +272,6 @@ sync
 `of=/dev/sda` ：输出目标，硬盘/闪存设备
 
 `bs=4M` ：每次写入 4M，提高速度
-
-`status=progress` ：显示进度
 
 `conv=fsync` ：写完后刷新缓存，确保数据落盘
 
