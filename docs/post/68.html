@@ -271,7 +271,7 @@ sudo apt install -y \
 <p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是初始化脚本中设置的密码。</p>
 <h1>X86主机设备将镜像写入到硬盘</h1>
 <p>先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像，就可以拔掉U盘运行openwrt系统了。</p>
-<h3>查看U盘和目标硬盘</h3>
+<h4>查看U盘和目标硬盘</h4>
 <pre class="notranslate"><code class="notranslate">lsblk -f
 </code></pre>
 <blockquote>
@@ -282,19 +282,19 @@ sudo apt install -y \
 umount /dev/sda2
 umount /dev/sda3
 </code></pre>
-<h3>检查是否卸载成功</h3>
+<h4>检查是否卸载成功</h4>
 <pre class="notranslate"><code class="notranslate">mount | grep sda
 </code></pre>
 <blockquote>
 <p>如果返回为空就代表卸载成功了</p>
 </blockquote>
-<h3>写入镜像（注意替换实际的U盘和硬盘）</h3>
+<h4>写入镜像（注意替换实际的U盘和硬盘）</h4>
 <pre class="notranslate"><code class="notranslate">dd if=/dev/sdb of=/dev/sda bs=4M conv=fsync
 </code></pre>
 <blockquote>
 <p>如果没报错，并且看到了两行数字就代表成功了</p>
 </blockquote>
-<h3>3. 强制刷新缓存</h3>
+<h4>强制刷新缓存</h4>
 <pre class="notranslate"><code class="notranslate">sync
 </code></pre>
 <h3>命令解释：</h3>
