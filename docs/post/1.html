@@ -363,6 +363,18 @@ Windows
 tracert 8.8.8.8
 ```
 
+### 路由追踪
+
+> Windows需防火墙配置允许`ICMP/ICMPv6`
+```
+netsh advfirewall firewall add rule name='All ICMP v4' dir=in action=allow protocol=icmpv4:any,any
+netsh advfirewall firewall add rule name='All ICMP v6' dir=in action=allow protocol=icmpv6:any,any
+```
+
+https://github.com/nxtrace/NTrace-core
+
+https://www.nxtrace.org/downloads
+
 
 ### 一键测速回程线路
 ```
@@ -811,6 +823,18 @@ Windows
 tracert 8.8.8.8
 ```
 
+### 路由追踪
+
+> Windows需防火墙配置允许`ICMP/ICMPv6`
+```
+netsh advfirewall firewall add rule name='All ICMP v4' dir=in action=allow protocol=icmpv4:any,any
+netsh advfirewall firewall add rule name='All ICMP v6' dir=in action=allow protocol=icmpv6:any,any
+```
+
+https://github.com/nxtrace/NTrace-core
+
+https://www.nxtrace.org/downloads
+
 
 ### 一键测速回程线路
 ```
@@ -1217,6 +1241,15 @@ sudo apt install -f
 <p>Windows</p>
 <pre class="notranslate"><code class="notranslate">tracert 8.8.8.8
 </code></pre>
+<h3>路由追踪</h3>
+<blockquote>
+<p>Windows需防火墙配置允许<code class="notranslate">ICMP/ICMPv6</code></p>
+</blockquote>
+<pre class="notranslate"><code class="notranslate">netsh advfirewall firewall add rule name="All ICMP v4" dir=in action=allow protocol=icmpv4:any,any
+netsh advfirewall firewall add rule name="All ICMP v6" dir=in action=allow protocol=icmpv6:any,any
+</code></pre>
+<p><a href="https://github.com/nxtrace/NTrace-core">https://github.com/nxtrace/NTrace-core</a></p>
+<p><a href="https://www.nxtrace.org/downloads" rel="nofollow">https://www.nxtrace.org/downloads</a></p>
 <h3>一键测速回程线路</h3>
 <pre class="notranslate"><code class="notranslate">curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
 </code></pre>
