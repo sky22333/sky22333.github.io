@@ -254,7 +254,6 @@ sudo apt install -y \
 <hr>
 <h1>VirtualBox虚拟机运行immortalwrt</h1>
 <p>1：选择<code class="notranslate">x86/64</code>型号，编译后，下载<code class="notranslate">COMBINED (EXT4)</code>格式的镜像，并解压到下载目录</p>
-<p>编译的固件 LAN口 IP地址记得改成<code class="notranslate">192.168.56.2</code>，因为这是VirtualBox虚拟机<code class="notranslate">Host-Only</code>网络的默认网段。</p>
 <p>2：在文件目录下打开 PowerShell</p>
 <ul>
 <li>将镜像转换成VDI格式</li>
@@ -264,11 +263,8 @@ sudo apt install -y \
     "immortalwrt.vdi" `
     --format VDI
 </code></pre>
-<p>3：打开VirtualBox，新建虚拟机，OS选择<code class="notranslate">Linux</code>，然后选择<code class="notranslate">Other Linux</code>，然后指定虚拟硬盘，选择<code class="notranslate">使用已有的虚拟硬盘文件</code>，选择<code class="notranslate">immortalwrt.vdi</code>文件，然后点击完成，然后设置里找到网络，选择<code class="notranslate">Host-Only</code>网络启动，勾选<code class="notranslate">Virtual Cable Connected</code></p>
-<blockquote>
-<p>如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行</p>
-</blockquote>
-<p>4：浏览器进入<code class="notranslate">192.168.56.2</code>，密码是初始化脚本中设置的密码。</p>
+<p>3：打开VirtualBox，新建虚拟机，OS选择<code class="notranslate">Linux</code>，然后选择<code class="notranslate">Other Linux</code>，然后指定虚拟硬盘，选择<code class="notranslate">使用已有的虚拟硬盘文件</code>，选择<code class="notranslate">immortalwrt.vdi</code>文件，然后点击完成，然后设置里找到网络，选择<code class="notranslate">桥接网卡</code>，勾选<code class="notranslate">Virtual Cable Connected</code>，注意你的openwrt系统的<code class="notranslate">LAN</code>口IP地址要和电脑在同一网段。网关和DNS也要和电脑的一致。</p>
+<p>4：浏览器进入<code class="notranslate">LAN</code>口IP地址，密码是初始化脚本中设置的密码。</p>
 <h1>X86主机设备将镜像写入到硬盘</h1>
 <p>先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像，就可以拔掉U盘运行openwrt系统了。</p>
 <h4>查看U盘和目标硬盘</h4>

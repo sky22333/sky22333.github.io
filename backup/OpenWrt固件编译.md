@@ -215,8 +215,6 @@ make -j$(nproc --ignore=1)
 
 1：选择`x86/64`型号，编译后，下载`COMBINED (EXT4)`格式的镜像，并解压到下载目录
 
-编译的固件 LAN口 IP地址记得改成`192.168.56.2`，因为这是VirtualBox虚拟机`Host-Only`网络的默认网段。
-
 2：在文件目录下打开 PowerShell
 
 - 将镜像转换成VDI格式
@@ -227,12 +225,9 @@ make -j$(nproc --ignore=1)
     --format VDI
 ```
 
-3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`Host-Only`网络启动，勾选`Virtual Cable Connected`
+3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`桥接网卡`，勾选`Virtual Cable Connected`，注意你的openwrt系统的`LAN`口IP地址要和电脑在同一网段。网关和DNS也要和电脑的一致。
 
-> 如果你电脑是插网线的，则虚拟机可以直接选择桥接网卡，连wifi的不行
-
-4：浏览器进入`192.168.56.2`，密码是初始化脚本中设置的密码。
-
+4：浏览器进入`LAN`口IP地址，密码是初始化脚本中设置的密码。
 
 # X86主机设备将镜像写入到硬盘
 
