@@ -264,7 +264,7 @@ sudo apt install -y \
     --format VDI
 </code></pre>
 <p>3：打开VirtualBox，新建虚拟机，OS选择<code class="notranslate">Linux</code>，然后选择<code class="notranslate">Other Linux</code>，然后指定虚拟硬盘，选择<code class="notranslate">使用已有的虚拟硬盘文件</code>，选择<code class="notranslate">immortalwrt.vdi</code>文件，然后点击完成，然后设置里找到网络，选择<code class="notranslate">桥接网卡</code>，勾选<code class="notranslate">Virtual Cable Connected</code>，注意你的openwrt系统的<code class="notranslate">LAN</code>口IP地址要和电脑在同一网段。网关和DNS也要和电脑的一致。</p>
-<p>PS：系统内修改网络</p>
+<p>系统内修改网络配置的命令：</p>
 <pre class="notranslate"><code class="notranslate">vi /etc/config/network
 </code></pre>
 <pre class="notranslate"><code class="notranslate">/etc/init.d/network restart
