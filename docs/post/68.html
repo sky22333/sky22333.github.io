@@ -264,6 +264,11 @@ sudo apt install -y \
     --format VDI
 </code></pre>
 <p>3：打开VirtualBox，新建虚拟机，OS选择<code class="notranslate">Linux</code>，然后选择<code class="notranslate">Other Linux</code>，然后指定虚拟硬盘，选择<code class="notranslate">使用已有的虚拟硬盘文件</code>，选择<code class="notranslate">immortalwrt.vdi</code>文件，然后点击完成，然后设置里找到网络，选择<code class="notranslate">桥接网卡</code>，勾选<code class="notranslate">Virtual Cable Connected</code>，注意你的openwrt系统的<code class="notranslate">LAN</code>口IP地址要和电脑在同一网段。网关和DNS也要和电脑的一致。</p>
+<p>PS：系统内修改网络</p>
+<pre class="notranslate"><code class="notranslate">vi /etc/config/network
+</code></pre>
+<pre class="notranslate"><code class="notranslate">/etc/init.d/network restart
+</code></pre>
 <p>4：浏览器进入<code class="notranslate">LAN</code>口IP地址，密码是初始化脚本中设置的密码。</p>
 <h1>X86主机设备将镜像写入到硬盘</h1>
 <p>先将镜像烧录到U盘，然后使用U盘启动进入到openwrt系统，然后使用DD命令写入镜像，就可以拔掉U盘运行openwrt系统了。</p>

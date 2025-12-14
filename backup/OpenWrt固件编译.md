@@ -227,6 +227,14 @@ make -j$(nproc --ignore=1)
 
 3：打开VirtualBox，新建虚拟机，OS选择`Linux`，然后选择`Other Linux`，然后指定虚拟硬盘，选择`使用已有的虚拟硬盘文件`，选择`immortalwrt.vdi`文件，然后点击完成，然后设置里找到网络，选择`桥接网卡`，勾选`Virtual Cable Connected`，注意你的openwrt系统的`LAN`口IP地址要和电脑在同一网段。网关和DNS也要和电脑的一致。
 
+PS：系统内修改网络
+```
+vi /etc/config/network
+```
+```
+/etc/init.d/network restart
+```
+
 4：浏览器进入`LAN`口IP地址，密码是初始化脚本中设置的密码。
 
 # X86主机设备将镜像写入到硬盘
