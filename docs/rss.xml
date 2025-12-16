@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 16 Dec 2025 03:52:55 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 16 Dec 2025 04:22:59 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
 
 `192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
 
@@ -411,9 +411,154 @@ C:\flutter\bin
 众所周知，很多人刚开始接触github的时候，可能都是新手，可能会用自己的实名邮箱或者直接用QQ邮箱注册，此时你的这些实名邮箱就会泄露，即使你后面改了邮箱后，之前的提交记录里也是公开能看到的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/54.html</guid><pubDate>Wed, 28 May 2025 14:52:02 +0000</pubDate></item><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
 ## 使用`sing-box`手搓`anytls`协议
 
-- 客户端和服务端的`sing-box`必须要`v1.12.0`版本以上
+- 以下配置需要自行去掉注释
 
-- 需要一个域名解析到服务器地址。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/53.html</guid><pubDate>Mon, 12 May 2025 21:57:34 +0000</pubDate></item><item><title>caddy给域名用上ECH加密</title><link>https://blog.52013120.xyz/post/52.html</link><description>`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
+### 服务端（运行在服务器里）
+
+```
+curl -fsSL https://sing-box.app/install.sh | sh
+```
+
+配置路径：`/etc/sing-box/config.json`
+
+自签证书：
+```
+openssl req -x509 -nodes -newkey ec:&lt;(openssl ecparam -name prime256v1) \
+-keyout /etc/sing-box/key.pem \
+-out /etc/sing-box/cert.pem \
+-subj '/CN=bing.com' \
+-days 3650 &amp;&amp; \
+chmod 600 /etc/sing-box/key.pem &amp;&amp; chmod 644 /etc/sing-box/cert.pem
+```
+
+服务端节点配置：
+```
+{
+  'log': {
+    'level': 'info'
+  },
+  'inbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-in',
+      'listen': '::',
+      'listen_port': 8443, // 节点端口
+      'users': [
+        {
+          'name': 'sekai',  // 名称随意填写
+          'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' // 协议认证密码
+        }
+      ],
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com', // 自签证书的域名
+        'certificate_path': '/etc/sing-box/cert.pem',  // 自签证书公钥
+        'key_path': '/etc/sing-box/key.pem' // 自签证书私钥
+      }
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'direct',
+      'tag': 'direct-out'
+    }
+  ],
+  'route': {
+    'rules': []
+  }
+}
+```
+
+#### 命令：
+
+重启	             `systemctl restart sing-box`
+
+停止	             `systemctl stop sing-box`
+
+开启开机自启	             `systemctl enable sing-box`
+
+查看运行状态              `systemctl status sing-box`
+
+查看日志	             `journalctl -u sing-box --output cat -e`
+
+
+
+---
+
+###   客户端（运行在本地设备）
+
+客户端配置示例：
+
+`config.json`
+
+```
+{
+  'log': {
+    'level': 'warn',
+    'timestamp': true
+  },
+  'inbounds': [
+    {
+      'type': 'mixed',
+      'tag': 'socks',
+      'listen': '127.0.0.1', 
+      'listen_port': 10808 // 本地入站端口
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-out',
+      'server': '9.9.9.9', // 服务端地址
+      'server_port': 8443,  // 节点端口
+      'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=',  // 协议认证密码
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com'  // 自签证书域名
+      }
+    }
+  ],
+  'route': {
+    'rules': [
+      {
+        'inbound': ['socks'],
+        'outbound': 'anytls-out'
+      }
+    ]
+  }
+}
+```
+
+
+---
+
+### 客户端`clash-verge`配置文件
+
+```
+proxies:
+- name: anytls节点
+  type: anytls
+  server: 9.9.9.9 # 服务端地址
+  port: 8443 # 节点端口
+  password: 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' # 协议认证密码
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 0
+  tls: true
+  skip-cert-verify: true
+  servername: bing.com # 自签域名
+```
+
+1：`订阅`——`新建`——类型选`Local`——`名称`随便填——`确认`——右键`编辑文件`——替换以上全部文件
+
+2：此时`代理`菜单里就可以看到该节点：
+
+![](https://img.erpweb.eu.org/imgs/2025/05/dd3ec9aef6b648a7.png)
+
+
+### 以上客户端配置为简化版本，更多分流信息可以自己研究下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/53.html</guid><pubDate>Mon, 12 May 2025 21:57:34 +0000</pubDate></item><item><title>caddy给域名用上ECH加密</title><link>https://blog.52013120.xyz/post/52.html</link><description>`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
 
 要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件，用于caddy自动添加`DNS`记录
 

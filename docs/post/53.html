@@ -13,16 +13,306 @@
 <meta name="description" content="
 ## 使用`sing-box`手搓`anytls`协议
 
-- 客户端和服务端的`sing-box`必须要`v1.12.0`版本以上
+- 以下配置需要自行去掉注释
 
-- 需要一个域名解析到服务器地址。">
+### 服务端（运行在服务器里）
+
+```
+curl -fsSL https://sing-box.app/install.sh | sh
+```
+
+配置路径：`/etc/sing-box/config.json`
+
+自签证书：
+```
+openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) \
+-keyout /etc/sing-box/key.pem \
+-out /etc/sing-box/cert.pem \
+-subj '/CN=bing.com' \
+-days 3650 && \
+chmod 600 /etc/sing-box/key.pem && chmod 644 /etc/sing-box/cert.pem
+```
+
+服务端节点配置：
+```
+{
+  'log': {
+    'level': 'info'
+  },
+  'inbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-in',
+      'listen': '::',
+      'listen_port': 8443, // 节点端口
+      'users': [
+        {
+          'name': 'sekai',  // 名称随意填写
+          'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' // 协议认证密码
+        }
+      ],
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com', // 自签证书的域名
+        'certificate_path': '/etc/sing-box/cert.pem',  // 自签证书公钥
+        'key_path': '/etc/sing-box/key.pem' // 自签证书私钥
+      }
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'direct',
+      'tag': 'direct-out'
+    }
+  ],
+  'route': {
+    'rules': []
+  }
+}
+```
+
+#### 命令：
+
+重启	             `systemctl restart sing-box`
+
+停止	             `systemctl stop sing-box`
+
+开启开机自启	             `systemctl enable sing-box`
+
+查看运行状态              `systemctl status sing-box`
+
+查看日志	             `journalctl -u sing-box --output cat -e`
+
+
+
+---
+
+###   客户端（运行在本地设备）
+
+客户端配置示例：
+
+`config.json`
+
+```
+{
+  'log': {
+    'level': 'warn',
+    'timestamp': true
+  },
+  'inbounds': [
+    {
+      'type': 'mixed',
+      'tag': 'socks',
+      'listen': '127.0.0.1', 
+      'listen_port': 10808 // 本地入站端口
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-out',
+      'server': '9.9.9.9', // 服务端地址
+      'server_port': 8443,  // 节点端口
+      'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=',  // 协议认证密码
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com'  // 自签证书域名
+      }
+    }
+  ],
+  'route': {
+    'rules': [
+      {
+        'inbound': ['socks'],
+        'outbound': 'anytls-out'
+      }
+    ]
+  }
+}
+```
+
+
+---
+
+### 客户端`clash-verge`配置文件
+
+```
+proxies:
+- name: anytls节点
+  type: anytls
+  server: 9.9.9.9 # 服务端地址
+  port: 8443 # 节点端口
+  password: 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' # 协议认证密码
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 0
+  tls: true
+  skip-cert-verify: true
+  servername: bing.com # 自签域名
+```
+
+1：`订阅`——`新建`——类型选`Local`——`名称`随便填——`确认`——右键`编辑文件`——替换以上全部文件
+
+2：此时`代理`菜单里就可以看到该节点：
+
+![](https://img.erpweb.eu.org/imgs/2025/05/dd3ec9aef6b648a7.png)
+
+
+### 以上客户端配置为简化版本，更多分流信息可以自己研究下。">
 <meta property="og:title" content="anytls协议部署教程">
 <meta property="og:description" content="
 ## 使用`sing-box`手搓`anytls`协议
 
-- 客户端和服务端的`sing-box`必须要`v1.12.0`版本以上
+- 以下配置需要自行去掉注释
 
-- 需要一个域名解析到服务器地址。">
+### 服务端（运行在服务器里）
+
+```
+curl -fsSL https://sing-box.app/install.sh | sh
+```
+
+配置路径：`/etc/sing-box/config.json`
+
+自签证书：
+```
+openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) \
+-keyout /etc/sing-box/key.pem \
+-out /etc/sing-box/cert.pem \
+-subj '/CN=bing.com' \
+-days 3650 && \
+chmod 600 /etc/sing-box/key.pem && chmod 644 /etc/sing-box/cert.pem
+```
+
+服务端节点配置：
+```
+{
+  'log': {
+    'level': 'info'
+  },
+  'inbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-in',
+      'listen': '::',
+      'listen_port': 8443, // 节点端口
+      'users': [
+        {
+          'name': 'sekai',  // 名称随意填写
+          'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' // 协议认证密码
+        }
+      ],
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com', // 自签证书的域名
+        'certificate_path': '/etc/sing-box/cert.pem',  // 自签证书公钥
+        'key_path': '/etc/sing-box/key.pem' // 自签证书私钥
+      }
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'direct',
+      'tag': 'direct-out'
+    }
+  ],
+  'route': {
+    'rules': []
+  }
+}
+```
+
+#### 命令：
+
+重启	             `systemctl restart sing-box`
+
+停止	             `systemctl stop sing-box`
+
+开启开机自启	             `systemctl enable sing-box`
+
+查看运行状态              `systemctl status sing-box`
+
+查看日志	             `journalctl -u sing-box --output cat -e`
+
+
+
+---
+
+###   客户端（运行在本地设备）
+
+客户端配置示例：
+
+`config.json`
+
+```
+{
+  'log': {
+    'level': 'warn',
+    'timestamp': true
+  },
+  'inbounds': [
+    {
+      'type': 'mixed',
+      'tag': 'socks',
+      'listen': '127.0.0.1', 
+      'listen_port': 10808 // 本地入站端口
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-out',
+      'server': '9.9.9.9', // 服务端地址
+      'server_port': 8443,  // 节点端口
+      'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=',  // 协议认证密码
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com'  // 自签证书域名
+      }
+    }
+  ],
+  'route': {
+    'rules': [
+      {
+        'inbound': ['socks'],
+        'outbound': 'anytls-out'
+      }
+    ]
+  }
+}
+```
+
+
+---
+
+### 客户端`clash-verge`配置文件
+
+```
+proxies:
+- name: anytls节点
+  type: anytls
+  server: 9.9.9.9 # 服务端地址
+  port: 8443 # 节点端口
+  password: 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' # 协议认证密码
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 0
+  tls: true
+  skip-cert-verify: true
+  servername: bing.com # 自签域名
+```
+
+1：`订阅`——`新建`——类型选`Local`——`名称`随便填——`确认`——右键`编辑文件`——替换以上全部文件
+
+2：此时`代理`菜单里就可以看到该节点：
+
+![](https://img.erpweb.eu.org/imgs/2025/05/dd3ec9aef6b648a7.png)
+
+
+### 以上客户端配置为简化版本，更多分流信息可以自己研究下。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/53.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -89,20 +379,20 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h2>使用<code class="notranslate">sing-box</code>手搓<code class="notranslate">anytls</code>协议</h2>
 <ul>
-<li>
-<p>客户端和服务端的<code class="notranslate">sing-box</code>必须要<code class="notranslate">v1.12.0</code>版本以上</p>
-</li>
-<li>
-<p>需要一个域名解析到服务器地址。</p>
-</li>
-<li>
-<p>以下配置需要自行去掉注释</p>
-</li>
+<li>以下配置需要自行去掉注释</li>
 </ul>
 <h3>服务端（运行在服务器里）</h3>
 <pre class="notranslate"><code class="notranslate">curl -fsSL https://sing-box.app/install.sh | sh
 </code></pre>
 <p>配置路径：<code class="notranslate">/etc/sing-box/config.json</code></p>
+<p>自签证书：</p>
+<pre class="notranslate"><code class="notranslate">openssl req -x509 -nodes -newkey ec:&lt;(openssl ecparam -name prime256v1) \
+-keyout /etc/sing-box/key.pem \
+-out /etc/sing-box/cert.pem \
+-subj "/CN=bing.com" \
+-days 3650 &amp;&amp; \
+chmod 600 /etc/sing-box/key.pem &amp;&amp; chmod 644 /etc/sing-box/cert.pem
+</code></pre>
 <p>服务端节点配置：</p>
 <pre class="notranslate"><code class="notranslate">{
   "log": {
@@ -113,23 +403,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
       "type": "anytls",
       "tag": "anytls-in",
       "listen": "::",
-      "listen_port": 8443,  // 节点端口
+      "listen_port": 8443, // 节点端口
       "users": [
         {
-          "name": "sekai", // 名称随意填写
-          "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8="  // 协议认证密码
+          "name": "sekai",  // 名称随意填写
+          "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" // 协议认证密码
         }
       ],
       "tls": {
         "enabled": true,
-        "acme": {
-          "domain": [
-            "blog.52013120.xyz"  // 你的域名，通过acme自动申请证书
-          ],
-          "data_directory": "/etc/sing-box/", // 域名证书存放路径
-          "default_server_name": "blog.52013120.xyz", // 你的域名
-          "email": "123456789admin@gmail.com" // 用于申请证书的邮箱，可随意填写
-        }
+        "insecure": true, // 允许不安全
+        "server_name": "bing.com", // 自签证书的域名
+        "certificate_path": "/etc/sing-box/cert.pem",  // 自签证书公钥
+        "key_path": "/etc/sing-box/key.pem" // 自签证书私钥
       }
     }
   ],
@@ -171,12 +457,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     {
       "type": "anytls",
       "tag": "anytls-out",
-      "server": "blog.52013120.xyz", // 服务端地址（你的域名）
+      "server": "9.9.9.9", // 服务端地址
       "server_port": 8443,  // 节点端口
       "password": "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=",  // 协议认证密码
       "tls": {
         "enabled": true,
-        "server_name": "blog.52013120.xyz"  // 你的域名
+        "insecure": true, // 允许不安全
+        "server_name": "bing.com"  // 自签证书域名
       }
     }
   ],
@@ -195,20 +482,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">proxies:
 - name: anytls节点
   type: anytls
-  server: blog.52013120.xyz # 服务端地址（你的域名）
-  port: 8443 # 节点端口
-  password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" # 协议认证密码
-  idle-session-check-interval: 30
-  idle-session-timeout: 30
-  min-idle-session: 0
-  tls: true
-  servername: blog.52013120.xyz # 你的域名
-</code></pre>
-<h4>自签证书</h4>
-<pre class="notranslate"><code class="notranslate">proxies:
-- name: anytls节点
-  type: anytls
-  server: 127.0.0.1 # 服务端地址
+  server: 9.9.9.9 # 服务端地址
   port: 8443 # 节点端口
   password: "aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=" # 协议认证密码
   idle-session-check-interval: 30
@@ -216,7 +490,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
   min-idle-session: 0
   tls: true
   skip-cert-verify: true
-  servername: www.bing.com # 自签域名
+  servername: bing.com # 自签域名
 </code></pre>
 <p>1：<code class="notranslate">订阅</code>——<code class="notranslate">新建</code>——类型选<code class="notranslate">Local</code>——<code class="notranslate">名称</code>随便填——<code class="notranslate">确认</code>——右键<code class="notranslate">编辑文件</code>——替换以上全部文件</p>
 <p>2：此时<code class="notranslate">代理</code>菜单里就可以看到该节点：</p>
