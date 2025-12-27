@@ -246,7 +246,7 @@ vi /etc/config/network
 lsblk -f
 ```
 > 例如 U 盘是 `/dev/sdb`  硬盘是 `/dev/sda` 
-### 如果目标硬盘有被挂载则需要卸载，例如之前装了系统之类的
+#### 如果目标硬盘有被挂载则需要卸载，例如之前装了系统之类的
 ```
 umount /dev/sda1
 umount /dev/sda2
