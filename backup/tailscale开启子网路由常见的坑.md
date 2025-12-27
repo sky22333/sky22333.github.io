@@ -11,10 +11,8 @@ tailscale up --advertise-routes=192.168.3.0/24 --accept-routes --reset
 然后输入以下命令查看是否存在你广播的IP段
 ```
 tailscale status --json | grep advertisedRoutes
-或者
-tailscale status --self --peers=false
 ```
-如果这个时候你看不到你广播的网段，就说明广播失败了。反之则是成功。
+能看到你广播的网段就说明成功了，但是这个检查方式不准确，最好还是手动ping测试
 
 ### 坑点一
 子网路由功能依赖`iptables`，immortalwrt默认防火墙一般不是这个，需要安装`iptables`

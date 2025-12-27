@@ -101,10 +101,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>开启后，在<code class="notranslate">tailscale</code>后台找到你路由器设备，点击右侧菜单(三个点)，选择<code class="notranslate">Edit route settings...</code>，勾选<code class="notranslate">192.168.3.0/24</code>，点击<code class="notranslate">Save</code>。</p>
 <p>然后输入以下命令查看是否存在你广播的IP段</p>
 <pre class="notranslate"><code class="notranslate">tailscale status --json | grep advertisedRoutes
-或者
-tailscale status --self --peers=false
 </code></pre>
-<p>如果这个时候你看不到你广播的网段，就说明广播失败了。反之则是成功。</p>
+<p>能看到你广播的网段就说明成功了，但是这个检查方式不准确，最好还是手动ping测试</p>
 <h3>坑点一</h3>
 <p>子网路由功能依赖<code class="notranslate">iptables</code>，immortalwrt默认防火墙一般不是这个，需要安装<code class="notranslate">iptables</code></p>
 <h3>坑点二</h3>
