@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 27 Dec 2025 00:14:25 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 28 Dec 2025 00:56:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
 
 `192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
 
@@ -1788,6 +1788,8 @@ https://example.com/clash.yaml&#13;
 - 开源短链：https://sink.cool/dashboard/links （支持终端和限时）
 - 软件搜索和替代推荐：https://alternativeto.net
 - 免费邮件api：https://resend.com （每月免费3000封）
+- 在线渲染GitHub仓库里HTML文件：https://raw.githack.com
+- 在线渲染GitHub仓库里HTML文件：https://htmlpreview.github.io
 
 ---
 
