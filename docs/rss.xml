@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 28 Dec 2025 02:38:29 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 12 Jan 2026 22:31:56 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
 
 `192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
 
@@ -1745,117 +1745,9 @@ https://example.com/clash.yaml&#13;
 **1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>我的网站收藏夹</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 我的一些小站点
 
 &gt; [!TIP]
-&gt; 我的一些小站点 💻
+&gt; 我的小站点 💻
 
-- Github文件加速：https://yishijie.gitlab.io/ziyuan
-- 在线代码编辑器：https://blog.52013120.xyz/caddy
-- 在线m3u8播放器：https://blog.52013120.xyz/zhibo
-- VIP视频在线播放：https://blog.52013120.xyz/video
-- 添加多IP命令生成器：https://blog.52013120.xyz/shell
-- 在线MD编辑器：https://blog.52013120.xyz/shell/md
-
----
-
-## 网站收藏
-
-#### 工具类
-
-- 前端在线工具：https://www.strerr.com/cn/tools.html
-- 在线vscode：https://vscode.dev/?vscode-lang=zh-cn
-- 在线绘图：https://excalidraw.com/
-- 临时匿名邮箱：https://vmail.dev/
-- 临时匿名邮箱：https://temp-mail.org/zh/
-- 临时Gmail邮箱：https://22.do/zh/fake-gmail-generator
-- 阅后即焚发信：https://www.sixin.cc/
-- 各大软件快捷键查询：https://hotkeycheatsheet.com/zh
-- 直播工具：https://hao.yuenos.com/
-- 在线制作好看的文字卡片：https://geekcard.app/
-- 在线制作流光卡片：https://fireflycard.shushiai.com/
-- 免登录分享视频：https://streamable.com （250MB / 10分钟限制 / 保留90天）
-- 免登录分享视频：https://vidplay.io （100MB）
-- 匿名文件快传：https://www.file.io/ （支持视频预览）
-- 匿名文件快传：https://file.kiwi/ （支持视频预览 / 48小时过期）
-- 匿名文件快传：https://wormhole.app/
-- 匿名文件快传：https://filebin.net
-- 匿名文件快传：https://send.skylerszijjarto.com/ （最大250GB）
-- 文件分享：https://www.tmp.link/ （支持终端）
-- 在线临时记事本：https://cn.anotepad.com/
-- 互联网存档：https://archive.org/
-- js代码混淆：https://obfuscator.io/
-- 运维项目合集：https://github.com/eryajf/awesome-ops
-- 代码片段分享（中文和阅后即焚）：https://privatebin.support-tools.com
-- 代码片段分享（中文和阅后即焚）：https://pastbin.cc
-- 代码分享（国内阅后即焚）：https://paste.org.cn
-- 代码片段分享：https://pastebin.com （支持raw）
-- 匿名托管脚本：`cat your.sh | nc termbin.com 9999`
-- 匿名托管脚本：`curl -H 'User-Agent: upload' -F 'file=@your.sh' https://0x0.st`
-- 免费短链（国内）：https://pbs.ink
-- 免费短链：https://goo.su  (支持终端)
-- 免费短链：https://db.onl
-- 免费短链：https://is.gd  (支持终端)
-- 开源短链：https://sink.cool/dashboard/links （支持终端和限时）
-- 软件搜索和替代推荐：https://alternativeto.net
-- 免费邮件api：https://resend.com （每月免费3000封）
-- 在线渲染GitHub仓库里HTML文件：https://raw.githack.com
-- 在线渲染GitHub仓库里HTML文件：https://htmlpreview.github.io
-
----
-
-### 网络工具
-
-- 快速查看位置和时间戳：https://www.cloudflare.com/cdn-cgi/trace
-- 快速查看位置和时间戳：https://www.visa.cn/cdn-cgi/trace
-- IP质量和位置查询：https://ipip.la
-- IP质量和位置查询：https://iplark.com
-- IP位置：https://ping0.cc/geo
-- 查询IPV6：https://ipw.cn
-- 扫描UDP端口：https://www.ipvoid.com/udp-port-scan
-- 在线ping：https://www.itdog.cn/tcping
-- IP分流查询：https://ip.skk.moe
-- 国内IP速查：https://ip.cn
-
-#### 域名购买
-
-- https://www.godaddy.com/zh-sg/domains
-- https://www.spaceship.com/zh/domains
-- 海外礼品卡购买：https://shop.pockyt.io/pc/brands/all
-
-#### 素材类
-
-- 免费图标下载：https://igoutu.cn/
-- 网站图标代码：https://fontawesome.com/search
-- Youtube视频内容转换为文字：https://www.videotoblog.ai/
-- 图标LOGO：https://www.aigei.com/
-- 艺术渐变网页背景：https://www.color4bg.com/zh-hans/
-- icon图标转换：https://www.aconvert.com/cn/icon/png-to-ico/ 
-- 免费LOGO图标设计：https://ray.so/icon
-- Youtube视频解析下载：https://ytshorts.savetube.me/
-- 全平台视频下载：https://www.datatool.vip/
-- 一键AI抠图：https://www.remove.bg/zh
-- 在线编辑图片：https://photokit.com/?lang=zh
-- 在线图片压缩：https://www.iloveimg.com/zh-cn/compress-image/compress-png
-- 图片工具箱：https://www.iloveimg.com/zh-cn
-- emo表情：https://www.emojiall.com/zh-hans/sub-categories/J2
-- 免费图床：https://lvse.eu.org/
-- 免费云资源汇总：https://gist.github.com/imba-tjd/d73258f0817255dbe77d64d40d985e76
-- unicode特殊符号：https://unicode.yunser.com/unicode
-
-#### APK软件下载
-
-- APKMirror：https://www.apkmirror.com
-
-- APKPure：https://apkpure.com/cn
-
-#### openwrt
-
-- 官方openwrt固件下载：https://firmware-selector.openwrt.org/
-- ImmortalWrt固件下载：https://firmware-selector.immortalwrt.org
-- ImmortalWrt软件包查询（替换版本号）：https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json
-- openwrt硬件支持查询：https://openwrt.org/zh/toh/start
-- 第三方openwrt固件下载：https://openwrt.ai/
-
-#### 其他
-全球技术问答社区：https://stackoverflow.com/
+### 网站导航：https://blog.52013120.xyz/tools
 。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
 &#13;
 **在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>https://blog.52013120.xyz/post/20.html</link><description>- **场景介绍**&#13;
