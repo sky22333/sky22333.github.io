@@ -176,10 +176,14 @@ go mod tidy
 go run main.go
 ```
 
-#### 检查代码
+#### 质量检查
 ```
-go vet ./...      # 检查所有包
-go vet main.go    # 检查单个文件
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+golangci-lint run
+```
+```
+go install honnef.co/go/tools/cmd/staticcheck@latest
+staticcheck ./...
 ```
 #### 格式化代码
 ```
@@ -402,10 +406,14 @@ go mod tidy
 go run main.go
 ```
 
-#### 检查代码
+#### 质量检查
 ```
-go vet ./...      # 检查所有包
-go vet main.go    # 检查单个文件
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+golangci-lint run
+```
+```
+go install honnef.co/go/tools/cmd/staticcheck@latest
+staticcheck ./...
 ```
 #### 格式化代码
 ```
@@ -649,9 +657,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h4>在线运行</h4>
 <pre class="notranslate"><code class="notranslate">go run main.go
 </code></pre>
-<h4>检查代码</h4>
-<pre class="notranslate"><code class="notranslate">go vet ./...      # 检查所有包
-go vet main.go    # 检查单个文件
+<h4>质量检查</h4>
+<pre class="notranslate"><code class="notranslate">go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+golangci-lint run
+</code></pre>
+<pre class="notranslate"><code class="notranslate">go install honnef.co/go/tools/cmd/staticcheck@latest
+staticcheck ./...
 </code></pre>
 <h4>格式化代码</h4>
 <pre class="notranslate"><code class="notranslate">go fmt ./...
