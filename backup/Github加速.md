@@ -23,7 +23,7 @@ source ~/.bashrc
 注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
 
 
-## Git代理
+## Git加速域名
 ```
 # 设置全局加速
 git config --global url."https://gh-proxy.com/https://github.com/".insteadOf https://github.com/
@@ -33,6 +33,12 @@ git config --global --unset url."https://gh-proxy.com/https://github.com/".inste
 
 # 验证
 git config --global --get-regexp github
+```
+
+## Git代理
+```
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
 ```
 
 ---

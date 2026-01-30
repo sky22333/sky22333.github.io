@@ -35,7 +35,7 @@ source ~/.bashrc
 注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
 
 
-## Git代理
+## Git加速域名
 ```
 # 设置全局加速
 git config --global url.'https://gh-proxy.com/https://github.com/'.insteadOf https://github.com/
@@ -45,6 +45,12 @@ git config --global --unset url.'https://gh-proxy.com/https://github.com/'.inste
 
 # 验证
 git config --global --get-regexp github
+```
+
+## Git代理
+```
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
 ```
 
 ---
@@ -123,7 +129,7 @@ source ~/.bashrc
 注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
 
 
-## Git代理
+## Git加速域名
 ```
 # 设置全局加速
 git config --global url.'https://gh-proxy.com/https://github.com/'.insteadOf https://github.com/
@@ -133,6 +139,12 @@ git config --global --unset url.'https://gh-proxy.com/https://github.com/'.inste
 
 # 验证
 git config --global --get-regexp github
+```
+
+## Git代理
+```
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
 ```
 
 ---
@@ -266,7 +278,7 @@ export HTTPS_PROXY="socks5://127.0.0.1:10808"
 <p>此时输入<code class="notranslate">curl ip.sb</code>查看本机IP判断是否配置成功</p>
 <p>如需删除并停止，只需清空文件并重新加载即可</p>
 <p>注意：如果脚本命令前面带<code class="notranslate">sudo</code>，则需要添加<code class="notranslate">-E</code>传递环境变量才会生效</p>
-<h2>Git代理</h2>
+<h2>Git加速域名</h2>
 <pre class="notranslate"><code class="notranslate"># 设置全局加速
 git config --global url."https://gh-proxy.com/https://github.com/".insteadOf https://github.com/
 
@@ -275,6 +287,10 @@ git config --global --unset url."https://gh-proxy.com/https://github.com/".inste
 
 # 验证
 git config --global --get-regexp github
+</code></pre>
+<h2>Git代理</h2>
+<pre class="notranslate"><code class="notranslate">git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
 </code></pre>
 <hr>
 <h2>v2rayA代理</h2>
