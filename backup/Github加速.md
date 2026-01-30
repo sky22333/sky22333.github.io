@@ -23,6 +23,18 @@ source ~/.bashrc
 注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
 
 
+## Git代理
+```
+# 设置全局加速
+git config --global url."https://gh-proxy.com/https://github.com/".insteadOf https://github.com/
+
+# 移除
+git config --global --unset url."https://gh-proxy.com/https://github.com/".insteadOf
+
+# 验证
+git config --global --get-regexp github
+```
+
 ---
 
 ## v2rayA代理
