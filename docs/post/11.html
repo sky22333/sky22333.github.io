@@ -703,7 +703,41 @@ staticcheck ./...
 composer install
 </code></pre>
 <h3>运行</h3>
-<p>安装<code class="notranslate">PHP</code>和<code class="notranslate">PHP-FPM</code> 并配置配置<code class="notranslate">nginx</code>，确保你的<code class="notranslate">public/index.php</code>是项目的入口文件，<code class="notranslate">nginx</code>运行目录一般都是这个目录。</p></div>
+<p>安装<code class="notranslate">PHP</code>和<code class="notranslate">PHP-FPM</code> 并配置配置<code class="notranslate">nginx</code>，确保你的<code class="notranslate">public/index.php</code>是项目的入口文件，<code class="notranslate">nginx</code>运行目录一般都是这个目录。</p>
+<h2>C#</h2>
+<p>基本代码结构</p>
+<pre class="notranslate"><code class="notranslate">MyApp/
+├─ MyApp.sln               # 解决方案文件（可选，多项目时使用）
+├─ MyApp/                  # 项目目录
+│  ├─ MyApp.csproj         # 项目文件（包含依赖、编译选项）
+│  ├─ Program.cs           # 主程序入口
+│  ├─ Properties/
+│  │  └─ launchSettings.json  # 调试配置（VS / Rider）
+│  ├─ appsettings.json     # 配置文件（可选）
+│  ├─ Models/              # 存放数据模型类
+│  │  └─ User.cs
+│  ├─ Services/            # 存放服务类
+│  │  └─ EmailService.cs
+│  ├─ Controllers/         # MVC 或 API 项目才有
+│  │  └─ UserController.cs
+│  └─ wwwroot/             # Web 静态资源（Web 项目才有）
+├─ .gitignore              # git 忽略文件
+├─ global.json             # SDK 版本锁定（可选）
+└─ README.md
+</code></pre>
+<p>常用命令</p>
+<pre class="notranslate"><code class="notranslate"># 恢复项目依赖，下载 NuGet 包并生成依赖缓存
+dotnet restore
+
+# 编译项目并执行严格的静态代码分析，所有警告都当作错误
+dotnet build -warnaserror -p:AnalysisLevel=latest-all
+
+# 运行单元测试，确保代码逻辑正确
+dotnet test
+
+# 生成可部署的生产版本，放在 publish 目录
+dotnet publish -c Release
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
