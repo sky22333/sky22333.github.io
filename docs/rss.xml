@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 30 Jan 2026 13:17:36 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 13 Mar 2026 03:53:16 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
 
 `192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
 
@@ -1742,7 +1742,7 @@ https://example.com/clash.yaml&#13;
 &#13;
 **https://zerossl.com/**&#13;
 &#13;
-**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>我的网站收藏夹</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 我的一些小站点
+**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>实用网站收藏</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 我的一些小站点
 
 &gt; [!TIP]
 &gt; 我的小站点 💻
