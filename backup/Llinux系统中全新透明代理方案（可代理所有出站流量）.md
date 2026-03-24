@@ -1,4 +1,4 @@
-## DAE 透明代理完美替代v2rayA
+## DAE 透明代理 - 完美替代v2rayA
 
 项目地址：https://github.com/daeuniverse/daed
 
@@ -59,6 +59,8 @@ docker run -d \
     --name=daed \
     ghcr.io/daeuniverse/daed:latest
 ```
+
+然后通过`2023`端口访问面板
 
 ### 添加出站节点
 
