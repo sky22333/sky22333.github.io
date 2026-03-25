@@ -75,3 +75,8 @@ docker run -d \
 ---
 
 <img width="1409" height="1246" alt="Image" src="https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd" />
+
+---
+---
+### 路由配置解释
+<img width="867" height="697" alt="Image" src="https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08" />
