@@ -4,14 +4,12 @@
 ## 保号短信
 发送`hi`到`00447973000186`，这是中国移动英国（CMLink UK）客服热线。发完会收到giffgaff余额变动的通知就完成了。
 
-### 短信找回`giffgaff`号码
-发送短信 `number` 到 `43430`
+## 账户信息
+发送短信 `number` 到 `43430`，找回号码
 
-### 短信找回账户名
-发送短信 `membername` 到 `43430`
+发送短信 `membername` 到 `43430`，找回账户名
 
-### 短信找回账户邮箱
-发送短信 `forgotten` 到 `43430`
+发送短信 `forgotten` 到 `43430`，找回账户邮箱
 
 ---
 
@@ -24,4 +22,4 @@
 Hello, I am currently roaming in another country. I need your help to disable my voicemail. I have tried multiple times without success. Thank you.
 ```
 
-[查看进度地址](https://www.giffgaff.com/support/questions)，如果客服回复了你，你的邮箱也能收到回复。
+[查看处理进度](https://www.giffgaff.com/support/questions)，如果客服回复了你，你的邮箱也能收到回复。
