@@ -41,7 +41,7 @@ Hello, I am currently roaming in another country. I need your help to disable my
 
 可以使用如下命令，顺便看下IP地区是不是GB（英国）
 ```
-curl -s www.cloudflare.com/cdn-cgi/trace
+curl -s one.one.one.one/cdn-cgi/trace
 ```
 
 ![Image](https://github.com/user-attachments/assets/2560e9c2-816d-4107-999d-b4ca83391fdd)
