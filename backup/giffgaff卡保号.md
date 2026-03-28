@@ -9,3 +9,16 @@
 
 ### 短信找回账户邮箱
 发送短信 `forgotten` 到 `43430`
+
+---
+
+## 关闭语音信箱
+
+[访问此地址](https://support2.giffgaff.com/app/ask/International-and-Roaming/Accessing-voicemail-while-abroad/form/) 让人工客服帮你关闭
+
+话术：
+```
+Hello, I am currently roaming in another country. I need your help to disable my voicemail. I have tried multiple times without success. Thank you.
+```
+
+[查看进度地址](https://www.giffgaff.com/support/questions)，如果客服回复了你，你的邮箱也能收到回复。
