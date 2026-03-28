@@ -29,3 +29,19 @@ Hello, I am currently roaming in another country. I need your help to disable my
 ### 无信号或者有信号无法使用
 
 可能是漫游到中国联通了，请手动选择运营商为中国移动。还不行的话就关闭5G，选择4G。
+
+
+## 极限保号方案
+
+1：安卓手机下载[termux](https://github.com/termux/termux-app/releases)
+
+2：打开giffgaff卡的流量，然后打开漫游设置，设置仅允许`termux`应用漫游联网。
+
+![Image](https://github.com/user-attachments/assets/2560e9c2-816d-4107-999d-b4ca83391fdd)
+
+3：然后打开`termux`使用curl请求一下国外api服务，消耗一下少量流量即可。
+
+可以使用如下命令，顺便看下IP地区是不是GB（英国）
+```
+curl -s www.cloudflare.com/cdn-cgi/trace
+```
