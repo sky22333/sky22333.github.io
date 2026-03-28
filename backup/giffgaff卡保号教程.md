@@ -15,6 +15,8 @@
 
 ## 关闭语音信箱
 
+这个功能默认开启，而且很贵，别人打电话进来你直接挂断也会收费，一分钟1英镑。
+
 [访问此地址](https://support2.giffgaff.com/app/ask/International-and-Roaming/Accessing-voicemail-while-abroad/form/) 让人工客服帮你关闭
 
 话术：
