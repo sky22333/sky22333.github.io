@@ -39,7 +39,7 @@ Hello, I am currently roaming in another country. I need your help to disable my
 
 3：然后打开`termux`使用curl请求一下国外api服务，消耗一下少量流量即可。
 
-可以使用如下命令，顺便看下IP地区是不是GB（英国）
+可以使用如下命令，执行三到四次，顺便看下IP地区是不是GB（英国）
 ```
 curl -s https://one.one.one.one/cdn-cgi/trace
 ```
