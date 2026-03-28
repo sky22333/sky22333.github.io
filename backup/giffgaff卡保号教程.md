@@ -35,7 +35,7 @@ Hello, I am currently roaming in another country. I need your help to disable my
 
 1：安卓手机下载[termux](https://github.com/termux/termux-app/releases)
 
-2：打开giffgaff卡的流量，然后打开漫游设置，设置仅允许`termux`应用漫游联网。
+2：打开giffgaff卡的移动数据，然后打开漫游设置，设置仅允许`termux`应用漫游联网。
 
 3：然后打开`termux`使用curl请求一下国外api服务，消耗一下少量流量即可。
 
