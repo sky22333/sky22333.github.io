@@ -37,11 +37,11 @@ Hello, I am currently roaming in another country. I need your help to disable my
 
 2：打开giffgaff卡的流量，然后打开漫游设置，设置仅允许`termux`应用漫游联网。
 
-![Image](https://github.com/user-attachments/assets/2560e9c2-816d-4107-999d-b4ca83391fdd)
-
 3：然后打开`termux`使用curl请求一下国外api服务，消耗一下少量流量即可。
 
 可以使用如下命令，顺便看下IP地区是不是GB（英国）
 ```
 curl -s www.cloudflare.com/cdn-cgi/trace
 ```
+
+![Image](https://github.com/user-attachments/assets/2560e9c2-816d-4107-999d-b4ca83391fdd)
