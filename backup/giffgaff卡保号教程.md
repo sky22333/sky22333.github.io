@@ -25,3 +25,7 @@ Hello, I am currently roaming in another country. I need your help to disable my
 ```
 
 [查看处理进度](https://www.giffgaff.com/support/questions)，如果客服回复了你，你的邮箱也能收到回复。
+
+### 无信号或者有信号无法使用
+
+可能是漫游到中国联通了，请手动选择运营商为中国移动。还不行的话就关闭5G，选择4G。
