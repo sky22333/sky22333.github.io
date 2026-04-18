@@ -254,7 +254,8 @@ docker images
 ```
 {
   "ipv6": true,
-  "fixed-cidr-v6": "2001:db8:1::/64"
+  "fixed-cidr-v6": "fd00:1::/64",
+  "ip6tables": true
 }
 ```
 重启：`sudo systemctl restart docker`
