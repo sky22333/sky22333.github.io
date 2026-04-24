@@ -5,6 +5,7 @@
 lsblk
 ```
 ### 查看是否支持UEFI，有输出就代表支持
+如果不支持UEFI，则安装系统的时候就不能选择UEFI
 ```
 ls /sys/firmware/efi
 ```
