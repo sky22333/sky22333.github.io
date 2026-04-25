@@ -13,7 +13,7 @@ ls /sys/firmware/efi
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-### 将镜像写入整块系统盘（会覆盖原系统，请确保重要数据已备份）
+### 将镜像写入整块系统盘（记得修改实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
 ```

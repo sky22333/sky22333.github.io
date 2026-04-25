@@ -25,7 +25,7 @@ ls /sys/firmware/efi
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-### 将镜像写入整块系统盘（会覆盖原系统，请确保重要数据已备份）
+### 将镜像写入整块系统盘（记得修改实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
 ```
@@ -59,7 +59,7 @@ ls /sys/firmware/efi
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-### 将镜像写入整块系统盘（会覆盖原系统，请确保重要数据已备份）
+### 将镜像写入整块系统盘（记得修改实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
 ```
@@ -152,7 +152,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h3>下载 netboot.xyz 启动镜像（iPXE 引导器）</h3>
 <pre class="notranslate"><code class="notranslate">wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 </code></pre>
-<h3>将镜像写入整块系统盘（会覆盖原系统，请确保重要数据已备份）</h3>
+<h3>将镜像写入整块系统盘（记得修改实际的系统盘，会覆盖原系统，请确保重要数据已备份）</h3>
 <pre class="notranslate"><code class="notranslate">dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
 </code></pre>
 <h3>强制将缓存写入磁盘，确保数据落盘完成</h3>
