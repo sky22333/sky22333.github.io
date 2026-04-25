@@ -171,6 +171,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h1>内网离线 PXE 启动教程（Debian 12版）</h1>
 <p><code class="notranslate">netboot.xyz + HTTP Server / Debian 12</code></p>
 <h3>一、服务端IP示例</h3>
+<p>服务端为linux</p>
 <pre class="notranslate"><code class="notranslate">192.168.1.10
 </code></pre>
 <h3>二、安装依赖</h3>
@@ -285,7 +286,9 @@ Loading http://192.168.1.10:8000/debian/initrd.gz...
 <h1>内网离线 PXE 启动教程（Windows 11版）</h1>
 <p><code class="notranslate">netboot.xyz + HTTP Server / Windows 11</code></p>
 <h3>一、服务端IP示例</h3>
-<p>192.168.1.10</p>
+<p>服务端为linux</p>
+<pre class="notranslate"><code class="notranslate">192.168.1.10
+</code></pre>
 <h3>二、安装依赖</h3>
 <pre class="notranslate"><code class="notranslate">sudo apt update
 sudo apt install dnsmasq wimtools -y

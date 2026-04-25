@@ -39,6 +39,7 @@ Linux Network Installs (64-bit)
 `netboot.xyz + HTTP Server / Debian 12`
 
 ### 一、服务端IP示例
+服务端为linux
 ```
 192.168.1.10
 ```
@@ -178,8 +179,10 @@ Loading http://192.168.1.10:8000/debian/initrd.gz...
 `netboot.xyz + HTTP Server / Windows 11`
 
 ### 一、服务端IP示例
-
+服务端为linux
+```
 192.168.1.10
+```
 ### 二、安装依赖
 ```
 sudo apt update
