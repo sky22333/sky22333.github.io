@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 24 Apr 2026 20:56:47 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 通过[netboot.xyz](https://github.com/netbootxyz/netboot.xyz)给云服务器重装系统
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 25 Apr 2026 21:39:23 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 通过[netboot.xyz](https://github.com/netbootxyz/netboot.xyz)给云服务器重装系统
 
 ### 查看系统盘，通常为`/dev/vda`
 ```
@@ -1784,17 +1784,22 @@ https://example.com/clash.yaml&#13;
 &#13;
 **https://zerossl.com/**&#13;
 &#13;
-**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>实用网站收藏</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 我的一些小站点
+**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>实用网站收藏</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 实用网站收藏
 
 &gt; [!TIP]
-&gt; 我的小站点 💻
+&gt; 网站收藏 💻
 
-### 我的网站导航：https://blog.52013120.xyz/tools
+- 我的网站导航：https://blog.52013120.xyz/tools
 
-### 百度图片代理接口：`https://image.baidu.com/search/down?url=`
+- 百度图片代理接口：`https://image.baidu.com/search/down?url=`
 
-### 通用文件加速下载：`https://files.m.daocloud.io/`
-在原始URL加上此前缀即可，无法加速媒体和图片类文件。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
+- 苏宁易购时间api：https://quan.suning.com/getSysTime.do
+
+- 通用文件加速下载：`https://files.m.daocloud.io/`
+在原始URL加上此前缀即可，无法加速媒体和图片类文件
+
+- 通用api请求代理：https://seep.eu.org/
+- 通用api请求代理：https://pz.v88.qzz.io/?url=。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
 &#13;
 **在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>https://blog.52013120.xyz/post/20.html</link><description>- **场景介绍**&#13;
 骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，`https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail`  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了&#13;
