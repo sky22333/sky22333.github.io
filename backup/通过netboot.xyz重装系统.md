@@ -171,3 +171,111 @@ Loading http://192.168.1.10:8000/debian/linux...
 Loading http://192.168.1.10:8000/debian/initrd.gz...
 ```
 随后便会进入 Debian 安装程序的界面。
+
+
+# 内网离线 PXE 启动教程（Windows 11版）
+`netboot.xyz + HTTP Server / Windows 11`
+
+### 一、服务端IP示例
+
+192.168.1.10
+### 二、安装依赖
+```
+sudo apt update
+sudo apt install dnsmasq wimtools -y
+```
+说明：新增了 wimtools 包，它包含了处理 Windows 镜像所需的 wiminfo 等工具。
+
+### 三、目录创建
+```
+sudo mkdir -p /pxe/tftpboot
+sudo mkdir -p /pxe/www/win11
+```
+### 四、下载 PXE 引导文件与 wimboot
+```
+cd /pxe/tftpboot
+
+# 1. 下载 netboot.xyz 引导文件（不变）
+wget https://boot.netboot.xyz/ipxe/netboot.xyz.kpxe
+wget https://boot.netboot.xyz/ipxe/netboot.xyz.efi
+
+# 2. 下载 wimboot（这是启动 Windows PE 的关键引导器）
+wget https://github.com/ipxe/wimboot/releases/latest/download/wimboot
+```
+### 五、iPXE 离线引导脚本
+路径（一式两份，原因同 Debian 方案）：
+```
+/pxe/tftpboot/boot.ipxe
+
+/pxe/www/boot.ipxe
+```
+内容：
+
+```
+#!ipxe
+
+# 定义服务器地址
+set server 192.168.1.10:8000
+
+# 加载 wimboot 引导器
+kernel http://${server}/wimboot
+# 加载 Windows PE 镜像（从 Windows 11 ISO 中提取的 boot.wim）
+initrd http://${server}/win11/boot.wim boot.wim
+
+# 启动安装程序
+boot
+```
+
+
+### 六、准备 Windows 11 网络安装文件
+请先下载 Windows 11 官方 ISO 镜像，然后执行以下操作：
+
+```
+# 挂载 ISO（以映像在 ~/Win11.iso 为例）
+sudo mkdir -p /mnt/win11iso
+sudo mount -o loop ~/Win11.iso /mnt/win11iso
+
+# 复制核心启动文件 boot.wim 到 HTTP 目录
+sudo cp /mnt/win11iso/sources/boot.wim /pxe/www/win11/
+
+# 复制 wimboot 到 HTTP 目录（与 tftpboot 中的保持一致）
+sudo cp /pxe/tftpboot/wimboot /pxe/www/
+
+# 清理挂载
+sudo umount /mnt/win11iso
+```
+### 七、目录结构
+```
+/pxe/
+├── tftpboot/
+│   ├── boot.ipxe           # 您的 iPXE 脚本
+│   ├── netboot.xyz.efi     # UEFI 引导文件
+│   ├── netboot.xyz.kpxe    # Legacy BIOS 引导文件
+│   └── wimboot             # Windows 引导器
+└── www/
+    ├── boot.ipxe           # 您的 iPXE 脚本
+    ├── wimboot             # 引导器副本（HTTP 访问用）
+    └── win11/
+        └── boot.wim        # Windows PE 启动镜像
+```
+### 八、设置权限
+```
+sudo chmod -R 755 /pxe
+```
+### 九、启动 HTTP 服务
+```
+cd /pxe/www
+python3 -m http.server 8000
+```
+### 十、安装 Windows 到客户端
+
+当客户端通过 PXE 成功加载 boot.wim 后，会进入 Windows PE (WinPE) 命令提示符。由于这是离线环境，你需要在此手动执行安装：
+
+挂载网络安装源：
+```
+net use Z: \\192.168.1.10\pxe\www\win11
+```
+启动安装程序：
+```
+Z:\setup.exe
+```
