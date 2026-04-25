@@ -34,7 +34,7 @@ Linux Network Installs (64-bit)
 
 ---
 
-#  内网离线 PXE 启动教程
+#  内网离线 PXE 启动教程（Debian 12版）
 
 `netboot.xyz + HTTP Server / Debian 12`
 
@@ -82,7 +82,7 @@ initrd http://${server}/debian/initrd.gz
 # 启动安装程序
 boot
 ```
-`auto=true` 和 `priority=critical` 是 Debian 安装程序特有的引导参数，用于尽量减少交互，只询问必须要配置的参数。
+`auto=true` 和 `priority=critical` 是 Debian 安装程序特有的引导参数，用于尽量减少交互，只询问必须要配置的参数，如果是其他系统则去掉。
 
 ### 六、下载 Debian 网络安装文件
 ```
@@ -172,6 +172,7 @@ Loading http://192.168.1.10:8000/debian/initrd.gz...
 ```
 随后便会进入 Debian 安装程序的界面。
 
+---
 
 # 内网离线 PXE 启动教程（Windows 11版）
 `netboot.xyz + HTTP Server / Windows 11`

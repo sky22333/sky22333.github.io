@@ -168,7 +168,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。</p>
 </blockquote>
 <hr>
-<h1>内网离线 PXE 启动教程</h1>
+<h1>内网离线 PXE 启动教程（Debian 12版）</h1>
 <p><code class="notranslate">netboot.xyz + HTTP Server / Debian 12</code></p>
 <h3>一、服务端IP示例</h3>
 <pre class="notranslate"><code class="notranslate">192.168.1.10
@@ -206,7 +206,7 @@ initrd http://${server}/debian/initrd.gz
 # 启动安装程序
 boot
 </code></pre>
-<p><code class="notranslate">auto=true</code> 和 <code class="notranslate">priority=critical</code> 是 Debian 安装程序特有的引导参数，用于尽量减少交互，只询问必须要配置的参数。</p>
+<p><code class="notranslate">auto=true</code> 和 <code class="notranslate">priority=critical</code> 是 Debian 安装程序特有的引导参数，用于尽量减少交互，只询问必须要配置的参数，如果是其他系统则去掉。</p>
 <h3>六、下载 Debian 网络安装文件</h3>
 <pre class="notranslate"><code class="notranslate">cd /pxe/www/debian
 
@@ -281,6 +281,7 @@ Loading http://192.168.1.10:8000/debian/linux...
 Loading http://192.168.1.10:8000/debian/initrd.gz...
 </code></pre>
 <p>随后便会进入 Debian 安装程序的界面。</p>
+<hr>
 <h1>内网离线 PXE 启动教程（Windows 11版）</h1>
 <p><code class="notranslate">netboot.xyz + HTTP Server / Windows 11</code></p>
 <h3>一、服务端IP示例</h3>
