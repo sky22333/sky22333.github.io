@@ -1,50 +1,54 @@
-## 通过[netboot.xyz](https://github.com/netbootxyz/netboot.xyz)给云服务器重装系统
+## 云服务器环境网络重装系统
 
-### 查看系统盘，通常为`/dev/vda`
+- 1：查看系统信息并备份，安装新系统的时候可能会用到
 ```
+# 查看系统盘
 lsblk
-```
-### 查看是否支持UEFI，有输出就代表支持
-如果不支持UEFI，则安装系统的时候就不能选择UEFI
-```
+
+# 查看网络配置
+networkctl status
+
+# 查看是否支持uefi
 ls /sys/firmware/efi
 ```
-### 下载 netboot.xyz 启动镜像（iPXE 引导器）
+- 2：下载 netboot.xyz 启动镜像（iPXE引导器）
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-### 将镜像写入整块系统盘（记得修改实际的系统盘，会覆盖原系统，请确保重要数据已备份）
+- 3：将镜像DD写入整块系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
 ```
-### 强制将缓存写入磁盘，确保数据落盘完成
+- 4：强制将缓存写入磁盘，确保数据落盘完成
 ```
 sync
 ```
-### 重启服务器
+- 5：重启服务器
 ```
 reboot
 ```
-### 通过VNC界面进入启动菜单，选择网络安装
+- 6：通过云厂商后台的服务器VNC界面进入启动菜单，选择网络安装
 ```
 Linux Network Installs (64-bit)
 ```
 
 > 如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。
+> 
+> 如果安装失败的话可能是硬盘分区有问题或者其他设置不对，可以返回到`netboot.xyz 启动菜单`，重新选择网络安装再装一遍即可。
 
 ---
 
-#  自建 PXE 启动教程
+## 自建netbootxyz服务安装系统
 
-服务端为Linux系统，客户端装`Debian12`系统
+非常适合局域网内批量装机，服务端使用Linux系统，客户端装`Debian12`系统为例。
 
-服务端和客户端必须要在同一局域网，服务端地址以`192.168.1.10`为例，请自行替换。
+服务端和客户端必须要在同一局域网，服务端地址以`192.168.1.10`为例，请注意替换自己实际的地址。
 
 - 安装dnsmasq
 ```
 apt install dnsmasq -y
 ```
-- docker部署netbootxyz服务
+- Docker部署netbootxyz服务
 ```
 services:
   netbootxyz:
@@ -58,7 +62,7 @@ services:
     ports:
       - 3000:3000          # Web UI 端口
       - 69:69/udp          # TFTP 端口
-      - 80:80              # Nginx HTTP 端口
+      - 80:80              # HTTP 端口
     restart: unless-stopped
 ```
 
@@ -113,9 +117,12 @@ initrd ${server_url}/initrd.gz
 boot
 ```
 
-没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。
+其中`auto=true`和`priority=critical`参数是Debian系统特有的，用于安装期间尽量减少交互，如果其他系统请去掉。
+
+没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可进入系统安装界面。
 
 ### Windows
+
 对于安装Windows系统，可以使用 https://github.com/ipxe/wimboot 来直接加载 Windows 安装程序。
 
-微软官方的`Windows ISO`文件中，`sources`目录下有一个核心文件`boot.wim`。这个`boot.wim`本质上就是一个微型的 `Windows PE`环境，用来启动并运行 Windows 安装程序。
+微软官方的`Windows ISO`镜像文件中，解压后`sources`目录下有一个核心文件`boot.wim`。这个`boot.wim`本质上就是一个微型的 `Windows PE`环境，可以用来启动并运行Windows安装程序。

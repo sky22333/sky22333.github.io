@@ -1,32 +1,34 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 25 Apr 2026 23:51:59 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 通过[netboot.xyz](https://github.com/netbootxyz/netboot.xyz)给云服务器重装系统
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sun, 26 Apr 2026 17:37:46 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
 
-### 查看系统盘，通常为`/dev/vda`
+- 1：查看系统信息并备份，安装新系统的时候可能会用到
 ```
+# 查看系统盘
 lsblk
-```
-### 查看是否支持UEFI，有输出就代表支持
-如果不支持UEFI，则安装系统的时候就不能选择UEFI
-```
+
+# 查看网络配置
+networkctl status
+
+# 查看是否支持uefi
 ls /sys/firmware/efi
 ```
-### 下载 netboot.xyz 启动镜像（iPXE 引导器）
+- 2：下载 netboot.xyz 启动镜像（iPXE引导器）
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-### 将镜像写入整块系统盘（记得修改实际的系统盘，会覆盖原系统，请确保重要数据已备份）
+- 3：将镜像DD写入整块系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
 ```
-### 强制将缓存写入磁盘，确保数据落盘完成
+- 4：强制将缓存写入磁盘，确保数据落盘完成
 ```
 sync
 ```
-### 重启服务器
+- 5：重启服务器
 ```
 reboot
 ```
-### 通过VNC界面进入启动菜单，选择网络安装
+- 6：通过云厂商后台的服务器VNC界面进入启动菜单，选择网络安装
 ```
 Linux Network Installs (64-bit)
 ```
