@@ -34,252 +34,81 @@ Linux Network Installs (64-bit)
 
 ---
 
-#  内网离线 PXE 启动教程（Debian 12版）
+#  自建 PXE 启动教程
 
-`netboot.xyz + HTTP Server / Debian 12`
+服务端为linux系统，客户端装`debian12`系统
 
-### 一、服务端IP示例
-服务端为linux
-```
-192.168.1.10
-```
+服务端和客户端必须要在同一局域网，服务端地址以`192.168.1.10`为例，请自行替换。
 
-### 二、安装依赖
-
+- 安装dnsmasq
 ```
-sudo apt update
-sudo apt install dnsmasq -y
+apt install dnsmasq -y
 ```
-### 三、目录创建
+- docker部署netbootxyz服务
 ```
-sudo mkdir -p /pxe/tftpboot
-sudo mkdir -p /pxe/www/debian
-```
-### 四、下载 PXE 引导文件
-```
-cd /pxe/tftpboot
-
-# 如果内网离线，需自行从有网环境下载后上传
-wget https://boot.netboot.xyz/ipxe/netboot.xyz.kpxe
-wget https://boot.netboot.xyz/ipxe/netboot.xyz.efi
-```
-### 五、iPXE 离线引导脚本
-路径（一式两份）：
-```
-/pxe/tftpboot/boot.ipxe
-/pxe/www/boot.ipxe
-```
-内容：
-```
-#!ipxe
-
-# 定义服务器地址
-set server 192.168.1.10:8000
-
-# 加载 Debian 网络安装内核与初始化文件系统
-kernel http://${server}/debian/linux initrd=initrd.gz auto=true priority=critical
-initrd http://${server}/debian/initrd.gz
-
-# 启动安装程序
-boot
-```
-`auto=true` 和 `priority=critical` 是 Debian 安装程序特有的引导参数，用于尽量减少交互，只询问必须要配置的参数，如果是其他系统则去掉。
-
-### 六、下载 Debian 网络安装文件
-```
-cd /pxe/www/debian
-
-# 从清华镜像站下载（也可以选择其他镜像源）
-wget https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
-wget https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
-```
-### 七、目录结构
-```
-/pxe/
-├── tftpboot/
-│   ├── boot.ipxe        # 您创建的iPXE脚本
-│   ├── netboot.xyz.efi  # UEFI引导文件
-│   └── netboot.xyz.kpxe # Legacy BIOS引导文件
-└── www/
-    ├── boot.ipxe        # 您创建的iPXE脚本
-    └── debian/
-        ├── linux         # Debian安装内核
-        └── initrd.gz     # 初始化文件系统
-```
-### 八、设置权限
-```
-sudo chmod -R 755 /pxe
-```
-### 九、启动 HTTP 服务
-```
-cd /pxe/www
-python3 -m http.server 8000
+services:
+  netbootxyz:
+    image: ghcr.io/netbootxyz/netbootxyz
+    container_name: netbootxyz
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./config:/config   # 存放自动生成的配置文件和自定义菜单
+      - ./assets:/assets   # 存放系统镜像安装包
+    ports:
+      - 3000:3000          # Web UI 端口
+      - 69:69/udp          # TFTP 端口
+      - 80:80              # Nginx HTTP 端口
+    restart: unless-stopped
 ```
 
-### 十、dnsmasq 配置
+编辑`/etc/dnsmasq.conf`
 
-文件： `/etc/dnsmasq.conf`
 ```
-# 请务必替换为你的实际网卡名！
 interface=eth0
 bind-interfaces
-
-# 根据你的局域网情况调整DHCP地址池
 dhcp-range=192.168.1.100,192.168.1.200,255.255.255.0,12h
 
-# 启用TFTP
-enable-tftp
-tftp-root=/pxe/tftpboot
-
-# 为不同固件类型下发指定的引导文件
-dhcp-boot=tag:!efi64,netboot.xyz.kpxe
+# 直接指向 Docker 容器暴露在宿主机的 TFTP 端口
+dhcp-boot=tag:!efi64,netboot.xyz.kpxe,,192.168.1.10
 dhcp-match=set:efi64,option:client-arch,7
-dhcp-boot=tag:efi64,netboot.xyz.efi
+dhcp-boot=tag:efi64,netboot.xyz.efi,,192.168.1.10
+```
+- 重启dnsmasq
+```
+systemctl restart dnsmasq
+```
+- 下载镜像文件
+```
+# 创建目标目录
+mkdir -p ./assets/debian
 
-# 如果你内网已有其他DHCP服务器，可取消下面这行的注释
-# dhcp-authoritative
+# 下载 linux 内核文件
+wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
+
+# 下载 initrd.gz 初始化文件系统
+wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
 ```
 
-### 十一、重启服务
-```
-sudo systemctl restart dnsmasq
-sudo systemctl enable dnsmasq
-```
-### 十二、验证
-```
-# 检查dnsmasq服务状态，应显示active (running)
-sudo systemctl status dnsmasq
+此时，这些文件会自动被容器内的 Nginx 代理，可以通过 `http://192.168.1.10:80/assets/debian/linux` 访问。
 
-# 检查HTTP服务是否正常，应看到文件列表
-curl http://192.168.1.10:8000/
+浏览器访问：`http://192.168.1.10:3000 进入 `netboot.xyz 可视化控制台。
 
-# 测试关键文件是否可下载，都应返回 HTTP/1.0 200 OK
-curl -I http://192.168.1.10:8000/debian/linux
-curl -I http://192.168.1.10:8000/debian/initrd.gz
-```
-### 十三、客户端设置
-```
-Legacy BIOS：设置 Network Boot 或 PXE Boot 为首选启动项。
+点击顶部的 `Menus`，在这里你可以直接编辑 `custom.ipxe`（如果没有则新建）。
 
-UEFI模式：在BIOS中启用 UEFI Network Stack 或 UEFI PXE Boot。
-```
-临时启动：开机时可通过快捷键（如F12）手动选择网络启动。
-
-### 十四、启动成功标志
-```
-iPXE initialising devices...
-Loading http://192.168.1.10:8000/debian/linux...
-Loading http://192.168.1.10:8000/debian/initrd.gz...
-```
-随后便会进入 Debian 安装程序的界面。
-
----
-
-# 内网离线 PXE 启动教程（Windows 11版）
-`netboot.xyz + HTTP Server / Windows 11`
-
-### 一、服务端IP示例
-服务端为linux
-```
-192.168.1.10
-```
-### 二、安装依赖
-```
-sudo apt update
-sudo apt install dnsmasq wimtools -y
-```
-说明：新增了 wimtools 包，它包含了处理 Windows 镜像所需的 wiminfo 等工具。
-
-### 三、目录创建
-```
-sudo mkdir -p /pxe/tftpboot
-sudo mkdir -p /pxe/www/win11
-```
-### 四、下载 PXE 引导文件与 wimboot
-```
-cd /pxe/tftpboot
-
-# 1. 下载 netboot.xyz 引导文件（不变）
-wget https://boot.netboot.xyz/ipxe/netboot.xyz.kpxe
-wget https://boot.netboot.xyz/ipxe/netboot.xyz.efi
-
-# 2. 下载 wimboot（这是启动 Windows PE 的关键引导器）
-wget https://github.com/ipxe/wimboot/releases/latest/download/wimboot
-```
-### 五、iPXE 离线引导脚本
-路径（一式两份，原因同 Debian 方案）：
-```
-/pxe/tftpboot/boot.ipxe
-
-/pxe/www/boot.ipxe
-```
-内容：
+填入以下内容：
 
 ```
 #!ipxe
 
-# 定义服务器地址
-set server 192.168.1.10:8000
+# 这里的 ${next-server} 变量会自动获取当前 DHCP 中指向的服务器 IP
+set server_url http://${next-server}:80/assets/debian
 
-# 加载 wimboot 引导器
-kernel http://${server}/wimboot
-# 加载 Windows PE 镜像（从 Windows 11 ISO 中提取的 boot.wim）
-initrd http://${server}/win11/boot.wim boot.wim
-
-# 启动安装程序
+kernel ${server_url}/linux initrd=initrd.gz auto=true priority=critical
+initrd ${server_url}/initrd.gz
 boot
 ```
 
-
-### 六、准备 Windows 11 网络安装文件
-请先下载 Windows 11 官方 ISO 镜像，然后执行以下操作：
-
-```
-# 挂载 ISO（以映像在 ~/Win11.iso 为例）
-sudo mkdir -p /mnt/win11iso
-sudo mount -o loop ~/Win11.iso /mnt/win11iso
-
-# 复制核心启动文件 boot.wim 到 HTTP 目录
-sudo cp /mnt/win11iso/sources/boot.wim /pxe/www/win11/
-
-# 复制 wimboot 到 HTTP 目录（与 tftpboot 中的保持一致）
-sudo cp /pxe/tftpboot/wimboot /pxe/www/
-
-# 清理挂载
-sudo umount /mnt/win11iso
-```
-### 七、目录结构
-```
-/pxe/
-├── tftpboot/
-│   ├── boot.ipxe           # 您的 iPXE 脚本
-│   ├── netboot.xyz.efi     # UEFI 引导文件
-│   ├── netboot.xyz.kpxe    # Legacy BIOS 引导文件
-│   └── wimboot             # Windows 引导器
-└── www/
-    ├── boot.ipxe           # 您的 iPXE 脚本
-    ├── wimboot             # 引导器副本（HTTP 访问用）
-    └── win11/
-        └── boot.wim        # Windows PE 启动镜像
-```
-### 八、设置权限
-```
-sudo chmod -R 755 /pxe
-```
-### 九、启动 HTTP 服务
-```
-cd /pxe/www
-python3 -m http.server 8000
-```
-### 十、安装 Windows 到客户端
-
-当客户端通过 PXE 成功加载 boot.wim 后，会进入 Windows PE (WinPE) 命令提示符。由于这是离线环境，你需要在此手动执行安装：
-
-挂载网络安装源：
-```
-net use Z: \\192.168.1.10\pxe\www\win11
-```
-启动安装程序：
-```
-Z:\setup.exe
-```
+没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。
