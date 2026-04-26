@@ -169,7 +169,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <hr>
 <h1>自建 PXE 启动教程</h1>
-<p>服务端为linux系统，客户端装<code class="notranslate">debian12</code>系统</p>
+<p>服务端为Linux系统，客户端装<code class="notranslate">Debian12</code>系统</p>
 <p>服务端和客户端必须要在同一局域网，服务端地址以<code class="notranslate">192.168.1.10</code>为例，请自行替换。</p>
 <ul>
 <li>安装dnsmasq</li>
@@ -184,8 +184,6 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     image: ghcr.io/netbootxyz/netbootxyz
     container_name: netbootxyz
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=Asia/Shanghai
     volumes:
       - ./config:/config   # 存放自动生成的配置文件和自定义菜单
@@ -197,9 +195,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     restart: unless-stopped
 </code></pre>
 <p>编辑<code class="notranslate">/etc/dnsmasq.conf</code></p>
-<pre class="notranslate"><code class="notranslate">interface=eth0
+<pre class="notranslate"><code class="notranslate"># 注意替换实际的网卡名称
+interface=eth0
 bind-interfaces
 dhcp-range=192.168.1.100,192.168.1.200,255.255.255.0,12h
+
+# 如果有其他DHCP的话可以开启强制接管
+# dhcp-authoritative
 
 # 直接指向 Docker 容器暴露在宿主机的 TFTP 端口
 dhcp-boot=tag:!efi64,netboot.xyz.kpxe,,192.168.1.10

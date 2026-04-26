@@ -36,7 +36,7 @@ Linux Network Installs (64-bit)
 
 #  自建 PXE 启动教程
 
-服务端为linux系统，客户端装`debian12`系统
+服务端为Linux系统，客户端装`Debian12`系统
 
 服务端和客户端必须要在同一局域网，服务端地址以`192.168.1.10`为例，请自行替换。
 
@@ -51,8 +51,6 @@ services:
     image: ghcr.io/netbootxyz/netbootxyz
     container_name: netbootxyz
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=Asia/Shanghai
     volumes:
       - ./config:/config   # 存放自动生成的配置文件和自定义菜单
@@ -67,9 +65,13 @@ services:
 编辑`/etc/dnsmasq.conf`
 
 ```
+# 注意替换实际的网卡名称
 interface=eth0
 bind-interfaces
 dhcp-range=192.168.1.100,192.168.1.200,255.255.255.0,12h
+
+# 如果有其他DHCP的话可以开启强制接管
+# dhcp-authoritative
 
 # 直接指向 Docker 容器暴露在宿主机的 TFTP 端口
 dhcp-boot=tag:!efi64,netboot.xyz.kpxe,,192.168.1.10
