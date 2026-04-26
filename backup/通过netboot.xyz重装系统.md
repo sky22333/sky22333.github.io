@@ -114,3 +114,8 @@ boot
 ```
 
 没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。
+
+### Windows
+对于安装Windows系统，可以使用 https://github.com/ipxe/wimboot 来直接加载win系统安装器。
+
+微软官方的`Windows ISO`文件中，`sources`目录下有一个核心文件`boot.wim`。这个`boot.wim`本质上就是一个微型的 `Windows PE`环境，用来启动并运行 Windows 安装程序。

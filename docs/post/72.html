@@ -238,7 +238,10 @@ kernel ${server_url}/linux initrd=initrd.gz auto=true priority=critical
 initrd ${server_url}/initrd.gz
 boot
 </code></pre>
-<p>没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。</p></div>
+<p>没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。</p>
+<h3>Windows</h3>
+<p>对于安装Windows系统，可以使用 <a href="https://github.com/ipxe/wimboot">https://github.com/ipxe/wimboot</a> 来直接加载win系统安装器。</p>
+<p>微软官方的<code class="notranslate">Windows ISO</code>文件中，<code class="notranslate">sources</code>目录下有一个核心文件<code class="notranslate">boot.wim</code>。这个<code class="notranslate">boot.wim</code>本质上就是一个微型的 <code class="notranslate">Windows PE</code>环境，用来启动并运行 Windows 安装程序。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
