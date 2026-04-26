@@ -94,7 +94,7 @@ wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookwo
 
 此时，这些文件会自动被容器内的 Nginx 代理，可以通过 `http://192.168.1.10:80/assets/debian/linux` 访问。
 
-浏览器访问：`http://192.168.1.10:3000 进入 `netboot.xyz 可视化控制台。
+浏览器访问：`http://192.168.1.10:3000` 进入 `netboot.xyz` 可视化控制台。
 
 点击顶部的 `Menus`，在这里你可以直接编辑 `custom.ipxe`（如果没有则新建）。
 
