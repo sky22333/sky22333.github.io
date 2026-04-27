@@ -171,8 +171,8 @@ Windows系统可以使用开源的 [DnsServer](https://github.com/TechnitiumSoft
 
 向下滚动找到 **Bootstrap** 相关的选项，这是引导成功的核心：
 
-* **Bootstrap Server Address (siaddr)**: 填写 **运行 netboot.xyz Docker 容器的那台宿主机的 IP 地址**（例如 `192.168.1.10`）。
-    * *注意：这里填的是 TFTP 服务器的地址，即你的 Docker 宿主机。*
+* **Bootstrap Server Address (siaddr)**: 填写 **运行 netboot.xyz 那台主机的 IP 地址**（例如 `192.168.1.10`）。
+    * *注意：这里填的是 TFTP 服务器的地址，即你的 netboot.xyz 宿主机。*
 * **Bootstrap Server Host Name (sname/Option 66)**: 留空即可。大多数现代 PXE 客户端只需要上面的 IP 地址就能找到 TFTP 服务器。
 * **Boot File Name (file/Option 67)**: 根据你要引导的设备类型填写：
     * 如果你主要引导较新的电脑或虚拟机（UEFI 模式）：填写 `netboot.xyz.efi`
