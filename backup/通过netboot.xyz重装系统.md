@@ -3,10 +3,10 @@
 - 1：查看系统信息并备份，安装新系统的时候可能会用到
 ```
 # 查看系统盘
-lsblk
+df -h /
 
 # 查看网络配置
-networkctl status
+ip a
 
 # 查看是否支持uefi
 ls /sys/firmware/efi
@@ -17,7 +17,7 @@ wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
 - 3：将镜像DD写入整块系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
-dd if=netboot.xyz.img of=/dev/vda bs=4M status=progress
+dd if=netboot.xyz.img of=/dev/vda bs=4M
 ```
 - 4：强制将缓存写入磁盘，确保数据落盘完成
 ```
@@ -32,7 +32,7 @@ reboot
 Linux Network Installs (64-bit)
 ```
 
-> 如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。
+> 如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。`Alpine`系统默认是安装在内存中的，进入系统后需要执行`setup-alpine`命令安装到硬盘。
 > 
 > 如果安装失败的话可能是硬盘分区有问题或者其他设置不对，可以返回到`netboot.xyz 启动菜单`，重新选择网络安装再装一遍即可。
 
