@@ -58,7 +58,7 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./config:/config   # 存放自动生成的配置文件和自定义菜单
-      - ./assets:/assets   # 存放系统镜像安装包
+      - ./assets:/assets   # 存放资源，可以直接通过HTTP端口访问
     ports:
       - 3000:3000          # Web UI 端口
       - 69:69/udp          # TFTP 端口
@@ -98,7 +98,7 @@ wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookwo
 wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
 ```
 
-此时，这些文件会自动被容器内的 Nginx 代理，可以通过 `http://192.168.1.10:80/assets/debian/linux` 访问。
+此时，这些文件会自动被容器内的 Nginx 代理，可以通过 `http://192.168.1.10:80/debian/linux` 访问。
 
 浏览器访问：`http://192.168.1.10:3000` 进入 `netboot.xyz` 可视化控制台。
 
@@ -110,7 +110,7 @@ wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookwo
 #!ipxe
 
 # 这里的 ${next-server} 变量会自动获取当前 DHCP 中指向的服务器 IP
-set server_url http://${next-server}:80/assets/debian
+set server_url http://${next-server}:80/debian
 
 kernel ${server_url}/linux initrd=initrd.gz auto=true priority=critical
 initrd ${server_url}/initrd.gz
