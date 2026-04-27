@@ -135,13 +135,13 @@ cp -r ./config/menus/ ./assets/
 
 没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。
 
-### Windows
+### 客户端机器装Windows
 
 对于安装Windows系统，可以使用 https://github.com/ipxe/wimboot 来直接加载 Windows 安装程序。
 
 微软官方的`Windows ISO`镜像文件中，解压后`sources`目录下有一个核心文件`boot.wim`。这个`boot.wim`本质上就是一个微型的 `Windows PE`环境，可以用来启动并运行Windows安装程序。
 
-## Windows DHCP服务器
+## Windows DHCP服务
 
 Windows系统可以使用开源的 [DnsServer](https://github.com/TechnitiumSoftware/DnsServer) 来部署DHCP服务器，这是一个强大的DNS服务端，支持DHCP，支持响应PXE报文，并且使用简单。
 
@@ -154,7 +154,7 @@ Windows系统可以使用开源的 [DnsServer](https://github.com/TechnitiumSoft
 ### 具体步骤
 
 
-假设你的局域网网段是 `192.168.1.x`，主路由器（网关）是 `192.168.1.1`，运行 netboot.xyz Docker 的电脑 IP 是 `192.168.1.10`。请根据你的实际网络情况替换这些 IP。
+假设你的局域网网段是 `192.168.1.x`，主路由器（网关）是 `192.168.1.1`，运行 netboot.xyz 的电脑 IP 是 `192.168.1.10`。请根据你的实际网络情况替换这些 IP。
 
 ### 第一部分：基础网络分配（让设备能联网）
 

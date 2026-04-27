@@ -272,16 +272,16 @@ boot
 </code></pre>
 <p>完成后建议重启一次<code class="notranslate">netbootxyz</code>容器</p>
 <p>没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。</p>
-<h3>Windows</h3>
+<h3>客户端机器装Windows</h3>
 <p>对于安装Windows系统，可以使用 <a href="https://github.com/ipxe/wimboot">https://github.com/ipxe/wimboot</a> 来直接加载 Windows 安装程序。</p>
 <p>微软官方的<code class="notranslate">Windows ISO</code>镜像文件中，解压后<code class="notranslate">sources</code>目录下有一个核心文件<code class="notranslate">boot.wim</code>。这个<code class="notranslate">boot.wim</code>本质上就是一个微型的 <code class="notranslate">Windows PE</code>环境，可以用来启动并运行Windows安装程序。</p>
-<h2>Windows DHCP服务器</h2>
+<h2>Windows DHCP服务</h2>
 <p>Windows系统可以使用开源的 <a href="https://github.com/TechnitiumSoftware/DnsServer">DnsServer</a> 来部署DHCP服务器，这是一个强大的DNS服务端，支持DHCP，支持响应PXE报文，并且使用简单。</p>
 <p>下载地址：<a href="https://download.technitium.com/dns/DnsServerSetup.zip" rel="nofollow">https://download.technitium.com/dns/DnsServerSetup.zip</a></p>
 <p>下载后双击安装程序，安装完成后会自动以服务模式后台运行，管理面板通过 <code class="notranslate">http://127.0.0.1:5380</code> 访问。</p>
 <p>然后访问 <code class="notranslate">DHCP</code> - <code class="notranslate">Scopes</code> - 下面的<code class="notranslate">Bootstrap Server</code>区域来设置引导文件地址等信息。</p>
 <h3>具体步骤</h3>
-<p>假设你的局域网网段是 <code class="notranslate">192.168.1.x</code>，主路由器（网关）是 <code class="notranslate">192.168.1.1</code>，运行 netboot.xyz Docker 的电脑 IP 是 <code class="notranslate">192.168.1.10</code>。请根据你的实际网络情况替换这些 IP。</p>
+<p>假设你的局域网网段是 <code class="notranslate">192.168.1.x</code>，主路由器（网关）是 <code class="notranslate">192.168.1.1</code>，运行 netboot.xyz 的电脑 IP 是 <code class="notranslate">192.168.1.10</code>。请根据你的实际网络情况替换这些 IP。</p>
 <h3>第一部分：基础网络分配（让设备能联网）</h3>
 <ul>
 <li><strong>Name (名称)</strong>: 随意填写，例如 <code class="notranslate">Netboot-LAN</code>。</li>
