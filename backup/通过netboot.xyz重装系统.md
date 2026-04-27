@@ -102,7 +102,14 @@ wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookwo
 
 浏览器访问：`http://192.168.1.10:3000` 进入 `netboot.xyz` 可视化控制台。
 
-点击顶部的 `Menus`，在这里你可以直接编辑 `custom.ipxe`（如果没有则新建）。
+点击`Menus`，修改`boot.cfg`文件：
+
+- 第8行：将`boot.netboot.xyz/3.0.1` 改为 `http://192.168.1.10:80/menus`
+- 第9行新增：`set custom_url http://192.168.1.10:80/menus/custom.ipxe`
+- 第14行：将`https://github.com/netbootxyz` 改为 `http://192.168.1.10:80`
+
+
+然后编辑 `custom.ipxe`（如果没有则新建）。
 
 填入以下内容：
 
@@ -112,14 +119,21 @@ wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookwo
 # 这里的 ${next-server} 变量会自动获取当前 DHCP 中指向的服务器 IP
 set server_url http://${next-server}:80/debian
 
-kernel ${server_url}/linux initrd=initrd.gz auto=true priority=critical
+kernel ${server_url}/linux initrd=initrd.gz
 initrd ${server_url}/initrd.gz
 boot
 ```
 
-其中`auto=true`和`priority=critical`参数是Debian系统特有的，用于安装期间尽量减少交互，如果其他系统请去掉。
+记得点击右上角保存。
 
-没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可进入系统安装界面。
+- 使配置可公开访问：
+```
+cp -r ./config/menus/ ./assets/
+```
+
+完成后建议重启一次`netbootxyz`容器
+
+没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。
 
 ### Windows
 
