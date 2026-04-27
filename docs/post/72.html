@@ -190,7 +190,7 @@ ls /sys/firmware/efi
 <hr>
 <h2>自建netbootxyz服务安装系统</h2>
 <p>非常适合局域网内批量装机，服务端使用Linux系统，客户端装<code class="notranslate">Debian12</code>系统为例。</p>
-<p>服务端和客户端必须要在同一局域网，服务端地址以<code class="notranslate">192.168.1.10</code>为例，请注意替换自己实际的地址。</p>
+<p>服务端和客户端要在同一局域网，服务端地址以<code class="notranslate">192.168.1.10</code>为例，请注意替换自己实际的地址。</p>
 <ul>
 <li>安装dnsmasq</li>
 </ul>
@@ -214,16 +214,16 @@ ls /sys/firmware/efi
       - 80:80              # HTTP 端口
     restart: unless-stopped
 </code></pre>
-<p>编辑<code class="notranslate">/etc/dnsmasq.conf</code></p>
+<p>编辑 <code class="notranslate">/etc/dnsmasq.conf</code> DHCP服务，重要环节</p>
 <pre class="notranslate"><code class="notranslate"># 注意替换实际的网卡名称
 interface=eth0
 bind-interfaces
 dhcp-range=192.168.1.100,192.168.1.200,255.255.255.0,12h
 
-# 如果有其他DHCP的话可以开启强制接管
+# 如果有其他DHCP的话可以开启强制接管，建议关闭其他DHCP服务
 # dhcp-authoritative
 
-# 直接指向 Docker 容器暴露在宿主机的 TFTP 端口
+# 指向 Docker 容器暴露在宿主机的 TFTP 端口
 dhcp-boot=tag:!efi64,netboot.xyz.kpxe,,192.168.1.10
 dhcp-match=set:efi64,option:client-arch,7
 dhcp-boot=tag:efi64,netboot.xyz.efi,,192.168.1.10
@@ -312,7 +312,7 @@ boot
 <h3>第三部分：其他选项（保持默认）</h3>
 <hr>
 <p><strong>关键提示：</strong><br>
-确保关闭了你主路由器上的 DHCP 服务器功能（或者确保主路由器分配的 IP 段与 Technitium 完全不重合，且主路由器不支持响应 PXE 请求）。</p></div>
+确保关闭了你主路由器上的 DHCP 服务器功能，让 Windows 接管 DHCP 服务。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

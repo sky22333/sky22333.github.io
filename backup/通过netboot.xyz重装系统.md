@@ -42,7 +42,7 @@ Linux Network Installs (64-bit)
 
 非常适合局域网内批量装机，服务端使用Linux系统，客户端装`Debian12`系统为例。
 
-服务端和客户端必须要在同一局域网，服务端地址以`192.168.1.10`为例，请注意替换自己实际的地址。
+服务端和客户端要在同一局域网，服务端地址以`192.168.1.10`为例，请注意替换自己实际的地址。
 
 - 安装dnsmasq
 ```
@@ -66,7 +66,7 @@ services:
     restart: unless-stopped
 ```
 
-编辑`/etc/dnsmasq.conf`
+编辑 `/etc/dnsmasq.conf` DHCP服务，重要环节
 
 ```
 # 注意替换实际的网卡名称
@@ -74,10 +74,10 @@ interface=eth0
 bind-interfaces
 dhcp-range=192.168.1.100,192.168.1.200,255.255.255.0,12h
 
-# 如果有其他DHCP的话可以开启强制接管
+# 如果有其他DHCP的话可以开启强制接管，建议关闭其他DHCP服务
 # dhcp-authoritative
 
-# 直接指向 Docker 容器暴露在宿主机的 TFTP 端口
+# 指向 Docker 容器暴露在宿主机的 TFTP 端口
 dhcp-boot=tag:!efi64,netboot.xyz.kpxe,,192.168.1.10
 dhcp-match=set:efi64,option:client-arch,7
 dhcp-boot=tag:efi64,netboot.xyz.efi,,192.168.1.10
@@ -182,4 +182,4 @@ Windows系统可以使用开源的 [DnsServer](https://github.com/TechnitiumSoft
 ---
 
 **关键提示：**
-确保关闭了你主路由器上的 DHCP 服务器功能（或者确保主路由器分配的 IP 段与 Technitium 完全不重合，且主路由器不支持响应 PXE 请求）。
+确保关闭了你主路由器上的 DHCP 服务器功能，让 Windows 接管 DHCP 服务。
