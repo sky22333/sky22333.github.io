@@ -187,132 +187,170 @@ ls /sys/firmware/efi
 <p>如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。<code class="notranslate">Alpine</code>系统默认是安装在内存中的，进入系统后需要执行<code class="notranslate">setup-alpine</code>命令安装到硬盘。</p>
 <p>如果安装失败的话可能是硬盘分区有问题或者其他设置不对，可以返回到<code class="notranslate">netboot.xyz 启动菜单</code>，重新选择网络安装再装一遍即可。</p>
 </blockquote>
+<ul>
+<li>国内服务器</li>
+</ul>
+<p><code class="notranslate">netboot.xyz</code>项目拉取镜像是在各大镜像官网拉取的，国内服务器下载会很慢，可以加载自己的ipxe脚本，然后脚本里使用国内镜像源。</p>
+<p>可以在第6步中，选择<code class="notranslate">ipxe shell</code>加载自己的脚本，命令如下：</p>
+<pre class="notranslate"><code class="notranslate">dhcp
+
+chain https://example.com/embed.ipxe
+</code></pre>
 <hr>
-<h2>自建netbootxyz服务安装系统</h2>
-<p>非常适合局域网内批量装机，服务端使用Linux系统，客户端装<code class="notranslate">Debian12</code>系统为例。</p>
-<p>服务端和客户端要在同一局域网，服务端地址以<code class="notranslate">192.168.1.10</code>为例，请注意替换自己实际的地址。</p>
+<h3>手搓PXE服务</h3>
 <ul>
 <li>安装dnsmasq</li>
 </ul>
-<pre class="notranslate"><code class="notranslate">apt install dnsmasq -y
-</code></pre>
-<ul>
-<li>Docker部署netbootxyz服务</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">services:
-  netbootxyz:
-    image: ghcr.io/netbootxyz/netbootxyz
-    container_name: netbootxyz
-    environment:
-      - TZ=Asia/Shanghai
-    volumes:
-      - ./config:/config   # 存放自动生成的配置文件和自定义菜单
-      - ./assets:/assets   # 存放资源，可以直接通过HTTP端口访问
-    ports:
-      - 3000:3000          # Web UI 端口
-      - 69:69/udp          # TFTP 端口
-      - 80:80              # HTTP 端口
-    restart: unless-stopped
-</code></pre>
-<p>编辑 <code class="notranslate">/etc/dnsmasq.conf</code> DHCP服务，重要环节</p>
-<pre class="notranslate"><code class="notranslate"># 注意替换实际的网卡名称
-interface=eth0
-bind-interfaces
-dhcp-range=192.168.1.100,192.168.1.200,255.255.255.0,12h
+<p>编辑 <code class="notranslate">/etc/dnsmasq.conf</code> 配置DHCP和TFTP服务，重要环节，要和PXE客户端（要装系统的设备）在同一局域网。</p>
+<pre class="notranslate"><code class="notranslate"># ProxyDHCP + TFTP 不影响已存在的DHCP服务器
+# 关闭 DNS
+port=0
 
-# 如果有其他DHCP的话可以开启强制接管，建议关闭其他DHCP服务
-# dhcp-authoritative
+# 日志
+log-dhcp
+log-facility=/var/log/dnsmasq.log
 
-# 指向 Docker 容器暴露在宿主机的 TFTP 端口
-dhcp-boot=tag:!efi64,netboot.xyz.kpxe,,192.168.1.10
-dhcp-match=set:efi64,option:client-arch,7
-dhcp-boot=tag:efi64,netboot.xyz.efi,,192.168.1.10
-</code></pre>
-<ul>
-<li>重启dnsmasq</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">systemctl restart dnsmasq
-</code></pre>
-<ul>
-<li>下载镜像文件</li>
-</ul>
-<pre class="notranslate"><code class="notranslate"># 创建目标目录
-mkdir -p ./assets/debian
+# 改1：你的局域网段
+dhcp-range=192.168.1.0,proxy
 
-# 下载 linux 内核文件
-wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
+# 改2：本机 IP
+dhcp-option=option:tftp-server,192.168.1.10
 
-# 下载 initrd.gz 初始化文件系统
-wget -P ./assets/debian https://mirrors.tuna.tsinghua.edu.cn/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
+# ==================== TFTP （放IPXE固件）====================
+enable-tftp
+tftp-root=/etc/tftp
+
+# ==================== PXE 引导 ====================
+pxe-service=x86PC,       "PXE BIOS",             netboot.xyz-undionly.kpxe
+pxe-service=X86-64_EFI,  "PXE UEFI x64",         netboot.xyz-snponly.efi
+pxe-service=ARM64_EFI,   "PXE UEFI ARM64",       netboot.xyz-arm64-snponly.efi
 </code></pre>
-<p>此时，这些文件会自动被容器内的 Nginx 代理，可以通过 <code class="notranslate">http://192.168.1.10:80/debian/linux</code> 访问。</p>
-<p>浏览器访问：<code class="notranslate">http://192.168.1.10:3000</code> 进入 <code class="notranslate">netboot.xyz</code> 可视化控制台。</p>
-<p>点击<code class="notranslate">Menus</code>，修改<code class="notranslate">boot.cfg</code>文件：</p>
-<ul>
-<li>第8行：将<code class="notranslate">boot.netboot.xyz/3.0.1</code> 改为 <code class="notranslate">http://192.168.1.10:80/menus</code></li>
-<li>第9行新增：<code class="notranslate">set custom_url http://192.168.1.10:80/menus/custom.ipxe</code></li>
-<li>第14行：将<code class="notranslate">https://github.com/netbootxyz</code> 改为 <code class="notranslate">http://192.168.1.10:80</code></li>
-</ul>
-<p>然后编辑 <code class="notranslate">custom.ipxe</code>（如果没有则新建）。</p>
-<p>填入以下内容：</p>
+<h3>netboot.xyz的IPXE固件下载地址</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">架构</th>
+<th align="left">文件名</th>
+<th align="left">下载地址</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Legacy (PCBIOS)</strong></td>
+<td align="left"><code class="notranslate">netboot.xyz-undionly.kpxe</code></td>
+<td align="left"><code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz-undionly.kpxe</code></td>
+<td align="left">传统 BIOS DHCP 引导文件，通用网卡驱动</td>
+</tr>
+<tr>
+<td align="left"><strong>UEFI x86_64</strong></td>
+<td align="left"><code class="notranslate">netboot.xyz-snponly.efi</code></td>
+<td align="left"><code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz-snponly.efi</code></td>
+<td align="left">UEFI 引导文件，仅从链式加载设备启动</td>
+</tr>
+<tr>
+<td align="left"><strong>UEFI ARM64</strong></td>
+<td align="left"><code class="notranslate">netboot.xyz-arm64-snponly.efi</code></td>
+<td align="left"><code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz-arm64-snponly.efi</code></td>
+<td align="left">ARM64 UEFI 引导文件，仅从链式加载设备启动</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>netboot.xyz本地钩子</h3>
+<p><code class="notranslate">netboot.xyz</code>官方固件启动后会自动调用<code class="notranslate">local-vars.ipxe</code>脚本，如果存在的话。</p>
+<p>判断脚本是否存在：<br>
+他会自动扫描你tftp目录里的<code class="notranslate">local-vars.ipxe</code>脚本，你需要提前创建并放到tftp目录。如果没有的话他会走自己菜单的逻辑。并且是根据<code class="notranslate">DHCP</code>响应里的<code class="notranslate">server</code>信息找到你的tftp的IP地址。</p>
+<h3>编译自己的IPXE固件</h3>
+<p>当然你也可以从 <a href="https://github.com/ipxe/ipxe">IPXE官方项目地址</a> 自行编译，这样你就可以将自己的ipxe启动脚本内置进去。</p>
+<h3>ipxe脚本示例</h3>
+<p>ipxe脚本是核心步骤，从这里定义去哪里下载镜像，其他资源，和如何启动。</p>
+<p>可根据自己情况修改，本地镜像文件则需要你启动一个HTTP服务，然后将镜像文件放进去，供客户端下载，适合离线环境。</p>
 <pre class="notranslate"><code class="notranslate">#!ipxe
+# ==================== iPXE 网络安装菜单 ====================
+# 包含 Debian 12 安装 + Windows PE 安装
 
-# 这里的 ${next-server} 变量会自动获取当前 DHCP 中指向的服务器 IP
-set server_url http://${next-server}:80/debian
+# 镜像文件托管地址（本地和高校镜像站二选一）
+set server_ip http://192.168.1.10
+set debian_mirror http://mirrors.cernet.edu.cn
 
-kernel ${server_url}/linux initrd=initrd.gz
-initrd ${server_url}/initrd.gz
+# ==================== 菜单界面 ====================
+:start
+menu iPXE Network Install Menu
+item debian    Debian 12 Automated Install
+item winpe     Windows PE Install (Load boot.wim)
+item shell     Enter iPXE Shell
+item reboot    Reboot
+choose --default debian --timeout 10000 option
+
+goto ${option}
+
+# ==================== Debian 12 安装 ====================
+:debian
+echo Starting Debian 12 automated installation...
+
+kernel ${debian_mirror}/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
+initrd ${debian_mirror}/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
+
+imgargs linux initrd=initrd.gz auto=true priority=critical
 boot
+
+goto start
+
+# ==================== Windows PE 安装 ====================
+:winpe
+echo Loading Windows PE...
+kernel ${server_ip}/winpe/wimboot
+initrd ${server_ip}/winpe/sources/boot.wim boot.wim
+
+boot
+
+goto start
+
+# ==================== 进入 iPXE 命令行 ====================
+:shell
+echo Entering iPXE Shell...
+shell
+
+goto start
+
+# ==================== 重启 ====================
+:reboot
+echo Rebooting...
+reboot
 </code></pre>
-<p>记得点击右上角保存。</p>
-<ul>
-<li>使配置可公开访问：</li>
-</ul>
-<pre class="notranslate"><code class="notranslate">cp -r ./config/menus/ ./assets/
+<p>然后在IPXE环境里下载并运行脚本</p>
+<pre class="notranslate"><code class="notranslate">dhcp
+
+chain http://example.com/embed.ipxe
 </code></pre>
-<p>完成后建议重启一次<code class="notranslate">netbootxyz</code>容器</p>
-<p>没问题的话，客户端机器进入bios将PXE网络启动改为第一个启动项即可。</p>
+<h3>PXE 客户端启动链路</h3>
+<pre class="notranslate"><code class="notranslate">开机
+  │
+  ▼
+DHCP (路由器)
+  │ 分配 IP/网关/DNS
+  ▼
+ProxyDHCP (dnsmasq)
+  │ 附加 TFTP 地址 + 引导文件名
+  ▼
+TFTP (dnsmasq)
+  │ 下载 iPXE 固件
+  ▼
+iPXE 环境启动
+  │
+  ▼
+HTTP 加载 menu.ipxe 脚本（需要手动加载，除非自己编译固件让他自动加载）
+  │
+  ▼
+menu.ipxe 菜单（这里的运行链路是本教程的脚本里定义的）
+  ├── Debian  → HTTP (CERNET) → 下载 kernel + initrd → 安装
+  ├── WinPE   → HTTP (自建)   → 下载 wimboot + wim  → 安装
+  ├── Shell   → 进入命令行
+  └── Reboot  → 重启
+</code></pre>
 <h3>客户端机器装Windows</h3>
 <p>对于安装Windows系统，可以使用 <a href="https://github.com/ipxe/wimboot">https://github.com/ipxe/wimboot</a> 来直接加载 Windows 安装程序。</p>
-<p>微软官方的<code class="notranslate">Windows ISO</code>镜像文件中，解压后<code class="notranslate">sources</code>目录下有一个核心文件<code class="notranslate">boot.wim</code>。这个<code class="notranslate">boot.wim</code>本质上就是一个微型的 <code class="notranslate">Windows PE</code>环境，可以用来启动并运行Windows安装程序。</p>
-<h2>Windows DHCP服务</h2>
-<p>Windows系统可以使用开源的 <a href="https://github.com/TechnitiumSoftware/DnsServer">DnsServer</a> 来部署DHCP服务器，这是一个强大的DNS服务端，支持DHCP，支持响应PXE报文，并且使用简单。</p>
-<p>下载地址：<a href="https://download.technitium.com/dns/DnsServerSetup.zip" rel="nofollow">https://download.technitium.com/dns/DnsServerSetup.zip</a></p>
-<p>下载后双击安装程序，安装完成后会自动以服务模式后台运行，管理面板通过 <code class="notranslate">http://127.0.0.1:5380</code> 访问。</p>
-<p>然后访问 <code class="notranslate">DHCP</code> - <code class="notranslate">Scopes</code> - 下面的<code class="notranslate">Bootstrap Server</code>区域来设置引导文件地址等信息。</p>
-<h3>具体步骤</h3>
-<p>假设你的局域网网段是 <code class="notranslate">192.168.1.x</code>，主路由器（网关）是 <code class="notranslate">192.168.1.1</code>，运行 netboot.xyz 的电脑 IP 是 <code class="notranslate">192.168.1.10</code>。请根据你的实际网络情况替换这些 IP。</p>
-<h3>第一部分：基础网络分配（让设备能联网）</h3>
-<ul>
-<li><strong>Name (名称)</strong>: 随意填写，例如 <code class="notranslate">Netboot-LAN</code>。</li>
-<li><strong>Starting Address (起始地址)</strong>: <code class="notranslate">192.168.1.100</code> （选择一段空闲的 IP 作为 DHCP 地址池起点）。</li>
-<li><strong>Ending Address (结束地址)</strong>: <code class="notranslate">192.168.1.200</code> （地址池终点）。</li>
-<li><strong>Subnet Mask (子网掩码)</strong>: <code class="notranslate">255.255.255.0</code>。</li>
-<li><strong>Lease Time (租约时间)</strong>: 保持默认即可（通常是 1 Days）。</li>
-<li><strong>Ping Check (Ping 检查)</strong>: 建议 <strong>不勾选</strong></li>
-<li><strong>Router Address (路由器地址/网关)</strong>: <code class="notranslate">192.168.1.1</code> （你真实路由器的 IP，<strong>非常重要</strong>，否则客户端获取 IP 后无法上网）。</li>
-<li><strong>DNS Servers</strong>: 勾选 <strong>Use This DNS Server</strong>。这会让获取到 IP 的客户端使用 Technitium 作为 DNS 服务器。</li>
-</ul>
-<h3>第二部分：PXE 引导设置（让设备找到 netboot.xyz）</h3>
-<p>向下滚动找到 <strong>Bootstrap</strong> 相关的选项，这是引导成功的核心：</p>
-<ul>
-<li><strong>Bootstrap Server Address (siaddr)</strong>: 填写 <strong>运行 netboot.xyz 那台主机的 IP 地址</strong>（例如 <code class="notranslate">192.168.1.10</code>）。
-<ul>
-<li><em>注意：这里填的是 TFTP 服务器的地址，即你的 netboot.xyz 宿主机。</em></li>
-</ul>
-</li>
-<li><strong>Bootstrap Server Host Name (sname/Option 66)</strong>: 留空即可。大多数现代 PXE 客户端只需要上面的 IP 地址就能找到 TFTP 服务器。</li>
-<li><strong>Boot File Name (file/Option 67)</strong>: 根据你要引导的设备类型填写：
-<ul>
-<li>如果你主要引导较新的电脑或虚拟机（UEFI 模式）：填写 <code class="notranslate">netboot.xyz.efi</code></li>
-<li>如果你需要引导老旧的传统 BIOS 电脑：填写 <code class="notranslate">netboot.xyz.kpxe</code></li>
-</ul>
-</li>
-</ul>
-<h3>第三部分：其他选项（保持默认）</h3>
-<hr>
-<p><strong>关键提示：</strong><br>
-确保关闭了你主路由器上的 DHCP 服务器功能，让 Windows 接管 DHCP 服务。</p></div>
+<p>微软官方的<code class="notranslate">Windows ISO</code>镜像文件中，解压后<code class="notranslate">sources</code>目录下有一个核心文件<code class="notranslate">boot.wim</code>。这个<code class="notranslate">boot.wim</code>本质上就是一个微型的 <code class="notranslate">Windows PE</code>环境，可以用来启动并运行Windows安装程序。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
