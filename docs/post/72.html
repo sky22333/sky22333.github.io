@@ -191,7 +191,7 @@ ls /sys/firmware/efi
 <li>国内服务器</li>
 </ul>
 <p><code class="notranslate">netboot.xyz</code>项目拉取镜像是在各大镜像官网拉取的，国内服务器下载会很慢，可以加载自己的ipxe脚本，然后脚本里使用国内镜像源。</p>
-<p>可以在第6步中，选择<code class="notranslate">ipxe shell</code>加载自己的脚本，命令如下：</p>
+<p>可以在第6步中，选择<code class="notranslate">ipxe shell</code>加载自己的脚本，命令示例：</p>
 <pre class="notranslate"><code class="notranslate">dhcp
 
 chain https://example.com/embed.ipxe
@@ -323,6 +323,7 @@ reboot
 
 chain http://example.com/embed.ipxe
 </code></pre>
+<p>建议使用http协议，因为https模块默认没有内置，需要编译时加进去，并且固件里的根证书只覆盖了常见的场景。</p>
 <h3>PXE 客户端启动链路</h3>
 <pre class="notranslate"><code class="notranslate">开机
   │
