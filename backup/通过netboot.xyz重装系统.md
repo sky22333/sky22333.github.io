@@ -52,10 +52,16 @@ chain https://example.com/embed.ipxe
 
 - 安装dnsmasq
 
-编辑 `/etc/dnsmasq.conf` 配置DHCP和TFTP服务，重要环节，要和PXE客户端（要装系统的设备）在同一局域网。
-
 ```
-# ProxyDHCP + TFTP 不影响已存在的DHCP服务器
+apt update
+apt install -y dnsmasq
+```
+
+创建和编辑 `/etc/dnsmasq.d/pxe.conf` 配置ProxyDHCP和TFTP服务，要和PXE客户端（要装系统的设备）在同一局域网。
+
+此配置使用`ProxyDHCP`模式，不会跟其他`DHCP`服务冲突，只会响应和下发PXE请求
+```
+# ProxyDHCP + TFTP
 # 关闭 DNS
 port=0
 
@@ -63,7 +69,7 @@ port=0
 log-dhcp
 log-facility=/var/log/dnsmasq.log
 
-# 改1：你的局域网段
+# 改1：你的网段
 dhcp-range=192.168.1.0,proxy
 
 # 改2：本机 IP
@@ -77,6 +83,23 @@ tftp-root=/etc/tftp
 pxe-service=x86PC,       "PXE BIOS",             netboot.xyz-undionly.kpxe
 pxe-service=X86-64_EFI,  "PXE UEFI x64",         netboot.xyz-snponly.efi
 pxe-service=ARM64_EFI,   "PXE UEFI ARM64",       netboot.xyz-arm64-snponly.efi
+```
+- 管理命令
+```
+# 启动服务
+sudo systemctl start dnsmasq
+
+# 设置开机自启
+sudo systemctl enable dnsmasq
+
+# 查看运行状态
+sudo systemctl status dnsmasq
+
+# 查看实时日志
+sudo tail -f /var/log/dnsmasq.log
+
+# 重启服务
+sudo systemctl restart dnsmasq
 ```
 
 ### netboot.xyz的IPXE固件下载地址
