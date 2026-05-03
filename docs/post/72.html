@@ -351,7 +351,45 @@ menu.ipxe 菜单（这里的运行链路是本教程的脚本里定义的）
 </code></pre>
 <h3>客户端机器装Windows</h3>
 <p>对于安装Windows系统，可以使用 <a href="https://github.com/ipxe/wimboot">https://github.com/ipxe/wimboot</a> 来直接加载 Windows 安装程序。</p>
-<p>微软官方的<code class="notranslate">Windows ISO</code>镜像文件中，解压后<code class="notranslate">sources</code>目录下有一个核心文件<code class="notranslate">boot.wim</code>。这个<code class="notranslate">boot.wim</code>本质上就是一个微型的 <code class="notranslate">Windows PE</code>环境，可以用来启动并运行Windows安装程序。</p></div>
+<p>微软官方的<code class="notranslate">Windows ISO</code>镜像文件中，解压后<code class="notranslate">sources</code>目录下有一个核心文件<code class="notranslate">boot.wim</code>。这个<code class="notranslate">boot.wim</code>本质上就是一个微型的 <code class="notranslate">Windows PE</code>环境，可以用来启动并运行Windows安装程序。</p>
+<h3>编译自己的IPXE固件</h3>
+<ul>
+<li>安装依赖</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">sudo apt update
+sudo apt install -y build-essential liblzma-dev mtools mkisofs syslinux gcc-aarch64-linux-gnu wget tar git
+</code></pre>
+<ul>
+<li>下载源码</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">git clone https://github.com/ipxe/ipxe.git
+</code></pre>
+<ul>
+<li>
+<p>进入<code class="notranslate">src</code>目录</p>
+</li>
+<li>
+<p>编辑<code class="notranslate">config/general.h</code>文件（可选）<br>
+这个文件定义了固件的功能，常用的功能默认已经启用了，有些高级功能被注释了，如果需要启用就取消注释，一般默认的就够用了。</p>
+</li>
+<li>
+<p>创建内置脚本<code class="notranslate">embed.ipxe</code>放到当前目录</p>
+</li>
+<li>
+<p>编译命令</p>
+</li>
+</ul>
+<p>三种BIOS架构</p>
+<pre class="notranslate"><code class="notranslate"># Legacy BIOS
+make bin/undionly.kpxe EMBED=embed.ipxe
+
+# UEFI x86_64
+make bin-x86_64-efi/ipxe.efi EMBED=embed.ipxe
+
+# UEFI ARM64
+make CROSS_COMPILE=aarch64-linux-gnu- bin-arm64-efi/ipxe.efi EMBED=embed.ipxe
+</code></pre>
+<p>编译后的产物在<code class="notranslate">bin</code>目录</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>

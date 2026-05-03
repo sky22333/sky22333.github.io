@@ -198,3 +198,36 @@ menu.ipxe 菜单（这里的运行链路是本教程的脚本里定义的）
 
 微软官方的`Windows ISO`镜像文件中，解压后`sources`目录下有一个核心文件`boot.wim`。这个`boot.wim`本质上就是一个微型的 `Windows PE`环境，可以用来启动并运行Windows安装程序。
 
+### 编译自己的IPXE固件
+
+- 安装依赖
+```
+sudo apt update
+sudo apt install -y build-essential liblzma-dev mtools mkisofs syslinux gcc-aarch64-linux-gnu wget tar git
+```
+- 下载源码
+```
+git clone https://github.com/ipxe/ipxe.git
+```
+- 进入`src`目录
+
+- 编辑`config/general.h`文件（可选）
+这个文件定义了固件的功能，常用的功能默认已经启用了，有些高级功能被注释了，如果需要启用就取消注释，一般默认的就够用了。
+
+- 创建内置脚本`embed.ipxe`放到当前目录
+
+- 编译命令
+
+三种BIOS架构
+```
+# Legacy BIOS
+make bin/undionly.kpxe EMBED=embed.ipxe
+
+# UEFI x86_64
+make bin-x86_64-efi/ipxe.efi EMBED=embed.ipxe
+
+# UEFI ARM64
+make CROSS_COMPILE=aarch64-linux-gnu- bin-arm64-efi/ipxe.efi EMBED=embed.ipxe
+```
+
+编译后的产物在`bin`目录
