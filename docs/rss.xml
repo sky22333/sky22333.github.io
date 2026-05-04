@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 27 Apr 2026 00:20:01 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 04 May 2026 00:58:02 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
 
 - 1：查看系统信息并备份，安装新系统的时候可能会用到
 ```
@@ -1286,32 +1286,23 @@ git config --list
 热门框架收藏：
 
 - [Tailwind CSS](https://www.tailwindcss.cn/docs/installation) + [shadcn/ui](https://www.shadcn-ui.cn/docs/installation)
-
 - astro：https://docs.astro.build/zh-cn/tutorial/0-introduction/
-
 - vue3：https://cn.vuejs.org/guide/introduction.html
-
 - nuxt：https://nuxt.com/docs/getting-started/introduction
-
 - nuxt-ui：https://ui.nuxt.com/getting-started/installation/nuxt
-
 - vuetifyjs-ui：https://vuetifyjs.com/zh-Hans/getting-started/installation/
- 
-- material-ui：https://mui.com/material-ui/guides/responsive-ui
-
 - 饿了么UI：https://element-plus.org/zh-CN/guide/installation.html
-
 - Bootstrap：https://v5.bootcss.com/docs/getting-started/introduction
-
 - daisyUI原生UI库：https://daisyui.com/docs/cdn/?lang=zh_hans
-
 - Github风格UI库：https://primer.style/product/
-
 - 微软风格UI库：https://react.fluentui.dev/
-
 - 谷歌风格UI库：https://material-web.dev/
-
 - 谷歌UI库：https://mui.com/material-ui/getting-started/
+- React Bits 动画组件：https://reactbits.dev/get-started/introduction
+- Vue Bits 动画组件：https://vue-bits.dev/
+
+
+
 
 | **原生前端库**             | **推荐库**       | **官方地址** |
 |---------------------|----------------|-------------|
