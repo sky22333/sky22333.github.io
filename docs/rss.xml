@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 04 May 2026 06:20:31 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 04 May 2026 07:14:11 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
 
 - 1：查看系统信息并备份，安装新系统的时候可能会用到
 ```
@@ -1306,7 +1306,7 @@ git config --list
 - **React Bits**: https://reactbits.dev/get-started/introduction
 - **Vue Bits**: https://vue-bits.dev/
 - **Uiverse**（HTML，React）: https://uiverse.io/elements
-
+- **FormKit AutoAnimate**（通用）: https://auto-animate.formkit.com/#examples
 
 
 | **原生前端库**             | **推荐库**       | **官方地址** |
