@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 04 May 2026 06:16:30 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 04 May 2026 06:19:12 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## 云服务器环境网络重装系统
 
 - 1：查看系统信息并备份，安装新系统的时候可能会用到
 ```
@@ -1290,7 +1290,7 @@ git config --list
 - **Inspira UI** (Vue生态现代组件集): https://inspira-ui.com/docs/cn/components
 - **shadcn-vue** (Vue生态): https://shadcn-vue.com/
 
-- **Material Web** (Google风格, Web Components): https://material-web.dev/
+- **Material Web** (Google安卓原生风格): https://material-web.dev/
 - **MUI** (React生态, Google Material Design): https://mui.com/material-ui/getting-started/ 
 - **Fluent UI** (React生态, 微软风格): https://react.fluentui.dev/
 - **shadcn/ui** (React生态): https://www.shadcn-ui.cn/docs/installation
