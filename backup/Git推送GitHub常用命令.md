@@ -34,17 +34,6 @@ git push origin main
 git config --global --unset credential.helper
 ```
 
-
-### 配置提交用户
-```
-# 全局配置
-git config --global user.name "admin123"
-git config --global user.email "admin123@admin.com"
-
-# 查看
-git config --list
-```
-
 ## 项目添加子模块
 `ddns-go` 为例，项目根目录执行。
 ```
@@ -214,11 +203,20 @@ git reset --hard 6038e0a
 ```
 选择`Windows凭据`，找到`github.com`域名相关的凭据，然后编辑或者删除。
 
+### 配置提交用户
+```
+# 全局配置
+git config --global user.name "sky22333"
+git config --global user.email "sky22333sky22333@gmail.com"
+
+# 查看
+git config --list
+```
 
 ## Git走代理
 ```
-git config --global http.proxy socks5://127.0.0.1:10808
-git config --global https.proxy socks5://127.0.0.1:10808
+git config --global http.proxy http://127.0.0.1:10808
+git config --global https.proxy http://127.0.0.1:10808
 ```
 
 默认会配置在`C:\Users\用户名\.gitconfig`文件里
