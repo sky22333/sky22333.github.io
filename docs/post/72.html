@@ -10,72 +10,76 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 云服务器环境网络重装系统
+<meta name="description" content="## Linux系统网络重装系统
 
-- 1：查看系统信息并备份，安装新系统的时候可能会用到
+#### 查看系统信息并备份
+出意外时可用于手动配置
 ```
 # 查看系统盘
 df -h /
 
-# 查看网络配置
-ip a
+# 查看默认网关
+ip r
 
-# 查看是否支持uefi
-ls /sys/firmware/efi
+# 查看默认网络接口
+ip a
 ```
-- 2：下载 netboot.xyz 启动镜像（iPXE引导器）
+#### 下载 netboot.xyz 启动镜像（iPXE引导器）
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-- 3：将镜像DD写入整块系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
+#### 将镜像DD写入系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M
 ```
-- 4：强制将缓存写入磁盘，确保数据落盘完成
+#### 强制将缓存写入磁盘，确保数据落盘完成
 ```
 sync
 ```
-- 5：重启服务器
+#### 重启服务器
 ```
 reboot
 ```
-- 6：通过云厂商后台的服务器VNC界面进入启动菜单，选择网络安装
+#### 进入启动菜单，选择网络安装
+云服务器厂商可以在管理后台通过VNC界面操作
 ```
 Linux Network Installs (64-bit)
 ```
 
 > 如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。">
 <meta property="og:title" content="通过netboot.xyz重装系统">
-<meta property="og:description" content="## 云服务器环境网络重装系统
+<meta property="og:description" content="## Linux系统网络重装系统
 
-- 1：查看系统信息并备份，安装新系统的时候可能会用到
+#### 查看系统信息并备份
+出意外时可用于手动配置
 ```
 # 查看系统盘
 df -h /
 
-# 查看网络配置
-ip a
+# 查看默认网关
+ip r
 
-# 查看是否支持uefi
-ls /sys/firmware/efi
+# 查看默认网络接口
+ip a
 ```
-- 2：下载 netboot.xyz 启动镜像（iPXE引导器）
+#### 下载 netboot.xyz 启动镜像（iPXE引导器）
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
-- 3：将镜像DD写入整块系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
+#### 将镜像DD写入系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M
 ```
-- 4：强制将缓存写入磁盘，确保数据落盘完成
+#### 强制将缓存写入磁盘，确保数据落盘完成
 ```
 sync
 ```
-- 5：重启服务器
+#### 重启服务器
 ```
 reboot
 ```
-- 6：通过云厂商后台的服务器VNC界面进入启动菜单，选择网络安装
+#### 进入启动菜单，选择网络安装
+云服务器厂商可以在管理后台通过VNC界面操作
 ```
 Linux Network Installs (64-bit)
 ```
@@ -145,62 +149,71 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>云服务器环境网络重装系统</h2>
-<ul>
-<li>1：查看系统信息并备份，安装新系统的时候可能会用到</li>
-</ul>
+<div class="markdown-body" id="postBody"><h2>Linux系统网络重装系统</h2>
+<h4>查看系统信息并备份</h4>
+<p>出意外时可用于手动配置</p>
 <pre class="notranslate"><code class="notranslate"># 查看系统盘
 df -h /
 
-# 查看网络配置
-ip a
+# 查看默认网关
+ip r
 
-# 查看是否支持uefi
-ls /sys/firmware/efi
+# 查看默认网络接口
+ip a
 </code></pre>
-<ul>
-<li>2：下载 netboot.xyz 启动镜像（iPXE引导器）</li>
-</ul>
+<h4>下载 netboot.xyz 启动镜像（iPXE引导器）</h4>
 <pre class="notranslate"><code class="notranslate">wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 </code></pre>
-<ul>
-<li>3：将镜像DD写入整块系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）</li>
-</ul>
+<h4>将镜像DD写入系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）</h4>
 <pre class="notranslate"><code class="notranslate">dd if=netboot.xyz.img of=/dev/vda bs=4M
 </code></pre>
-<ul>
-<li>4：强制将缓存写入磁盘，确保数据落盘完成</li>
-</ul>
+<h4>强制将缓存写入磁盘，确保数据落盘完成</h4>
 <pre class="notranslate"><code class="notranslate">sync
 </code></pre>
-<ul>
-<li>5：重启服务器</li>
-</ul>
+<h4>重启服务器</h4>
 <pre class="notranslate"><code class="notranslate">reboot
 </code></pre>
-<ul>
-<li>6：通过云厂商后台的服务器VNC界面进入启动菜单，选择网络安装</li>
-</ul>
+<h4>进入启动菜单，选择网络安装</h4>
+<p>云服务器厂商可以在管理后台通过VNC界面操作</p>
 <pre class="notranslate"><code class="notranslate">Linux Network Installs (64-bit)
 </code></pre>
 <blockquote>
 <p>如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。<code class="notranslate">Alpine</code>系统默认是安装在内存中的，进入系统后需要执行<code class="notranslate">setup-alpine</code>命令安装到硬盘。</p>
 <p>如果安装失败的话可能是硬盘分区有问题或者其他设置不对，可以返回到<code class="notranslate">netboot.xyz 启动菜单</code>，重新选择网络安装再装一遍即可。</p>
 </blockquote>
-<ul>
-<li>国内服务器</li>
-</ul>
-<p><code class="notranslate">netboot.xyz</code>项目拉取镜像是在各大镜像官网拉取的，国内服务器下载会很慢，可以加载自己的ipxe脚本，然后脚本里使用国内镜像源。</p>
-<p>可以在第6步中，选择<code class="notranslate">ipxe shell</code>加载自己的脚本，命令示例：</p>
-<pre class="notranslate"><code class="notranslate">dhcp
-
-chain https://example.com/embed.ipxe
+<h4>国内镜像站</h4>
+<p><code class="notranslate">netboot.xyz</code>项目下载系统镜像是在各大镜像官网下载的，国内服务器下载会很慢，可以加载自己的ipxe脚本，然后脚本里使用国内镜像源。</p>
+<p>可以在第6步中，选择<code class="notranslate">IPXE shell</code>加载自己的脚本，命令示例：</p>
+<pre class="notranslate"><code class="notranslate">chain https://example.com/embed.ipxe
 </code></pre>
 <hr>
-<h3>手搓PXE服务</h3>
-<ul>
-<li>安装dnsmasq</li>
-</ul>
+<h2>Windows系统重装为Linux</h2>
+<h4>下载 netboot.xyz 启动镜像</h4>
+<p><code class="notranslate">C</code>盘里创建一个<code class="notranslate">boot</code>目录</p>
+<p>下载<code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz.img</code>放到<code class="notranslate">boot</code>目录</p>
+<h4>以管理员权限执行命令添加启动项</h4>
+<pre class="notranslate"><code class="notranslate">bcdedit /copy {current} /d "Linux Install"
+</code></pre>
+<p>执行完成后会显示一个GUID，类似于<code class="notranslate">{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}</code></p>
+<p>确认GUID后，逐条复制粘贴执行，记得替换GUID：</p>
+<pre class="notranslate"><code class="notranslate">bcdedit /set {你的GUID} path \boot\netboot.xyz.img
+
+bcdedit /set {你的GUID} loadoptions "initrd=\boot\netboot.xyz.img"
+
+bcdedit /set {你的GUID} inirootpath \boot\netboot.xyz.img
+
+bcdedit /timeout 60
+</code></pre>
+<h4>验证配置</h4>
+<pre class="notranslate"><code class="notranslate">bcdedit /enum {你的GUID}
+</code></pre>
+<p>确认输出中至少包含：</p>
+<pre class="notranslate"><code class="notranslate">path                    \boot\netboot.xyz.img
+description              Linux Install
+</code></pre>
+<hr>
+<h2>手搓PXE服务</h2>
+<h4>安装dnsmasq</h4>
 <pre class="notranslate"><code class="notranslate">apt update
 apt install -y dnsmasq
 </code></pre>
@@ -229,9 +242,7 @@ pxe-service=x86PC,       "PXE BIOS",             netboot.xyz-undionly.kpxe
 pxe-service=X86-64_EFI,  "PXE UEFI x64",         netboot.xyz-snponly.efi
 pxe-service=ARM64_EFI,   "PXE UEFI ARM64",       netboot.xyz-arm64-snponly.efi
 </code></pre>
-<ul>
-<li>管理命令</li>
-</ul>
+<h4>管理命令</h4>
 <pre class="notranslate"><code class="notranslate"># 启动服务
 sudo systemctl start dnsmasq
 
@@ -247,7 +258,7 @@ sudo tail -f /var/log/dnsmasq.log
 # 重启服务
 sudo systemctl restart dnsmasq
 </code></pre>
-<h3>netboot.xyz的IPXE固件下载地址</h3>
+<h4>netboot.xyz的IPXE固件下载地址</h4>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -261,30 +272,30 @@ sudo systemctl restart dnsmasq
 <tr>
 <td align="left"><strong>Legacy (PCBIOS)</strong></td>
 <td align="left"><code class="notranslate">netboot.xyz-undionly.kpxe</code></td>
-<td align="left"><code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz-undionly.kpxe</code></td>
+<td align="left"><a href="https://boot.netboot.xyz/ipxe/netboot.xyz-undionly.kpxe" rel="nofollow">https://boot.netboot.xyz/ipxe/netboot.xyz-undionly.kpxe</a></td>
 <td align="left">传统 BIOS DHCP 引导文件，通用网卡驱动</td>
 </tr>
 <tr>
 <td align="left"><strong>UEFI x86_64</strong></td>
 <td align="left"><code class="notranslate">netboot.xyz-snponly.efi</code></td>
-<td align="left"><code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz-snponly.efi</code></td>
-<td align="left">UEFI 引导文件，仅从链式加载设备启动</td>
+<td align="left"><a href="https://boot.netboot.xyz/ipxe/netboot.xyz-snponly.efi" rel="nofollow">https://boot.netboot.xyz/ipxe/netboot.xyz-snponly.efi</a></td>
+<td align="left">UEFI 引导文件</td>
 </tr>
 <tr>
 <td align="left"><strong>UEFI ARM64</strong></td>
 <td align="left"><code class="notranslate">netboot.xyz-arm64-snponly.efi</code></td>
-<td align="left"><code class="notranslate">https://boot.netboot.xyz/ipxe/netboot.xyz-arm64-snponly.efi</code></td>
-<td align="left">ARM64 UEFI 引导文件，仅从链式加载设备启动</td>
+<td align="left"><a href="https://boot.netboot.xyz/ipxe/netboot.xyz-arm64-snponly.efi" rel="nofollow">https://boot.netboot.xyz/ipxe/netboot.xyz-arm64-snponly.efi</a></td>
+<td align="left">ARM64 UEFI 引导文件</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h3>netboot.xyz本地钩子</h3>
+<h4>netboot.xyz本地钩子</h4>
 <p><code class="notranslate">netboot.xyz</code>官方固件启动后会自动调用<code class="notranslate">local-vars.ipxe</code>脚本，如果存在的话。</p>
 <p>判断脚本是否存在：<br>
 他会自动扫描你tftp目录里的<code class="notranslate">local-vars.ipxe</code>脚本，你需要提前创建并放到tftp目录。如果没有的话他会走自己菜单的逻辑。并且是根据<code class="notranslate">DHCP</code>响应里的<code class="notranslate">server</code>信息找到你的tftp的IP地址。</p>
-<h3>编译自己的IPXE固件</h3>
+<h4>编译自己的IPXE固件</h4>
 <p>当然你也可以从 <a href="https://github.com/ipxe/ipxe">IPXE官方项目地址</a> 自行编译，这样你就可以将自己的ipxe启动脚本内置进去。</p>
-<h3>ipxe脚本示例</h3>
+<h4>ipxe脚本示例</h4>
 <p>ipxe脚本是核心步骤，从这里定义去哪里下载镜像，其他资源，和如何启动。</p>
 <p>可根据自己情况修改，本地镜像文件则需要你启动一个HTTP服务，然后将镜像文件放进去，供客户端下载，适合离线环境。</p>
 <pre class="notranslate"><code class="notranslate">#!ipxe
@@ -345,7 +356,7 @@ reboot
 
 chain http://example.com/embed.ipxe
 </code></pre>
-<p>建议使用http协议，因为https模块默认没有内置，需要编译时加进去，并且固件里的根证书只覆盖了常见的场景。</p>
+<p>建议使用HTTP协议，因为某些旧版本没有内置HTTPS模块，并且固件里的根证书也不齐全。</p>
 <h3>PXE 客户端启动链路</h3>
 <pre class="notranslate"><code class="notranslate">开机
   │
@@ -362,14 +373,10 @@ TFTP (dnsmasq)
 iPXE 环境启动
   │
   ▼
-HTTP 加载 menu.ipxe 脚本（需要手动加载，除非自己编译固件让他自动加载）
+HTTP 加载 menu.ipxe 脚本（需要手动加载，除非自己编译固件内置进去）
   │
   ▼
-menu.ipxe 菜单（这里的运行链路是本教程的脚本里定义的）
-  ├── Debian  → HTTP (CERNET) → 下载 kernel + initrd → 安装
-  ├── WinPE   → HTTP (自建)   → 下载 wimboot + wim  → 安装
-  ├── Shell   → 进入命令行
-  └── Reboot  → 重启
+menu.ipxe 菜单（定义安装选项和逻辑）
 </code></pre>
 <h3>客户端机器装Windows</h3>
 <p>对于安装Windows系统，可以使用 <a href="https://github.com/ipxe/wimboot">https://github.com/ipxe/wimboot</a> 来直接加载 Windows 安装程序。</p>
