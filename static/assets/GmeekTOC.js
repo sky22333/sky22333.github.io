@@ -40,8 +40,13 @@ document.addEventListener("DOMContentLoaded", function() {
         border-radius: 6px;
         padding: 10px;
         overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         max-height: 70vh;
+    }
+    .toc::-webkit-scrollbar {
+        display: none;
     }
     .toc-title{
         font-weight: bold;
