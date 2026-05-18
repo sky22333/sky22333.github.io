@@ -31,9 +31,9 @@ windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/pico
 </head>
 <style>
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;background-color:var(--bgColor-muted,var(--color-canvas-subtle));background-image:linear-gradient(rgba(0,0,0,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.012) 1px,transparent 1px);background-size:32px 32px;}
-html[data-color-mode="dark"]{background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);}
-body{min-width:200px;max-width:980px;margin:0 auto;padding:clamp(16px,4vw,48px);font-size:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-default,var(--color-canvas-default));}
+html{scroll-behavior:smooth;background-color:var(--bgColor-muted,var(--color-canvas-subtle));background-image:linear-gradient(rgba(0,0,0,.024) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.024) 1px,transparent 1px);background-size:32px 32px;}
+html[data-color-mode="dark"]{background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);}
+body{min-width:200px;max-width:900px;margin:20px auto;padding:45px;font-size:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fgColor-default,var(--color-fg-default));background:transparent;}
 a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease;}
 #header{display:flex;align-items:center;gap:16px;min-width:0;padding-bottom:20px;border-bottom:1px solid var(--borderColor-muted,var(--color-border-muted));margin-bottom:24px;}
 #content{min-width:0;}
@@ -58,7 +58,6 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 .markdown-body{font-size:16px;line-height:1.72;}
 .markdown-body img{border-radius:8px;}
 .markdown-body table img{border-radius:6px;}
-.markdown-body pre{border-radius:8px;}
 .btn{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
 .btn:hover{transform:translateY(-1px);}
 @media (max-width:600px){
@@ -76,7 +75,6 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 #postBody{padding-bottom:40px;border-bottom:1px solid var(--borderColor-muted,var(--color-border-muted));}
 #postBody hr{height:2px;border-radius:999px;}
 #postBody blockquote{border-left-width:3px;color:var(--fgColor-muted,var(--color-fg-muted));}
-#postBody .highlight,#postBody pre{box-shadow:inset 0 0 0 1px var(--borderColor-muted,var(--color-border-muted));}
 .post-meta{margin-top:12px;text-align:right;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
 #cmButton{height:46px;margin-top:44px;border-radius:8px;font-weight:600;}
 #comments{margin-top:48px;}
@@ -84,8 +82,6 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 @media (max-width: 600px) {
     .postTitle{max-width:100%;}
 }
-.snippet-clipboard-content{border-radius:8px;background:var(--bgColor-muted,var(--color-canvas-subtle));}
-.snippet-clipboard-content pre{margin:0;}
 .snippet-clipboard-content .clipboard-container{opacity:.72;transition:opacity .18s ease;}
 .snippet-clipboard-content:hover .clipboard-container{opacity:1;}
 .ClipboardButton{border-radius:6px!important;background:var(--bgColor-default,var(--color-canvas-default))!important;}
