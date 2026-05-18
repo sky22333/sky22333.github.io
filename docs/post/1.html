@@ -983,11 +983,15 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 #postBody hr{height:2px;border-radius:999px;}
 #postBody blockquote{border-left-width:3px;color:var(--fgColor-muted,var(--color-fg-muted));}
 .post-meta{margin-top:12px;text-align:right;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.post-back{position:fixed;top:132px;left:max(20px,calc((100vw - 900px)/2 - 76px));width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--borderColor-muted,var(--color-border-muted));border-radius:50%;background:var(--bgColor-default,var(--color-canvas-default));color:var(--fgColor-muted,var(--color-fg-muted));box-shadow:0 8px 24px rgba(31,35,40,.12);z-index:20;cursor:pointer;transition:color .18s ease,background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.post-back:hover{color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-muted,var(--color-canvas-subtle));text-decoration:none;transform:translateX(-2px);}
+.post-back::before{content:"";width:14px;height:14px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:5px;}
 #cmButton{height:46px;margin-top:44px;border-radius:8px;font-weight:600;}
 #comments{margin-top:48px;}
 .g-emoji{font-size:24px;}
 @media (max-width: 600px) {
     .postTitle{max-width:100%;}
+    .post-back{display:none;}
 }
 .snippet-clipboard-content .clipboard-container{opacity:.72;transition:opacity .18s ease;}
 .snippet-clipboard-content:hover .clipboard-container{opacity:1;}
@@ -1018,6 +1022,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </div>
 </div>
     <div id="content">
+<button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
 <div class="markdown-body" id="postBody"><h3>一键换源</h3>
 <p>海外</p>
 <pre class="notranslate"><code class="notranslate">bash &lt;(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
@@ -1611,6 +1616,14 @@ console.log("\n Gmeek last https://github.com/Meekdai/Gmeek \n");
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 
+function goBackToList(){
+    if(document.referrer && document.referrer.indexOf(location.origin) === 0 && document.referrer !== location.href){
+        history.back();
+    }
+    else{
+        location.href="https://blog.52013120.xyz";
+    }
+}
 
 
 

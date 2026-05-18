@@ -69,11 +69,15 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 #postBody hr{height:2px;border-radius:999px;}
 #postBody blockquote{border-left-width:3px;color:var(--fgColor-muted,var(--color-fg-muted));}
 .post-meta{margin-top:12px;text-align:right;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.post-back{position:fixed;top:132px;left:max(20px,calc((100vw - 900px)/2 - 76px));width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--borderColor-muted,var(--color-border-muted));border-radius:50%;background:var(--bgColor-default,var(--color-canvas-default));color:var(--fgColor-muted,var(--color-fg-muted));box-shadow:0 8px 24px rgba(31,35,40,.12);z-index:20;cursor:pointer;transition:color .18s ease,background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.post-back:hover{color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-muted,var(--color-canvas-subtle));text-decoration:none;transform:translateX(-2px);}
+.post-back::before{content:"";width:14px;height:14px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:5px;}
 #cmButton{height:46px;margin-top:44px;border-radius:8px;font-weight:600;}
 #comments{margin-top:48px;}
 .g-emoji{font-size:24px;}
 @media (max-width: 600px) {
     .postTitle{max-width:100%;}
+    .post-back{display:none;}
 }
 .snippet-clipboard-content .clipboard-container{opacity:.72;transition:opacity .18s ease;}
 .snippet-clipboard-content:hover .clipboard-container{opacity:1;}
@@ -104,6 +108,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </div>
 </div>
     <div id="content">
+<button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
 <div class="markdown-body" id="postBody"><p>Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。下面就简单描述一下使用方式，以及效果如何。</p>
 <p>使用方式</p>
 <pre class="notranslate"><code class="notranslate">&gt; [!NOTE]
@@ -294,7 +299,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">2</span><span class="pl-s">]</span>: HyperText Markup Language 超文本标记语言
 
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">Le</span><span class="pl-s">]</span>: 开源笔记平台，支持Markdown和笔记直接发为博文</pre></div>
-<p>使用 Markdown<sup><a href="#user-content-fn-1-8d9e45345b05949e535e90a69bd15105" id="user-content-fnref-1-8d9e45345b05949e535e90a69bd15105" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-8d9e45345b05949e535e90a69bd15105" id="user-content-fnref-2-8d9e45345b05949e535e90a69bd15105" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-8d9e45345b05949e535e90a69bd15105" id="user-content-fnref-le-8d9e45345b05949e535e90a69bd15105" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
+<p>使用 Markdown<sup><a href="#user-content-fn-1-95f82e74e9aac8dacfd7d01406a85d48" id="user-content-fnref-1-95f82e74e9aac8dacfd7d01406a85d48" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-95f82e74e9aac8dacfd7d01406a85d48" id="user-content-fnref-2-95f82e74e9aac8dacfd7d01406a85d48" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-95f82e74e9aac8dacfd7d01406a85d48" id="user-content-fnref-le-95f82e74e9aac8dacfd7d01406a85d48" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
 <h1>列表</h1>
 <p>支持使用有序列表和无序列表，有序列表用数字序号+英文句号+空格+列表内容来标记，无序列表由*/+/-+空格+列表内容来标记。</p>
 <h2>有序列表</h2>
@@ -935,14 +940,14 @@ Note right of C: 没人陪我玩
     <span class="pl-ent">李四</span><span class="pl-k">--&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">很好!</span></pre></div>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-8d9e45345b05949e535e90a69bd15105">
-<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-8d9e45345b05949e535e90a69bd15105" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-95f82e74e9aac8dacfd7d01406a85d48">
+<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-95f82e74e9aac8dacfd7d01406a85d48" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-8d9e45345b05949e535e90a69bd15105">
-<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-8d9e45345b05949e535e90a69bd15105" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-95f82e74e9aac8dacfd7d01406a85d48">
+<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-95f82e74e9aac8dacfd7d01406a85d48" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-Le-8d9e45345b05949e535e90a69bd15105">
-<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-8d9e45345b05949e535e90a69bd15105" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-Le-95f82e74e9aac8dacfd7d01406a85d48">
+<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-95f82e74e9aac8dacfd7d01406a85d48" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section></div>
@@ -1001,6 +1006,14 @@ console.log("\n Gmeek last https://github.com/Meekdai/Gmeek \n");
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 
+function goBackToList(){
+    if(document.referrer && document.referrer.indexOf(location.origin) === 0 && document.referrer !== location.href){
+        history.back();
+    }
+    else{
+        location.href="https://blog.52013120.xyz";
+    }
+}
 
 
 

@@ -97,11 +97,15 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 #postBody hr{height:2px;border-radius:999px;}
 #postBody blockquote{border-left-width:3px;color:var(--fgColor-muted,var(--color-fg-muted));}
 .post-meta{margin-top:12px;text-align:right;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.post-back{position:fixed;top:132px;left:max(20px,calc((100vw - 900px)/2 - 76px));width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--borderColor-muted,var(--color-border-muted));border-radius:50%;background:var(--bgColor-default,var(--color-canvas-default));color:var(--fgColor-muted,var(--color-fg-muted));box-shadow:0 8px 24px rgba(31,35,40,.12);z-index:20;cursor:pointer;transition:color .18s ease,background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.post-back:hover{color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-muted,var(--color-canvas-subtle));text-decoration:none;transform:translateX(-2px);}
+.post-back::before{content:"";width:14px;height:14px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:5px;}
 #cmButton{height:46px;margin-top:44px;border-radius:8px;font-weight:600;}
 #comments{margin-top:48px;}
 .g-emoji{font-size:24px;}
 @media (max-width: 600px) {
     .postTitle{max-width:100%;}
+    .post-back{display:none;}
 }
 
 </style>
@@ -129,6 +133,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </div>
 </div>
     <div id="content">
+<button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
 <div class="markdown-body" id="postBody"><h2>实用网站收藏</h2>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>网站收藏 💻</p>
 </div>
@@ -208,6 +213,14 @@ console.log("\n Gmeek last https://github.com/Meekdai/Gmeek \n");
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 
+function goBackToList(){
+    if(document.referrer && document.referrer.indexOf(location.origin) === 0 && document.referrer !== location.href){
+        history.back();
+    }
+    else{
+        location.href="https://blog.52013120.xyz";
+    }
+}
 cmButton=document.getElementById("cmButton");
     span=document.createElement("span");
     span.setAttribute("class","Counter");
