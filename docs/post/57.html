@@ -80,18 +80,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 .snippet-clipboard-content .clipboard-container{opacity:.72;transition:opacity .18s ease;}
 .snippet-clipboard-content:hover .clipboard-container{opacity:1;}
 .ClipboardButton{border-radius:6px!important;background:var(--bgColor-default,var(--color-canvas-default))!important;}
-.copy-feedback {
-    display: none;
-    position: absolute;
-    top: 11px;
-    right: 48px;
-    color: var(--color-fg-on-emphasis);
-    background-color: var(--color-fg-muted);
-    border-radius: 999px;
-    padding: 3px 8px;
-    font-size: 12px;
-    line-height: 18px;
-}
+
 </style>
 
 
@@ -278,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
                 <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
             </clipboard-copy>
-            <div class="copy-feedback">ok</div>
         </div>
     `;
 
@@ -319,7 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeChild(tempTextArea);
     };
 
-    let currentFeedback = null;
     document.querySelectorAll('clipboard-copy').forEach(copyButton => {
         copyButton.addEventListener('click', async () => {
             const codeElement = copyButton.closest('.snippet-clipboard-content').querySelector('code.notranslate');
@@ -328,20 +315,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const copyIcon = copyButton.querySelector('.octicon-copy');
             const checkIcon = copyButton.querySelector('.octicon-check');
-            const copyFeedback = copyButton.nextElementSibling;
-
-            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
-            currentFeedback = copyFeedback;
 
             copyIcon.classList.add('d-none');
             checkIcon.classList.remove('d-none');
-            copyFeedback.style.display = 'block';
             copyButton.style.borderColor = 'var(--color-success-fg)';
 
             setTimeout(() => {
                 copyIcon.classList.remove('d-none');
                 checkIcon.classList.add('d-none');
-                copyFeedback.style.display = 'none';
                 copyButton.style.borderColor = '';
             }, 2000);
         });
