@@ -270,7 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFeedback = null;
     document.querySelectorAll('clipboard-copy').forEach(copyButton => {
         copyButton.addEventListener('click', () => {
-            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const codeElement = copyButton.closest('.snippet-clipboard-content').querySelector('code.notranslate');
+            const codeContent = codeElement ? codeElement.textContent : '';
             const tempTextArea = document.createElement('textarea');
             tempTextArea.value = codeContent;
             document.body.appendChild(tempTextArea);

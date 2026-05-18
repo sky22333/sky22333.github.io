@@ -192,17 +192,17 @@ sysctl -w net.ipv6.conf.all.forwarding=1
 </code></pre>
 <p>然后通过<code class="notranslate">2023</code>端口访问面板</p>
 <h3>添加出站节点</h3>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf"><img width="1496" height="734" alt="Image" src="https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf" style="max-width: 100%; height: auto; max-height: 734px;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf"><img width="1496" height="734" alt="Image" src="https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf" style="max-width: 100%; height: auto; max-height: 734px;; aspect-ratio: 1496 / 734; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
 <hr>
 <hr>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284"><img width="658" height="230" alt="Image" src="https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284" style="max-width: 100%; height: auto; max-height: 230px;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284"><img width="658" height="230" alt="Image" src="https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284" style="max-width: 100%; height: auto; max-height: 230px;; aspect-ratio: 658 / 230; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
 <hr>
 <hr>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd"><img width="1409" height="1246" alt="Image" src="https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd" style="max-width: 100%; height: auto; max-height: 1246px;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd"><img width="1409" height="1246" alt="Image" src="https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd" style="max-width: 100%; height: auto; max-height: 1246px;; aspect-ratio: 1409 / 1246; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p>
 <hr>
 <hr>
 <h3>路由配置解释</h3>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08"><img width="867" height="697" alt="Image" src="https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08" style="max-width: 100%; height: auto; max-height: 697px;"></a></p></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08"><img width="867" height="697" alt="Image" src="https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08" style="max-width: 100%; height: auto; max-height: 697px;; aspect-ratio: 867 / 697; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">❤️转载请注明出处❤️</div>
 
 </div>
@@ -297,7 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFeedback = null;
     document.querySelectorAll('clipboard-copy').forEach(copyButton => {
         copyButton.addEventListener('click', () => {
-            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const codeElement = copyButton.closest('.snippet-clipboard-content').querySelector('code.notranslate');
+            const codeContent = codeElement ? codeElement.textContent : '';
             const tempTextArea = document.createElement('textarea');
             tempTextArea.value = codeContent;
             document.body.appendChild(tempTextArea);
