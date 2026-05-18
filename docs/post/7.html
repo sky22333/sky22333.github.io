@@ -42,9 +42,10 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 .SideNav.border{border-color:var(--borderColor-muted,var(--color-border-muted))!important;}
 .SideNav-item{gap:12px;padding:13px 14px;min-height:52px;transition:background-color .18s ease;}
 .SideNav-item:hover{background:var(--bgColor-muted,var(--color-canvas-subtle));}
+.SideNav-item>.d-flex{min-width:0;}
 .SideNav-icon{flex:0 0 auto;margin-right:12px;color:var(--fgColor-muted,var(--color-fg-muted));}
 .listTitle{min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;}
-.listLabels{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;white-space:nowrap;}
+.listLabels{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;white-space:nowrap;flex-shrink:0;}
 .listLabels object{max-height:18px;max-width:28px;}
 .Label{border-radius:999px;padding:2px 8px;color:#fff;font-size:12px;line-height:18px;font-weight:500;}
 .Label a{color:#fff;text-decoration:none;}
@@ -55,11 +56,9 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 .btn{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
 .btn:hover{transform:translateY(-1px);}
 @media (max-width:600px){
+    body{padding:8px;}
     #header{align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;}
-    .title-right{width:100%;justify-content:flex-start;order:2;}
     .title-right .circle{width:36px;height:36px;}
-    .SideNav-item{align-items:flex-start!important;flex-direction:column;padding:12px;}
-    .listLabels{justify-content:flex-start;flex-wrap:wrap;white-space:normal;}
     .LabelTime{display:none;}
 }
 </style>
@@ -306,7 +305,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">2</span><span class="pl-s">]</span>: HyperText Markup Language 超文本标记语言
 
 <span class="pl-s">[</span><span class="pl-s">^</span><span class="pl-en">Le</span><span class="pl-s">]</span>: 开源笔记平台，支持Markdown和笔记直接发为博文</pre></div>
-<p>使用 Markdown<sup><a href="#user-content-fn-1-44b2e76d352271024af06128ec28598f" id="user-content-fnref-1-44b2e76d352271024af06128ec28598f" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-44b2e76d352271024af06128ec28598f" id="user-content-fnref-2-44b2e76d352271024af06128ec28598f" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-44b2e76d352271024af06128ec28598f" id="user-content-fnref-le-44b2e76d352271024af06128ec28598f" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
+<p>使用 Markdown<sup><a href="#user-content-fn-1-de4a38a18a508b2a863d715d444e237f" id="user-content-fnref-1-de4a38a18a508b2a863d715d444e237f" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup><a href="#user-content-fn-2-de4a38a18a508b2a863d715d444e237f" id="user-content-fnref-2-de4a38a18a508b2a863d715d444e237f" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, 你可以使用 Leanote<sup><a href="#user-content-fn-Le-de4a38a18a508b2a863d715d444e237f" id="user-content-fnref-le-de4a38a18a508b2a863d715d444e237f" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup> 编辑器进行书写。</p>
 <h1>列表</h1>
 <p>支持使用有序列表和无序列表，有序列表用数字序号+英文句号+空格+列表内容来标记，无序列表由*/+/-+空格+列表内容来标记。</p>
 <h2>有序列表</h2>
@@ -947,14 +946,14 @@ Note right of C: 没人陪我玩
     <span class="pl-ent">李四</span><span class="pl-k">--&gt;</span><span class="pl-ent">王五</span><span class="pl-k">:</span> <span class="pl-s">很好!</span></pre></div>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-44b2e76d352271024af06128ec28598f">
-<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-44b2e76d352271024af06128ec28598f" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-de4a38a18a508b2a863d715d444e237f">
+<p>Markdown是一种纯文本标记语言 <a href="#user-content-fnref-1-de4a38a18a508b2a863d715d444e237f" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-44b2e76d352271024af06128ec28598f">
-<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-44b2e76d352271024af06128ec28598f" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-de4a38a18a508b2a863d715d444e237f">
+<p>HyperText Markup Language 超文本标记语言 <a href="#user-content-fnref-2-de4a38a18a508b2a863d715d444e237f" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-Le-44b2e76d352271024af06128ec28598f">
-<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-44b2e76d352271024af06128ec28598f" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-Le-de4a38a18a508b2a863d715d444e237f">
+<p>开源笔记平台，支持Markdown和笔记直接发为博文 <a href="#user-content-fnref-Le-de4a38a18a508b2a863d715d444e237f" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section></div>
