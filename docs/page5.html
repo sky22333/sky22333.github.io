@@ -21,34 +21,56 @@
 
 </head>
 <style>
-body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
-#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
-#footer {margin-top:64px; text-align: center;font-size: small;}
-
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;background-color:var(--bgColor-muted,var(--color-canvas-subtle));background-image:linear-gradient(rgba(0,0,0,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.012) 1px,transparent 1px);background-size:32px 32px;}
+html[data-color-mode="dark"]{background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);}
+body{min-width:200px;max-width:980px;margin:0 auto;padding:clamp(16px,4vw,48px);font-size:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-default,var(--color-canvas-default));}
+a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease;}
+#header{display:flex;align-items:center;gap:16px;min-width:0;padding-bottom:20px;border-bottom:1px solid var(--borderColor-muted,var(--color-border-muted));margin-bottom:24px;}
+#content{min-width:0;}
+#footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--borderColor-muted,var(--color-border-muted));text-align:center;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+#footer a{color:inherit;}
+.title-right{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto;flex-shrink:0;}
+.title-right .circle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;margin:0;border-radius:50%;}
+.page-title{min-width:0;margin:0;font-size:clamp(26px,5vw,42px);line-height:1.12;font-weight:700;letter-spacing:0;}
+.muted-text{color:var(--fgColor-muted,var(--color-fg-muted));}
+.page-subtitle{margin:0 0 18px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.SideNav{min-width:0;overflow:hidden;border-radius:8px;background:var(--bgColor-default,var(--color-canvas-default));}
+.SideNav.border{border-color:var(--borderColor-muted,var(--color-border-muted))!important;}
+.SideNav-item{gap:12px;padding:13px 14px;min-height:52px;transition:background-color .18s ease;}
+.SideNav-item:hover{background:var(--bgColor-muted,var(--color-canvas-subtle));}
+.SideNav-icon{flex:0 0 auto;margin-right:12px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.listTitle{min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;}
+.listLabels{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;white-space:nowrap;}
+.listLabels object{max-height:18px;max-width:28px;}
+.Label{border-radius:999px;padding:2px 8px;color:#fff;font-size:12px;line-height:18px;font-weight:500;}
+.Label a{color:#fff;text-decoration:none;}
+.LabelTime{font-variant-numeric:tabular-nums;}
+.markdown-body{font-size:16px;line-height:1.72;}
+.markdown-body img{border-radius:8px;}
+.markdown-body table img{border-radius:6px;}
+.markdown-body pre{border-radius:8px;}
+.btn{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
+.btn:hover{transform:translateY(-1px);}
+@media (max-width:600px){
+    #header{align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;}
+    .title-right{width:100%;justify-content:flex-start;order:2;}
+    .title-right .circle{width:36px;height:36px;}
+    .SideNav-item{align-items:flex-start!important;flex-direction:column;padding:12px;}
+    .listLabels{justify-content:flex-start;flex-wrap:wrap;white-space:normal;}
+    .LabelTime{display:none;}
+}
 </style>
 
 <style>
-.avatar {transition: 0.8s;width:64px;height:64px;object-fit: cover;}
-.avatar:hover{transform: scale(1.15) rotate(360deg);}
-.title-left a{color:inherit;text-decoration:none;vertical-align: bottom;font-size:40px;font-weight: bold;font-family:Monaco;margin-left:8px;}
-.title-right{display:flex;margin:auto 0 0 auto;}
-.title-right button{margin-right:8px;padding:16px;}
-.title-right .circle{padding: 14px 16px;}
-
-.SideNav{min-width: 360px;}
-.SideNav-icon{margin-right: 16px}
-.SideNav-item .Label{color: #fff;margin-left:4px;}
-.d-flex{min-width:0;}
-.listTitle{overflow:hidden;white-space:nowrap;text-overflow: ellipsis;max-width: 100%;}
-.listLabels{white-space:nowrap;display:flex;}
-.listLabels object{max-height:16px;max-width:24px;}
-
+.title-left{display:flex;align-items:center;gap:12px;min-width:0;}
+.avatar{width:64px;height:64px;object-fit:cover;border:1px solid var(--borderColor-muted,var(--color-border-muted));transition:transform .35s ease,box-shadow .35s ease;}
+.avatar:hover{transform:scale(1.06);box-shadow:0 8px 24px rgba(140,149,159,.24);}
+.title-left a{min-width:0;color:inherit;text-decoration:none;font-size:clamp(28px,5vw,40px);line-height:1;font-weight:700;font-family:Monaco,Consolas,monospace;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 @media (max-width: 600px) {
-    body {padding: 8px;}
     .avatar {width:40px;height:40px;}
     .blogTitle{display:none;}
     #buttonRSS{display:none;}
-    .LabelTime{display:none;}
 }
 </style>
 
@@ -83,11 +105,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div style="margin-bottom: 16px;">记录点点滴滴</div>
+<div class="page-subtitle">记录点点滴滴</div>
 <nav class="SideNav border">
 <a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/7.html">
     <div class="d-flex flex-items-center">
-        <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
         <span class="listTitle">Markdown语法教程</span>
     </div>
@@ -98,7 +120,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     </div>
 </a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/6.html">
     <div class="d-flex flex-items-center">
-        <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
         <span class="listTitle">Github加速</span>
     </div>
@@ -109,7 +131,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     </div>
 </a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/5.html">
     <div class="d-flex flex-items-center">
-        <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
         <span class="listTitle">Docker镜像加速和离线安装</span>
     </div>
@@ -120,7 +142,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     </div>
 </a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/4.html">
     <div class="d-flex flex-items-center">
-        <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
         <span class="listTitle">Liunx配置wrap</span>
     </div>
@@ -131,7 +153,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     </div>
 </a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/3.html">
     <div class="d-flex flex-items-center">
-        <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
         <span class="listTitle">代理工具和SSH工具推荐</span>
     </div>

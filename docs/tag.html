@@ -15,46 +15,71 @@
 
 </head>
 <style>
-body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
-#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
-#footer {margin-top:64px; text-align: center;font-size: small;}
-
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;background-color:var(--bgColor-muted,var(--color-canvas-subtle));background-image:linear-gradient(rgba(0,0,0,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.012) 1px,transparent 1px);background-size:32px 32px;}
+html[data-color-mode="dark"]{background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);}
+body{min-width:200px;max-width:980px;margin:0 auto;padding:clamp(16px,4vw,48px);font-size:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-default,var(--color-canvas-default));}
+a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease;}
+#header{display:flex;align-items:center;gap:16px;min-width:0;padding-bottom:20px;border-bottom:1px solid var(--borderColor-muted,var(--color-border-muted));margin-bottom:24px;}
+#content{min-width:0;}
+#footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--borderColor-muted,var(--color-border-muted));text-align:center;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+#footer a{color:inherit;}
+.title-right{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto;flex-shrink:0;}
+.title-right .circle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;margin:0;border-radius:50%;}
+.page-title{min-width:0;margin:0;font-size:clamp(26px,5vw,42px);line-height:1.12;font-weight:700;letter-spacing:0;}
+.muted-text{color:var(--fgColor-muted,var(--color-fg-muted));}
+.page-subtitle{margin:0 0 18px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.SideNav{min-width:0;overflow:hidden;border-radius:8px;background:var(--bgColor-default,var(--color-canvas-default));}
+.SideNav.border{border-color:var(--borderColor-muted,var(--color-border-muted))!important;}
+.SideNav-item{gap:12px;padding:13px 14px;min-height:52px;transition:background-color .18s ease;}
+.SideNav-item:hover{background:var(--bgColor-muted,var(--color-canvas-subtle));}
+.SideNav-icon{flex:0 0 auto;margin-right:12px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.listTitle{min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;}
+.listLabels{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;white-space:nowrap;}
+.listLabels object{max-height:18px;max-width:28px;}
+.Label{border-radius:999px;padding:2px 8px;color:#fff;font-size:12px;line-height:18px;font-weight:500;}
+.Label a{color:#fff;text-decoration:none;}
+.LabelTime{font-variant-numeric:tabular-nums;}
+.markdown-body{font-size:16px;line-height:1.72;}
+.markdown-body img{border-radius:8px;}
+.markdown-body table img{border-radius:6px;}
+.markdown-body pre{border-radius:8px;}
+.btn{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
+.btn:hover{transform:translateY(-1px);}
+@media (max-width:600px){
+    #header{align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;}
+    .title-right{width:100%;justify-content:flex-start;order:2;}
+    .title-right .circle{width:36px;height:36px;}
+    .SideNav-item{align-items:flex-start!important;flex-direction:column;padding:12px;}
+    .listLabels{justify-content:flex-start;flex-wrap:wrap;white-space:normal;}
+    .LabelTime{display:none;}
+}
 </style>
 
 <style>
-.tagTitle{margin:auto 0;font-size:40px;font-weight:bold;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-.title-right{display:flex;margin:auto 0 0 auto;}
-.title-right .circle{padding: 14px 16px;margin-right:8px;}
-
-.subnav-search{width:222px;margin-top:8px;margin-right:8px;}
-.subnav-search-input{width:160px;border-top-right-radius:0px;border-bottom-right-radius:0px;}
-.subnav-search button{padding:5px 8px;border-top-left-radius:0px;border-bottom-left-radius:0px;}
-
-.SideNav-icon{margin-right:16px}
-.Label{color: #fff;margin-left:4px;}
-#taglabel .Label {margin-bottom:8px;}
-.Counter{color:#fff;background-color:rgba(234, 238, 242, 0.5)}
-
-.genTime{float: right;}
-.d-flex{min-width:0;}
-.listTitle{overflow:hidden;white-space:nowrap;text-overflow: ellipsis;max-width: 100%;}
-.listLabels{white-space:nowrap;}
-
+.tagTitle{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.subnav-search{display:flex;align-items:center;width:min(320px,100%);margin-right:4px;}
+.subnav-search-input{width:100%;height:36px;border-top-right-radius:0;border-bottom-right-radius:0;}
+.subnav-search button{height:36px;padding:5px 12px;border-top-left-radius:0;border-bottom-left-radius:0;}
+#taglabel{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+#taglabel .Label{border:0;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;}
+#taglabel .Label:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(140,149,159,.22);}
+.Counter{margin-left:6px;color:#fff;background-color:rgba(255,255,255,.24);}
+.notFind{display:none;margin:24px 0;padding:22px;border:1px dashed var(--borderColor-muted,var(--color-border-muted));border-radius:8px;color:var(--fgColor-muted,var(--color-fg-muted));text-align:center;font-size:16px;}
 @media (max-width: 600px) {
-    body { padding: 8px;}
     .tagTitle{display:none;}
-    .LabelTime{display:none;}
+    .subnav-search{width:100%;}
 }
 </style>
 
 
 <body>
     <div id="header">
-<span class="tagTitle"><span>Loading</span><span class="AnimatedEllipsis"></span></span>
+<span class="tagTitle page-title"><span>Loading</span><span class="AnimatedEllipsis"></span></span>
 <div class="title-right">
     <div class="subnav-search">
-        <input type="search" class="form-control subnav-search-input float-left" aria-label="Search site" value="" style="height:32px;">
-        <button class="btn float-left" type="submit" onclick="javascript:searchShow()">搜索</button>
+        <input type="search" class="form-control subnav-search-input" aria-label="Search site" value="">
+        <button class="btn" type="submit" onclick="javascript:searchShow()">搜索</button>
         <svg class="subnav-search-icon octicon octicon-search" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
             <path id="searchSVG" fill-rule="evenodd"></path>
         </svg>
@@ -72,9 +97,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div id="taglabel" style="margin-bottom:8px;"></div>
+<div id="taglabel"></div>
 <nav class="SideNav"></nav>
-<div class="notFind" style="display:none;font-size:24px;margin:8px;">Not Find</div>
+<div class="notFind">Not Find</div>
 </div>
     <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.52013120.xyz">繁星点点</a></div>
 <div id="footer2">
@@ -165,7 +190,7 @@ function showList(labelsCount){
         tagList.push(label);
         let showLabels = document.createElement("button");
         showLabels.setAttribute("class", "Label");
-        showLabels.setAttribute("style", "background-color:" + jsonData['labelColorDict'][label]+";padding:4px;");
+        showLabels.setAttribute("style", "background-color:" + jsonData['labelColorDict'][label]);
         showLabels.innerHTML="&nbsp;&nbsp;"+label+" ";
         showLabels.setAttribute("onclick", "javascript:updateShowTag('" + label + "');");
 
