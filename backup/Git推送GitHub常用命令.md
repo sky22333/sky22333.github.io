@@ -177,7 +177,7 @@ git remote add origin https://github.com/your-username/your-repo.git
 git push --force origin main
 ```
 
-## 切换分支
+## 🎈切换分支
 ```
 # 同步远程最新信息和分支
 git fetch origin
