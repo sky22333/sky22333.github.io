@@ -177,6 +177,16 @@ git remote add origin https://github.com/your-username/your-repo.git
 git push --force origin main
 ```
 
+## 切换分支
+```
+# 同步远程最新信息和分支
+git fetch origin
+
+# 本地切换到 dev 分支
+git switch dev
+```
+>  Git旧版本需要加上跟踪远程分支`git switch -c dev --track origin/dev`
+
 ## 🎈回滚
 执行回滚操作后无法恢复
 
