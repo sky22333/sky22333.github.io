@@ -89,3 +89,11 @@ systemProp.https.proxyPort=10808
 # 不走代理的地址（可选）
 systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 ```
+
+### 缓存清理
+
+| 目的 | 操作 |
+|---|---|
+| 清 IDE 缓存 | File → Invalidate Caches |
+| 清 Gradle 依赖缓存 | `rm -rf ~/.gradle/caches/` |
+| 清构建产物 | `./gradlew clean` 或删除 `build/` 目录 |
