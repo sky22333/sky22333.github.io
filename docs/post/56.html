@@ -696,35 +696,9 @@ gomobile init
 </ol>
 <ul>
 <li>导出函数首字母必须大写</li>
-<li>一般只需编写go项目的<code class="notranslate">启动 停止 重启 日志</code>等等接口即可。</li>
+<li>一般只需暴露 Go 项目的启动、停止、重启、日志、生命周期等函数接口即可</li>
+<li>gomobile 生成 Android 绑定后，业务端需要使用小驼峰命名调用</li>
 </ul>
-<ol start="3">
-<li>生成 AAR 库</li>
-</ol>
-<pre class="notranslate"><code class="notranslate">gomobile bind -target=android ./mylib
-</code></pre>
-<p>输出文件：</p>
-<pre class="notranslate"><code class="notranslate">mylib.aar ← Android 依赖库
-
-mylib-sources.jar ← 源码 (可选)
-</code></pre>
-<ol start="4">
-<li>导入到安卓项目</li>
-</ol>
-<p>将<code class="notranslate">mylib.aar</code>放到<code class="notranslate">app/libs/</code>目录</p>
-<p>修改<code class="notranslate">app/build.gradle</code></p>
-<pre class="notranslate"><code class="notranslate">dependencies {
-    implementation files('libs/mylib.aar')
-}
-</code></pre>
-<ol start="5">
-<li>Kotlin 调用 Go 库</li>
-</ol>
-<pre class="notranslate"><code class="notranslate">import mylib.Mylib
-
-val result = Mylib.hello("World")
-Log.d("GoLib", result)  // 输出: Hello, World!
-</code></pre>
 <h2>最新主流技术栈</h2>
 <pre class="notranslate"><code class="notranslate">🔹核心技术栈
 
@@ -762,103 +736,86 @@ Coroutines + Flow → 异步 &amp; 响应式编程
 
 最低 SDK 23 (Android 6.0) → 保证兼容大部分机型。
 
-目标 SDK 35 (Android 15) → 跟随 Play 商店要求。
+目标 SDK 37 (Android 17) → 跟随 Play 商店要求。
 
-编译 SDK 35 → 保持最新 API 能力。
+编译 SDK 37 → 保持最新 API 能力。
 </code></pre>
 <h2>gradle构建工具</h2>
-<pre class="notranslate"><code class="notranslate">https://github.com/gradle/gradle/raw/v8.14.3/gradle/wrapper/gradle-wrapper.jar
+<pre class="notranslate"><code class="notranslate">https://github.com/gradle/gradle/raw/v8.14.5/gradle/wrapper/gradle-wrapper.jar
 </code></pre>
-<pre class="notranslate"><code class="notranslate">https://services.gradle.org/distributions/gradle-8.14.3-wrapper.jar
+<pre class="notranslate"><code class="notranslate">https://services.gradle.org/distributions/gradle-8.14.5-wrapper.jar
 
-https://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+https://services.gradle.org/distributions/gradle-8.14.5-bin.zip
 </code></pre>
-<h2>Github流水线构建示例</h2>
-<p>提交新tag标签触发</p>
-<pre class="notranslate"><code class="notranslate">name: Android Build APK
-
-on:
-  push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      # 检出代码
-      - uses: actions/checkout@v4
-
-      # 安装 JDK 17 并缓存 Gradle
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-          cache: gradle
-
-      # 自动生成 keystore
-      - name: Generate keystore for CI
-        run: |
-          keytool -genkeypair \
-            -alias ci-key \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -keystore keystore.jks \
-            -storepass 123456 \
-            -keypass 123456 \
-            -dname "CN=CI, OU=Dev, O=Company, L=City, S=State, C=CN"
-
-      # 生成 keystore.properties
-      - name: Generate keystore.properties
-        run: |
-          echo "storeFile=keystore.jks" &gt; keystore.properties
-          echo "storePassword=123456" &gt;&gt; keystore.properties
-          echo "keyAlias=ci-key" &gt;&gt; keystore.properties
-          echo "keyPassword=123456" &gt;&gt; keystore.properties
-
-      # 授权 gradlew 可执行
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
-
-      # 构建 release APK
-      - name: Build release APK
-        run: ./gradlew assembleRelease
-        env:
-          KEY_ALIAS: ci-key
-          KEY_PASSWORD: 123456
-          STORE_FILE: keystore.jks
-          STORE_PASSWORD: 123456
-
-      # 上传 APK artifact
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: frp-Android
-          path: app/build/outputs/apk/release/*.apk
-          retention-days: 7
-
-      # 创建 GitHub Release
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.ref_name }}
-          name: frp-Android ${{ github.ref_name }}
-          files: app/build/outputs/apk/release/*.apk
-          draft: false
-          prerelease: false
-          make_latest: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-</code></pre>
-<h3>ADB安装</h3>
-<p>下载地址：<a href="https://developer.android.com/tools/releases/platform-tools?hl=zh-cn" rel="nofollow">https://developer.android.com/tools/releases/platform-tools?hl=zh-cn</a></p>
-<p>点击<code class="notranslate">下载适用于 Windows 的 SDK Platform-Tools</code>，下载后解压，找到<code class="notranslate">adb.exe</code>即可，可以加入系统变量方便使用。</p></div>
+<hr>
+<h1>现代 Android 高收益优化</h1>
+<p>尽量不动核心逻辑</p>
+<ul>
+<li>
+<p><strong>Baseline Profile</strong></p>
+<ul>
+<li>优化手段：提前编译热路径代码，减少运行时 JIT</li>
+<li>预期效果：冷启动、首次打开、页面切换明显加快</li>
+<li>改动成本：低</li>
+</ul>
+</li>
+<li>
+<p><strong>R8 Full Mode</strong></p>
+<ul>
+<li>优化手段：代码缩减、优化、混淆、资源压缩</li>
+<li>预期效果：APK 更小、Dex 更少、启动更快</li>
+<li>改动成本：低</li>
+</ul>
+</li>
+<li>
+<p><strong>ABI Split</strong></p>
+<ul>
+<li>优化手段：按 CPU 架构拆分安装包，原生实现效果不大</li>
+<li>预期效果：安装包显著减小、Native 加载更快</li>
+<li>改动成本：低</li>
+</ul>
+</li>
+<li>
+<p><strong>延迟初始化</strong></p>
+<ul>
+<li>优化手段：非必要组件延后初始化</li>
+<li>预期效果：启动耗时明显下降、首屏更快</li>
+<li>改动成本：低~中</li>
+</ul>
+</li>
+<li>
+<p><strong>ProfileInstaller</strong></p>
+<ul>
+<li>优化手段：确保 Baseline Profile 在更多设备生效</li>
+<li>预期效果：提升 Profile 覆盖率与稳定性</li>
+<li>改动成本：极低</li>
+</ul>
+</li>
+<li>
+<p><strong>Native Strip</strong></p>
+<ul>
+<li>优化手段：移除 Native 调试符号和无用信息</li>
+<li>预期效果：SO 体积显著减小、包体下降</li>
+<li>改动成本：低</li>
+</ul>
+</li>
+<li>
+<p><strong>Startup Library</strong></p>
+<ul>
+<li>优化手段：管理初始化顺序与依赖关系</li>
+<li>预期效果：减少主线程阻塞、改善启动性能</li>
+<li>改动成本：低</li>
+</ul>
+</li>
+<li>
+<p><strong>Resource Shrinking</strong></p>
+<ul>
+<li>优化手段：移除未使用资源</li>
+<li>预期效果：APK 更小、资源加载更轻</li>
+<li>改动成本：低</li>
+</ul>
+</li>
+</ul></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 
 </div>
