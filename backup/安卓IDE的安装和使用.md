@@ -99,7 +99,7 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 | 清 Gradle 分发 | `~/.gradle/wrapper/dists/` |
 | 清构建产物 | `.\gradlew.bat clean` 或删除 `app/build` 目录 |
 
-### `gradlew`命令临时变量设置
+ **`gradlew`命令临时变量设置**
 ```
 $env:JAVA_HOME = "IDE安装目录\jbr"
 ```
