@@ -10,7 +10,7 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 下载地址
+<meta name="description" content="## 下载地址
 
 - Android Studio：https://developer.android.com/studio?hl=zh-cn
 - 汉化包：https://github.com/sollyu/AndroidStudioChineseLanguagePack
@@ -25,9 +25,67 @@
 
 ---
 
-![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)。">
+![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)
+
+
+
+## 国内镜像
+```
+项目根目录/
+├── gradle/
+│   └── wrapper/
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
+├── build.gradle
+└── app/
+    └── build.gradle
+```
+
+
+### Gradle 分发地址
+
+文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
+
+修改这一行：
+```
+distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
+```
+
+- 腾讯云	`https://mirrors.cloud.tencent.com/gradle/`
+- 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
+- 华为云	`https://mirrors.huaweicloud.com/gradle/`
+
+### Maven 仓库地址
+
+文件：`项目根目录/settings.gradle.kts`
+
+修改 `repositories` 配置块：
+
+```
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        google()
+        mavenCentral()
+    }
+}
+```
+
+- 阿里云 public	`https://maven.aliyun.com/repository/public`
+- 阿里云 google	`https://maven.aliyun.com/repository/google`
+- 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
+。">
 <meta property="og:title" content="安卓IDE的安装和使用">
-<meta property="og:description" content="### 下载地址
+<meta property="og:description" content="## 下载地址
 
 - Android Studio：https://developer.android.com/studio?hl=zh-cn
 - 汉化包：https://github.com/sollyu/AndroidStudioChineseLanguagePack
@@ -42,7 +100,65 @@
 
 ---
 
-![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)。">
+![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)
+
+
+
+## 国内镜像
+```
+项目根目录/
+├── gradle/
+│   └── wrapper/
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
+├── build.gradle
+└── app/
+    └── build.gradle
+```
+
+
+### Gradle 分发地址
+
+文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
+
+修改这一行：
+```
+distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
+```
+
+- 腾讯云	`https://mirrors.cloud.tencent.com/gradle/`
+- 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
+- 华为云	`https://mirrors.huaweicloud.com/gradle/`
+
+### Maven 仓库地址
+
+文件：`项目根目录/settings.gradle.kts`
+
+修改 `repositories` 配置块：
+
+```
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        google()
+        mavenCentral()
+    }
+}
+```
+
+- 阿里云 public	`https://maven.aliyun.com/repository/public`
+- 阿里云 google	`https://maven.aliyun.com/repository/google`
+- 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
+。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/62.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -107,6 +223,9 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
     .postTitle{max-width:100%;}
     .post-back{display:none;}
 }
+.snippet-clipboard-content .clipboard-container{opacity:.72;transition:opacity .18s ease;}
+.snippet-clipboard-content:hover .clipboard-container{opacity:1;}
+.ClipboardButton{border-radius:6px!important;background:var(--bgColor-default,var(--color-canvas-default))!important;}
 
 </style>
 
@@ -134,7 +253,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </div>
     <div id="content">
 <button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
-<div class="markdown-body" id="postBody"><h3>下载地址</h3>
+<div class="markdown-body" id="postBody"><h2>下载地址</h2>
 <ul>
 <li>Android Studio：<a href="https://developer.android.com/studio?hl=zh-cn" rel="nofollow">https://developer.android.com/studio?hl=zh-cn</a></li>
 <li>汉化包：<a href="https://github.com/sollyu/AndroidStudioChineseLanguagePack">https://github.com/sollyu/AndroidStudioChineseLanguagePack</a></li>
@@ -151,7 +270,52 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </li>
 </ol>
 <hr>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6"><img src="https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6" alt="设置截图" style="max-width: 100%;"></a></p></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6"><img src="https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6" alt="设置截图" style="max-width: 100%;"></a></p>
+<h2>国内镜像</h2>
+<pre class="notranslate"><code class="notranslate">项目根目录/
+├── gradle/
+│   └── wrapper/
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
+├── build.gradle
+└── app/
+    └── build.gradle
+</code></pre>
+<h3>Gradle 分发地址</h3>
+<p>文件：<code class="notranslate">项目根目录/gradle/wrapper/gradle-wrapper.properties</code></p>
+<p>修改这一行：</p>
+<pre class="notranslate"><code class="notranslate">distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
+</code></pre>
+<ul>
+<li>腾讯云	<code class="notranslate">https://mirrors.cloud.tencent.com/gradle/</code></li>
+<li>阿里云	<code class="notranslate">https://mirrors.aliyun.com/macports/distfiles/gradle/</code></li>
+<li>华为云	<code class="notranslate">https://mirrors.huaweicloud.com/gradle/</code></li>
+</ul>
+<h3>Maven 仓库地址</h3>
+<p>文件：<code class="notranslate">项目根目录/settings.gradle.kts</code></p>
+<p>修改 <code class="notranslate">repositories</code> 配置块：</p>
+<pre class="notranslate"><code class="notranslate">pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        google()
+        mavenCentral()
+    }
+}
+</code></pre>
+<ul>
+<li>阿里云 public	<code class="notranslate">https://maven.aliyun.com/repository/public</code></li>
+<li>阿里云 google	<code class="notranslate">https://maven.aliyun.com/repository/google</code></li>
+<li>阿里云 gradle-plugin	<code class="notranslate">https://maven.aliyun.com/repository/gradle-plugin</code></li>
+</ul></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 
 </div>
@@ -173,7 +337,7 @@ if("07/01/2024"!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -219,7 +383,75 @@ function goBackToList(){
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+        </div>
+    `;
 
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    const copyToClipboard = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return;
+            } catch (error) {}
+        }
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = text;
+        tempTextArea.style.position = 'fixed';
+        tempTextArea.style.opacity = '0';
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+    };
+
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', async () => {
+            const codeElement = copyButton.closest('.snippet-clipboard-content').querySelector('code.notranslate');
+            const codeContent = codeElement ? codeElement.textContent : '';
+            await copyToClipboard(codeContent);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
 </script>
 <script src='/assets/GmeekTOC.js'></script><script src='/assets/lightbox.js'></script>

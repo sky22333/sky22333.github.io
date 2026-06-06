@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 06 Jun 2026 14:12:48 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 06 Jun 2026 14:33:44 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -147,7 +147,7 @@ netsh interface portproxy reset
 - 展示系统中的所有转发规则
 ```
 netsh interface  portproxy show  v4tov4
-```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓IDE的安装和使用</title><link>https://blog.52013120.xyz/post/62.html</link><description>### 下载地址
+```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓IDE的安装和使用</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 下载地址
 
 - Android Studio：https://developer.android.com/studio?hl=zh-cn
 - 汉化包：https://github.com/sollyu/AndroidStudioChineseLanguagePack
@@ -162,7 +162,65 @@ netsh interface  portproxy show  v4tov4
 
 ---
 
-![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/62.html</guid><pubDate>Mon, 18 Aug 2025 11:01:34 +0000</pubDate></item><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>### 【IP信息查询 / 地理定位】  
+![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)
+
+
+
+## 国内镜像
+```
+项目根目录/
+├── gradle/
+│   └── wrapper/
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
+├── build.gradle
+└── app/
+    └── build.gradle
+```
+
+
+### Gradle 分发地址
+
+文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
+
+修改这一行：
+```
+distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
+```
+
+- 腾讯云	`https://mirrors.cloud.tencent.com/gradle/`
+- 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
+- 华为云	`https://mirrors.huaweicloud.com/gradle/`
+
+### Maven 仓库地址
+
+文件：`项目根目录/settings.gradle.kts`
+
+修改 `repositories` 配置块：
+
+```
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        google()
+        mavenCentral()
+    }
+}
+```
+
+- 阿里云 public	`https://maven.aliyun.com/repository/public`
+- 阿里云 google	`https://maven.aliyun.com/repository/google`
+- 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/62.html</guid><pubDate>Mon, 18 Aug 2025 11:01:34 +0000</pubDate></item><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>### 【IP信息查询 / 地理定位】  
 - [https://www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace) 基于CF的IP快速查询
 - [https://ip.skk.moe/](https://ip.skk.moe) 国内外IP分流查询、DNS出口查询、CDN命中查询
 - [https://ip.cn](https://ip.cn) 国内IP和位置查询
