@@ -103,3 +103,31 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 ```
 $env:JAVA_HOME = "IDE安装目录\jbr"
 ```
+---
+
+| 命令 | 作用 |
+|---|---|
+| `.\gradlew clean` | 清理项目（删除 build 缓存） |
+| `.\gradlew build` | 完整构建（编译 + 测试 + 打包） |
+| `.\gradlew assemble` | 构建全部变体 |
+| `.\gradlew assembleDebug` | 构建 Debug APK |
+| `.\gradlew assembleRelease` | 构建 Release APK |
+| `.\gradlew test` | 运行单元测试 |
+| `.\gradlew connectedDebugAndroidTest` | 运行设备测试（需连接设备） |
+| `.\gradlew check` | 执行全部检查任务 |
+| `.\gradlew installDebug` | 安装 Debug 到设备 |
+| `.\gradlew uninstallDebug` | 卸载 Debug 应用 |
+| `.\gradlew lint` | 执行代码检查（Lint） |
+| `.\gradlew signingReport` | 查看签名信息（SHA1 / SHA256） |
+| `.\gradlew tasks` | 查看全部可用任务 |
+| `.\gradlew dependencies` | 查看依赖树 |
+| `.\gradlew properties` | 查看 Gradle 属性 |
+| `.\gradlew --version` | 查看 Gradle / Java 环境 |
+| `.\gradlew build --stacktrace` | 输出错误堆栈 |
+| `.\gradlew build --info` | 输出详细日志 |
+| `.\gradlew build --debug` | 输出调试日志 |
+| `.\gradlew build --stacktrace --info` | 完整诊断（排错推荐） |
+| `.\gradlew --stop` | 停止 Gradle 后台进程 |
+| `.\gradlew :app:assembleDebug` | 构建指定模块 |
+| `.\gradlew :app:testDebugUnitTest` | 测试指定模块 |
+| `.\gradlew ^<br>:core-runtime:test ^<br>:core-data:test ^<br>:app:assembleDebug` | 构建多个模块 |
