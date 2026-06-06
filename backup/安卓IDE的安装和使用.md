@@ -71,3 +71,21 @@ dependencyResolutionManagement {
 - 阿里云 public	`https://maven.aliyun.com/repository/public`
 - 阿里云 google	`https://maven.aliyun.com/repository/google`
 - 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
+
+### Maven 仓库配置配置代理
+
+文件：`项目根目录/gradle.properties`
+
+添加：
+```
+# HTTP 代理
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=10808
+
+# HTTPS 代理
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=10808
+
+# 不走代理的地址（可选）
+systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
+```
