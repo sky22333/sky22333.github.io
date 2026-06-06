@@ -22,7 +22,7 @@
 项目根目录/
 ├── gradle/
 │   └── wrapper/
-│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（用于构建工具下载）
 ├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
 ├── build.gradle
 └── app/
@@ -30,7 +30,7 @@
 ```
 
 
-### Gradle 分发地址
+### Gradle 分发地址（用于构建工具下载）
 
 文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
 
@@ -43,7 +43,7 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
 - 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
 - 华为云	`https://mirrors.huaweicloud.com/gradle/`
 
-### Maven 仓库地址
+### Maven 仓库地址（用于第三方库下载）
 
 文件：`项目根目录/settings.gradle.kts`
 
@@ -72,7 +72,7 @@ dependencyResolutionManagement {
 - 阿里云 google	`https://maven.aliyun.com/repository/google`
 - 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
 
-### Maven 仓库配置配置代理
+### Maven 仓库配置代理（用于第三方库下载）
 
 文件：`项目根目录/gradle.properties`
 

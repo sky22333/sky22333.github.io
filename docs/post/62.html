@@ -34,7 +34,7 @@
 项目根目录/
 ├── gradle/
 │   └── wrapper/
-│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（用于构建工具下载）
 ├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
 ├── build.gradle
 └── app/
@@ -42,7 +42,7 @@
 ```
 
 
-### Gradle 分发地址
+### Gradle 分发地址（用于构建工具下载）
 
 文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
 
@@ -55,7 +55,7 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
 - 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
 - 华为云	`https://mirrors.huaweicloud.com/gradle/`
 
-### Maven 仓库地址
+### Maven 仓库地址（用于第三方库下载）
 
 文件：`项目根目录/settings.gradle.kts`
 
@@ -84,7 +84,7 @@ dependencyResolutionManagement {
 - 阿里云 google	`https://maven.aliyun.com/repository/google`
 - 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
 
-### Maven 仓库配置配置代理
+### Maven 仓库配置代理（用于第三方库下载）
 
 文件：`项目根目录/gradle.properties`
 
@@ -126,7 +126,7 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 项目根目录/
 ├── gradle/
 │   └── wrapper/
-│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（用于构建工具下载）
 ├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
 ├── build.gradle
 └── app/
@@ -134,7 +134,7 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 ```
 
 
-### Gradle 分发地址
+### Gradle 分发地址（用于构建工具下载）
 
 文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
 
@@ -147,7 +147,7 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
 - 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
 - 华为云	`https://mirrors.huaweicloud.com/gradle/`
 
-### Maven 仓库地址
+### Maven 仓库地址（用于第三方库下载）
 
 文件：`项目根目录/settings.gradle.kts`
 
@@ -176,7 +176,7 @@ dependencyResolutionManagement {
 - 阿里云 google	`https://maven.aliyun.com/repository/google`
 - 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
 
-### Maven 仓库配置配置代理
+### Maven 仓库配置代理（用于第三方库下载）
 
 文件：`项目根目录/gradle.properties`
 
@@ -309,13 +309,13 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <pre class="notranslate"><code class="notranslate">项目根目录/
 ├── gradle/
 │   └── wrapper/
-│       └── gradle-wrapper.properties    ← Gradle 分发地址（构建工具下载）
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（用于构建工具下载）
 ├── settings.gradle                      ← Maven 仓库地址（用于第三方库下载）
 ├── build.gradle
 └── app/
     └── build.gradle
 </code></pre>
-<h3>Gradle 分发地址</h3>
+<h3>Gradle 分发地址（用于构建工具下载）</h3>
 <p>文件：<code class="notranslate">项目根目录/gradle/wrapper/gradle-wrapper.properties</code></p>
 <p>修改这一行：</p>
 <pre class="notranslate"><code class="notranslate">distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
@@ -325,7 +325,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <li>阿里云	<code class="notranslate">https://mirrors.aliyun.com/macports/distfiles/gradle/</code></li>
 <li>华为云	<code class="notranslate">https://mirrors.huaweicloud.com/gradle/</code></li>
 </ul>
-<h3>Maven 仓库地址</h3>
+<h3>Maven 仓库地址（用于第三方库下载）</h3>
 <p>文件：<code class="notranslate">项目根目录/settings.gradle.kts</code></p>
 <p>修改 <code class="notranslate">repositories</code> 配置块：</p>
 <pre class="notranslate"><code class="notranslate">pluginManagement {
@@ -350,7 +350,7 @@ dependencyResolutionManagement {
 <li>阿里云 google	<code class="notranslate">https://maven.aliyun.com/repository/google</code></li>
 <li>阿里云 gradle-plugin	<code class="notranslate">https://maven.aliyun.com/repository/gradle-plugin</code></li>
 </ul>
-<h3>Maven 仓库配置配置代理</h3>
+<h3>Maven 仓库配置代理（用于第三方库下载）</h3>
 <p>文件：<code class="notranslate">项目根目录/gradle.properties</code></p>
 <p>添加：</p>
 <pre class="notranslate"><code class="notranslate"># HTTP 代理
