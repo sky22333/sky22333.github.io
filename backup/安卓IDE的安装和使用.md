@@ -96,4 +96,4 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 |---|---|
 | 清 IDE 缓存 | File → Invalidate Caches （使缓存失效...）|
 | 清 Gradle 依赖缓存 | `~/.gradle/caches/` |
-| 清构建产物 | `./gradlew clean` 或删除 `build/` 目录 |
+| 清构建产物 | `./gradlew clean` 或删除 `app/build` 目录 |
