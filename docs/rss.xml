@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 06 Jun 2026 13:57:35 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 06 Jun 2026 14:12:48 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -147,28 +147,22 @@ netsh interface portproxy reset
 - 展示系统中的所有转发规则
 ```
 netsh interface  portproxy show  v4tov4
-```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓IDE的安装和使用</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 权限处理
+```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓IDE的安装和使用</title><link>https://blog.52013120.xyz/post/62.html</link><description>### 下载地址
 
-| 权限类型             | 是否需要代码中申请 | 系统是否弹窗 | 用户可拒绝 | 备注 |
-|----------------------|------------------|--------------|------------|------|
-| 普通权限             | 否               | 否           | 否         | 系统自动授予 |
-| 危险权限             | 是               | 是           | 是         | 系统自动弹窗引导/需处理拒绝逻辑 |
-| 前台服务权限          | 否               | 否           | 否         | 系统自动管理 |
-| 特殊权限（例如VPN）      | 是 | 是         | 是 | 系统自动弹窗引导/需处理拒绝逻辑 |
+- Android Studio：https://developer.android.com/studio?hl=zh-cn
+- 汉化包：https://github.com/sollyu/AndroidStudioChineseLanguagePack
+
+### 汉化
+
+1. 安装汉化包  
+   `右上角设置 ⚙️` → `Plugins…` → `Plugins页面的设置 ⚙️` → `Install Plugin from Disk…` → 选择汉化包 → OK → 重启 IDE
+
+2. 切换语言和地区  
+   `右上角设置 ⚙️` → `Settings…` → `Appearance &amp; Behavior` → `System Settings` → `Language and Region` → 语言选`简体中文`、地区选`China Mainland`→ OK → 重启 IDE
 
 ---
 
-特性 | 静态申请（Manifest） | 动态申请（Runtime）
--- | -- | --
-是否必须 | 必须声明，否则系统拒绝使用功能 | 仅危险权限需要，否则静态申请即可
-用户交互 | 无交互（普通权限） | 弹出对话框，由用户同意或拒绝
-时机 | 安装时系统识别 | App 运行时，根据需求请求
-灵活性 | 低 | 高，可按需请求
-易用性 | 高，写一次即可 | 低，需要代码判断、回调处理
-典型用途 | 普通权限、声明功能依赖 | 危险权限，如 CAMERA、LOCATION、MICROPHONE
-
-- 静态申请权限必须写在`AndroidManifest.xml`文件里，通常在项目的`app/src/main/AndroidManifest.xml`
-- 动态权限 / 运行时权限（例如危险权限） 一般在`Activity`或`Fragment`中完成。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/62.html</guid><pubDate>Mon, 18 Aug 2025 11:01:34 +0000</pubDate></item><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>### 【IP信息查询 / 地理定位】  
+![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/62.html</guid><pubDate>Mon, 18 Aug 2025 11:01:34 +0000</pubDate></item><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>### 【IP信息查询 / 地理定位】  
 - [https://www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace) 基于CF的IP快速查询
 - [https://ip.skk.moe/](https://ip.skk.moe) 国内外IP分流查询、DNS出口查询、CDN命中查询
 - [https://ip.cn](https://ip.cn) 国内IP和位置查询
