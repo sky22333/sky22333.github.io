@@ -109,7 +109,12 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 | 清 IDE 缓存 | File → Invalidate Caches （使缓存失效...）|
 | 清 Gradle 依赖缓存 | `~/.gradle/caches/` |
 | 清 Gradle 分发 | `~/.gradle/wrapper/dists/` |
-| 清构建产物 | `.\gradlew.bat clean` 或删除 `app/build` 目录 |。">
+| 清构建产物 | `.\gradlew.bat clean` 或删除 `app/build` 目录 |
+
+### `gradlew`命令临时变量设置
+```
+$env:JAVA_HOME = 'IDE安装目录\jbr'
+```。">
 <meta property="og:title" content="安卓IDE的安装和使用">
 <meta property="og:description" content="## 下载地址
 
@@ -210,7 +215,12 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 | 清 IDE 缓存 | File → Invalidate Caches （使缓存失效...）|
 | 清 Gradle 依赖缓存 | `~/.gradle/caches/` |
 | 清 Gradle 分发 | `~/.gradle/wrapper/dists/` |
-| 清构建产物 | `.\gradlew.bat clean` 或删除 `app/build` 目录 |。">
+| 清构建产物 | `.\gradlew.bat clean` 或删除 `app/build` 目录 |
+
+### `gradlew`命令临时变量设置
+```
+$env:JAVA_HOME = 'IDE安装目录\jbr'
+```。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/62.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -408,7 +418,10 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 <td><code class="notranslate">.\gradlew.bat clean</code> 或删除 <code class="notranslate">app/build</code> 目录</td>
 </tr>
 </tbody>
-</table></markdown-accessiblity-table></div>
+</table></markdown-accessiblity-table>
+<h3><code class="notranslate">gradlew</code>命令临时变量设置</h3>
+<pre class="notranslate"><code class="notranslate">$env:JAVA_HOME = "IDE安装目录\jbr"
+</code></pre></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 
 </div>
