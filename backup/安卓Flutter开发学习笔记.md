@@ -112,54 +112,53 @@ my_flutter_app/                    # 项目根目录
 
 ---
 
-## Docker构建Kotlin安卓项目参考
-
+## Docker构建安卓项目参考
 ```
 services:
-  android-build:
-    image: thyrlian/android-sdk
+  android:
+    image: mingc/android-build-box
+    container_name: android
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
     volumes:
-      - ./:/app
+      - .:/workspace
       - ./gradle-cache:/root/.gradle
-    working_dir: /app
-    environment:
-      - GRADLE_OPTS=-Dorg.gradle.daemon=false
-      - JAVA_OPTS=-Xmx4g
-    command: >
-      sh -c "
-        chmod +x gradlew &&
-        ./gradlew clean assembleDebug
-      "
-    # 构建发布版本需要签名
-  android-release:
-    image: thyrlian/android-sdk
-    volumes:
-      - ./:/app
-      - ./gradle-cache:/root/.gradle
-    working_dir: /app
-    environment:
-      - GRADLE_OPTS=-Dorg.gradle.daemon=false
-      - JAVA_OPTS=-Xmx4g
-      # 签名相关环境变量
-      - KEYSTORE_FILE=/app/keystore/release.jks
-      - KEYSTORE_PASSWORD=${KEYSTORE_PASSWORD}
-      - KEY_ALIAS=${KEY_ALIAS}
-      - KEY_PASSWORD=${KEY_PASSWORD}
-    command: >
-      sh -c "
-        chmod +x gradlew &&
-        ./gradlew clean assembleRelease
-      "
+      - ./flutter-cache:/root/.pub-cache
 ```
+- 启动：
 ```
-# 构建调试版本
-docker compose up android-build
-
-# 构建发布版本（需要配置签名）
-docker compose up android-release
+docker compose up -d
+```
+- 进入：
+```
+docker exec -it android bash
+```
+- 启动后先检查一下环境：
+```
+java -version
+gradle -v
+flutter --version
+sdkmanager --version
+adb version
 ```
 
----
+- 然后随便执行：
+```
+# Kotlin
+./gradlew assembleDebug
+./gradlew assembleRelease
+
+# Flutter
+flutter doctor -v
+flutter pub get
+flutter build apk --release
+
+# Android SDK
+sdkmanager --list
+adb version
+```
+
 ---
 
 ## 🤖Go 项目生成 Android SDK (AAR) 并在 Kotlin 调用
