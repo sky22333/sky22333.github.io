@@ -125,24 +125,14 @@ $env:JAVA_HOME = 'IDE安装目录\jbr'
 | `.\gradlew assembleDebug` | 构建 Debug APK |
 | `.\gradlew assembleRelease` | 构建 Release APK |
 | `.\gradlew test` | 运行单元测试 |
-| `.\gradlew connectedDebugAndroidTest` | 运行设备测试（需连接设备） |
 | `.\gradlew check` | 执行全部检查任务 |
-| `.\gradlew installDebug` | 安装 Debug 到设备 |
-| `.\gradlew uninstallDebug` | 卸载 Debug 应用 |
 | `.\gradlew lint` | 执行代码检查（Lint） |
-| `.\gradlew signingReport` | 查看签名信息（SHA1 / SHA256） |
 | `.\gradlew tasks` | 查看全部可用任务 |
 | `.\gradlew dependencies` | 查看依赖树 |
-| `.\gradlew properties` | 查看 Gradle 属性 |
-| `.\gradlew --version` | 查看 Gradle / Java 环境 |
 | `.\gradlew build --stacktrace` | 输出错误堆栈 |
 | `.\gradlew build --info` | 输出详细日志 |
 | `.\gradlew build --debug` | 输出调试日志 |
 | `.\gradlew build --stacktrace --info` | 完整诊断（排错推荐） |
-| `.\gradlew --stop` | 停止 Gradle 后台进程 |
-| `.\gradlew :app:assembleDebug` | 构建指定模块 |
-| `.\gradlew :app:testDebugUnitTest` | 测试指定模块 |
-| `.\gradlew ^<br>:core-runtime:test ^<br>:core-data:test ^<br>:app:assembleDebug` | 构建多个模块 |
 
 ---
 ---
@@ -331,24 +321,14 @@ $env:JAVA_HOME = 'IDE安装目录\jbr'
 | `.\gradlew assembleDebug` | 构建 Debug APK |
 | `.\gradlew assembleRelease` | 构建 Release APK |
 | `.\gradlew test` | 运行单元测试 |
-| `.\gradlew connectedDebugAndroidTest` | 运行设备测试（需连接设备） |
 | `.\gradlew check` | 执行全部检查任务 |
-| `.\gradlew installDebug` | 安装 Debug 到设备 |
-| `.\gradlew uninstallDebug` | 卸载 Debug 应用 |
 | `.\gradlew lint` | 执行代码检查（Lint） |
-| `.\gradlew signingReport` | 查看签名信息（SHA1 / SHA256） |
 | `.\gradlew tasks` | 查看全部可用任务 |
 | `.\gradlew dependencies` | 查看依赖树 |
-| `.\gradlew properties` | 查看 Gradle 属性 |
-| `.\gradlew --version` | 查看 Gradle / Java 环境 |
 | `.\gradlew build --stacktrace` | 输出错误堆栈 |
 | `.\gradlew build --info` | 输出详细日志 |
 | `.\gradlew build --debug` | 输出调试日志 |
 | `.\gradlew build --stacktrace --info` | 完整诊断（排错推荐） |
-| `.\gradlew --stop` | 停止 Gradle 后台进程 |
-| `.\gradlew :app:assembleDebug` | 构建指定模块 |
-| `.\gradlew :app:testDebugUnitTest` | 测试指定模块 |
-| `.\gradlew ^<br>:core-runtime:test ^<br>:core-data:test ^<br>:app:assembleDebug` | 构建多个模块 |
 
 ---
 ---
@@ -656,28 +636,12 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 <td>运行单元测试</td>
 </tr>
 <tr>
-<td><code class="notranslate">.\gradlew connectedDebugAndroidTest</code></td>
-<td>运行设备测试（需连接设备）</td>
-</tr>
-<tr>
 <td><code class="notranslate">.\gradlew check</code></td>
 <td>执行全部检查任务</td>
 </tr>
 <tr>
-<td><code class="notranslate">.\gradlew installDebug</code></td>
-<td>安装 Debug 到设备</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew uninstallDebug</code></td>
-<td>卸载 Debug 应用</td>
-</tr>
-<tr>
 <td><code class="notranslate">.\gradlew lint</code></td>
 <td>执行代码检查（Lint）</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew signingReport</code></td>
-<td>查看签名信息（SHA1 / SHA256）</td>
 </tr>
 <tr>
 <td><code class="notranslate">.\gradlew tasks</code></td>
@@ -686,14 +650,6 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 <tr>
 <td><code class="notranslate">.\gradlew dependencies</code></td>
 <td>查看依赖树</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew properties</code></td>
-<td>查看 Gradle 属性</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew --version</code></td>
-<td>查看 Gradle / Java 环境</td>
 </tr>
 <tr>
 <td><code class="notranslate">.\gradlew build --stacktrace</code></td>
@@ -710,22 +666,6 @@ systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
 <tr>
 <td><code class="notranslate">.\gradlew build --stacktrace --info</code></td>
 <td>完整诊断（排错推荐）</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew --stop</code></td>
-<td>停止 Gradle 后台进程</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew :app:assembleDebug</code></td>
-<td>构建指定模块</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew :app:testDebugUnitTest</code></td>
-<td>测试指定模块</td>
-</tr>
-<tr>
-<td><code class="notranslate">.\gradlew ^&lt;br&gt;:core-runtime:test ^&lt;br&gt;:core-data:test ^&lt;br&gt;:app:assembleDebug</code></td>
-<td>构建多个模块</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
