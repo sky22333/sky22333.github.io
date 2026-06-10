@@ -35,7 +35,7 @@ C:\flutter
 ## ✅ 三、验证安装
 
 ```bash
-flutter doctor
+flutter doctor -v
 ```
 
 检查是否识别出所有组件并显示 ✅。
