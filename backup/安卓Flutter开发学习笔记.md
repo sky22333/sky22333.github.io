@@ -66,7 +66,7 @@ build\app\outputs\flutter-apk\app-release.apk
 ## Flutter 目录结构简介
 
 ```
-my_flutter_app/                    # 项目根目录
+flutter_app/                      # 项目根目录
 ├── android/                      # Android 平台相关代码（自动生成）
 ├── ios/                          # iOS 平台相关代码（自动生成）
 ├── lib/                          # Flutter 应用主代码目录
@@ -89,26 +89,6 @@ my_flutter_app/                    # 项目根目录
 ├── README.md                    # 项目说明文档
 └── build/                       # 构建输出目录（自动生成）
 ```
-
----
-
-## 关键说明
-
-- `lib/main.dart`  
-  应用程序入口，通常调用 `runApp()` 启动根组件。
-
-- `lib/src/`  
-  按功能模块划分代码，方便维护和扩展。现代项目推荐做清晰分层。
-
-- `assets/`  
-  存放静态资源，需在 `pubspec.yaml` 中声明才能使用。
-
-- `pubspec.yaml`  
-  核心配置文件，声明Flutter SDK版本、依赖包、资源路径、国际化等。
-
-- `analysis_options.yaml`  
-  代码风格和静态检查配置，确保代码质量。
-
 
 ---
 
