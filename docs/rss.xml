@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Sat, 06 Jun 2026 15:28:28 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 10 Jun 2026 21:26:14 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -506,39 +506,14 @@ ssh-keygen -t ed25519
 &gt; 
 &gt; 默认的网络配置文件通常位于 `/etc/network/interfaces.d/50-cloud-init`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/58.html</guid><pubDate>Fri, 18 Jul 2025 09:02:16 +0000</pubDate></item><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
 
- Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>安卓开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓开发学习笔记
+ Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>安卓Flutter开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># 安卓Flutter开发学习笔记
 
 # Windows 系统手动安装 Flutter 环境
 
 ## ✅ 一、准备条件
 
-1. 操作系统：Windows 10/11（推荐 64 位）
-2. 安装要求：
-
-### Git（Flutter 安装依赖）
-```
-# 查看
-git --version
-
-# 默认安装路径
-C:\Program Files\Git
-```   
-### Android SDK（用于构建 APK）
-```
-# 查看
-sdkmanager --list
-
-# 默认安装路径
-C:\Users\&lt;你的用户名&gt;\AppData\Local\Android\Sdk
-```  
-### JDK（建议 JDK 17）
-```
-# 查看
-java -version
-
-# 默认安装路径
-C:\Program Files\Java\jdk-17
-```   
+- [Git for Windows](https://git-scm.com/install/windows)
+- [Android Studio](https://developer.android.com/studio)
 
 ---
 
@@ -546,11 +521,7 @@ C:\Program Files\Java\jdk-17
 
 ### 1. 下载 Flutter
 
-- 下载地址：https://flutter.dev/docs/get-started/install/windows  
-- 直接下载链接（Flutter 3.13.7 稳定版）：
-  ```
-  https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.13.7-stable.zip
-  ```
+- 下载地址：https://docs.flutter.dev/install/manual
 
 ### 2. 解压
 
@@ -562,11 +533,11 @@ C:\flutter
 ### 3. 配置环境变量
 
 将以下路径添加到系统环境变量 `Path` 中：
-```
-C:\flutter\bin
+```powershell
+[Environment]::SetEnvironmentVariable('Path', $env:Path + ';C:\flutter\bin', 'Machine')
 ```
 
-然后重启终端（cmd/powershell）。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/56.html</guid><pubDate>Sat, 07 Jun 2025 23:52:51 +0000</pubDate></item><item><title>使用手机搭建节点服务端</title><link>https://blog.52013120.xyz/post/55.html</link><description>### 前言
+然后重启终端（powershell）。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/56.html</guid><pubDate>Sat, 07 Jun 2025 23:52:51 +0000</pubDate></item><item><title>使用手机搭建节点服务端</title><link>https://blog.52013120.xyz/post/55.html</link><description>### 前言
  
 - 众所周知，做电商业务需要的IP质量非常高，家宽一般都特别贵，所以最近尝试用手机流量做代理，手机`sim`卡的`IP`应该是顶级的不能再顶级了。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/55.html</guid><pubDate>Sat, 31 May 2025 15:31:36 +0000</pubDate></item><item><title>关于github提交记录泄露真实邮箱的处理办法</title><link>https://blog.52013120.xyz/post/54.html</link><description>
 众所周知，很多人刚开始接触github的时候，可能都是新手，可能会用自己的实名邮箱或者直接用QQ邮箱注册，此时你的这些实名邮箱就会泄露，即使你后面改了邮箱后，之前的提交记录里也是公开能看到的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/54.html</guid><pubDate>Wed, 28 May 2025 14:52:02 +0000</pubDate></item><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
