@@ -131,3 +131,74 @@ $env:JAVA_HOME = "IDE安装目录\jbr"
 | `.\gradlew :app:assembleDebug` | 构建指定模块 |
 | `.\gradlew :app:testDebugUnitTest` | 测试指定模块 |
 | `.\gradlew ^<br>:core-runtime:test ^<br>:core-data:test ^<br>:app:assembleDebug` | 构建多个模块 |
+
+---
+---
+
+## 🤖Go 项目生成 Android SDK (AAR) 并在 Kotlin 调用
+
+1. 安装 gomobile
+```
+go install golang.org/x/mobile/cmd/gomobile@latest
+go install golang.org/x/mobile/cmd/gobind@latest
+gomobile init
+```
+2. 编写 Go 库
+
+- 导出函数首字母必须大写
+- 一般只需暴露 Go 项目的启动、停止、重启、日志、生命周期等函数接口即可
+- gomobile 生成 Android 绑定后，业务端需要使用小驼峰命名调用
+
+
+# 现代 Android 高收益优化
+
+尽量不动核心逻辑
+
+* **Baseline Profile**
+
+  * 优化手段：提前编译热路径代码，减少运行时 JIT
+  * 预期效果：冷启动、首次打开、页面切换明显加快
+  * 改动成本：低
+
+* **R8 Full Mode**
+
+  * 优化手段：代码缩减、优化、混淆、资源压缩
+  * 预期效果：APK 更小、Dex 更少、启动更快
+  * 改动成本：低
+
+* **ABI Split**
+
+  * 优化手段：按 CPU 架构拆分安装包，原生实现效果不大
+  * 预期效果：安装包显著减小、Native 加载更快
+  * 改动成本：低
+
+* **延迟初始化**
+
+  * 优化手段：非必要组件延后初始化
+  * 预期效果：启动耗时明显下降、首屏更快
+  * 改动成本：低~中
+
+* **ProfileInstaller**
+
+  * 优化手段：确保 Baseline Profile 在更多设备生效
+  * 预期效果：提升 Profile 覆盖率与稳定性
+  * 改动成本：极低
+
+* **Native Strip**
+
+  * 优化手段：移除 Native 调试符号和无用信息
+  * 预期效果：SO 体积显著减小、包体下降
+  * 改动成本：低
+
+* **Startup Library**
+
+  * 优化手段：管理初始化顺序与依赖关系
+  * 预期效果：减少主线程阻塞、改善启动性能
+  * 改动成本：低
+
+* **Resource Shrinking**
+
+  * 优化手段：移除未使用资源
+  * 预期效果：APK 更小、资源加载更轻
+  * 改动成本：低
+
