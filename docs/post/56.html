@@ -20,7 +20,7 @@
 - [Android Studio](https://developer.android.com/studio)
 - Flutter插件
 
-
+安卓sdk：
 <img width='600' alt='Image' src='https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1' />
 
 ---
@@ -57,7 +57,7 @@ C:\flutter
 - [Android Studio](https://developer.android.com/studio)
 - Flutter插件
 
-
+安卓sdk：
 <img width='600' alt='Image' src='https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1' />
 
 ---
@@ -185,7 +185,8 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <li><a href="https://developer.android.com/studio" rel="nofollow">Android Studio</a></li>
 <li>Flutter插件</li>
 </ul>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1"><img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1" style="max-width: 100%;"></a></p>
+<p>安卓sdk：<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1"><img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1" style="max-width: 100%;"></a></p>
 <hr>
 <h2>✅ 二、安装 Flutter SDK</h2>
 <h3>1. 下载 Flutter</h3>
@@ -208,9 +209,11 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <p>检查是否识别出所有组件并显示 ✅。</p>
 <hr>
 <h2>✅ 四、创建和构建项目</h2>
-<h3>1. 创建项目</h3>
-<div class="highlight highlight-source-shell"><pre class="notranslate">flutter create myapp
-<span class="pl-c1">cd</span> myapp</pre></div>
+<h3>1. 创建多平台项目</h3>
+<pre class="notranslate"><code class="notranslate">flutter create myapp `
+  --org io.github.name `
+  --platforms android,ios,windows,macos,linux
+</code></pre>
 <h3>2. 构建 APK</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">flutter build apk --release</pre></div>
 <p>输出文件路径：</p>

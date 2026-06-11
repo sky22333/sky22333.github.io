@@ -8,7 +8,7 @@
 - [Android Studio](https://developer.android.com/studio)
 - Flutter插件
 
-
+安卓sdk：
 <img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1" />
 
 ---
@@ -50,11 +50,12 @@ flutter doctor -v
 
 ## ✅ 四、创建和构建项目
 
-### 1. 创建项目
+### 1. 创建多平台项目
 
-```bash
-flutter create myapp
-cd myapp
+```
+flutter create myapp `
+  --org io.github.name `
+  --platforms android,ios,windows,macos,linux
 ```
 
 ### 2. 构建 APK
