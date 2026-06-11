@@ -162,3 +162,51 @@ gomobile init
 - 一般只需暴露 Go 项目的启动、停止、重启、日志、生命周期等函数接口即可
 - gomobile 生成 Android 绑定后，业务端需要使用小驼峰命名调用
 
+## Flutter多平台架构思想
+
+说明：Flutter 负责 UI 和业务编排，Platform Adapter 负责平台差异，Native Core 负责真正运行。
+
+```
+App 启动
+↓
+初始化依赖注入 / 配置 / 存储
+↓
+注册当前平台的 RuntimeService
+↓
+加载 Flutter UI
+↓
+用户操作 UI
+↓
+ViewModel 处理状态与交互
+↓
+UseCase / Repository 执行业务逻辑
+↓
+调用统一 RuntimeService 接口
+↓
+Platform Adapter 适配当前平台
+↓
+调用原生内核
+   Android → AAR / .so
+   Windows → exe
+   Linux → binary
+   macOS → binary / framework
+   iOS → XCFramework / NetworkExtension
+↓
+内核回传状态 / 日志 / 错误 / 流量统计
+↓
+RuntimeService 统一转换为 Dart Model / Stream
+↓
+ViewModel 更新状态
+↓
+UI 自动刷新
+```
+
+### 最简结构
+```
+lib/
+├── main.dart
+├── ui/              # 页面、组件、ViewModel
+├── domain/          # Model、UseCase、抽象接口
+├── data/            # Repository、Service实现
+└── platform/        # Android/Windows/Linux/macOS/iOS 适配器
+```
