@@ -67,32 +67,46 @@ flutter build apk --release
 build\app\outputs\flutter-apk\app-release.apk
 ```
 
-## Flutter 目录结构简介
+## Flutter 常用命令
 
-```
-flutter_app/                      # 项目根目录
-├── android/                      # Android 平台相关代码（自动生成）
-├── ios/                          # iOS 平台相关代码（自动生成）
-├── lib/                          # Flutter 应用主代码目录
-│   ├── main.dart                 # 入口文件，应用启动点
-│   ├── src/                     # 业务代码目录（可按需自定义）
-│   │   ├── widgets/             # 复用 Widget 组件
-│   │   ├── pages/               # 页面级 Widget（Screen）
-│   │   ├── models/              # 数据模型
-│   │   ├── services/            # 业务逻辑或 API 请求
-│   │   ├── utils/               # 工具类函数
-│   │   └── providers/           # 状态管理（如 Provider、Riverpod）
-├── assets/                       # 静态资源目录（图片、字体等）
-│   ├── images/                   # 图片资源
-│   ├── fonts/                    # 字体资源
-│   └── translations/             # 国际化资源（如 ARB 文件）
-├── test/                        # 单元测试代码
-├── pubspec.yaml                 # Flutter 项目配置文件，管理依赖、资源
-├── analysis_options.yaml        # Dart 分析规则配置（lint 规则）
-├── .gitignore                   # Git 忽略文件
-├── README.md                    # 项目说明文档
-└── build/                       # 构建输出目录（自动生成）
-```
+| 命令 | 说明 |
+|--------|--------|
+| flutter doctor -v | 检查 Flutter 开发环境 |
+| flutter doctor --android-licenses | 接受 Android SDK 许可证 |
+| flutter config --enable-windows-desktop | 启用 Windows 桌面支持 |
+| flutter config --enable-web | 启用 Web 支持 |
+| flutter devices | 查看已连接设备 |
+| flutter emulators | 查看模拟器列表 |
+| flutter emulators --launch <id> | 启动模拟器 |
+| flutter create app_name | 创建 Flutter 项目 |
+| flutter create . | 为当前项目补充缺失平台目录 |
+| flutter pub get | 下载项目依赖 |
+| flutter pub upgrade | 升级依赖 |
+| flutter pub outdated | 检查可升级依赖 |
+| flutter clean | 清理构建缓存 |
+| flutter run | 运行项目 |
+| flutter run -d chrome | 在 Chrome 中运行 |
+| flutter run -d windows | 在 Windows 桌面运行 |
+| flutter run -d android | 在 Android 设备运行 |
+| flutter run --release | Release 模式运行 |
+| flutter hot-reload | 热重载（通常 IDE 自动处理） |
+| flutter build apk | 构建 APK |
+| flutter build appbundle | 构建 AAB |
+| flutter build web | 构建 Web |
+| flutter build windows | 构建 Windows 程序 |
+| flutter build apk --release | 构建 Release APK |
+| flutter build apk --split-per-abi | 按 ABI 拆分 APK |
+| flutter test | 运行单元测试 |
+| flutter analyze | 静态代码检查 |
+| flutter format . | 格式化代码 |
+| flutter logs | 查看设备日志 |
+| flutter attach | 附加到正在运行的应用 |
+| flutter downgrade | 回退 Flutter 版本 |
+| flutter upgrade | 升级 Flutter |
+| flutter channel | 查看当前渠道 |
+| flutter channel stable | 切换稳定版 |
+| flutter precache | 预下载各平台依赖 |
+| flutter --version | 查看版本 |
 
 ---
 

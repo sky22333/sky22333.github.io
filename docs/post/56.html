@@ -213,30 +213,161 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <p>输出文件路径：</p>
 <pre class="notranslate"><code class="notranslate">build\app\outputs\flutter-apk\app-release.apk
 </code></pre>
-<h2>Flutter 目录结构简介</h2>
-<pre class="notranslate"><code class="notranslate">flutter_app/                      # 项目根目录
-├── android/                      # Android 平台相关代码（自动生成）
-├── ios/                          # iOS 平台相关代码（自动生成）
-├── lib/                          # Flutter 应用主代码目录
-│   ├── main.dart                 # 入口文件，应用启动点
-│   ├── src/                     # 业务代码目录（可按需自定义）
-│   │   ├── widgets/             # 复用 Widget 组件
-│   │   ├── pages/               # 页面级 Widget（Screen）
-│   │   ├── models/              # 数据模型
-│   │   ├── services/            # 业务逻辑或 API 请求
-│   │   ├── utils/               # 工具类函数
-│   │   └── providers/           # 状态管理（如 Provider、Riverpod）
-├── assets/                       # 静态资源目录（图片、字体等）
-│   ├── images/                   # 图片资源
-│   ├── fonts/                    # 字体资源
-│   └── translations/             # 国际化资源（如 ARB 文件）
-├── test/                        # 单元测试代码
-├── pubspec.yaml                 # Flutter 项目配置文件，管理依赖、资源
-├── analysis_options.yaml        # Dart 分析规则配置（lint 规则）
-├── .gitignore                   # Git 忽略文件
-├── README.md                    # 项目说明文档
-└── build/                       # 构建输出目录（自动生成）
-</code></pre>
+<h2>Flutter 常用命令</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flutter doctor -v</td>
+<td>检查 Flutter 开发环境</td>
+</tr>
+<tr>
+<td>flutter doctor --android-licenses</td>
+<td>接受 Android SDK 许可证</td>
+</tr>
+<tr>
+<td>flutter config --enable-windows-desktop</td>
+<td>启用 Windows 桌面支持</td>
+</tr>
+<tr>
+<td>flutter config --enable-web</td>
+<td>启用 Web 支持</td>
+</tr>
+<tr>
+<td>flutter devices</td>
+<td>查看已连接设备</td>
+</tr>
+<tr>
+<td>flutter emulators</td>
+<td>查看模拟器列表</td>
+</tr>
+<tr>
+<td>flutter emulators --launch </td>
+<td>启动模拟器</td>
+</tr>
+<tr>
+<td>flutter create app_name</td>
+<td>创建 Flutter 项目</td>
+</tr>
+<tr>
+<td>flutter create .</td>
+<td>为当前项目补充缺失平台目录</td>
+</tr>
+<tr>
+<td>flutter pub get</td>
+<td>下载项目依赖</td>
+</tr>
+<tr>
+<td>flutter pub upgrade</td>
+<td>升级依赖</td>
+</tr>
+<tr>
+<td>flutter pub outdated</td>
+<td>检查可升级依赖</td>
+</tr>
+<tr>
+<td>flutter clean</td>
+<td>清理构建缓存</td>
+</tr>
+<tr>
+<td>flutter run</td>
+<td>运行项目</td>
+</tr>
+<tr>
+<td>flutter run -d chrome</td>
+<td>在 Chrome 中运行</td>
+</tr>
+<tr>
+<td>flutter run -d windows</td>
+<td>在 Windows 桌面运行</td>
+</tr>
+<tr>
+<td>flutter run -d android</td>
+<td>在 Android 设备运行</td>
+</tr>
+<tr>
+<td>flutter run --release</td>
+<td>Release 模式运行</td>
+</tr>
+<tr>
+<td>flutter hot-reload</td>
+<td>热重载（通常 IDE 自动处理）</td>
+</tr>
+<tr>
+<td>flutter build apk</td>
+<td>构建 APK</td>
+</tr>
+<tr>
+<td>flutter build appbundle</td>
+<td>构建 AAB</td>
+</tr>
+<tr>
+<td>flutter build web</td>
+<td>构建 Web</td>
+</tr>
+<tr>
+<td>flutter build windows</td>
+<td>构建 Windows 程序</td>
+</tr>
+<tr>
+<td>flutter build apk --release</td>
+<td>构建 Release APK</td>
+</tr>
+<tr>
+<td>flutter build apk --split-per-abi</td>
+<td>按 ABI 拆分 APK</td>
+</tr>
+<tr>
+<td>flutter test</td>
+<td>运行单元测试</td>
+</tr>
+<tr>
+<td>flutter analyze</td>
+<td>静态代码检查</td>
+</tr>
+<tr>
+<td>flutter format .</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>flutter logs</td>
+<td>查看设备日志</td>
+</tr>
+<tr>
+<td>flutter attach</td>
+<td>附加到正在运行的应用</td>
+</tr>
+<tr>
+<td>flutter downgrade</td>
+<td>回退 Flutter 版本</td>
+</tr>
+<tr>
+<td>flutter upgrade</td>
+<td>升级 Flutter</td>
+</tr>
+<tr>
+<td>flutter channel</td>
+<td>查看当前渠道</td>
+</tr>
+<tr>
+<td>flutter channel stable</td>
+<td>切换稳定版</td>
+</tr>
+<tr>
+<td>flutter precache</td>
+<td>预下载各平台依赖</td>
+</tr>
+<tr>
+<td>flutter --version</td>
+<td>查看版本</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
 <hr>
 <h2>Docker构建安卓项目参考</h2>
 <pre class="notranslate"><code class="notranslate">services:
