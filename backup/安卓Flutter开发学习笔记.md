@@ -6,6 +6,7 @@
 
 - [Git for Windows](https://git-scm.com/install/windows)
 - [Android Studio](https://developer.android.com/studio)
+- Flutter插件
 
 
 <img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1" />
@@ -78,7 +79,7 @@ build\app\outputs\flutter-apk\app-release.apk
 | flutter devices | 查看已连接设备 |
 | flutter emulators | 查看模拟器列表 |
 | flutter emulators --launch <id> | 启动模拟器 |
-| flutter create app_name | 创建 Flutter 项目 |
+| flutter create myapp | 创建 Flutter 项目 |
 | flutter create . | 为当前项目补充缺失平台目录 |
 | flutter pub get | 下载项目依赖 |
 | flutter pub upgrade | 升级依赖 |
@@ -89,7 +90,6 @@ build\app\outputs\flutter-apk\app-release.apk
 | flutter run -d windows | 在 Windows 桌面运行 |
 | flutter run -d android | 在 Android 设备运行 |
 | flutter run --release | Release 模式运行 |
-| flutter hot-reload | 热重载（通常 IDE 自动处理） |
 | flutter build apk | 构建 APK |
 | flutter build appbundle | 构建 AAB |
 | flutter build web | 构建 Web |
@@ -99,13 +99,6 @@ build\app\outputs\flutter-apk\app-release.apk
 | flutter test | 运行单元测试 |
 | flutter analyze | 静态代码检查 |
 | flutter format . | 格式化代码 |
-| flutter logs | 查看设备日志 |
-| flutter attach | 附加到正在运行的应用 |
-| flutter downgrade | 回退 Flutter 版本 |
-| flutter upgrade | 升级 Flutter |
-| flutter channel | 查看当前渠道 |
-| flutter channel stable | 切换稳定版 |
-| flutter precache | 预下载各平台依赖 |
 | flutter --version | 查看版本 |
 
 ---
