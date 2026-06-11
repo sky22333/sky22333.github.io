@@ -75,10 +75,8 @@ build\app\outputs\flutter-apk\app-release.apk
 | flutter doctor -v | 检查 Flutter 开发环境 |
 | flutter doctor --android-licenses | 接受 Android SDK 许可证 |
 | flutter config --enable-windows-desktop | 启用 Windows 桌面支持 |
-| flutter config --enable-web | 启用 Web 支持 |
 | flutter devices | 查看已连接设备 |
 | flutter emulators | 查看模拟器列表 |
-| flutter emulators --launch <id> | 启动模拟器 |
 | flutter create myapp | 创建 Flutter 项目 |
 | flutter create . | 为当前项目补充缺失平台目录 |
 | flutter pub get | 下载项目依赖 |
@@ -92,7 +90,6 @@ build\app\outputs\flutter-apk\app-release.apk
 | flutter run --release | Release 模式运行 |
 | flutter build apk | 构建 APK |
 | flutter build appbundle | 构建 AAB |
-| flutter build web | 构建 Web |
 | flutter build windows | 构建 Windows 程序 |
 | flutter build apk --release | 构建 Release APK |
 | flutter build apk --split-per-abi | 按 ABI 拆分 APK |
