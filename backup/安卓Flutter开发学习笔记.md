@@ -7,6 +7,9 @@
 - [Git for Windows](https://git-scm.com/install/windows)
 - [Android Studio](https://developer.android.com/studio)
 
+
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1" />
+
 ---
 
 ## ✅ 二、安装 Flutter SDK
@@ -32,7 +35,10 @@ C:\flutter
 然后重启终端（powershell）。
 
 ## ✅ 三、验证安装
-
+```
+flutter doctor --android-licenses
+```
+一路输入`y`直到完成
 ```bash
 flutter doctor -v
 ```
