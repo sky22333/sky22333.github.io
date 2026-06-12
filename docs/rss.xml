@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Thu, 11 Jun 2026 22:22:50 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 12 Jun 2026 05:32:31 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -287,7 +287,7 @@ gomobile init
 - 导出函数首字母必须大写
 - 一般只需暴露 Go 项目的启动、停止、重启、日志、生命周期等函数接口即可
 - gomobile 生成 Android 绑定后，业务端需要使用小驼峰命名调用
-
+- 默认会生成一个“通用 AAR”，里面会包含所有 Go 支持的多种架构，可在业务端打包时拆分abi
 
 # 现代 Android 高收益优化
 
