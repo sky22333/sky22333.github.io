@@ -221,6 +221,10 @@ Android / iOS： Go 内核 SDK 化，做成 AAR / XCFramework
 Windows / macOS / Linux： Go 内核 daemon 化，本地 Socket IPC调用
 ```
 
+然后`Flutter`层调用统一接口
+
+---
+
 代码结构示例
 ```
 core/
