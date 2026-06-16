@@ -213,3 +213,22 @@ lib/
 ├── data/            # Repository、Service实现
 └── platform/        # Android/Windows/Linux/macOS/iOS 适配器
 ```
+
+## 后端封装统一接口
+```
+Android / iOS： Go 内核 SDK 化，做成 AAR / XCFramework 
+
+Windows / macOS / Linux： Go 内核 daemon 化，本地 Socket IPC调用
+```
+
+代码结构示例
+```
+core/
+├─ runtime/        # 纯 Go 核心逻辑：启动、停止、reload、状态、日志
+├─ api/            # 统一接口定义
+├─ mobile/         # Android/iOS 导出层：AAR / XCFramework
+├─ daemon/         # Windows/macOS/Linux 守护进程入口
+└─ ipc/            # 桌面 IPC：Named Pipe / Unix Socket
+```
+
+其他语言思路也一样
