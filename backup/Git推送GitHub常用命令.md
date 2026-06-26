@@ -44,6 +44,8 @@ git commit -m "添加子模块"
 
 #### 更新所有子模块
 项目根目录执行
+
+>对于刚下载的仓库需要：`git submodule update --init --recursive`
 ```
 git submodule update --remote --merge
 ```
