@@ -10,103 +10,7 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 各个主流编程语言的安装依赖和构建运行命令
-
-> [!TIP]
-> ## 前端 💻
-
-#### 基本代码结构
-```
-my-nodejs-project/
-├── node_modules/
-├── public/
-│ └── index.html
-├── src/
-│ ├── index.js
-│ └── App.js
-├── .gitignore
-├── package.json
-└── webpack.config.js
-```
-#### 安装依赖（推荐使用pnpm）
-```
-npm i
-```
-
-
-#### 安装依赖包
-比如框架、工具库等
-```
-npm install 包名
-```
-
-#### 安装开发依赖包
-比如测试框架、代码检查、构建工具等
-```
-npm install 包名 -D
-```
-
-#### 全局安装依赖包
-
-全局安装的包可以在命令行任何地方直接使用，一般是命令行工具类包
-`pnpm`则是`pnpm add -g 包名`
-```
-npm install -g 包名
-```
-
-
-#### 构建打包
-```
-npm run build
-```
-
-#### 测试启动
-```
-npm run dev
-```
-#### 直接启动
-```
-npm start
-```
-
-> [!TIP]
-> ## Python 💻
-
-#### 基本代码结构
-```
-my-python-project/
-├── .github/
-├── myapp.py
-├── config.py
-├── requirements.txt
-├── scripts/
-│   └── run.sh
-├── logs/
-├── models/
-├── services/
-├── templates/
-├── tests/
-├── utils/
-├── .env.local
-├── .gitignore
-└── LICENSE
-```
-
-#### 自动识别所有依赖并生成依赖清单
-```
-pip freeze > requirements.txt
-```
-
-#### 安装依赖
-```
-pip install -r requirements.txt
-```
-
-#### 运行
-```
-python app.py
-```
-
+<meta name="description" content="## 主流编程语言的安装依赖和构建运行命令
 
 > [!TIP]
 > ## Java (Spring Boot) 💻
@@ -240,103 +144,7 @@ composer install
 
 安装`PHP`和`PHP-FPM` 并配置配置`nginx`，确保你的`public/index.php`是项目的入口文件，`nginx`运行目录一般都是这个目录。">
 <meta property="og:title" content="项目编译构建文档">
-<meta property="og:description" content="## 各个主流编程语言的安装依赖和构建运行命令
-
-> [!TIP]
-> ## 前端 💻
-
-#### 基本代码结构
-```
-my-nodejs-project/
-├── node_modules/
-├── public/
-│ └── index.html
-├── src/
-│ ├── index.js
-│ └── App.js
-├── .gitignore
-├── package.json
-└── webpack.config.js
-```
-#### 安装依赖（推荐使用pnpm）
-```
-npm i
-```
-
-
-#### 安装依赖包
-比如框架、工具库等
-```
-npm install 包名
-```
-
-#### 安装开发依赖包
-比如测试框架、代码检查、构建工具等
-```
-npm install 包名 -D
-```
-
-#### 全局安装依赖包
-
-全局安装的包可以在命令行任何地方直接使用，一般是命令行工具类包
-`pnpm`则是`pnpm add -g 包名`
-```
-npm install -g 包名
-```
-
-
-#### 构建打包
-```
-npm run build
-```
-
-#### 测试启动
-```
-npm run dev
-```
-#### 直接启动
-```
-npm start
-```
-
-> [!TIP]
-> ## Python 💻
-
-#### 基本代码结构
-```
-my-python-project/
-├── .github/
-├── myapp.py
-├── config.py
-├── requirements.txt
-├── scripts/
-│   └── run.sh
-├── logs/
-├── models/
-├── services/
-├── templates/
-├── tests/
-├── utils/
-├── .env.local
-├── .gitignore
-└── LICENSE
-```
-
-#### 自动识别所有依赖并生成依赖清单
-```
-pip freeze > requirements.txt
-```
-
-#### 安装依赖
-```
-pip install -r requirements.txt
-```
-
-#### 运行
-```
-python app.py
-```
-
+<meta property="og:description" content="## 主流编程语言的安装依赖和构建运行命令
 
 > [!TIP]
 > ## Java (Spring Boot) 💻
@@ -563,77 +371,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </div>
     <div id="content">
 <button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
-<div class="markdown-body" id="postBody"><h2>各个主流编程语言的安装依赖和构建运行命令</h2>
-<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
-<h2>前端 💻</h2>
-</div>
-<h4>基本代码结构</h4>
-<pre class="notranslate"><code class="notranslate">my-nodejs-project/
-├── node_modules/
-├── public/
-│ └── index.html
-├── src/
-│ ├── index.js
-│ └── App.js
-├── .gitignore
-├── package.json
-└── webpack.config.js
-</code></pre>
-<h4>安装依赖（推荐使用pnpm）</h4>
-<pre class="notranslate"><code class="notranslate">npm i
-</code></pre>
-<h4>安装依赖包</h4>
-<p>比如框架、工具库等</p>
-<pre class="notranslate"><code class="notranslate">npm install 包名
-</code></pre>
-<h4>安装开发依赖包</h4>
-<p>比如测试框架、代码检查、构建工具等</p>
-<pre class="notranslate"><code class="notranslate">npm install 包名 -D
-</code></pre>
-<h4>全局安装依赖包</h4>
-<p>全局安装的包可以在命令行任何地方直接使用，一般是命令行工具类包<br>
-<code class="notranslate">pnpm</code>则是<code class="notranslate">pnpm add -g 包名</code></p>
-<pre class="notranslate"><code class="notranslate">npm install -g 包名
-</code></pre>
-<h4>构建打包</h4>
-<pre class="notranslate"><code class="notranslate">npm run build
-</code></pre>
-<h4>测试启动</h4>
-<pre class="notranslate"><code class="notranslate">npm run dev
-</code></pre>
-<h4>直接启动</h4>
-<pre class="notranslate"><code class="notranslate">npm start
-</code></pre>
-<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
-<h2>Python 💻</h2>
-</div>
-<h4>基本代码结构</h4>
-<pre class="notranslate"><code class="notranslate">my-python-project/
-├── .github/
-├── myapp.py
-├── config.py
-├── requirements.txt
-├── scripts/
-│   └── run.sh
-├── logs/
-├── models/
-├── services/
-├── templates/
-├── tests/
-├── utils/
-├── .env.local
-├── .gitignore
-└── LICENSE
-</code></pre>
-<h4>自动识别所有依赖并生成依赖清单</h4>
-<pre class="notranslate"><code class="notranslate">pip freeze &gt; requirements.txt
-</code></pre>
-<h4>安装依赖</h4>
-<pre class="notranslate"><code class="notranslate">pip install -r requirements.txt
-</code></pre>
-<h4>运行</h4>
-<pre class="notranslate"><code class="notranslate">python app.py
-</code></pre>
+<div class="markdown-body" id="postBody"><h2>主流编程语言的安装依赖和构建运行命令</h2>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <h2>Java (Spring Boot) 💻</h2>
 </div>
@@ -779,7 +517,157 @@ dotnet watch run
 
 # 生成可部署的生产版本，放在 publish 目录
 dotnet publish -c Release
-</code></pre></div>
+</code></pre>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<h2>rust</h2>
+</div>
+<h3>下载windows开发工具链：</h3>
+<p><a href="https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/" rel="nofollow">https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/</a></p>
+<p>只需选择如下三个即可</p>
+<pre class="notranslate"><code class="notranslate">适用于x64/x86 的MSVC 生成工具
+
+Windows 11 SDK
+
+用于Windows 的 C++ CMake 工具
+</code></pre>
+<h3>下载rust开发环境：</h3>
+<p><a href="https://rust-lang.org/zh-CN/tools/install/" rel="nofollow">https://rust-lang.org/zh-CN/tools/install/</a></p>
+<p>双击安装工具，然后一路回车。</p>
+<h3>创建一个demo</h3>
+<pre class="notranslate"><code class="notranslate">cargo new demo
+cd demo
+</code></pre>
+<p>把 <code class="notranslate">src\main.rs</code> 里的内容全部替换成下面这段代码</p>
+<pre class="notranslate"><code class="notranslate">// 告诉编译器要链接 Windows 的 user32 库
+#[link(name = "user32")]
+extern "system" {
+    // 声明一个 Windows API 函数：消息框
+    fn MessageBoxW(hWnd: isize, lpText: *const u16, lpCaption: *const u16, uType: u32) -&gt; i32;
+}
+
+fn main() {
+    // 调用系统的 MessageBox 弹窗
+    unsafe {
+        MessageBoxW(
+            0,
+            "环境完美！\0".encode_utf16().collect::&lt;Vec&lt;u16&gt;&gt;().as_ptr(),
+            "验证成功\0".encode_utf16().collect::&lt;Vec&lt;u16&gt;&gt;().as_ptr(),
+            0x40, // 信息图标
+        );
+    }
+    println!("控制台也能输出！");
+}
+</code></pre>
+<p>编译</p>
+<pre class="notranslate"><code class="notranslate">cargo build
+</code></pre>
+<h4>常用开发命令</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">项目管理</td>
+<td align="left"><code class="notranslate">cargo new &lt;项目名&gt;</code></td>
+<td align="left">创建新的二进制项目</td>
+</tr>
+<tr>
+<td align="left">项目管理</td>
+<td align="left"><code class="notranslate">cargo new --lib &lt;库名&gt;</code></td>
+<td align="left">创建新的库项目</td>
+</tr>
+<tr>
+<td align="left">项目管理</td>
+<td align="left"><code class="notranslate">cargo init</code></td>
+<td align="left">在当前目录初始化一个 Rust 项目</td>
+</tr>
+<tr>
+<td align="left">编译与运行</td>
+<td align="left"><code class="notranslate">cargo build</code></td>
+<td align="left">编译项目（debug 模式，未优化）</td>
+</tr>
+<tr>
+<td align="left">编译与运行</td>
+<td align="left"><code class="notranslate">cargo build --release</code></td>
+<td align="left">编译项目（release 模式，高度优化）</td>
+</tr>
+<tr>
+<td align="left">编译与运行</td>
+<td align="left"><code class="notranslate">cargo run</code></td>
+<td align="left">编译并运行（debug 模式）</td>
+</tr>
+<tr>
+<td align="left">编译与运行</td>
+<td align="left"><code class="notranslate">cargo run --release</code></td>
+<td align="left">编译并运行（release 模式）</td>
+</tr>
+<tr>
+<td align="left">编译与运行</td>
+<td align="left"><code class="notranslate">cargo check</code></td>
+<td align="left">只检查代码能否通过编译，不生成 exe，速度极快</td>
+</tr>
+<tr>
+<td align="left">清理依赖</td>
+<td align="left"><code class="notranslate">cargo clean</code></td>
+<td align="left">删除项目中的 target 文件夹</td>
+</tr>
+<tr>
+<td align="left">代码质量</td>
+<td align="left"><code class="notranslate">cargo fmt</code></td>
+<td align="left">自动格式化代码风格</td>
+</tr>
+<tr>
+<td align="left">代码质量</td>
+<td align="left"><code class="notranslate">cargo clippy</code></td>
+<td align="left">运行官方代码检查工具，给出改进建议</td>
+</tr>
+<tr>
+<td align="left">代码质量</td>
+<td align="left"><code class="notranslate">cargo test</code></td>
+<td align="left">运行项目中所有单元测试和集成测试</td>
+</tr>
+<tr>
+<td align="left">代码质量</td>
+<td align="left"><code class="notranslate">cargo test -- --nocapture</code></td>
+<td align="left">运行测试的同时显示 println! 输出</td>
+</tr>
+<tr>
+<td align="left">代码质量</td>
+<td align="left"><code class="notranslate">cargo bench</code></td>
+<td align="left">运行性能基准测试（需要 nightly 工具链）</td>
+</tr>
+<tr>
+<td align="left">依赖管理</td>
+<td align="left"><code class="notranslate">cargo add &lt;库名&gt;</code></td>
+<td align="left">添加依赖到 Cargo.toml</td>
+</tr>
+<tr>
+<td align="left">依赖管理</td>
+<td align="left"><code class="notranslate">cargo add &lt;库名&gt; --features &lt;特性&gt;</code></td>
+<td align="left">添加依赖并启用特定 features</td>
+</tr>
+<tr>
+<td align="left">依赖管理</td>
+<td align="left"><code class="notranslate">cargo remove &lt;库名&gt;</code></td>
+<td align="left">移除依赖</td>
+</tr>
+<tr>
+<td align="left">依赖管理</td>
+<td align="left"><code class="notranslate">cargo update</code></td>
+<td align="left">更新依赖到 Cargo.lock 允许的最新兼容版本</td>
+</tr>
+<tr>
+<td align="left">依赖管理</td>
+<td align="left"><code class="notranslate">cargo tree</code></td>
+<td align="left">以树状图显示整个依赖关系</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 
 </div>

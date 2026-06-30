@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Mon, 15 Jun 2026 04:56:17 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 30 Jun 2026 06:52:23 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -2126,103 +2126,7 @@ docker compose restart&#13;
 &#13;
 ### 知识库&#13;
 &#13;
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 各个主流编程语言的安装依赖和构建运行命令
-
-&gt; [!TIP]
-&gt; ## 前端 💻
-
-#### 基本代码结构
-```
-my-nodejs-project/
-├── node_modules/
-├── public/
-│ └── index.html
-├── src/
-│ ├── index.js
-│ └── App.js
-├── .gitignore
-├── package.json
-└── webpack.config.js
-```
-#### 安装依赖（推荐使用pnpm）
-```
-npm i
-```
-
-
-#### 安装依赖包
-比如框架、工具库等
-```
-npm install 包名
-```
-
-#### 安装开发依赖包
-比如测试框架、代码检查、构建工具等
-```
-npm install 包名 -D
-```
-
-#### 全局安装依赖包
-
-全局安装的包可以在命令行任何地方直接使用，一般是命令行工具类包
-`pnpm`则是`pnpm add -g 包名`
-```
-npm install -g 包名
-```
-
-
-#### 构建打包
-```
-npm run build
-```
-
-#### 测试启动
-```
-npm run dev
-```
-#### 直接启动
-```
-npm start
-```
-
-&gt; [!TIP]
-&gt; ## Python 💻
-
-#### 基本代码结构
-```
-my-python-project/
-├── .github/
-├── myapp.py
-├── config.py
-├── requirements.txt
-├── scripts/
-│   └── run.sh
-├── logs/
-├── models/
-├── services/
-├── templates/
-├── tests/
-├── utils/
-├── .env.local
-├── .gitignore
-└── LICENSE
-```
-
-#### 自动识别所有依赖并生成依赖清单
-```
-pip freeze &gt; requirements.txt
-```
-
-#### 安装依赖
-```
-pip install -r requirements.txt
-```
-
-#### 运行
-```
-python app.py
-```
-
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 主流编程语言的安装依赖和构建运行命令
 
 &gt; [!TIP]
 &gt; ## Java (Spring Boot) 💻
