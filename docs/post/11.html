@@ -664,7 +664,41 @@ fn main() {
 <td align="left">以树状图显示整个依赖关系</td>
 </tr>
 </tbody>
-</table></markdown-accessiblity-table></div>
+</table></markdown-accessiblity-table>
+<h3>使用 uniffi 将 Rust 项目打包为 Android AAR</h3>
+<h4>核心思路</h4>
+<p>接口声明 → 工具生成绑定 → 标准 NDK 编译 → 打包，完全免去手写 JNI 胶水代码。</p>
+<h4>具体步骤</h4>
+<ol>
+<li>
+<p><strong>Rust 侧暴露接口</strong></p>
+<ul>
+<li>用 <code class="notranslate">#[uniffi::export]</code> 宏标注要公开的函数/类型</li>
+<li>或编写一个 UDL 文件描述接口</li>
+<li>在 <code class="notranslate">Cargo.toml</code> 中设置 <code class="notranslate">crate-type = ["cdylib"]</code> 并添加 <code class="notranslate">uniffi</code> 依赖</li>
+</ul>
+</li>
+<li>
+<p><strong>生成 Kotlin 绑定</strong></p>
+<ul>
+<li>用 <code class="notranslate">uniffi-bindgen</code> 命令行工具</li>
+<li>根据上一步的接口定义自动生成 Kotlin 调用代码</li>
+</ul>
+</li>
+<li>
+<p><strong>编译原生 .so</strong></p>
+<ul>
+<li>使用 <code class="notranslate">cargo-ndk</code> 编译出 <code class="notranslate">arm64-v8a</code> 等架构的 <code class="notranslate">.so</code> 动态库</li>
+</ul>
+</li>
+<li>
+<p><strong>在 Android 项目中集成</strong></p>
+<ul>
+<li>将生成的 Kotlin 文件和 <code class="notranslate">.so</code> 文件放入 Android 项目目录</li>
+<li>或通过 Gradle 插件实现自动化</li>
+</ul>
+</li>
+</ol></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 
 </div>
