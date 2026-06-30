@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 30 Jun 2026 06:52:23 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Tue, 30 Jun 2026 21:55:23 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -2129,6 +2129,30 @@ docker compose restart&#13;
 V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 主流编程语言的安装依赖和构建运行命令
 
 &gt; [!TIP]
+&gt; ## npm包管理器国内镜像
+
+### 当前终端有效
+```
+# Linux/macOS
+export npm_config_registry=https://registry.npmmirror.com
+
+# Windows PowerShell
+$env:npm_config_registry='https://registry.npmmirror.com'
+
+# Windows CMD
+set npm_config_registry=https://registry.npmmirror.com
+```
+
+### 永久配置
+```
+npm config set registry https://registry.npmmirror.com
+```
+恢复默认
+```
+npm config set registry https://registry.npmjs.org
+```
+
+&gt; [!TIP]
 &gt; ## Java (Spring Boot) 💻
 
 #### 基本代码结构
@@ -2172,11 +2196,22 @@ java -jar target/you.jar
 &gt; ## Go 💻
 
 
-#### 基本代码结构
+#### 国内镜像
+当前终端有效
 ```
-my-go-project/
-├── main.go
-└── README.md
+# Linux/macOS
+export GOPROXY=https://goproxy.cn,direct
+
+# Windows PowerShell
+$env:GOPROXY='https://goproxy.cn,direct'
+```
+全局配置
+```
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+恢复官方源
+```
+go env -w GOPROXY=https://proxy.golang.org,direct
 ```
 
 #### 清理缓存
@@ -2223,42 +2258,79 @@ $env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflag
 $env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
 ```
 
-## PHP 💻
+&gt; [!TIP]
+&gt; ## C#
 
-基本代码机构
-```
-your-project/
-├── index.php
-├── config/
-│   └── config.php
-├── src/
-│   ├── Controller/
-│   ├── Model/
-│   ├── View/
-│   └── ...
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── vendor/
-├── .env
-├── .gitignore
-├── composer.json
-├── composer.lock
-└── README.md
-```
+环境安装：https://dotnet.microsoft.com/zh-cn/download/dotnet
 
-#### 安装依赖
-
-如果项目使用`Composer`进行依赖管理，请在项目目录中运行`composer install`
+基本代码结构
 ```
-cd /var/www/html/your-project
-composer install
+MyApp/
+├─ MyApp.sln               # 解决方案文件（可选，多项目时使用）
+├─ MyApp/                  # 项目目录
+│  ├─ MyApp.csproj         # 项目文件（包含依赖、编译选项）
+│  ├─ Program.cs           # 主程序入口
+│  ├─ Properties/
+│  │  └─ launchSettings.json  # 调试配置（VS / Rider）
+│  ├─ appsettings.json     # 配置文件（可选）
+│  ├─ Models/              # 存放数据模型类
+│  │  └─ User.cs
+│  ├─ Services/            # 存放服务类
+│  │  └─ EmailService.cs
+│  ├─ Controllers/         # MVC 或 API 项目才有
+│  │  └─ UserController.cs
+│  └─ wwwroot/             # Web 静态资源（Web 项目才有）
+├─ .gitignore              # git 忽略文件
+├─ global.json             # SDK 版本锁定（可选）
+└─ README.md
 ```
 
-### 运行
+常用命令
 
-安装`PHP`和`PHP-FPM` 并配置配置`nginx`，确保你的`public/index.php`是项目的入口文件，`nginx`运行目录一般都是这个目录。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程
+```
+# 恢复项目依赖，下载 NuGet 包并生成依赖缓存
+dotnet restore
+
+# 安装代码格式化
+dotnet tool install -g dotnet-format
+
+# 执行代码格式化
+dotnet format
+
+# 编译项目并执行静态代码分析
+dotnet build -warnaserror -p:AnalysisLevel=latest
+
+# 运行单元测试，确保代码逻辑正确
+dotnet test
+
+# 热重载运行
+dotnet watch run
+
+# 生成可部署的生产版本，放在 publish 目录
+dotnet publish -c Release
+```
+
+&gt; [!TIP]
+&gt; ## rust
+
+### 下载windows开发工具链：
+
+https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/
+
+只需选择如下三个即可
+```
+适用于x64/x86 的MSVC 生成工具
+
+Windows 11 SDK
+
+用于Windows 的 C++ CMake 工具
+```
+
+### 下载rust开发环境：
+
+https://rust-lang.org/zh-CN/tools/install/
+
+双击安装工具，然后一路回车。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程
 
 1】首先浏览器里打开网页版iCloud：  www.icloud.com
 

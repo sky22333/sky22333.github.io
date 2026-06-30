@@ -13,6 +13,30 @@
 <meta name="description" content="## 主流编程语言的安装依赖和构建运行命令
 
 > [!TIP]
+> ## npm包管理器国内镜像
+
+### 当前终端有效
+```
+# Linux/macOS
+export npm_config_registry=https://registry.npmmirror.com
+
+# Windows PowerShell
+$env:npm_config_registry='https://registry.npmmirror.com'
+
+# Windows CMD
+set npm_config_registry=https://registry.npmmirror.com
+```
+
+### 永久配置
+```
+npm config set registry https://registry.npmmirror.com
+```
+恢复默认
+```
+npm config set registry https://registry.npmjs.org
+```
+
+> [!TIP]
 > ## Java (Spring Boot) 💻
 
 #### 基本代码结构
@@ -56,11 +80,22 @@ java -jar target/you.jar
 > ## Go 💻
 
 
-#### 基本代码结构
+#### 国内镜像
+当前终端有效
 ```
-my-go-project/
-├── main.go
-└── README.md
+# Linux/macOS
+export GOPROXY=https://goproxy.cn,direct
+
+# Windows PowerShell
+$env:GOPROXY='https://goproxy.cn,direct'
+```
+全局配置
+```
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+恢复官方源
+```
+go env -w GOPROXY=https://proxy.golang.org,direct
 ```
 
 #### 清理缓存
@@ -107,46 +142,107 @@ $env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflag
 $env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
 ```
 
-## PHP 💻
+> [!TIP]
+> ## C#
 
-基本代码机构
-```
-your-project/
-├── index.php
-├── config/
-│   └── config.php
-├── src/
-│   ├── Controller/
-│   ├── Model/
-│   ├── View/
-│   └── ...
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── vendor/
-├── .env
-├── .gitignore
-├── composer.json
-├── composer.lock
-└── README.md
-```
+环境安装：https://dotnet.microsoft.com/zh-cn/download/dotnet
 
-#### 安装依赖
-
-如果项目使用`Composer`进行依赖管理，请在项目目录中运行`composer install`
+基本代码结构
 ```
-cd /var/www/html/your-project
-composer install
+MyApp/
+├─ MyApp.sln               # 解决方案文件（可选，多项目时使用）
+├─ MyApp/                  # 项目目录
+│  ├─ MyApp.csproj         # 项目文件（包含依赖、编译选项）
+│  ├─ Program.cs           # 主程序入口
+│  ├─ Properties/
+│  │  └─ launchSettings.json  # 调试配置（VS / Rider）
+│  ├─ appsettings.json     # 配置文件（可选）
+│  ├─ Models/              # 存放数据模型类
+│  │  └─ User.cs
+│  ├─ Services/            # 存放服务类
+│  │  └─ EmailService.cs
+│  ├─ Controllers/         # MVC 或 API 项目才有
+│  │  └─ UserController.cs
+│  └─ wwwroot/             # Web 静态资源（Web 项目才有）
+├─ .gitignore              # git 忽略文件
+├─ global.json             # SDK 版本锁定（可选）
+└─ README.md
 ```
 
-### 运行
+常用命令
 
-安装`PHP`和`PHP-FPM` 并配置配置`nginx`，确保你的`public/index.php`是项目的入口文件，`nginx`运行目录一般都是这个目录。">
+```
+# 恢复项目依赖，下载 NuGet 包并生成依赖缓存
+dotnet restore
+
+# 安装代码格式化
+dotnet tool install -g dotnet-format
+
+# 执行代码格式化
+dotnet format
+
+# 编译项目并执行静态代码分析
+dotnet build -warnaserror -p:AnalysisLevel=latest
+
+# 运行单元测试，确保代码逻辑正确
+dotnet test
+
+# 热重载运行
+dotnet watch run
+
+# 生成可部署的生产版本，放在 publish 目录
+dotnet publish -c Release
+```
+
+> [!TIP]
+> ## rust
+
+### 下载windows开发工具链：
+
+https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/
+
+只需选择如下三个即可
+```
+适用于x64/x86 的MSVC 生成工具
+
+Windows 11 SDK
+
+用于Windows 的 C++ CMake 工具
+```
+
+### 下载rust开发环境：
+
+https://rust-lang.org/zh-CN/tools/install/
+
+双击安装工具，然后一路回车。">
 <meta property="og:title" content="项目编译构建文档">
 <meta property="og:description" content="## 主流编程语言的安装依赖和构建运行命令
 
 > [!TIP]
+> ## npm包管理器国内镜像
+
+### 当前终端有效
+```
+# Linux/macOS
+export npm_config_registry=https://registry.npmmirror.com
+
+# Windows PowerShell
+$env:npm_config_registry='https://registry.npmmirror.com'
+
+# Windows CMD
+set npm_config_registry=https://registry.npmmirror.com
+```
+
+### 永久配置
+```
+npm config set registry https://registry.npmmirror.com
+```
+恢复默认
+```
+npm config set registry https://registry.npmjs.org
+```
+
+> [!TIP]
 > ## Java (Spring Boot) 💻
 
 #### 基本代码结构
@@ -190,11 +286,22 @@ java -jar target/you.jar
 > ## Go 💻
 
 
-#### 基本代码结构
+#### 国内镜像
+当前终端有效
 ```
-my-go-project/
-├── main.go
-└── README.md
+# Linux/macOS
+export GOPROXY=https://goproxy.cn,direct
+
+# Windows PowerShell
+$env:GOPROXY='https://goproxy.cn,direct'
+```
+全局配置
+```
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+恢复官方源
+```
+go env -w GOPROXY=https://proxy.golang.org,direct
 ```
 
 #### 清理缓存
@@ -241,42 +348,79 @@ $env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflag
 $env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
 ```
 
-## PHP 💻
+> [!TIP]
+> ## C#
 
-基本代码机构
-```
-your-project/
-├── index.php
-├── config/
-│   └── config.php
-├── src/
-│   ├── Controller/
-│   ├── Model/
-│   ├── View/
-│   └── ...
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── vendor/
-├── .env
-├── .gitignore
-├── composer.json
-├── composer.lock
-└── README.md
-```
+环境安装：https://dotnet.microsoft.com/zh-cn/download/dotnet
 
-#### 安装依赖
-
-如果项目使用`Composer`进行依赖管理，请在项目目录中运行`composer install`
+基本代码结构
 ```
-cd /var/www/html/your-project
-composer install
+MyApp/
+├─ MyApp.sln               # 解决方案文件（可选，多项目时使用）
+├─ MyApp/                  # 项目目录
+│  ├─ MyApp.csproj         # 项目文件（包含依赖、编译选项）
+│  ├─ Program.cs           # 主程序入口
+│  ├─ Properties/
+│  │  └─ launchSettings.json  # 调试配置（VS / Rider）
+│  ├─ appsettings.json     # 配置文件（可选）
+│  ├─ Models/              # 存放数据模型类
+│  │  └─ User.cs
+│  ├─ Services/            # 存放服务类
+│  │  └─ EmailService.cs
+│  ├─ Controllers/         # MVC 或 API 项目才有
+│  │  └─ UserController.cs
+│  └─ wwwroot/             # Web 静态资源（Web 项目才有）
+├─ .gitignore              # git 忽略文件
+├─ global.json             # SDK 版本锁定（可选）
+└─ README.md
 ```
 
-### 运行
+常用命令
 
-安装`PHP`和`PHP-FPM` 并配置配置`nginx`，确保你的`public/index.php`是项目的入口文件，`nginx`运行目录一般都是这个目录。">
+```
+# 恢复项目依赖，下载 NuGet 包并生成依赖缓存
+dotnet restore
+
+# 安装代码格式化
+dotnet tool install -g dotnet-format
+
+# 执行代码格式化
+dotnet format
+
+# 编译项目并执行静态代码分析
+dotnet build -warnaserror -p:AnalysisLevel=latest
+
+# 运行单元测试，确保代码逻辑正确
+dotnet test
+
+# 热重载运行
+dotnet watch run
+
+# 生成可部署的生产版本，放在 publish 目录
+dotnet publish -c Release
+```
+
+> [!TIP]
+> ## rust
+
+### 下载windows开发工具链：
+
+https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/
+
+只需选择如下三个即可
+```
+适用于x64/x86 的MSVC 生成工具
+
+Windows 11 SDK
+
+用于Windows 的 C++ CMake 工具
+```
+
+### 下载rust开发环境：
+
+https://rust-lang.org/zh-CN/tools/install/
+
+双击安装工具，然后一路回车。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/11.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
@@ -373,6 +517,25 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
 <div class="markdown-body" id="postBody"><h2>主流编程语言的安装依赖和构建运行命令</h2>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<h2>npm包管理器国内镜像</h2>
+</div>
+<h3>当前终端有效</h3>
+<pre class="notranslate"><code class="notranslate"># Linux/macOS
+export npm_config_registry=https://registry.npmmirror.com
+
+# Windows PowerShell
+$env:npm_config_registry="https://registry.npmmirror.com"
+
+# Windows CMD
+set npm_config_registry=https://registry.npmmirror.com
+</code></pre>
+<h3>永久配置</h3>
+<pre class="notranslate"><code class="notranslate">npm config set registry https://registry.npmmirror.com
+</code></pre>
+<p>恢复默认</p>
+<pre class="notranslate"><code class="notranslate">npm config set registry https://registry.npmjs.org
+</code></pre>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <h2>Java (Spring Boot) 💻</h2>
 </div>
 <h4>基本代码结构</h4>
@@ -408,10 +571,19 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <h2>Go 💻</h2>
 </div>
-<h4>基本代码结构</h4>
-<pre class="notranslate"><code class="notranslate">my-go-project/
-├── main.go
-└── README.md
+<h4>国内镜像</h4>
+<p>当前终端有效</p>
+<pre class="notranslate"><code class="notranslate"># Linux/macOS
+export GOPROXY=https://goproxy.cn,direct
+
+# Windows PowerShell
+$env:GOPROXY="https://goproxy.cn,direct"
+</code></pre>
+<p>全局配置</p>
+<pre class="notranslate"><code class="notranslate">go env -w GOPROXY=https://goproxy.cn,direct
+</code></pre>
+<p>恢复官方源</p>
+<pre class="notranslate"><code class="notranslate">go env -w GOPROXY=https://proxy.golang.org,direct
 </code></pre>
 <h4>清理缓存</h4>
 <pre class="notranslate"><code class="notranslate">go clean -cache
@@ -443,35 +615,6 @@ staticcheck ./...
 </code></pre>
 <pre class="notranslate"><code class="notranslate">$env:GOOS="linux"; $env:GOARCH="amd64"; $env:CGO_ENABLED="0"; go build -ldflags="-s -w" -o myapp-amd64
 </code></pre>
-<h2>PHP 💻</h2>
-<p>基本代码机构</p>
-<pre class="notranslate"><code class="notranslate">your-project/
-├── index.php
-├── config/
-│   └── config.php
-├── src/
-│   ├── Controller/
-│   ├── Model/
-│   ├── View/
-│   └── ...
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── vendor/
-├── .env
-├── .gitignore
-├── composer.json
-├── composer.lock
-└── README.md
-</code></pre>
-<h4>安装依赖</h4>
-<p>如果项目使用<code class="notranslate">Composer</code>进行依赖管理，请在项目目录中运行<code class="notranslate">composer install</code></p>
-<pre class="notranslate"><code class="notranslate">cd /var/www/html/your-project
-composer install
-</code></pre>
-<h3>运行</h3>
-<p>安装<code class="notranslate">PHP</code>和<code class="notranslate">PHP-FPM</code> 并配置配置<code class="notranslate">nginx</code>，确保你的<code class="notranslate">public/index.php</code>是项目的入口文件，<code class="notranslate">nginx</code>运行目录一般都是这个目录。</p>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <h2>C#</h2>
 </div>
@@ -665,6 +808,39 @@ fn main() {
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<h3>国内镜像</h3>
+<ul>
+<li>全局生效</li>
+</ul>
+<p>创建或编辑<code class="notranslate">~/.cargo/config.toml</code></p>
+<pre class="notranslate"><code class="notranslate">[source.crates-io]
+replace-with = 'ustc'
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+</code></pre>
+<ul>
+<li>临时环境变量</li>
+</ul>
+<pre class="notranslate"><code class="notranslate"># Linux/macOS
+export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
+export CARGO_REGISTRIES_CRATES_IO_INDEX=https://mirrors.ustc.edu.cn/crates.io-index/
+
+# Windows PowerShell
+$env:CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
+$env:CARGO_REGISTRIES_CRATES_IO_INDEX="https://mirrors.ustc.edu.cn/crates.io-index/"
+</code></pre>
+<ul>
+<li>仅当前项目生效</li>
+</ul>
+<p>在当前项目目录创建 <code class="notranslate">.cargo/config.toml</code></p>
+<pre class="notranslate"><code class="notranslate">toml
+[source.crates-io]
+replace-with = 'ustc'
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+</code></pre>
 <h3>使用 uniffi 将 Rust 项目打包为 Android AAR</h3>
 <h4>核心思路</h4>
 <p>接口声明 → 工具生成绑定 → 标准 NDK 编译 → 打包，完全免去手写 JNI 胶水代码。</p>
