@@ -698,7 +698,25 @@ fn main() {
 <li>或通过 Gradle 插件实现自动化</li>
 </ul>
 </li>
-</ol></div>
+</ol>
+<hr>
+<h3>Rust 项目封装为 Android AAR</h3>
+<h4>前提</h4>
+<p>原项目有 <code class="notranslate">lib.rs</code> 且公开了必要 API（<code class="notranslate">pub</code>）。</p>
+<h4>步骤</h4>
+<ol>
+<li><strong>新建包装项目</strong>，在 <code class="notranslate">Cargo.toml</code> 中依赖原项目 + <code class="notranslate">uniffi</code></li>
+<li><strong>写 <code class="notranslate">lib.rs</code></strong>，用 <code class="notranslate">#[uniffi::export]</code> 暴露 <code class="notranslate">start()</code> / <code class="notranslate">stop()</code> 等入口</li>
+<li><strong>运行 <code class="notranslate">uniffi-bindgen</code></strong> 生成 Kotlin 绑定代码</li>
+<li><strong>运行 <code class="notranslate">cargo-ndk</code></strong> 编译出 <code class="notranslate">arm64-v8a</code> 等 <code class="notranslate">.so</code> 文件</li>
+<li><strong>放入 Android 项目</strong> <code class="notranslate">jniLibs/</code> 目录，Gradle 构建即出 AAR</li>
+</ol>
+<h4>关键</h4>
+<ul>
+<li>原项目代码<strong>零修改</strong></li>
+<li>包装项目<strong>只写接口转发</strong>，不写业务</li>
+<li>和 Go <code class="notranslate">gomobile bind</code> 思路完全一致</li>
+</ul></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 
 </div>
