@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 10 Jul 2026 19:59:09 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 10 Jul 2026 21:21:40 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -101,11 +101,9 @@ docker run -d \
 tailscale up --advertise-routes=192.168.3.0/24 --accept-routes --reset
 ```
 开启后，在`tailscale`后台找到你路由器设备，点击右侧菜单(三个点)，选择`Edit route settings...`，勾选`192.168.3.0/24`，点击`Save`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/69.html</guid><pubDate>Mon, 01 Dec 2025 15:44:06 +0000</pubDate></item><item><title>OpenWrt固件编译</title><link>https://blog.52013120.xyz/post/68.html</link><description># 介绍
-OpenWrt 是一个 基于 Linux 的路由器操作系统，专门为嵌入式设备（路由器、NAS、小型网关设备等）设计。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/68.html</guid><pubDate>Sun, 16 Nov 2025 12:08:39 +0000</pubDate></item><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+OpenWrt 是一个 基于 Linux 的路由器操作系统，专门为嵌入式设备（路由器、NAS、小型网关设备等）设计。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/68.html</guid><pubDate>Sun, 16 Nov 2025 12:08:39 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
 
-使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
-
-**NSSM**（Non-Sucking Service Manager）用于把任意 exe 程序注册为 Windows 服务，后台运行，支持日志和自动重启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/65.html</guid><pubDate>Sat, 23 Aug 2025 05:59:08 +0000</pubDate></item><item><title>轻量级简约端口转发rinetd</title><link>https://blog.52013120.xyz/post/64.html</link><description>### 轻量级简约端口转发`rinetd`适合家庭网络
+使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>轻量级简约端口转发rinetd</title><link>https://blog.52013120.xyz/post/64.html</link><description>### 轻量级简约端口转发`rinetd`适合家庭网络
 
 安装
 ```
@@ -650,8 +648,7 @@ C:\flutter
 
 然后重启终端（powershell）。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/56.html</guid><pubDate>Sat, 07 Jun 2025 23:52:51 +0000</pubDate></item><item><title>使用手机搭建节点服务端</title><link>https://blog.52013120.xyz/post/55.html</link><description>### 前言
  
-- 众所周知，做电商业务需要的IP质量非常高，家宽一般都特别贵，所以最近尝试用手机流量做代理，手机`sim`卡的`IP`应该是顶级的不能再顶级了。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/55.html</guid><pubDate>Sat, 31 May 2025 15:31:36 +0000</pubDate></item><item><title>关于github提交记录泄露真实邮箱的处理办法</title><link>https://blog.52013120.xyz/post/54.html</link><description>
-众所周知，很多人刚开始接触github的时候，可能都是新手，可能会用自己的实名邮箱或者直接用QQ邮箱注册，此时你的这些实名邮箱就会泄露，即使你后面改了邮箱后，之前的提交记录里也是公开能看到的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/54.html</guid><pubDate>Wed, 28 May 2025 14:52:02 +0000</pubDate></item><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
+- 众所周知，做电商业务需要的IP质量非常高，家宽一般都特别贵，所以最近尝试用手机流量做代理，手机`sim`卡的`IP`应该是顶级的不能再顶级了。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/55.html</guid><pubDate>Sat, 31 May 2025 15:31:36 +0000</pubDate></item><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
 ## 使用`sing-box`手搓`anytls`协议
 
 - 以下配置需要自行去掉注释
@@ -844,15 +841,7 @@ test.example.com {
 #### 配置说明
 `dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
 
-`ech ech.example.com`替换你的任意二级域名，并且解析到你的IP，用于发布`ECH`公钥，或者第三方提供的ECH配置服务域名也行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过gitlab流水线自动备份仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>### 通过gitlab流水线自动备份仓库
-
-会自动对比提交，如果没有新的提交，则不会备份，避免空提交导致意外错误
-
-gitlab仓库根目录新建`.gitlab-ci.yml`文件，复制粘贴以下配置，使用方法见文件注释
-
-```
-# gitlab流水线 自动备份仓库配置
-# 将配置保存为 .gitlab-ci.yml 文件，放在 GitLab 仓库根目录下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/51.html</guid><pubDate>Tue, 22 Apr 2025 03:12:12 +0000</pubDate></item><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
+`ech ech.example.com`替换你的任意二级域名，并且解析到你的IP，用于发布`ECH`公钥，或者第三方提供的ECH配置服务域名也行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
 
 &gt; 建议只自己使用，不要公开，否则可能被判断为涉嫌违反CF规则
 
@@ -1538,18 +1527,7 @@ real_ip_header X-Forwarded-For;
 需要利用到`CloudFront-Viewer-Address`请求头，但该请求头默认未启用，需手动前往`Cloudfront`控制面板开启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/38.html</guid><pubDate>Sun, 09 Mar 2025 04:47:07 +0000</pubDate></item><item><title>一些用于网络测试的下载测速文件</title><link>https://blog.52013120.xyz/post/37.html</link><description>
 本文搜集了一些可用于VPS/服务器的下载测速文件，从`100MB`到`10GB`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/37.html</guid><pubDate>Sun, 09 Mar 2025 03:29:50 +0000</pubDate></item><item><title>纯v6网络访问v4站点最简单的方法</title><link>https://blog.52013120.xyz/post/35.html</link><description>## NAT64服务让纯V6网络支持访问纯V4站点&#13;
 &#13;
-众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/35.html</guid><pubDate>Thu, 02 Jan 2025 10:09:20 +0000</pubDate></item><item><title>服务器配置SSH密钥登录</title><link>https://blog.52013120.xyz/post/34.html</link><description>## 服务器配置SSH密钥登录&#13;
-&#13;
-&gt; 适用于`Debian`和`Ubuntu`系统&#13;
-&#13;
-&#13;
-&#13;
-### 生成`ED25519`类型的 SSH 密钥对&#13;
-&#13;
-```&#13;
-ssh-keygen -t ed25519&#13;
-```&#13;
-&gt;一路回车即可，生成的`id_ed25519`文件为私钥，使用这个连接服务器，`id_ed25519.pub`文件为公钥。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/34.html</guid><pubDate>Thu, 19 Dec 2024 09:36:09 +0000</pubDate></item><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导
+众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/35.html</guid><pubDate>Thu, 02 Jan 2025 10:09:20 +0000</pubDate></item><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导
 
 微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11
 
@@ -1768,117 +1746,7 @@ https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
 &#13;
 2：行为里的压缩建议选`NO`，`缓存键和源请求`要选`旧版缓存设置`，也就是第二个。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/30.html</guid><pubDate>Tue, 19 Nov 2024 04:36:25 +0000</pubDate></item><item><title>解决CF反代Docker失效的问题</title><link>https://blog.52013120.xyz/post/29.html</link><description>## 解决CF反代Docker失效的问题&#13;
 &#13;
-**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/29.html</guid><pubDate>Sat, 16 Nov 2024 23:52:36 +0000</pubDate></item><item><title>使用py3快速启动一个文件上传和下载的接口</title><link>https://blog.52013120.xyz/post/27.html</link><description>### 安装py3&#13;
-```&#13;
-sudo apt update&#13;
-sudo apt install python3 python3-pip -y&#13;
-```&#13;
-&#13;
-### 配置`up.py`&#13;
-```&#13;
-from flask import Flask, request, render_template_string&#13;
-import os&#13;
-app = Flask(__name__)&#13;
-# 设置上传目录为当前目录&#13;
-UPLOAD_FOLDER = '.'&#13;
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)&#13;
-app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024&#13;
-&#13;
-HTML = '''&#13;
-&lt;!doctype html&gt;&#13;
-&lt;title&gt;文件上传 &lt;/title&gt;&#13;
-&lt;h1&gt;上传文件(最大25MB)&lt;/h1&gt;&#13;
-&lt;div id='drop-area' onclick='document.getElementById('fileElem').click();'&gt;&#13;
-    &lt;form id='form' method='post' enctype='multipart/form-data'&gt;&#13;
-        &lt;input type='file' id='fileElem' multiple accept='*/*' style='display:none;' onchange='handleFiles(this.files)'&gt;&#13;
-        &lt;label for='fileElem'&gt;选择文件&lt;/label&gt;&#13;
-        &lt;div id='gallery'&gt;&lt;/div&gt;&#13;
-    &lt;/form&gt;&#13;
-&lt;/div&gt;&#13;
-&lt;div id='message' style='color: green; margin-top: 10px;'&gt;&lt;/div&gt;&#13;
-&lt;script&gt;&#13;
-    let dropArea = document.getElementById('drop-area');&#13;
-    dropArea.addEventListener('dragover', event =&gt; {&#13;
-        event.preventDefault();&#13;
-    });&#13;
-    dropArea.addEventListener('drop', event =&gt; {&#13;
-        event.preventDefault();&#13;
-        handleFiles(event.dataTransfer.files);&#13;
-    });&#13;
-&#13;
-    function handleFiles(files) {&#13;
-        const formData = new FormData();&#13;
-        for (let file of files) {&#13;
-            formData.append('file', file);&#13;
-            const listItem = document.createElement('div');&#13;
-            listItem.textContent = file.name;&#13;
-            document.getElementById('gallery').appendChild(listItem);&#13;
-        }&#13;
-        document.getElementById('message').textContent = '上传中...';&#13;
-        fetch('/', { method: 'POST', body: formData })&#13;
-            .then(response =&gt; response.text())&#13;
-            .then(data =&gt; {&#13;
-                document.getElementById('message').textContent = data;&#13;
-            })&#13;
-            .catch(() =&gt; {&#13;
-                document.getElementById('message').textContent = '上传失败！';&#13;
-            });&#13;
-    }&#13;
-&lt;/script&gt;&#13;
-&lt;style&gt;&#13;
-    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; cursor: pointer; }&#13;
-&lt;/style&gt;&#13;
-'''&#13;
-&#13;
-@app.route('/', methods=['GET', 'POST'])&#13;
-def upload_file():&#13;
-    if request.method == 'POST':&#13;
-        for f in request.files.getlist('file'):&#13;
-            f.save(os.path.join(UPLOAD_FOLDER, f.filename))&#13;
-        return '文件上传成功！'&#13;
-    return render_template_string(HTML)&#13;
-&#13;
-if __name__ == '__main__':&#13;
-    app.run(host='0.0.0.0', port=8080)&#13;
-```&#13;
-&#13;
-&gt; 在`GitHub`网页上传单个文件的大小不能超过`25M`，使用GitHub客户端限制最大`100M`，这个限制是由GitHub的服务器设定。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/27.html</guid><pubDate>Fri, 01 Nov 2024 05:14:28 +0000</pubDate></item><item><title>ios系统最新免拔卡使用tiktok方法</title><link>https://blog.52013120.xyz/post/26.html</link><description>### ios较新的版本已经禁止app检测手机卡，所以只要你的系统`≥16.4`即可免拔卡使用TK的任何功能。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/26.html</guid><pubDate>Thu, 24 Oct 2024 08:58:02 +0000</pubDate></item><item><title>clash手搓配置最全协议示例详解</title><link>https://blog.52013120.xyz/post/25.html</link><description>### clash手搓配置全部协议示例，附带详细注释说明，小白也会手搓&#13;
-&#13;
-&#13;
-- [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)&#13;
-&#13;
----&#13;
----&#13;
-&#13;
-- 🔵本地配置，`clash-verge-rev`为例：&#13;
-&#13;
-打开`clash-verge-rev` → 订阅 → 新建 → 类型选择`Local` → 名称自定义 → 点击保存 → 右键点击该配置 → 编辑文件 → 复制配置 → 修改保存&#13;
-&#13;
----&#13;
----&#13;
-&#13;
-- 🔵云端配置：&#13;
-&#13;
-1：部署一个站点，站点目录里创建`clash.yaml`文件&#13;
-&#13;
-2：使用`caddy`代理站点目录，例如你的`clash.yaml`配置放在`/var/www`下，增加相应的权限&#13;
-&#13;
-3：则`caddy`可以这样配置：&#13;
-```&#13;
-example.com {&#13;
-    root * /var/www&#13;
-    encode zstd gzip&#13;
-    file_server&#13;
-}&#13;
-```&#13;
-&#13;
-4：部署完成后就可以远程拉取订阅，订阅地址示例：&#13;
-```&#13;
-https://example.com/clash.yaml&#13;
-```&#13;
-&#13;
-&#13;
-5：如果你已经有一个现成的站点，则直接将`clash.yaml`配置放在站点目录即可，其他同理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/25.html</guid><pubDate>Sun, 13 Oct 2024 23:20:19 +0000</pubDate></item><item><title>为IP地址申请免费证书并开启HTTPS</title><link>https://blog.52013120.xyz/post/24.html</link><description>## 🔵打开免费申请IP SSL证书的网站&#13;
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/29.html</guid><pubDate>Sat, 16 Nov 2024 23:52:36 +0000</pubDate></item><item><title>ios系统最新免拔卡使用tiktok方法</title><link>https://blog.52013120.xyz/post/26.html</link><description>### ios较新的版本已经禁止app检测手机卡，所以只要你的系统`≥16.4`即可免拔卡使用TK的任何功能。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/26.html</guid><pubDate>Thu, 24 Oct 2024 08:58:02 +0000</pubDate></item><item><title>为IP地址申请免费证书并开启HTTPS</title><link>https://blog.52013120.xyz/post/24.html</link><description>## 🔵打开免费申请IP SSL证书的网站&#13;
 &#13;
 &#13;
 **https://zerossl.com/**&#13;
@@ -1900,11 +1768,7 @@ https://example.com/clash.yaml&#13;
 - 通用api请求代理：https://seep.eu.org/
 - 通用api请求代理：https://pz.v88.qzz.io/?url=。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
 &#13;
-**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>https://blog.52013120.xyz/post/20.html</link><description>- **场景介绍**&#13;
-骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，`https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail`  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了&#13;
-&#13;
-- **名词解释**&#13;
-这种漏洞允许攻击者构造一个看似合法的URL（例如 `https://a.com/url=https://b.com` ），但实际上会显示来自另一个不受信任的网站（如 `https://b.com` ）的内容，而用户的浏览器地址栏中显示的仍然是原网站的URL (`https://a.com` )。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/20.html</guid><pubDate>Fri, 16 Aug 2024 02:20:52 +0000</pubDate></item><item><title>超级强大的ansible批量管理主机运维工具使用教程</title><link>https://blog.52013120.xyz/post/19.html</link><description>## 🔵ansible批量管理主机运维工具—被控主机无需安装任何东西&#13;
+**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>超级强大的ansible批量管理主机运维工具使用教程</title><link>https://blog.52013120.xyz/post/19.html</link><description>## 🔵ansible批量管理主机运维工具—被控主机无需安装任何东西&#13;
 &#13;
 ### 1：安装并创建配置文件&#13;
 ```&#13;
@@ -1917,24 +1781,7 @@ mkdir -p /etc/ansible &amp;&amp; cd /etc/ansible &amp;&amp; touch ansible.cfg ho
 &#13;
 &gt; `ansible.cfg` 配置Ansible的全局设置。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/19.html</guid><pubDate>Tue, 13 Aug 2024 22:32:34 +0000</pubDate></item><item><title>收集整理的最新的常用VPS脚本工具</title><link>https://blog.52013120.xyz/post/18.html</link><description>**收集整理的最新的常用VPS脚本工具，方便要使用的时候可以快速的找到，包含VPS测试脚本（一键测评，综合测试，IP质量/解锁，带宽测试，路由追踪，延迟/丢包测试），运维工具包等，DD重装系统脚本，科学工具，其他工具等等，会定期添加修改一些更新或者失效的脚本。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/18.html</guid><pubDate>Sat, 10 Aug 2024 09:24:04 +0000</pubDate></item><item><title>无法注册TG账号和国内号码接收不到验证码详细解决方案</title><link>https://blog.52013120.xyz/post/17.html</link><description>## 1：国内号码接不到验证码&#13;
 首先确保你的科学上网环境是正常的，并且你的梯子节点IP不会乱跳，是固定的IP&#13;
-并且尽量使用手机客户端注册，不要使用电脑或网页注册。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/17.html</guid><pubDate>Wed, 07 Aug 2024 05:46:19 +0000</pubDate></item><item><title>国内环境安装xui面板</title><link>https://blog.52013120.xyz/post/16.html</link><description>## 支持的系统
-
-&gt; amd64架构
-
-- CentOS 7+
-- Ubuntu 18+
-- Debian 8+
-
-
-## 一键安装脚本（支持纯IPV6环境和国内环境）
-
-```
-bash &lt;(wget -qO- https://gitlab.com/yishijie/3xui/raw/main/3xui.sh)
-```
-
-## 手动安装
-
-1. 下载压缩包 [(点击下载)](https://gitlab.com/yishijie/3xui/raw/main/x-ui-linux-amd64.tar.gz) 到本地。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/16.html</guid><pubDate>Tue, 06 Aug 2024 15:24:48 +0000</pubDate></item><item><title>免费接码网站合集</title><link>https://blog.52013120.xyz/post/15.html</link><description>### 付费平台
+并且尽量使用手机客户端注册，不要使用电脑或网页注册。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/17.html</guid><pubDate>Wed, 07 Aug 2024 05:46:19 +0000</pubDate></item><item><title>免费接码网站合集</title><link>https://blog.52013120.xyz/post/15.html</link><description>### 付费平台
 
 国外业务：https://sms-man.com/cn
 
@@ -1986,101 +1833,7 @@ bash &lt;(wget -qO- https://gitlab.com/yishijie/3xui/raw/main/3xui.sh)
 &#13;
 &#13;
 ## 1xx – 提供某种附加信息&#13;
-1xx 状态码表示服务器已收到请求，处理将继续。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/14.html</guid><pubDate>Fri, 19 Jul 2024 04:12:54 +0000</pubDate></item><item><title>关于xui面板报错无法监听127.0.0.1:62789的问题</title><link>https://blog.52013120.xyz/post/13.html</link><description>## 关于xui面板报错`无法监听127.0.0.1:62789`
-
-
- 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`
-#### 表现如图：
-![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)
-
-
-这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/13.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>https://blog.52013120.xyz/post/12.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
-&#13;
-&#13;
-### 主题目录&#13;
-```&#13;
-public/theme&#13;
-```&#13;
-&#13;
-### 支付插件目录&#13;
-```&#13;
-app/Payments&#13;
-```&#13;
-&#13;
-### 客户端适配参考目录&#13;
-```&#13;
-app/Http/Controllers/Client/Protocols&#13;
-```&#13;
-&#13;
-### 订阅下发文件目录&#13;
-```&#13;
-/www/resources/rules/custom.clash.yaml&#13;
-```&#13;
-[查看目录中的所有文件](https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols)&#13;
-&#13;
-&#13;
-### 强制获取订阅（URL后面加上这个参数）&#13;
-&#13;
-一般用于订阅地址输入到浏览器后无法获取订阅信息&#13;
-```&#13;
-&amp;flag=meta&amp;types=all&#13;
-```&#13;
-&#13;
-### 忘记管理员密码&#13;
-&#13;
-可以在站点目录下执行命令找回密码&#13;
-```&#13;
-docker exec -it xboard-xboard-1 /bin/sh&#13;
-```&#13;
-```&#13;
-php artisan reset:password 管理员邮箱&#13;
-```&#13;
-重启&#13;
-```&#13;
-cd /root/Xboard&#13;
-```&#13;
-```&#13;
-docker compose restart&#13;
-```&#13;
----&#13;
-&#13;
-&#13;
-### Xboard迁移Xboard出现的各种问题解决方案&#13;
-&#13;
-一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-&#13;
-### Xboard 使用前后端分离主题导致支付转跳问题处理&#13;
-&#13;
-现象：&#13;
-该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`&#13;
-&#13;
-处理：&#13;
-需要修改文件 `app/Services/PaymentService.php`&#13;
-&#13;
-将原代码的第51行：&#13;
-&#13;
-`'return_url' =&gt; url('/#/order/' . $order['trade_no']),`&#13;
-修改为如下：&#13;
-&#13;
-注意在后台设置的站点域名为主题站地址`b.aab.com`&#13;
-&#13;
-`'return_url' =&gt; admin_setting('app_url'). '/#/order/' . $order['trade_no'],`&#13;
-如若你是其他版本的v2board请修改为：&#13;
-&#13;
-  `'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],`&#13;
-最后首部增加如下即可（只限xboard）:&#13;
-&#13;
-`use App\Models\Setting;`&#13;
-&#13;
-&#13;
-&#13;
-### 知识库&#13;
-&#13;
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>
+1xx 状态码表示服务器已收到请求，处理将继续。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/14.html</guid><pubDate>Fri, 19 Jul 2024 04:12:54 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>
 # PowerShell
 解除脚本限制，执行完后重启PowerShell窗口生效。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程
 
@@ -2088,134 +1841,8 @@ V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程�
 
 2】点击登陆，在登录页面的下面找到`创建 Apple ID`，然后用纯英文填写姓名，国家和地区选择美国 (注册其他区就选其他) 
 
-3】然后填写邮箱和密码，再填写电话号码，填自己国内的号码就可以。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/9.html</guid><pubDate>Tue, 02 Jul 2024 08:53:08 +0000</pubDate></item><item><title>V2board前后端分离</title><link>https://blog.52013120.xyz/post/8.html</link><description>&gt; [!NOTE]&#13;
-&gt; ### 前后端分离主题部署&#13;
-&#13;
-### `V2board`和`Xboard`步骤一样&#13;
-&#13;
-###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：&#13;
-````&#13;
-├── assets&#13;
-│   ├── ArrowPathIcon-BcKBEic3.js&#13;
-│   ├── CheckOutlined-kSoYgoEi.js&#13;
-│   ├── Detail-CZ1NhySb.js&#13;
-│   ├── Detail-CiCRNMEx.css&#13;
-│   └── Home-BIEpZQVD.css&#13;
-├── config.js&#13;
-├── favicon.ico&#13;
-└── index.html&#13;
-````&#13;
-&#13;
-### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息&#13;
-&#13;
-#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多&#13;
-```&#13;
-window.config={&#13;
-    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo&#13;
-    title:'一元机场', // 网站标题&#13;
-    host:'https://xxxxxxx.com/', // 机场原来的域名地址&#13;
-    storeHome: {&#13;
-         &#13;
-        下面的代码省略.......&#13;
-       ............&#13;
-       ..........&#13;
-&#13;
-```&#13;
-&#13;
-### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/8.html</guid><pubDate>Tue, 02 Jul 2024 08:46:39 +0000</pubDate></item><item><title>Markdown语法教程</title><link>https://blog.52013120.xyz/post/7.html</link><description>&#13;
-Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/7.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Github加速</title><link>https://blog.52013120.xyz/post/6.html</link><description>#  GitHub加速
-
-### GitHub加速站
-- https://yishijie.gitlab.io/ziyuan/
-
-##  本地代理：
-```
-sudo vim ~/.bashrc
-```
-```
-export all_proxy='socks5://127.0.0.1:10808'
-export HTTP_PROXY='socks5://127.0.0.1:10808'
-export HTTPS_PROXY='socks5://127.0.0.1:10808'
-```
-```
-source ~/.bashrc
-```
-
-此时输入```curl ip.sb```查看本机IP判断是否配置成功
-
-如需删除并停止，只需清空文件并重新加载即可
-
-注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
-
-
-## Git加速域名
-```
-# 设置全局加速
-git config --global url.'https://gh-proxy.com/https://github.com/'.insteadOf https://github.com/
-
-# 移除
-git config --global --unset url.'https://gh-proxy.com/https://github.com/'.insteadOf
-
-# 验证
-git config --global --get-regexp github
-```
-
-## Git代理
-```
-git config --global http.proxy socks5://127.0.0.1:10808
-git config --global https.proxy socks5://127.0.0.1:10808
-```
-
----
-
-## v2rayA代理
-
-#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
-
-#### 手动使用软件源安装
-[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
-
-[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
-
-安装
-```
-sudo apt install xray.deb路径 v2rayA.deb路径
-```
-替换两个deb包所在的实际路径
-
-启动
-```
-sudo systemctl start v2raya.service
-```
-```
-默认端口：
-2017: v2rayA面板端口
-20170: SOCKS协议
-20171: HTTP协议
-20172: 带分流规则的HTTP协议
-32345: tproxy透明代理所需
-```
-
-卸载
-```
-sudo apt-get remove v2raya xray
-```
-
-
-
-### 快捷安装方式
-v2ray内核
-```
-sudo apt install snapd
-```
-```
-sudo snap install v2raya
-```
-需要修改配置文件
-```
-sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
-```
-`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/6.html</guid><pubDate>Tue, 02 Jul 2024 07:44:08 +0000</pubDate></item><item><title>Docker镜像加速和离线安装</title><link>https://blog.52013120.xyz/post/5.html</link><description># Docker Hub 镜像加速
+3】然后填写邮箱和密码，再填写电话号码，填自己国内的号码就可以。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/9.html</guid><pubDate>Tue, 02 Jul 2024 08:53:08 +0000</pubDate></item><item><title>Markdown语法教程</title><link>https://blog.52013120.xyz/post/7.html</link><description>&#13;
+Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/7.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Docker镜像加速和离线安装</title><link>https://blog.52013120.xyz/post/5.html</link><description># Docker Hub 镜像加速
 
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/5.html</guid><pubDate>Tue, 02 Jul 2024 07:42:16 +0000</pubDate></item><item><title>Liunx配置wrap</title><link>https://blog.52013120.xyz/post/4.html</link><description>[其他系统安装](https://pkg.cloudflareclient.com/)
 

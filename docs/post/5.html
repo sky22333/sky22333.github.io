@@ -195,6 +195,7 @@ sudo systemctl enable docker.service
 <pre class="notranslate"><code class="notranslate">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": [
+        "https://docker.xuanyuan.me",
         "https://docker.1ms.run",
         "https://docker.1panel.live"
     ]
@@ -205,10 +206,11 @@ EOF
 </code></pre>
 <pre class="notranslate"><code class="notranslate">sudo systemctl restart docker
 </code></pre>
-<h4>如果不方便重启Docker服务，也可以不用设置全局加速地址，拉取镜像时增加加速地址即可，示例：</h4>
+<h4>临时加速拉取</h4>
 <pre class="notranslate"><code class="notranslate">docker pull docker.1panel.live/library/mysql:5.7
 </code></pre>
 <p>说明：<code class="notranslate">library</code>是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把<code class="notranslate">library</code>替换为镜像的用户名。</p>
+<p>部分镜像加速已自动处理，可忽略。</p>
 <h3>Docker Desktop 配置</h3>
 <p>对于电脑的<code class="notranslate">Docker Desktop</code>用户，点击右上角<code class="notranslate">设置</code>，找到<code class="notranslate">Docker Engine</code>然后修改配置，修改后的示例：</p>
 <pre class="notranslate"><code class="notranslate">{
@@ -220,6 +222,7 @@ EOF
   },
   "experimental": false,
   "registry-mirrors": [
+    "https://docker.xuanyuan.me",
     "https://docker.1ms.run",
     "https://docker.1panel.live"
   ]
@@ -271,6 +274,27 @@ sudo systemctl restart docker
 <h2>Docker Hub 镜像测速</h2>
 <p>拉取镜像时，可使用 <code class="notranslate">time</code> 统计所花费的总时间。测速前记得移除本地的镜像。</p>
 <p>例如：<code class="notranslate">time docker pull node:latest</code></p>
+<h2>修改客户端并发数加快下载速度</h2>
+<p><code class="notranslate">/etc/docker/daemon.json</code></p>
+<pre class="notranslate"><code class="notranslate">{
+  "registry-mirrors": [
+    "https://docker.1ms.run"
+  ],
+  "max-concurrent-downloads": 10,
+  "max-concurrent-uploads": 10,
+  "max-download-attempts": 5,
+  "default-ulimits": {
+    "nofile": {
+      "Hard": 64000,
+      "Name": "nofile",
+      "Soft": 64000
+    }
+  }
+}
+</code></pre>
+<pre class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre>
 <h2>为Docker启用IPV6</h2>
 <p>创建或修改<code class="notranslate">/etc/docker/daemon.json</code>文件</p>
 <p>增加如下配置：</p>
@@ -300,6 +324,12 @@ sudo rm -rf /etc/docker /var/lib/docker
 <tr>
 <td><a href="https://1panel.cn/docs/user_manual/containers/setting/" rel="nofollow">1panel</a></td>
 <td><code class="notranslate">https://docker.1panel.live</code></td>
+<td>无限制</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://docker.xuanyuan.me/" rel="nofollow">轩辕镜像</a></td>
+<td><code class="notranslate">https://docker.xuanyuan.me</code></td>
 <td>无限制</td>
 <td>Docker Hub</td>
 </tr>
@@ -345,6 +375,173 @@ sudo rm -rf /etc/docker /var/lib/docker
 <ul>
 <li><a href="https://docs.docker.com/registry/recipes/mirror/" rel="nofollow">https://docs.docker.com/registry/recipes/mirror/</a></li>
 <li><a href="https://status.1panel.top/status/docker" rel="nofollow">https://status.1panel.top/status/docker</a></li>
+</ul>
+<h2>Docker常用命令:</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>功能</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编译镜像</td>
+<td><code class="notranslate">docker build -t 镜像名 .</code></td>
+<td>先<code class="notranslate">docker login</code>登录docker hub</td>
+</tr>
+<tr>
+<td>推送镜像</td>
+<td><code class="notranslate">docker push 用户名/镜像名</code></td>
+<td>需先标记镜像 <code class="notranslate">docker tag 53321f173e 用户名/镜像名</code></td>
+</tr>
+<tr>
+<td>查看容器</td>
+<td><code class="notranslate">docker ps</code></td>
+<td><code class="notranslate">-a</code>查看包括已停止的容器</td>
+</tr>
+<tr>
+<td>容器资源占用</td>
+<td><code class="notranslate">docker stats</code></td>
+<td>查看所有容器资源占用</td>
+</tr>
+<tr>
+<td>容器详细信息</td>
+<td><code class="notranslate">docker inspect</code></td>
+<td>挂载看<code class="notranslate">Mounts</code>网络看<code class="notranslate">Networks</code></td>
+</tr>
+<tr>
+<td>进入容器内部</td>
+<td><code class="notranslate">docker exec -it 容器名 sh</code></td>
+<td>结尾使用<code class="notranslate">/bash</code>也行</td>
+</tr>
+<tr>
+<td>创建容器网络</td>
+<td><code class="notranslate">docker network create my-network</code></td>
+<td><code class="notranslate">my-network</code>为网络名称</td>
+</tr>
+<tr>
+<td>容器加入网络</td>
+<td><code class="notranslate">docker network connect my-network 容器名</code></td>
+<td>替换容器名或ID</td>
+</tr>
+<tr>
+<td>宿主机网络</td>
+<td><code class="notranslate">network_mode: host</code></td>
+<td><code class="notranslate">docker-compose</code>使用</td>
+</tr>
+<tr>
+<td>宿主机网络</td>
+<td><code class="notranslate">--network host</code></td>
+<td><code class="notranslate">docker run</code>使用</td>
+</tr>
+<tr>
+<td>查看网络</td>
+<td><code class="notranslate">docker network inspect my-network</code></td>
+<td>查看<code class="notranslate">my-network</code>网络中的容器</td>
+</tr>
+<tr>
+<td>查看变动</td>
+<td><code class="notranslate">docker diff 容器名</code></td>
+<td>查看容器里的文件变化</td>
+</tr>
+<tr>
+<td>停止容器</td>
+<td><code class="notranslate">docker stop</code></td>
+<td><code class="notranslate">docker stop 容器名或ID</code></td>
+</tr>
+<tr>
+<td>启动容器</td>
+<td><code class="notranslate">docker start</code></td>
+<td><code class="notranslate">docker start 容器名或ID</code></td>
+</tr>
+<tr>
+<td>重启容器</td>
+<td><code class="notranslate">docker restart</code></td>
+<td><code class="notranslate">docker restart 容器名或ID</code></td>
+</tr>
+<tr>
+<td>删除容器</td>
+<td><code class="notranslate">docker rm</code></td>
+<td><code class="notranslate">docker rm 容器名或ID</code></td>
+</tr>
+<tr>
+<td>查看镜像</td>
+<td><code class="notranslate">docker images</code></td>
+<td><code class="notranslate">docker images 镜像名或ID</code></td>
+</tr>
+<tr>
+<td>删除镜像</td>
+<td><code class="notranslate">docker rmi -f</code></td>
+<td><code class="notranslate">docker rmi -f 镜像名或ID</code></td>
+</tr>
+<tr>
+<td>清除资源</td>
+<td><code class="notranslate">docker system prune</code></td>
+<td>清除所有未使用资源<code class="notranslate">容器 网络 镜像 缓存</code></td>
+</tr>
+<tr>
+<td>删除所有镜像</td>
+<td><code class="notranslate">docker rmi -f $(docker images -aq)</code></td>
+<td>删除所有镜像</td>
+</tr>
+<tr>
+<td>删除所有容器</td>
+<td><code class="notranslate">docker container prune -f</code></td>
+<td>删除所有已停止容器</td>
+</tr>
+<tr>
+<td>停止所有容器</td>
+<td><code class="notranslate">docker stop $(docker ps -aq)</code></td>
+<td>停止所有容器</td>
+</tr>
+<tr>
+<td>停止并删除</td>
+<td><code class="notranslate">docker compose down</code></td>
+<td>停止并删除编排容器</td>
+</tr>
+<tr>
+<td>重新创建容器</td>
+<td><code class="notranslate">docker compose up -d --force-recreate</code></td>
+<td>强制删除并重启编排容器</td>
+</tr>
+<tr>
+<td>复制文件</td>
+<td><code class="notranslate">docker cp dujiaoka:/app/data.yaml /home</code></td>
+<td>从容器复制到宿主机</td>
+</tr>
+<tr>
+<td>复制文件</td>
+<td><code class="notranslate">docker cp /home/data.yaml dujiaoka:/app</code></td>
+<td>从宿主机复制到容器</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<p><a href="https://hub.docker.com/" rel="nofollow">官方仓库</a></p>
+<p><a href="https://docs.docker.com/build/building/packaging/" rel="nofollow">官方文档</a></p>
+<p>容器数据路径：<code class="notranslate">/var/lib/docker/containers/&lt;container-id&gt;</code></p>
+<hr>
+<h3><code class="notranslate">Docker bake</code>命令介绍</h3>
+<p>详情见：<a href="./docker/Docker-bake.md">Docker-bake</a></p>
+<p>它的特点和优势：</p>
+<ul>
+<li>
+<p>支持多阶段（multi-target）构建，同时构建多个镜像目标</p>
+</li>
+<li>
+<p>支持多平台交叉编译构建，比如 linux/amd64、linux/arm64 等</p>
+</li>
+<li>
+<p>支持定义依赖关系，构建顺序自动管理</p>
+</li>
+<li>
+<p>配合 BuildKit，速度快且资源利用率高</p>
+</li>
+<li>
+<p>支持使用简单的 JSON 或 HCL 文件配置，清晰明了</p>
+</li>
 </ul></div>
 <div class="post-meta">❤️转载请注明出处❤️</div>
 

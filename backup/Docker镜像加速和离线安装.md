@@ -17,7 +17,6 @@ curl -fsSL https://get.docker.com | sh
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
 ```
 
-
 <details>
   <summary>手动离线安装Docker</summary>
   
@@ -127,6 +126,7 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<EOF
 {
     "registry-mirrors": [
+        "https://docker.xuanyuan.me",
         "https://docker.1ms.run",
         "https://docker.1panel.live"
     ]
@@ -141,12 +141,13 @@ sudo systemctl restart docker
 ```
 
 
-#### 如果不方便重启Docker服务，也可以不用设置全局加速地址，拉取镜像时增加加速地址即可，示例：
+#### 临时加速拉取
 ```
 docker pull docker.1panel.live/library/mysql:5.7
 ```
 说明：`library`是一个特殊的命名空间，它代表的是官方镜像。如果是某个用户的镜像就把`library`替换为镜像的用户名。
 
+部分镜像加速已自动处理，可忽略。
 
 ### Docker Desktop 配置
 
@@ -161,6 +162,7 @@ docker pull docker.1panel.live/library/mysql:5.7
   },
   "experimental": false,
   "registry-mirrors": [
+    "https://docker.xuanyuan.me",
     "https://docker.1ms.run",
     "https://docker.1panel.live"
   ]
@@ -246,6 +248,32 @@ docker images
 例如：`time docker pull node:latest`
 
 
+## 修改客户端并发数加快下载速度
+
+`/etc/docker/daemon.json`
+
+```
+{
+  "registry-mirrors": [
+    "https://docker.1ms.run"
+  ],
+  "max-concurrent-downloads": 10,
+  "max-concurrent-uploads": 10,
+  "max-download-attempts": 5,
+  "default-ulimits": {
+    "nofile": {
+      "Hard": 64000,
+      "Name": "nofile",
+      "Soft": 64000
+    }
+  }
+}
+```
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
 ## 为Docker启用IPV6
 
 创建或修改`/etc/docker/daemon.json`文件
@@ -272,6 +300,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 提供者 | 镜像加速地址 | 说明 | 加速类型
 --- | --- | --- | ---
 [1panel](https://1panel.cn/docs/user_manual/containers/setting/) | `https://docker.1panel.live` | 无限制 | Docker Hub
+[轩辕镜像](https://docker.xuanyuan.me/) | `https://docker.xuanyuan.me` | 无限制 | Docker Hub
 [毫秒镜像](https://docker.1ms.run) | `https://docker.1ms.run` | 有黑名单&可选国内CDN | Docker Hub
 [DaoCloud](https://github.com/DaoCloud/public-image-mirror) | `https://docker.m.daocloud.io` |白名单和限流 | Docker Hub
 [华为云](https://console.huaweicloud.com/swr/#/swr/dashboard) | `https://***.mirror.swr.myhuaweicloud.com` | 需登录分配 | Docker Hub
@@ -283,3 +312,61 @@ sudo rm -rf /etc/docker /var/lib/docker
 
 + https://docs.docker.com/registry/recipes/mirror/
 + https://status.1panel.top/status/docker
+
+
+
+##  Docker常用命令:
+
+| 功能    | 命令 | 说明 |
+|-------------|-------------------|----------------|
+| 编译镜像  | `docker build -t 镜像名 .`      |   先`docker login`登录docker hub        |
+| 推送镜像  | `docker push 用户名/镜像名`      |   需先标记镜像 `docker tag 53321f173e 用户名/镜像名`        |
+| 查看容器  | `docker ps`      |   `-a`查看包括已停止的容器         |
+| 容器资源占用  | `docker stats`      |   查看所有容器资源占用         |
+| 容器详细信息  | `docker inspect`      |  挂载看`Mounts`网络看`Networks`       |
+| 进入容器内部  | `docker exec -it 容器名 sh`      |   结尾使用`/bash`也行        |
+| 创建容器网络  | `docker network create my-network`      |   `my-network`为网络名称        |
+| 容器加入网络  | `docker network connect my-network 容器名`      |   替换容器名或ID        |
+| 宿主机网络  | `network_mode: host`      |   `docker-compose`使用        |
+| 宿主机网络  | `--network host`      |   `docker run`使用        |
+| 查看网络  | `docker network inspect my-network`      |   查看`my-network`网络中的容器        |
+| 查看变动  | `docker diff 容器名`      |   查看容器里的文件变化        |
+| 停止容器  | `docker stop`      |   `docker stop 容器名或ID`             |
+| 启动容器  | `docker start`      | `docker start 容器名或ID`           |
+| 重启容器  | `docker restart`      |  `docker restart 容器名或ID`          |
+| 删除容器 | `docker rm`       |  `docker rm 容器名或ID`              |
+| 查看镜像 | `docker images`   | `docker images 镜像名或ID`            |
+| 删除镜像  | `docker rmi -f`   |  `docker rmi -f 镜像名或ID`          |
+| 清除资源  | `docker system prune`   |  清除所有未使用资源`容器 网络 镜像 缓存`    |
+| 删除所有镜像  | `docker rmi -f $(docker images -aq)`  |   删除所有镜像         |
+| 删除所有容器  | `docker container prune -f`  |   删除所有已停止容器         |
+| 停止所有容器  | `docker stop $(docker ps -aq)`  |   停止所有容器         |
+| 停止并删除  | `docker compose down`  |   停止并删除编排容器        |
+| 重新创建容器  | `docker compose up -d --force-recreate`  |   强制删除并重启编排容器   |
+| 复制文件  | `docker cp dujiaoka:/app/data.yaml /home`  |   从容器复制到宿主机        |
+| 复制文件  | `docker cp /home/data.yaml dujiaoka:/app`  |   从宿主机复制到容器   |
+
+---
+[官方仓库](https://hub.docker.com/)
+
+[官方文档](https://docs.docker.com/build/building/packaging/)
+
+容器数据路径：`/var/lib/docker/containers/<container-id>`
+
+---
+
+### `Docker bake`命令介绍
+
+详情见：[Docker-bake](./docker/Docker-bake.md)
+
+它的特点和优势：
+
+- 支持多阶段（multi-target）构建，同时构建多个镜像目标
+
+- 支持多平台交叉编译构建，比如 linux/amd64、linux/arm64 等
+
+- 支持定义依赖关系，构建顺序自动管理
+
+- 配合 BuildKit，速度快且资源利用率高
+
+- 支持使用简单的 JSON 或 HCL 文件配置，清晰明了
