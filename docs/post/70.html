@@ -10,25 +10,111 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## DAE 透明代理 - 完美替代v2rayA
+<meta name="description" content="## DAE 透明代理
 
 项目地址：https://github.com/daeuniverse/daed
 
-## 1. 核心优势
 
-- **内核级处理**：通过 eBPF 在内核早期阶段直接分流流量，无需全部经过用户态代理。">
-<meta property="og:title" content="Llinux系统中全新透明代理方案（可代理所有出站流量）">
-<meta property="og:description" content="## DAE 透明代理 - 完美替代v2rayA
+## 部署文档
+
+### 先开启IP转发
+```
+sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
+```
+
+### 安装docker
+```
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
+```
+### 通过docker运行
+```
+docker run -d \
+    --privileged \
+    --network=host \
+    --pid=host \
+    --restart=always \
+    -v /sys:/sys \
+    -v /etc/daed:/etc/daed \
+    --name=daed \
+    ghcr.io/daeuniverse/daed:latest
+```
+
+然后通过`2023`端口访问面板
+
+### 添加出站节点
+
+<img width='1496' height='734' alt='Image' src='https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf' />
+
+---
+---
+
+<img width='658' height='230' alt='Image' src='https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284' />
+
+---
+---
+
+<img width='1409' height='1246' alt='Image' src='https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd' />
+
+---
+---
+### 路由配置解释
+<img width='867' height='697' alt='Image' src='https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08' />。">
+<meta property="og:title" content="Llinux透明代理方案daed">
+<meta property="og:description" content="## DAE 透明代理
 
 项目地址：https://github.com/daeuniverse/daed
 
-## 1. 核心优势
 
-- **内核级处理**：通过 eBPF 在内核早期阶段直接分流流量，无需全部经过用户态代理。">
+## 部署文档
+
+### 先开启IP转发
+```
+sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
+```
+
+### 安装docker
+```
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
+```
+### 通过docker运行
+```
+docker run -d \
+    --privileged \
+    --network=host \
+    --pid=host \
+    --restart=always \
+    -v /sys:/sys \
+    -v /etc/daed:/etc/daed \
+    --name=daed \
+    ghcr.io/daeuniverse/daed:latest
+```
+
+然后通过`2023`端口访问面板
+
+### 添加出站节点
+
+<img width='1496' height='734' alt='Image' src='https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf' />
+
+---
+---
+
+<img width='658' height='230' alt='Image' src='https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284' />
+
+---
+---
+
+<img width='1409' height='1246' alt='Image' src='https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd' />
+
+---
+---
+### 路由配置解释
+<img width='867' height='697' alt='Image' src='https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08' />。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.52013120.xyz/post/70.html">
 <meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
-<title>Llinux系统中全新透明代理方案（可代理所有出站流量）</title>
+<title>Llinux透明代理方案daed</title>
 
 
 
@@ -100,7 +186,7 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 
 <body>
     <div id="header">
-<h1 class="postTitle page-title">Llinux系统中全新透明代理方案（可代理所有出站流量）</h1>
+<h1 class="postTitle page-title">Llinux透明代理方案daed</h1>
 <div class="title-right">
     <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -119,88 +205,8 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 </div>
     <div id="content">
 <button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
-<div class="markdown-body" id="postBody"><h2>DAE 透明代理 - 完美替代v2rayA</h2>
+<div class="markdown-body" id="postBody"><h2>DAE 透明代理</h2>
 <p>项目地址：<a href="https://github.com/daeuniverse/daed">https://github.com/daeuniverse/daed</a></p>
-<h2>1. 核心优势</h2>
-<ul>
-<li><strong>内核级处理</strong>：通过 eBPF 在内核早期阶段直接分流流量，无需全部经过用户态代理。</li>
-<li><strong>高性能</strong>：CPU 占用低，延迟小，尤其在高并发或大量容器场景下优势明显。</li>
-<li><strong>全局透明代理</strong>：Docker 容器或其他应用无需额外配置即可走代理。</li>
-<li><strong>精准分流</strong>：可按进程名、容器名或 cgroup 分流，只代理需要的流量，其他流量直连。</li>
-<li><strong>管理便捷</strong>：配合 daed 可视化管理界面，实时监控流量和规则。</li>
-</ul>
-<hr>
-<h2>2. 与 TUN 模式对比</h2>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>特性</th>
-<th>TUN 模式（Clash / sing-box）</th>
-<th>DAE（eBPF 内核代理）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>流量路径</td>
-<td>所有流量进入用户态处理</td>
-<td>内核早期分流，仅必要流量进入用户态</td>
-</tr>
-<tr>
-<td>性能</td>
-<td>较低，高负载 CPU 占用明显</td>
-<td>高性能，几乎无损</td>
-</tr>
-<tr>
-<td>配置需求</td>
-<td>需要应用或容器设置代理</td>
-<td>应用无感知，容器自动走代理</td>
-</tr>
-<tr>
-<td>分流精度</td>
-<td>基于 IP / 端口</td>
-<td>支持进程名 / 容器 / cgroup</td>
-</tr>
-<tr>
-<td>系统兼容</td>
-<td>跨平台</td>
-<td>仅 Linux，依赖内核版本 ≥ 5.x</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<hr>
-<h2>3. 与传统 iptables 透明代理对比</h2>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>特性</th>
-<th>iptables / tproxy</th>
-<th>DAE（eBPF 内核代理）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>流量处理</td>
-<td>内核中较晚阶段处理，需要转发到用户态</td>
-<td>内核早期直接分流，性能更高</td>
-</tr>
-<tr>
-<td>管理复杂度</td>
-<td>规则复杂，易错</td>
-<td>配合 daed 可视化管理，规则直观</td>
-</tr>
-<tr>
-<td>性能</td>
-<td>中等，用户态中转依然存在</td>
-<td>高性能，CPU 开销低</td>
-</tr>
-<tr>
-<td>精准分流</td>
-<td>基于 IP/端口或策略</td>
-<td>支持进程名 / 容器 / cgroup，按需代理</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<hr>
 <h2>部署文档</h2>
 <h3>先开启IP转发</h3>
 <pre class="notranslate"><code class="notranslate">sysctl -w net.ipv4.ip_forward=1

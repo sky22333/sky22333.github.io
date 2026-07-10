@@ -117,11 +117,12 @@ a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,b
 <p>官方提供的网页在线构建叫<code class="notranslate">ImageBuilder</code>，不是编译源码，而是借助官方的服务器资源，使用预编译好的SDK，快速选择包然后生成固件。优点是构建很快，缺点是自定义程度不是很高，但是常用的配置都可以自定义，例如提前安装插件，配置网口信息和防火墙什么的。</p>
 <p>官方在线编译地址：<a href="https://firmware-selector.immortalwrt.org" rel="nofollow">https://firmware-selector.immortalwrt.org</a></p>
 <h2>必备软件</h2>
-<pre class="notranslate"><code class="notranslate">curl luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn
+<pre class="notranslate"><code class="notranslate">openssh-sftp-server curl luci-theme-argon luci-i18n-homeproxy-zh-cn luci-i18n-ttyd-zh-cn luci-i18n-diskman-zh-cn luci-i18n-filemanager-zh-cn luci-i18n-package-manager-zh-cn luci-i18n-firewall-zh-cn
 </code></pre>
 <p>当你安装一个插件包时，他会自动下载所需的软件和依赖，所以只需添加对应插件的汉化包即可。</p>
 <p>ImmortalWrt软件包查询（注意替换实际的版本和设备架构）：</p>
-<p><a href="https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json" rel="nofollow">https://downloads.immortalwrt.org/releases/24.10.4/packages/x86_64/luci/index.json</a></p>
+<p>带luci界面的包：<a href="https://downloads.immortalwrt.org/releases/25.12.0/packages/x86_64/luci/index.json" rel="nofollow">https://downloads.immortalwrt.org/releases/25.12.0/packages/x86_64/luci/index.json</a></p>
+<p>不带luci界面的包：<a href="https://downloads.immortalwrt.org/releases/25.12.0/packages/x86_64/packages/index.json" rel="nofollow">https://downloads.immortalwrt.org/releases/25.12.0/packages/x86_64/packages/index.json</a></p>
 <h2>初始化构建脚本</h2>
 <p>要修改的地方请去掉注释</p>
 <pre class="notranslate"><code class="notranslate">#!/bin/sh

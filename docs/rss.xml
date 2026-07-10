@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 01 Jul 2026 11:15:24 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Fri, 10 Jul 2026 19:59:09 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
 
 windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
 
@@ -43,13 +43,56 @@ Linux Network Installs (64-bit)
 官网：https://www.giffgaff.com/dashboard
 
 ## 保号短信
-发送`hi`到`00447973000186`，这是中国移动英国（CMLink UK）客服热线。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/71.html</guid><pubDate>Sat, 28 Mar 2026 18:41:41 +0000</pubDate></item><item><title>Llinux系统中全新透明代理方案（可代理所有出站流量）</title><link>https://blog.52013120.xyz/post/70.html</link><description>## DAE 透明代理 - 完美替代v2rayA
+发送`hi`到`00447973000186`，这是中国移动英国（CMLink UK）客服热线。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/71.html</guid><pubDate>Sat, 28 Mar 2026 18:41:41 +0000</pubDate></item><item><title>Llinux透明代理方案daed</title><link>https://blog.52013120.xyz/post/70.html</link><description>## DAE 透明代理
 
 项目地址：https://github.com/daeuniverse/daed
 
-## 1. 核心优势
 
-- **内核级处理**：通过 eBPF 在内核早期阶段直接分流流量，无需全部经过用户态代理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/70.html</guid><pubDate>Tue, 24 Mar 2026 15:49:52 +0000</pubDate></item><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+## 部署文档
+
+### 先开启IP转发
+```
+sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
+```
+
+### 安装docker
+```
+bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
+```
+### 通过docker运行
+```
+docker run -d \
+    --privileged \
+    --network=host \
+    --pid=host \
+    --restart=always \
+    -v /sys:/sys \
+    -v /etc/daed:/etc/daed \
+    --name=daed \
+    ghcr.io/daeuniverse/daed:latest
+```
+
+然后通过`2023`端口访问面板
+
+### 添加出站节点
+
+&lt;img width='1496' height='734' alt='Image' src='https://github.com/user-attachments/assets/787646a5-4970-4591-907f-85317461c6cf' /&gt;
+
+---
+---
+
+&lt;img width='658' height='230' alt='Image' src='https://github.com/user-attachments/assets/d3f007c4-b1ad-4ec8-b03a-ca9e41a51284' /&gt;
+
+---
+---
+
+&lt;img width='1409' height='1246' alt='Image' src='https://github.com/user-attachments/assets/99de7ad1-91bf-42ca-8a4b-ecf91dddc7cd' /&gt;
+
+---
+---
+### 路由配置解释
+&lt;img width='867' height='697' alt='Image' src='https://github.com/user-attachments/assets/b2d995ce-628a-489e-bc23-307613cdda08' /&gt;。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/70.html</guid><pubDate>Tue, 24 Mar 2026 15:49:52 +0000</pubDate></item><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
 
 `192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
 
@@ -1426,7 +1469,7 @@ git config --global --unset credential.helper
 ```
 
 ## 项目添加子模块
-`ddns-go` 为例，项目根目录执行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>😩😩😩学不完，根本学不完😩😩😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
+`ddns-go` 为例，项目根目录执行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>前端UI组件库收藏</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
 
 ### UI组件库
 
@@ -2037,234 +2080,9 @@ docker compose restart&#13;
 &#13;
 ### 知识库&#13;
 &#13;
-V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 主流编程语言的安装依赖和构建运行命令
-
-&gt; [!TIP]
-&gt; ## npm包管理器国内镜像
-
-### 当前终端有效
-```
-# Linux/macOS
-export npm_config_registry=https://registry.npmmirror.com
-
-# Windows PowerShell
-$env:npm_config_registry='https://registry.npmmirror.com'
-
-# Windows CMD
-set npm_config_registry=https://registry.npmmirror.com
-```
-
-### 永久配置
-```
-npm config set registry https://registry.npmmirror.com
-```
-恢复默认
-```
-npm config set registry https://registry.npmjs.org
-```
-
-### 当前终端使用代理
-Linux
-```
-export HTTP_PROXY=http://127.0.0.1:10808
-export HTTPS_PROXY=http://127.0.0.1:10808
-export ALL_PROXY=socks5://127.0.0.1:10808
-export NO_PROXY=localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
-```
-Windows PowerShell
-```
-$env:HTTP_PROXY='http://127.0.0.1:10808'
-$env:HTTPS_PROXY='http://127.0.0.1:10808'
-$env:ALL_PROXY='socks5://127.0.0.1:10808'
-$env:NO_PROXY='localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12'
-```
-Windows CMD
-```
-set HTTP_PROXY=http://127.0.0.1:10808
-set HTTPS_PROXY=http://127.0.0.1:10808
-set ALL_PROXY=socks5://127.0.0.1:10808
-set NO_PROXY=localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
-```
-
-&gt; [!TIP]
-&gt; ## Java (Spring Boot) 💻
-
-#### 基本代码结构
-```
-my-springboot-project/
-├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── com/
-│ │ │ └── example/
-│ │ │ └── MySpringBootApplication.java
-│ │ └── resources/
-│ │ ├── application.properties
-│ │ └── static/
-│ └── test/
-│ └── java/
-│ └── com/
-│ └── example/
-│ └── MySpringBootApplicationTests.java
-├── .gitignore
-├── build.gradle
-└── pom.xml
-```
-
-#### 安装依赖和构建
-
-#### Maven
-```
-mvn clean package
-```
-#### Gradle
-```
-./gradlew build
-```
-#### 运行构建出来的`jar`包（一般在项目的`target/you.jar`目录中）
-```
-java -jar target/you.jar
-```
-
-&gt; [!TIP]
-&gt; ## Go 💻
-
-
-#### 国内镜像
-#### 当前终端有效
-```
-# Linux/macOS
-export GOPROXY=https://goproxy.cn,direct
-
-# Windows PowerShell
-$env:GOPROXY='https://goproxy.cn,direct'
-```
-#### 全局配置
-```
-go env -w GOPROXY=https://goproxy.cn,direct
-```
-#### 恢复官方源
-```
-go env -w GOPROXY=https://proxy.golang.org,direct
-```
-
-#### 清理缓存
-```
-go clean -cache
-```
-#### 初始化模块
-```
-go mod init myapp
-```
-#### 自动识别并安装依赖
-```
-go mod tidy
-```
-#### 在线运行
-```
-go run main.go
-```
-
-#### 质量检查
-```
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-golangci-lint run
-```
-```
-go install honnef.co/go/tools/cmd/staticcheck@latest
-staticcheck ./...
-```
-#### 格式化代码
-```
-go fmt ./...
-```
-
-#### 将所有依赖和静态链接一起打包，并优化包大小
-```
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
-```
-
-#### Windows系统构建
-```
-$env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp.exe
-```
-```
-$env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
-```
-
-&gt; [!TIP]
-&gt; ## C#
-
-环境安装：https://dotnet.microsoft.com/zh-cn/download/dotnet
-
-基本代码结构
-```
-MyApp/
-├─ MyApp.sln               # 解决方案文件（可选，多项目时使用）
-├─ MyApp/                  # 项目目录
-│  ├─ MyApp.csproj         # 项目文件（包含依赖、编译选项）
-│  ├─ Program.cs           # 主程序入口
-│  ├─ Properties/
-│  │  └─ launchSettings.json  # 调试配置（VS / Rider）
-│  ├─ appsettings.json     # 配置文件（可选）
-│  ├─ Models/              # 存放数据模型类
-│  │  └─ User.cs
-│  ├─ Services/            # 存放服务类
-│  │  └─ EmailService.cs
-│  ├─ Controllers/         # MVC 或 API 项目才有
-│  │  └─ UserController.cs
-│  └─ wwwroot/             # Web 静态资源（Web 项目才有）
-├─ .gitignore              # git 忽略文件
-├─ global.json             # SDK 版本锁定（可选）
-└─ README.md
-```
-
-常用命令
-
-```
-# 恢复项目依赖，下载 NuGet 包并生成依赖缓存
-dotnet restore
-
-# 安装代码格式化
-dotnet tool install -g dotnet-format
-
-# 执行代码格式化
-dotnet format
-
-# 编译项目并执行静态代码分析
-dotnet build -warnaserror -p:AnalysisLevel=latest
-
-# 运行单元测试，确保代码逻辑正确
-dotnet test
-
-# 热重载运行
-dotnet watch run
-
-# 生成可部署的生产版本，放在 publish 目录
-dotnet publish -c Release
-```
-
-&gt; [!TIP]
-&gt; ## rust
-
-### 下载windows开发工具链：
-
-https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/
-
-只需选择如下三个即可
-```
-适用于x64/x86 的MSVC 生成工具
-
-Windows 11 SDK
-
-用于Windows 的 C++ CMake 工具
-```
-
-### 下载rust开发环境：
-
-https://rust-lang.org/zh-CN/tools/install/
-
-双击安装工具，然后一路回车。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>
+# PowerShell
+解除脚本限制，执行完后重启PowerShell窗口生效。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程
 
 1】首先浏览器里打开网页版iCloud：  www.icloud.com
 
