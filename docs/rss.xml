@@ -1,0 +1,2932 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>繁星点点</title><link>https://blog.52013120.xyz</link><description>记录点点滴滴</description><copyright>繁星点点</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://blog.52013120.xyz/assets/blog.png</url><title>avatar</title><link>https://blog.52013120.xyz</link></image><lastBuildDate>Wed, 01 Jul 2026 11:15:24 +0000</lastBuildDate><managingEditor>繁星点点</managingEditor><ttl>60</ttl><webMaster>繁星点点</webMaster><item><title>最新轻量级龙虾部署教程</title><link>https://blog.52013120.xyz/post/73.html</link><description>## Windows部署
+
+windows下载：https://github.com/sipeed/picoclaw/releases/latest/download/picoclaw_Windows_x86_64.zip
+
+解压后双击运行`picoclaw-launcher`会自动打开浏览器，然后浏览器里配置。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/73.html</guid><pubDate>Sun, 17 May 2026 16:43:30 +0000</pubDate></item><item><title>通过netboot.xyz重装系统</title><link>https://blog.52013120.xyz/post/72.html</link><description>## Linux系统网络重装系统
+
+#### 查看系统信息并备份
+出意外时可用于手动配置
+```
+# 查看系统盘
+df -h /
+
+# 查看默认网关
+ip r
+
+# 查看默认网络接口
+ip a
+```
+#### 下载 netboot.xyz 启动镜像（iPXE引导器）
+```
+wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
+```
+#### 将镜像DD写入系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
+```
+dd if=netboot.xyz.img of=/dev/vda bs=4M
+```
+#### 强制将缓存写入磁盘，确保数据落盘完成
+```
+sync
+```
+#### 重启服务器
+```
+reboot
+```
+#### 进入启动菜单，选择网络安装
+云服务器厂商可以在管理后台通过VNC界面操作
+```
+Linux Network Installs (64-bit)
+```
+
+&gt; 如果重装成功，结束后会自动进入新系统，需要注意的是新系统一般没有开启root用户的ssh权限，需要用普通用户ssh连接，然后切换为root用户后再修改。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/72.html</guid><pubDate>Fri, 24 Apr 2026 20:23:20 +0000</pubDate></item><item><title>giffgaff卡保号教程</title><link>https://blog.52013120.xyz/post/71.html</link><description>## giffgaff卡保号教程
+官网：https://www.giffgaff.com/dashboard
+
+## 保号短信
+发送`hi`到`00447973000186`，这是中国移动英国（CMLink UK）客服热线。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/71.html</guid><pubDate>Sat, 28 Mar 2026 18:41:41 +0000</pubDate></item><item><title>Llinux系统中全新透明代理方案（可代理所有出站流量）</title><link>https://blog.52013120.xyz/post/70.html</link><description>## DAE 透明代理 - 完美替代v2rayA
+
+项目地址：https://github.com/daeuniverse/daed
+
+## 1. 核心优势
+
+- **内核级处理**：通过 eBPF 在内核早期阶段直接分流流量，无需全部经过用户态代理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/70.html</guid><pubDate>Tue, 24 Mar 2026 15:49:52 +0000</pubDate></item><item><title>tailscale开启子网路由常见的坑</title><link>https://blog.52013120.xyz/post/69.html</link><description>## immortalwrt部署tailscale并开启子网路由常见的坑
+
+`192.168.3.0/24`根据自己需求更改，添加子网路由后，`192.168.3.0/24`网段的所有设备都能直接访问tailscale中的其他设备，无需安装tailscale
+
+开启子网路由：
+```
+tailscale up --advertise-routes=192.168.3.0/24 --accept-routes --reset
+```
+开启后，在`tailscale`后台找到你路由器设备，点击右侧菜单(三个点)，选择`Edit route settings...`，勾选`192.168.3.0/24`，点击`Save`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/69.html</guid><pubDate>Mon, 01 Dec 2025 15:44:06 +0000</pubDate></item><item><title>OpenWrt固件编译</title><link>https://blog.52013120.xyz/post/68.html</link><description># 介绍
+OpenWrt 是一个 基于 Linux 的路由器操作系统，专门为嵌入式设备（路由器、NAS、小型网关设备等）设计。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/68.html</guid><pubDate>Sun, 16 Nov 2025 12:08:39 +0000</pubDate></item><item><title>解决UFW和Docker的问题</title><link>https://blog.52013120.xyz/post/67.html</link><description>目前新的解决方案只需要修改一个 UFW 配置文件即可，Docker 的所有配置和选项都保持默认。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/67.html</guid><pubDate>Sun, 21 Sep 2025 06:05:09 +0000</pubDate></item><item><title>使用PGP的非对称算法加密文件</title><link>https://blog.52013120.xyz/post/66.html</link><description># PGP 加密使用
+
+使用 `gpg` 工具在本地生成 PGP 密钥对，并进行文件的加密、解密、签名与验证操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/66.html</guid><pubDate>Sun, 31 Aug 2025 17:20:02 +0000</pubDate></item><item><title>NSSM工具把任意exe程序注册为Windows后台服务</title><link>https://blog.52013120.xyz/post/65.html</link><description># NSSM 教程
+
+**NSSM**（Non-Sucking Service Manager）用于把任意 exe 程序注册为 Windows 服务，后台运行，支持日志和自动重启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/65.html</guid><pubDate>Sat, 23 Aug 2025 05:59:08 +0000</pubDate></item><item><title>轻量级简约端口转发rinetd</title><link>https://blog.52013120.xyz/post/64.html</link><description>### 轻量级简约端口转发`rinetd`适合家庭网络
+
+安装
+```
+apt update
+apt install rinetd -y
+```
+
+配置文件路径
+```
+/etc/rinetd.conf
+```
+
+转发配置示例
+```
+0.0.0.0 8080 192.168.1.100 80
+```
+```
+# 开机自启
+systemctl enable rinetd
+
+# 启动
+systemctl start rinetd
+
+# 查看服务状态
+systemctl status rinetd
+
+# 停止
+systemctl stop rinetd
+
+# 重启
+systemctl restart rinetd
+
+# 实时日志
+journalctl -u rinetd -f
+```
+
+### win系统内置的TCP端口转发
+
+- 查看是否开启 IPv4 转发（0代表关闭，1代表开启）
+```
+reg query HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v IPEnableRouter
+```
+
+- 开启 IPv4 转发（需要重启生效）
+```
+reg add HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v IPEnableRouter /t REG_DWORD /d 1 /f
+```
+
+
+- 将本机所有网卡 54321 端口的请求转发到 192.168.1.101:54321
+```
+netsh interface portproxy add v4tov4  listenaddress=0.0.0.0 listenport=54321 connectaddress=192.168.1.101 connectport=54321
+```
+
+- 删除本机上监听 172.16.0.4:8080 转发的规则
+```
+netsh interface  portproxy delete v4tov4 listenaddress=172.16.0.4 listenport=8080
+```
+- 查看端口监听状态
+```
+netstat -ano | find '54321'
+```
+
+- 显示系统中的转发规则列表
+```
+netsh interface portproxy show all
+```
+
+- 查看portproxy设置
+```
+netsh interface portproxy dump
+```
+
+- 删除指定的转发规则
+```
+netsh interface portproxy delete v4tov4 listenport=54321 listenaddress=0.0.0.0
+```
+- 清除所有端口转发规则
+```
+netsh interface portproxy reset
+```
+- 展示系统中的所有转发规则
+```
+netsh interface  portproxy show  v4tov4
+```。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/64.html</guid><pubDate>Thu, 21 Aug 2025 09:58:08 +0000</pubDate></item><item><title>安卓IDE的安装和使用</title><link>https://blog.52013120.xyz/post/62.html</link><description>## 下载地址
+
+- Android Studio：https://developer.android.com/studio?hl=zh-cn
+- 汉化包：https://github.com/sollyu/AndroidStudioChineseLanguagePack
+
+### 汉化
+
+1. 安装汉化包  
+   `右上角设置 ⚙️` → `Plugins…` → `Plugins页面的设置 ⚙️` → `Install Plugin from Disk…` → 选择汉化包 → OK → 重启 IDE
+
+2. 切换语言和地区  
+   `右上角设置 ⚙️` → `Settings…` → `Appearance &amp; Behavior` → `System Settings` → `Language and Region` → 语言选`简体中文`、地区选`China Mainland`→ OK → 重启 IDE
+
+---
+
+![设置截图](https://github.com/user-attachments/assets/56cd04c1-12c2-403c-9880-61498cb3a0a6)
+
+
+
+## 国内镜像
+```
+项目根目录/
+├── gradle/
+│   └── wrapper/
+│       └── gradle-wrapper.properties    ← Gradle 分发地址（用于构建工具下载）
+├── settings.gradle                      ← Maven 仓库地址（用于依赖库下载）
+├── build.gradle
+└── app/
+    └── build.gradle
+```
+
+
+### Gradle 分发地址（用于构建工具下载）
+
+文件：`项目根目录/gradle/wrapper/gradle-wrapper.properties`
+
+修改这一行：
+```
+distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-9.4.1-bin.zip
+```
+
+- 腾讯云	`https://mirrors.cloud.tencent.com/gradle/`
+- 阿里云	`https://mirrors.aliyun.com/macports/distfiles/gradle/`
+- 华为云	`https://mirrors.huaweicloud.com/gradle/`
+
+### Maven 仓库地址（用于依赖库下载）
+
+文件：`项目根目录/settings.gradle.kts`
+
+修改 `repositories` 配置块：
+
+```
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        google()
+        mavenCentral()
+    }
+}
+```
+
+- 阿里云 public	`https://maven.aliyun.com/repository/public`
+- 阿里云 google	`https://maven.aliyun.com/repository/google`
+- 阿里云 gradle-plugin	`https://maven.aliyun.com/repository/gradle-plugin`
+
+### Maven 仓库配置代理（用于依赖库下载）
+
+文件：`项目根目录/gradle.properties`
+
+添加：
+```
+# HTTP 代理
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=10808
+
+# HTTPS 代理
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=10808
+
+# 不走代理的地址（可选）
+systemProp.http.nonProxyHosts=*.aliyun.com|*.tencent.com
+```
+
+### 缓存清理
+
+| 目的 | 操作 |
+|---|---|
+| 清 IDE 缓存 | File → Invalidate Caches （使缓存失效...）|
+| 清 Gradle 依赖缓存 | `~/.gradle/caches/` |
+| 清 Gradle 分发 | `~/.gradle/wrapper/dists/` |
+| 清构建产物 | `./gradlew clean` 或删除 `app/build` 目录 |
+
+ **`gradlew`命令临时变量设置**
+```
+$env:JAVA_HOME = 'IDE安装目录\jbr'
+```
+---
+
+| 命令 | 作用 |
+|---|---|
+| `.\gradlew clean` | 清理项目（删除 build 缓存） |
+| `.\gradlew build` | 完整构建（编译 + 测试 + 打包） |
+| `.\gradlew assemble` | 构建全部变体 |
+| `.\gradlew assembleDebug` | 构建 Debug APK |
+| `.\gradlew assembleRelease` | 构建 Release APK |
+| `.\gradlew test` | 运行单元测试 |
+| `.\gradlew check` | 执行全部检查任务 |
+| `.\gradlew lint` | 执行代码检查（Lint） |
+| `.\gradlew tasks` | 查看全部可用任务 |
+| `.\gradlew dependencies` | 查看依赖树 |
+| `.\gradlew build --stacktrace` | 输出错误堆栈 |
+| `.\gradlew build --info` | 输出详细日志 |
+| `.\gradlew build --debug` | 输出调试日志 |
+| `.\gradlew build --stacktrace --info` | 完整诊断（排错推荐） |
+
+---
+---
+
+## 🤖Go 项目生成 Android SDK (AAR) 并在 Kotlin 调用
+
+1. 安装 gomobile
+```
+go install golang.org/x/mobile/cmd/gomobile@latest
+go install golang.org/x/mobile/cmd/gobind@latest
+gomobile init
+```
+2. 编写 Go 库
+
+- 导出函数首字母必须大写
+- 一般只需暴露 Go 项目的启动、停止、重启、日志、生命周期等函数接口即可
+- gomobile 生成 Android 绑定后，业务端需要使用小驼峰命名调用
+- 默认会生成一个“通用 AAR”，里面会包含所有 Go 支持的多种架构，可在业务端打包时拆分abi
+
+# 现代 Android 高收益优化
+
+尽量不动核心逻辑
+
+* **Baseline Profile**
+
+  * 优化手段：提前编译热路径代码，减少运行时 JIT
+  * 预期效果：冷启动、首次打开、页面切换明显加快
+  * 改动成本：低
+
+* **R8 Full Mode**
+
+  * 优化手段：代码缩减、优化、混淆、资源压缩
+  * 预期效果：APK 更小、Dex 更少、启动更快
+  * 改动成本：低
+
+* **ABI Split**
+
+  * 优化手段：按 CPU 架构拆分安装包，原生实现效果不大
+  * 预期效果：安装包显著减小、Native 加载更快
+  * 改动成本：低
+
+* **延迟初始化**
+
+  * 优化手段：非必要组件延后初始化
+  * 预期效果：启动耗时明显下降、首屏更快
+  * 改动成本：低~中
+
+* **ProfileInstaller**
+
+  * 优化手段：确保 Baseline Profile 在更多设备生效
+  * 预期效果：提升 Profile 覆盖率与稳定性
+  * 改动成本：极低
+
+* **Native Strip**
+
+  * 优化手段：移除 Native 调试符号和无用信息
+  * 预期效果：SO 体积显著减小、包体下降
+  * 改动成本：低
+
+* **Startup Library**
+
+  * 优化手段：管理初始化顺序与依赖关系
+  * 预期效果：减少主线程阻塞、改善启动性能
+  * 改动成本：低
+
+* **Resource Shrinking**
+
+  * 优化手段：移除未使用资源
+  * 预期效果：APK 更小、资源加载更轻
+  * 改动成本：低
+
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/62.html</guid><pubDate>Mon, 18 Aug 2025 11:01:34 +0000</pubDate></item><item><title>IP信息查询网站汇总</title><link>https://blog.52013120.xyz/post/61.html</link><description>### 【IP信息查询 / 地理定位】  
+- [https://www.cloudflare.com/cdn-cgi/trace](https://www.cloudflare.com/cdn-cgi/trace) 基于CF的IP快速查询
+- [https://ip.skk.moe/](https://ip.skk.moe) 国内外IP分流查询、DNS出口查询、CDN命中查询
+- [https://ip.cn](https://ip.cn) 国内IP和位置查询
+- [https://api.ipify.org](https://api.ipify.org) 纯文本IP返回API  
+- [https://ip.sb](https://ip.sb) 公网IP及ISP、ASN、地理位置查询  
+- [https://ipapi.co](https://ipapi.co) IP地理位置、运营商及时区信息  
+- [https://whatismyipaddress.com](https://whatismyipaddress.com) IP定位、ISP信息及反查  
+- [https://iplocation.io](https://iplocation.io) 多库比对IP地理位置查询  
+- [https://myip.com](https://myip.com) 快速显示当前公网IP  
+- [https://icanhazip.com](https://icanhazip.com) 简洁IP获取接口  
+- [https://ifconfig.me](https://ifconfig.me) 服务器公网IP及系统信息  
+- [https://ipinfo.io](https://ipinfo.io) IP信息与地理位置综合查询  
+- [https://geoiplookup.io](https://geoiplookup.io) IP地理位置及ASN查询  
+- [https://checkip.amazonaws.com](https://checkip.amazonaws.com) AWS官方IP查询服务  
+- [https://ipwhois.io](https://ipwhois.io) IP Whois及地理信息查询  
+- [https://ipstack.com](https://ipstack.com) IP地理及安全数据API  
+- [https://ipgeolocation.io](https://ipgeolocation.io) 精准IP地理和时区数据  
+- [https://ipbase.com](https://ipbase.com) 免费IP地理位置查询API  
+- [https://ipapi.com](https://ipapi.com) 支持JSON格式的IP地理查询  
+- [https://ipregistry.co](https://ipregistry.co) IP地理位置及代理检测  
+- [https://ip2location.com](https://ip2location.com) IP地址地理位置数据库查询  
+
+### 【IPV6查询 / 地理定位】  
+
+- [https://ipw.cn](https://ipw.cn)  国内IPV6优先级查询、双栈IP查询、地理位置查询、网络测试
+- [https://test-ipv6.com/](https://test-ipv6.com) IPV6连接测试
+
+### 【IP信誉 / 威胁情报】  
+- [https://abuseipdb.com](https://abuseipdb.com) IP滥用举报及威胁查询  
+- [https://virustotal.com](https://virustotal.com) IP和域名安全扫描检测  
+- [https://talosintelligence.com](https://talosintelligence.com) 思科安全威胁情报查询  
+- [https://scamalytics.com](https://scamalytics.com) 欺诈IP检测及评分  
+- [https://urlscan.io](https://urlscan.io) URL安全扫描和恶意检测  
+- [https://threatminer.org](https://threatminer.org) 网络威胁情报收集平台  
+- [https://otx.alienvault.com](https://otx.alienvault.com) 开放式威胁情报共享平台  
+- [https://threatcrowd.org](https://threatcrowd.org) 恶意软件和IP关联情报  
+- [https://maltiverse.com](https://maltiverse.com) 威胁情报信息整合  
+- [https://spur.us](https://spur.us) 网络威胁指标分析  
+- [https://threatbook.io](https://threatbook.io) 国内安全威胁情报平台  
+- [https://threatintelligenceplatform.com](https://threatintelligenceplatform.com) 威胁情报和漏洞查询  
+- [https://cybercrimetracker.net](http://tracker.net) 网络犯罪追踪平台  
+- [https://phishtank.com](https://phishtank.com) 钓鱼网站检测和查询  
+- [https://malwareurl.com](https://malwareurl.com) 恶意URL监控平台  
+- [https://feodotracker.abuse.ch](https://feodotracker.abuse.ch) 恶意软件C2服务器追踪  
+- [https://sslbl.abuse.ch](https://sslbl.abuse.ch) 恶意SSL证书黑名单  
+- [https://urlhaus.abuse.ch](https://urlhaus.abuse.ch) 恶意URL收集平台  
+- [https://checkphish.ai](https://checkphish.ai) 钓鱼网站检测工具  
+- [https://kaspersky.com/resourcecenter/threats](https://kaspersky.com/resourcecenter/threats) 卡巴斯基威胁资源中心  
+
+### 【全网扫描 / 网络资产搜索】  
+- [https://shodan.io](https://shodan.io) 物联网和服务器端口服务搜索  
+- [https://search.censys.io](https://search.censys.io) 互联网设备和证书扫描  
+- [https://fofa.info](https://fofa.info) 网络空间资产搜索引擎  
+- [https://zoomeye.org](https://zoomeye.org) 网络空间测绘与设备搜索  
+- [https://leakix.net](https://leakix.net) 互联网泄漏数据和资产搜索  
+- [https://binaryedge.io](https://binaryedge.io) 网络安全资产和漏洞扫描  
+- [https://greynoise.io](https://greynoise.io) 噪音数据和恶意扫描源识别  
+- [https://hunter.io](https://hunter.io) 邮箱地址和联系人搜索  
+- [https://publicwww.com](https://publicwww.com) 网站源码及脚本搜索  
+- [https://netdb.io](https://netdb.io) 网络设备和服务数据查询  
+- [https://spyse.com](https://spyse.com) 网络资产与安全情报搜索  
+- [https://fullhunt.io](https://fullhunt.io) 攻击面管理和资产搜索  
+- [https://onyphe.io](https://onyphe.io) 网络威胁情报和资产搜索  
+- [https://wigle.net](https://wigle.net) 无线网络热点数据库  
+- [https://thingful.net](https://thingful.net) 物联网设备搜索引擎  
+- [https://censys.io](https://censys.io) 网络设备和数字证书扫描  
+- [https://quake.360.net](https://quake.360.net) 360网络安全威胁情报平台  
+- [https://cybermap.kaspersky.com](https://cybermap.kaspersky.com) 全球网络威胁实时地图  
+
+### 【域名相关 / DNS情报】  
+- [https://viewdns.info](https://viewdns.info) Whois、DNS、反向IP等工具合集  
+- [https://dnsdumpster.com](https://dnsdumpster.com) 子域名和DNS记录枚举  
+- [https://securitytrails.com](https://securitytrails.com) 域名历史及DNS数据查询  
+- [https://dnshistory.org](https://dnshistory.org) DNS历史记录查询  
+- [https://dnslytics.com](https://dnslytics.com) DNS和IP信息综合查询  
+- [https://tools.keycdn.com/dig](https://tools.keycdn.com/dig) DNS解析及检测工具  
+- [https://whois.domaintools.com](https://whois.domaintools.com) 域名注册信息查询  
+- [https://who.is](https://who.is) Whois查询和域名信息  
+- [https://domaintools.com](https://domaintools.com) 域名和DNS情报平台  
+- [https://namecheap.com/domains/whois](https://namecheap.com/domains/whois) 域名Whois查询  
+- [https://centralops.net](https://centralops.net) 多功能网络工具站点  
+- [https://mxtoolbox.com](https://mxtoolbox.com) 邮件服务器及DNS检测  
+- [https://intodns.com](https://intodns.com) 域名DNS健康检查  
+- [https://leafdns.com](https://leafdns.com) DNS和域名状态监测  
+- [https://zonemaster.net](https://zonemaster.net) DNS配置验证工具  
+- [https://nslookup.io](https://nslookup.io) 在线nslookup工具  
+- [https://dnschecker.org](https://dnschecker.org) 全球DNS传播检测  
+- [https://dnsquery.org](https://dnsquery.org) DNS查询工具  
+
+### 【路由 / BGP / ASN信息】  
+- [https://bgp.tools](https://bgp.tools) BGP路由和ASN信息查询  
+- [https://bgp.he.net](https://bgp.he.net) Hurricane Electric BGP路由查询  
+- [https://peeringdb.com](https://peeringdb.com) 互联网互联数据中心信息  
+- [https://radar.qrator.net](https://radar.qrator.net) 网络攻击检测与路由分析  
+- [https://stat.ripe.net](https://stat.ripe.net) RIPE NCC网络统计和路由信息  
+- [https://lg.he.net](https://lg.he.net) HE网络路由可视化工具  
+- [https://ixpdb.euroix.net](http://ixpdb.euroix.net) 欧洲互联网交换点数据库  
+- [https://ris.ripe.net](https://ris.ripe.net) RIPE网络监测系统  
+- [https://potaroo.net](https://potaroo.net) BGP历史路由数据  
+- [https://routeviews.org](https://routeviews.org) BGP路由监控和数据  
+- [https://asrank.caida.org](https://asrank.caida.org) ASN等级和排名信息  
+- [https://ipinfo.io/asn](https://ipinfo.io/asn) ASN详细信息查询  
+- [https://bgpview.io](https://bgpview.io) ASN和BGP数据查询  
+- [https://asdb.stepladder.com](https://asdb.stepladder.com) ASN数据库查询  
+- [https://atlas.ripe.net](https://atlas.ripe.net) RIPE网络测量项目  
+- [https://lg.equinix.com](https://lg.equinix.com) Equinix网络拓扑查看  
+- [https://lg.level3.net](https://lg.level3.net) Level3网络地图  
+- [https://lg.telehouse.net](https://lg.telehouse.net) Telehouse网络信息  
+- [https://lg.cogentco.com](https://lg.cogentco.com) Cogent网络视图  
+- [https://lg.telstra.net](https://lg.telstra.net) Telstra网络拓扑  
+
+### 【网络测速 / 延迟检测】  
+- [https://ipip.net](https://ipip.net) 国内外多节点网络测试  
+- [https://17ce.com](https://17ce.com) 中国国内多点测速和路由检测  
+- [https://ping.pe](https://ping.pe) 全球Ping和Traceroute测试  
+- [https://uptrends.com/tools](https://uptrends.com/tools) 多地网站速度测试  
+- [https://asm.ca.com/en/ping.php](https://asm.ca.com/en/ping.php) 多节点Ping工具  
+- [https://speed.cloudflare.com](https://speed.cloudflare.com) Cloudflare官方测速  
+- [https://speedtest.net](https://speedtest.net) 全球知名测速网站  
+- [https://fast.com](https://fast.com) Netflix官方测速  
+- [https://speedof.me](https://speedof.me) HTML5网络测速  
+- [https://nperf.com](https://nperf.com) 综合网络测速和质量分析  
+- [https://testmy.net](https://testmy.net) 独立网络测速工具  
+- [https://openspeedtest.com](https://openspeedtest.com) 开源HTML5测速工具  
+- [https://speedcheck.org](https://speedcheck.org) 多节点测速和历史数据  
+
+### 【安全 / 漏洞检测】  
+- [https://sitecheck.sucuri.net](https://sitecheck.sucuri.net) 网站安全和恶意软件检测  
+- [https://observatory.mozilla.org](https://observatory.mozilla.org) Mozilla网站安全检测  
+- [https://detectify.com](https://detectify.com) 网站漏洞扫描服务  
+- [https://pentesttools.com](http://tools.com) 渗透测试和漏洞扫描  
+- [https://upguard.com](https://upguard.com) 资产安全和风险评估  
+- [https://ssllabs.com/ssltest](https://ssllabs.com/ssltest) SSL证书安全检测  
+- [https://hardenize.com](https://hardenize.com) 网络安全配置检测  
+- [https://immuniweb.com/ssl](https://immuniweb.com/ssl) SSL和安全测试工具  
+- [https://cryptcheck.fr](https://cryptcheck.fr) TLS安全分析工具  
+- [https://cryptcheck.fr](https://cryptcheck.fr) SSL/TLS加密配置检测  
+- [https://securityheaders.com](https://securityheaders.com) HTTP安全头检测  
+- [https://httpsecurityreport.com](https://httpsecurityreport.com) 安全报告生成器  
+- [https://cspevaluator.withgoogle.com](http://evaluator.withgoogle.com) 内容安全策略评估  
+- [https://scanmyserver.com](https://scanmyserver.com) 网站安全扫描  
+- [https://intruder.io](https://intruder.io) 自动化漏洞扫描  
+- [https://acunetix.com](https://acunetix.com) 网站漏洞扫描工具  
+- [https://qualys.com/forms/ssl](https://qualys.com/forms/ssl) labs Qualys SSL测试  
+- [https://wappalyzer.com](https://wappalyzer.com) 网站技术栈识别  
+
+### 【综合网络工具箱】  
+- [https://tools.keycdn.com](https://tools.keycdn.com) 多种网络工具合集  
+- [https://mxtoolbox.com](https://mxtoolbox.com) 邮件和DNS工具集合  
+- [https://toolbox.googleapps.com/apps/dig](https://toolbox.googleapps.com/apps/dig) Google官方DNS查询  
+- [https://smallseotools.com](https://smallseotools.com) SEO与网络工具集合  
+- [https://ipvoid.com](https://ipvoid.com) IP信誉和黑名单检测  
+- [https://yougetsignal.com](https://yougetsignal.com) 端口检测和网络工具  
+- [https://www.ipfingerprints.com](https://www.ipfingerprints.com) 网络安全扫描工具  
+- [https://whatismyip.com](https://whatismyip.com) IP查询和网络诊断  
+- [https://browserleaks.com](https://browserleaks.com) 浏览器隐私测试  
+- [https://amiunique.org](https://amiunique.org) 浏览器指纹识别  
+- [https://dnsleaktest.com](https://dnsleaktest.com) DNS泄漏测试工具  
+- [https://ipleak.net](https://ipleak.net) VPN泄漏检测  
+- [https://whoer.net](https://whoer.net) 网络匿名性检测  
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/61.html</guid><pubDate>Wed, 13 Aug 2025 10:54:46 +0000</pubDate></item><item><title>热点共享代理教程</title><link>https://blog.52013120.xyz/post/60.html</link><description># 热点共享代理流量简明指南
+
+## 场景 1：电脑连手机热点（手机开热点并开启代理软件）
+**手机端操作：**
+1. 开启 Clash / v2rayNG  
+2. 启用 **允许局域网连接**
+3. 记下代理端口（Clash `7890` / v2rayNG `10808`）
+
+**电脑端操作：**
+1. 连接手机热点  
+2. 查看网关 IP（可以在`网络` -&gt; `属性` 中查看）
+3. 在设置里的系统代理中配置：  
+   - 代理地址：填`网关 IP`  
+   - 代理端口：填`7890` 或者 `10808`
+
+**效果：**  
+电脑的流量 → 通过手机代理 → 出网
+
+
+_**反之同理**_
+
+---
+
+## 场景 2：A手机连B手机热点（B手机开热点并开启代理软件）
+**B手机端操作：**
+1. 开启 Clash / v2rayNG  
+2. 启用 **允许局域网连接**
+3. 记下代理端口（Clash `7890` / v2rayNG `10808`）
+
+**A手机端操作：**
+1. 连接手机热点  
+2. 查看网关 IP（在`WIFI`详情中找到路由器地址就是网关IP）
+3. 在`WIFI`详情中找到`代理`功能，选择`手动`
+   - 主机名：填`网关 IP`  
+   - 代理端口：填`7890` 或者 `10808`
+   - 其他的不用动
+
+**效果：**  
+A手机的流量 → 通过B手机代理 → 出网
+
+
+---
+
+&lt;img width='300' height='700' alt='Image' src='https://github.com/user-attachments/assets/8003a95d-2899-45c2-b894-efa1e507123f' /&gt;。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/60.html</guid><pubDate>Tue, 12 Aug 2025 20:54:09 +0000</pubDate></item><item><title>SSH使用密钥认证登录详细解释</title><link>https://blog.52013120.xyz/post/59.html</link><description>## 1：电脑本地生成SSH密钥对
+```
+ssh-keygen -t ed25519
+```
+一路回车即可
+
+#### 本机是Win系统：
+
+默认生成在`C:\Users\用户名\.ssh\`目录
+
+
+#### 本机是Linux系统：
+
+默认生成在`~/.ssh/`目录
+
+## 2：密钥对说明
+
+`id_ed25519`是私钥，需要保存在本地，不能泄漏。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/59.html</guid><pubDate>Mon, 11 Aug 2025 15:44:37 +0000</pubDate></item><item><title>Debian系统公网IP出口切换指南，适用多IP服务器</title><link>https://blog.52013120.xyz/post/58.html</link><description>
+&gt; ---
+&gt; ### **初始配置解析**
+&gt; 
+&gt; 默认的网络配置文件通常位于 `/etc/network/interfaces.d/50-cloud-init`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/58.html</guid><pubDate>Fri, 18 Jul 2025 09:02:16 +0000</pubDate></item><item><title>Windows系统安装Scoop包管理器</title><link>https://blog.52013120.xyz/post/57.html</link><description># Scoop 包管理器安装教程
+
+ Windows 系统中安装 Scoop 包管理器，适合安装各种开发环境，以及版本管理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/57.html</guid><pubDate>Tue, 24 Jun 2025 20:01:57 +0000</pubDate></item><item><title>Flutter开发学习笔记</title><link>https://blog.52013120.xyz/post/56.html</link><description># Flutter开发学习笔记
+
+[鸿蒙Flutter](https://atomgit.com/CPF-Flutter/flutter_flutter)
+
+# Windows 系统手动安装 Flutter 环境
+
+## ✅ 一、准备条件
+
+- [Git for Windows](https://git-scm.com/install/windows)
+- [Android Studio](https://developer.android.com/studio)
+- Flutter插件
+
+#### 安卓sdk：
+&lt;img width='600' alt='Image' src='https://github.com/user-attachments/assets/e3707582-cc46-4877-9936-41d6cdf8b6a1' /&gt;
+
+---
+
+## ✅ 二、安装 Flutter SDK
+
+### 1. 下载 Flutter
+
+- 下载地址：https://docs.flutter.dev/install/manual
+
+### 2. 解压
+
+解压到路径，例如：
+```
+C:\flutter
+```
+
+### 3. 配置环境变量
+
+将以下路径添加到系统环境变量 `Path` 中：
+```powershell
+[Environment]::SetEnvironmentVariable('Path', $env:Path + ';C:\flutter\bin', 'Machine')
+```
+
+然后重启终端（powershell）。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/56.html</guid><pubDate>Sat, 07 Jun 2025 23:52:51 +0000</pubDate></item><item><title>使用手机搭建节点服务端</title><link>https://blog.52013120.xyz/post/55.html</link><description>### 前言
+ 
+- 众所周知，做电商业务需要的IP质量非常高，家宽一般都特别贵，所以最近尝试用手机流量做代理，手机`sim`卡的`IP`应该是顶级的不能再顶级了。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/55.html</guid><pubDate>Sat, 31 May 2025 15:31:36 +0000</pubDate></item><item><title>关于github提交记录泄露真实邮箱的处理办法</title><link>https://blog.52013120.xyz/post/54.html</link><description>
+众所周知，很多人刚开始接触github的时候，可能都是新手，可能会用自己的实名邮箱或者直接用QQ邮箱注册，此时你的这些实名邮箱就会泄露，即使你后面改了邮箱后，之前的提交记录里也是公开能看到的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/54.html</guid><pubDate>Wed, 28 May 2025 14:52:02 +0000</pubDate></item><item><title>anytls协议部署教程</title><link>https://blog.52013120.xyz/post/53.html</link><description>
+## 使用`sing-box`手搓`anytls`协议
+
+- 以下配置需要自行去掉注释
+
+### 服务端（运行在服务器里）
+
+```
+curl -fsSL https://sing-box.app/install.sh | sh
+```
+
+配置路径：`/etc/sing-box/config.json`
+
+自签证书：
+```
+openssl req -x509 -nodes -newkey ec:&lt;(openssl ecparam -name prime256v1) \
+-keyout /etc/sing-box/key.pem \
+-out /etc/sing-box/cert.pem \
+-subj '/CN=bing.com' \
+-days 3650 &amp;&amp; \
+chmod 600 /etc/sing-box/key.pem &amp;&amp; chmod 644 /etc/sing-box/cert.pem
+```
+
+服务端节点配置：
+```
+{
+  'log': {
+    'level': 'info'
+  },
+  'inbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-in',
+      'listen': '::',
+      'listen_port': 8443, // 节点端口
+      'users': [
+        {
+          'name': 'sekai',  // 名称随意填写
+          'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' // 协议认证密码
+        }
+      ],
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com', // 自签证书的域名
+        'certificate_path': '/etc/sing-box/cert.pem',  // 自签证书公钥
+        'key_path': '/etc/sing-box/key.pem' // 自签证书私钥
+      }
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'direct',
+      'tag': 'direct-out'
+    }
+  ],
+  'route': {
+    'rules': []
+  }
+}
+```
+
+#### 命令：
+
+重启	             `systemctl restart sing-box`
+
+停止	             `systemctl stop sing-box`
+
+开启开机自启	             `systemctl enable sing-box`
+
+查看运行状态              `systemctl status sing-box`
+
+查看日志	             `journalctl -u sing-box --output cat -e`
+
+
+
+---
+
+###   客户端（运行在本地设备）
+
+客户端配置示例：
+
+`config.json`
+
+```
+{
+  'log': {
+    'level': 'warn',
+    'timestamp': true
+  },
+  'inbounds': [
+    {
+      'type': 'mixed',
+      'tag': 'socks',
+      'listen': '127.0.0.1', 
+      'listen_port': 10808 // 本地入站端口
+    }
+  ],
+  'outbounds': [
+    {
+      'type': 'anytls',
+      'tag': 'anytls-out',
+      'server': '9.9.9.9', // 服务端地址
+      'server_port': 8443,  // 节点端口
+      'password': 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=',  // 协议认证密码
+      'tls': {
+        'enabled': true,
+        'insecure': true, // 允许不安全
+        'server_name': 'bing.com'  // 自签证书域名
+      }
+    }
+  ],
+  'route': {
+    'rules': [
+      {
+        'inbound': ['socks'],
+        'outbound': 'anytls-out'
+      }
+    ]
+  }
+}
+```
+
+
+---
+
+### 客户端`clash-verge`配置文件
+
+```
+proxies:
+- name: anytls节点
+  type: anytls
+  server: 9.9.9.9 # 服务端地址
+  port: 8443 # 节点端口
+  password: 'aHR0cHM6Ly9ibG9nLjUyMDEzMTIwLnh5ei8=' # 协议认证密码
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  min-idle-session: 0
+  tls: true
+  skip-cert-verify: true
+  servername: bing.com # 自签域名
+```
+
+1：`订阅`——`新建`——类型选`Local`——`名称`随便填——`确认`——右键`编辑文件`——替换以上全部文件
+
+2：此时`代理`菜单里就可以看到该节点：
+
+![](https://img.erpweb.eu.org/imgs/2025/05/dd3ec9aef6b648a7.png)
+
+
+### 以上客户端配置为简化版本，更多分流信息可以自己研究下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/53.html</guid><pubDate>Mon, 12 May 2025 21:57:34 +0000</pubDate></item><item><title>caddy给域名用上ECH加密</title><link>https://blog.52013120.xyz/post/52.html</link><description>`caddy`的 [2.10.0正式版本](https://github.com/caddyserver/caddy/releases/tag/v2.10.0) 已经加入了ECH的支持
+
+要使用`caddy`自动配置`ech`则需要编译`cloudflare dns`插件，用于caddy自动添加`DNS`记录
+
+### 编译`caddy`并加入`cloudflare DNS`插件的支持
+1：一键安装`go`环境
+```
+bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/sky22333/shell@main/go.sh)
+```
+2：下载`xcaddy`
+```
+go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+```
+3：编译带`cloudflare dns`插件的`caddy`
+```
+xcaddy build --with github.com/caddy-dns/cloudflare
+```
+此时你的当前目录会生成一个已经包含了`cloudflare dns`插件的`caddy`二进制文件
+
+### 以`debug`模式测试运行
+创建`/etc/caddy/Caddyfile`文件，并写入以下文件
+```
+{
+    debug
+    dns cloudflare xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ech ech.example.com
+
+    log {
+        output stdout
+        format console
+        level DEBUG
+    }
+}
+
+test.example.com {
+    root * /tmp
+    file_server browse
+    encode zstd gzip
+}
+```
+#### 配置说明
+`dns cloudflare`这个配置填CF的`区域 DNS API 令牌`
+
+`ech ech.example.com`替换你的任意二级域名，并且解析到你的IP，用于发布`ECH`公钥，或者第三方提供的ECH配置服务域名也行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/52.html</guid><pubDate>Thu, 24 Apr 2025 10:42:58 +0000</pubDate></item><item><title>通过gitlab流水线自动备份仓库</title><link>https://blog.52013120.xyz/post/51.html</link><description>### 通过gitlab流水线自动备份仓库
+
+会自动对比提交，如果没有新的提交，则不会备份，避免空提交导致意外错误
+
+gitlab仓库根目录新建`.gitlab-ci.yml`文件，复制粘贴以下配置，使用方法见文件注释
+
+```
+# gitlab流水线 自动备份仓库配置
+# 将配置保存为 .gitlab-ci.yml 文件，放在 GitLab 仓库根目录下。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/51.html</guid><pubDate>Tue, 22 Apr 2025 03:12:12 +0000</pubDate></item><item><title>通过CF-Workers代理访问网站</title><link>https://blog.52013120.xyz/post/49.html</link><description>### 直接贴代码
+
+&gt; 建议只自己使用，不要公开，否则可能被判断为涉嫌违反CF规则
+
+```
+addEventListener('fetch', event =&gt; {
+  let url = new URL(event.request.url);
+  url.hostname = 'hub.docker.com'; // 修改成需要代理的网站
+
+  // 获取请求头中的 User-Agent
+  let userAgent = event.request.headers.get('User-Agent');
+
+  // 屏蔽爬虫和搜索引擎的列表
+  const blockedUserAgents = [
+    /googlebot/i,
+    /bingbot/i,
+    /baiduspider/i,
+    /slurp/i,
+    /duckduckbot/i,
+    /yandex/i,
+    /sogou/i,
+    /exabot/i,
+    /facebot/i,
+    /facebookexternalhit/i
+  ];
+
+  const isBot = blockedUserAgents.some(pattern =&gt; pattern.test(userAgent));
+
+  if (isBot) {
+    // 如果是爬虫或搜索引擎，返回 403 Forbidden
+    return event.respondWith(
+      new Response('访问被拒绝', { status: 403 })
+    );
+  }
+
+  // 构建新的请求头，传递原请求头，并处理必要的字段
+  let headers = new Headers(event.request.headers);
+  headers.set('X-Forwarded-For', event.request.headers.get('cf-connecting-ip') || 'unknown');
+
+  // 创建新的请求对象
+  let request = new Request(url, {
+    method: event.request.method,           // 保留原请求方法
+    headers: headers,                       // 保留原请求头
+    body: event.request.method === 'GET' ? null : event.request.body, // 对于 GET 请求，Body 通常是空的
+    redirect: 'follow'                      // 自动跟随重定向
+  });
+
+  console.log(`请求: ${url}`);
+
+  // 处理请求并返回响应
+  event.respondWith(
+    fetch(request)
+      .then(response =&gt; {
+        // 返回原始响应，没有缓存控制
+        console.log(`响应状态: ${response.status}`);
+        return response;
+      })
+      .catch(err =&gt; {
+        // 处理请求失败的情况
+        console.error('请求失败:', err);
+        return new Response('请求失败', { status: 502 });
+      })
+  );
+});
+```
+
+
+### 增加访问限制密码认证
+
+```
+addEventListener('fetch', event =&gt; {
+  // 设定一个简单的用户名和密码
+  const validUsername = 'user';
+  const validPassword = 'mypassword';
+
+  // 获取请求头中的 Authorization
+  const authHeader = event.request.headers.get('Authorization');
+
+  // 检查 Cookie 是否存在认证标记
+  const cookie = event.request.headers.get('Cookie');
+  const isAuthenticated = cookie &amp;&amp; cookie.includes('authenticated=true');
+
+  // 如果没有 Cookie 标记，且没有 Authorization 头或者它不符合 Basic Authentication 格式
+  if (!isAuthenticated &amp;&amp; (!authHeader || !authHeader.startsWith('Basic '))) {
+    return event.respondWith(
+      new Response('需要认证才能访问', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': 'Basic realm='请输入用户名和密码'' // 触发浏览器认证对话框
+        }
+      })
+    );
+  }
+
+  // 如果用户已经认证过，跳过认证步骤
+  if (isAuthenticated) {
+    return handleRequest(event);
+  }
+
+  // 提取并解码用户名和密码
+  const base64Credentials = authHeader.split(' ')[1];
+  const credentials = atob(base64Credentials);
+  const [username, password] = credentials.split(':');
+
+  // 检查用户名和密码是否正确
+  if (username === validUsername &amp;&amp; password === validPassword) {
+    // 设置 Cookie，标记用户已认证，并设置 6 小时过期
+    const headers = new Headers();
+    headers.set('Set-Cookie', 'authenticated=true; Path=/; Max-Age=21600'); // 6 小时过期
+
+    return event.respondWith(
+      new Response('认证成功！请刷新此页面继续访问。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/49.html</guid><pubDate>Tue, 15 Apr 2025 15:21:52 +0000</pubDate></item><item><title>低配机器使用alpine系统跑docker</title><link>https://blog.52013120.xyz/post/46.html</link><description>### alpine系统是一个超级轻量级系统，非常适合低配机器
+
+首先将系统DD为alpine系统
+```
+curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
+```
+```
+chmod +x reinstall.sh &amp;&amp; ./reinstall.sh alpine
+```
+&gt; 这里会让你设置新密码，完成后就可以重启系统开始安装
+```
+reboot
+```
+
+
+### 进入系统
+
+首先安装一些基础工具
+```
+apk update
+```
+```
+apk add curl wget bash
+```
+
+安装docker和docker-compose
+```
+apk add docker docker-compose
+```
+启动服务并且设置开机自启
+```
+rc-service docker start
+rc-update add docker
+```
+
+### 在 Alpine 中，系统服务是由 OpenRC 管理的
+
+命令参考
+
+| 命令                                | 说明                                    |
+|-------------------------------------|-----------------------------------------|
+| `rc-service docker start`   | 启动指定服务                            |
+| `rc-service docker stop`    | 停止指定服务                            |
+| `rc-service docker restart` | 重启指定服务                            |
+| `rc-service docker status`  | 查看服务的当前状态                      |
+| `rc-update add docker` | 将服务添加到开机自启列表                 |
+| `rc-update del docker` | 删除服务的开机自启设置                  |
+| `rc-update show`                    | 列出所有已启用的服务                    |
+| `rc-service docker log`     | 查看服务日志（如果服务支持日志功能）    |
+| `rc-service all start`              | 启动所有服务                            |
+| `rc-service all stop`               | 停止所有服务                            |
+
+并且`rc-service`可以简化为`service`，例如`rc-service docker start`和`service docker start`效果是一样的。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/46.html</guid><pubDate>Wed, 09 Apr 2025 06:47:26 +0000</pubDate></item><item><title>端口敲门教程</title><link>https://blog.52013120.xyz/post/45.html</link><description>简介：端口敲门通过关闭SSH端口，服务器监听预设的端口序列，当客户端按正确顺序`敲门`后，防火墙规则动态开放SSH端口，仅允许敲门成功的IP访问，阻止未授权访问。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/45.html</guid><pubDate>Wed, 09 Apr 2025 05:18:21 +0000</pubDate></item><item><title>3x-ui面板通过api管理示例</title><link>https://blog.52013120.xyz/post/44.html</link><description>### 3xui通过api登录并保存cookie（qwer为面板路径）
+&gt; 没有路径可去掉
+```
+curl -X POST http://127.0.0.1:2053/qwer/login \
+     -H 'Content-Type: application/json' \
+     -d '{'username': 'admin', 'password': 'admin'}' \
+     -c cookies.txt
+```
+
+### 获取所有入站信息（qwer为面板路径）
+&gt; 没有路径可去掉
+```
+curl -L -X GET http://127.0.0.1:2053/qwer/panel/api/inbounds/list -b cookies.txt
+```
+
+### 获取所有所有入站并过滤显示ID
+```
+curl -s -L -X GET 'http://127.0.0.1:2053/qwer/panel/api/inbounds/list' -b cookies.txt | grep -o ''id':[0-9]*' | sed 's/'id'://' | sort -n | uniq
+```
+
+### 获取指定ID的入站（ID 2为例）
+```
+curl -X GET 'http://127.0.0.1:2053/qwer/panel/api/inbounds/get/2' -b cookies.txt
+```
+
+### 删除入站（ID 2为例）
+```
+curl -X POST 'http://127.0.0.1:2053/qwer/panel/api/inbounds/del/2' -b cookies.txt
+```
+
+### 添加入站（vless + ws）
+```
+curl -X POST 'http://127.0.0.1:2053/qwer/panel/api/inbounds/add' \
+  -b cookies.txt \
+  -H 'Content-Type: application/json' \
+  -d '{
+    'up': 0,
+    'down': 0,
+    'total': 0,
+    'remark': 'node1',
+    'enable': true,
+    'expiryTime': 0,
+    'listen': '',
+    'port': 18917,
+    'protocol': 'vless',
+    'settings': '{\'clients\': [{\'id\': \'aeff4df1-3e30-4b5f-b6b8-635872b85aa0\',\'flow\': \'\',\'email\': \'hscqy7r3\',\'limitIp\': 0,\'totalGB\': 0,\'expiryTime\': 0,\'enable\': true,\'tgId\': \'\',\'subId\': \'ktl8jfe6bgnyon4g\',\'reset\': 0}],\'decryption\': \'none\',\'fallbacks\': []}',
+    'streamSettings': '{\'network\': \'ws\',\'security\': \'none\',\'externalProxy\': [],\'tcpSettings\': {\'acceptProxyProtocol\': false,\'header\': {\'type\': \'none\'}}}',
+    'tag': 'inbound-18917',
+    'sniffing': '{\'enabled\': false,\'destOverride\': [\'http\',\'tls\',\'quic\',\'fakedns\'],\'metadataOnly\': false,\'routeOnly\': false}',
+    'allocate': '{\'strategy\': \'always\',\'refresh\': 5,\'concurrency\': 3}'
+}'
+```
+
+### 添加入站（vless + grpc + reailty）
+```
+curl -X POST 'http://127.0.0.1:2053/qwer/panel/api/inbounds/add' \
+  -b cookies.txt \
+  -H 'Content-Type: application/json' \
+  -d '{
+    'up': 0,
+    'down': 0,
+    'total': 0,
+    'remark': 'node2',
+    'enable': true,
+    'expiryTime': 0,
+    'listen': '',
+    'port': 10654,
+    'protocol': 'vless',
+    'settings': '{\'clients\': [{\'id\': \'bf7d39f5-257e-499f-acda-a9ea77b11bb4\',\'flow\': \'\',\'email\': \'y6kxqdix\',\'limitIp\': 0,\'totalGB\': 0,\'expiryTime\': 0,\'enable\': true,\'tgId\': \'\',\'subId\': \'cqeaws7i3w3z70rp\',\'reset\': 0}],\'decryption\': \'none\',\'fallbacks\': []}',
+    'streamSettings': '{\'network\': \'grpc\',\'security\': \'reality\',\'externalProxy\': [],\'realitySettings\': {\'show\': false,\'xver\': 0,\'dest\': \'www.icloud.com:443\',\'serverNames\': [\'www.icloud.com\'],\'privateKey\': \'4FNf4m1nQVXcoO31xjk7noe82A7F2Dg2XEier3ogEBY\',\'minClient\': \'\',\'maxClient\': \'\',\'maxTimediff\': 0,\'shortIds\': [\'863f9613\',\'d978\',\'0f3abe\',\'79\',\'f014d5309f8954\',\'1311bf0f64f82159\',\'3d0cba0857f7\',\'c7ce204393\'],\'settings\': {\'publicKey\': \'3fFBgCb6PpNC_Kqph7UM2pXw4m1ck82ss4ov8YlmqWc\',\'fingerprint\': \'chrome\',\'serverName\': \'\',\'spiderX\': \'/\'}}}',
+    'grpcSettings': '{\'serviceName\': \'\',\'authority\': \'\',\'multiMode\': false}',
+    'tag': 'inbound-10654',
+    'sniffing': '{\'enabled\': false,\'destOverride\': [\'http\',\'tls\',\'quic\',\'fakedns\'],\'metadataOnly\': false,\'routeOnly\': false}',
+    'allocate': '{\'strategy\': \'always\',\'refresh\': 5,\'concurrency\': 3}'
+  }'
+```
+
+### 添加入站（ss协议）
+```
+curl -X POST 'http://127.0.0.1:2053/qwer/panel/api/inbounds/add' \
+  -b cookies.txt \
+  -H 'Content-Type: application/json' \
+  -d '{
+    'up': 0,
+    'down': 0,
+    'total': 0,
+    'remark': 'node3',
+    'enable': true,
+    'expiryTime': 0,
+    'listen': '',
+    'port': 15584,
+    'protocol': 'shadowsocks',
+    'settings': '{\'method\': \'aes-256-gcm\',\'password\': \'pn8P4P/QQufYak532Eu4+jO2rovYatJIZPbPmzg6yw4=\',\'network\': \'tcp,udp\',\'clients\': [{\'method\': \'aes-256-gcm\',\'password\': \'WGfVnsKmHgs/xs259zTxRuya2RDvjKiU2WAqM5Sevic=\',\'email\': \'gcxfaord\',\'limitIp\': 0,\'totalGB\': 0,\'expiryTime\': 0,\'enable\': true,\'tgId\': \'\',\'subId\': \'yx89qjpbt2bo03fc\',\'reset\': 0}],\'ivCheck\': false}',
+    'streamSettings': '{\'network\': \'tcp\',\'security\': \'none\',\'externalProxy\': [],\'tcpSettings\': {\'acceptProxyProtocol\': false,\'header\': {\'type\': \'none\'}}}',
+    'tag': 'inbound-15584',
+    'sniffing': '{\'enabled\': false,\'destOverride\': [\'http\',\'tls\',\'quic\',\'fakedns\'],\'metadataOnly\': false,\'routeOnly\': false}',
+    'allocate': '{\'strategy\': \'always\',\'refresh\': 5,\'concurrency\': 3}'
+  }'
+```
+
+
+
+### API文档
+
+- [API 文档](https://www.postman.com/hsanaei/3x-ui/collection/q1l5l0u/3x-ui)
+- `/login` 使用 `POST` 用户名称 &amp; 密码： `{username: '', password: ''}` 登录
+- `/panel/api/inbounds` 以下操作的基础：
+
+|  方法  | 路径                               | 操作                              |
+| :----: | ---------------------------------- | --------------------------------- |
+| `GET`  | `'/list'`                          | 获取所有入站                      |
+| `GET`  | `'/get/id'`                       | 获取所有入站以及inbound.id        |
+| `GET`  | `'/getClientTraffics/email'`      | 通过电子邮件获取客户端流量        |
+| `GET`  | `'/createbackup'`                  | Telegram 机器人向管理员发送备份   |
+| `POST` | `'/add'`                           | 添加入站                          |
+| `POST` | `'/del/id'`                       | 删除入站                          |
+| `POST` | `'/update/id'`                    | 更新入站                          |
+| `POST` | `'/clientIps/email'`              | 客户端 IP 地址                    |
+| `POST` | `'/clearClientIps/email'`         | 清除客户端 IP 地址                |
+| `POST` | `'/addClient'`                     | 将客户端添加到入站                |
+| `POST` | `'/:id/delClient/clientId'`       | 通过 clientId\* 删除客户端        |
+| `POST` | `'/updateClient/clientId'`        | 通过 clientId\* 更新客户端        |
+| `POST` | `'/:id/resetClientTraffic/email'` | 重置客户端的流量                  |
+| `POST` | `'/resetAllTraffics'`              | 重置所有入站的流量                |
+| `POST` | `'/resetAllClientTraffics/id'`    | 重置入站中所有客户端的流量        |
+| `POST` | `'/delDepletedClients/id'`        | 删除入站耗尽的客户端 （-1： all） |
+| `POST` | `'/onlines'`                       | 获取在线用户 （ 电子邮件列表 ）   |
+
+\*- `clientId` 项应该使用下列数据
+
+- `client.id`  VMESS and VLESS
+- `client.password`  TROJAN
+- `client.email`  Shadowsocks
+
+
+
+### 参数解释
+```
+{
+  '_comment': '上面是一些全局设置',
+  'up': 0,  // 上传流量限制，单位为字节，0表示不限制
+  'down': 0,  // 下载流量限制，单位为字节，0表示不限制
+  'total': 0,  // 总流量限制，单位为字节，0表示不限制
+  'remark': 'node2',  // 节点备注，用于标识节点
+  'enable': true,  // 是否启用此节点，true表示启用
+  'expiryTime': 0,  // 过期时间，单位为秒，0表示永不过期
+  'listen': '',  // 监听地址，空表示默认监听所有地址
+  'port': 10654,  // 监听端口号
+  'protocol': 'vless',  // 协议类型，vless表示VLESS协议
+  'settings': {
+    '_comment': '此部分为协议相关设置',
+    'clients': [
+      {
+        'id': 'bf7d39f5-257e-499f-acda-a9ea77b11bb4',  // 客户端ID，唯一标识
+        'flow': '',  // 流量控制，空表示没有流量限制
+        'email': 'y6kxqdix',  // 客户端的邮箱，用于标识
+        'limitIp': 0,  // 限制IP，0表示不限制
+        'totalGB': 0,  // 总流量限制，单位为GB，0表示不限制
+        'expiryTime': 0,  // 客户端的过期时间，0表示永不过期
+        'enable': true,  // 是否启用此客户端
+        'tgId': '',  // TG ID，如果为空则表示没有设置
+        'subId': 'cqeaws7i3w3z70rp',  // 订阅ID
+        'reset': 0  // 重置流量的时间，0表示不重置
+      }
+    ],
+    'decryption': 'none',  // 解密方式，none表示不使用解密
+    'fallbacks': []  // 后备设置，空数组表示没有备用配置
+  },
+  'streamSettings': {
+    '_comment': '此部分为流设置',
+    'network': 'grpc',  // 网络协议，grpc表示使用gRPC协议
+    'security': 'reality',  // 安全设置，reality表示使用Reality协议
+    'externalProxy': [],  // 外部代理设置，空数组表示没有外部代理
+    'realitySettings': {
+      '_comment': 'Reality协议设置',
+      'show': false,  // 是否显示该设置
+      'xver': 0,  // 协议版本号
+      'dest': 'www.icloud.com:443',  // 目标地址，www.icloud.com:443
+      'serverNames': [
+        'www.icloud.com'  // 服务器名称，用于TLS验证
+      ],
+      'privateKey': '4FNf4m1nQVXcoO31xjk7noe82A7F2Dg2XEier3ogEBY',  // Reality协议私钥
+      'minClient': '',  // 最小客户端数，空表示没有限制
+      'maxClient': '',  // 最大客户端数，空表示没有限制
+      'maxTimediff': 0,  // 最大时间差，0表示不限制
+      'shortIds': [
+        '863f9613', 'd978', '0f3abe', '79', 'f014d5309f8954',
+        '1311bf0f64f82159', '3d0cba0857f7', 'c7ce204393'
+      ],  // Reality协议的短ID列表
+      'settings': {
+        'publicKey': '3fFBgCb6PpNC_Kqph7UM2pXw4m1ck82ss4ov8YlmqWc',  // Reality协议的公钥
+        'fingerprint': 'chrome',  // 浏览器指纹，chrome表示谷歌浏览器
+        'serverName': '',  // 服务器名称
+        'spiderX': '/'  // 模拟爬虫的路径
+      }
+    }
+  },
+  'grpcSettings': {
+    '_comment': 'gRPC协议的设置',
+    'serviceName': '',  // 服务名称，空表示没有指定
+    'authority': '',  // 权威设置，空表示没有指定
+    'multiMode': false  // 是否启用多模式，false表示关闭
+  },
+  'tag': 'inbound-10654',  // 标签，用于标识该入站
+  'sniffing': {
+    '_comment': '嗅探设置',
+    'enabled': false,  // 是否启用嗅探，false表示不启用
+    'destOverride': [
+      'http', 'tls', 'quic', 'fakedns'  // 嗅探的目标协议
+    ],
+    'metadataOnly': false,  // 是否只嗅探元数据
+    'routeOnly': false  // 是否只嗅探路由
+  },
+  'allocate': {
+    '_comment': '流量分配设置',
+    'strategy': 'always',  // 分配策略，always表示始终分配
+    'refresh': 5,  // 刷新时间，单位为秒
+    'concurrency': 3  // 最大并发连接数
+  }
+}
+```
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/44.html</guid><pubDate>Wed, 09 Apr 2025 04:53:40 +0000</pubDate></item><item><title>nmap端口扫描</title><link>https://blog.52013120.xyz/post/43.html</link><description>
+| 命令参数            | 作用                                                         | 使用示例                                                         |
+|---------------------|--------------------------------------------------------------|------------------------------------------------------------------|
+| `-p &lt;port&gt;`         | 指定扫描的单一端口或端口范围                                 | `nmap -p 80 192.168.1.1` 扫描 80 端口                          |
+| `-p &lt;port1,port2,...&gt;` | 扫描多个指定端口                                             | `nmap -p 80,443,22 192.168.1.1` 扫描 80、443、22 端口          |
+| `-p 1-1024`         | 扫描指定端口范围                                             | `nmap -p 1-1024 192.168.1.1` 扫描 1 到 1024 的端口             |
+| `-sS`               | 执行 TCP SYN 扫描（半开放扫描），不会完整建立连接           | `nmap -sS 192.168.1.1` 扫描目标主机的端口（最常用的扫描方式）  |
+| `-sT`               | 执行 TCP 连接扫描（完全建立连接）                           | `nmap -sT 192.168.1.1` 进行 TCP 全连接扫描                     |
+| `-sU`               | 执行 UDP 扫描，适用于 UDP 服务                               | `nmap -sU -p 53 192.168.1.1` 扫描 UDP 53 端口（DNS 服务）      |
+| `-sP`               | 执行 Ping 扫描，检查主机是否存活                             | `nmap -sP 192.168.1.0/24` 扫描整个网段内活跃的主机            |
+| `-sA`               | 执行 ACK 扫描，用于防火墙规则检测                           | `nmap -sA 192.168.1.1` 执行 ACK 扫描                            |
+| `-sW`               | 执行 Window 扫描，基于 TCP/IP 窗口大小进行扫描               | `nmap -sW 192.168.1.1` 执行 TCP Window 扫描                    |
+| `-sM`               | 执行 Maimon 扫描，基于 TCP 标志位进行扫描                     | `nmap -sM 192.168.1.1` 执行 Maimon 扫描                        |
+| `-O`                | 启用操作系统探测，识别目标主机操作系统                       | `nmap -O 192.168.1.1` 执行操作系统探测                          |
+| `-A`                | 启用操作系统探测、版本探测、脚本扫描和 traceroute 跟踪       | `nmap -A 192.168.1.1` 执行详细扫描（包括 OS、版本、Traceroute） |
+| `-v`                | 增加输出的详细程度                                          | `nmap -v -p 80 192.168.1.1` 显示更多扫描过程信息              |
+| `-vv`               | 显示非常详细的输出信息                                       | `nmap -vv -p 80 192.168.1.1` 更详细的扫描信息                   |
+| `-T&lt;0-5&gt;`           | 设置扫描速度，从 0（最慢）到 5（最快），默认是 3            | `nmap -T4 192.168.1.0/24` 设置扫描速度为 4                     |
+| `--open`            | 只显示开放的端口                                           | `nmap --open -p 80,443 192.168.1.0/24` 仅显示开放的 80 和 443 端口 |
+| `-Pn`               | 禁用主机发现（即不进行 Ping 扫描），直接扫描端口             | `nmap -Pn 192.168.1.0/24` 扫描整个网段内的主机，不进行 ping 扫描 |
+| `-oN &lt;file&gt;`        | 将扫描结果保存到普通文本文件                                 | `nmap -oN result.txt 192.168.1.0/24` 将扫描结果保存到 `result.txt` |
+| `-oX &lt;file&gt;`        | 将扫描结果保存为 XML 格式                                    | `nmap -oX result.xml 192.168.1.0/24` 将扫描结果保存为 XML 文件 |
+| `-oG &lt;file&gt;`        | 将扫描结果保存为 Grepable 格式                              | `nmap -oG result.gnmap 192.168.1.0/24` 将扫描结果保存为 Grepable 格式 |
+| `-iL &lt;file&gt;`        | 从文件中读取 IP 地址列表进行扫描                             | `nmap -iL targets.txt` 从 `targets.txt` 文件中读取 IP 地址进行扫描 |
+| `--script &lt;script&gt;` | 使用 Nmap 脚本引擎执行脚本扫描（可以指定脚本名称）            | `nmap --script http-title 192.168.1.1` 执行 `http-title` 脚本扫描 |
+| `-h`                | 显示帮助信息                                               | `nmap -h` 显示 `nmap` 的帮助信息                                  |
+| `-T0`               | 设置为最慢的扫描，适合避免被防火墙拦截                       | `nmap -T0 192.168.1.1` 执行非常慢的扫描，避开防火墙检测         |
+| `-T5`               | 设置为最快的扫描，适合高速网络和容忍扫描被检测的情况         | `nmap -T5 192.168.1.1` 执行最快的扫描，适用于测试环境           |
+| `--traceroute`      | 执行路由追踪，显示目标主机的路由路径                         | `nmap --traceroute 192.168.1.1` 执行 traceroute 跟踪              |
+| `-6`                | 启用 IPv6 扫描模式                                         | `nmap -6 2001:db8::1` 执行 IPv6 扫描                             |
+| `--version-all`     | 显示所有可能的版本信息                                     | `nmap --version-all 192.168.1.1` 显示目标主机的所有版本信息     |
+| `--unprivileged`    | 以非特权模式运行，避免需要 root 权限                         | `nmap --unprivileged 192.168.1.1` 以非特权模式进行扫描          |
+
+
+例如扫描路由器IP
+```
+nmap -p 80 -Pn -T5 192.168.0.0/24
+```
+
+快速扫描全端口tcp
+```
+nmap -T4 -Pn -p 1-65535 -sS 192.168.0.1
+```
+快速扫描全端口udp
+```
+nmap -T5 -Pn -p 1-65535 -sU 192.168.0.1
+```
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/43.html</guid><pubDate>Tue, 08 Apr 2025 00:45:43 +0000</pubDate></item><item><title>数据库常用命令</title><link>https://blog.52013120.xyz/post/42.html</link><description>### MySQL和MariaDB常用命令
+
+| 数据库          | 操作                | 命令                                                      | 描述                                   |
+|-----------------|---------------------|-----------------------------------------------------------|----------------------------------------|
+| **MySQL**       | 更新软件包列表       | `sudo apt update`                                        | 更新可用软件包列表                      |
+|                 | 安装 MySQL 服务器    | `sudo apt install mysql-server`                           | 安装 MySQL 服务器                       |
+|                 | 启动 MySQL 服务      | `sudo systemctl start mysql`                              | 启动 MySQL 服务                         |
+|                 | 检查 MySQL 服务状态  | `sudo systemctl status mysql`                             | 检查 MySQL 服务的运行状态               |
+|                 | 运行安全安装脚本    | `sudo mysql_secure_installation`                           | 配置 MySQL 安全选项                     |
+|                 | 登录 MySQL          | `sudo mysql -u root -p`                                   | 登录 MySQL，输入 root 用户密码          |
+| **MariaDB**     | 更新软件包列表       | `sudo apt update`                                        | 更新可用软件包列表                      |
+|                 | 安装 MariaDB 服务器 | `sudo apt install mariadb-server`                         | 安装 MariaDB 服务器                     |
+|                 | 启动 MariaDB 服务   | `sudo systemctl start mariadb`                            | 启动 MariaDB 服务                       |
+|                 | 检查 MariaDB 服务状态 | `sudo systemctl status mariadb`                           | 检查 MariaDB 服务的运行状态             |
+|                 | 运行安全安装脚本    | `sudo mysql_secure_installation`                           | 配置 MariaDB 安全选项                   |
+|                 | 登录 MariaDB        | `sudo mysql -u root -p`                                   | 登录 MariaDB，输入 root 用户密码       |
+
+
+
+
+| 功能分类    | 命令                                                      | 描述                                                     |
+|-------------|------------------------------------------------------------|----------------------------------------------------------|
+| **登录数据库** | `mysql -u 用户名 -p`                                        | 登录 MySQL，使用指定的用户名，`-p` 会提示输入密码         |
+| **显示数据库** | `SHOW DATABASES;`                                         | 列出当前 MySQL 服务器中的所有数据库                       |
+| **使用数据库** | `USE 数据库名;`                                             | 切换到指定数据库                                          |
+| **创建数据库** | `CREATE DATABASE 数据库名;`                                  | 创建一个新的数据库                                        |
+| **删除数据库** | `DROP DATABASE 数据库名;`                                    | 删除指定数据库                                            |
+| **显示当前数据库** | `SELECT DATABASE();`                                  | 显示当前正在使用的数据库                                  |
+| **显示数据库表** | `SHOW TABLES;`                                           | 列出当前数据库中的所有表                                  |
+| **查看表结构** | `DESCRIBE 表名;`                                             | 查看表的结构 (字段、类型、主键等)                         |
+| **查看表数据** | `SELECT * FROM 表名;`                                             | 查看表里的数据                       |
+| **创建表**    | `CREATE TABLE 表名 (字段1 数据类型, 字段2 数据类型, ...);`      | 创建一张表，指定列和数据类型                              |
+| **删除表**    | `DROP TABLE 表名;`                                           | 删除指定的表                                              |
+| **插入数据**  | `INSERT INTO 表名 (字段1, 字段2, ...) VALUES (值1, 值2, ...);` | 插入一条数据                                              |
+| **查询数据**  | `SELECT 字段1, 字段2 FROM 表名 WHERE 条件;`                   | 查询表中的数据，可以使用条件过滤                          |
+| **更新数据**  | `UPDATE 表名 SET 字段1=值1 WHERE 条件;`                       | 更新指定的表数据                                          |
+| **删除数据**  | `DELETE FROM 表名 WHERE 条件;`                                | 删除符合条件的数据                                        |
+| **显示创建表语句** | `SHOW CREATE TABLE 表名;`                               | 显示指定表的创建语句                                      |
+| **清空表数据** | `TRUNCATE TABLE 表名;`                                      | 清空表中的所有数据，但保留表结构                          |
+| **查看索引**  | `SHOW INDEX FROM 表名;`                                       | 查看表中所有的索引                                        |
+| **创建索引**  | `CREATE INDEX 索引名 ON 表名 (字段);`                         | 创建索引，提升查询速度                                    |
+| **删除索引**  | `DROP INDEX 索引名 ON 表名;`                                  | 删除指定的索引                                            |
+| **备份数据库** | `mysqldump -u 用户名 -p 数据库名 &gt; 备份文件.sql`               | 备份数据库，将数据库内容导出为 `.sql` 文件                |
+| **恢复数据库** | `mysql -u 用户名 -p 数据库名 &lt; 备份文件.sql`                  | 恢复数据库，将 `.sql` 文件导入指定数据库                  |
+| **创建用户**  | `CREATE USER '用户名'@'localhost' IDENTIFIED BY '密码';`       | 创建一个新的 MySQL 用户                                   |
+| **删除用户**  | `DROP USER '用户名'@'localhost';`                             | 删除 MySQL 用户                                           |
+| **授权权限**  | `GRANT ALL PRIVILEGES ON 数据库名.* TO '用户名'@'localhost';`   | 授予用户对某个数据库的所有权限                           |
+| **显示用户权限** | `SHOW GRANTS FOR '用户名'@'localhost';`                    | 显示指定用户的权限                                        |
+| **撤销权限**  | `REVOKE ALL PRIVILEGES ON 数据库名.* FROM '用户名'@'localhost';` | 撤销指定用户对某个数据库的权限                            |
+| **刷新权限**  | `FLUSH PRIVILEGES;`                                          | 刷新 MySQL 权限表，使权限更改生效                         |
+| **查看服务器状态** | `SHOW STATUS;`                                           | 查看 MySQL 服务器的状态和性能指标                         |
+| **查看数据库引擎** | `SHOW ENGINES;`                                          | 显示 MySQL 支持的所有存储引擎                             |
+| **查看连接信息** | `SHOW PROCESSLIST;`                                        | 显示当前 MySQL 的所有连接信息                             |
+
+
+- 大多数 SQL 语句都以分号 `;` 结尾。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/42.html</guid><pubDate>Tue, 08 Apr 2025 00:44:50 +0000</pubDate></item><item><title>snap和winget包管理器</title><link>https://blog.52013120.xyz/post/41.html</link><description>&gt; [debian系统apt包搜索页面](https://www.debian.org/distrib/packages.zh-cn.html)
+
+## Snap包管理器文档
+
+```
+# 更新软件包索引，安装 snapd
+sudo apt update &amp;&amp; sudo apt install snapd -y
+
+# 设置 snapd 服务开机自启并启动服务
+sudo systemctl enable snapd &amp;&amp; sudo systemctl start snapd
+```
+
+### 说明：
+
+1. **安装核心组件**：在安装其他软件包之前，建议先安装核心snap组件：
+
+```
+sudo snap install core
+```
+
+2. **在线搜索包**（搜索结果右上角可以选择版本）：https://snapcraft.io/store
+
+3. **安装特定版本示例**
+&gt; `--classic`代表赋予最高权限
+```
+# 特定的版本的go
+sudo snap install go --classic --channel=1.24/stable
+
+# 最新版本的docker
+sudo snap install docker --classic
+
+# 最新版本的caddy
+sudo snap install caddy --classic
+```
+4. **查看已安装的snap**：使用以下命令查看已安装的snap：
+```
+snap list
+```
+
+5. **更新snap**：更新所有已安装的snap：
+```
+sudo snap refresh
+```
+
+6. **删除snap**：删除某个snap：
+ ```
+ sudo snap remove 包名
+ ```
+ 
+### 管理snap安装的包(以caddy为例)
+```
+# 查看 caddy Snap 服务状态
+sudo systemctl status snap.caddy.caddy.service
+
+# 启动 caddy Snap 服务
+sudo systemctl start snap.caddy.caddy.service
+
+# 停止 caddy Snap 服务
+sudo systemctl stop snap.caddy.caddy.service
+
+# 重启 caddy Snap 服务
+sudo systemctl restart snap.caddy.caddy.service
+
+# 设置 caddy Snap 服务开机自启
+sudo systemctl enable snap.caddy.caddy.service
+
+# 实时查看 caddy Snap 服务日志（systemd 日志）
+sudo journalctl -u snap.caddy.caddy.service -f
+
+# 使用 snap 命令查看 caddy 日志（部分 snap 支持）
+snap logs caddy
+
+# 查看所有 snap 管理的服务及状态
+snap services
+```
+
+ 
+---
+## win系统的winget软件管理器文档
+
+| 操作 | 命令 | 说明 |
+|------|------|------|
+| 安装 winget | 无需单独安装 | winget 已预装在 Windows 10 1709 及更高版本 |
+| 更新 winget | `winget upgrade winget` | 更新 winget 自身 |
+| 搜索软件 | `winget search &lt;软件名&gt;` | 搜索可用的软件包 |
+| 安装软件 | `winget install &lt;软件名&gt;` | 安装指定的软件包 |
+| 卸载软件 | `winget uninstall &lt;软件名&gt;` | 卸载指定的软件包 |
+| 更新软件 | `winget upgrade &lt;软件名&gt;` | 更新指定的软件包 |
+| 更新所有软件 | `winget upgrade --all` | 更新所有已安装的软件包 |
+| 列出已安装软件 | `winget list` | 显示所有已安装的软件包 |
+
+### 说明：
+
+1. **安装 winget**：
+   - 在较新的 Windows 10 和 Windows 11 系统中，winget 已经预装。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/41.html</guid><pubDate>Tue, 08 Apr 2025 00:44:06 +0000</pubDate></item><item><title>Git推送GitHub常用命令</title><link>https://blog.52013120.xyz/post/40.html</link><description>### 先在github创建一个仓库，然后本地CD到项目目录
+
+
+### 初始化本地仓库
+```
+git init
+```
+### 创建并切换到`main`分支
+```
+git checkout -b main
+```
+### 确保本地分支是`main`
+```
+git checkout main
+```
+### 添加并提交新的更改
+```
+git add .
+git commit -m 'add'
+```
+### 关联远程仓库
+```
+git remote add origin https://github.com/your-username/your-repo.git
+```
+### 推送到仓库
+```
+git push origin main
+```
+`main`为分支名
+
+输入用户名和key密钥即可推送完成
+#### 操作完成后清除Git存储凭据
+```
+git config --global --unset credential.helper
+```
+
+## 项目添加子模块
+`ddns-go` 为例，项目根目录执行。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/40.html</guid><pubDate>Tue, 08 Apr 2025 00:43:04 +0000</pubDate></item><item><title>😩😩😩学不完，根本学不完😩😩😩</title><link>https://blog.52013120.xyz/post/39.html</link><description>## 前端
+
+### UI组件库
+
+- **Vuetify** (Vue生态): https://vuetifyjs.com/zh-Hans/getting-started/installation/
+- **Element Plus** (Vue生态): https://element-plus.org/zh-CN/guide/installation.html
+- **Inspira UI** (Vue生态现代组件集): https://inspira-ui.com/docs/cn/components
+- **shadcn-vue** (Vue生态): https://shadcn-vue.com/
+- **reka-ui** (Vue生态): https://reka-ui.com/ 轻量级
+- **Lew UI** (Vue生态): https://app.tngeek.com/web/lew_ui/#/
+
+- **Material Web** (Google安卓原生风格): https://material-web.dev/
+- **MUI** (React生态, Google Material Design): https://mui.com/material-ui/getting-started/ 
+- **Fluent UI** (React生态，微软风格): https://react.fluentui.dev/
+- **shadcn/ui** (React生态): https://www.shadcn-ui.cn/docs/installation
+- **coss ui** (React生态): https://coss.com/ui/docs
+- **HeroUI** (React生态): https://heroui.com/
+
+### CSS样式库
+
+- **daisyUI** (Tailwind CSS生态): https://daisyui.com/docs/cdn/?lang=zh_hans
+- **Primer** (GitHub风格): https://primer.style/product/
+
+### 动画组件库
+
+- **React Bits**: https://reactbits.dev/get-started/introduction
+- **Vue Bits**: https://vue-bits.dev/
+- **Uiverse**（HTML，React）: https://uiverse.io/elements
+- **FormKit AutoAnimate**（通用）: https://auto-animate.formkit.com/#examples
+
+
+| **原生前端库**             | **推荐库**       | **官方地址** |
+|---------------------|----------------|-------------|
+| **工具类（数组/对象/日期）** | [lodash](https://lodash.com/) 、 [day.js](https://day.js.org/) | [lodash 官网](https://lodash.com/) / [day.js 官网](https://day.js.org/) |
+| **AJAX 数据请求**     | [axios](https://axios-http.com/) | [axios 官网](https://axios-http.com/) |
+| **轻量级动画**       | [anime.js](https://animejs.com/) | [anime.js 官网](https://animejs.com/) |
+| **复杂动画**         | [GSAP](https://greensock.com/gsap/) | [GSAP 官网](https://greensock.com/gsap/) |
+| **简单 UI 组件**     | [Shoelace](https://shoelace.style/) | [Shoelace 官网](https://shoelace.style/) |
+| **轻量前端框架**     | [Alpine.js](https://alpinejs.dev/) | [Alpine.js 官网](https://alpinejs.dev/) |
+| **模板渲染**         | [Mustache.js](https://mustache.github.io/) | [Mustache.js 官网](https://mustache.github.io/) |
+| **数据可视化**       | [Chart.js](https://www.chartjs.org/) 、 [D3.js](https://d3js.org/) | [Chart.js 官网](https://www.chartjs.org/) / [D3.js 官网](https://d3js.org/) |
+| **3D 渲染**         | [Three.js](https://threejs.org/) | [Three.js 官网](https://threejs.org/) |
+| **播放器**         | [videojs](https://github.com/videojs/video.js) | [videojs 官网](https://videojs.com/) |
+| **在线UI设计**         | [pixso](https://pixso.cn/) | [pixso 官网](https://pixso.cn/) |
+
+### 前端镜像站
+BootCDN：https://www.bootcdn.cn/
+七牛云：https://www.staticfile.org/
+jsDelivr国内镜像(非官方)：https://cdn.jsdmirror.com/
+Gcore jsDelivr镜像：https://gcore.jsdelivr.net/
+NPM 全库镜像：https://unpkg.com/
+tailwindcss淘宝镜像：https://registry.npmmirror.com/tailwindcss-cdn/3.4.10/files/tailwindcss.js
+
+。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/39.html</guid><pubDate>Wed, 19 Mar 2025 23:56:49 +0000</pubDate></item><item><title>使用CDN后获取访客真实IP</title><link>https://blog.52013120.xyz/post/38.html</link><description>- **Cloudflare**
+使用`Cloudflare`后，在`Nginx`配置中相应位置添加如下代码以获取用户真实IP
+```
+set_real_ip_from 0.0.0.0/0;
+real_ip_header CF-Connecting-IP;
+```
+- **Gcore CDN**
+可参考`Gcore` [官方博文](https://gcore.com/docs/waap/about-waap)
+```
+set_real_ip_from 0.0.0.0/0;
+real_ip_header X-Forwarded-For;
+```
+- **AWS Cloudfront**
+需要利用到`CloudFront-Viewer-Address`请求头，但该请求头默认未启用，需手动前往`Cloudfront`控制面板开启。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/38.html</guid><pubDate>Sun, 09 Mar 2025 04:47:07 +0000</pubDate></item><item><title>一些用于网络测试的下载测速文件</title><link>https://blog.52013120.xyz/post/37.html</link><description>
+本文搜集了一些可用于VPS/服务器的下载测速文件，从`100MB`到`10GB`。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/37.html</guid><pubDate>Sun, 09 Mar 2025 03:29:50 +0000</pubDate></item><item><title>纯v6网络访问v4站点最简单的方法</title><link>https://blog.52013120.xyz/post/35.html</link><description>## NAT64服务让纯V6网络支持访问纯V4站点&#13;
+&#13;
+众所周知纯v6网络想要访问仅支持v4的网站是无法访问的，尤其是`github.com`和`api.github.com`居然不支持ipv6，所以很多人都选择使用`一键warp脚本`，这个脚本很简单方便，但是对于我这种有洁癖的人有点难受，因为会装一堆东西，想卸载干净也很麻烦。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/35.html</guid><pubDate>Thu, 02 Jan 2025 10:09:20 +0000</pubDate></item><item><title>服务器配置SSH密钥登录</title><link>https://blog.52013120.xyz/post/34.html</link><description>## 服务器配置SSH密钥登录&#13;
+&#13;
+&gt; 适用于`Debian`和`Ubuntu`系统&#13;
+&#13;
+&#13;
+&#13;
+### 生成`ED25519`类型的 SSH 密钥对&#13;
+&#13;
+```&#13;
+ssh-keygen -t ed25519&#13;
+```&#13;
+&gt;一路回车即可，生成的`id_ed25519`文件为私钥，使用这个连接服务器，`id_ed25519.pub`文件为公钥。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/34.html</guid><pubDate>Thu, 19 Dec 2024 09:36:09 +0000</pubDate></item><item><title>windows重装系统教程</title><link>https://blog.52013120.xyz/post/33.html</link><description>### windows重装系统之U盘引导
+
+微软官网系统镜像下载：https://www.microsoft.com/zh-cn/software-download/windows11
+
+1：下载`Windows 11 安装媒体`并执行程序写入到U盘
+
+2：开机重复按`F2`或者`F12`或者`DELETE`键 进入BIOS界面
+
+3：将U盘改为第一启动项，然后保存并重启
+
+4：第一个分区默认就是C盘，建议分区300G：填`307200`MB，剩下的全给第二个分区，记得给盘符命名。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/33.html</guid><pubDate>Thu, 05 Dec 2024 17:22:17 +0000</pubDate></item><item><title>Docker部署哪吒监控</title><link>https://blog.52013120.xyz/post/32.html</link><description>### Docker部署哪吒监控
+
+### v1版本
+`docker-compose.yaml`配置
+```
+services:
+  dashboard:
+    image: ghcr.io/nezhahq/nezha
+    restart: always
+    ports:
+      - '8008:8008'
+    volumes:
+      - ./data:/dashboard/data
+```
+
+`caddy`反代配置
+```
+example.com {
+    reverse_proxy /proto.NezhaService/* h2c://127.0.0.1:8008
+    
+    reverse_proxy /* 127.0.0.1:8008
+}
+```
+
+⚠️必须修改面板后台Agent对接地址，填`example.com:443`，并选中`使用 TLS 连接`
+
+&gt; 如果套了`cf`，则网络配置需要开启`grpc`选项
+
+
+&gt; 国内被控机替换脚本地址：`https://gitee.com/naibahq/scripts/raw/main/agent/install.sh`
+
+
+后台路径 `/dashboard`
+默认用户名密码 `admin` `admin`
+
+#### 重置密码
+&gt; 数据库路径`/opt/nezha/dashboard/data/sqlite.db`
+
+安装数据库
+```
+apt update &amp;&amp; apt install sqlite3 -y
+```
+先备份数据库
+```
+cp /opt/nezha/dashboard/data/sqlite.db /opt/nezha/dashboard/data/sqlite.db.bak
+```
+重置用户表
+```
+sqlite3 /opt/nezha/dashboard/data/sqlite.db 'DELETE FROM users;'
+```
+然后重启面板，此时密码会重置为初始密码
+
+
+### 配置多`oauth2`登录
+
+
+
+```
+oauth2:
+  Gitee:
+    clientid: 'your id'
+    clientsecret: 'your secret'
+    endpoint:
+      authurl: 'https://gitee.com/oauth/authorize'
+      tokenurl: 'https://gitee.com/oauth/token'
+    scopes:
+      - user_info
+    userinfourl: 'https://gitee.com/api/v5/user'
+    useridpath: 'id'
+  GitHub:
+    clientid: 'your id'
+    clientsecret: 'your secret'
+    endpoint:
+      authurl: 'https://github.com/login/oauth/authorize'
+      tokenurl: 'https://github.com/login/oauth/access_token'
+    userinfourl: 'https://api.github.com/user'
+    useridpath: 'id'
+  Cloudflare:
+    clientid: 'your id'
+    clientsecret: 'your secret'
+    endpoint:
+      authurl: 'https://XXXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/authorization'
+      tokenurl: 'https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/token'
+    scopes:
+      - openid
+      - profile
+    userinfourl: 'https://XXX.cloudflareaccess.com/cdn-cgi/access/sso/oidc/XXX/userinfo'
+    useridpath: 'sub'
+```
+
+
+
+
+
+
+
+
+---
+
+### v0版本
+
+创建相关文件：
+```
+cd /home &amp;&amp; mkdir -p template data
+```
+
+`docker-compose.yml`配置
+
+```
+services:
+  nezha:
+    image: ghcr.io/naiba/nezha-dashboard:v0.20.13
+    container_name: nezha
+    restart: always
+    ports:
+      - '8080:80'
+      - '5555:5555'
+    volumes:
+      - ./data:/dashboard/data
+      - ./template:/dashboard/resource/template
+```
+
+
+在`data`目录添加`config.yaml`配置
+```
+debug: false
+language: zh-CN
+site:
+    brand: 服务器监控
+    cookiename: nezha-dashboard
+    theme: server-status
+    dashboardtheme: default
+    customcode: ''
+    customcodedashboard: ''
+    viewpassword: ''
+oauth2:
+    type: github
+    admin: github用户名
+    admingroups: ''
+    clientid: 验证ID
+    clientsecret: 验证密钥
+    endpoint: ''
+    oidcdisplayname: OIDC
+    oidcissuer: ''
+    oidclogouturl: ''
+    oidcregisterurl: ''
+    oidcloginclaim: sub
+    oidcgroupclaim: groups
+    oidcscopes: openid,profile,email
+    oidcautocreate: false
+    oidcautologin: false
+httpport: 80
+grpcport: 5555
+grpchost: grpc.example.com # 被控端连接域名(前端不开CDN可去掉这个这里的域名)
+proxygrpcport: 0 # 被控端连接域名套CF需改成443
+tls: false # 被控端连接域名套CF需改成true
+enableplainipinnotification: false
+disableswitchtemplateinfrontend: false
+enableipchangenotification: false
+ipchangenotificationtag: default
+cover: 0
+ignoredipnotification: ''
+location: Asia/Shanghai
+ignoredipnotificationserverids: {}
+maxtcppingvalue: 1000
+avgpingcount: 2
+dnsservers: ''
+```
+
+`oauth2`回调URL示例：
+```
+https://example.com/oauth2/callback
+```
+
+`caddy`配置示例
+```
+# 前端域名
+example.com {
+    encode zstd gzip
+    reverse_proxy localhost:8080
+}
+
+# 被控端连接域名(前端不开CDN可去掉这个配置)
+grpc.example.com {
+    reverse_proxy {
+        to localhost:5555
+        transport http {
+            versions h2c 2
+        }
+    }
+}
+```
+
+
+---
+
+将面板中复制所得的指令中的sh的raw文件url替换成
+```
+https://cdn.jsdelivr.net/gh/sky22333/shell@main/nezha/install.sh
+```
+其他参数不变，然后去被控机安装即可。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/32.html</guid><pubDate>Sat, 30 Nov 2024 22:58:39 +0000</pubDate></item><item><title>Github-Actions默认用户变量GITHUB_TOKEN的提权语法</title><link>https://blog.52013120.xyz/post/31.html</link><description>### `Github-Actions`默认用户变量`GITHUB_TOKEN`的提权语法
+
+-  众所周知工作流默认用户变量`GITHUB_TOKEN`由`GitHub`自动生成并提供的，不需要你手动创建，非常方便。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/31.html</guid><pubDate>Thu, 28 Nov 2024 18:42:01 +0000</pubDate></item><item><title>给站点套CFT的一些坑</title><link>https://blog.52013120.xyz/post/30.html</link><description>##  给站点套CFT的一些坑（亚马逊云AWS的CDN）&#13;
+**本教程是基于不改动源站的配置配置下套CFT，默认源站已经开启TLS**&#13;
+&#13;
+1：源域直接填源站域名，协议选`HTTPS`，最小源选`TLSv1`，&#13;
+&#13;
+2：行为里的压缩建议选`NO`，`缓存键和源请求`要选`旧版缓存设置`，也就是第二个。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/30.html</guid><pubDate>Tue, 19 Nov 2024 04:36:25 +0000</pubDate></item><item><title>解决CF反代Docker失效的问题</title><link>https://blog.52013120.xyz/post/29.html</link><description>## 解决CF反代Docker失效的问题&#13;
+&#13;
+**最近国内拉取镜像时发现之前的`worker`反代的`docker`加速用不了了，报错为`auth.docker.io/token`这个域名的问题。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/29.html</guid><pubDate>Sat, 16 Nov 2024 23:52:36 +0000</pubDate></item><item><title>使用py3快速启动一个文件上传和下载的接口</title><link>https://blog.52013120.xyz/post/27.html</link><description>### 安装py3&#13;
+```&#13;
+sudo apt update&#13;
+sudo apt install python3 python3-pip -y&#13;
+```&#13;
+&#13;
+### 配置`up.py`&#13;
+```&#13;
+from flask import Flask, request, render_template_string&#13;
+import os&#13;
+app = Flask(__name__)&#13;
+# 设置上传目录为当前目录&#13;
+UPLOAD_FOLDER = '.'&#13;
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)&#13;
+app.config['MAX_CONTENT_LENGTH'] = 25 * 1024 * 1024&#13;
+&#13;
+HTML = '''&#13;
+&lt;!doctype html&gt;&#13;
+&lt;title&gt;文件上传 &lt;/title&gt;&#13;
+&lt;h1&gt;上传文件(最大25MB)&lt;/h1&gt;&#13;
+&lt;div id='drop-area' onclick='document.getElementById('fileElem').click();'&gt;&#13;
+    &lt;form id='form' method='post' enctype='multipart/form-data'&gt;&#13;
+        &lt;input type='file' id='fileElem' multiple accept='*/*' style='display:none;' onchange='handleFiles(this.files)'&gt;&#13;
+        &lt;label for='fileElem'&gt;选择文件&lt;/label&gt;&#13;
+        &lt;div id='gallery'&gt;&lt;/div&gt;&#13;
+    &lt;/form&gt;&#13;
+&lt;/div&gt;&#13;
+&lt;div id='message' style='color: green; margin-top: 10px;'&gt;&lt;/div&gt;&#13;
+&lt;script&gt;&#13;
+    let dropArea = document.getElementById('drop-area');&#13;
+    dropArea.addEventListener('dragover', event =&gt; {&#13;
+        event.preventDefault();&#13;
+    });&#13;
+    dropArea.addEventListener('drop', event =&gt; {&#13;
+        event.preventDefault();&#13;
+        handleFiles(event.dataTransfer.files);&#13;
+    });&#13;
+&#13;
+    function handleFiles(files) {&#13;
+        const formData = new FormData();&#13;
+        for (let file of files) {&#13;
+            formData.append('file', file);&#13;
+            const listItem = document.createElement('div');&#13;
+            listItem.textContent = file.name;&#13;
+            document.getElementById('gallery').appendChild(listItem);&#13;
+        }&#13;
+        document.getElementById('message').textContent = '上传中...';&#13;
+        fetch('/', { method: 'POST', body: formData })&#13;
+            .then(response =&gt; response.text())&#13;
+            .then(data =&gt; {&#13;
+                document.getElementById('message').textContent = data;&#13;
+            })&#13;
+            .catch(() =&gt; {&#13;
+                document.getElementById('message').textContent = '上传失败！';&#13;
+            });&#13;
+    }&#13;
+&lt;/script&gt;&#13;
+&lt;style&gt;&#13;
+    #drop-area { border: 2px dashed #ccc; padding: 20px; text-align: center; cursor: pointer; }&#13;
+&lt;/style&gt;&#13;
+'''&#13;
+&#13;
+@app.route('/', methods=['GET', 'POST'])&#13;
+def upload_file():&#13;
+    if request.method == 'POST':&#13;
+        for f in request.files.getlist('file'):&#13;
+            f.save(os.path.join(UPLOAD_FOLDER, f.filename))&#13;
+        return '文件上传成功！'&#13;
+    return render_template_string(HTML)&#13;
+&#13;
+if __name__ == '__main__':&#13;
+    app.run(host='0.0.0.0', port=8080)&#13;
+```&#13;
+&#13;
+&gt; 在`GitHub`网页上传单个文件的大小不能超过`25M`，使用GitHub客户端限制最大`100M`，这个限制是由GitHub的服务器设定。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/27.html</guid><pubDate>Fri, 01 Nov 2024 05:14:28 +0000</pubDate></item><item><title>ios系统最新免拔卡使用tiktok方法</title><link>https://blog.52013120.xyz/post/26.html</link><description>### ios较新的版本已经禁止app检测手机卡，所以只要你的系统`≥16.4`即可免拔卡使用TK的任何功能。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/26.html</guid><pubDate>Thu, 24 Oct 2024 08:58:02 +0000</pubDate></item><item><title>clash手搓配置最全协议示例详解</title><link>https://blog.52013120.xyz/post/25.html</link><description>### clash手搓配置全部协议示例，附带详细注释说明，小白也会手搓&#13;
+&#13;
+&#13;
+- [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)&#13;
+&#13;
+---&#13;
+---&#13;
+&#13;
+- 🔵本地配置，`clash-verge-rev`为例：&#13;
+&#13;
+打开`clash-verge-rev` → 订阅 → 新建 → 类型选择`Local` → 名称自定义 → 点击保存 → 右键点击该配置 → 编辑文件 → 复制配置 → 修改保存&#13;
+&#13;
+---&#13;
+---&#13;
+&#13;
+- 🔵云端配置：&#13;
+&#13;
+1：部署一个站点，站点目录里创建`clash.yaml`文件&#13;
+&#13;
+2：使用`caddy`代理站点目录，例如你的`clash.yaml`配置放在`/var/www`下，增加相应的权限&#13;
+&#13;
+3：则`caddy`可以这样配置：&#13;
+```&#13;
+example.com {&#13;
+    root * /var/www&#13;
+    encode zstd gzip&#13;
+    file_server&#13;
+}&#13;
+```&#13;
+&#13;
+4：部署完成后就可以远程拉取订阅，订阅地址示例：&#13;
+```&#13;
+https://example.com/clash.yaml&#13;
+```&#13;
+&#13;
+&#13;
+5：如果你已经有一个现成的站点，则直接将`clash.yaml`配置放在站点目录即可，其他同理。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/25.html</guid><pubDate>Sun, 13 Oct 2024 23:20:19 +0000</pubDate></item><item><title>为IP地址申请免费证书并开启HTTPS</title><link>https://blog.52013120.xyz/post/24.html</link><description>## 🔵打开免费申请IP SSL证书的网站&#13;
+&#13;
+&#13;
+**https://zerossl.com/**&#13;
+&#13;
+**1：打开后首页就直接输入你要申请的IP，点击“Next Step'进入下一步。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/24.html</guid><pubDate>Thu, 10 Oct 2024 18:58:46 +0000</pubDate></item><item><title>实用网站收藏</title><link>https://blog.52013120.xyz/post/23.html</link><description>## 实用网站收藏
+
+&gt; [!TIP]
+&gt; 网站收藏 💻
+
+- 我的网站导航：https://blog.52013120.xyz/tools
+
+- 百度图片代理接口：`https://image.baidu.com/search/down?url=`
+
+- 苏宁易购时间api：https://quan.suning.com/getSysTime.do
+
+- 通用文件加速下载：`https://files.m.daocloud.io/`
+在原始URL加上此前缀即可，无法加速媒体和图片类文件
+
+- 通用api请求代理：https://seep.eu.org/
+- 通用api请求代理：https://pz.v88.qzz.io/?url=。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/23.html</guid><pubDate>Tue, 01 Oct 2024 23:46:44 +0000</pubDate></item><item><title>纯CSS实现剧透效果</title><link>https://blog.52013120.xyz/post/22.html</link><description>### 纯CSS实现剧透效果&#13;
+&#13;
+**在Telegram客户端中，文字的`spoiler`效果可以通过特定的格式来实现。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/22.html</guid><pubDate>Sat, 21 Sep 2024 12:54:39 +0000</pubDate></item><item><title>在CloudflareWAF中屏蔽国内浏览器</title><link>https://blog.52013120.xyz/post/21.html</link><description>**要在Cloudflare WAF免费计划中添加屏蔽国内浏览器的规则，请按照以下步骤操作。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/21.html</guid><pubDate>Wed, 21 Aug 2024 08:45:31 +0000</pubDate></item><item><title>网络安全之百度URL欺骗漏洞分析和复现</title><link>https://blog.52013120.xyz/post/20.html</link><description>- **场景介绍**&#13;
+骗子给了一个网站诱导访问，链接很长，看开头是百度的官方链接，`https://m.baidu.com/?from=ddcai#iact=wiseindex/tabs/news/activity/newsdetail`  所以安全意识不强的肯定以为是安全的网站，然后点进去后就中招了&#13;
+&#13;
+- **名词解释**&#13;
+这种漏洞允许攻击者构造一个看似合法的URL（例如 `https://a.com/url=https://b.com` ），但实际上会显示来自另一个不受信任的网站（如 `https://b.com` ）的内容，而用户的浏览器地址栏中显示的仍然是原网站的URL (`https://a.com` )。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/20.html</guid><pubDate>Fri, 16 Aug 2024 02:20:52 +0000</pubDate></item><item><title>超级强大的ansible批量管理主机运维工具使用教程</title><link>https://blog.52013120.xyz/post/19.html</link><description>## 🔵ansible批量管理主机运维工具—被控主机无需安装任何东西&#13;
+&#13;
+### 1：安装并创建配置文件&#13;
+```&#13;
+sudo apt update&#13;
+sudo apt install ansible -y&#13;
+```&#13;
+```&#13;
+mkdir -p /etc/ansible &amp;&amp; cd /etc/ansible &amp;&amp; touch ansible.cfg hosts renwu.yml&#13;
+```&#13;
+&#13;
+&gt; `ansible.cfg` 配置Ansible的全局设置。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/19.html</guid><pubDate>Tue, 13 Aug 2024 22:32:34 +0000</pubDate></item><item><title>收集整理的最新的常用VPS脚本工具</title><link>https://blog.52013120.xyz/post/18.html</link><description>**收集整理的最新的常用VPS脚本工具，方便要使用的时候可以快速的找到，包含VPS测试脚本（一键测评，综合测试，IP质量/解锁，带宽测试，路由追踪，延迟/丢包测试），运维工具包等，DD重装系统脚本，科学工具，其他工具等等，会定期添加修改一些更新或者失效的脚本。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/18.html</guid><pubDate>Sat, 10 Aug 2024 09:24:04 +0000</pubDate></item><item><title>无法注册TG账号和国内号码接收不到验证码详细解决方案</title><link>https://blog.52013120.xyz/post/17.html</link><description>## 1：国内号码接不到验证码&#13;
+首先确保你的科学上网环境是正常的，并且你的梯子节点IP不会乱跳，是固定的IP&#13;
+并且尽量使用手机客户端注册，不要使用电脑或网页注册。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/17.html</guid><pubDate>Wed, 07 Aug 2024 05:46:19 +0000</pubDate></item><item><title>国内环境安装xui面板</title><link>https://blog.52013120.xyz/post/16.html</link><description>## 支持的系统
+
+&gt; amd64架构
+
+- CentOS 7+
+- Ubuntu 18+
+- Debian 8+
+
+
+## 一键安装脚本（支持纯IPV6环境和国内环境）
+
+```
+bash &lt;(wget -qO- https://gitlab.com/yishijie/3xui/raw/main/3xui.sh)
+```
+
+## 手动安装
+
+1. 下载压缩包 [(点击下载)](https://gitlab.com/yishijie/3xui/raw/main/x-ui-linux-amd64.tar.gz) 到本地。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/16.html</guid><pubDate>Tue, 06 Aug 2024 15:24:48 +0000</pubDate></item><item><title>免费接码网站合集</title><link>https://blog.52013120.xyz/post/15.html</link><description>### 付费平台
+
+国外业务：https://sms-man.com/cn
+
+国内业务：https://h5.haozhuma.cn/reg.html
+
+### 免费临时的平台
+
+- https://zh.mytrashmobile.com
+
+- https://ch.freephonenum.com
+
+- https://www.receive-sms-online.info
+
+- https://receive-a-sms.com
+
+- https://smsnumbersonline.com
+
+- https://sms-online.co/receive-free-sms
+
+- https://receive-sms.com
+
+- http://receivefreesms.com
+
+- https://www.receivesmsonline.net
+
+- https://www.freeonlinephone.org
+
+- https://www.textnow.com
+
+- https://www.pinger.com/text-free
+
+- https://receive-sms.com
+
+- http://receivefreesms.net
+
+- https://sms-receive.net
+
+- https://www.receivesms.net
+
+- https://www.receivesms.co
+
+- http://receiveonlinesms.com。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/15.html</guid><pubDate>Tue, 06 Aug 2024 15:11:22 +0000</pubDate></item><item><title>完整的网络状态码列表</title><link>https://blog.52013120.xyz/post/14.html</link><description>## 响应码大致有五个范围：&#13;
+&#13;
+- 1xx – 信息类&#13;
+- 2xx – 请求成功&#13;
+- 3xx – 跳转&#13;
+- 4xx – 客户端错误&#13;
+- 5xx – 服务器错误&#13;
+&#13;
+&#13;
+## 1xx – 提供某种附加信息&#13;
+1xx 状态码表示服务器已收到请求，处理将继续。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/14.html</guid><pubDate>Fri, 19 Jul 2024 04:12:54 +0000</pubDate></item><item><title>关于xui面板报错无法监听127.0.0.1:62789的问题</title><link>https://blog.52013120.xyz/post/13.html</link><description>## 关于xui面板报错`无法监听127.0.0.1:62789`
+
+
+ 很多网友在用服务器搭建xui面板创建节点的时候，会出现报错的问题，报错信息大致为：`无法监听127.0.0.1:62789`
+#### 表现如图：
+![photo_2024-07-18_15-03-38](https://github.com/user-attachments/assets/8c6952ad-9dd7-4f60-a216-046f8b90b948)
+
+
+这种情况多发于小IDC厂商，正经大厂基本没有这个问题，经过我的排查，原因在于小IDC商家都是用的智简魔方系统，这个IDC系统有BUG，BUG的现象是配置的系统没有把`127.0.0.1`绑定为本地环回地址，才导致监听失败，因为xui找不到这个IP，自然就监听失败。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/13.html</guid><pubDate>Thu, 18 Jul 2024 07:43:42 +0000</pubDate></item><item><title>Xboard面板常见问题</title><link>https://blog.52013120.xyz/post/12.html</link><description>### [国旗图标](https://www.emojiall.com/zh-hans/sub-categories/J2)&#13;
+&#13;
+&#13;
+### 主题目录&#13;
+```&#13;
+public/theme&#13;
+```&#13;
+&#13;
+### 支付插件目录&#13;
+```&#13;
+app/Payments&#13;
+```&#13;
+&#13;
+### 客户端适配参考目录&#13;
+```&#13;
+app/Http/Controllers/Client/Protocols&#13;
+```&#13;
+&#13;
+### 订阅下发文件目录&#13;
+```&#13;
+/www/resources/rules/custom.clash.yaml&#13;
+```&#13;
+[查看目录中的所有文件](https://github.com/cedar2025/Xboard/tree/5a0e59b103657ccd300204046b877f653cd2aa30/app/Protocols)&#13;
+&#13;
+&#13;
+### 强制获取订阅（URL后面加上这个参数）&#13;
+&#13;
+一般用于订阅地址输入到浏览器后无法获取订阅信息&#13;
+```&#13;
+&amp;flag=meta&amp;types=all&#13;
+```&#13;
+&#13;
+### 忘记管理员密码&#13;
+&#13;
+可以在站点目录下执行命令找回密码&#13;
+```&#13;
+docker exec -it xboard-xboard-1 /bin/sh&#13;
+```&#13;
+```&#13;
+php artisan reset:password 管理员邮箱&#13;
+```&#13;
+重启&#13;
+```&#13;
+cd /root/Xboard&#13;
+```&#13;
+```&#13;
+docker compose restart&#13;
+```&#13;
+---&#13;
+&#13;
+&#13;
+### Xboard迁移Xboard出现的各种问题解决方案&#13;
+&#13;
+一般都是数据库里的问题，进入数据库的`v2_settings`表，修改https配置，域名配置，路径配置，等等配置&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+### Xboard 使用前后端分离主题导致支付转跳问题处理&#13;
+&#13;
+现象：&#13;
+该问题现象通常为源站为 `a.aab.com` 主题站 `b.aab.com` 通过`b.aab.com epay`支付成功后转跳至`a.aab.com`&#13;
+&#13;
+处理：&#13;
+需要修改文件 `app/Services/PaymentService.php`&#13;
+&#13;
+将原代码的第51行：&#13;
+&#13;
+`'return_url' =&gt; url('/#/order/' . $order['trade_no']),`&#13;
+修改为如下：&#13;
+&#13;
+注意在后台设置的站点域名为主题站地址`b.aab.com`&#13;
+&#13;
+`'return_url' =&gt; admin_setting('app_url'). '/#/order/' . $order['trade_no'],`&#13;
+如若你是其他版本的v2board请修改为：&#13;
+&#13;
+  `'return_url' =&gt; config('v2board.app_url') . '/#/order/' . $order['trade_no'],`&#13;
+最后首部增加如下即可（只限xboard）:&#13;
+&#13;
+`use App\Models\Setting;`&#13;
+&#13;
+&#13;
+&#13;
+### 知识库&#13;
+&#13;
+V2Board 知识库本身支持 Markdown 语法方便编写内容丰富的教程。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/12.html</guid><pubDate>Wed, 03 Jul 2024 07:42:35 +0000</pubDate></item><item><title>项目编译构建文档</title><link>https://blog.52013120.xyz/post/11.html</link><description>## 主流编程语言的安装依赖和构建运行命令
+
+&gt; [!TIP]
+&gt; ## npm包管理器国内镜像
+
+### 当前终端有效
+```
+# Linux/macOS
+export npm_config_registry=https://registry.npmmirror.com
+
+# Windows PowerShell
+$env:npm_config_registry='https://registry.npmmirror.com'
+
+# Windows CMD
+set npm_config_registry=https://registry.npmmirror.com
+```
+
+### 永久配置
+```
+npm config set registry https://registry.npmmirror.com
+```
+恢复默认
+```
+npm config set registry https://registry.npmjs.org
+```
+
+### 当前终端使用代理
+Linux
+```
+export HTTP_PROXY=http://127.0.0.1:10808
+export HTTPS_PROXY=http://127.0.0.1:10808
+export ALL_PROXY=socks5://127.0.0.1:10808
+export NO_PROXY=localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
+```
+Windows PowerShell
+```
+$env:HTTP_PROXY='http://127.0.0.1:10808'
+$env:HTTPS_PROXY='http://127.0.0.1:10808'
+$env:ALL_PROXY='socks5://127.0.0.1:10808'
+$env:NO_PROXY='localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12'
+```
+Windows CMD
+```
+set HTTP_PROXY=http://127.0.0.1:10808
+set HTTPS_PROXY=http://127.0.0.1:10808
+set ALL_PROXY=socks5://127.0.0.1:10808
+set NO_PROXY=localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
+```
+
+&gt; [!TIP]
+&gt; ## Java (Spring Boot) 💻
+
+#### 基本代码结构
+```
+my-springboot-project/
+├── src/
+│ ├── main/
+│ │ ├── java/
+│ │ │ └── com/
+│ │ │ └── example/
+│ │ │ └── MySpringBootApplication.java
+│ │ └── resources/
+│ │ ├── application.properties
+│ │ └── static/
+│ └── test/
+│ └── java/
+│ └── com/
+│ └── example/
+│ └── MySpringBootApplicationTests.java
+├── .gitignore
+├── build.gradle
+└── pom.xml
+```
+
+#### 安装依赖和构建
+
+#### Maven
+```
+mvn clean package
+```
+#### Gradle
+```
+./gradlew build
+```
+#### 运行构建出来的`jar`包（一般在项目的`target/you.jar`目录中）
+```
+java -jar target/you.jar
+```
+
+&gt; [!TIP]
+&gt; ## Go 💻
+
+
+#### 国内镜像
+#### 当前终端有效
+```
+# Linux/macOS
+export GOPROXY=https://goproxy.cn,direct
+
+# Windows PowerShell
+$env:GOPROXY='https://goproxy.cn,direct'
+```
+#### 全局配置
+```
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+#### 恢复官方源
+```
+go env -w GOPROXY=https://proxy.golang.org,direct
+```
+
+#### 清理缓存
+```
+go clean -cache
+```
+#### 初始化模块
+```
+go mod init myapp
+```
+#### 自动识别并安装依赖
+```
+go mod tidy
+```
+#### 在线运行
+```
+go run main.go
+```
+
+#### 质量检查
+```
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+golangci-lint run
+```
+```
+go install honnef.co/go/tools/cmd/staticcheck@latest
+staticcheck ./...
+```
+#### 格式化代码
+```
+go fmt ./...
+```
+
+#### 将所有依赖和静态链接一起打包，并优化包大小
+```
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags='-s -w' -o myapp
+```
+
+#### Windows系统构建
+```
+$env:GOOS='windows'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp.exe
+```
+```
+$env:GOOS='linux'; $env:GOARCH='amd64'; $env:CGO_ENABLED='0'; go build -ldflags='-s -w' -o myapp-amd64
+```
+
+&gt; [!TIP]
+&gt; ## C#
+
+环境安装：https://dotnet.microsoft.com/zh-cn/download/dotnet
+
+基本代码结构
+```
+MyApp/
+├─ MyApp.sln               # 解决方案文件（可选，多项目时使用）
+├─ MyApp/                  # 项目目录
+│  ├─ MyApp.csproj         # 项目文件（包含依赖、编译选项）
+│  ├─ Program.cs           # 主程序入口
+│  ├─ Properties/
+│  │  └─ launchSettings.json  # 调试配置（VS / Rider）
+│  ├─ appsettings.json     # 配置文件（可选）
+│  ├─ Models/              # 存放数据模型类
+│  │  └─ User.cs
+│  ├─ Services/            # 存放服务类
+│  │  └─ EmailService.cs
+│  ├─ Controllers/         # MVC 或 API 项目才有
+│  │  └─ UserController.cs
+│  └─ wwwroot/             # Web 静态资源（Web 项目才有）
+├─ .gitignore              # git 忽略文件
+├─ global.json             # SDK 版本锁定（可选）
+└─ README.md
+```
+
+常用命令
+
+```
+# 恢复项目依赖，下载 NuGet 包并生成依赖缓存
+dotnet restore
+
+# 安装代码格式化
+dotnet tool install -g dotnet-format
+
+# 执行代码格式化
+dotnet format
+
+# 编译项目并执行静态代码分析
+dotnet build -warnaserror -p:AnalysisLevel=latest
+
+# 运行单元测试，确保代码逻辑正确
+dotnet test
+
+# 热重载运行
+dotnet watch run
+
+# 生成可部署的生产版本，放在 publish 目录
+dotnet publish -c Release
+```
+
+&gt; [!TIP]
+&gt; ## rust
+
+### 下载windows开发工具链：
+
+https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/
+
+只需选择如下三个即可
+```
+适用于x64/x86 的MSVC 生成工具
+
+Windows 11 SDK
+
+用于Windows 的 C++ CMake 工具
+```
+
+### 下载rust开发环境：
+
+https://rust-lang.org/zh-CN/tools/install/
+
+双击安装工具，然后一路回车。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/11.html</guid><pubDate>Wed, 03 Jul 2024 06:20:57 +0000</pubDate></item><item><title>ios最新美区ID注册方法</title><link>https://blog.52013120.xyz/post/9.html</link><description>ios最新美区ID注册教程
+
+1】首先浏览器里打开网页版iCloud：  www.icloud.com
+
+2】点击登陆，在登录页面的下面找到`创建 Apple ID`，然后用纯英文填写姓名，国家和地区选择美国 (注册其他区就选其他) 
+
+3】然后填写邮箱和密码，再填写电话号码，填自己国内的号码就可以。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/9.html</guid><pubDate>Tue, 02 Jul 2024 08:53:08 +0000</pubDate></item><item><title>V2board前后端分离</title><link>https://blog.52013120.xyz/post/8.html</link><description>&gt; [!NOTE]&#13;
+&gt; ### 前后端分离主题部署&#13;
+&#13;
+### `V2board`和`Xboard`步骤一样&#13;
+&#13;
+###  当你得到一个前后端分离的主题，文件中的目录结构大概是这样的：&#13;
+````&#13;
+├── assets&#13;
+│   ├── ArrowPathIcon-BcKBEic3.js&#13;
+│   ├── CheckOutlined-kSoYgoEi.js&#13;
+│   ├── Detail-CZ1NhySb.js&#13;
+│   ├── Detail-CiCRNMEx.css&#13;
+│   └── Home-BIEpZQVD.css&#13;
+├── config.js&#13;
+├── favicon.ico&#13;
+└── index.html&#13;
+````&#13;
+&#13;
+### 重点在于`config.js`这个文件，这个文件里需要填写你机场的配置信息&#13;
+&#13;
+#### 文件内容以这个为例，自己举一反三，基本逻辑都差不多&#13;
+```&#13;
+window.config={&#13;
+    logo: 'https://img2.imgtp.com/2023/01/11/YzU8iDJp.png', // 网站logo&#13;
+    title:'一元机场', // 网站标题&#13;
+    host:'https://xxxxxxx.com/', // 机场原来的域名地址&#13;
+    storeHome: {&#13;
+         &#13;
+        下面的代码省略.......&#13;
+       ............&#13;
+       ..........&#13;
+&#13;
+```&#13;
+&#13;
+### 配置好后就用就把整个项目文件用`nginx`或者`caddy`运行起来，宝塔用户就直接把整个主题文件放在站点目录里即可。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/8.html</guid><pubDate>Tue, 02 Jul 2024 08:46:39 +0000</pubDate></item><item><title>Markdown语法教程</title><link>https://blog.52013120.xyz/post/7.html</link><description>&#13;
+Github的语法里面有5中警报强调信息，在写文章的时候，适当使用可以提高文章的可读性，并且颜色也更加丰富。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/7.html</guid><pubDate>Tue, 02 Jul 2024 08:37:02 +0000</pubDate></item><item><title>Github加速</title><link>https://blog.52013120.xyz/post/6.html</link><description>#  GitHub加速
+
+### GitHub加速站
+- https://yishijie.gitlab.io/ziyuan/
+
+##  本地代理：
+```
+sudo vim ~/.bashrc
+```
+```
+export all_proxy='socks5://127.0.0.1:10808'
+export HTTP_PROXY='socks5://127.0.0.1:10808'
+export HTTPS_PROXY='socks5://127.0.0.1:10808'
+```
+```
+source ~/.bashrc
+```
+
+此时输入```curl ip.sb```查看本机IP判断是否配置成功
+
+如需删除并停止，只需清空文件并重新加载即可
+
+注意：如果脚本命令前面带`sudo`，则需要添加`-E`传递环境变量才会生效
+
+
+## Git加速域名
+```
+# 设置全局加速
+git config --global url.'https://gh-proxy.com/https://github.com/'.insteadOf https://github.com/
+
+# 移除
+git config --global --unset url.'https://gh-proxy.com/https://github.com/'.insteadOf
+
+# 验证
+git config --global --get-regexp github
+```
+
+## Git代理
+```
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
+```
+
+---
+
+## v2rayA代理
+
+#### [官方文档](https://v2raya.org/docs/prologue/installation/debian/)
+
+#### 手动使用软件源安装
+[手动下载v2rayA软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/v/v2raya)上传到服务器
+
+[手动下载xray软件源](https://github.com/v2rayA/v2raya-apt/tree/master/pool/main/x/xray)上传到服务器
+
+安装
+```
+sudo apt install xray.deb路径 v2rayA.deb路径
+```
+替换两个deb包所在的实际路径
+
+启动
+```
+sudo systemctl start v2raya.service
+```
+```
+默认端口：
+2017: v2rayA面板端口
+20170: SOCKS协议
+20171: HTTP协议
+20172: 带分流规则的HTTP协议
+32345: tproxy透明代理所需
+```
+
+卸载
+```
+sudo apt-get remove v2raya xray
+```
+
+
+
+### 快捷安装方式
+v2ray内核
+```
+sudo apt install snapd
+```
+```
+sudo snap install v2raya
+```
+需要修改配置文件
+```
+sudo vim /etc/systemd/system/snap.v2raya.v2raya.service
+```
+`ExecStart`参数后面增加` --address 0.0.0.0:2017`，只需增加即可，注意空格需保留。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/6.html</guid><pubDate>Tue, 02 Jul 2024 07:44:08 +0000</pubDate></item><item><title>Docker镜像加速和离线安装</title><link>https://blog.52013120.xyz/post/5.html</link><description># Docker Hub 镜像加速
+
+国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/5.html</guid><pubDate>Tue, 02 Jul 2024 07:42:16 +0000</pubDate></item><item><title>Liunx配置wrap</title><link>https://blog.52013120.xyz/post/4.html</link><description>[其他系统安装](https://pkg.cloudflareclient.com/)
+
+
+## Docker版基于warp的sk5代理
+
+[项目地址](https://hub.docker.com/r/monius/docker-warp-socks)
+
+#### 1：普通部署 
+```
+docker run --restart=always -itd \
+    --name warp_socks_v5 \
+    -p 127.0.0.1:9091:9091 \
+    ghcr.io/mon-ius/docker-warp-socks:v5
+```
+此时你的9091端口的所有流量将通过WARP出站
+
+查看你的warp的IP：`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'ip.sb'`
+
+
+#### 2：WARP Plus 账户
+```
+docker run --privileged --restart=always -itd \
+    --name warp_socks_plus \
+    -e WGCF_LICENSE_KEY=你的plus密钥 \
+    --cap-add NET_ADMIN \
+    --cap-add SYS_MODULE \
+    --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+    --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    -v /lib/modules:/lib/modules \
+    -p 127.0.0.1:9091:9091 \
+    monius/docker-warp-socks
+```
+运行`curl -x 'socks5h://127.0.0.1:9091' -fsSL 'https://www.cloudflare.com/cdn-cgi/trace'` 
+
+看到`plus`则表示WARP Plus密钥应用成功。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/4.html</guid><pubDate>Tue, 02 Jul 2024 07:39:07 +0000</pubDate></item><item><title>代理工具和SSH工具推荐</title><link>https://blog.52013120.xyz/post/3.html</link><description>### 代理工具
+  
+| 名称 | 下载地址 | 特点 | 支持平台 |
+| :--- | :---: | :--- | :--- |
+| v2rayNG  | https://github.com/2dust/v2rayNG/releases | 经典客户端，多协议 | Android |
+| NekoBox  | https://github.com/MatsuriDayo/NekoBoxForAndroid/releases | sing-box内核，全协议支持 | Android |
+| FlClash | https://github.com/chen08209/FlClash/releases | mihomo内核，界面简洁美观 | Win / Mac / Linux / Android |
+| sing-box | https://github.com/SagerNet/sing-box/releases&lt;br&gt;https://apps.apple.com/us/app/sing-box-vt/id6673731168 | sing-box官方客户端，轻量高性能 | Android / iOS |
+| clash-verge-rev  | https://github.com/clash-verge-rev/clash-verge-rev/releases | 基于mihomo内核，界面现代化美观，全协议支持 | Windows / macOS / Linux  |
+| v2rayN  | https://github.com/2dust/v2rayN/releases | 经典客户端，全协议支持，跨平台 | Windows / macOS / Linux |
+| 小火箭（付费）  | https://apps.apple.com/us/app/shadowrocket/id932747118 | 全协议支持，功能全面，3美金买断 | iOS |
+| Clash Mi | https://apps.apple.com/us/app/clash-mi/id6744321968 | mihomo内核，简洁强大 | iOS |
+| Karing | https://github.com/KaringX/karing/releases | sing-box和mihomo双内核，全协议支持，功能强大 | Win / Mac / IOS / Android |
+| v2rayA  | https://v2raya.org/docs/prologue/introduction | 基于xray的Web管理界面 | Linux |
+| mihomo  | https://github.com/MetaCubeX/mihomo/releases | mihomo内核本体（原clash-meta），轻量强大，yaml配置友好 | 全平台支持 |
+
+
+&gt; [更多客户端推荐](https://jichangtuijian.com/proxyclient)
+
+### SSH和工具
+
+| 名称 | 下载地址 | 特点 | 支持平台 |
+| :--- | :---: | :--- | :--- |
+| DR-NetTools  | https://play.google.com/store/apps/details?id=pl.dronline.nettools | 局域网扫描，网络工具集合 | Android |
+| Network Analyzer  | https://apps.apple.com/cn/app/network-analyzer-net-tools/id562315041 | 局域网扫描，网络工具集合 | ios |
+| termux  | https://github.com/termux/termux-app/releases | 安卓终端模拟器，可运行Linux工具 | Android |
+| serverbox  | https://github.com/lollipopkit/flutter_server_box/releases | 简洁美观的SSH工具 | Android |
+| Acode | https://acode.app | 安卓代码编辑器，支持多语言 | Android |
+| termora  | https://github.com/TermoraDev/termora/releases | 轻量跨平台SSH工具 | Windows / macOS / Linux |
+| FinalShell  | https://www.hostbuf.com/t/988.html | 老牌SSH工具 | Windows / macOS |
+| MobaXterm汉化版  | https://github.com/RipplePiam/MobaXterm-Chinese-Simplified/releases | 功能全面，汉化版 | Windows |
+| Visual Studio Code  | https://code.visualstudio.com | 流行代码编辑器，插件丰富 | Windows / macOS / Linux |
+| ServerBox  | https://apps.apple.com/us/app/serverbox-status-tools/id1586449703 | 简洁美观的SSH工具 | iOS |
+
+
+### 抓包工具
+
+- Reqable：https://reqable.com/zh-CN
+- Wireshark：https://www.wireshark.org。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/3.html</guid><pubDate>Tue, 02 Jul 2024 07:38:03 +0000</pubDate></item><item><title>常用代码记录</title><link>https://blog.52013120.xyz/post/1.html</link><description>### 一键换源
+海外
+```
+bash &lt;(curl -sSL https://raw.githubusercontent.com/SuperManito/LinuxMirrors/main/ChangeMirrors.sh) --use-official-source true
+```
+国内
+```
+bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)
+```
+### 更新常用工具包
+```
+apt update &amp;&amp; apt install -y curl wget git zip tar lsof vim sudo htop
+```
+切换主机名
+```
+hostnamectl set-hostname localhost
+```
+
+### 一键启用BBR
+```
+sudo modprobe tcp_bbr &amp;&amp; echo 'net.ipv4.tcp_congestion_control = bbr' | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
+```
+查看
+```
+sysctl net.ipv4.tcp_congestion_control
+```
+
+### 一键安装Docker
+```
+curl -fsSL https://get.docker.com | sh
+```
+
+
+###  开启虚拟内存：
+
+```
+sudo fallocate -l 3G /swapfile &amp;&amp; sudo chmod 700 /swapfile &amp;&amp; sudo mkswap /swapfile &amp;&amp; sudo swapon /swapfile &amp;&amp; echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+
+### 稳定获取IP位置
+
+&gt; 国内稳定，但不支持IPV6访问
+```
+curl -s www.visa.cn/cdn-cgi/trace
+```
+
+&gt; 兼容IPV6
+```
+curl -s www.cloudflare.com/cdn-cgi/trace
+```
+&gt; 仅查询IPV4
+```
+curl -4 -s www.cloudflare.com/cdn-cgi/trace
+```
+
+&gt; 仅限国外
+```
+curl -s https://one.one.one.one/cdn-cgi/trace
+```
+
+&gt; 信息全
+```
+curl -s ipinfo.io
+```
+### 快速测试容器出站IP
+```
+docker run --rm alpine/curl curl -s www.cloudflare.com/cdn-cgi/trace
+```
+
+### 快速启动一个HTTP服务
+&gt; 自动公开当前目录
+```
+python3 -m http.server 8080
+```
+
+### 快速反向代理
+```
+apt install -y socat &amp;&amp; socat TCP-LISTEN:8080,reuseaddr,fork TCP:127.0.0.1:2053
+```
+
+
+### 安装Docker
+官方安装脚本：
+
+```
+curl -fsSL https://get.docker.com | sh
+```
+&gt;会以插件的形式自动安装`docker compose`    输入`docker compose version`查看版本
+
+国内安装脚本  [(说明)](https://linuxmirrors.cn/other/)
+
+```
+bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
+```
+
+---
+
+### 清理bash缓存
+```
+hash -r
+```
+
+###  查看系统架构
+```
+dpkg --print-architecture
+```
+
+```
+uname -a
+```
+####  查看系统版本
+```
+cat /etc/os-release
+```
+```
+lsb_release -a
+```
+
+
+#### 关闭ubuntu自动更新
+```
+# 关闭 apt 定时更新和 unattended-upgrades
+sudo systemctl mask apt-daily.service apt-daily.timer apt-daily-upgrade.service apt-daily-upgrade.timer unattended-upgrades.service
+
+# 禁用 apt 周期性任务
+echo -e 'APT::Periodic::Enable '0';\nAPT::Periodic::Update-Package-Lists '0';\nAPT::Periodic::Download-Upgradeable-Packages '0';\nAPT::Periodic::Unattended-Upgrade '0';' | sudo tee /etc/apt/apt.conf.d/99disable-auto-upgrades
+
+# 如果有 snap，阻止它自动刷新
+sudo snap refresh --hold
+```
+
+
+### 安装node环境
+```
+curl https://get.volta.sh | bash
+```
+```
+export VOLTA_HOME='$HOME/.volta'
+export PATH='$VOLTA_HOME/bin:$PATH'
+```
+```
+source ~/.bashrc
+```
+```
+volta install node@20.0.0
+```
+切换node版本只需再次安装需要的版本即可自动切换
+
+
+
+
+#### 文件搜索
+按目录名称查找
+```
+find / -type d -iname '目录名' 2&gt;/dev/null
+```
+
+按文件名称查找
+```
+find / -type f -name '*文件名*' 2&gt;/dev/null
+```
+
+按文件大小查找
+```
+find / -type f -size +20M -exec ls -lh {} \; 2&gt;/dev/null
+```
+
+全局搜索关键字，并输出它们的路径
+```
+sudo grep -r -l '关键字' /
+```
+
+当前目录开始
+```
+sudo find . -type f -exec grep -IHn '关键字' {} \;
+```
+
+根目录开始
+```
+sudo find / -type f -exec grep -IHn '关键字' {} \;
+```
+
+文件重命名命令：`mv`
+
+
+#### 网络连接相关
+显示所有与主机建立连接的IP
+
+TCP 连接：
+```
+ss -tnp
+```
+
+UDP 连接：
+```
+ss -unp
+```
+#### 切断除本机以外所有的SSH连接
+```
+sudo ss -tnp | grep ':22' | grep -v '自己的IP' | awk '{print $6}' | awk -F '[=,]' '{print $2}' | xargs -r sudo kill -9
+```
+
+#### 资源占用
+显示内存占用最大的10个进程
+```
+ps aux --sort=-%mem | head -n 10
+```
+`mem为内存，可改为cpu`
+
+
+
+###  VPS开启root登录并且修改密码：
+
+一键脚本
+
+```
+bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/sky22333/rootvps@main/root.sh)
+```
+
+### 设置主机名
+```
+sudo hostnamectl set-hostname wovow
+sudo bash -c 'echo '127.0.0.1 wovow' &gt;&gt; /etc/hosts'
+```
+或者
+```
+hostnamectl set-hostname localhost
+```
+### 设置时区为上海
+```
+sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
+查看当前时间（注意你与服务器之间的延迟）
+```
+date
+```
+
+
+### 校准同步系统时间
+- 安装
+```
+sudo apt-get install ntpdate
+```
+
+- 配置时间服务器
+```
+sudo ntpdate -u time.cloudflare.com      // cloudflare时间服务器
+sudo ntpdate -u time.windows.com         // 微软时间服务器
+sudo ntpdate -u ntp.aliyun.com           // 阿里云时间服务器
+```
+
+- 查看
+```
+timedatectl status
+```
+
+### 设置IPV4优先
+```
+ping -c1 8.8.8.8 &gt;/dev/null &amp;&amp; echo 'precedence ::ffff:0:0/96  100'|tee -a /etc/gai.conf
+```
+
+### 禁用IPV6
+
+写入配置
+```
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.conf
+```
+应用配置
+```
+sudo sysctl -p
+```
+
+### 更改系统语言为中文
+
+```
+sudo apt update &amp;&amp; sudo apt install locales
+sudo nano /etc/locale.gen
+
+# zh_CN.UTF-8 UTF-8       // 文件中取消这行注释
+
+sudo locale-gen
+sudo update-locale LANG=zh_CN.UTF-8
+sudo localectl set-locale LANG=zh_CN.UTF-8
+```
+
+
+
+###  安装依赖：
+ Debian/Ubuntu 命令：
+ 
+
+```
+apt update &amp;&amp; apt install -y curl wget git zip tar lsof vim sudo
+```
+&gt; 代码补全`bash_completion`
+
+apk包更新索引
+```
+apk update
+```
+apk包安装
+
+```
+apk add curl wget vim zip bash lsof
+```
+apk包卸载
+```
+apk del --purge nginx
+```
+
+#### 有网络的环境下载安装包
+```
+# 1. 创建用于保存 .deb 包的目录
+mkdir -p /home/deb-pack
+
+# 2. 下载指定软件及其依赖，只下载不安装
+sudo apt-get -o=dir::cache::archives='/home/deb-pack' --download-only install nginx
+
+# 3. 将所有 .deb 文件打包为一个压缩包，方便复制到内网机器
+tar czvf curl-pack.tar.gz -C /home deb-pack
+```
+
+然后手动传到内网
+#### 内网安装
+```
+# 1. 解压
+tar xzvf curl-pack.tar.gz
+
+# 2. 进入目录
+cd deb-pack
+
+# 3. 安装所有 deb 包
+sudo dpkg -i *.deb
+
+# 4. 自动修复（如需要）
+sudo apt install -f
+```
+
+
+###  路由追踪：
+Linux
+```
+traceroute 1.1.1.1
+```
+Windows
+```
+tracert 8.8.8.8
+```
+
+### 路由追踪
+
+&gt; Windows需防火墙配置允许`ICMP/ICMPv6`
+```
+netsh advfirewall firewall add rule name='All ICMP v4' dir=in action=allow protocol=icmpv4:any,any
+netsh advfirewall firewall add rule name='All ICMP v6' dir=in action=allow protocol=icmpv6:any,any
+```
+
+https://github.com/nxtrace/NTrace-core
+
+https://www.nxtrace.org/downloads
+
+
+### 一键测速回程线路
+```
+curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh
+```
+
+
+###  一键测试流媒体解锁：
+
+```
+bash &lt;(curl -L -s check.unlock.media)
+```
+
+ 
+```
+bash &lt;(curl -L -s check.unlock.media) -M 4
+```
+
+ 
+```
+bash &lt;(curl -L -s check.unlock.media) -M 6
+```
+
+###  查看端口占用：
+```
+sudo lsof -i -P -n
+```
+```
+ss -tuln
+```
+```
+ss -tunp
+```
+
+```
+lsof -i:端口号
+```
+#### 释放端口
+```
+kill PID数字
+```
+
+###  放行端口：
+
+```sudo ufw allow 端口号```
+
+```sudo ufw allow 起始端口:结束端口```
+
+```sudo ufw enable```   #  重启ufw防火墙
+
+###  关闭端口：
+```sudo ufw deny 端口号```
+
+###  只允许指定IP连接22端口：
+```sudo ufw allow from 192.168.1.100 to any port 22```      #  多IP用英文的逗号分开
+
+
+
+###  防火墙
+
+```firewall-cmd --state```                             # 查看防火墙状态    
+
+
+```systemctl stop firewalld.service```                 # 停止防火墙    
+
+
+```systemctl disable firewalld.service```              # 禁止防火墙开机自启
+
+
+###  查看电脑wifi密码CMD命令
+
+查看已连接过的wifi：
+
+```
+netsh wlan show profile
+```
+
+查看密码：
+
+```
+netsh wlan show profile name='WiFi名称' key=clear
+```
+
+打印到C盘：
+
+```
+netsh wlan export profile folder=C:\ key=clear
+```
+
+- win系统网络故障常用命令，`win+x`打开终端管理员执行
+
+| 命令                   | 作用                                                         |
+|------------------------|--------------------------------------------------------------|
+| `netsh winsock reset`   | 重置 Windows 套接字（Winsock）目录，解决网络连接问题。</description><guid isPermaLink="true">https://blog.52013120.xyz/post/1.html</guid><pubDate>Tue, 02 Jul 2024 05:14:12 +0000</pubDate></item></channel></rss>
