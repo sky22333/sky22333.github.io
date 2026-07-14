@@ -23,6 +23,7 @@
 ### 通用
 - 腾讯：https://tdesign.tencent.com/
 - 字节：https://arco.design/
+- Web Awesome：https://webawesome.com/docs/frameworks/
 
 ### CSS样式库
 
@@ -36,21 +37,22 @@
 - **Uiverse**（HTML，React）: https://uiverse.io/elements
 - **FormKit AutoAnimate**（通用）: https://auto-animate.formkit.com/#examples
 
-### 适合纯html的库
+### 适合纯 HTML 项目的前端库
 
-| **原生前端库**             | **推荐库**       | **官方地址** |
-|---------------------|----------------|-------------|
-| **工具类（数组/对象/日期）** | [lodash](https://lodash.com/) 、 [day.js](https://day.js.org/) | [lodash 官网](https://lodash.com/) / [day.js 官网](https://day.js.org/) |
-| **AJAX 数据请求**     | [axios](https://axios-http.com/) | [axios 官网](https://axios-http.com/) |
-| **轻量级动画**       | [anime.js](https://animejs.com/) | [anime.js 官网](https://animejs.com/) |
-| **复杂动画**         | [GSAP](https://greensock.com/gsap/) | [GSAP 官网](https://greensock.com/gsap/) |
-| **简单 UI 组件**     | [Shoelace](https://shoelace.style/) | [Shoelace 官网](https://shoelace.style/) |
-| **轻量前端框架**     | [Alpine.js](https://alpinejs.dev/) | [Alpine.js 官网](https://alpinejs.dev/) |
-| **模板渲染**         | [Mustache.js](https://mustache.github.io/) | [Mustache.js 官网](https://mustache.github.io/) |
-| **数据可视化**       | [Chart.js](https://www.chartjs.org/) 、 [D3.js](https://d3js.org/) | [Chart.js 官网](https://www.chartjs.org/) / [D3.js 官网](https://d3js.org/) |
-| **3D 渲染**         | [Three.js](https://threejs.org/) | [Three.js 官网](https://threejs.org/) |
-| **播放器**         | [videojs](https://github.com/videojs/video.js) | [videojs 官网](https://videojs.com/) |
-| **在线UI设计**         | [pixso](https://pixso.cn/) | [pixso 官网](https://pixso.cn/) |
+| 类型 | 推荐库 | 官网 |
+|---|---|---|
+| 工具库 | Lodash、Day.js | https://lodash.com/ / https://dayjs.org/ |
+| 数据请求 | Axios | https://axios-http.com/ |
+| 轻量动画 | Anime.js | https://animejs.com/ |
+| 高级动画 | GSAP | https://greensock.com/gsap/ |
+| UI 组件 | Web Awesome（Shoelace） | https://webawesome.com/ |
+| 轻量框架 | Alpine.js | https://alpinejs.dev/ |
+| 模板渲染 | Mustache.js | https://mustache.github.io/ |
+| 3D 渲染 | Three.js | https://threejs.org/ |
+| Web 播放器 | Video.js | https://videojs.com/ |
+| Web 播放器 | ArtPlayer.js | https://github.com/zhw2590582/ArtPlayer |
+| 西瓜播放器 | xgplayer | https://github.com/bytedance/xgplayer |
+| UI 设计工具 | Pixso | https://pixso.cn/ |
 
 ### 前端镜像站
 BootCDN：https://www.bootcdn.cn/
