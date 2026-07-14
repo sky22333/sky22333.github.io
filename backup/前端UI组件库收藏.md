@@ -19,6 +19,9 @@
 - **HeroUI** : https://heroui.com/
 - **Ant Design** : https://ant.design/index-cn
 
+### 通用
+- 腾讯：https://tdesign.tencent.com/
+- 字节：https://arco.design/
 
 ### CSS样式库
 
