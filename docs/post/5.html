@@ -195,8 +195,6 @@ sudo systemctl enable docker.service
 <pre class="notranslate"><code class="notranslate">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": [
-        "https://docker.xuanyuan.me",
-        "https://docker.1ms.run",
         "https://docker.1panel.live"
     ]
 }
@@ -222,8 +220,6 @@ EOF
   },
   "experimental": false,
   "registry-mirrors": [
-    "https://docker.xuanyuan.me",
-    "https://docker.1ms.run",
     "https://docker.1panel.live"
   ]
 }
@@ -278,7 +274,7 @@ sudo systemctl restart docker
 <p><code class="notranslate">/etc/docker/daemon.json</code></p>
 <pre class="notranslate"><code class="notranslate">{
   "registry-mirrors": [
-    "https://docker.1ms.run"
+    "https://docker.1panel.live"
   ],
   "max-concurrent-downloads": 10,
   "max-concurrent-uploads": 10,
@@ -328,15 +324,9 @@ sudo rm -rf /etc/docker /var/lib/docker
 <td>Docker Hub</td>
 </tr>
 <tr>
-<td><a href="https://docker.xuanyuan.me/" rel="nofollow">轩辕镜像</a></td>
-<td><code class="notranslate">https://docker.xuanyuan.me</code></td>
+<td><a href="https://hub2.nat.tf" rel="nofollow">棉花云</a></td>
+<td><code class="notranslate">https://hub2.nat.tf</code></td>
 <td>无限制</td>
-<td>Docker Hub</td>
-</tr>
-<tr>
-<td><a href="https://docker.1ms.run" rel="nofollow">毫秒镜像</a></td>
-<td><code class="notranslate">https://docker.1ms.run</code></td>
-<td>有黑名单&amp;可选国内CDN</td>
 <td>Docker Hub</td>
 </tr>
 <tr>
@@ -375,6 +365,7 @@ sudo rm -rf /etc/docker /var/lib/docker
 <ul>
 <li><a href="https://docs.docker.com/registry/recipes/mirror/" rel="nofollow">https://docs.docker.com/registry/recipes/mirror/</a></li>
 <li><a href="https://status.1panel.top/status/docker" rel="nofollow">https://status.1panel.top/status/docker</a></li>
+<li><a href="https://status.anye.xyz/" rel="nofollow">https://status.anye.xyz/</a></li>
 </ul>
 <h2>Docker常用命令:</h2>
 <markdown-accessiblity-table><table role="table">
