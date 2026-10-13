@@ -84,7 +84,7 @@ echo "All done!"
 
 # immortalwrt 基于源码编译
 
-使用干净的`Debian 12`或者`ubuntu 22.04`系统，国外网络通畅，有40G以上的空闲存储空间。注意源码编译很费时间，4H8G的配置需要大约2小时以上才能编译好。
+使用干净的`Debian 12`或者`ubuntu 22.04`以上的系统，国外网络通畅，有40G以上的空闲存储空间。注意源码编译很费时间，4H8G的配置需要大约2小时以上才能编译好。
 
 ### 1：安装依赖
 ```
@@ -101,15 +101,18 @@ sudo apt install -y \
   uglifyjs unzip wget nano xmlto xxd zlib1g-dev upx zstd
 ```
 
-### 2：下载对应tags的源码（以`v24.10.4`为例）
+### 2：下载对应tags的源码（以`v25.12.2`为例）
 
 后续步骤建议切换为普通用户，不要用root用户编译。
 ```
-git clone -b v24.10.4 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
+git clone -b v25.12.2 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
 ```
-### 3：进入项目目录
+### 3：进入项目目录并检查依赖
 ```
 cd immortalwrt
+```
+```
+make prereq V=s
 ```
 ### 4：获取最新软件包清单
 ```
@@ -166,7 +169,7 @@ make -j$(nproc --ignore=1)
 - 将镜像转换成VDI格式
 ```
 & "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" convertfromraw `
-    "immortalwrt-24.10.4-f726c678216d-x86-64-generic-ext4-combined.img" `
+    "immortalwrt-v25.12.2-x86-64-generic-ext4-combined.img" `
     "immortalwrt.vdi" `
     --format VDI
 ```
