@@ -169,7 +169,7 @@ make -j$(nproc --ignore=1)
 - 将镜像转换成VDI格式
 ```
 & "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" convertfromraw `
-    "immortalwrt-v25.12.2-x86-64-generic-ext4-combined.img" `
+    "immortalwrt-25.12.2-x86-64-generic-ext4-combined.img" `
     "immortalwrt.vdi" `
     --format VDI
 ```
