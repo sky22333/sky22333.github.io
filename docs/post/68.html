@@ -167,7 +167,7 @@ if [ -n "$wlan_name" -a -n "$wlan_password" -a ${#wlan_password} -ge 8 ]; then
 fi
 
 # 设置 PPPoE 拨号
-if [ -n "$pppoe_username" -a "$ppoe_password" ]; then
+if [ -n "$pppoe_username" -a "$pppoe_password" ]; then
   uci set network.wan.proto=pppoe
   uci set network.wan.username="$pppoe_username"
   uci set network.wan.password="$pppoe_password"
