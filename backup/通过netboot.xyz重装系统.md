@@ -16,6 +16,10 @@ ip a
 ```
 wget https://boot.netboot.xyz/ipxe/netboot.xyz.img
 ```
+或者使用我构建的启动镜像，通过国内镜像站拉取系统镜像，解决国内网络安装慢的问题
+
+https://github.com/sky22333/netboot/releases/latest/download/ipxe.img
+
 #### 将镜像DD写入系统盘（记得替换你实际的系统盘，会覆盖原系统，请确保重要数据已备份）
 ```
 dd if=netboot.xyz.img of=/dev/vda bs=4M
