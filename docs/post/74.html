@@ -242,7 +242,7 @@ dtc -I dtb -O dts -o board.dts board.dtb</pre></div>
 <li>网络：<code class="notranslate">tcpdump</code>、Wireshark；关注HTTP(S)、MQTT、CoAP、TR-069、UPnP、私有RPC、OTA清单及设备配网。</li>
 <li>模拟：QEMU用户态+<code class="notranslate">binfmt_misc</code>可帮助跑部分用户空间程序；FirmAE/Firmadyne适用于部分Linux固件。<strong>模拟ELF成功不代表SoC、NVRAM、专用ioctl或驱动已被模拟</strong>。</li>
 </ul>
-<p>对账户凭据、云服务和他人设备，仅进行授权范围内测试；不要暴露生产密钥、隐私数据或未授权服务。</p>
+<p>不要暴露生产密钥或隐私数据。</p>
 <h2>8. DTS、驱动与BSP板级适配</h2>
 <ol>
 <li>找同SoC且<strong>供电/存储/PHY近似</strong>的上游设备；阅读Linux <code class="notranslate">Documentation/devicetree/bindings</code>、OpenWrt target与既有提交。</li>
