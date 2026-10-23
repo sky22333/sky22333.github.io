@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark_colorblind" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://blog.52013120.xyz/assets/blog.png"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 嵌入式家用智能设备刷机与逆向指南
+
+> 适用：路由器、电视盒子、移动 Wi-Fi、智能音箱、摄像头及 Linux/Android/RTOS 嵌入式设备。">
+<meta property="og:title" content="嵌入式家用智能设备刷机与逆向指南">
+<meta property="og:description" content="# 嵌入式家用智能设备刷机与逆向指南
+
+> 适用：路由器、电视盒子、移动 Wi-Fi、智能音箱、摄像头及 Linux/Android/RTOS 嵌入式设备。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.52013120.xyz/post/74.html">
+<meta property="og:image" content="https://blog.52013120.xyz/assets/blog.png">
+<title>嵌入式家用智能设备刷机与逆向指南</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;background-color:var(--bgColor-muted,#f6f8fa);background-image:linear-gradient(rgba(27,31,36,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(27,31,36,.032) 1px,transparent 1px);background-size:32px 32px;}
+html[data-color-mode="dark"]{background-color:var(--bgColor-muted,#2d333b);background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);}
+body{min-width:200px;max-width:900px;margin:20px auto;padding:45px;font-size:16px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fgColor-default,var(--color-fg-default));background:transparent;}
+a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease;}
+#header{display:flex;align-items:center;gap:16px;min-width:0;padding-bottom:20px;border-bottom:1px solid var(--borderColor-muted,var(--color-border-muted));margin-bottom:24px;}
+#content{min-width:0;}
+#footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--borderColor-muted,var(--color-border-muted));text-align:center;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+#footer a{color:inherit;}
+.title-right{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto;flex-shrink:0;}
+.title-right .circle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;margin:0;border-radius:50%;}
+.page-title{min-width:0;margin:0;font-size:clamp(26px,5vw,42px);line-height:1.12;font-weight:700;letter-spacing:0;}
+.muted-text{color:var(--fgColor-muted,var(--color-fg-muted));}
+.page-subtitle{margin:0 0 18px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.SideNav{min-width:0;overflow:hidden;border-radius:8px;background:var(--bgColor-default,var(--color-canvas-default));}
+.SideNav.border{border-color:var(--borderColor-muted,var(--color-border-muted))!important;}
+.SideNav-item{gap:12px;padding:13px 14px;min-height:52px;transition:background-color .18s ease;}
+.SideNav-item:hover{background:var(--bgColor-muted,var(--color-canvas-subtle));}
+.SideNav-item>.d-flex{min-width:0;}
+.SideNav-icon{flex:0 0 auto;margin-right:12px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.listTitle{min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;}
+.listLabels{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;white-space:nowrap;flex-shrink:0;}
+.listLabels object{max-height:18px;max-width:28px;}
+.Label{border-radius:999px;padding:2px 8px;color:#fff;font-size:12px;line-height:18px;font-weight:500;}
+.Label a{color:#fff;text-decoration:none;}
+.LabelTime{font-variant-numeric:tabular-nums;}
+.markdown-body{font-size:16px;line-height:1.72;}
+.markdown-body img{border-radius:8px;}
+.markdown-body table img{border-radius:6px;}
+.btn{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
+.btn:hover{transform:translateY(-1px);}
+@media (max-width:600px){
+    body{padding:8px;}
+    #header{align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;}
+    .title-right .circle{width:36px;height:36px;}
+    .LabelTime{display:none;}
+}
+</style>
+
+<style>
+.postTitle{max-width:calc(100% - 160px);}
+#postBody{padding-bottom:40px;border-bottom:1px solid var(--borderColor-muted,var(--color-border-muted));}
+#postBody hr{height:2px;border-radius:999px;}
+#postBody blockquote{border-left-width:3px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.post-meta{margin-top:12px;text-align:right;font-size:13px;color:var(--fgColor-muted,var(--color-fg-muted));}
+.post-back{position:fixed;top:50%;left:max(20px,calc((100vw - 900px)/2 - 76px));width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:transparent;color:var(--fgColor-muted,var(--color-fg-muted));z-index:20;cursor:pointer;transform:translateY(-50%);transition:color .18s ease,background-color .18s ease;}
+.post-back:hover{color:var(--fgColor-default,var(--color-fg-default));background:var(--bgColor-muted,var(--color-canvas-subtle));text-decoration:none;}
+.post-back::before{content:"";width:14px;height:14px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:5px;}
+#cmButton{height:46px;margin-top:44px;border-radius:8px;font-weight:600;}
+#comments{margin-top:48px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    .postTitle{max-width:100%;}
+    .post-back{display:none;}
+}
+.snippet-clipboard-content .clipboard-container{opacity:.72;transition:opacity .18s ease;}
+.snippet-clipboard-content:hover .clipboard-container{opacity:1;}
+.ClipboardButton{border-radius:6px!important;background:var(--bgColor-default,var(--color-canvas-default))!important;}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle page-title">嵌入式家用智能设备刷机与逆向指南</h1>
+<div class="title-right">
+    <a href="https://blog.52013120.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<button class="post-back" type="button" onclick="goBackToList()" title="返回列表" aria-label="返回列表"></button>
+<div class="markdown-body" id="postBody"><h1>嵌入式家用智能设备刷机与逆向指南</h1>
+<blockquote>
+<p>适用：路由器、电视盒子、移动 Wi-Fi、智能音箱、摄像头及 Linux/Android/RTOS 嵌入式设备。</p>
+</blockquote>
+<h2>1. 情报收集与同源追溯</h2>
+<ol>
+<li><strong>建档</strong>：商品名、厂商、FCC ID/认证号、铭牌SN（私密保存）、PCB Revision、照片、固件版本、购买批次；相同商品名可能换SoC、RAM或Flash。</li>
+<li><strong>硬件盘点</strong>：SoC完整丝印、RAM型号/位宽/容量、Flash型号和介质、PMIC、Wi-Fi/BT/蜂窝模组、PHY/交换机、USB Hub、晶振、电源轨、关键测试点。</li>
+<li><strong>OEM溯源</strong>：官方固件/开源声明/GPL源码包 → FCC公开资料或当地认证材料 → DTS的<code class="notranslate">compatible</code>、<code class="notranslate">model</code>、<code class="notranslate">board_name</code> → 上游Linux/OpenWrt提交与论坛 → 公版BSP/同板设备。认证照片不一定揭示屏蔽罩内部结构，亦不保证有完整原理图。</li>
+<li><strong>收集固件</strong>：OTA链接、系统升级缓存、官方恢复包、GPL提供的内核源码、SDK、设备树、出厂日志。记录来源、版本、哈希；不要凭猜测拼接升级URL或将未知镜像直接刷入。</li>
+<li><strong>硬件差异表</strong>：同SoC不等于同板；至少核对DDR类型、存储介质/页布局、PHY/接口模式、GPIO、PMIC、射频前端、校准布局、启动介质与安全启动状态。</li>
+</ol>
+<p><strong>产出</strong>：<code class="notranslate">hardware.md</code>、电路板照片、<code class="notranslate">sources.md</code>、芯片列表、可疑同源设备对照表。</p>
+<h2>2. PCB、电气与调试端口</h2>
+<ul>
+<li><strong>先断电测量</strong>：GND通断、电源输入、测试点参考地；明确UART IO是1.8V、3.3V还是其他电平，<strong>不能根据附近VCC推断串口电平</strong>。常见<code class="notranslate">115200 8N1</code>，也可能是57600/38400/921600。</li>
+<li><strong>UART接线</strong>：设备TX→适配器RX、设备RX→适配器TX、GND共地。通常不接USB-TTL适配器VCC；严禁将5V TTL接至低压IO。排查上电乱码需区分错误波特率、启动阶段切换波特率、供电/地问题和DDR初始化失败。</li>
+<li><strong>供电</strong>：可调稳压电源限流；记录额定电压、启动峰值、待机电流。注意锂电、电源反灌、共地、ESD、热风焊盘脱落风险；市电设备必须隔离高压侧。</li>
+<li><strong>JTAG/SWD</strong>：识别TCK/TMS/TDI/TDO/TRST或SWDIO/SWCLK；工具OpenOCD、CMSIS-DAP、J-Link、FT2232H。焊盘存在不等于调试口可用，量产安全配置可能禁用访问。</li>
+<li><strong>总线抓取</strong>：逻辑分析仪用于UART/SPI/I²C波形及上电时序；高速总线（eMMC/UFS/USB3/PCIe）需相应专业设备，廉价分析仪不能替代。</li>
+<li><strong>在线SPI夹子</strong>：可能被主控争用、通过IO反向供电；不稳定时必须断电/隔离/拆焊并复读校验。CH341A硬件版本与实际IO电压务必确认。</li>
+</ul>
+<p><strong>产出</strong>：测试点图、电平表、供电/复位时序、完整原厂启动串口日志。</p>
+<h2>3. 启动链、可信执行环境与签名</h2>
+<p>典型ARM64设备可能是：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">BootROM/PBL → SPL/Preloader/BL2 → (TF-A BL31、OP-TEE BL32等)
+            → U-Boot/BL33 或厂商加载器 → Kernel+DTB+Initramfs → RootFS/Init
+</code></pre>
+<p>不同MTK、Rockchip、Amlogic、Qualcomm、Broadcom及Android设备使用不同加载器/封装；一些阶段不存在或集成在一起。先从串口、固件头、分区、启动日志和公开BSP还原<strong>实际</strong>启动链。</p>
+<p>逐项审查：Secure Boot公钥哈希与eFuse/OTP；FIT签名；Android AVB/dm-verity；anti-rollback版本；TEE/TrustZone；RPMB与设备绑定密钥；A/B boot control。<strong>Flash用户区完整备份不包含所有eFuse、RPMB或设备私钥状态</strong>，可能不能实现跨硬件恢复或完全回滚。优先使用厂商认可的开发/恢复机制，签名校验失败不要盲写。</p>
+<p><strong>产出</strong>：<code class="notranslate">boot-chain.md</code>，每个阶段的来源、版本、加载地址、签名/回滚依赖和恢复通道。</p>
+<h2>4. 原厂固件获取与全量备份</h2>
+<h3>4.1 获取途径（由低到高侵入）</h3>
+<ol>
+<li>官方OTA、工厂恢复包、源码包和升级缓存。</li>
+<li>系统内只读导出，例如MTD分区、eMMC用户区和引导分区。</li>
+<li>厂商维护协议、BootROM下载/恢复模式的<strong>实际可用</strong>读取功能。</li>
+<li>断电ISP或拆焊后用专用编程器离线读取。</li>
+</ol>
+<p><strong>平台区分</strong>：MT798x <code class="notranslate">mtk_uartboot</code>属于特定SoC的串口引导/恢复生态，不等于通用MTK手机BROM/SP Flash Tool；Rockchip可用<code class="notranslate">rkdeveloptool</code>/RKDevTool但需确认Loader/Maskrom支持；Amlogic的USB Burning工具依赖具体SoC/板卡；Qualcomm EDL往往需要兼容且获授权的Firehose加载器。<strong>进入底层模式不等于一定允许读回、解密或写入。</strong></p>
+<h3>4.2 按存储介质选择备份</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>介质</th>
+<th>必需信息</th>
+<th>备份与恢复要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI NOR</td>
+<td>JEDEC ID、SFDP、容量、地址模式、写保护</td>
+<td>全片读取、复读SHA-256、明确擦写扇区</td>
+</tr>
+<tr>
+<td>SPI/Parallel NAND</td>
+<td>页/块大小、OOB、ECC方案、坏块表</td>
+<td>区分逻辑数据、原始页+OOB、UBI卷；不可把普通<code class="notranslate">dd</code>等同物理全片快照</td>
+</tr>
+<tr>
+<td>eMMC</td>
+<td>User Area、boot0、boot1、EXT_CSD、启动分区配置</td>
+<td>分区域备份；保留分区布局与配置；RPMB通常不可常规复制</td>
+</tr>
+<tr>
+<td>UFS</td>
+<td>LUN/Boot LUN、设备描述符、访问限制</td>
+<td>专用工具、按LUN备份、注意安全区域</td>
+</tr>
+<tr>
+<td>SD/USB盘</td>
+<td>分区表、引导扇区、文件系统</td>
+<td>原始镜像+关键分区哈希</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>Linux设备的<strong>只读勘察</strong>（按实际存在的命令运行）：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">uname -a
+cat /proc/cmdline
+cat /proc/mtd <span class="pl-k">2&gt;</span>/dev/null
+cat /proc/partitions
+lsblk -o NAME,SIZE,RO,TYPE,FSTYPE,PARTLABEL <span class="pl-k">2&gt;</span>/dev/null
+find /sys/block -maxdepth 2 -name size <span class="pl-k">2&gt;</span>/dev/null
+cat /proc/device-tree/model <span class="pl-k">2&gt;</span>/dev/null
+cat /sys/firmware/devicetree/base/compatible <span class="pl-k">2&gt;</span>/dev/null <span class="pl-k">|</span> tr <span class="pl-s"><span class="pl-pds">'</span>\0<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>\n<span class="pl-pds">'</span></span>
+dmesg <span class="pl-k">|</span> grep -Ei <span class="pl-s"><span class="pl-pds">'</span>mtd|nand|spi|mmc|ufs|ubi|bad block|ecc|boot<span class="pl-pds">'</span></span></pre></div>
+<p>示例：MTD只读导出（分区名和设备号必须先核对）：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">cat /proc/mtd
+<span class="pl-c"><span class="pl-c">#</span> 某些系统提供 nanddump；具体选项依工具版本、介质及ECC/OOB策略确定</span>
+nanddump --help <span class="pl-k">2&gt;</span>/dev/null
+<span class="pl-c"><span class="pl-c">#</span> NOR常可通过对应只读MTD字符设备导出，仍须按实际驱动与布局验证</span>
+<span class="pl-c"><span class="pl-c">#</span> dd if=/dev/mtdX of=/mnt/usb/mtdX.bin bs=64k status=progress</span>
+sha256sum /mnt/usb/<span class="pl-k">*</span>.bin</pre></div>
+<p>绝不把示例中的<code class="notranslate">mtdX</code>直接代入未知设备；NAND使用<code class="notranslate">nanddump</code>时明确选择是否含OOB、是否跳坏块、是否做ECC处理，并保存读取参数/坏块表。</p>
+<p><strong>备份验收</strong>：读出所有可读取区域；独立重复读取并比较；记录异常/ECC/坏块；哈希存档；随机检查结构与分区边界；至少两份异地副本；保护设备唯一敏感信息。无恢复写入工具、无有效Loader或无救援供电条件时，不可宣称“已具备救砖保障”。</p>
+<h2>5. 分区地图与不可替换的设备专属资产</h2>
+<p>交叉核对：<code class="notranslate">/proc/mtd</code>、内核命令行<code class="notranslate">mtdparts</code>、DT<code class="notranslate">fixed-partitions</code>、U-Boot环境、GPT/MBR、<code class="notranslate">/dev/disk/by-partlabel</code>、官方升级脚本、运行态UBI卷。</p>
+<p><strong>重点保护（实际名称因厂商而异）</strong>：</p>
+<ul>
+<li><code class="notranslate">factory</code>/<code class="notranslate">ART</code>/<code class="notranslate">EEPROM</code>/<code class="notranslate">caldata</code>：Wi-Fi/射频校准数据。</li>
+<li><code class="notranslate">nvram</code>/<code class="notranslate">NVRAM</code>/<code class="notranslate">NVDATA</code>/<code class="notranslate">NVCFG</code>、蜂窝<code class="notranslate">modemst1/2</code>、<code class="notranslate">fsg</code>、<code class="notranslate">persist</code>：设备配置、射频NV或基带相关数据。</li>
+<li><code class="notranslate">u-boot-env</code>、<code class="notranslate">config</code>、<code class="notranslate">product_info</code>：可能含MAC、SN、校验值、启动条件；<strong>不应默认擦除</strong>。</li>
+<li><code class="notranslate">key</code>、<code class="notranslate">keystore</code>、<code class="notranslate">provision</code>、<code class="notranslate">frp</code>及安全区域：可能包含密钥/绑定状态；敏感数据仅离线加密备份。</li>
+<li><code class="notranslate">boot0/boot1</code>、SPL/BL2/FIP、原厂恢复分区、A/B元数据：启动关键区域。</li>
+</ul>
+<p>校准数据一般与单块硬件绑定，<strong>不得把另一台设备的ART/factory/NV直接复制作为修复方案</strong>。设备唯一数据即使能读取，也不应上传公开仓库。</p>
+<p><strong>产出</strong>：<code class="notranslate">partition-map.csv</code>：<code class="notranslate">介质,区域,起始地址,大小,用途,是否唯一,是否允许写入,备份文件,SHA256</code>。</p>
+<h2>6. 固件拆解与静态分析</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">file firmware.bin
+sha256sum firmware.bin
+binwalk firmware.bin
+binwalk -Me firmware.bin        <span class="pl-c"><span class="pl-c">#</span> 仅对可信样本在隔离环境运行提取工具</span>
+dtc -I dtb -O dts -o board.dts board.dtb</pre></div>
+<p>常用：<code class="notranslate">binwalk</code>、<code class="notranslate">unsquashfs</code>、<code class="notranslate">sasquatch</code>（特定魔改格式）、<code class="notranslate">ubireader</code>、<code class="notranslate">dumpimage</code>、<code class="notranslate">mkimage</code>、<code class="notranslate">extract-dtb</code>、<code class="notranslate">dtc</code>、<code class="notranslate">fdtdump</code>、<code class="notranslate">extract-ikconfig</code>、<code class="notranslate">readelf</code>、<code class="notranslate">objdump</code>、<code class="notranslate">strings</code>、<code class="notranslate">Ghidra</code>、<code class="notranslate">rizin</code>。</p>
+<ul>
+<li><strong>不存在统一的sysupgrade二进制布局</strong>。它可能是FIT、uImage+rootfs、tar、UBI相关格式或设备特定封装；factory镜像还可能存在厂商头、校验和/签名。</li>
+<li><code class="notranslate">binwalk</code>扫描偏移是<strong>候选线索</strong>；先确认DTB魔数、<code class="notranslate">totalsize</code>、解包校验和内核/文件系统边界，再执行<code class="notranslate">dd</code>提取；示例固定偏移不可通用。</li>
+<li>DTB可能独立分区、内嵌于FIT或附在内核中；运行时DT可能由Bootloader修改或应用overlay。<strong>DTS是硬件的软件描述，不等于真实原理图</strong>。</li>
+<li>分析根文件系统：<code class="notranslate">/etc/init.d</code>、<code class="notranslate">/etc/rc*</code>、systemd服务、<code class="notranslate">/lib/modules/</code>、<code class="notranslate">/etc/board.d</code>、升级脚本、NVRAM访问、闭源库及网络服务。</li>
+<li>使用<code class="notranslate">Ghidra</code>时按CPU架构、endianness、镜像格式、加载/链接/重定位地址建立工程；<strong>不能对所有U-Boot裸文件统一以0地址加载，也没有通用的“第二个IVT项”规则</strong>。</li>
+</ul>
+<p><strong>产出</strong>：镜像结构图、文件系统清单、引导参数、DTB/DTS、固件头/签名算法记录、启动脚本调用链。</p>
+<h2>7. 动态逆向与协议定位</h2>
+<p>路径：隔离网络观察 → 采集启动进程/日志 → 定位监听端口、IPC和升级守护进程 → 静态匹配ELF/脚本 → 在授权实验环境动态验证。</p>
+<ul>
+<li>系统观察：<code class="notranslate">ps</code>、<code class="notranslate">ss -lntup</code>、<code class="notranslate">ip a</code>、<code class="notranslate">mount</code>、<code class="notranslate">dmesg</code>、<code class="notranslate">logread</code>、<code class="notranslate">strace</code>。</li>
+<li>二进制：<code class="notranslate">gdbserver</code>/GDB、Frida（适用平台）、<code class="notranslate">ltrace</code>（兼容时）；分析init、CGI、daemon、HAL/Binder、配置读写链。</li>
+<li>网络：<code class="notranslate">tcpdump</code>、Wireshark；关注HTTP(S)、MQTT、CoAP、TR-069、UPnP、私有RPC、OTA清单及设备配网。</li>
+<li>模拟：QEMU用户态+<code class="notranslate">binfmt_misc</code>可帮助跑部分用户空间程序；FirmAE/Firmadyne适用于部分Linux固件。<strong>模拟ELF成功不代表SoC、NVRAM、专用ioctl或驱动已被模拟</strong>。</li>
+</ul>
+<p>对账户凭据、云服务和他人设备，仅进行授权范围内测试；不要暴露生产密钥、隐私数据或未授权服务。</p>
+<h2>8. DTS、驱动与BSP板级适配</h2>
+<ol>
+<li>找同SoC且<strong>供电/存储/PHY近似</strong>的上游设备；阅读Linux <code class="notranslate">Documentation/devicetree/bindings</code>、OpenWrt target与既有提交。</li>
+<li>对照原厂DTB、运行态<code class="notranslate">/sys/firmware/devicetree/base</code>与板级硬件，逐项整理<code class="notranslate">compatible</code>、<code class="notranslate">memory</code>、<code class="notranslate">reserved-memory</code>、<code class="notranslate">pinctrl</code>、<code class="notranslate">clocks</code>、<code class="notranslate">resets</code>、<code class="notranslate">regulators</code>、GPIO、DMA、中断、存储分区。</li>
+<li>重点检查Ethernet MAC/PHY/MDIO/DSA、RGMII时延、SGMII/RMII、Wi-Fi校准路径、PCIe PERST#、USB PHY/VBUS/role-switch/Hub上电、LED/按键、RTC、看门狗、热管理。</li>
+<li>接口不能按网口标称速率猜测：<strong>百兆PHY也可能以RGMII连接MAC</strong>；必须由原理图/PHY数据手册/运行态寄存器证据决定。</li>
+<li><code class="notranslate">dtc</code>通过仅表示语法/引用层面合理；还需适用内核的<code class="notranslate">make dtbs_check</code>、<code class="notranslate">dmesg</code>、regulator/clock/debugfs、外设实际测试。</li>
+<li>内核升级时核对驱动API、DMA cache一致性、IOMMU、clock/reset和热插拔逻辑；旧版闭源<code class="notranslate">.ko</code>通常不能靠改<code class="notranslate">vermagic</code>安全跨内核运行。</li>
+</ol>
+<p><strong>闭源驱动策略</strong>：优先找开源驱动或厂商源码；若必须保留原厂内核+rootfs，验证用户态ABI、libc、内核接口及安全维护风险；同内核版本也未必保证模块ABI兼容。</p>
+<p><strong>产出</strong>：可审查的DTS补丁、驱动依赖矩阵、逐外设验证记录。</p>
+<h2>9. U-Boot / SPL / TF-A移植与环境</h2>
+<ul>
+<li>从设备原厂启动链确认SPL、DDR训练固件、BL31/BL32、proper的打包关系及偏移；不同SoC可能使用FIT、FIP、厂商封装、多副本槽位。</li>
+<li>复用同SoC defconfig只是起点，仍须验证存储、DDR参数、DRAM布局、固件接口、设备树、链接地址与可信启动约束。</li>
+<li>优先保持原厂BL2/SPL和能用的恢复加载器不变；<strong>仅替换U-Boot proper也不是天然安全</strong>，须确认ABI/布局/签名及回滚依赖。</li>
+<li><code class="notranslate">CONFIG_DEFAULT_ENV_FILE</code>可定义构建期默认环境（依具体U-Boot版本/配置），但不等于能覆盖现有持久化env。</li>
+<li><strong>禁止将<code class="notranslate">mtd erase u-boot-env</code>当成刷完必做动作</strong>。先<code class="notranslate">printenv</code>与备份原始env，核对MAC/SN/bootcmd/boot_targets等；只有验证无设备独有关键项且有明确恢复方案时才考虑重置。</li>
+<li>启动链升级要依据厂商双槽/原子更新机制和工具支持制定。</li>
+</ul>
+<p><strong>原则</strong>：除非研究目标明确要求、恢复链已实际验证，否则不写SPL/BL2/TF-A/U-Boot。</p>
+<h2>10. 镜像构建与升级机制</h2>
+<p>OpenWrt设备移植主要核对：<code class="notranslate">target/linux/&lt;target&gt;/</code>下对应DTS/补丁、<code class="notranslate">image/*.mk</code>设备配方、<code class="notranslate">base-files</code>的板级网络/LED/升级脚本；常见字段包括<code class="notranslate">DEVICE_DTS</code>、<code class="notranslate">DEVICE_PACKAGES</code>、<code class="notranslate">IMAGE_SIZE</code>、<code class="notranslate">KERNEL</code>、<code class="notranslate">IMAGE/sysupgrade.bin</code>、<code class="notranslate">IMAGE/factory.bin</code>、<code class="notranslate">SUPPORTED_DEVICES</code>，字段是否适用依target/版本而定。</p>
+<p>构建前验证：</p>
+<ul>
+<li>精确硬件修订、内核ABI、模块依赖及镜像签名要求；</li>
+<li>每个分区的真实可用空间、擦除块/页对齐、UBI布局、坏块余量；</li>
+<li>DTB、kernel、rootfs、initramfs、FIT配置和加载地址无覆盖；</li>
+<li>A/B槽位、升级元数据、恢复分区和持久化配置策略；</li>
+<li>出厂factory与已安装系统sysupgrade镜像是否可互换——通常<strong>不可默认互换</strong>；</li>
+<li><code class="notranslate">binwalk</code>/<code class="notranslate">dumpimage</code>二次解析构建产物、比较产物布局与设备预期。</li>
+</ul>
+<p>所有刷写脚本要求<strong>显式目标分区白名单</strong>，对bootloader、校准、密钥、设备配置分区默认拒绝操作；不要根据固定分区序号或猜测的偏移刷写。</p>
+<h2>11. RAM试启动与逐级验证</h2>
+<p>先确认设备允许临时启动、内存地址安全、不与运行中的loader/FDT/initrd覆盖；加载的内核/initramfs必须可信。</p>
+<p>常见U-Boot启动方式：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>镜像</th>
+<th>常见命令</th>
+<th>前提</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIT/legacy uImage</td>
+<td><code class="notranslate">bootm</code></td>
+<td>U-Boot支持相应格式/配置</td>
+</tr>
+<tr>
+<td>ARM32 zImage</td>
+<td><code class="notranslate">bootz</code></td>
+<td>编译启用命令，正确DTB和内存地址</td>
+</tr>
+<tr>
+<td>ARM64 Image</td>
+<td><code class="notranslate">booti</code></td>
+<td>命令可用，地址/压缩支持符合版本</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>示例仅展示流程，<strong>地址需从该设备U-Boot环境及内存映射获取</strong>：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">printenv
+bdinfo
+# tftpboot &lt;kernel_addr&gt; &lt;verified-image&gt;
+# tftpboot &lt;fdt_addr&gt; &lt;verified-board.dtb&gt;
+# 按镜像格式使用 bootm / bootz / booti
+</code></pre>
+<p>RAM试启动只能验证一部分硬件与内核启动行为，不能证明Flash驱动、UBI挂载、升级、签名校验、冷启动或坏块处理可靠。</p>
+<p>验证先后：串口稳定 → CPU/DDR → pinctrl/clock/regulator → 存储只读 → Ethernet → USB/PCIe → Wi-Fi/蜂窝 → GPIO/LED/按键 → 电源/温度 → 存储写入测试（仅专用测试区域）。</p>
+<h2>12. 分级刷写与救砖策略</h2>
+<p><strong>首选不改启动链的官方支持升级方式</strong>；次选可还原的rootfs/kernel槽位或专用测试分区。不以“该SoC通用”作为跨板刷Bootloader依据。</p>
+<p>刷写前再次确认：供电稳定、目标分区唯一确定、目标容量满足、备份已异机保存、恢复路径可实际执行。刷后在允许的情况下读回验证；对NAND要按逻辑映射和坏块规则比较，不能机械要求物理字节位置完全一致。</p>
+<p>恢复能力分层：</p>
+<ol>
+<li><strong>系统层</strong>：failsafe、recovery、A/B rollback、固件回滚。</li>
+<li><strong>Bootloader层</strong>：TFTP、Web recovery、USB升级、SD启动。</li>
+<li><strong>SoC ROM层</strong>：串口引导、Maskrom、BROM/EDL等，须有兼容Loader/认证权限。</li>
+<li><strong>硬件层</strong>：SPI/NAND/eMMC离线编程，仍需兼容镜像、存储配置和设备唯一资产。</li>
+</ol>
+<p><strong>平台注意</strong>：MT798x串口引导所需DDR初始化BL2/FIP须精确匹配SoC/板型；Rockchip特定机型流传的<code class="notranslate">0xCCCCCCCC</code> Loader参数不是通用地址或推荐操作；Amlogic短接点位与USB模式随板而异；eMMC换片不仅是恢复User Area，还要核对boot分区配置、EXT_CSD、复位/引导配置及不可迁移安全状态。</p>
+<p><strong>故障停止条件</strong>：首次出现未知擦写偏移、ECC急剧恶化、电源异常、校准数据缺失、签名/回滚异常或目标分区与文档不符，立即终止进一步写入、留存日志并回到备份分析。</p>
+<h2>13. 设备专项适配</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>设备</th>
+<th>高价值专项检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>路由器</td>
+<td>MAC/PHY/MDIO/DSA、VLAN、Wi-Fi EEPROM、RF前端/校准、NSS/HNAT、PPPoE、交换机复位</td>
+</tr>
+<tr>
+<td>电视盒子</td>
+<td>Android A/B/AVB、HDMI/CEC、DRM/KMS、GPU/VPU、Widevine依赖、遥控IR、USB Hub/电源、音频</td>
+</tr>
+<tr>
+<td>移动Wi-Fi</td>
+<td>AP与Modem可能是独立子系统；QMI/MBIM/AT、SIM、USB复合接口、基带固件、EFS/NV、射频校准</td>
+</tr>
+<tr>
+<td>智能音箱</td>
+<td>I²S/TDM、Codec/DSP、功放使能、麦克风阵列、AEC/唤醒、Wi-Fi/BT配对信息</td>
+</tr>
+<tr>
+<td>摄像头</td>
+<td>MIPI CSI、传感器时钟/供电、ISP/编码器、镜头控制、夜视IR、RTSP/ONVIF</td>
+</tr>
+<tr>
+<td>RTOS IoT设备</td>
+<td>Flash布局、链接脚本、中断向量表、SWD、OTA槽位、加密启动、外部PSRAM</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p><strong>移动Wi-Fi额外原则</strong>：Linux rootfs的修改不等于基带固件可刷；蜂窝NV、IMEI与射频校准数据不得跨设备移植或任意改写。</p>
+<h2>14. 回归测试与验收</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>类别</th>
+<th>验收点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动</td>
+<td>冷启动、热重启、多次断电恢复、Watchdog、恢复模式仍可进入</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>NAND ECC/坏块趋势、UBI/文件系统完整性、剩余空间、配置持久化</td>
+</tr>
+<tr>
+<td>网络</td>
+<td>所有网口/交换机、MTU、VLAN、吞吐、丢包、持续连接、IPv4/IPv6</td>
+</tr>
+<tr>
+<td>无线/蜂窝</td>
+<td>校准加载、频段/国家码合规、重连、热点/STA、Modem拨号与SIM</td>
+</tr>
+<tr>
+<td>外设</td>
+<td>USB热插拔、Hub、PCIe、按键、LED、GPIO、音频、HDMI、传感器</td>
+</tr>
+<tr>
+<td>稳定性</td>
+<td>温度/降频、内存泄漏、长期负载、异常掉电与恢复</td>
+</tr>
+<tr>
+<td>升级</td>
+<td>同版本重刷、升级/回滚、A/B切换、原厂恢复通道、配置迁移</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>服务最小暴露、更新源与签名、密码/密钥保护、调试口部署策略</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>每个验收项记录：设备/PCB修订、固件哈希、测试命令、结果、日志路径、失败重现条件。未测项显式标记“未验证”，不能写“兼容”。</p>
+<h2>15. 工具链速查</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>场景</th>
+<th>工具</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信息与固件</td>
+<td><code class="notranslate">file</code>、<code class="notranslate">sha256sum</code>、<code class="notranslate">binwalk</code>、<code class="notranslate">strings</code>、<code class="notranslate">hexdump</code>/<code class="notranslate">xxd</code></td>
+</tr>
+<tr>
+<td>文件系统/UBI</td>
+<td><code class="notranslate">unsquashfs</code>、<code class="notranslate">sasquatch</code>、<code class="notranslate">ubireader</code>、<code class="notranslate">mtd-utils</code></td>
+</tr>
+<tr>
+<td>设备树/内核</td>
+<td><code class="notranslate">dtc</code>、<code class="notranslate">fdtdump</code>、<code class="notranslate">extract-dtb</code>、<code class="notranslate">extract-ikconfig</code>、<code class="notranslate">dtbs_check</code></td>
+</tr>
+<tr>
+<td>U-Boot/FIT</td>
+<td><code class="notranslate">dumpimage</code>、<code class="notranslate">mkimage</code>、UART日志、U-Boot源码/GDB</td>
+</tr>
+<tr>
+<td>静态逆向</td>
+<td>Ghidra、<code class="notranslate">readelf</code>、<code class="notranslate">objdump</code>、rizin/radare2</td>
+</tr>
+<tr>
+<td>动态逆向</td>
+<td><code class="notranslate">strace</code>、<code class="notranslate">gdbserver</code>、Frida、QEMU、FirmAE（适用时）</td>
+</tr>
+<tr>
+<td>总线/PCB</td>
+<td>万用表、稳压电源、逻辑分析仪、示波器、USB-TTL、J-Link/OpenOCD</td>
+</tr>
+<tr>
+<td>SPI/NAND</td>
+<td><code class="notranslate">flashrom</code>、CH341A（需确认电压）、RT809H/专业编程器</td>
+</tr>
+<tr>
+<td>eMMC/UFS</td>
+<td><code class="notranslate">mmc-utils</code>、支持boot0/boot1的eMMC编程工具、专用UFS设备</td>
+</tr>
+<tr>
+<td>MTK特定平台</td>
+<td><code class="notranslate">mtk_uartboot</code>、相应平台BROM/下载工具；需匹配SoC</td>
+</tr>
+<tr>
+<td>Rockchip</td>
+<td><code class="notranslate">rkdeveloptool</code>、RKDevTool、适配Loader</td>
+</tr>
+<tr>
+<td>Amlogic</td>
+<td>USB Burning Tool及对应板卡恢复机制</td>
+</tr>
+<tr>
+<td>Qualcomm</td>
+<td>EDL/Firehose生</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2>16. 工程交付</h2>
+<p><strong>交付前检查</strong>：镜像可重现构建；所有文件SHA-256明确；bootloader/校准数据不在公开镜像中；不同硬件修订兼容矩阵齐全；写入命令与目标地址经双人/二次校验；至少一次真实恢复演练（应使用测试机及可接受风险的恢复路径）；不包含设备私钥、账号令牌、IMEI、SN等敏感数据。</p>
+<h2>17. 官方参考资料</h2>
+<ul>
+<li>OpenWrt 添加设备支持：<a href="https://openwrt.org/docs/guide-developer/adding_new_device" rel="nofollow">https://openwrt.org/docs/guide-developer/adding_new_device</a></li>
+<li>U-Boot文档：<a href="https://docs.u-boot.org/en/latest/" rel="nofollow">https://docs.u-boot.org/en/latest/</a></li>
+<li>U-Boot <code class="notranslate">bootm</code>：<a href="https://docs.u-boot.org/en/latest/usage/cmd/bootm.html" rel="nofollow">https://docs.u-boot.org/en/latest/usage/cmd/bootm.html</a></li>
+<li>U-Boot <code class="notranslate">bootz</code>：<a href="https://docs.u-boot.org/en/stable/usage/cmd/bootz.html" rel="nofollow">https://docs.u-boot.org/en/stable/usage/cmd/bootz.html</a></li>
+<li>Linux内核设备树绑定：<a href="https://www.kernel.org/doc/html/latest/devicetree/bindings/index.html" rel="nofollow">https://www.kernel.org/doc/html/latest/devicetree/bindings/index.html</a></li>
+<li>Linux MTD/NAND文档：<a href="https://www.kernel.org/doc/html/latest/driver-api/mtdnand.html" rel="nofollow">https://www.kernel.org/doc/html/latest/driver-api/mtdnand.html</a></li>
+<li>Android Verified Boot：<a href="https://source.android.com/docs/security/features/verifiedboot" rel="nofollow">https://source.android.com/docs/security/features/verifiedboot</a></li>
+<li>OpenOCD：<a href="https://openocd.org/" rel="nofollow">https://openocd.org/</a></li>
+</ul></div>
+<div class="post-meta">❤️转载请注明出处❤️</div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.52013120.xyz">繁星点点</a></div>
+<div id="footer2">
+    <span id="runday"></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n Gmeek last https://github.com/Meekdai/Gmeek \n");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+
+function goBackToList(){
+    if(document.referrer && document.referrer.indexOf(location.origin) === 0 && document.referrer !== location.href){
+        history.back();
+    }
+    else{
+        location.href="https://blog.52013120.xyz";
+    }
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    const copyToClipboard = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return;
+            } catch (error) {}
+        }
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = text;
+        tempTextArea.style.position = 'fixed';
+        tempTextArea.style.opacity = '0';
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+    };
+
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', async () => {
+            const codeElement = copyButton.closest('.snippet-clipboard-content').querySelector('code.notranslate');
+            const codeContent = codeElement ? codeElement.textContent : '';
+            await copyToClipboard(codeContent);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='/assets/GmeekTOC.js'></script><script src='/assets/lightbox.js'></script>
+
+</html>
