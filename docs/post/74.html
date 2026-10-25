@@ -225,7 +225,7 @@ sha256sum firmware.bin
 binwalk firmware.bin
 binwalk -Me firmware.bin        <span class="pl-c"><span class="pl-c">#</span> 仅对可信样本在隔离环境运行提取工具</span>
 dtc -I dtb -O dts -o board.dts board.dtb</pre></div>
-<p>常用：<code class="notranslate">binwalk</code>、<code class="notranslate">unsquashfs</code>、<code class="notranslate">sasquatch</code>（特定魔改格式）、<code class="notranslate">ubireader</code>、<code class="notranslate">dumpimage</code>、<code class="notranslate">mkimage</code>、<code class="notranslate">extract-dtb</code>、<code class="notranslate">dtc</code>、<code class="notranslate">fdtdump</code>、<code class="notranslate">extract-ikconfig</code>、<code class="notranslate">readelf</code>、<code class="notranslate">objdump</code>、<code class="notranslate">strings</code>、<code class="notranslate">Ghidra</code>、<code class="notranslate">rizin</code>。</p>
+<p>常用：<code class="notranslate">HexWalk</code>、<code class="notranslate">unsquashfs</code>、<code class="notranslate">sasquatch</code>（特定魔改格式）、<code class="notranslate">ubireader</code>、<code class="notranslate">dumpimage</code>、<code class="notranslate">mkimage</code>、<code class="notranslate">extract-dtb</code>、<code class="notranslate">dtc</code>、<code class="notranslate">fdtdump</code>、<code class="notranslate">extract-ikconfig</code>、<code class="notranslate">readelf</code>、<code class="notranslate">objdump</code>、<code class="notranslate">strings</code>。</p>
 <ul>
 <li><strong>不存在统一的sysupgrade二进制布局</strong>。它可能是FIT、uImage+rootfs、tar、UBI相关格式或设备特定封装；factory镜像还可能存在厂商头、校验和/签名。</li>
 <li><code class="notranslate">binwalk</code>扫描偏移是<strong>候选线索</strong>；先确认DTB魔数、<code class="notranslate">totalsize</code>、解包校验和内核/文件系统边界，再执行<code class="notranslate">dd</code>提取；示例固定偏移不可通用。</li>
@@ -433,7 +433,7 @@ bdinfo
 </tr>
 <tr>
 <td>静态逆向</td>
-<td>Ghidra、<code class="notranslate">readelf</code>、<code class="notranslate">objdump</code>、rizin/radare2</td>
+<td>Cutter、<code class="notranslate">readelf</code>、<code class="notranslate">objdump</code>、rizin/radare2</td>
 </tr>
 <tr>
 <td>动态逆向</td>
