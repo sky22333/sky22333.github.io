@@ -13,12 +13,14 @@
 #### React生态
 - **Material Web** (Google安卓风格): https://material-web.dev/
 - **MUI** (Material Design): https://mui.com/material-ui/getting-started/ 
+- **MUI** (MUI精美组件): https://github.com/siriwatknp/mui-treasury
 - **Fluent UI** (微软风格): https://react.fluentui.dev/
 - **radix-ui**：https://www.radix-ui.com/
 - **shadcn/ui** : https://www.shadcn-ui.cn/docs/installation
 - **coss ui**: https://coss.com/ui/docs
 - **HeroUI** : https://heroui.com/
 - **Ant Design** : https://ant.design/index-cn
+- **可爱风格UI** : https://github.com/guokaigdg/animal-island-ui
 
 ### 通用
 - 腾讯：https://tdesign.tencent.com/
